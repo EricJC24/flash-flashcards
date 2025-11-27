@@ -1,0 +1,44 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\tocsection {}{1}{Linear Equations}}{2}{section.1}%
+\contentsline {subsection}{\tocsubsection {}{1.1}{Introduction to Linear Systems}}{2}{subsection.1.1}%
+\contentsline {subsection}{\tocsubsection {}{1.2}{Matrices, Vectors, and Gauss--Jordan Elimination}}{4}{subsection.1.2}%
+\contentsline {subsection}{\tocsubsection {}{1.3}{On the Solutions of Linear Systems; Matrix Algebra}}{4}{subsection.1.3}%
+\contentsline {section}{\tocsection {}{2}{Linear Transformations}}{5}{section.2}%
+\contentsline {subsection}{\tocsubsection {}{2.1}{Introduction to Linear Transformations and Their Inverses}}{5}{subsection.2.1}%
+\contentsline {subsection}{\tocsubsection {}{2.2}{Linear Transformations in Geometry}}{6}{subsection.2.2}%
+\contentsline {subsection}{\tocsubsection {}{2.3}{Matrix Products}}{7}{subsection.2.3}%
+\contentsline {subsection}{\tocsubsection {}{2.4}{The Inverse of a Linear Transformation}}{8}{subsection.2.4}%
+\contentsline {section}{\tocsection {}{3}{Subspaces of $\mathbb {R}^n$ and Their Dimensions}}{9}{section.3}%
+\contentsline {subsection}{\tocsubsection {}{3.1}{Image and Kernel of a Linear Transformation}}{9}{subsection.3.1}%
+\contentsline {subsection}{\tocsubsection {}{3.2}{Subspaces of $\mathbb {R}^n$; Bases and Linear Independence}}{10}{subsection.3.2}%
+\contentsline {subsection}{\tocsubsection {}{3.3}{The Dimension of a Subspace of $\mathbb {R}^n$}}{10}{subsection.3.3}%
+\contentsline {subsection}{\tocsubsection {}{3.4}{Coordinates}}{10}{subsection.3.4}%
+\contentsline {section}{\tocsection {}{4}{Linear Spaces}}{11}{section.4}%
+\contentsline {subsection}{\tocsubsection {}{4.1}{Introduction to Linear Spaces}}{11}{subsection.4.1}%
+\contentsline {subsection}{\tocsubsection {}{4.2}{Linear Transformations and Isomorphisms}}{11}{subsection.4.2}%
+\contentsline {subsection}{\tocsubsection {}{4.3}{The Matrix of a Linear Transformation}}{11}{subsection.4.3}%
+\contentsline {section}{\tocsection {}{5}{Orthogonality and Least Squares}}{12}{section.5}%
+\contentsline {subsection}{\tocsubsection {}{5.1}{Orthogonal Projections and Orthonormal Bases}}{12}{subsection.5.1}%
+\contentsline {subsection}{\tocsubsection {}{5.2}{Gram--Schmidt Process}}{13}{subsection.5.2}%
+\contentsline {subsection}{\tocsubsection {}{5.3}{Orthogonal Transformations and Orthogonal Matrices}}{14}{subsection.5.3}%
+\contentsline {subsection}{\tocsubsection {}{5.4}{Least Squares and Data Fitting}}{16}{subsection.5.4}%
+\contentsline {subsection}{\tocsubsection {}{5.5}{Inner Product Spaces}}{17}{subsection.5.5}%
+\contentsline {section}{\tocsection {}{6}{Determinants}}{17}{section.6}%
+\contentsline {subsection}{\tocsubsection {}{6.1}{Introduction to Determinants}}{17}{subsection.6.1}%
+\contentsline {subsection}{\tocsubsection {}{6.2}{Properties of the Determinant}}{18}{subsection.6.2}%
+\contentsline {subsection}{\tocsubsection {}{6.3}{Geometrical Interpretations; Cramer's Rule}}{19}{subsection.6.3}%
+\contentsline {section}{\tocsection {}{7}{Eigenvalues and Eigenvectors}}{19}{section.7}%
+\contentsline {subsection}{\tocsubsection {}{7.1}{Diagonalization}}{19}{subsection.7.1}%
+\contentsline {subsection}{\tocsubsection {}{7.2}{Finding the Eigenvalues of a Matrix}}{21}{subsection.7.2}%
+\contentsline {subsection}{\tocsubsection {}{7.3}{Finding the Eigenvectors of a Matrix}}{21}{subsection.7.3}%
+\contentsline {subsection}{\tocsubsection {}{7.4}{More on Dynamical Systems}}{23}{subsection.7.4}%
+\contentsline {subsection}{\tocsubsection {}{7.5}{Complex Eigenvalues}}{23}{subsection.7.5}%
+\contentsline {subsection}{\tocsubsection {}{7.6}{Stability}}{24}{subsection.7.6}%
+\contentsline {section}{\tocsection {}{8}{Symmetric Matrices and Quadratic Forms}}{25}{section.8}%
+\contentsline {subsection}{\tocsubsection {}{8.1}{Symmetric Matrices}}{25}{subsection.8.1}%
+\contentsline {subsection}{\tocsubsection {}{8.2}{Quadratic Forms}}{25}{subsection.8.2}%
+\contentsline {subsection}{\tocsubsection {}{8.3}{Singular Values}}{26}{subsection.8.3}%
+\contentsline {section}{\tocsection {}{9}{Linear Differential Equations}}{26}{section.9}%
+\contentsline {subsection}{\tocsubsection {}{9.1}{An Introduction to Continuous Dynamical Systems}}{27}{subsection.9.1}%
+\contentsline {subsection}{\tocsubsection {}{9.2}{The Complex Case: Euler's Formula}}{27}{subsection.9.2}%
+\contentsline {subsection}{\tocsubsection {}{9.3}{Linear Differential Operators and Linear Differential Equations}}{28}{subsection.9.3}%

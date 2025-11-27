@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCLA Flashcards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                macros: {
+                    // Standard macros
+                    vv: ['\\vec{#1}', 1],
+                    operatorname: ['\\mathrm{#1}', 1],
+                    ker: '\\operatorname{ker}',
+                    im: '\\operatorname{im}',
+                    rank: '\\operatorname{rank}',
+                    rref: '\\operatorname{rref}',
+                    // FCLA custom macros
+                    conjugate: ['\\overline{#1}', 1],
+                    complexes: '\\mathbb{C}',
+                    complex: ['\\mathbb{C}^{#1}', 1],
+                    reals: '\\mathbb{R}',
+                    real: ['\\mathbb{R}^{#1}', 1],
+                    modulus: ['\\left\\lvert#1\\right\\rvert', 1],
+                    zerovector: '\\mathbf{0}',
+                    zeromatrix: '\\mathcal{O}',
+                    vect: ['\\mathbf{#1}', 1],
+                    scalarlist: ['{#1}_{1},\\,{#1}_{2},\\,\\ldots,\\,{#1}_{#2}', 2],
+                    vectorlist: ['{#1}_{1},\\,{#1}_{2},\\,\\ldots,\\,{#1}_{#2}', 2],
+                    dimension: ['\\dim\\left(#1\\right)', 1],
+                    nullity: ['n\\left(#1\\right)', 1],
+                    nsp: ['\\mathcal{N}\\!\\left(#1\\right)', 1],
+                    csp: ['\\mathcal{C}\\!\\left(#1\\right)', 1],
+                    rsp: ['\\mathcal{R}\\!\\left(#1\\right)', 1],
+                    lns: ['\\mathcal{L}\\!\\left(#1\\right)', 1],
+                    detname: ['\\det\\left(#1\\right)', 1],
+                    detbars: ['\\left\\lvert#1\\right\\rvert', 1],
+                    trace: ['t\\left(#1\\right)', 1],
+                    innerproduct: ['\\left\\langle#1,\\,#2\\right\\rangle', 2],
+                    norm: ['\\left\\lVert#1\\right\\rVert', 1],
+                    per: ['{#1}^\\perp', 1],
+                    spn: ['\\left\\langle#1\\right\\rangle', 1],
+                    augmented: ['\\left\\lbrack\\left.#1\\,\\right\\rvert\\,#2\\right\\rbrack', 2],
+                    linearsystem: ['\\mathcal{LS}\\!\\left(#1,\\,#2\\right)', 2],
+                    homosystem: ['\\mathcal{LS}\\!\\left(#1,\\,\\mathbf{0}\\right)', 1],
+                    colvector: ['\\begin{bmatrix}#1\\end{bmatrix}', 1],
+                    // Additional FCLA macros
+                    ltdefn: ['#1\\colon#2\\to#3', 3],
+                    set: ['\\left\\{#1\\right\\}', 1],
+                    transpose: ['{#1}^t', 1],
+                    adjoint: ['{#1}^*', 1],
+                    matrixentry: ['{\\left\\lbrack#1\\right\\rbrack}_{#2}', 2],
+                    inverse: ['{#1}^{-1}', 1],
+                    lt: ['<', 0],
+                    gt: ['>', 0],
+                    lteval: ['#1\\left(#2\\right)', 2],
+                    ltinverse: ['{#1}^{-1}', 1],
+                    compose: ['\\circ', 0],
+                    matrixrep: ['M_{#1,#2}^{#3}', 3],
+                    vectrepname: ['\\rho_{#1}', 1],
+                    eigenspace: ['\\mathcal{E}_{#1}\\left(#2\\right)', 2],
+                    rng: ['\\mathcal{R}\\!\\left(#1\\right)', 1],
+                    krn: ['\\mathcal{K}\\!\\left(#1\\right)', 1],
+                    algmult: ['\\alpha_{#1}\\left(#2\\right)', 2],
+                    geomult: ['\\gamma_{#1}\\left(#2\\right)', 2],
+                    charpoly: ['p_{#1}\\left(#2\\right)', 2],
+                    preimage: ['{#1}^{-1}\\left(#2\\right)', 2],
+                    similar: ['\\sim', 0],
+                    sr: ['{#1}^{1/2}', 1],
+                    ds: ['\\oplus', 0],
+                    // Final missing macros
+                    vectorentry: ['{\\left\\lbrack#1\\right\\rbrack}_{#2}', 2],
+                    vectrep: ['\\rho_{#1}\\left(#2\\right)', 2],
+                    cbm: ['C_{#1,#2}', 2],
+                    vec: ['\\mathbf{#1}', 1],
+                    submatrix: ['#1_{#2}', 2],
+                    isomorphic: ['\\cong', 0],
+                    vslt: ['L\\left(#1,\\,#2\\right)', 2],
+                    setparts: ['#1\\,\\middle|\\,#2', 2]
+                }
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>FCLA Linear Algebra Flashcards</h1>
+            <div class="filters">
+                <select id="chapterFilter">
+                    <option value="all">All Sections</option>
+                    <!-- Options populated by JS -->
+                </select>
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="Definition">Definitions</option>
+                    <option value="Theorem">Theorems</option>
+                </select>
+            </div>
+        </header>
+
+        <main>
+            <div class="card-container" id="cardContainer">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <div class="card-content">
+                            <h2 id="cardType">Definition</h2>
+                            <p id="cardFront">Loading...</p>
+                            <div class="hint">Click to flip</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-content">
+                            <div id="cardBack"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="controls">
+            <button id="prevBtn" disabled>Previous</button>
+            <span id="counter">1 / 0</span>
+            <button id="nextBtn">Next</button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <footer>
+            <button id="shuffleBtn">Shuffle Cards</button>
+        </footer>
+    </div>
+    <script src="fcla_data.js"></script>
+    <script src="fcla_script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards - Simple Version</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                macros: {
+                    vv: ['\\vec{#1}', 1],
+                    operatorname: ['\\mathrm{#1}', 1],
+                    ker: '\\operatorname{ker}',
+                    im: '\\operatorname{im}',
+                    rank: '\\operatorname{rank}',
+                    rref: '\\operatorname{rref}'
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Flashcard Learning</h1>
+            <div class="filters">
+                <select id="chapterFilter">
+                    <option value="all">All Chapters</option>
+                </select>
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="Definition">Definitions</option>
+                    <option value="Theorem">Theorems</option>
+                </select>
+            </div>
+        </header>
+
+        <main>
+            <div class="card-container" id="cardContainer">
+                <div class="card">
+                    <div class="card-face card-front">
+                        <div class="card-content">
+                            <h2 id="cardType">Definition</h2>
+                            <p id="cardFront">Loading...</p>
+                            <div class="hint">Click to flip</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-content">
+                            <div id="cardBack"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="controls">
+            <button id="prevBtn" disabled>Previous</button>
+            <span id="counter">0 / 0</span>
+            <button id="nextBtn">Next</button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+
+        <footer>
+            <button id="shuffleBtn">Shuffle Cards</button>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

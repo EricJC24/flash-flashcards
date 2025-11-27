@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Learning System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                macros: {
+                    vv: ['\\vec{#1}', 1],
+                    operatorname: ['\\mathrm{#1}', 1],
+                    ker: '\\operatorname{ker}',
+                    im: '\\operatorname{im}',
+                    rank: '\\operatorname{rank}',
+                    rref: '\\operatorname{rref}'
+                }
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <h2 id="authTitle">Login</h2>
+            <form id="authForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+                </div>
+                <div id="authError" class="error-message"></div>
+                <button type="submit" class="btn-primary" id="authSubmit">Login</button>
+                <p class="auth-switch">
+                    <span id="authSwitchText">Don't have an account?</span>
+                    <a href="#" id="authSwitchLink">Register</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="appContainer" style="display: none;">
+        <div class="container">
+            <header>
+                <div class="header-top">
+                    <h1>Flashcard Learning</h1>
+                    <div class="user-info">
+                        <span id="userDisplay"></span>
+                        <button id="logoutBtn" class="btn-secondary">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Stats Dashboard -->
+                <div class="stats-dashboard">
+                    <div class="stat-card">
+                        <div class="stat-value" id="dueToday">0</div>
+                        <div class="stat-label">Due Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="reviewsToday">0</div>
+                        <div class="stat-label">Reviews Today</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalReviews">0</div>
+                        <div class="stat-label">Total Reviews</div>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <select id="chapterFilter">
+                        <option value="all">All Chapters</option>
+                    </select>
+                    <select id="typeFilter">
+                        <option value="all">All Types</option>
+                        <option value="Definition">Definitions</option>
+                        <option value="Theorem">Theorems</option>
+                    </select>
+                </div>
+            </header>
+
+            <main>
+                <div class="card-container" id="cardContainer">
+                    <div class="card">
+                        <div class="card-face card-front">
+                            <div class="card-content">
+                                <h2 id="cardType">Definition</h2>
+                                <p id="cardFront">Loading...</p>
+                                <div class="hint">Click to flip</div>
+                            </div>
+                        </div>
+                        <div class="card-face card-back">
+                            <div class="card-content">
+                                <div id="cardBack"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Buttons (shown after flipping) -->
+                <div id="ratingButtons" class="rating-buttons" style="display: none;">
+                    <button class="rating-btn rating-again" data-rating="0">
+                        Again<br><span class="rating-time">&lt; 1d</span>
+                    </button>
+                    <button class="rating-btn rating-hard" data-rating="1">
+                        Hard<br><span class="rating-time">&lt; 3d</span>
+                    </button>
+                    <button class="rating-btn rating good" data-rating="2">
+                        Good<br><span class="rating-time">~ 1w</span>
+                    </button>
+                    <button class="rating-btn rating-easy" data-rating="3">
+                        Easy<br><span class="rating-time">&gt; 2w</span>
+                    </button>
+                </div>
+            </main>
+
+            <div class="controls">
+                <button id="prevBtn" disabled>Previous</button>
+                <span id="counter">0 / 0</span>
+                <button id="nextBtn">Next</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress" id="progress"></div>
+            </div>
+
+            <footer>
+                <button id="shuffleBtn">Shuffle Cards</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="data.js"></script>
+    <script src="app_script.js"></script>
+</body>
+
+</html>

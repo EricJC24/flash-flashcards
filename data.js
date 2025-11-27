@@ -1,0 +1,1497 @@
+window.flashcardsData = [
+  {
+    "front": "Define: Linear Combination",
+    "back": "A \\textbf{linear combination} of $x_1, \\ldots, x_n$ has the form\n\\begin{equation*}\n   a_1x_1+a_2x_2+a_3x_3+\\cdots+a_nx_n\n\\end{equation*}\nwhere the numbers $a_1, \\ldots,a_n\\in \\mathbb{R}$ are the combination's \\textbf{coefficients}\\footnote{Sometimes we replace $\\mathbb{R}$ with another field like $\\mathbb{Q}$ or $\\mathbb{C}$.}.",
+    "type": "Definition",
+    "title": "Linear Combination",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Linear Equation",
+    "back": "A \\textbf{linear equation} in the variables $x_1, \\ldots, x_n$ has the form\n$a_1x_1+a_2x_2+a_3x_3+\\cdots+a_nx_n=d$\nwhere $d\\in \\mathbb{R}$ is the \\textbf{constant}.\n\nAn $n$-tuple $(s_1,s_2,\\ldots,s_n)\\in \\mathbb{R}^n$ is a \\textbf{solution} of, or \\textbf{satisfies}, that equation if substituting the numbers $s_1, \\ldots, s_n$ for the variables gives a true statement: $a_1s_1+a_2s_2+\\cdots+a_ns_n=d$.\n\nA \\textbf{system of linear equations}\n\\[\n\\begin{aligned}\na_{1,1} x_1+a_{1,2} x_2+\\cdots+a_{1, n} x_n & =d_1 \\\\\na_{2,1} x_1+a_{2,2} x_2+\\cdots+a_{2, n} x_n & =d_2 \\\\\n& \\vdots \\\\\na_{m, 1} x_1+a_{m, 2} x_2+\\cdots+a_{m, n} x_n & =d_m\n\\end{aligned}\n\\]\nhas the solution $(s_1,s_2,\\ldots,s_n)$ if that $n$-tuple is a solution of all of the equations.",
+    "type": "Definition",
+    "title": "Linear Equation",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Gauss's Method a.k.a Gauss-Jordan or Row Reduction",
+    "back": "If a linear system is changed to another by one of these operations\n\\begin{enumerate}\n  \\item an equation is swapped with another\n  \\item an equation has both sides multiplied by a nonzero constant\n  \\item an equation is replaced by the sum of itself and a multiple of another\n\\end{enumerate}\nthen the two systems have the same set of solutions.",
+    "type": "Theorem",
+    "title": "Gauss's Method a.k.a Gauss-Jordan or Row Reduction",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Reduced row-echelon form",
+    "back": "A matrix is said to be in \\textbf{reduced row-echelon form (rref)} if it satisfies all of the following conditions\n\\begin{enumerate}\n  \\item \nIf a row has nonzero entries, then the first nonzero entry is a 1, called \\textbf{the leading 1 (or pivot)} in this row.\n  \\item \nIf a column contains a leading 1, then all the other entries in that column are 0 .\n  \\item   \nIf a row contains a leading 1, then each row above it contains a leading 1 further to the left.\n\\end{enumerate}\nThe last condition implies that rows of 0's, if any, appear at the bottom of the matrix.",
+    "type": "Definition",
+    "title": "Reduced row-echelon form",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Elementary Reduction Operations",
+    "back": "The three operations from Theorem \\ref{th:GaussMethod} are the \\textbf{elementary reduction operations}, or \\textbf{row operations}, or \\textbf{Gaussian operations}. They are:\n\\begin{itemize}\n\\item \\textbf{swapping}\n\\item \\textbf{multiplying by a scalar} (or \\textbf{rescaling})\n\\item \\textbf{row combination}\n\\end{itemize}",
+    "type": "Definition",
+    "title": "Elementary Reduction Operations",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Echelon Form",
+    "back": "A system is in \\textbf{echelon form} if each leading variable (first nonzero variable in each equation) is to the right of the leading variable in the row above it, with any all-zero rows at the bottom.",
+    "type": "Definition",
+    "title": "Echelon Form",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Free Variables",
+    "back": "In an echelon form linear system the variables that are not leading are \\textbf{free}.",
+    "type": "Definition",
+    "title": "Free Variables",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Corollary: Solution Set Types",
+    "back": "Solution sets of linear systems are either \n\\begin{itemize}\n\\item \nempty, \n\\item\nhave one element, or \n\\item\nhave infinitely many elements.\n\\end{itemize}",
+    "type": "Corollary",
+    "title": "Solution Set Types",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: General Solution Form",
+    "back": "Any linear system's solution set has the form $\\{p + c_1\\beta_1 + \\cdots + c_k\\beta_k \\mid c_1,\\ldots,c_k \\in \\mathbb{R}\\}$ where $p$ is any particular solution and $k$ equals the number of free variables.",
+    "type": "Theorem",
+    "title": "General Solution Form",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Matrix",
+    "back": "An $m \\times n$ \\textbf{matrix} is a rectangular array of numbers with $m$ rows and $n$ columns. Each number is an \\textbf{entry}.",
+    "type": "Definition",
+    "title": "Matrix",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Vector",
+    "back": "A \\textbf{column vector} is a matrix with a single column. A \\textbf{row vector} has a single row. Entries are called \\textbf{components}.",
+    "type": "Definition",
+    "title": "Vector",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Vector Sum",
+    "back": "The \\textbf{vector sum} of $\\vv{u}$ and $\\vv{v}$ is the vector of the sums (component-wise addition).",
+    "type": "Definition",
+    "title": "Vector Sum",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Scalar Multiplication",
+    "back": "The \\textbf{scalar multiplication} of real number $r$ and vector $\\vv{v}$ is the vector of the multiples.",
+    "type": "Definition",
+    "title": "Scalar Multiplication",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Homogeneous Equation",
+    "back": "A \\textbf{homogeneous equation} is a linear equation with constant of zero: $a_1x_1+\\cdots+a_nx_n=0$.",
+    "type": "Definition",
+    "title": "Homogeneous Equation",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Nonsingular Matrix",
+    "back": "A square matrix is \\textbf{nonsingular} if it is the matrix of coefficients of a homogeneous system with a unique solution. Otherwise it is \\textbf{singular}.",
+    "type": "Definition",
+    "title": "Nonsingular Matrix",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Linear System",
+    "back": "A \\textbf{linear system} in variables $x_1,\\dots,x_n$ is a collection of equations\n$a_{i1}x_1+\\cdots+a_{in}x_n=b_i$. Its solution set is an affine subspace of $\\mathbb{R}^n$ (possibly empty).",
+    "type": "Definition",
+    "title": "Linear System",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Matrix Form $Ax=b$",
+    "back": "The \\textbf{coefficient matrix} $A\\in\\mathbb{R}^{m\\times n}$, \\textbf{unknown vector} $x\\in\\mathbb{R}^n$, and \\textbf{right-hand side} $b\\in\\mathbb{R}^m$ define the system $Ax=b$.",
+    "type": "Definition",
+    "title": "Matrix Form $Ax=b$",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Existence and Uniqueness",
+    "back": "The system $Ax=b$ has a solution iff $b$ lies in the column space of $A$ (the image). If a solution exists, it is unique iff $\\ker(A)=\\{0\\}$, equivalently $\\operatorname{rank}(A)=n$.",
+    "type": "Theorem",
+    "title": "Existence and Uniqueness",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Vectors and vector spaces",
+    "back": "A matrix with only one column is called a \\textbf{column vector}, or simply a \\textbf{vector}. The entries of a vector are called its \\textbf{components}. The set of all column vectors with $n$ components is denoted by $\\mathbb{R}^n$; we will refer to $\\mathbb{R}^n$ as a vector space.\n\nA matrix with only one row is called a \\textbf{row vector}.\nIn this text, the term vector refers to column vectors, unless otherwise stated.",
+    "type": "Definition",
+    "title": "Vectors and vector spaces",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Elementary Row Operations",
+    "back": "(1) Swap two rows. \\\\\n(2) Multiply a row by a nonzero scalar. \\\\ \n(3) Replace a row by itself plus a multiple of another row. These preserve the solution set of $Ax=b$.",
+    "type": "Definition",
+    "title": "Elementary Row Operations",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Reduced Row-Echelon Form (RREF)",
+    "back": "Every matrix is row-equivalent to a unique RREF. \\textbf{Pivot} columns correspond to \\textbf{leading variables}; non-pivot columns correspond to \\textbf{free variables} that parametrize the solution set.",
+    "type": "Theorem",
+    "title": "Reduced Row-Echelon Form (RREF)",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Number of solutions of a linear system",
+    "back": "A system of equations is said to be consistent if there is at least one solution; it is inconsistent if there are no solutions.\\\\\nA linear system is inconsistent if (and only if) the reduced row-echelon form of its augmented matrix contains the row $\\left[\\begin{array}{llll:l}0 & 0 & \\cdots & 0 & 1\\end{array}\\right]$, representing the equation $0=1$.\\\\\nIf a linear system is consistent, then it has either\\\\\n- infinitely many solutions (if there is at least one free variable), or\\\\\n- exactly one solution (if all the variables are leading).",
+    "type": "Theorem",
+    "title": "Number of solutions of a linear system",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Rank of a Matrix (preliminary definition)",
+    "back": "The rank of a matrix $A$ is the number of leading 1 's in $\\operatorname{rref}(A)$, denoted $\\operatorname{rank}(A)$.",
+    "type": "Definition",
+    "title": "Rank of a Matrix (preliminary definition)",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Number of equations vs. number of unknowns",
+    "back": "If a linear system has exactly one solution, then there must be at least as many equations as there are variables ( $m \\leq n$ with the notation from Definition \\ref{def-sys}).\n\nEquivalently, we can formulate the contrapositive:\\\\\nA linear system with fewer equations than unknowns $(n<m)$ has either no solutions or infinitely many solutions.",
+    "type": "Theorem",
+    "title": "Number of equations vs. number of unknowns",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The product $A \\vv{x}$ in terms of the columns of $A$",
+    "back": "If the column vectors of an $n \\times m$ matrix $A$ are $\\vv{v}_1, \\ldots, \\vv{v}_m$ and $\\vv{x}$ is a vector in $\\mathbb{R}^m$ with components $x_1, \\ldots, x_m$, then\n\\[\nA \\vv{x}=\\left[\\begin{array}{ccc}\n\\mid & & \\mid \\\\\n\\vv{v}_1 & \\ldots & \\vv{v}_m \\\\\n\\mid & & \\mid\n\\end{array}\\right]\\left[\\begin{array}{c}\nx_1 \\\\\n\\vdots \\\\\nx_m\n\\end{array}\\right]=x_1 \\vv{v}_1+\\cdots+x_m \\vv{v}_m\n\\]",
+    "type": "Theorem",
+    "title": "The product $A \\vv{x}$ in terms of the columns of $A$",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Linear combinations",
+    "back": "A vector $\\vv{b}$ in $\\mathbb{R}^n$ is called a linear combination of the vectors $\\vv{v}_1, \\ldots, \\vv{v}_m$ in $\\mathbb{R}^n$ if there exist scalars $x_1, \\ldots, x_m$ such that\n\\[\n\\vv{b}=x_1 \\vv{v}_1+\\cdots+x_m \\vv{v}_m\n\\]",
+    "type": "Definition",
+    "title": "Linear combinations",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Matrix Operations",
+    "back": "Matrix addition, scalar multiplication, and multiplication $(AB)_{ij}=\\sum_k A_{ik}B_{kj}$; the identity $I_n$ satisfies $I_nx=x$.",
+    "type": "Definition",
+    "title": "Matrix Operations",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Rank--Nullity",
+    "back": "For $A\\in\\mathbb{R}^{m\\times n}$, $\\operatorname{rank}(A)+\\dim\\ker(A)=n$.",
+    "type": "Theorem",
+    "title": "Rank--Nullity",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Linear Transformation",
+    "back": "A map $T:V\\to W$ is \\textbf{linear} if $T(u+v)=T(u)+T(v)$ and $T(\\alpha v)=\\alpha T(v)$. It is invertible (has a linear inverse) iff it is bijective.",
+    "type": "Definition",
+    "title": "Linear Transformation",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Invertibility Criteria on $\\mathbb{R}^n$",
+    "back": "For $T:\\mathbb{R}^n\\to\\mathbb{R}^n$ with matrix $A$, the following are equivalent: \\\\(i) $T$ invertible; \\\\\n(ii) $\\det A\\neq 0$; \\\\\n(iii) $\\ker(A)=\\{0\\}$; \\\\\n(iv) $\\Im(A)=\\mathbb{R}^n$.",
+    "type": "Theorem",
+    "title": "Invertibility Criteria on $\\mathbb{R}^n$",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The columns of the matrix of a linear transformation",
+    "back": "Consider a linear transformation $T$ from $\\mathbb{R}^m$ to $\\mathbb{R}^n$. Then, the matrix of $T$ is\n\n\\[\nA=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\nT\\left(\\vec{e}_1\\right) & T\\left(\\vec{e}_2\\right) & \\ldots & T\\left(\\vec{e}_m\\right) \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right], \\quad \\text { where } \\quad \\vec{e}_i=\\left[\\begin{array}{c}\n0 \\\\\n\\vdots \\\\\n0 \\\\\n1 \\\\\n0\\\\\n\\vdots \\\\\n0 \n\\end{array}\\right] \\leftarrow i \\text { th }\n\\]",
+    "type": "Theorem",
+    "title": "The columns of the matrix of a linear transformation",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Geometric Examples",
+    "back": "Rotations, reflections, orthogonal projections, and shears on $\\mathbb{R}^2$ or $\\mathbb{R}^3$ are linear and each is represented by a matrix in the standard basis.",
+    "type": "Proposition",
+    "title": "Geometric Examples",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Orthogonal Projections",
+    "back": "Consider a line $L$ in the coordinate plane, running through the origin. Any vector $\\vec{x}$ in $\\mathbb{R}^2$ can be written uniquely as\n\\[\n\\vec{x}=\\vec{x}^{\\|}+\\vec{x}^{\\perp},\n\\]\nwhere $\\vec{x}^{\\|}$ is parallel to line $L$, and $\\vec{x}^{\\perp}$ is perpendicular to $L$.\nThe transformation $T(\\vec{x})=\\vec{x}^{\\|}$ from $\\mathbb{R}^2$ to $\\mathbb{R}^2$ is called the orthogonal projection of $\\vec{x}$ onto $L$, often denoted by $\\operatorname{proj}_L(\\vec{x})$. If $\\vec{w}$ is a nonzero vector parallel to $L$, then\n\\[\n\\operatorname{proj}_L(\\vec{x})=\\left(\\frac{\\vec{x} \\cdot \\vec{w}}{\\vec{w} \\cdot \\vec{w}}\\right) \\vec{w} .\n\\]\nIn particular, if $\\vec{u}=\\begin{bmatrix}u_1 \\\\ u_2\\end{bmatrix}$ is a unit vector parallel to $L$, then\n\\[\n\\operatorname{proj}_L(\\vec{x})=(\\vec{x} \\cdot \\vec{u}) \\vec{u} .\n\\]\nThe transformation $T(\\vec{x})=\\operatorname{proj}_L(\\vec{x})$ is linear, with matrix\n\\[\nP=\\frac{1}{w_1^2+w_2^2}\\begin{bmatrix}\nw_1^2 & w_1 w_2 \\\\\nw_1 w_2 & w_2^2\n\\end{bmatrix}=\\begin{bmatrix}\nu_1^2 & u_1 u_2 \\\\\nu_1 u_2 & u_2^2\n\\end{bmatrix} .\n\\]",
+    "type": "Definition",
+    "title": "Orthogonal Projections",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Reflections",
+    "back": "Consider a line $L$ in the coordinate plane, running through the origin, and let $\\vec{x}=\\vec{x}^{\\|}+\\vec{x}^{\\perp}$ be a vector in $\\mathbb{R}^2$. The linear transformation $T(\\vec{x})=\\vec{x}^{\\|}-\\vec{x}^{\\perp}$ is called the reflection of $\\vec{x}$ about $L$, often denoted by $\\operatorname{ref}_L(\\vec{x})$ :\n\\[\n\\operatorname{ref}_L(\\vec{x})=\\vec{x}^{\\|}-\\vec{x}^{\\perp}\n\\]\nWe have a formula relating $\\operatorname{ref}_L(\\vec{x})$ to $\\operatorname{proj}_L(\\vec{x})$ :\n\\[\n\\operatorname{ref}_L(\\vec{x})=2 \\operatorname{proj}_L(\\vec{x})-\\vec{x}=2(\\vec{x} \\cdot \\vec{u}) \\vec{u}-\\vec{x} \\qquad \\text{ where } \\vec{u} \\text{ is a unit vector on }L.\n\\]\nThe matrix of $T$ is of the form $\\begin{bmatrix}a & b \\\\ b & -a\\end{bmatrix}$, where $a^2+b^2=1$. Conversely, any matrix of this form represents a reflection about a line.",
+    "type": "Definition",
+    "title": "Reflections",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Matrix multiplication",
+    "back": "a. Let $B$ be an $n \\times p$ matrix and $A$ a $q \\times m$ matrix. The product $B A$ is defined if (and only if) $p=q$.\\\\\nb. If $B$ is an $n \\times p$ matrix and $A$ a $p \\times m$ matrix, then the product $B A$ is defined as the matrix of the linear transformation $T(\\vv{x})=B(A \\vv{x})$. This means that $T(\\vv{x})=B(A \\vv{x})=(B A) \\vv{x}$, for all $\\vv{x}$ in the vector space $\\mathbb{R}^m$. The product $B A$ is an $n \\times m$ matrix.",
+    "type": "Definition",
+    "title": "Matrix multiplication",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Composition $\\leftrightarrow$ Product",
+    "back": "If $S:U\\to V$ and $T:V\\to W$ have matrices $[S]$ and $[T]$ in chosen bases, then $[T\\circ S]=[T][S]$.",
+    "type": "Theorem",
+    "title": "Composition $\\leftrightarrow$ Product",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The columns of the matrix product",
+    "back": "Let $B$ be an $n \\times p$ matrix and $A$ a $p \\times m$ matrix with columns $\\vv{v}_1, \\vv{v}_2, \\ldots, \\vv{v}_m$. Then, the product $B A$ is\n\\[\nB A=B\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vv{v}_1 & \\vv{v}_2 & \\cdots & \\vv{v}_m \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right]=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\nB \\vv{v}_1 & B \\vv{v}_2 & \\cdots & B \\vv{v}_m \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right] .\n\\]\nTo find $B A$, we can multiply $B$ by the columns of $A$ and combine the resulting vectors.",
+    "type": "Theorem",
+    "title": "The columns of the matrix product",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The entries of the matrix product",
+    "back": "Let $B$ be an $n \\times p$ matrix and $A$ a $p \\times m$ matrix. The $i j$ th entry of $B A$ is the dot product of the $i$ th row of $B$ with the $j$ th column of $A$.\n\\[\nBA =\n\\begin{bmatrix}\nb_{11} & b_{12} & \\cdots & b_{1p} \\\\\nb_{21} & b_{22} & \\cdots & b_{2p} \\\\\n\\vdots & \\vdots &        & \\vdots \\\\\n\\rowcolor{gray!40} b_{i1} & b_{i2} & \\cdots & b_{ip} \\\\\n\\vdots & \\vdots &        & \\vdots \\\\\nb_{n1} & b_{n2} & \\cdots & b_{np}\n\\end{bmatrix}\n\\begin{bmatrix}\na_{11} & a_{12} &\\cdots & \\cellcolor{gray!40} a_{1j} & \\cdots & a_{1m} \\\\\na_{21} & a_{22} & \\cdots & \\cellcolor{gray!40} a_{2j} & \\cdots & a_{2m} \\\\\n\\vdots & \\vdots & \\vdots & \\cellcolor{gray!40} \\vdots &        & \\vdots \\\\\na_{p1} & a_{p2} & \\cdots & \\cellcolor{gray!40} a_{pj} & \\cdots & a_{pm}\n\\end{bmatrix}\n\\]\nis the $n \\times m$ matrix whose $i j$ th entry is\n\\[\nb_{i 1} a_{1 j}+b_{i 2} a_{2 j}+\\cdots+b_{i p} a_{p j}=\\sum_{k=1}^p b_{i k} a_{k j} .\n\\]",
+    "type": "Theorem",
+    "title": "The entries of the matrix product",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Matrix Properties",
+    "back": "\\textbf{Multiplying with the identity matrix}\n\nFor an $n \\times m$ matrix $A$,\n\\[\nA I_m=I_n A=A\n\\]\n\n\n\\textbf{Matrix multiplication is associative}\n\\[\n(A B) C=A(B C)\n\\]\n\n\\textbf{Distributive property for matrices}\n\nIf $A$ and $B$ are $n \\times p$ matrices, and $C$ and $D$ are $p \\times m$ matrices, then\n\\[\n\\begin{aligned}\n& A(C+D)=A C+A D, \\quad \\text { and } \\\\\n& (A+B) C=A C+B C\n\\end{aligned}\n\\]\n\nIf $A$ is an $n \\times p$ matrix, $B$ is a $p \\times m$ matrix, and $k$ is a scalar, then\n\\[\n(k A) B=A(k B)=k(A B) .\n\\]",
+    "type": "Proposition",
+    "title": "Matrix Properties",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Warning: Not as simple as numbers",
+    "back": "If $A,B, C$ are $n\\times n$ matrices, in general\n\\begin{itemize}\n\\item\n$A B \\neq B A$ (when they are equal we say that $A$ and $B$ commute)\n\\item\n$(A+B)^2=A^2+A B+B A+B^2 \\neq A^2+2A B+B^2$\n\\item\nWe could have $A \\neq 0, B \\neq 0$ but $A B=0$\n\\item\nWe could have $A B=0$ and $B A \\neq 0$\n\\item\n$AC =AB$ does not imply that $B=C$ (but it does when $A$ is non singular/invertible).\n\\end{itemize}",
+    "type": "Warning",
+    "title": "Not as simple as numbers",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Invertible matrices",
+    "back": "A square matrix $A$ is said to be invertible if the linear transformation $\\vv{y}=T(\\vv{x})=A \\vv{x}$ is invertible. In this case, the matrix of $T^{-1}$ is denoted by $A^{-1}$. If the linear transformation $\\vv{y}=T(\\vv{x})=A \\vv{x}$ is invertible, then its inverse is $\\vv{x}=T^{-1}(\\vv{y})=A^{-1} \\vv{y}$.",
+    "type": "Definition",
+    "title": "Invertible matrices",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Invertibility",
+    "back": "An $n \\times n$ matrix $A$ is invertible if and only if\n\\[\n\\operatorname{rref}(A)=I_n\n\\]\nor, equivalently, if and only if\n\\[\n\\operatorname{rank}(A)=n.\n\\]",
+    "type": "Theorem",
+    "title": "Invertibility",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Explain the Technique: Computing $A^{-1}$",
+    "back": "If $A$ is invertible, then $A^{-1}$ is obtained by Gauss--Jordan on $\\bigl[\\,A\\,|\\,I\\,\\bigr]$. Moreover, $[T^{-1}]=[T]^{-1}$ for invertible $T$.",
+    "type": "Technique",
+    "title": "Computing $A^{-1}$",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Invertibility and linear systems",
+    "back": "Let $A$ be an $n \\times n$ matrix.\n\\begin{enumerate}\n\\item\nConsider a vector $\\vv{b}$ in $\\mathbb{R}^n$. If $A$ is invertible, then the system $A \\vv{x}=\\vv{b}$ has the unique solution $\\vv{x}=A^{-1} \\vv{b}$. If $A$ is noninvertible, then the system $A \\vv{x}=\\vv{b}$ has infinitely many solutions or none.\n\\item \nConsider the special case when $\\vv{b}=\\overrightarrow{0}$. The system $A \\vv{x}=\\overrightarrow{0}$ has $\\vv{x}=\\overrightarrow{0}$ as a solution. If $A$ is invertible, then this is the only solution. If $A$ is noninvertible, then the system $A \\vv{x}=\\overrightarrow{0}$ has infinitely many solutions.\n\\end{enumerate}",
+    "type": "Theorem",
+    "title": "Invertibility and linear systems",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Warning: The inverse of a product of matrices",
+    "back": "If $A$ and $B$ are invertible $n \\times n$ matrices, then $B A$ is invertible as well, and\n\\[\n(B A)^{-1}=A^{-1} B^{-1}\n\\]\nPay attention to the order of the matrices. (Order matters!)",
+    "type": "Warning",
+    "title": "The inverse of a product of matrices",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: A criterion for invertibility",
+    "back": "Let $A$ and $B$ be two $n \\times n$ matrices such that\n\\[\nB A=I_n\n\\]\nThen\\\\\na. $A$ and $B$ are both invertible,\\\\\nb. $A^{-1}=B$ and $B^{-1}=A$, and\\\\\nc. $A B=I_n$.",
+    "type": "Theorem",
+    "title": "A criterion for invertibility",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Corollary: Inverse of a $2\\times 2$ matrix",
+    "back": "The $2 \\times 2$ matrix\n$ A=\\begin{bmatrix}\na & b \\\\\nc & d\n\\end{bmatrix}\n$\nis invertible if (and only if) $a d-b c \\neq 0$.\nQuantity $a d-b c$ is called the \\textbf{determinant} of $A$, written $\\det (A)$\n\\[\n\\det (A)=\\det \\begin{bmatrix}\na & b \\\\\nc & d\n\\end{bmatrix}=a d-b c .\n\\]\n\n\nIf $A=\\begin{bmatrix}\na & b \\\\\nc & d\n\\end{bmatrix}\n$\nis invertible, then\n\\[\n\\begin{bmatrix}\na & b \\\\\nc & d\n\\end{bmatrix}^{-1}=\\frac{1}{a d-b c}\\begin{bmatrix}\nd & -b \\\\\n-c & a\n\\end{bmatrix}=\\frac{1}{\\det (A)}\\begin{bmatrix}\nd & -b \\\\\n-c & a\n\\end{bmatrix} .\n\\]",
+    "type": "Corollary",
+    "title": "Inverse of a $2\\times 2$ matrix",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Various characterizations of invertible matrices",
+    "back": "For an $n \\times n$ matrix $A$, the following statements are equivalent; that is, for a given $A$, they are either all true or all false\n\\begin{itemize}\n\\item[i.] $A$ is invertible.\n\\item[ii.] The linear system $A \\vec{x}=\\vec{b}$ has a unique solution $\\vec{x}$, for all $\\vec{b}$ in $\\mathbb{R}^n$.\n\\item[iii.] $\\operatorname{rref}(A)=I_n$.\n\\item[iv.] $\\operatorname{rank}(A)=n$.\n\\item[v.] $\\operatorname{im}(A)=\\mathbb{R}^n$.\n\\item[vi.] $\\operatorname{ker}(A)=\\{\\vec{0}\\}$.\n\\item[vii.] $\\det A \\neq 0$. \n\\end{itemize}",
+    "type": "Theorem",
+    "title": "Various characterizations of invertible matrices",
+    "chapter_id": 2,
+    "chapter_title": "Linear Transformations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Span",
+    "back": "Consider the vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in $\\mathbb{R}^n$. The set of all linear combinations $c_1 \\vec{v}_1+\\cdots+c_m \\vec{v}_m$ of the vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ is called their span:\n\\[\n\\operatorname{span}\\left(\\vec{v}_1, \\ldots, \\vec{v}_m\\right)=\\left\\{c_1 \\vec{v}_1+\\cdots+c_m \\vec{v}_m: c_1, \\ldots, c_m \\text { in } \\mathbb{R}\\right\\}\n\\]",
+    "type": "Definition",
+    "title": "Span",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Kernel and Image",
+    "back": "For linear $T:V\\to W$, $\\ker(T)=\\{v\\in V:T v=0\\}$ and $\\operatorname{im}(T)=\\{T v:v\\in V\\}$; both are subspaces.",
+    "type": "Definition",
+    "title": "Kernel and Image",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Image of a linear transformation",
+    "back": "The image of a linear transformation $T(\\vec{x})=A \\vec{x}$ is the span of the column vectors of $A$.",
+    "type": "Theorem",
+    "title": "Image of a linear transformation",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Rank--Nullity for Linear Maps",
+    "back": "If $\\dim V<\\infty$, then $\\dim\\ker(T)+\\dim\\operatorname{im}(T)=\\dim V$.",
+    "type": "Theorem",
+    "title": "Rank--Nullity for Linear Maps",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Subspaces of $\\mathbb{R}^{{n}}$",
+    "back": "A subset $W$ of the vector space $\\mathbb{R}^n$ is called a (linear) subspace of $\\mathbb{R}^n$ if it has the following three properties:\n\\begin{itemize}\n\\item[a.] $W$ contains the zero vector in $\\mathbb{R}^n$.\n\\item[b.] $W$ is closed under addition: If $\\vec{w}_1$ and $\\vec{w}_2$ are both in $W$, then so is $\\vec{w}_1+ \\vec{w}_2$.\n\\item[c.] $W$ is closed under scalar multiplication: If $\\vec{w}$ is in $W$ and $k$ is an arbitrary scalar, then $k \\vec{w}$ is in $W$.\n\\end{itemize}",
+    "type": "Definition",
+    "title": "Subspaces of $\\mathbb{R}^{{n}}$",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Image and kernel are subspaces",
+    "back": "If $T(\\vec{x})=A \\vec{x}$ is a linear transformation from $\\mathbb{R}^m$ to $\\mathbb{R}^n$, then\n\\begin{itemize}\n\\item\n$\\operatorname{ker}(T)=\\operatorname{ker}(A)$ is a subspace of $\\mathbb{R}^m$\n\\item\n$\\operatorname{im}(T)=\\operatorname{im}(A)$ is a subspace of $\\mathbb{R}^n$.\n\\end{itemize}",
+    "type": "Theorem",
+    "title": "Image and kernel are subspaces",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Redundant vectors; linear independence; basis",
+    "back": "Consider vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in $\\mathbb{R}^n$.\n\\begin{itemize}\n\\item[a.] We say that a vector $\\vec{v}_i$ in the list $\\vec{v}_1, \\ldots, \\vec{v}_m$ is \\textbf{redundant} if $\\vec{v}_i$ is a linear combination of the preceding vectors $\\vec{v}_1, \\ldots, \\vec{v}_{i-1}$.\n\n\\item[b.] The vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ are called \\textbf{linearly independent} if none of them is redundant. Otherwise, the vectors are called \\textbf{linearly dependent} (meaning that at least one of them is redundant).\n\n\\item[c.] We say that the vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in a subspace $V$ of $\\mathbb{R}^n$ \\textbf{form a basis} of $V$ if they span $V$ and are linearly independent.\n\\end{itemize}",
+    "type": "Definition",
+    "title": "Redundant vectors; linear independence; basis",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Dimension",
+    "back": "Any two bases of a finite-dimensional vector space have the same cardinality, called the \\textbf{dimension}.",
+    "type": "Theorem",
+    "title": "Dimension",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Row/Column/Null Spaces",
+    "back": "For $A\\in\\mathbb{R}^{m\\times n}$, the row space (in $\\mathbb{R}^n$), column space (in $\\mathbb{R}^m$), and null space are subspaces. Their dimensions satisfy $\\operatorname{rank}(A)=\\dim(\\text{row})=\\dim(\\text{col})$.",
+    "type": "Definition",
+    "title": "Row/Column/Null Spaces",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Coordinates and Change of Basis",
+    "back": "Given a basis $\\mathcal{B}=\\{v_1,\\dots,v_n\\}$ of $V$, each $v\\in V$ has unique coordinates $[v]_{\\mathcal{B}}\\in\\mathbb{R}^n$ with $v=\\sum_i ([v]_{\\mathcal{B}})_i v_i$. If $P$ changes coordinates from $\\mathcal{B}$ to $\\mathcal{C}$, then $[v]_{\\mathcal{C}}=P\\, [v]_{\\mathcal{B}}$ and $[T]_{\\mathcal{C}}=P [T]_{\\mathcal{B}} P^{-1}$.",
+    "type": "Definition",
+    "title": "Coordinates and Change of Basis",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Similar matrices",
+    "back": "Consider two $n \\times n$ matrices $A$ and $B$. We say that $A$ is \\textbf{similar} to $B$ if there exists an invertible matrix $S$ such that\n\\[\nA S=S B, \\quad \\text { or } \\quad B=S^{-1} A S .\n\\]",
+    "type": "Definition",
+    "title": "Similar matrices",
+    "chapter_id": 3,
+    "chapter_title": "Subspaces of $\\mathbb{R",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Vector Space",
+    "back": "A (real) vector space is a set $V$ with operations $+$ and scalar multiplication satisfying the vector space axioms.",
+    "type": "Definition",
+    "title": "Vector Space",
+    "chapter_id": 4,
+    "chapter_title": "Linear Spaces",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Isomorphism",
+    "back": "A bijective linear map is an \\textbf{isomorphism}. Finite-dimensional vector spaces are isomorphic iff they have the same dimension.",
+    "type": "Definition",
+    "title": "Isomorphism",
+    "chapter_id": 4,
+    "chapter_title": "Linear Spaces",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Matrix in Chosen Bases",
+    "back": "Given bases $\\mathcal{B}$ of $V$ and $\\mathcal{C}$ of $W$, the matrix $[T]_{\\mathcal{C}\\leftarrow \\mathcal{B}}$ has columns $[T(v_i)]_{\\mathcal{C}}$.",
+    "type": "Definition",
+    "title": "Matrix in Chosen Bases",
+    "chapter_id": 4,
+    "chapter_title": "Linear Spaces",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Orthogonality, length, unit vectors",
+    "back": "a. Two vectors $\\vec{v}$ and $\\vec{w}$ in $\\mathbb{R}^n$ are called perpendicular or orthogonal ${ }^1$ if $\\vec{v} \\cdot \\vec{w}=0$.\\\\\nb. The length (or magnitude or norm) of a vector $\\vec{v}$ in $\\mathbb{R}^n$ is $\\|\\vec{v}\\|=\\sqrt{\\vec{v} \\cdot \\vec{v}}$.\\\\\nc. A vector $\\vec{u}$ in $\\mathbb{R}^n$ is called a unit vector if its length is 1, (i.e., $\\|\\vec{u}\\|=1$, or $\\vec{u} \\cdot \\vec{u}=1)$.",
+    "type": "Definition",
+    "title": "Orthogonality, length, unit vectors",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Orthonormal vectors",
+    "back": "The vectors $\\vec{u}_1, \\vec{u}_2, \\ldots, \\vec{u}_m$ in $\\mathbb{R}^n$ are called orthonormal if they are all unit vectors and orthogonal to one another:\n\\[\n\\vec{u}_i \\cdot \\vec{u}_j= \\begin{cases}1 & \\text { if } i=j \\\\ 0 & \\text { if } i \\neq j\\end{cases}\n\\]",
+    "type": "Definition",
+    "title": "Orthonormal vectors",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Proposition: Properties of orthonormal vectors",
+    "back": "a. Orthonormal vectors are linearly independent.\\\\\nb. Orthonormal vectors $\\vec{u}_1, \\ldots, \\vec{u}_n$ in $\\mathbb{R}^n$ form a basis of $\\mathbb{R}^n$.",
+    "type": "Proposition",
+    "title": "Properties of orthonormal vectors",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Linear Decomposition on a Basis",
+    "back": "Consider an orthonormal basis $\\vec{u}_1, \\ldots, \\vec{u}_n$ of $\\mathbb{R}^n$. Then, for all $\\vec{x}$ in $\\mathbb{R}^n$,\n\\[\n\\vec{x}=\\left(\\vec{u}_1 \\cdot \\vec{x}\\right) \\vec{u}_1+\\cdots+\\left(\\vec{u}_n \\cdot \\vec{x}\\right) \\vec{u}_n.\n\\]",
+    "type": "Proposition",
+    "title": "Linear Decomposition on a Basis",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Orthogonal projection",
+    "back": "Consider a vector $\\vec{x}$ in $\\mathbb{R}^n$ and a subspace $V$ of $\\mathbb{R}^n$. Then we can write\n\\[\n\\vec{x}=\\vec{x}^{\\|}+\\vec{x}^{\\perp}\n\\]\nwhere $\\vec{x}^{\\|}$is in $V$ and $\\vec{x}^{\\perp}$ is perpendicular to $V$, and this representation is unique.\n\nThe vector $\\vec{x}^{\\|}$is called the orthogonal projection of $\\vec{x}$ onto $V$, denoted by $\\operatorname{proj}_V \\vec{x}$.\n\nThe transformation $T(\\vec{x})=\\operatorname{proj}_V \\vec{x}=\\vec{x}^{\\|}$from $\\mathbb{R}^n$ to $\\mathbb{R}^n$ is linear.\n\\begin{center}\n\n\\begin{tikzpicture}[>=stealth, line cap=round, line join=round, scale=0.9]\n  %--- Plane V (a tilted quadrilateral) ---\n  \\fill[blue!15] (-5,-1) -- (-2.5,2) -- (6,2) -- (3.5,-1) -- cycle;\n  \\draw[black!70, thick] (-5,-1) -- (-2.5,2) -- (6,2) -- (3.5,-1) -- cycle;\n  \\node[anchor=east] at (-4.6,-0.6) {$V$};\n\n  %--- Origin on the plane ---\n  \\coordinate (O) at (0,0.2);\n  \\fill (O) circle (1.3pt);\n  \\node[below left=-2pt] at (O) {$0$};\n\n  %--- Choose a projection point P on the plane and a vertical offset for x^\\perp ---\n  \\coordinate (P) at (4,1.7);            % projection of x onto V\n  \\coordinate (X) at (4,4.7);            % tip of vector x (above the plane)\n\n  %--- Vectors ---\n  % x^{||} = proj_V x\n  \\draw[->, very thick, blue!70] (O) -- (P)\n    node[midway, below=5pt] {$\\vec x^{\\parallel}=\\mathrm{proj}_{V}\\,\\vec x$};\n\n  % x^\\perp (drawn \"vertical\" from the plane)\n  \\draw[->, very thick] (P) -- (X)\n    node[midway, right=4pt] {$\\vec x^{\\perp}$};\n\n  % x from origin to X\n  \\draw[->, very thick] (O) -- (X)\n    node[pos=0.55, left=4pt] {$\\vec x$};\n\n\\end{tikzpicture}\n\\end{center}",
+    "type": "Proposition",
+    "title": "Orthogonal projection",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Formula for the orthogonal projection",
+    "back": "If $V$ is a subspace of $\\mathbb{R}^n$ with an \\textbf{orthonormal basis} $\\vec{u}_1, \\ldots, \\vec{u}_m$, then\n\\[\n\\operatorname{proj}_V \\vec{x}=\\vec{x}^{\\|}=\\left(\\vec{u}_1 \\cdot \\vec{x}\\right) \\vec{u}_1+\\cdots+\\left(\\vec{u}_m \\cdot \\vec{x}\\right) \\vec{u}_m .\n\\]\nfor all $\\vec{x}$ in $\\mathbb{R}^n$.",
+    "type": "Theorem",
+    "title": "Formula for the orthogonal projection",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Warning: The above is not true without an  orthonormal basis.",
+    "back": "The above is not true without an  \\textbf{orthonormal basis}.",
+    "type": "Warning",
+    "title": "",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Orthogonal complement",
+    "back": "Consider a subspace $V$ of $\\mathbb{R}^n$. The orthogonal complement $V^{\\perp}$ of $V$ is the set of those vectors $\\vec{x}$ in $\\mathbb{R}^n$ that are orthogonal to all vectors in $V$ :\n\\[\nV^{\\perp}=\\left\\{\\vec{x} \\text { in } \\mathbb{R}^n: \\vec{v} \\cdot \\vec{x}=0, \\text { for all } \\vec{v} \\text { in } V\\right\\}\n\\]\nNote that $V^{\\perp}$ is the kernel of the orthogonal projection onto $V$.",
+    "type": "Definition",
+    "title": "Orthogonal complement",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Properties of the orthogonal complement",
+    "back": "Consider a subspace $V$ of $\\mathbb{R}^n$.\\\\\na. The orthogonal complement $V^{\\perp}$ of $V$ is a subspace of $\\mathbb{R}^n$.\\\\\nb. The intersection of $V$ and $V^{\\perp}$ consists of the zero vector: $V \\cap V^{\\perp}=\\{\\overrightarrow{0}\\}$.\\\\\nc. $\\operatorname{dim}(V)+\\operatorname{dim}\\left(V^{\\perp}\\right)=n$.\\\\\nd. $\\left(V^{\\perp}\\right)^{\\perp}=V$.",
+    "type": "Theorem",
+    "title": "Properties of the orthogonal complement",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Orthogonal Projection",
+    "back": "If $Q$ has orthonormal columns spanning $S$, the orthogonal projector onto $S$ is $P=Q Q^\\top$.",
+    "type": "Proposition",
+    "title": "Orthogonal Projection",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The Gram-Schmidt process",
+    "back": "Consider a basis $\\vec{v}_1, \\ldots, \\vec{v}_m$ of a subspace $V$ of $\\mathbb{R}^n$. For $j=2, \\ldots, m$, we resolve the vector $\\vec{v}_j$ into its components parallel and perpendicular to the span of the preceding vectors, $\\vec{v}_1, \\ldots, \\vec{v}_{j-1}$ :\n\\[\n\\vec{v}_j=\\vec{v}_j^{\\|}+\\vec{v}_j^{\\perp}, \\quad \\text { with respect to } \\operatorname{span}\\left(\\vec{v}_1, \\ldots, \\vec{v}_{j-1}\\right)\n\\]\nThen\n\\[\n\\vec{u}_1=\\frac{1}{\\left\\|\\vec{v}_1\\right\\|} \\vec{v}_1, \\quad \\vec{u}_2=\\frac{1}{\\left\\|\\vec{v}_2^{\\perp}\\right\\|} \\vec{v}_2^{\\perp}, \\ldots, \\quad \\vec{u}_j=\\frac{1}{\\left\\|\\vec{v}_j^{\\perp}\\right\\|} \\vec{v}_j^{\\perp}, \\ldots, \\quad \\vec{u}_m=\\frac{1}{\\left\\|\\vec{v}_m^{\\perp}\\right\\|} \\vec{v}_m^{\\perp}\n\\]\nis an orthonormal basis of $V$. By Theorem \\ref{thm:proj}, we have\n\\[\n\\vec{v}_j^{\\perp}=\\vec{v}_j-\\vec{v}_j^{\\|}=\\vec{v}_j-\\left(\\vec{u}_1 \\cdot \\vec{v}_j\\right) \\vec{u}_1-\\cdots-\\left(\\vec{u}_{j-1} \\cdot \\vec{v}_j\\right) \\vec{u}_{j-1} .\n\\]",
+    "type": "Theorem",
+    "title": "The Gram-Schmidt process",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Orthogonal transformations and orthogonal matrices",
+    "back": "A linear transformation $T$ from $\\mathbb{R}^n$ to $\\mathbb{R}^n$ is called orthogonal if it preserves the length of vectors:\n\\[\n\\|T(\\vec{x})\\|=\\|\\vec{x}\\|, \\quad \\text { for all } \\vec{x} \\text { in } \\mathbb{R}^n .\n\\]\nIf $T(\\vec{x})=A \\vec{x}$ is an orthogonal transformation, we say that $A$ is an orthogonal matrix.\n\nAlternatively, a real $n\\times n$ matrix\n$Q$ is \\textbf{orthogonal} if $Q^\\top Q=I_n$.",
+    "type": "Definition",
+    "title": "Orthogonal transformations and orthogonal matrices",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: if $Q$ in an $n\\times n$ orthogonal matrix...",
+    "back": "If $Q$ in an $n\\times n$ orthogonal matrix, then $Q^{-1}=Q^\\top$ and $\\|Qx\\|=\\|x\\|$; orthogonal maps preserve inner products and angles 9thus orthogonality).",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Orthogonal transformations and orthonormal bases",
+    "back": "a. A linear transformation $T$ from $\\mathbb{R}^n$ to $\\mathbb{R}^n$ is orthogonal if (and only if) the vectors $T\\left(\\vec{e}_1\\right), T\\left(\\vec{e}_2\\right), \\ldots, T\\left(\\vec{e}_n\\right)$ form an orthonormal basis of $\\mathbb{R}^n$.\\\\\nb. An $n \\times n$ matrix $A$ is orthogonal if (and only if) its columns form an orthonormal basis of $\\mathbb{R}^n$.",
+    "type": "Theorem",
+    "title": "Orthogonal transformations and orthonormal bases",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Products and inverses of orthogonal matrices",
+    "back": "a. The product $A B$ of two orthogonal $n \\times n$ matrices $A$ and $B$ is orthogonal.\\\\\nb. The inverse $A^{-1}$ of an orthogonal $n \\times n$ matrix $A$ is orthogonal.",
+    "type": "Proposition",
+    "title": "Products and inverses of orthogonal matrices",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: The transpose of a matrix; symmetric and skew-symmetric matrices",
+    "back": "Consider an $m \\times n$ matrix $A$.\nThe transpose $A^{\\top} $ of $A$ is the $n \\times m$ matrix whose $i j$ th entry is the $j i$ th entry of $A$ : The roles of rows and columns are reversed.\n\nWe say that a square matrix $A$ is symmetric if $A^{\\top} =A$, and $A$ is called skew-symmetric if $A^{\\top} =-A$.",
+    "type": "Definition",
+    "title": "The transpose of a matrix; symmetric and skew-symmetric matrices",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Proposition: if $\\vec{v}$ and $\\vec{w}$ are two (column) vectors in $\\mathbb{R}^n$...",
+    "back": "If $\\vec{v}$ and $\\vec{w}$ are two (column) vectors in $\\mathbb{R}^n$, then\n\\[\n\\begin{array}{cc}\n\\vec{v} \\cdot \\vec{w} & =\\vec{v}^{\\top}  \\vec{w} \\\\\n\\uparrow & \\uparrow \\\\\n\\text { Dot } & \\text { Matrix } \\\\\n\\text { product } & \\text { product }\n\\end{array}\n\\]",
+    "type": "Proposition",
+    "title": "",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: regarding $n \\times n$ matrix $A$",
+    "back": "Consider an $n \\times n$ matrix $A$. The matrix $A$ is orthogonal if (and only if) $A^{\\top}  A= I_n$ or, equivalently, if $A^{-1}=A^{\\top} $.",
+    "type": "Proposition",
+    "title": "",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The matrix of an orthogonal projection",
+    "back": "Consider a subspace $V$ of $\\mathbb{R}^n$ with orthonormal basis $\\vec{u}_1, \\vec{u}_2, \\ldots, \\vec{u}_m$. The matrix $P$ of the orthogonal projection onto $V$ is\n\\[\nP=Q Q^{\\top} , \\quad \\text { where } \\quad Q=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{u}_1 & \\vec{u}_2 & \\ldots & \\vec{u}_m \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right] \\text {. }\n\\]\nPay attention to the order of the factors ( $Q Q^{\\top} $ as opposed to $Q^{\\top}  Q$ ). Note that matrix $P$ is symmetric, since $P^{\\top} =\\left(Q Q^{\\top} \\right)^{\\top} =\\left(Q^{\\top} \\right)^{\\top}  Q^{\\top} =Q Q^{\\top} =P$.",
+    "type": "Theorem",
+    "title": "The matrix of an orthogonal projection",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Orthogonal matrices summary",
+    "back": "Consider an $n \\times n$ matrix $A$. Then the following statements are equivalent:\n\\begin{itemize}\n\\item\n $A$ is an orthogonal matrix.\n\\item\nThe transformation $L(\\vec{x})=A \\vec{x}$ preserves length; that is, $\\|A \\vec{x}\\|=\\|\\vec{x}\\|$ for all $\\vec{x}$ in $\\mathbb{R}^n$.\n\\item\nThe columns of $A$ form an orthonormal basis of $\\mathbb{R}^n$.\n\\item\n$A^{\\top}  A=I_n$.\n\\item\n$A^{-1}=A^{\\top} $.\n\\item\n$A$ preserves the dot product, meaning that $(A \\vec{x}) \\cdot(A \\vec{y})=\\vec{x} \\cdot \\vec{y}$ for all $\\vec{x}$ and $\\vec{y}$ in $\\mathbb{R}^n$.\n\\end{itemize}",
+    "type": "Proposition",
+    "title": "Orthogonal matrices summary",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Image, Kernel and Transpose",
+    "back": "For any matrix $A$,\n\\[\n(\\operatorname{im} A)^{\\perp}=\\operatorname{ker}\\left(A^{\\top} \\right) .\n\\]",
+    "type": "Proposition",
+    "title": "Image, Kernel and Transpose",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: A special case",
+    "back": "If $A$ is an $n \\times m$ matrix, then $\\operatorname{ker}(A)=\\operatorname{ker}\\left(A^{\\top}  A\\right)$.\\\\\nIf $A$ is an $n \\times m$ matrix with $\\operatorname{ker}(A)=\\{\\overrightarrow{0}\\}$, then $A^{\\top}  A$ is invertible.",
+    "type": "Proposition",
+    "title": "A special case",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: An Alternative Characterization of Orthogonal Projections",
+    "back": "Consider a vector $\\vec{x}$ in $\\mathbb{R}^n$ and a subspace $V$ of $\\mathbb{R}^n$. Then the orthogonal projection $\\operatorname{proj}_V \\vec{x}$ is the vector in $V$ closest to $\\vec{x}$, in that\n\\[\n\\left\\|\\vec{x}-\\operatorname{proj}_V \\vec{x}\\right\\|<\\|\\vec{x}-\\vec{v}\\|\n\\]\nfor all $\\vec{v}$ in $V$ different from $\\operatorname{proj}_V \\vec{x}$.",
+    "type": "Proposition",
+    "title": "An Alternative Characterization of Orthogonal Projections",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Least-squares solution",
+    "back": "Consider a linear system\n\\[\nA \\vec{x}=\\vec{b},\n\\]\nwhere $A$ is an $n \\times m$ matrix. A vector $\\vec{x}^*$ in $\\mathbb{R}^m$ is called a \\textbf{least-squares solution} of this system if $\\left\\|\\vec{b}-A \\vec{x}^*\\right\\| \\leq\\|\\vec{b}-A \\vec{x}\\|$ for all $\\vec{x}$ in $\\mathbb{R}^m$.",
+    "type": "Definition",
+    "title": "Least-squares solution",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Normal Equations",
+    "back": "The least-squares solutions of the system\n\n\\[\nA \\vec{x}=\\vec{b}\n\\]\n\nare the exact solutions of the (consistent) system\n\n\\[\nA^{\\top}  A \\vec{x}=A^{\\top}  \\vec{b} .\n\\]\n\n\nThe system $A^{\\top}  A \\vec{x}=A^{\\top}  \\vec{b}$ is called the \\textbf{normal equation} of $A \\vec{x}=\\vec{b}$.\n\nIf $A$ has full column rank, the solution is unique.",
+    "type": "Theorem",
+    "title": "Normal Equations",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: The matrix of an orthogonal projection",
+    "back": "Consider a subspace $V$ of $\\mathbb{R}^n$ with basis $\\vec{v}_1, \\vec{v}_2, \\ldots, \\vec{v}_m$. Let\n\\[\nA=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{v}_1 & \\vec{v}_2 & \\ldots & \\vec{v}_m \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right] .\n\\]\nThen the matrix of the orthogonal projection onto $V$ is\n\n\\[\nA\\left(A^{\\top}  A\\right)^{-1} A^{\\top}  .\n\\]\nNote that we are not required to find an orthonormal basis of $V$ here, unlike in Theorem \\ref{thm:orth-proj}.",
+    "type": "Proposition",
+    "title": "The matrix of an orthogonal projection",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Inner Product Space",
+    "back": "On a real vector space $V$, an inner product is a positive-definite symmetric bilinear form. It induces the norm $\\|v\\|=\\sqrt{\\langle v,v\\rangle}$ and orthogonality.",
+    "type": "Definition",
+    "title": "Inner Product Space",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Determinant of a $3 \\times 3$ matrix, in terms of the columns",
+    "back": "If $A=\\left[\\begin{array}{lll}\\vec{u} & \\vec{v} & \\vec{w}\\end{array}\\right]$, then\n\\[\n\\det A=\\vec{u} \\cdot(\\vec{v} \\times \\vec{w}) .\n\\]\nA $3 \\times 3$ matrix $A$ is invertible if (and only if) $\\det A \\neq 0$.",
+    "type": "Definition",
+    "title": "Determinant of a $3 \\times 3$ matrix, in terms of the columns",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Sarrus's rule",
+    "back": "To find the determinant of a $3 \\times 3$ matrix $A$, write the first two columns of $A$ to the right of $A$. Then multiply the entries along the six diagonals shown below.\\\\Add or subtract these diagonal products, as shown in the diagram:",
+    "image": "images/sarrus_rule.png",
+    "type": "Theorem",
+    "title": "Sarrus's rule",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Determinant",
+    "back": "$\\det A$ is the alternating multilinear function of rows (or columns) normalized by $\\det I=1$; equivalently by the Leibniz formula $\\det A=\\sum_{\\sigma\\in S_n} \\operatorname{sgn}(\\sigma)\\prod_i a_{i,\\sigma(i)}$.",
+    "type": "Definition",
+    "title": "Determinant",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Determinant of a triangular matrix",
+    "back": "The determinant of an (upper or lower) triangular matrix is the product of the diagonal entries of the matrix.\n\nIn particular, the determinant of a diagonal matrix is the product of its diagonal entries.",
+    "type": "Theorem",
+    "title": "Determinant of a triangular matrix",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Determinant of a block matrix",
+    "back": "If $M=\\left[\\begin{array}{cc}A & B \\\\ 0 & C\\end{array}\\right]$, where $A$ and $C$ are square matrices (not necessarily of the same size), then\n\\[\n\\det \\left[\\begin{array}{cc}\nA & B \\\\\n0 & C\n\\end{array}\\right]=(\\det  A)(\\det  C) .\n\\]\nLikewise,\n\\[\n\\det \\left[\\begin{array}{ll}\nA & 0 \\\\\nB & C\n\\end{array}\\right]=(\\det  A)(\\det  C) .\n\\]",
+    "type": "Theorem",
+    "title": "Determinant of a block matrix",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Basic Properties",
+    "back": "Row operations affect $\\det$ as follows: \n\\begin{itemize}\n\\item\nswapping rows flips sign; \n\\item \nscaling a row scales $\\det$; \n\\item\nadding a multiple of one row to another leaves $\\det$ unchanged;\n\\item\nAlso $\\det(AB)=\\det A\\cdot\\det B$.\n\n\\end{itemize}",
+    "type": "Theorem",
+    "title": "Basic Properties",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Determinant of the transpose",
+    "back": "If $A$ is a square matrix, then\n\\[\n\\det \\left(A^\\top \\right)=\\det  A .\n\\]",
+    "type": "Theorem",
+    "title": "Determinant of the transpose",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Linearity of the determinant in the rows and columns",
+    "back": "Consider fixed row vectors $\\vec{v}_1, \\ldots, \\vec{v}_{i-1}, \\vec{v}_{i+1}, \\ldots, \\vec{v}_n$ with $n$ components. Then the function\n\\[\nT(\\vec{x})=\\det \\left[\\begin{array}{ccc}\n- & \\vec{v}_1 & - \\\\\n& \\vdots & \\\\\n- & \\vec{v}_{i-1} & - \\\\\n- & \\vec{x} & - \\\\\n- & \\vec{v}_{i+1} & - \\\\\n& \\vdots & \\\\\n- & \\vec{v}_n & -\n\\end{array}\\right] \\quad \\text { from } \\mathbb{R}^{1 \\times n} \\text { to } \\mathbb{R}\n\\]\nis a linear transformation. This property is referred to as \\textbf{linearity of the determinant in the $i$th row}. Likewise, the determinant is \\textbf{linear in all the columns}.",
+    "type": "Theorem",
+    "title": "Linearity of the determinant in the rows and columns",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Elementary row operations and determinants",
+    "back": "a. If $B$ is obtained from $A$ by dividing a row of $A$ by a scalar $k$, then $\\det  B=(1 / k) \\det  A$.\\\\\nb. If $B$ is obtained from $A$ by a row swap, then\n\\[\n\\det  B=-\\det  A .\n\\]\nWe say that the determinant is alternating on the rows.\\\\\nc. If $B$ is obtained from $A$ by adding a multiple of a row of $A$ to another row, then\n\\[\n\\det  B=\\det  A .\n\\]\nAnalogous results hold for elementary column operations.",
+    "type": "Theorem",
+    "title": "Elementary row operations and determinants",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Invertibility and determinant",
+    "back": "A square matrix $A$ is invertible if and only if $\\det  A \\neq 0$.",
+    "type": "Theorem",
+    "title": "Invertibility and determinant",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Determinants of products and powers",
+    "back": "If $A$ and $B$ are $n \\times n$ matrices and $m$ is a positive integer, then\\\\\na. $\\det (A B)=(\\det  A)(\\det  B)$, and\\\\\nb. $\\det \\left(A^m\\right)=(\\det  A)^m$.",
+    "type": "Theorem",
+    "title": "Determinants of products and powers",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Determinants of similar matrices",
+    "back": "If matrix $A$ is similar to $B$, then $\\det  A=\\det  B$.",
+    "type": "Theorem",
+    "title": "Determinants of similar matrices",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Warning: The converse is not necessarily true.",
+    "back": "The converse is not necessarily true. For instance \nLet\n\\(\nA = I_2 = \\begin{bmatrix} 1 & 0 \\\\ 0 & 1 \\end{bmatrix},\nB = \\begin{bmatrix} 2 & 0 \\\\ 0 & \\tfrac{1}{2} \\end{bmatrix}.\n\\)\nThen $\\det(A)=\\det(B)$.\nHowever, $A$ and $B$ are not similar. \n\nSimilar matrices must have the same eigenvalues (with the same algebraic multiplicities). Here\n\\[\n\\text{Spec}(A)=\\{1,1\\}, \\qquad \\text{Spec}(B)=\\{2,\\tfrac12\\},\n\\]\nso $A$ and $B$ do not have the same eigenvalues, and therefore cannot be similar.",
+    "type": "Warning",
+    "title": "",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Determinant of an inverse",
+    "back": "If $A$ is an invertible matrix, then\n\\[\n\\det \\left(A^{-1}\\right)=\\frac{1}{\\det  A}=(\\det  A)^{-1} .\n\\]",
+    "type": "Theorem",
+    "title": "Determinant of an inverse",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Geometry and Cramer",
+    "back": "$|\\det A|$ equals the volume scaling of $x\\mapsto Ax$. For invertible $A$, Cramer's rule gives $x_i=\\dfrac{\\det A_i}{\\det A}$.",
+    "type": "Proposition",
+    "title": "Geometry and Cramer",
+    "chapter_id": 6,
+    "chapter_title": "Determinants",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Diagonalizable Matrix",
+    "back": "Consider a linear transformation $T(\\vec{x})=A \\vec{x}$ from $\\mathbb{R}^n$ to $\\mathbb{R}^n$. Then $A$ (or $T$ ) is said to be \\textbf{diagonalizable} if the matrix $B$ of $T$ with respect to some basis is diagonal.\n\nEquivalently, $A$ is \\textbf{diagonalizable} if $A=SDS^{-1}$ with $D$ diagonal. From Definition \\ref{similar}, this means $A$ is similar to $D$.\n\nEquivalently there exists a basis of eigenvectors (called eigenbasis).",
+    "type": "Definition",
+    "title": "Diagonalizable Matrix",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Eigenvectors, eigenvalues, and eigenbases",
+    "back": "Consider a linear transformation $T(\\vec{x})=A \\vec{x}$ from $\\mathbb{R}^n$ to $\\mathbb{R}^n$.\nA \\textbf{nonzero} vector $\\vec{v}$ in $\\mathbb{R}^n$ is called an \\textbf{eigenvector} of $A$ (or $T$) if\n\\[\nA \\vec{v}=\\lambda \\vec{v}\n\\]\nfor some scalar $\\lambda$. This $\\lambda$ is called the \\textbf{eigenvalue} associated with eigenvector $\\vec{v}$.\n\nA basis $\\vec{v}_1, \\ldots, \\vec{v}_n$ of $\\mathbb{R}^n$ is called an \\textbf{eigenbasis} for $A$ (or $T$ ) if the vectors $\\vec{v}_1, \\ldots, \\vec{v}_n$ are eigenvectors of $A$, meaning that $A \\vec{v}_1=\\lambda_1 \\vec{v}_1, \\ldots, A \\vec{v}_n=\\lambda_n \\vec{v}_n$ for some scalars $\\lambda_1, \\ldots, \\lambda_n$.",
+    "type": "Definition",
+    "title": "Eigenvectors, eigenvalues, and eigenbases",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Eigenbases and diagonalization",
+    "back": "The matrix $A$ is diagonalizable if (and only if) there exists an eigenbasis for $A$. \n\nIf $\\vec{v}_1, \\ldots, \\vec{v}_n$ is an eigenbasis for $A$, with $A \\vec{v}_1=\\lambda_1 \\vec{v}_1, \\ldots, A \\vec{v}_n=\\lambda_n \\vec{v}_n$, then the matrices\n\\[\nS=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{v}_1 & \\vec{v}_2 & \\ldots & \\vec{v}_n \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right] \\text { and } B=\\left[\\begin{array}{cccc}\n\\lambda_1 & 0 & \\ldots & 0 \\\\\n0 & \\lambda_2 & \\ldots & 0 \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\ldots & \\lambda_n\n\\end{array}\\right]\n\\]\nwill diagonalize $A$, meaning that $S^{-1} A S=B$.\n\nConversely, if the matrices $S$ and $B$ diagonalize $A$, then the column vectors of $S$ will form an eigenbasis for $A$, and the diagonal entries of $B$ will be the associated eigenvalues.",
+    "type": "Theorem",
+    "title": "Eigenbases and diagonalization",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Eigenvalues of an orthogonal matrix",
+    "back": "The possible \\textbf{\\textit{real}} eigenvalues of an orthogonal matrix are $1$ and $-1$ .",
+    "type": "Theorem",
+    "title": "Eigenvalues of an orthogonal matrix",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Various characterizations of invertible matrices",
+    "back": "For an $n \\times n$ matrix $A$, the following statements are equivalent.\n\\begin{enumerate}[label=(\\roman*)]\n\\item\n$A$ is invertible.\n\\item\nThe linear system $A \\vec{x} = \\vec{b}$ has a unique solution $\\vec{x}$, for all $\\vec{b}$ in $\\mathbb{R}^n$.\n\\item\n $\\operatorname{rref} A=I_n$.\n\\item\n$\\operatorname{rank} A=n$.\n\\item\n$\\operatorname{im} A=\\mathbb{R}^n$.\n\\item\n$\\ker A=\\{\\overrightarrow{0}\\}$.\n\\item\nThe column vectors of $A$ form a basis of $\\mathbb{R}^n$.\n\\item\nThe column vectors of $A$ span $\\mathbb{R}^n$.\n\\item\nThe column vectors of $A$ are linearly independent.\n\\item\n$\\det  A \\neq 0$.\n\\item\n0 fails to be an eigenvalue of $A$.\n\\end{enumerate}",
+    "type": "Theorem",
+    "title": "Various characterizations of invertible matrices",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Discrete dynamical systems",
+    "back": "Consider the dynamical system\n\\[\n\\vec{x}(t+1)=A \\vec{x}(t) \\quad \\text { with } \\quad \\vec{x}(0)=\\vec{x}_0 .\n\\]\nThen $\\vec{x}(t)=A^\\top \\vec{x}_0$. Suppose we can find an eigenbasis $\\vec{v}_1, \\ldots, \\vec{v}_n$ for $A$, with $A \\vec{v}_1=\\lambda_1 \\vec{v}_1, \\ldots, A \\vec{v}_n=\\lambda_n \\vec{v}_n$. Find the coordinates $c_1, \\ldots, c_n$ of the vector $\\vec{x}_0$ with respect to the eigenbasis $\\vec{v}_1, \\ldots, \\vec{v}_n$ :\n\\[\n\\vec{x}_0=c_1 \\vec{v}_1+\\cdots+c_n \\vec{v}_n.\n\\]\nThen\n\\[\n\\vec{x}(t)=A^\\top \\vec{x}_0=c_1 A^\\top \\vec{v}_1+\\cdots+c_n A^\\top \\vec{v}_n=c_1 \\lambda_1^\\top \\vec{v}_1+\\cdots+c_n \\lambda_n^\\top \\vec{v}_n.\n\\]",
+    "type": "Theorem",
+    "title": "Discrete dynamical systems",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Characteristic Polynomial",
+    "back": "If $A$ is an $n \\times n$ matrix, then $\\det \\left(A-\\lambda I_n\\right)$ is a polynomial of degree $n$, of the form\n\\[\n\\begin{aligned}\n& (-\\lambda)^n+(\\operatorname{tr} A)(-\\lambda)^{n-1}+\\cdots+\\det  A \\\\\n& \\quad=(-1)^n \\lambda^n+(-1)^{n-1}(\\operatorname{tr} A) \\lambda^{n-1}+\\cdots+\\det  A\n\\end{aligned}\n\\]\nThis is called the characteristic polynomial of $A$, denoted by $f_A(\\lambda)$.\n\nSome define the characteristic polynomial of $A$ as $\\det \\left(\\lambda I_n  -A \\right)$, which is a multiplication by $(-1)^n$.",
+    "type": "Theorem",
+    "title": "Characteristic Polynomial",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Eigenvalues and determinants; characteristic equation",
+    "back": "Consider an $n \\times n$ matrix $A$ and a scalar $\\lambda$. Then $\\lambda$ is an eigenvalue  of $A$ if and only if\n\\[\n\\det \\left(A-\\lambda I_n\\right)=0\n\\]\nThis is called the characteristic equation (or the secular equation) of matrix $A$.",
+    "type": "Theorem",
+    "title": "Eigenvalues and determinants; characteristic equation",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Algebraic multiplicity of an eigenvalue",
+    "back": "We say that an eigenvalue $\\lambda_0$ of a square matrix $A$ has \\textbf{algebraic multiplicity} $k$ if $\\lambda_0$ is a root of multiplicity $k$ of the characteristic polynomial $f_A(\\lambda)$, meaning that we can write\n\\[\nf_A(\\lambda)=\\left(\\lambda_0-\\lambda\\right)^k g(\\lambda)\n\\]\nfor some polynomial $g(\\lambda)$ with $g\\left(\\lambda_0\\right) \\neq 0$. We write $\\operatorname{almu}(\\lambda_0)=k$.",
+    "type": "Definition",
+    "title": "Algebraic multiplicity of an eigenvalue",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Number of eigenvalues",
+    "back": "An $n \\times n$ matrix has at most $n$ real eigenvalues, even if they are counted with their algebraic multiplicities.\n\nIf $n$ is odd, then an $n \\times n$ matrix has at least one real eigenvalue.",
+    "type": "Theorem",
+    "title": "Number of eigenvalues",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Eigenvalues, determinant, and trace",
+    "back": "If an $n \\times n$ matrix $A$ has the eigenvalues $\\lambda_1, \\lambda_2, \\ldots, \\lambda_n$, listed with their algebraic multiplicities, then\n\\[\n\\det  A=\\lambda_1 \\lambda_2 \\cdots \\lambda_n, \\quad \\text { the product of the eigenvalues }\n\\]\nand\n\\[\n\\operatorname{tr} A=\\lambda_1+\\lambda_2+\\cdots+\\lambda_n,  \\quad \\text { the sum of the eigenvalues.}\n\\]",
+    "type": "Theorem",
+    "title": "Eigenvalues, determinant, and trace",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Eigenspace",
+    "back": "Consider an eigenvalue $\\lambda$ of an $n \\times n$ matrix $A$. Then the kernel of the matrix $A-\\lambda I_n$ is called the \\textbf{eigenspace} associated with $\\lambda$, denoted by $E_\\lambda$ :\n\\[\nE_\\lambda=\\operatorname{ker}\\left(A-\\lambda I_n\\right)=\\left\\{\\vec{v} \\text { in } \\mathbb{R}^n: A \\vec{v}=\\lambda \\vec{v}\\right\\} .\n\\]",
+    "type": "Definition",
+    "title": "Eigenspace",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Geometric multiplicity",
+    "back": "Consider an eigenvalue $\\lambda$ of an $n \\times n$ matrix $A$. The dimension of eigenspace $E_\\lambda=\\operatorname{ker}\\left(A-\\lambda I_n\\right)$ is called the \\textbf{geometric multiplicity} of eigenvalue $\\lambda$, denoted $\\operatorname{gemu}(\\lambda)$. Thus,\n\\[\n\\operatorname{gemu}(\\lambda)=\\operatorname{nullity}\\left(A-\\lambda I_n\\right)=n-\\operatorname{rank}\\left(A-\\lambda I_n\\right).\n\\]",
+    "type": "Definition",
+    "title": "Geometric multiplicity",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Eigenbases and geometric multiplicities",
+    "back": "a. Consider an $n \\times n$ matrix $A$. If we find a basis of each eigenspace of $A$ and concatenate all these bases, then the resulting eigenvectors $\\vec{v}_1, \\ldots, \\vec{v}_s$ will be linearly independent. (Note that $s$ is the sum of the geometric multiplicities of the eigenvalues of $A$.) This result implies that $s \\leq n$.\n\nb. Matrix $A$ is diagonalizable if (and only if) the geometric multiplicities of the eigenvalues add up to $n$ (meaning that $s=n$ in part a).",
+    "type": "Theorem",
+    "title": "Eigenbases and geometric multiplicities",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: An $n \\times n$ matrix with $n$ distinct eigenvalues",
+    "back": "If an $n \\times n$ matrix $A$ has $n$ distinct eigenvalues, then $A$ is diagonalizable. We can construct an eigenbasis by finding an eigenvector for each eigenvalue.",
+    "type": "Theorem",
+    "title": "An $n \\times n$ matrix with $n$ distinct eigenvalues",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The eigenvalues of similar matrices",
+    "back": "Suppose matrix $A$ is similar to $B$. Then\n\na. Matrices $A$ and $B$ have the same characteristic polynomial; that is, $f_A(\\lambda)=f_B(\\lambda)$.\n\nb. rank $A=\\operatorname{rank} B$ and $\\operatorname{nullity}A=\\operatorname{nullity} B$.\n\nc. Matrices $A$ and $B$ have the same eigenvalues, with the same algebraic and geometric multiplicities. (However, the eigenvectors need not be the same.)\n\nd. Matrices $A$ and $B$ have the same determinant and the same trace: $\\det  A=\\det  B$ and $\\operatorname{tr} A=\\operatorname{tr} B$.\n(However,  $A$ and $B$ have the same determinant and the same trace and not be similar.)",
+    "type": "Theorem",
+    "title": "The eigenvalues of similar matrices",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Algebraic versus geometric multiplicity",
+    "back": "If $\\lambda$ is an eigenvalue of a square matrix $A$, then\n\\[\n\\operatorname{gemu}(\\lambda) \\leq \\operatorname{almu}(\\lambda) .\n\\]",
+    "type": "Theorem",
+    "title": "Algebraic versus geometric multiplicity",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "Explain the Technique: Strategy for Diagonalization",
+    "back": "Suppose we are asked to determine whether a given $n \\times n$ matrix $A$ is diagonalizable. If so, we wish to find an invertible matrix $S$ such that $S^{-1} A S=B$ is diagonal.\n\nWe can proceed as follows.\n\na. Find the eigenvalues of $A$ by solving the characteristic equation\n\n\\[\nf_A(\\lambda)=\\det \\left(A-\\lambda I_n\\right)=0 .\n\\]\n\nb. For each eigenvalue $\\lambda$, find a basis of the eigenspace\n\n\\[\nE_\\lambda=\\operatorname{ker}\\left(A-\\lambda I_n\\right) .\n\\]\n\nc. Matrix $A$ is diagonalizable if (and only if) the dimensions of the eigenspaces add up to $n$. In this case, we find an eigenbasis $\\vec{v}_1, \\ldots, \\vec{v}_n$\nfor $A$ by concatenating the bases of the eigenspaces we found in part b. Let\n\n\\[\nS=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{v}_1 & \\vec{v}_2 & \\ldots & \\vec{v}_n \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right] \\text {. Then } S^{-1} A S=B=\\left[\\begin{array}{cccc}\n\\lambda_1 & 0 & \\ldots & 0 \\\\\n0 & \\lambda_2 & \\ldots & 0 \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\ldots & \\lambda_n\n\\end{array}\\right] \\text {, }\n\\]\n\nwhere $\\lambda_j$ is the eigenvalue associated with $\\vec{v}_j$.",
+    "type": "Technique",
+    "title": "Strategy for Diagonalization",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Cayley-Hamilton",
+    "back": "A square matrix satisfies its characteristic polynomial. \nThat is \n\\[\nf_A(A)=0.\n\\]",
+    "type": "Theorem",
+    "title": "Cayley-Hamilton",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Discrete Linear Systems",
+    "back": "For $x_{k+1}=Ax_k$, solutions are combinations of $\\lambda_i^k v_i$ along eigen-directions; stability depends on $|\\lambda_i|$.",
+    "type": "Proposition",
+    "title": "Discrete Linear Systems",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Powers of a diagonalizable matrix",
+    "back": "If\n\\[\nS^{-1} A S=B=\\left[\\begin{array}{cccc}\n\\lambda_1 & 0 & \\ldots & 0 \\\\\n0 & \\lambda_2 & \\ldots & 0 \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\ldots & \\lambda_n\n\\end{array}\\right]\n\\]\nthen\n\\[\nA^\\top=S B^\\top S^{-1}=S\\left[\\begin{array}{cccc}\n\\lambda_1^\\top & 0 & \\ldots & 0 \\\\\n0 & \\lambda_2^\\top & \\ldots & 0 \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\ldots & \\lambda_n^\\top\n\\end{array}\\right] S^{-1}\n\\]",
+    "type": "Theorem",
+    "title": "Powers of a diagonalizable matrix",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Fundamental theorem of algebra",
+    "back": "Any polynomial $p(\\lambda)$ with complex coefficients splits; that is, it can be written as a product of linear factors\n\\[\np(\\lambda)=k\\left(\\lambda-\\lambda_1\\right)\\left(\\lambda-\\lambda_2\\right) \\cdots\\left(\\lambda-\\lambda_n\\right),\n\\]\nfor some complex numbers $\\lambda_1, \\lambda_2, \\ldots, \\lambda_n$, and $k$. (The $\\lambda_i$ need not be distinct.)\nTherefore, a polynomial $p(\\lambda)$ of degree $n$ has precisely $n$ complex roots if they are properly counted with their multiplicities.",
+    "type": "Theorem",
+    "title": "Fundamental theorem of algebra",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Proposition: Complex Pairs",
+    "back": "Real matrices may have complex conjugate eigenpairs; real dynamics then mix rotations and scalings.",
+    "type": "Proposition",
+    "title": "Complex Pairs",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: For a $2\\times 2$ matrix $A$ with complex eigenvalues $\\lambda = \\alpha \\pm i\\beta$, the matrix expo...",
+    "back": "For a $2\\times 2$ matrix $A$ with complex eigenvalues $\\lambda = \\alpha \\pm i\\beta$, the matrix exponential is given by the formula:\n\\[\n e^{At} = e^{\\alpha t} \\left( \\cos(\\beta t) I_2 + \\frac{\\sin(\\beta t)}{\\beta} (A - \\alpha I_2) \\right).\n \\]\nOne proof uses Cayley-Hamilton's theorem, \\ref{Cayley-Hamilton}.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Stability Criteria/Equilibrium",
+    "back": "Consider a dynamical system\n\\[\n\\vec{x}(t+1)=A \\vec{x}(t) .\n\\]\nWe say that $\\overrightarrow{0}$ is an (asymptotically) stable equilibrium for this system if\n\\[\n\\lim _{t \\rightarrow \\infty} \\vec{x}(t)=\\lim _{t \\rightarrow \\infty}\\left(A^t \\vec{x}_0\\right)=\\overrightarrow{0}\n\\]\nfor all vectors $\\vec{x}_0$ in $\\mathbb{R}^n$.",
+    "type": "Definition",
+    "title": "Stability Criteria/Equilibrium",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Stability and eigenvalues",
+    "back": "Consider a dynamical system $\\vec{x}(t+1)=A \\vec{x}(t)$. The zero state is asymptotically stable if (and only if) the modulus of all the complex eigenvalues of $A$ is less than $1$.",
+    "type": "Theorem",
+    "title": "Stability and eigenvalues",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Dynamical systems with complex eigenvalues",
+    "back": "Consider the dynamical system $\\vec{x}(t+1)=A \\vec{x}(t)$, where $A$ is a real $2 \\times 2$ matrix with eigenvalues\n\\[\n\\lambda_{1,2}=p \\pm i q=r(\\cos (\\theta) \\pm i \\sin (\\theta)), \\quad \\text { where } \\quad q \\neq 0 .\n\\]\nLet $\\vec{v}+i \\vec{w}$ be an eigenvector of $A$ with eigenvalue $p+i q$.\nThen\n\\[\n\\vec{x}(t)=r^t S\\left[\\begin{array}{rr}\n\\cos (\\theta t) & -\\sin (\\theta t) \\\\\n\\sin (\\theta t) & \\cos (\\theta t)\n\\end{array}\\right] S^{-1} \\vec{x}_0, \\quad \\text { where } \\quad S=\\left[\\begin{array}{ll}\n\\vec{w} & \\vec{v}\n\\end{array}\\right] .\n\\]\n\n\nNote that $S^{-1} \\vec{x}_0$ is the coordinate vector of $\\vec{x}_0$ with respect to basis $\\vec{w}, \\vec{v}$.",
+    "type": "Theorem",
+    "title": "Dynamical systems with complex eigenvalues",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: ]",
+    "back": "]\n\\\n\\\\\nConsider a dynamical system\n\\[\n\\vec{x}(t+1)=A \\vec{x}(t),\n\\]\nwhere $A$ is a real $2 \\times 2$ matrix with eigenvalues $\\lambda_{1,2}=p \\pm i q$ (where $q \\neq 0$ ). Let\n\\[\nr=\\left|\\lambda_1\\right|=\\left|\\lambda_2\\right|=\\sqrt{p^2+q^2}\n\\]\nIf $r=1$, then the points $\\vec{x}(t)$ are located on an ellipse; if $r$ exceeds 1 , then the trajectory spirals outward; and if $r$ is less than 1 , then the trajectory spirals inward, approaching the origin.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 7,
+    "chapter_title": "Eigenvalues and Eigenvectors",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Spectral Theorem",
+    "back": "A matrix $A$ is orthogonally diagonalizable (i.e., there exists an orthogonal $S$ such that $S^{-1} A S=S^\\top A S$ is diagonal) if and only if $A$ is symmetric (i.e., $\\left.A^\\top=A\\right)$.",
+    "type": "Theorem",
+    "title": "Spectral Theorem",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: regarding symmetric matrix $A$",
+    "back": "Consider a symmetric matrix $A$. If $\\vec{v}_1$ and $\\vec{v}_2$ are eigenvectors of $A$ with distinct eigenvalues $\\lambda_1$ and $\\lambda_2$, then $\\vec{v}_1 \\cdot \\vec{v}_2=0$; that is, $\\vec{v}_2$ is orthogonal to $\\vec{v}_1$.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: A symmetric $n \\times n$ matrix $A$ has $n$ real eigenvalues if they are counted with their algebraic multiplicities.",
+    "back": "A symmetric $n \\times n$ matrix $A$ has $n$ real eigenvalues if they are counted with their algebraic multiplicities.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Orthogonal diagonalization of a symmetric matrix $A$",
+    "back": "Orthogonal diagonalization of a symmetric matrix $A$\\\\\na. Find the eigenvalues of $A$, and find a basis of each eigenspace.\\\\\nb. Using the Gram-Schmidt process, find an orthonormal basis of each eigenspace.\\\\\nc. Form an orthonormal eigenbasis $\\vec{v}_1, \\vec{v}_2, \\ldots, \\vec{v}_n$ for $A$ by concatenating the orthonormal bases you found in part b, and let\n\\[\nS=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{v}_1 & \\vec{v}_2 & \\ldots & \\vec{v}_n \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right] .\n\\]\n$S$ is orthogonal, and $S^{-1} A S$ will be diagonal.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Quadratic Forms",
+    "back": "A function $q\\left(x_1, x_2, \\ldots, x_n\\right)$ from $\\mathbb{R}^n$ to $\\mathbb{R}$ is called a \\textbf{quadratic form} if it is a linear combination of functions of the form $x_i x_j$ (where $i$ and $j$ may be equal). A quadratic form can be written as\n\\[\nq(\\vec{x})=\\vec{x} \\cdot A \\vec{x}=\\vec{x}^\\top A \\vec{x}\n\\]\nfor a unique symmetric $n \\times n$ matrix $A$, called the matrix of $q$.",
+    "type": "Definition",
+    "title": "Quadratic Forms",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Diagonalizing a quadratic form",
+    "back": "Consider a quadratic form $q(\\vec{x})=\\vec{x} \\cdot A \\vec{x}$, where $A$ is a symmetric $n \\times n$ matrix. Let $\\mathfrak{B}$ be an orthonormal eigenbasis for $A$, with associated eigenvalues $\\lambda_1, \\ldots, \\lambda_n$. Then\n\\[\nq(\\vec{x})=\\lambda_1 c_1^2+\\lambda_2 c_2^2+\\cdots+\\lambda_n c_n^2,\n\\]\nwhere the $c_i$ are the coordinates of $\\vec{x}$ with respect to $\\mathfrak{B} .^2$",
+    "type": "Theorem",
+    "title": "Diagonalizing a quadratic form",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Definiteness of a quadratic form",
+    "back": "Consider a quadratic form $q(\\vec{x})=\\vec{x} \\cdot A \\vec{x}$, where $A$ is a symmetric $n \\times n$ matrix.\nWe say that $A$ is \\textbf{positive definite} if $q(\\vec{x})$ is positive for all nonzero $\\vec{x}$ in $\\mathbb{R}^n$, and we call $A$ \\textbf{positive semidefinite} if $q(\\vec{x}) \\geq 0$, for all $\\vec{x}$ in $\\mathbb{R}^n$.\n\nNegative definite and negative semidefinite symmetric matrices are defined analogously.\n\nFinally, we call $A$ indefinite if $q$ takes positive as well as negative values.",
+    "type": "Definition",
+    "title": "Definiteness of a quadratic form",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Eigenvalues and definiteness",
+    "back": "A symmetric matrix $A$ is positive definite if (and only if) all of its eigenvalues are positive. The matrix $A$ is positive semidefinite if (and only if) all of its eigenvalues are positive or zero.",
+    "type": "Theorem",
+    "title": "Eigenvalues and definiteness",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Principal submatrices and definiteness",
+    "back": "Consider a symmetric $n \\times n$ matrix $A$. For $m=1, \\ldots, n$, let $A^{(m)}$ be the $m \\times m$ matrix obtained by omitting all rows and columns of $A$ past the $m$-th. These matrices $A^{(m)}$ are called the principal submatrices of $A$.\n\nThe matrix $A$ is positive definite if (and only if) $\\det \\left(A^{(m)}\\right)>0$, for all $m=1, \\ldots, n$.",
+    "type": "Theorem",
+    "title": "Principal submatrices and definiteness",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Principal axes",
+    "back": "Consider a quadratic form $q(\\vec{x})=\\vec{x} \\cdot A \\vec{x}$, where $A$ is a symmetric $n \\times n$ matrix with $n$ distinct eigenvalues. Then the eigenspaces of $A$ are called the \\textbf{principal axes} of $q$. (Note that these eigenspaces will be one-dimensional.)",
+    "type": "Definition",
+    "title": "Principal axes",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Ellipses and hyperbolas",
+    "back": "Consider the curve $C$ in $\\mathbb{R}^2$ defined by\n\\[\nq\\left(x_1, x_2\\right)=a x_1^2+b x_1 x_2+c x_2^2=1 .\n\\]\nLet $\\lambda_1$ and $\\lambda_2$ be the eigenvalues of the matrix $\\begin{bmatrix}a & b / 2 \\\\ b / 2 & c\\end{bmatrix}$ of $q$.\\\\\nIf both $\\lambda_1$ and $\\lambda_2$ are positive, then $C$ is an \\textbf{ellipse}. \\\\\nIf one eigenvalue is positive and the other is negative, then $C$ is a \\textbf{hyperbola}.",
+    "type": "Theorem",
+    "title": "Ellipses and hyperbolas",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Singular values",
+    "back": "The singular values of an $n \\times m$ matrix $A$ are the square roots of the eigenvalues of the symmetric $m \\times m$ matrix $A^{\\top}  A$, listed with their algebraic multiplicities. It is customary to denote the singular values by $\\sigma_1, \\sigma_2, \\ldots, \\sigma_m$ and to list them in decreasing order:\n\\[\n\\sigma_1 \\geq \\sigma_2 \\geq \\cdots \\geq \\sigma_m \\geq 0\n\\]",
+    "type": "Definition",
+    "title": "Singular values",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Singular Value Decomposition",
+    "back": "For any $A\\in\\mathbb{R}^{m\\times n}$, $A=U\\Sigma V^\\top$ with $U,V$ orthogonal and $\\Sigma=\\operatorname{diag}(\\sigma_i)$, $\\sigma_i\\ge 0$. Moreover $\\sigma_i=\\sqrt{\\lambda_i(A^\\top A)}$.",
+    "type": "Theorem",
+    "title": "Singular Value Decomposition",
+    "chapter_id": 8,
+    "chapter_title": "Symmetric Matrices and Quadratic Forms",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Exponential growth and decay",
+    "back": "Consider the linear differential equation\n\\[\n\\frac{d x}{d t}=k x\n\\]\nwith initial value $x_0$ ( $k$ is an arbitrary constant). The solution is\n\\[\nx(t)=e^{k t} x_0 .\n\\]\nThe quantity $x$ will grow or decay exponentially (depending on the sign of $k$).",
+    "type": "Theorem",
+    "title": "Exponential growth and decay",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Linear dynamical systems: Discrete versus continuous",
+    "back": "A linear dynamical system can be modeled by\n\\[\n\\vec{x}(t+1)=B \\vec{x}(t) \\quad(\\text { discrete model })\n\\]\nor\n\\[\n\\frac{d \\vec{x}}{d t}=A \\vec{x} \\quad \\text { (continuous model) }\n\\]\n$A$ and $B$ are $n \\times n$ matrices, where $n$ is the number of components of the system.",
+    "type": "Theorem",
+    "title": "Linear dynamical systems: Discrete versus continuous",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Continuous dynamical systems",
+    "back": "Consider the system $d \\vec{x} / d t=A \\vec{x}$. Suppose there is a real eigenbasis $\\vec{v}_1, \\ldots, \\vec{v}_n$ for $A$, with associated eigenvalues $\\lambda_1, \\ldots, \\lambda_n$. Then the general solution of the system is\n\\[\n\\vec{x}(t)=c_1 e^{\\lambda_1 t} \\vec{v}_1+\\cdots+c_n e^{\\lambda_n t} \\vec{v}_n\n\\]\nThe scalars $c_1, c_2, \\ldots, c_n$ are the coordinates of $\\vec{x}_0$ with respect to the basis $\\vec{v}_1, \\vec{v}_2, \\ldots, \\vec{v}_n$.\n\nWe can write the preceding equation in matrix form as\n\n\\[\n\\begin{aligned}\n& \\vec{x}(t)=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{v}_1 & \\vec{v}_2 & \\ldots & \\vec{v}_n \\\\\n\\mid & \\mid & & \\mid\n\\end{array}\\right]\\left[\\begin{array}{cccc}\ne^{\\lambda_1 t} & 0 & \\cdots & 0 \\\\\n0 & e^{\\lambda_2 t} & \\cdots & 0 \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\cdots & e^{\\lambda_n t}\n\\end{array}\\right]\\left[\\begin{array}{c}\nc_1 \\\\\nc_2 \\\\\n\\vdots \\\\\nc_n\n\\end{array}\\right] \\\\\n& =S\\left[\\begin{array}{cccc}\ne^{\\lambda_1 t} & 0 & \\cdots & 0 \\\\\n0 & e^{\\lambda_2 t} & \\cdots & 0 \\\\\n\\vdots & \\vdots & \\ddots & \\vdots \\\\\n0 & 0 & \\cdots & e^{\\lambda_n t}\n\\end{array}\\right] S^{-1} \\vec{x}_0,\n\\end{aligned}\n\\]\nwhere $S=\\left[\\begin{array}{cccc}\n\\mid & \\mid & & \\mid \\\\\n\\vec{v}_1 & \\vec{v}_2 & \\cdots & \\vec{v}_n \\\\\n\\mid & \\mid&  & \\mid\n\\end{array}\\right]$.",
+    "type": "Theorem",
+    "title": "Continuous dynamical systems",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Matrix Exponential",
+    "back": "For $\\dot{x}=Ax$, the solution is $x(t)=e^{tA}x(0)$ with $e^{tA}=\\sum_{k\\ge 0}\\frac{t^k}{k!}A^k$.",
+    "type": "Definition",
+    "title": "Matrix Exponential",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Euler",
+    "back": "$e^{i\\theta}=\\cos\\theta+i\\sin\\theta$. Complex eigenpairs produce oscillatory real solutions via real/imag parts.",
+    "type": "Theorem",
+    "title": "Euler",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Continuous dynamical systems with complex eigenvalues",
+    "back": "Consider a linear system\n\\[\n\\frac{d \\vec{x}}{d t}=A \\vec{x} .\n\\]\nSuppose there exists a complex eigenbasis $\\vec{v}_1, \\ldots, \\vec{v}_n$ for $A$, with associated complex eigenvalues $\\lambda_1, \\ldots, \\lambda_n$. Then the general complex solution of the system is\n\\[\n\\vec{x}(t)=c_1 e^{\\lambda_1 t} \\vec{v}_1+\\cdots+c_n e^{\\lambda_n t} \\vec{v}_n,\n\\]\nwhere the $c_i$ are arbitrary complex numbers.\n\nWe can write this solution in matrix form, as in Theorem \\ref{thm:dynamic-sys}",
+    "type": "Theorem",
+    "title": "Continuous dynamical systems with complex eigenvalues",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Stability of a continuous dynamical system",
+    "back": "For a system\n\\[\n\\frac{d \\vec{x}}{d t}=A \\vec{x},\n\\]\nthe zero state is an asymptotically stable equilibrium solution if (and only if) the real parts of all eigenvalues of $A$ are negative.",
+    "type": "Theorem",
+    "title": "Stability of a continuous dynamical system",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Determinant, trace, and stability",
+    "back": "Consider the system\n\\[\n\\frac{d \\vec{x}}{d t}=A \\vec{x}\n\\]\nwhere $A$ is a real $2 \\times 2$ matrix. Then the zero state is an asymptotically stable equilibrium solution if (and only if) $\\operatorname{tr} A<0$ and $\\det  A>0$.",
+    "type": "Theorem",
+    "title": "Determinant, trace, and stability",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Continuous dynamical systems with eigenvalues $p \\pm i q$",
+    "back": "Consider the linear system\n\\[\n\\frac{d \\vec{x}}{d t}=A \\vec{x},\n\\]\nwhere $A$ is a real $2 \\times 2$ matrix with complex eigenvalues $p \\pm i q$ (and $q \\neq 0$ ). Consider an eigenvector $\\vec{v}+i \\vec{w}$ with eigenvalue $p+i q$. Then\n\\[\n\\vec{x}(t)=e^{p t} S\\left[\\begin{array}{rr}\n\\cos (q t) & -\\sin (q t) \\\\\n\\sin (q t) & \\cos (q t)\n\\end{array}\\right] S^{-1} \\vec{x}_0,\n\\]\nwhere $S=\\left[\\begin{array}{ll}\\vec{w} & \\vec{v}\\end{array}\\right]$. Recall that $S^{-1} \\vec{x}_0$ is the coordinate vector of $\\vec{x}_0$ with respect to basis $\\vec{w}, \\vec{v}$.\n\nThe trajectories are either ellipses (linearly distorted circles), if $p=0$, or spirals, spiraling outward if $p$ is positive and inward if $p$ is negative. In the case of an ellipse, the trajectories have a period of $2 \\pi / q$.",
+    "type": "Theorem",
+    "title": "Continuous dynamical systems with eigenvalues $p \\pm i q$",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Linear differential operators and linear differential equations",
+    "back": "A transformation $T$ from $C^{\\infty}$ to $C^{\\infty}$ of the form\n\\[\nT(f)=f^{(n)}+a_{n-1} f^{(n-1)}+\\cdots+a_1 f^{\\prime}+a_0 f\n\\]\nis called an $n$th-order \\textbf{linear differential operator}. Here $f^{(k)}$ denotes the $k$th derivative of function $f$, and the coefficients $a_k$ are complex scalars.\n\nIf $T$ is an $n$th-order linear differential operator and $g$ is a smooth function, then the equation\n\\[\nT(f)=g \\quad \\text { or } \\quad f^{(n)}+a_{n-1} f^{(n-1)}+\\cdots+a_1 f^{\\prime}+a_0 f=g\n\\]\nis called an $n$th-order \\textbf{linear differential equation} (DE). The DE is called \\textbf{homogeneous} if $g=0$ and \\textbf{inhomogeneous} otherwise.",
+    "type": "Definition",
+    "title": "Linear differential operators and linear differential equations",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: regarding linear transformation $T$ from $V$ to $W$",
+    "back": "Consider a linear transformation $T$ from $V$ to $W$, where $V$ and $W$ are arbitrary linear spaces. Suppose we have a basis $f_1, f_2, \\ldots, f_n$ of the kernel of $T$. Consider an equation $T(f)=g$ with a particular solution $f_p$. Then the solutions $f$ of the equation $T(f)=g$ are of the form\n\\[\nf=c_1 f_1+c_2 f_2+\\cdots+c_n f_n+f_p,\n\\]\nwhere the $c_i$ are arbitrary constants.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The kernel of an $n$th-order linear differential operator is $n$-dimensional.",
+    "back": "The kernel of an $n$th-order linear differential operator is $n$-dimensional.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Explain the Technique: Strategy for solving linear differential equations",
+    "back": "To solve an $n$th-order linear DE\n\\(\nT(f)=g,\n\\)\nwe have to find\\\\\na. a basis $f_1, \\ldots, f_n$ of $\\operatorname{ker}(T)$, and\\\\\nb. a particular solution $f_p$ of the DE $T(f)=g$.\n\nThen the solutions $f$ are of the form\n\\[\nf=c_1 f_1+\\cdots+c_n f_n+f_p,\n\\]\nwhere the $c_i$ are arbitrary constants.",
+    "type": "Technique",
+    "title": "Strategy for solving linear differential equations",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Eigenfunctions",
+    "back": "Consider a linear differential operator $T$ from $C^{\\infty}$ to $C^{\\infty}$. A smooth function $f$ is called an \\textbf{eigenfunction} of $T$ if $T(f)=\\lambda f$ for some complex scalar $\\lambda$; this scalar $\\lambda$ is called the eigenvalue associated with the eigenfunction $f$.",
+    "type": "Definition",
+    "title": "Eigenfunctions",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "Define: Characteristic polynomial",
+    "back": "Consider the linear differential operator\n\\[\nT(f)=f^{(n)}+a_{n-1} f^{(n-1)}+\\cdots+a_1 f^{\\prime}+a_0 f\n\\]\nThe \\textbf{characteristic polynomial} of $T$ is defined as\n\\[\np_T(\\lambda)=\\lambda^n+a_{n-1} \\lambda^{n-1}+\\cdots+a_1 \\lambda+a_0 .\n\\]",
+    "type": "Definition",
+    "title": "Characteristic polynomial",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: if $T$ is a linear differential operator...",
+    "back": "If $T$ is a linear differential operator, then $e^{\\lambda t}$ is an eigenfunction of $T$, with associated eigenvalue $p_T(\\lambda)$, for all $\\lambda$ :\n\\[\nT\\left(e^{\\lambda t}\\right)=p_T(\\lambda) e^{\\lambda t} .\n\\]\nIn particular, if $p_T(\\lambda)=0$, then $e^{\\lambda t}$ is in the kernel of $T$.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: The kernel of a linear differential operator",
+    "back": "Consider an $n$th-order linear differential operator $T$ whose characteristic polynomial $p_T(\\lambda)$ has $n$ distinct roots $\\lambda_1, \\ldots, \\lambda_n$. Then the exponential functions\n\\[\ne^{\\lambda_1 t}, e^{\\lambda_2 t}, \\ldots, e^{\\lambda_n t}\n\\]\nform a basis of the kernel of $T$; that is, they form a basis of the solution space of the homogeneous DE\n\\[\nT(f)=0 .\n\\]",
+    "type": "Theorem",
+    "title": "The kernel of a linear differential operator",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: With Complex Roots",
+    "back": "Consider a differential equation\n\\[\nT(f)=f^{\\prime \\prime}+a f^{\\prime}+b f=0,\n\\]\nwhere the coefficients $a$ and $b$ are real. Suppose the zeros of $p_T(\\lambda)$ are $p \\pm i q$, with $q \\neq 0$. Then the solutions of the given DE are\n\\[\nf(t)=e^{p t}\\left(c_1 \\cos (q t)+c_2 \\sin (q t)\\right),\n\\]\nwhere $c_1$ and $c_2$ are arbitrary constants.\nThe special case when $a=0$ and $b>0$ is important in many applications. Then $p=0$ and $q=\\sqrt{b}$, so that the solutions of the DE\n\\[\nf^{\\prime \\prime}+b f=0\n\\]\nare\n\\[\nf(t)=c_1 \\cos (\\sqrt{b} t)+c_2 \\sin (\\sqrt{b} t) .\n\\]",
+    "type": "Theorem",
+    "title": "With Complex Roots",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Recall the notation $D f=f^{\\prime}$ for the derivative operator.",
+    "back": "Recall the notation $D f=f^{\\prime}$ for the derivative operator. \n\nWe let\n\\(\nD^m=\\underbrace{D \\circ D \\circ \\cdots \\circ D}_{m \\text { times }};\n\\)\nthat is,\n\\(\nD^m f=f^{(m)}.\n\\)\nThen the operator\n\\[\nT(f)=f^{(n)}+a_{n-1} f^{(n-1)}+\\cdots+a_1 f^{\\prime}+a_0 f\n\\]\ncan be written more succinctly as\n\\[\nT=D^n+a_{n-1} D^{n-1}+\\cdots+a_1 D+a_0,\n\\]\nthe characteristic polynomial $p_T(\\lambda)$ ``evaluated at $D$\".\n\nAn $n$ th-order linear differential operator $T$ can be expressed as the composite of $n$ first-order linear differential operators:\n\\[\n\\begin{aligned}\nT & =D^n+a_{n-1} D^{n-1}+\\cdots+a_1 D+a_0 \\\\\n& =\\left(D-\\lambda_1\\right)\\left(D-\\lambda_2\\right) \\cdots\\left(D-\\lambda_n\\right)\n\\end{aligned}\n\\]\nwhere the $\\lambda_i$ are complex numbers.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: regarding linear differential equation",
+    "back": "Consider the linear differential equation\n\\[\nf^{\\prime \\prime}(t)+a f^{\\prime}(t)+b f(t)=C \\cos (\\omega t)\n\\]\nwhere $a, b, C$, and $\\omega$ are real numbers. Suppose that $a \\neq 0$ or $b \\neq \\omega^2$. This DE has a particular solution of the form\n\\[\nf_p(t)=P \\cos (\\omega t)+Q \\sin (\\omega t)\n\\]\nNow use Technics \\ref{tech:lin} and Theorems \\ref{thm:kernel} to find all solutions $f$ of the DE.",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "Explain the Technique: Strategy for linear differential equations",
+    "back": "Suppose you have to solve an $n$ th-order linear differential equation $T(f)=g$.\\\\\n\\textbf{Step 1} Find $n$ linearly independent solutions of the DE $T(f)=0$.\n\\begin{itemize}\n\\item\nWrite the characteristic polynomial $p_T(\\lambda)$ of $T$ [replacing $f^{(k)}$ by $\\lambda^k$ ].\n\\item\nFind the solutions $\\lambda_1, \\lambda_2, \\ldots, \\lambda_n$ of the equation $p_T(\\lambda)=0$.\n\\item\nIf $\\lambda$ is a solution of the equation $p_T(\\lambda)=0$, then $e^{\\lambda t}$ is a solution of $T(f)=$ 0 .\n\\item\nIf $\\lambda$ is a solution of $p_T(\\lambda)=0$ with multiplicity $m$, then $e^{\\lambda t}, t e^{\\lambda t}, t^2 e^{\\lambda t}, \\ldots$, $t^{m-1} e^{\\lambda t}$ are solutions of the DE $T(f)=0$.% See Exercise 38.\n\\item\nIf $p \\pm i q$ are complex solutions of $p_T(\\lambda)=0$, then $e^{p t} \\cos (q t)$ and $e^{p t} \\sin (q t)$ are real solutions of the DE $T(f)=0$.\n\\end{itemize}\n\n\\textbf{Step 2} If the DE is inhomogeneous (i.e., if $g \\neq 0$ ), find one particular solution $f_p$ of the $\\operatorname{DE} T(f)=g$.\n\\begin{itemize}\n\\item\nIf $g$ is of the form $g(t)=A \\cos (\\omega t)+B \\sin (\\omega t)$, look for a particular solution of the same form, $f_p(t)=P \\cos (\\omega t)+Q \\sin (\\omega t)$.\n\\item\nIf $g$ is constant, look for a constant particular solution $f_p(t)=c .^7$\n\\item\nIf the DE is of first order, of the form $f^{\\prime}(t)-a f(t)=g(t)$, use the formula $f(t)=e^{a t} \\int e^{-a t} g(t) d t$.\n\\item\nIf none of the preceding techniques applies, write $T=\\left(D-\\lambda_1\\right) \\left(D-\\lambda_2\\right) \\cdots\\left(D-\\lambda_n\\right)$, and solve the corresponding first-order DEs.\n\\end{itemize}\n\\textbf{Step 3} The solutions of the $\\operatorname{DE} T(f)=g$ are of the form\n\\[\nf(t)=c_1 f_1(t)+c_2 f_2(t)+\\cdots+c_n f_n(t)+f_p(t)\n\\]\nwhere $f_1, f_2, \\ldots, f_n$ are the solutions from step 1 and $f_p$ is the solution from step 2.",
+    "type": "Technique",
+    "title": "Strategy for linear differential equations",
+    "chapter_id": 9,
+    "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  }
+];
