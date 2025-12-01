@@ -4,54 +4,25 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    const baseURL = Config.apiBaseURL;
-
     let chaptersData = [];
     let filterStatus = 'all';
     let expandedChapter = null;
     let bookmarkedCardIds = new Set();
     let hiddenCardIds = new Set();
 
-    // Initialize after login
-    window.addEventListener('userLoggedIn', async () => {
-        const username = Auth.currentUser?.username || 'User';
-        document.getElementById('userName').textContent = username;
-
-        await init();
-    });
-
+    // Initialize immediately (no auth required)
     async function init() {
-        await Promise.all([
-            fetchBookmarks(),
-            fetchHiddenCards()
-        ]);
+        loadLocalData();
         await loadFlashcardData();
         calculateChapterStats();
         render();
     }
 
-    async function fetchBookmarks() {
-        try {
-            const response = await fetch(`${baseURL}/api/bookmarks`, { credentials: 'include' });
-            if (response.ok) {
-                const data = await response.json();
-                bookmarkedCardIds = new Set(data.bookmarks);
-            }
-        } catch (error) {
-            console.error('Failed to fetch bookmarks:', error);
-        }
-    }
-
-    async function fetchHiddenCards() {
-        try {
-            const response = await fetch(`${baseURL}/api/hidden`, { credentials: 'include' });
-            if (response.ok) {
-                const data = await response.json();
-                hiddenCardIds = new Set(data.hidden);
-            }
-        } catch (error) {
-            console.error('Failed to fetch hidden cards:', error);
-        }
+    function loadLocalData() {
+        // Load bookmarks and hidden cards from localStorage
+        bookmarkedCardIds = new Set(Storage.getBookmarks());
+        hiddenCardIds = new Set(Storage.getHidden());
+        console.log(`Loaded ${bookmarkedCardIds.size} bookmarks and ${hiddenCardIds.size} hidden cards`);
     }
 
     async function loadFlashcardData() {
@@ -220,8 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Logout
-    document.getElementById('logoutBtn').addEventListener('click', () => {
-        Auth.logout();
-    });
+    // Initialize the app immediately
+    init();
 });

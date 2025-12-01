@@ -12,21 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const typeFilter = document.getElementById('typeFilter');
     const studyModeSelect = document.getElementById('studyMode');
 
-    const baseURL = Config.apiBaseURL;
     let allFlashcards = [];
     let flashcards = [];
-    let dueCardIds = new Set();
-    let hardAgainCardIds = new Set();
     let bookmarkedCardIds = new Set();
     let hiddenCardIds = new Set();
     let currentIndex = 0;
     let currentStudyMode = 'all';
 
-    // Initialize when user logs in
-    window.addEventListener('userLoggedIn', async () => {
-        await init();
-    });
-
+    // Initialize immediately (no auth required)
     async function init() {
         // Load flashcards data
         if (window.flashcardsData) {
@@ -41,13 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Populate chapter filter
             populateChapterFilter();
 
-            // Fetch due cards and bookmarks
-            await Promise.all([
-                fetchDueCards(),
-                fetchHardAgainCards(),
-                fetchBookmarks(),
-                fetchHiddenCards()
-            ]);
+            // Load bookmarks and hidden cards from localStorage
+            loadLocalData();
 
             // Restore session or apply initial filter
             restoreSession();
@@ -68,71 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${card.chapter_id || 0}_${card.category || card.type}_${titleSlug}`;
     }
 
-    async function fetchDueCards() {
-        try {
-            const response = await fetch(`${baseURL}/api/cards/due?limit=100`, {
-                credentials: 'include'
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                dueCardIds = new Set(data.cards.map(c => c.card_id));
-                console.log(`Fetched ${dueCardIds.size} due cards`);
-            }
-        } catch (error) {
-            console.error('Failed to fetch due cards:', error);
-        }
+    function loadLocalData() {
+        // Load bookmarks and hidden cards from localStorage
+        bookmarkedCardIds = new Set(Storage.getBookmarks());
+        hiddenCardIds = new Set(Storage.getHidden());
+        console.log(`Loaded ${bookmarkedCardIds.size} bookmarks and ${hiddenCardIds.size} hidden cards`);
     }
 
-    async function fetchHardAgainCards() {
-        try {
-            const response = await fetch(`${baseURL}/api/cards/reviewed-today-hard-again`, {
-                credentials: 'include'
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                hardAgainCardIds = new Set(data.card_ids);
-                console.log(`Fetched ${hardAgainCardIds.size} hard/again cards`);
-            }
-        } catch (error) {
-            console.error('Failed to fetch hard/again cards:', error);
-        }
-    }
-
-    async function fetchBookmarks() {
-        try {
-            const response = await fetch(`${baseURL}/api/bookmarks`, {
-                credentials: 'include'
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                bookmarkedCardIds = new Set(data.bookmarks);
-                console.log(`Fetched ${bookmarkedCardIds.size} bookmarks`);
-            }
-        } catch (error) {
-            console.error('Failed to fetch bookmarks:', error);
-        }
-    }
-
-    async function fetchHiddenCards() {
-        try {
-            const response = await fetch(`${baseURL}/api/hidden`, {
-                credentials: 'include'
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                hiddenCardIds = new Set(data.hidden);
-                console.log(`Fetched ${hiddenCardIds.size} hidden cards`);
-            }
-        } catch (error) {
-            console.error('Failed to fetch hidden cards:', error);
-        }
-    }
-
-    async function toggleBookmark(e) {
+    function toggleBookmark(e) {
         e.stopPropagation(); // Prevent card flip
 
         const card = flashcards[currentIndex];
@@ -140,31 +71,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btn = document.getElementById('bookmarkBtn');
 
-        try {
-            const response = await fetch(`${baseURL}/api/bookmarks/${card.id}`, {
-                method: 'POST',
-                credentials: 'include'
-            });
+        // Toggle bookmark in localStorage
+        const isBookmarked = Storage.toggleBookmark(card.id);
 
-            if (response.ok) {
-                const data = await response.json();
-                if (data.is_bookmarked) {
-                    bookmarkedCardIds.add(card.id);
-                    btn.classList.add('active');
-                } else {
-                    bookmarkedCardIds.delete(card.id);
-                    btn.classList.remove('active');
-
-                    // If in bookmarked mode, we might want to remove it from current view
-                    // But usually better to keep it until refresh to avoid jarring UI changes
-                }
-            }
-        } catch (error) {
-            console.error('Error toggling bookmark:', error);
+        if (isBookmarked) {
+            bookmarkedCardIds.add(card.id);
+            btn.classList.add('active');
+        } else {
+            bookmarkedCardIds.delete(card.id);
+            btn.classList.remove('active');
         }
     }
 
-    async function toggleHide(e) {
+    function toggleHide(e) {
         e.stopPropagation(); // Prevent card flip
 
         const card = flashcards[currentIndex];
@@ -172,24 +91,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btn = document.getElementById('hideBtn');
 
-        try {
-            const response = await fetch(`${baseURL}/api/hidden/${card.id}`, {
-                method: 'POST',
-                credentials: 'include'
-            });
+        // Toggle hidden status in localStorage
+        const isHidden = Storage.toggleHidden(card.id);
 
-            if (response.ok) {
-                const data = await response.json();
-                if (data.is_hidden) {
-                    hiddenCardIds.add(card.id);
-                    btn.classList.add('active');
-                } else {
-                    hiddenCardIds.delete(card.id);
-                    btn.classList.remove('active');
-                }
-            }
-        } catch (error) {
-            console.error('Error toggling hide:', error);
+        if (isHidden) {
+            hiddenCardIds.add(card.id);
+            btn.classList.add('active');
+        } else {
+            hiddenCardIds.delete(card.id);
+            btn.classList.remove('active');
         }
     }
 
@@ -472,14 +382,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return chapterMatch && typeMatch;
         });
 
-        // Filter by due cards if in due mode
+        // Filter by study mode
         switch (currentStudyMode) {
-            case 'due':
-                filtered = filtered.filter(card => dueCardIds.has(card.id));
-                break;
-            case 'hard_again':
-                filtered = filtered.filter(card => hardAgainCardIds.has(card.id));
-                break;
             case 'bookmarked':
                 filtered = filtered.filter(card => bookmarkedCardIds.has(card.id));
                 break;
@@ -542,58 +446,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // No valid session, apply default filters
         applyFilters();
     }
-    // Expose for stats.js
-    window.startHardAgainSession = async function () {
-        console.log('Starting Hard/Again session');
-
-        // Fetch the specific cards first
-        try {
-            const response = await fetch(`${baseURL}/api/cards/reviewed-today-hard-again`, {
-                credentials: 'include'
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Hard/Again API response:', data);
-                hardAgainCardIds = new Set(data.card_ids);
-                console.log(`Found ${hardAgainCardIds.size} hard/again card IDs:`, Array.from(hardAgainCardIds));
-
-                // Set mode
-                currentStudyMode = 'hard_again';
-
-                // Add temporary option to select if not exists
-                let option = studyModeSelect.querySelector('option[value="hard_again"]');
-                if (!option) {
-                    option = document.createElement('option');
-                    option.value = 'hard_again';
-                    option.textContent = 'Hard/Again Today';
-                    studyModeSelect.appendChild(option);
-                }
-                studyModeSelect.value = 'hard_again';
-
-                applyFilters();
-                console.log(`After filtering: ${flashcards.length} cards to display`);
-
-                currentIndex = 0;
-                loadCard(currentIndex);
-                saveSession();
-
-                // Scroll to cards
-                cardContainer.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                console.error('Failed to fetch hard/again cards, status:', response.status);
-            }
-        } catch (error) {
-            console.error('Failed to start session:', error);
-        }
-    };
-
-    function getChapterCardIds(chapterId) {
-        if (chapterId === 'all') return null;
-        return allFlashcards
-            .filter(card => card.chapter_id == chapterId)
-            .map(card => card.id);
-    }
 
     // Update stats when chapter changes
     chapterFilter.addEventListener('change', () => {
@@ -601,12 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = 0;
         loadCard(currentIndex);
         saveSession();
-
-        // Refresh stats with chapter filter
-        if (window.Stats) {
-            const chapterId = chapterFilter.value;
-            const cardIds = getChapterCardIds(chapterId);
-            window.Stats.refresh(cardIds);
-        }
     });
+
+    // Initialize the app immediately
+    init();
 });

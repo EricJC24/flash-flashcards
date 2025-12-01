@@ -14,27 +14,8 @@
 </head>
 
 <body>
-    <!-- Authentication Modal -->
-    <div id="authModal" class="auth-modal">
-        <div class="auth-container">
-            <h1>Linear Algebra Flashcards</h1>
-            <div id="loginSection" class="auth-section">
-                <h2>Login</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <input type="text" id="loginUsername" placeholder="Username" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" id="loginPassword" placeholder="Password" required>
-                    </div>
-                    <button type="submit" class="auth-button">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Dashboard -->
-    <div id="mainApp" class="hidden">
+    <div id="mainApp">
         <div class="dashboard-container">
             <!-- Header -->
             <div class="dashboard-header">
@@ -60,8 +41,6 @@
                         </svg>
                         Flashcards
                     </a>
-                    <span id="userName" class="user-name"></span>
-                    <button id="logoutBtn" class="logout-btn">Logout</button>
                 </div>
             </div>
 
@@ -135,8 +114,7 @@
     </div>
 
     <script src="data.js?v=20251129b"></script>
-    <script src="config.js"></script>
-    <script src="auth.js"></script>
+    <script src="storage.js"></script>
     <script src="dashboard_script.js"></script>
 </body>
 
