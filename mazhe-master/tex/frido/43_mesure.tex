@@ -1,0 +1,2308 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2011-2020, 2023-2024
+%   Laurent Claessens, Carlotta Donadello
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Mesure de Lebesgue sur \texorpdfstring{\(  \eR\)}{R}}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SecZTFooXlkwk}
+
+Nous notons \( \mS\) l'ensemble des intervalles\footnote{Définition~\ref{DefEYAooMYYTz}.} de \( \eR\).
+
+\begin{proposition}
+	L'ensemble des réunions finies d'éléments de \( \mS\) est une algèbre de parties de \( \eR\) que nous allons noter \( \tribA_{\mS}\).
+\end{proposition}
+
+\begin{proof}
+
+	Nous devons vérifier la définition~\ref{DefTCUoogGDud}. Les ensembles \( \eR\) et \( \emptyset\) sont des intervalles et font donc partie de \( \tribA_{\mS}\).
+
+	Si \( A\in\tribA_{\mS}\) se décompose en union d'intervalles de la forme \( (a_k,b_k)\) avec \( k=1,\ldots, n\) (ici nous mettons des parenthèses au lieu de crochets parce qu'à priori nous ne savons pas). Alors
+	\begin{equation}
+		A^c=\bigcup_{k=0}^{n}(b_k,a_{k+1})
+	\end{equation}
+	où nous avons posé \( b_0=-\infty\) et \( a_{n+1}=+\infty\). Ici encore les parenthèses sont soit fermées soit ouvertes en fonction de ce qu'étaient celles dans la décomposition de \( A\). Quoi qu'il en soit, cette décomposition de \( A^c\) montre que \( A^c\in\tribA_{\mS}\).
+
+	Enfin si \( A,B\in\tribA_{\mS}\) alors \( A\cup B\in\tribA_{\mS}\).
+\end{proof}
+
+\begin{lemma}
+	Tout élément de \( \tribA_{\mS}\) admet une décomposition minimale unique en réunion finie d'intervalles. Cette décomposition est formée d'intervalles deux à deux disjoints.
+\end{lemma}
+
+\begin{proof}
+	Nous allons montrer que si \( A\in\tribA_{\mS}\), alors la décomposition minimale consiste en les composantes connexes\footnote{Définition \ref{DEFooFHXNooJGUPPn}.} de \( A\). Pour cela nous rappelons que la proposition~\ref{PropInterssiConn} dit qu'une partie de \( \eR\) est connexe si et seulement si elle est un intervalle. D'abord cela nous dit immédiatement que les composantes connexes de \( A\) forment une décomposition de \( A\) en intervalles. Nous devons prouver qu'elle est minimale.
+
+	Soit \( \{ C_k \}_{k=1,\ldots, n}\) les composantes connexes de \( A\). Aucun connexe de \( \eR\) contenu dans \( A\) ne peut intersecter plus d'un des \( C_k\), et par conséquent nous ne pouvons pas décomposer \( A\) en moins de \( n\) intervalles.
+
+	Pour l'unicité, soit \( \{ I_k \}_{k=1,\ldots, n}\) un ensemble de \( n\) intervalles tels que \( \bigcup_{k=1}^nI_k=A\). Chacun des \( I_k\) intersecte un et un seul des \( C_k\). En effet si \( x\in I_k\cap C_i\) et \( y\in I_k\cap C_j\), alors \( \mathopen[ x , y \mathclose]\subset I_k\) parce que \( I_k\) est un intervalle. Mais \( C_i\) étant le plus grand connexe contenant \( x\), \( \mathopen[ x , y \mathclose]\subset C_i\) et de la même façon, \( \mathopen[ x , y \mathclose]\subset C_j\). Par conséquent \( C_i\) et \( C_j\) sont tous deux la composante connexe de \( x\) et \( y\). Nous en déduisons que \( C_i=C_j\), c'est-à-dire \( i=j\).
+
+	Par ailleurs nous avons \( I_k\cap I_l=\emptyset\) dès que \( k\neq l\) parce que sinon l'ensemble \( I_k\cup I_l\) serait connexe et la décomposition des \( \{ I_k \}_{k=1,\ldots, n} \) ne serait pas minimale : en remplaçant \( I_k\) et \( I_l\) par \( I_k\cup I_l\) on aurait eu une décomposition contenant moins d'éléments. Donc à renumérotation près nous pouvons supposer que \( I_k\) intersecte \( C_l\) si et seulement si \( k=l\).
+
+	Dans ce cas nous devons avoir \( I_k=C_k\), sinon les éléments de \( C_k\setminus I_k\) ne seraient pas dans \( \bigcup_{i=1}^nI_i\).
+\end{proof}
+
+\begin{definition}[longueur d'intervalle\cite{MesureLebesgueLi}]
+	Si \( I\) est un intervalle d'extrémités \( a\) et \( b\) avec \( -\infty\leq a\leq b\leq +\infty\) alors nous définissons la \defe{longueur}{longueur!d'un intervalle}\index{intervalle!longueur} de \( I\) par
+	\begin{equation}
+		\ell(I)=\begin{cases}
+			b-a    & \text{si } -\infty<a\leq b< +\infty         \\
+			\infty & \text{si } a\text{ ou } b\text{ est infini}
+		\end{cases}
+	\end{equation}
+	Si \( A\in\tribA_{\mS}\) et si sa décomposition minimale est \( A=\bigcup_{k=1}^nI_k\), alors on définit
+	\begin{equation}
+		\ell(A)=\sum_{k=1}^n\ell(I_k).
+	\end{equation}
+\end{definition}
+
+Le lemme suivant nous indique que nous pouvons calculer la longueur d'un élément de \( \tribA_{\mS}\) sans savoir la décomposition minimale, pourvu que l'on connaisse une décomposition disjointe.
+\begin{lemma}[\cite{MesureLebesgueLi}]\label{LemIUQooEzHun}
+	Si
+	\begin{equation}
+		B=\bigcup_{r=1}^pJ_r
+	\end{equation}
+	est une décomposition de \( B\in\tribA_{\mS}\) en intervalles deux à deux disjoints alors
+	\begin{equation}
+		\ell(B)=\sum_{r=1}^p\ell(J_r).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous prouvons dans un premier temps le résultat dans le cas où \( B=I\) est un intervalle. Soit \( I\) un intervalle et une décomposition en intervalles disjoints \( I=\bigcup_{r=1}^pJ_r\). Nous montrons qu'alors \( \ell(I)=\sum_{r=1}^p\ell(J_r)\). Nous verrons ensuite comment passer au cas où \( B\) est un élément générique de \( \tribA_{\mS}\).
+	\begin{subproof}
+		\spitem[Si \( B=I\) est un intervalle infini]
+
+		Si \( I\) est infini alors un des \( J_r\) soit l'être et donc \( \sum_{r=1}^p\ell(J_r)=\infty=\ell(I)\).
+		\spitem[Si \( B=I\) est un intervalle ininfini]
+
+		Pour chaque \( r=1,\ldots, p\) nous notons \( a_r\) et \( b_r\) les extrémités de \( J_r\). Vu que les \( J_r\) sont connexes et disjoints, si \( a_k\leq a_l\) alors \( b_k\leq a_l\), sinon l'ensemble (non vide) \( \mathopen] a_l , b_k \mathclose[ \) serait dans l'intersection \( I_k\cap I_l\) qui, elle, est vide. Plus généralement, si \( x\in J_k\) et \( y\in J_l\) avec \( x<y\) alors pour tout \( x'\in J_k\) et tout \( y'\in J_l\) nous avons \( x'<y'\). Vu qu'il y a un nombre fini d'ensembles \( J_r\), nous pouvons les classer dans l'ordre croissant :
+		\begin{equation}
+			a_1\leq b_1\leq a_2\leq b_2\leq \ldots\leq b_{p-1}\leq a_p\leq b_p.
+		\end{equation}
+		Vu que les \( J_r\) sont disjoints et que leur union est connexe nous avons en réalité
+		\begin{equation}
+			a=a_1\leq b_1=a_2\leq b_2=a_3\leq\ldots\leq b_{p-1}= a_p\leq b_p,
+		\end{equation}
+		donc une somme télescopique donne
+		\begin{equation}
+			\ell(I)=b-a=\sum_{r=1}^p(b_r-a_r)=\sum_{r=1}^p\ell(J_r).
+		\end{equation}
+
+		\spitem[Si \( B\) n'est pas un intervalle]
+		Soit \( \{ I_k \}_{k=1,\ldots, n}\) la décomposition minimale de \( B\). Alors
+		\begin{equation}
+			\spadesuit=\ell(B)=\sum_{k=1}^n\ell(I_k)=\sum_{k=1}^n\ell\big( \bigcup_{r=1}^p(I_k\cap J_r) \big).
+		\end{equation}
+		Mais \( I_k\) est un intervalle et s'écrit comme union disjointe \( I_k=\bigcup_{r=1}^p(I_k\cap J_r)\), donc par la première partie
+		\begin{equation}
+			\spadesuit=\sum_{k=1}^n\sum_{r=1}^p\ell(I_k\cap J_r)=\sum_{r=1}^p\sum_{k=1}^n\ell(I_k\cap J_r).
+		\end{equation}
+		Ici \( J_r\) est un intervalle qui se décompose en \( J_r=\bigcup_{k=1}^n(I_k\cap J_r)\), donc nous pouvons encore utiliser la première partie :
+		\begin{equation}
+			\spadesuit=\sum_{r=1}^p\ell(J_r),
+		\end{equation}
+		ce qu'il fallait.
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}   \label{LemPIOooRLkbo}
+	Si \( A,B\in\tribA_{\mS}\) avec \( A\subset B\) alors \( \ell(A)\leq \ell(B)\).
+\end{lemma}
+
+\begin{proof}
+	Nous avons évidemment \( B=A\cup B\setminus A\). Notons que \( B\setminus A\in\tribA_{\mS}\) par le lemme~\ref{LemBFKootqXKl}. Si \( \{ I_k \}\) est une décomposition disjointe de \( A\) et \( \{ J_i \}\) une de \( B\setminus A\) alors \( \{ I_k \}\cup\{ J_i \}\) est une décomposition disjointe de \( A\cup B\setminus A\) et le lemme~\ref{LemIUQooEzHun} nous dit que
+	\begin{equation}
+		\ell(B)=\ell(A\cup B\setminus A)=\ell(A)+\ell(B\setminus A).
+	\end{equation}
+	Par conséquent \( \ell(B)\geq \ell(A)\).
+\end{proof}
+
+\begin{lemma}   \label{LemUMVooZJgMu}
+	Si \( I\) est un intervalle et si il se décompose en
+	\begin{equation}
+		I=\bigcup_{n\in \eN}I_n
+	\end{equation}
+	où les \( I_n\) sont des intervalles disjoints, alors
+	\begin{equation}
+		\ell(I)=\sum_{n=1}^{\infty}\ell(I_n).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous allons encore diviser la preuve en deux parties suivant que \( I\) soit de longueur finie ou pas.
+	\begin{subproof}
+
+		\spitem[Si \( I\) est de longueur finie]
+
+		Soient \( a\) et \( b\) les extrémités de \( I\) : \( -\infty<a\leq b< +\infty\). Pour tout \( N\geq 1\) nous avons
+		\begin{equation}
+			\sum_{n=1}^N\ell(I_n)=\ell\big( \bigcup_{n=1}^NI_n \big)\leq \ell(I).
+		\end{equation}
+		La première égalité est le lemme dans le cas d'une union finie~\ref{LemIUQooEzHun}. L'inégalité est le lemme~\ref{LemPIOooRLkbo}. Cela étant vrai pour tout \( N\), à la limite \( N\to\infty\) nous conservons l'inégalité :
+		\begin{equation}
+			\sum_{n=1}^{\infty}\ell(I_n)\leq \ell(I).
+		\end{equation}
+		Nous devons encore voir l'inégalité inverse. Pour cela nous supposons que \( a<b\). Sinon \( \ell(I)=0\) et tous les \( I_n\) doivent être vide sauf un qui contiendra seulement \( \{ a \}\) (si \( I\) le contient).
+
+		Soit \( \epsilon>0\) avec \( \epsilon<b-a\) et l'intervalle
+		\begin{equation}
+			\mathopen[ a+\frac{ \epsilon }{ 4 } , b-\frac{ \epsilon }{ 4 } \mathclose]=\mathopen[ a' , b' \mathclose]\subset I.
+		\end{equation}
+		Si les \( a_n\) et le \( b_n\) sont le extrémités des \( I_n\) alors
+		\begin{equation}
+			\mathopen[ a' , b' \mathclose]\subset I=\bigcup_{n\geq 1}I_n\subset\bigcup_{n\geq 1}\mathopen] a_n-\frac{ \epsilon }{ 2^{n+2} } , b_n+\frac{ \epsilon }{ 2^{n+2} } \mathclose[=\bigcup_{n\geq 1}\mathopen] a'_n , b'_n \mathclose[
+		\end{equation}
+		où nous avons posé \( a'_n=a_n-\epsilon/2^{n+2}\) et \( b'_n=b_n+\epsilon/2^{n+2}\). Nous avons donc recouvert le compact\footnote{Lemme~\ref{LemOACGWxV}.} \( \mathopen[ a' , b' \mathclose]\) par des ouverts. Nous pouvons donc en extraire un sous-recouvrement fini (c'est la définition de la compacité), c'est-à-dire une partie finie \( F\) de \( \eN\) telle que
+		\begin{equation}
+			\mathopen[ a' , b' \mathclose]\subset \bigcup_{n\in F}\mathopen] a'_n , b'_n \mathclose[.
+		\end{equation}
+		Le lemme~\ref{LemPIOooRLkbo} nous dit alors que
+		\begin{equation}
+			\heartsuit=b'-a'\leq \ell\big( \bigcup_{n\in F}\mathopen] a'_n , b'_n \mathclose[ \big)\leq \sum_{n\in F}(b'_n-a'_n).
+		\end{equation}
+		La seconde inégalité se prouve en recopiant\footnote{Nous ne pouvons pas invoquer directement le lemme~\ref{LemZQUooMdCpq} parce que nous n'avons pas encore prouvé que \( \ell\) était une mesure sur \(  (\eR,\tribA_{\mS})\).} la preuve de~\ref{LemZQUooMdCpq}. Nous continuons le calcul :
+		\begin{equation}
+			\heartsuit\leq\sum_{n\in F}(b_n-a_n)+\sum_{n\in F}\frac{ \epsilon }{ 2^{n+1} }\leq \sum_{n\in F}(b_n-a_n)+\frac{ \epsilon }{2}.
+		\end{equation}
+		Mais \( b'-a'=(b-a)-\frac{ \epsilon }{2}\), donc
+		\begin{equation}
+			b-a-\frac{ \epsilon }{2}\leq \sum_{n\in F}(b_n-a_n)+\frac{ \epsilon }{2}.
+		\end{equation}
+		D'où nous déduisons que
+		\begin{equation}
+			\ell(I)=b-a\leq \sum_{n\in F}(b_n-a_n)+\epsilon\leq \sum_{n\in \eN}(b_n-a_n)+\epsilon=\sum_{n\in \eN}\ell(I_n)+\epsilon.
+		\end{equation}
+		Cela étant valable pour tout \( \epsilon\) nous déduisons que
+		\begin{equation}
+			\ell(I)\leq\sum_{n\in \eN}\ell(I_n).
+		\end{equation}
+
+		\spitem[Si \( I\) est de longueur infinie]
+
+		Étant donné que \( I\) est un intervalle de longueur infinie, il doit au moins contenir un ensemble du type \( \mathopen] -\infty , a \mathclose]\) ou \( \mathopen[ a , +\infty [\); donc  pour tout \( M>0\), il existe \( N\geq 1\) tel que
+		\begin{equation}
+			\ell\big( I\cap\mathopen[ -N , N \mathclose] \big)\geq M.
+		\end{equation}
+		Mais \( I\cap\mathopen[ -N , N \mathclose]\) est un intervalle et
+		\begin{equation}
+			I\cap\mathopen[ -N , N \mathclose]=\bigcup_{n\in \eN}I_n\cap\mathopen[ -N , N \mathclose]
+		\end{equation}
+		qui est une union disjointe. Par conséquent,
+		\begin{equation}
+			M\leq \ell\big( I\cap\mathopen[ -N , N \mathclose] \big)=\sum_n\ell\big( I_n\cap\mathopen[ -N , N \mathclose] \big)\leq\sum_n\ell(I_n).
+		\end{equation}
+		Cela étant vrai pour tout \( M>0\), nous concluons que
+		\begin{equation}
+			\sum_{n\in \eN}\ell(I_n)=\infty.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{remark}
+	Pour la preuve de~\ref{LemUMVooZJgMu} nous ne pouvons pas classer les \( I_n\) en ordre croissant comme nous l'avons fait dans la preuve de~\ref{LemIUQooEzHun}. En effet si \( I=\mathopen[ 0 , 1 \mathclose]\) et que nous recouvrons \( \mathopen[ 0 , \frac{ 1 }{2} [\) et \( \mathopen] \frac{ 1 }{2} , 1 \mathclose]\) par une infinité d'intervalles chacun, nous ne pouvons plus les classer par ordre croissant.
+\end{remark}
+
+\begin{proposition}[\cite{MesureLebesgueLi}]     \label{PropULFoodgXrR}
+	La fonction \( \ell\) ainsi définie est une mesure \( \sigma\)-finie sur l'algèbre de parties \( \tribA_{\mS}\).
+\end{proposition}
+
+\begin{proof}
+	Le fait que \( \ell\) soit \( \sigma\)-finie provient par exemple du fait que \( \ell\big( \mathopen] -n , n \mathclose[ \big)=2n\) tandis que \( \bigcup_n\mathopen] -n , n \mathclose[=\eR\).
+
+	Nous devons à présent prouver que \( \ell\) est additive. Soient \( (A_i)_{i\in \eN}\) des éléments disjoints de \( \tribA_{\mS}\), avec leurs décomposition minimales
+	\begin{equation}
+		A_i=\bigcup_{k=1}^nI^{(i)}_k.
+	\end{equation}
+	Pour chaque \( i\in \eN\), le lemme~\ref{LemUMVooZJgMu} nous indique que
+	\begin{equation}
+		\ell(A_i)=\sum_{k\in \eN}\ell(I^{(i)}_k).
+	\end{equation}
+	L'ensemble \( \eN\times \eN\) est dénombrable et nous pouvons considérer la décomposition
+	\begin{equation}
+		\bigcup_{i\in \eN}A_i=\bigcup_{(i,k)\in \eN\times \eN}I^{(i)}_k.
+	\end{equation}
+	Cette décomposition n'est pas spécialement minimale\footnote{\(  A_1\) pourrait contenir \(  \mathopen[ 0 , 1 \mathclose]\) et \(  A_2\) contenir \(  \mathopen] 1 , 2 \mathclose]\).} mais elle est disjointe.
+	Le lemme~\ref{LemUMVooZJgMu} donne
+	\begin{equation}
+		\ell(\bigcup_i A_i)=\sum_{(i,k)\in \eN\times \eN}\ell(I_k^{(i)})=\sum_{i\in \eN}\left( \sum_{k\in \eN}\ell(I^{(i)}_k)\right)=\sum_{i\in \eN}\ell(A_i).
+	\end{equation}
+	La décomposition de la somme sur \( \eN^2\) en deux sommes sur \( \eN\) est faite en vertu de la proposition~\ref{PropVQCooYiWTs}.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Mesure et tribu de Lebesgue}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem} \label{ThoDESooEyDOe}
+	Il existe une unique mesure \( \lambda\) sur \( \big( \eR,\Borelien(\eR) \big)\) telle que
+	\begin{equation}
+		\lambda\big( \mathopen] a , b \mathclose[ \big)=b-a
+	\end{equation}
+	pour tout \( a\leq b\) dans \( \eR\).
+\end{theorem}
+
+\begin{proof}
+
+	L'existence provient du théorème de prolongement de Hahn~\ref{ThoLCQoojiFfZ} : la mesure \( \ell\) sur \( (\tribA_{\mS})\) se prolonge à \( \sigma(\tribA_{\mS})=\Borelien(\eR)\).
+
+	Nous ne pouvons pas prouver l'unicité en invoquant la partie unicité de Hahn (c'est tentant parce que \( \ell\) est \( \sigma\)-finie) parce que dans ce théorème nous ne fixons la valeur de \( \lambda\) que sur une toute petite partie de \( \tribA_{\mS}\). Nous allons cependant voir que cette petite partie suffit à garantir l'unicité.
+
+	La classe
+	\begin{equation}
+		\tribD=\{ \mathopen] a , b \mathclose[\tq -\infty<a\leq b< +\infty \}
+	\end{equation}
+	est stable par intersection finie et engendre la tribu borélienne. En effet \( \tribD\) contient toutes les boules et donc une base dénombrable de la topologie de \( \eR\) (proposition~\ref{PropNBSooraAFr}). Donc tous les ouverts de \( \eR\) sont dans \( \sigma(\tribD)\) et \( \sigma(\tribD)=\Borelien(\eR)\). Nous pouvons donc dire grâce au théorème~\ref{ThoJDYlsXu} qu'il y a unicité de la mesure sur \( \Borelien(\eR)\) lorsque les valeurs sur \( \tribD\) sont fixées.
+\end{proof}
+
+\begin{definition}      \label{DefooYZSQooSOcyYN}
+	La mesure de l'espace mesuré \( \big( \eR,\Borelien(\eR),\lambda \big)\) donné par le théorème~\ref{ThoDESooEyDOe} est la \defe{mesure de Lebesgue}{mesure!de Lebesgue} sur \( \big( \eR,\Borelien(\eR) \big)\).
+
+	Nous définissons aussi la \defe{tribu de Lebesgue}{tribu!de Lebesgue} par la proposition~\ref{PropIIHooAIbfj} : \( \big( \eR,\Lebesgue(\eR),\lambda \big)\) est l'espace mesuré complété de \( \big( \eR,\Borelien(\eR), \lambda \big)\).
+\end{definition}
+
+
+\begin{remark}
+	Il n'est pas évident que la tribu de Lebesgue soit plus grande que celle des boréliens, ni que la tribu des parties soit plus grande que celle de Lebesgue. Nous mentionnons cependant les faits suivants.
+	%TODO : donner des exemples
+	\begin{enumerate}
+		\item
+		      Il existe des ensembles mesurables non-boréliens, et cela ne nécessite pas l'axiome du choix. Un argument classique de cardinalité est donné dans \cite{SFYoobgQUp}. La construction la plus explicite que j'aie trouvée est dans \cite{XSHoosgoQa}, mais ça a l'air de demander des connaissances précises sur les ordinaux.
+		\item
+		      Vu que l'ensemble de Cantor \( C\) est mesurable de mesure nulle (proposition~\ref{PropBEWooXZdKN}), tout sous-ensemble de Cantor est mesurable de mesure nulle parce que la tribu de Lebesgue est complète par définition. Le cardinal de \( \partP(C)\) est strictement supérieur à la puissance du continu, alors que le cardinal de l'ensemble des boréliens est au plus égal à la puissance du continu. Donc il existe des non boréliens contenus dans Cantor; de tels non boréliens sont alors mesurables au sens de Lebesgue.
+
+		\item
+		      Si nous admettons l'axiome du choix alors il existe des ensembles non mesurables au sens de Lebesgue. Nous en verrons un dans l'exemple~\ref{EXooCZCFooRPgKjj}.
+	\end{enumerate}
+\end{remark}
+
+\begin{example}[Un ouvert contenant tous les rationnels et de mesure arbitrairement petite]
+	Il est possible de construire un ouvert de \( \eR\) contenant \( \eQ\) et de mesure de Lebesgue plus petite que \( \epsilon\). Pour cela si \( (q_i)\) est une énumération des rationnels, il suffit de prendre
+	\begin{equation}
+		\mO=\bigcup_{n=1}^{\infty}B(q_n,\frac{ \epsilon }{ 2^{n+1} }).
+	\end{equation}
+	Cela est un ouvert comme union d'ouverts, ça contient tous les rationnels, et sa mesure se majore. En effet le théorème~\ref{ThoDESooEyDOe} donne \( \lambda\big( B(q_n,\frac{\epsilon }{ 2^n }) \big)=\frac{ \epsilon }{ 2^n }\). Vu que ces boules ne sont à priori pas disjointes, le lemme~\ref{LemPMprYuC} donne
+	\begin{equation}
+		\lambda(\mO) \leq \sum_{n=1}^{\infty}\frac{ \epsilon }{ 2^n }=\epsilon
+	\end{equation}
+	par \eqref{EqPZOWooMdSRvY} avec \( q=\frac{ 1 }{2}\).
+
+	Par complémentarité, nous pouvons construire un ensemble fermé de mesure non nulle et ne contenant aucun rationnel. Et même un fermé dans \( \mathopen[ 0 , 1 \mathclose]\), de mesure \( 1-\epsilon\) ne contenant aucun rationnel.
+
+	Cela peut surprendre parce qu'il existe des tonnes de suites d'irrationnels qui convergent vers des rationnels\footnote{Si \( q\in \eQ\) et \( r\in \eR\setminus \eQ\) alors la suite \( (q+r/10^k)_k\) est une suite d'irrationnels convergente vers le rationnel \( q\).}, et il semble difficile de créer un ensemble contenant beaucoup d'irrationnels tout en préservant la propriété de fermeture vis-à-vis des suites convergentes.
+\end{example}
+
+\begin{example}[Mesure finie, non borné]
+	Il existe des parties de \( \eR\) qui sont de mesure finie sans être bornés. Par exemple en posant
+	\begin{equation}
+		A=\bigcup_{n=1}^{\infty}B(n,\frac{1}{ 2^n }).
+	\end{equation}
+	La partie \( A\) n'est pas bornée parce que que \( \eN\subset A\). Mais en termes de mesure,
+	\begin{equation}
+		\lambda(A)\leq \sum_{n=1}^{\infty}\frac{1}{ 2^n }<\infty
+	\end{equation}
+	en vertu de la somme de la série géométrique, proposition \ref{PROPooWOWQooWbzukS}.
+\end{example}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Propriétés de la mesure de Lebesgue}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}
+	Tout ensemble dénombrable de \( \eR\) est mesurable de mesure nulle.
+\end{proposition}
+
+\begin{proof}
+	Un point de \( \eR\) est un intervalle de mesure nulle. Si \( D\) est dénombrable, il est union disjointes et dénombrable de points. Le lemme~\ref{LemUMVooZJgMu} nous dit alors que sa mesure est \( \lambda(D)=\sum_{i=1}^{\infty}\lambda(\{ a_i \})=0\).
+\end{proof}
+
+\begin{remark}
+	Il existe cependant des ensembles non dénombrables et tout de même de mesure nulle. Par exemple l'ensemble de Cantor (voir la proposition~\ref{PropBEWooXZdKN}).
+\end{remark}
+
+
+\begin{proposition}     \label{PropooOACLooLMIUuY}
+	La mesure de Lebesgue est invariante par translation, c'est-à-dire que si \( A\) est mesurable alors \( \lambda(A)=\lambda(A+\alpha)\) pour tout réel \( \alpha\).
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par les intervalles ouverts :
+	\begin{equation}
+		\lambda\big( \mathopen] a , b \mathclose[+\alpha \big)=\lambda\big( \mathopen] a+\alpha , b+\alpha \mathclose[ \big)=(b+\alpha)-(a+\alpha)=b-a=\lambda\big( \mathopen] a , b \mathclose[ \big).
+	\end{equation}
+	D'après ce qui est dit dans l'exemple~\ref{ExDMPoohtNAj}, la mesure de Lebesgue sur les boréliens est invariante par translation.
+
+	Si \( A\) est mesurable alors il existe un borélien \( B\) et un ensemble négligeable \( N\) tels que \( A=B\cup N\) par la caractérisation~\ref{EqFJIoorxZNU} de la complétion. Alors \( A+\alpha=B+\alpha\cup N+\alpha\) et \( N+\alpha\) est encore un ensemble négligeable. Donc \( \lambda(A+\alpha)=\alpha(B+\alpha)=\lambda(B)\).
+\end{proof}
+
+La mesure \( \ell\) définie sur l'algèbre de parties \( \tribA_{\mS}\) (voir proposition~\ref{PropULFoodgXrR}). La proposition~\ref{PropIUOoobjfIB} nous donne donc une mesure extérieure par
+\begin{equation}    \label{EqJGXoogdKqb}
+	\lambda^*(X)=\inf\{ \sum_n\ell(A_n);A_n\in\tribA_{\mS},X\subset\bigcup_nA_n \}.
+\end{equation}
+
+La proposition suivante montre que cette mesure extérieure peut être exprimée seulement avec des intervalles ouverts.
+\begin{proposition} \label{PropTNOooDcfwn}
+	Nous avons
+	\begin{equation}
+		\lambda^*(X)=\inf\{ \sum_{n\geq 1}\ell(I_n); I_n\text{ sont des intervalles ouverts et }X\subset\bigcup_nI_n \}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous savons que dans la définition \eqref{EqJGXoogdKqb}, chacun des \( A_n\) est une réunion disjointe d'intervalles (pas spécialement ouverts) deux à deux disjoints; donc
+	\begin{equation}
+		\lambda^*(X)=\inf\{ \sum_n\ell(I_n);I_n\in\mS,X\subset\bigcup_nI_n \}.
+	\end{equation}
+	Soit \( \epsilon>0\). Si \( A\subset\bigcup_nI_n\), pour chaque \( n\geq 1\) nous considérons un intervalle ouvert \( J_n\) tel que \( I_n\subset J_n\) et \( \ell(I_n)+\frac{ \epsilon }{ 2^n }\leq \ell(J_n)\). Faisant cela pour chacun des découpages de \( X\) en intervalles nous trouvons
+	\begin{equation}
+		\lambda^*(X)\leq \inf\{ \sum_n\ell(J_n)\text{ } J_n\text{ est ouvert et }X\subset\bigcup_nJ_n \}+\epsilon.
+	\end{equation}
+	Étant donné que \( \epsilon\) est arbitraire nous avons l'égalité.
+\end{proof}
+
+\begin{proposition}[\cite{MesureLebesgueLi}]    \label{PropMXIoojpKvd}
+	Si \( X\subset \eR\) est tel que \( \lambda^*(X)<\infty\) alors
+	\begin{enumerate}
+		\item   \label{ItemGJUoozrDILi}
+		      Pour tout \( \epsilon>0\) il existe un ouvert \( \Omega_{\epsilon}\) tel que
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      X\subset\Omega_{\epsilon}\\
+				      \lambda(\Omega_{\epsilon})\leq \lambda^*(X)+\epsilon.
+			      \end{numcases}
+		      \end{subequations}
+		\item   \label{ItemGJUoozrDILii}
+		      Il existe une intersection dénombrable d'ouverts \( G\) telle que
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      X\subset G\\
+				      \lambda(G)=\lambda^*(X).
+			      \end{numcases}
+		      \end{subequations}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Pour~\ref{ItemGJUoozrDILi}, la proposition~\ref{PropTNOooDcfwn} nous a déjà dit que
+	\begin{equation}
+		\lambda^*(X)=\inf\{ \sum_n\ell(I_n)\text{ } I_n\text{ est un intervalle ouvert}, X\subset\bigcup_nI_n \},
+	\end{equation}
+	donc si \( \epsilon>0\), il existe des intervalles ouverts \( I_n\) tels que
+	\begin{subequations}
+		\begin{numcases}{}
+			X\subset\bigcup_nI_n\\
+			\sum_n\ell(I_n)\leq \lambda^*(X)+\epsilon.
+		\end{numcases}
+	\end{subequations}
+	Si nous posons \( \Omega_{\epsilon}=\bigcup_nI_n\), alors nous avons bien
+	\begin{subequations}
+		\begin{numcases}{}
+			X\subset\Omega_{\epsilon}\\
+			\lambda(\Omega_{\epsilon})\leq\sum_n\ell(I_n)\leq \lambda^*(X)+\epsilon.
+		\end{numcases}
+	\end{subequations}
+
+	En ce qui concerne~\ref{ItemGJUoozrDILii}, pour chaque \( k\geq 1\) nous considérons l'ensemble \( \Omega_{1/k}\) obtenu comme précédemment avec \( \epsilon=1/k\) et nous posons \( G=\bigcap_{k\geq 1}\Omega_{1/k}\). Cela est une intersection dénombrable d'ouverts vérifiant \( X\subset G\) (parce que \( X\subset \Omega_{1/k}\) pour tout \( k\)) et donc \( \lambda^*(X)\leq\lambda^*(G)=\lambda(G)\). De plus pour tout \( k\) nous avons
+	\begin{equation}
+		\lambda(G)\leq(\Omega_{1/k})\leq \lambda^*(X)+\frac{1}{ k }
+	\end{equation}
+	pour tout \( k\). En faisant \( k\to \infty\) nous avons
+	\begin{equation}
+		\lambda(G)\leq \lambda^*(X).
+	\end{equation}
+	Au final
+	\begin{equation}
+		\lambda(G)\leq \lambda^*(X)\leq \lambda(G),
+	\end{equation}
+	d'où l'égalité.
+\end{proof}
+
+\begin{corollary}
+	Une partie \( N\subset \eR\) est négligeable\footnote{Définition~\ref{DefAVDoomkuXi}.} si et seulement si \( \lambda^*(N)=0\).
+\end{corollary}
+
+\begin{proof}
+	Nous savons que si \( N\) est négligeable il existe un borélien \( Y\) tel que \( N\subset Y\) avec \( \lambda(Y)=0\). Par conséquent\footnote{Au péril d'être lourd nous rappelons que \( \lambda^*\) est défini sur toutes les parties de \( \eR\).}
+	\begin{equation}
+		\lambda^*(N)\leq \lambda^*(Y)=\lambda(Y)=0.
+	\end{equation}
+
+	Pour l'implication inverse nous supposons que \( \lambda^*(N)=0\) et nous prenons l'ensemble \( G\) défini par la proposition~\ref{PropMXIoojpKvd}\ref{ItemGJUoozrDILii} : c'est un borélien contenant \( N\) et tel que \( \lambda(G)=\lambda^*(N)=0\). L'ensemble \( N\) est donc négligeable.
+\end{proof}
+
+\begin{theorem}[Régularité extérieure de la mesure de Lebesgue] \label{ThoHFXooONFRN}
+	Pour tout mesurable \( A\subset \eR\) nous avons
+	\begin{equation}
+		\lambda(A)=\inf\{ \lambda(\Omega); \Omega\text{ ouvert contenant } A \}.
+	\end{equation}
+\end{theorem}
+\index{régularité!extérieure de la mesure de Lebesgue}
+
+\begin{proof}
+	Nous commençons par le cas où \( B\) est un borélien.
+	\begin{subproof}
+
+		\spitem[Si \( B\) borélien, \( \lambda(B)<\infty\)]
+
+		Soit \( \epsilon>0\); par la proposition~\ref{PropMXIoojpKvd}\ref{ItemGJUoozrDILi} il existe un ouvert \( \Omega_{\epsilon}\) contenant \( B\) tel que \( \lambda(\Omega_{\epsilon})\leq \lambda^*(B)+\epsilon\). Vu qu'ici \( B\) est borélien, \( \lambda^*(B)=\lambda(B)\) et nous concluons que pour tout \( \epsilon\) il existe un ouvert \( \Omega_{\epsilon}\) tel que
+		\begin{subequations}
+			\begin{numcases}{}
+				B\subset\Omega_{\epsilon}\\
+				\lambda(\Omega_{\epsilon})\leq \lambda(B)+\epsilon,
+			\end{numcases}
+		\end{subequations}
+		et donc
+		\begin{equation}
+			\lambda(B)=\inf\{ \lambda(\Omega);\text{ } \Omega\text{ ouvert contenant } B\text{ } \}.
+		\end{equation}
+
+		\spitem[Si \( B\) borélien, \( \lambda(B)=+\infty\)]
+
+		Dans ce cas l'infimum est pris uniquement sur des ouverts \( \Omega\) tels que \( \lambda(\Omega)=\infty\).
+
+		\spitem[Si \( A\) est mesurable non borélien]
+
+		Nous passons maintenant au cas où \( A \) est mesurable sans être borélien. Il s'écrit donc \( A=B\cup N\) avec \( B\) borélien et \( N\) négligeable par la proposition~\ref{thoCRMootPojn}, et par définition \( \lambda(A)=\lambda(B)\). Si \( Y\) est un borélien tel que \( N\subset Y\) et \( \lambda(Y)=0\) alors
+		\begin{subequations}
+			\begin{align}
+				\lambda(A)=\lambda(B) & =\inf\{ \lambda(\Omega)\tq \text{ } \Omega\text{ ouvert}, B\subset\Omega \}\label{subeqMTHoopkSKOi}                                                           \\
+				                      & \leq\inf\{ \lambda(\Omega)\tq \text{ } \Omega\text{ ouvert}, B\cup N\subset\Omega \}  \label{subeqMTHoopkSKOii}                                               \\
+				                      & \leq\inf_{\Omega',Y'}\{ \lambda(\Omega'\cup Y')\tq \text{ } \Omega'\text{, } Y'\text{ ouverts}, B\subset\Omega', Y\subset Y' \}\label{subeqMTHoopkSKOiii}     \\
+				                      & \leq\inf_{\Omega',Y'}\{ \lambda(\Omega')+\lambda(Y')\tq \text{ } \Omega'\text{, } Y'\text{ ouverts},  B\subset\Omega',Y\subset Y' \}\label{subeqMTHoopkSKOiv} \\
+				                      & \leq\inf_{\Omega'}\{ \lambda(\Omega')\tq \text{ } \Omega'\text{ ouvert},  B\subset\Omega \}\label{subeqMTHoopkSKOv}                                           \\
+				                      & =\lambda(B).
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item \eqref{subeqMTHoopkSKOi} Le cas borélien déjà fait.
+			\item \eqref{subeqMTHoopkSKOii} Les ouverts \( \Omega\) tels que \( B\cup N\subset \Omega\) vérifient a fortiori \( B\subset \Omega\); nous avons donc agrandit l'ensemble sur lequel l'infimum est pris.
+			\item \eqref{subeqMTHoopkSKOiii} Parmi les ouverts \( \Omega\) qui recouvrent \( B\cup N\), il y a ceux de la forme \( \Omega'\cup Y'\) où \( \Omega'\) recouvre \( B\) et \( Y'\) est un ouvert contenant \( Y\). Donc nous avons rétréci l'ensemble sur lequel l'infimum est pris et par conséquent agrandit l'infimum.
+			\item \eqref{subeqMTHoopkSKOiv} Mesure d'une union majorée par la somme des mesures.
+			\item \eqref{subeqMTHoopkSKOv} Vu que \( Y\) est borélien, \( \lambda(Y)=\inf_{ Y'\text{ ouvert}}\{ \lambda(Y')\tq Y\subset Y' \}=0\). Donc pour tout \( \Omega'\) et tout \( \epsilon>0\), nous pouvons trouver un \( Y'\) vérifiant les conditions tel que \( \lambda(\Omega')+\lambda(Y')\leq \lambda(\Omega')+\epsilon\).
+		\end{itemize}
+		Toutes les inégalités sont des égalités en en particulier \eqref{subeqMTHoopkSKOii} donne
+		\begin{equation}
+			\lambda(A)=\inf\{ \lambda(\Omega)\tq \text{ } \Omega\text{ ouvert}, B\cup N\subset\Omega \},
+		\end{equation}
+		ce qu'il fallait.
+	\end{subproof}
+
+\end{proof}
+
+\begin{proposition}[\cite{MesureLebesgueLi}]    \label{PropEZNoofLkVb}
+	Si \( A\) est mesurable dans \( \eR\) et si \( \epsilon>0\) alors il existe un ouvert \( \Omega_{\epsilon}\) et un fermé \( F_{\epsilon}\) tels que
+	\begin{subequations}    \label{subeqHNEooaNqDu}
+		\begin{numcases}{}
+			F_{\epsilon}\subset A\subset \Omega_{\epsilon}\\
+			\lambda(\Omega_{\epsilon}\setminus F_{\epsilon})\leq \epsilon.
+		\end{numcases}
+	\end{subequations}
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par le cas où \( A\) est un borélien, que nous noterons \( B\).
+	\begin{subproof}
+		\spitem[Première étape]
+
+		Montrons qu'il existe un ouvert \( U_{\epsilon}\) tel que
+		\begin{subequations}
+			\begin{numcases}{}
+				B\subset U_{\epsilon}\\
+				\lambda(U_{\epsilon}\setminus B)\leq \frac{ \epsilon }{2}.
+			\end{numcases}
+		\end{subequations}
+		Si \( \lambda(B)<\infty\) alors le théorème~\ref{ThoHFXooONFRN} nous donne un ouvert \( U_{\epsilon}\) tel que \( B\subset U_{\epsilon}\) et \( \lambda(U_{\epsilon})\leq \lambda(B)+\frac{ \epsilon }{2}\). Nous avons alors
+		\begin{equation}
+			\lambda(\Omega_{\epsilon}\setminus B)=\lambda(\Omega_{\epsilon})-\lambda(B)\leq \frac{ \epsilon }{2}.
+		\end{equation}
+		Si par contre \( \lambda(B)=\infty\), nous posons \( B_n=B\cap\mathopen[ -n , n \mathclose]\) et \( \epsilon_n=\epsilon/2^{n+1}\). Pour chaque \( n\) nous avons un ouvert \( \Omega_n\) tel que
+		\begin{subequations}
+			\begin{numcases}{}
+				B_n\subset \Omega_n\\
+				\lambda(\Omega_n\setminus B_n)\leq \frac{ \epsilon }{ 2^{n+1} }
+			\end{numcases}
+		\end{subequations}
+		Par conséquent en posant \( \Omega=\bigcup_{n\geq 1}\Omega_n\) nous avons\footnote{Nous utilisons la petite relation ensembliste \( \big( \bigcup_nA_n \big)\setminus\big( \bigcup_nB_n \big)\subset \bigcup_n(A_n\setminus B_n)\).}
+		\begin{subequations}
+			\begin{numcases}{}
+				B\subset \Omega\\
+				\lambda(\Omega\setminus B)\leq \lambda\big( \bigcup_n(\Omega_n\setminus B_n) \big)\leq \sum_{n\geq 1}\lambda(\Omega_n\setminus B_n)=\frac{ \epsilon }{2}.
+			\end{numcases}
+		\end{subequations}
+		La première étape est terminée.
+
+		\spitem[Deuxième étape]
+
+		Nous prouvons à présent qu'il existe un ouvert \( \Omega_{\epsilon}\) et un fermé \( F_{\epsilon}\) tels que
+		\begin{subequations}
+			\begin{numcases}{}
+				F_{\epsilon}\subset B\subset \Omega_{\epsilon}\\
+				\lambda(\Omega_{\epsilon}\setminus B)\leq \frac{ \epsilon }{2}\\
+				\lambda(B\setminus F_{\epsilon})\leq \frac{ \epsilon }{2}.
+			\end{numcases}
+		\end{subequations}
+		L'ouvert \( \Omega_{\epsilon}\), nous l'avons déjà de l'étape précédente. Pour le fermé, nous appliquons la première étape au borélien \( B^c\); ce qui nous trouvons est un ouvert \( G_{\epsilon}\) tel que
+		\begin{subequations}
+			\begin{numcases}{}
+				B^c\subset G_{\epsilon}\\
+				\lambda(G_{\epsilon}\setminus B^c)\leq \frac{ \epsilon }{2}.
+			\end{numcases}
+		\end{subequations}
+		En posant \( F_{\epsilon}=G_{\epsilon}^c\) nous avons un fermé tel que \( F_{\epsilon}\subset B\) et
+		\begin{equation}
+			\lambda(B\setminus F_{\epsilon})=\lambda(F_{\epsilon}^c\setminus B^c)=\lambda(G_{\epsilon}\setminus B^c)\leq \frac{ \epsilon }{2}.
+		\end{equation}
+
+		\spitem[Dernière étape]
+
+		Les ensembles \( F_{\epsilon}\) et \( \Omega_{\epsilon}\) trouvés à la deuxième étape donnent bien les relations \eqref{subeqHNEooaNqDu}. En effet \( \Omega_{\epsilon}\setminus F_{\epsilon}=(\Omega_{\epsilon}\setminus B)\cup(B\setminus F_{\epsilon})\), donc
+		\begin{equation}
+			\lambda(\Omega_{\epsilon}\setminus F_{\epsilon})\leq \lambda(\Omega_{\epsilon}\setminus B)+\lambda(B\setminus F_{\epsilon})=\epsilon.
+		\end{equation}
+	\end{subproof}
+	Nous passons au cas où \( A=B\cup N\) est mesurable. Nous commençons par prendre les \( \Omega_{\epsilon}\) et \( F_{\epsilon}\) qui correspondent à \( B\) :
+	\begin{subequations}
+		\begin{numcases}{}
+			F_{\epsilon}\subset B\subset \Omega_{\epsilon}\\
+			\lambda(\Omega_{\epsilon}\setminus F_{\epsilon})\leq \epsilon.
+		\end{numcases}
+	\end{subequations}
+	Soit \( Y\) un borélien tel que \( N\subset Y\) et \( \lambda(Y)=0\) puis un ouvert \( Y'\) tel que \( \lambda(Y')\leq \epsilon\) et \( Y\subset Y'\). L'existence d'un tel \( Y'\) est assurée par la proposition~\ref{ThoHFXooONFRN} appliquée à \( Y\). Nous vérifions que les ensembles \( F_{\epsilon}\) et \( \Omega_{\epsilon}\cup Y'\) fonctionnent. En effet \( \Omega_{\epsilon}\cup Y'\setminus F_{\epsilon}\subset (\Omega_{\epsilon}\setminus F_{\epsilon})\cup Y'\), donc
+	\begin{subequations}
+		\begin{numcases}{}
+			F_{\epsilon}\subset B\cup N\subset \Omega_{\epsilon}\cup Y'\\
+			\lambda\big( (\Omega_{\epsilon}\setminus F_{\epsilon}) \big)\leq \lambda(\Omega_{\epsilon}\setminus F_{\epsilon})+\lambda(Y')\leq 2\epsilon.
+		\end{numcases}
+	\end{subequations}
+	Donc en réalité il faut choisir \( \Omega_{\epsilon/2}\), \( F_{\epsilon/2}\) et \( \lambda(Y')\leq \epsilon/2\).
+\end{proof}
+
+\begin{theorem}[Régularité intérieure de la mesure de Lebesgue]     \label{THOooJNMCooPMvCDq}
+	Si \( A\) est mesurable dans \( \eR\) alors
+	\begin{equation}
+		\lambda(A)=\sup\{ \lambda(K);  K\text{ compact contenu dans } A \}.
+	\end{equation}
+\end{theorem}
+\index{régularité!intérieure de la mesure de Lebesgue}
+
+\begin{proof}
+	Par la proposition~\ref{PropEZNoofLkVb} nous avons
+	\begin{equation}    \label{EqTPEooUHTbH}
+		\lambda(A)=\sup_{ F\text{ fermé dans } A}\lambda(F).
+	\end{equation}
+	Pour un tel \( F\) nous posons \( K_n=F\cap\mathopen[ -n , n \mathclose]\) qui est compact\footnote{parce que fermé et borné, théorème de Borel-Lebesgue~\ref{ThoXTEooxFmdI}.} et contenu dans \( B\). De plus le lemme~\ref{LemAZGByEs}\ref{ItemJWUooRXNPcii} nous dit que
+	\begin{equation}
+		\lambda(F)=\lim_{n\to \infty} \lambda(K_n)
+	\end{equation}
+	Donc tous les \( \lambda(F)\) peuvent être arbitrairement approchés par un \( \lambda(K)\) avec \( K\) compact dans \( A\), et le supremum \eqref{EqTPEooUHTbH} n'est pas affecté en nous restreignant à prendre des compacts contenus dans \( B\) :
+	\begin{equation}
+		\lambda(A)=\sup_{ F\text{ fermé dans } A}\lambda(F)=\sup_{ K\text{ compact dans } A}\lambda(K).
+	\end{equation}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Fonctions mesurables}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}
+	Soit une fonction \( f\colon \eR\to \eR\) mesurable telle que \( \lambda(f\neq 0)>0\). Alors il existe une partie mesurable \( M\) et \( m>0\) tels que \( \lambda(M)>0\) et \( f(x)>m\) pour tout \( x\in M\).
+\end{lemma}
+
+\begin{proof}
+	Nous notons
+	\begin{equation}
+		D=\{ x\in \eR\tq f(x)>0 \},
+	\end{equation}
+	et nous supposons que \( \lambda(D)>0\) pour fixer les idées (si ce n'est pas le cas, nous prenons pour \( D\) la partie où \( f\) est strictement négative).
+
+	Nous posons
+	\begin{subequations}
+		\begin{align}
+			A_1 & =\mathopen\lbrack 1 , \infty \mathclose\lbrack                       \\
+			A_n & =\mathopen\lbrack \frac{1}{ n } , \frac{1}{ n-1 } \mathclose\lbrack.
+		\end{align}
+	\end{subequations}
+	Ces parties \( A_n\) sont disjointes; donc les parties
+	\begin{equation}
+		D_n=\{ x\in \eR\tq f(x)\in A_n \}
+	\end{equation}
+	sont également disjointes. Vu que \( \bigcup_nA_n=\mathopen] 0 , \infty \mathclose[\), nous avons \( D=\bigcup_{n\in \eN}D_n\). Vu que
+	\begin{equation}
+		\lambda(D)=\sum_{n=1}^{\infty}\lambda(D_n)>0,
+	\end{equation}
+	il existe au moins un \( N\) tel que \( \lambda(D_N)>0\). Pour \( x\in D_N\) nous avons
+	\begin{equation}
+		f(x)\in A_N=\mathopen[ \frac{1}{ N } , \frac{1}{ N-1 } \mathclose[.
+	\end{equation}
+	Donc pour \( x\in D_N\) nous avons \( f(x)>\frac{1}{ N }\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Ensemble de Vitali (non mesurable)}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{example}[Un ensemble non mesurable au sens de Lebesgue\cite{ooIARBooPdOgAQ}]      \label{EXooCZCFooRPgKjj}
+	Nous considérons l'ensemble quotient \( \eR/\eQ\); chaque classe intersecte l'intervalle \( \mathopen[ 0 , 1 \mathclose]\). Grâce à l'axiome du choix (voir~\ref{NORooLMBYooYjUoju}) nous pouvons construire un ensemble \( V\) contenant un représentant dans \( \mathopen[ 0 , 1 \mathclose]\) de chaque classe. Un tel ensemble est un \defe{ensemble de Vitali}{Vitali (ensemble)}. Nous allons prouver que \( V\) n'est pas mesurable.
+
+	Supposons que \( V\) soit mesurable. Alors tous les ensembles de la forme \( V+q\) (\( q\in \eQ\)) sont mesurables et ont même mesure par la proposition~\ref{PropooOACLooLMIUuY}. Nous posons
+	\begin{equation}
+		A=\bigcup_{\substack{q\in\eQ\\-1\leq q\leq 1}}(V+q)\subset\mathopen[ -1 , 2 \mathclose].
+	\end{equation}
+	Cela est une union disjointe d'ensembles mesurables. Donc
+	\begin{equation}
+		\lambda(A)=\sum_{\substack{q\in\eQ\\-1\leq q\leq 1}}\lambda(V+q).
+	\end{equation}
+	Vu que \( A\subset\mathopen[ -1 , 2 \mathclose]\) nous avons \( \lambda(A)\leq 3\) et donc tous les termes de la somme doivent être nuls. Nous avons donc \( \lambda(A)=0\).
+
+	Prouvons toutefois que \( \mathopen[ 0 , 1 \mathclose]\subset A\), ce qui serait une contradiction. Soit \( x\in\mathopen[ 0 , 1 \mathclose]\); il est dans une des classes de \( \eR/\eQ\) et donc il existe \( v\in V\) tel que \( x-v\in \eQ\). De plus \( x,v\in \mathopen[ 0 , 1 \mathclose]\), donc
+	\begin{equation}
+		-1\leq x-v\leq 1.
+	\end{equation}
+	Cela fait que \( x\in V+(x-v)\subset A\). Nous avons donc \( x\in A\) et donc \( \mathopen[ 0 , 1 \mathclose]\subset A\). En conséquence de quoi nous aurions \( \lambda(A)\geq 1\).
+\end{example}
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Ensemble de Cantor}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous considérons la fonction donnant l'écriture décimale des nombres définie en \eqref{EqXXXooOTsCK}.
+
+\begin{definition}[Ensemble de Cantor]  \label{DefIYDooVIDJs}
+	Soit \( K_0=\mathopen[ 0 , 1 [\) et les ensembles \( K_n\) définis par la récurrence
+	\begin{equation}
+		K_{n+1}=\big( \frac{1}{ 3 }K_n \big)\cup\big( \frac{1}{ 3 }(K_n+2) \big).
+	\end{equation}
+	L'ensemble
+	\begin{equation}
+		K=\bigcap_{n\geq 0}K_n
+	\end{equation}
+	est l'\defe{ensemble triadique de Cantor}{Cantor!ensemble}\index{ensemble!de Cantor}.
+\end{definition}
+Les principales propriétés de l'ensemble de Cantor sont qu'il est non dénombrable (proposition~\ref{PropTPPooDySbm}) et borélien de mesure nulle (proposition~\ref{PropBEWooXZdKN}).
+
+\begin{normaltext}
+	L'idée de base pour prouver que l'ensemble \( K\) est non dénombrable est que ses éléments sont les nombres qui s'écrivent en base \( 3\) sans utiliser le chiffre \( 1\). En prenant un nombre sans \( 1\) écrit en base \( 3\), en changeant tous les \( 2\) en \( 1\) et en lisant le résultat en base \( 2\), nous obtenons tous les nombres possibles en base \( 2\) et donc une quantité non dénombrable. L'idée est donc simple et astucieuse. La mise en musique est un peu plus délicate parce qu'il faut faire attention aux queues de suites; c'est pour cela que nous avons construit l'ensemble de Cantor en partant de \( \mathopen[ 0 , 1 [\) et non de \( \mathopen[ 0 , 1 \mathclose]\).
+\end{normaltext}
+
+Le lemme suivant dit précisément ce que nous entendons en disant que les éléments de l'ensemble de Cantor sont les nombres qui s'écrivent en base \( 3\) sans utiliser le chiffre \( 1\). Nous rappelons que \( \eD_3\) est l'ensemble des suites constituées de \( 0\), \( 1\) et \( 2\), et qui ne se terminent pas par une suite infinie de \( 2\), voir~\ref{NORMALooTZWYooPMgOIm} pour une définition précise.
+\begin{lemma}[\cite{MonCerveau}]   \label{LemAZGoosKzEm}
+	Soit \( n\in \eN\) et \( x\in \eD_3\) (définition \ref{NORMALooTZWYooPMgOIm}); nous avons \( \varphi_3(x)\in K_n\in\) si et seulement si \( x_1,\ldots, x_n\in\{ 0,2 \}\).
+\end{lemma}
+
+\begin{proof}
+	Nous procédons par récurrence en commençant avec \( n=1\). Si \( x_1=1\) alors
+	\begin{equation}
+		\varphi_3(x)=\frac{1}{ 3 }+\sum_{k=2}^{\infty}\frac{ x_k }{ 3^k }\in\mathopen[ \frac{1}{ 3 } , \frac{ 2 }{ 3 } [.
+	\end{equation}
+	Notons que \( \varphi_3(x)=\frac{ 2 }{ 3 }\) est impossible parce que ça demanderait une queue de suite de \( 2\). Par conséquent \( \varphi_3(x)=\mathopen[ 0 , 1 [\setminus\mathopen[ \frac{1}{ 3 } , \frac{ 2 }{ 3 } [=K_1\).
+
+	Nous passons à la récurrence.
+
+	\begin{subproof}
+		\spitem[Sens direct]
+
+		Nous supposons que \( x_1,\ldots, x_{n+1}\in\{ 0,2 \}\) et nous montrons que \( \varphi_3(x)\in K_{n+1}\). Nous considérons deux cas suivant que \( x_1\) vaut \( 0\) ou \( 1\).  Pour comprendre pourquoi nous divisons les cas suivant la valeur de \( x_1\) et non de \( x_n\), faire un dessin de comment \( K_n\) se transforme en \( K_{n+1}\) et remarquer dans \( K_2\), les deux premiers segments ne sont pas une division du premier segment de \( K_1\), mais bien une copie des \emph{deux} segments de \( K_1\).
+
+		Écrivons encore \( \varphi_3(x)\) :
+		\begin{equation}
+			\varphi_3(x)=\sum_{k=1}^{n+1}\frac{ x_k }{ 3^k }+\sum_{k=n+2}^{\infty}\frac{ x_k }{ 3^k }.
+		\end{equation}
+		\begin{subproof}
+			\spitem[Si \( x_1=0\)]
+			Alors nous avons
+			\begin{equation}
+				3\varphi_3(x)=\sum_{k=2}^{\infty}\frac{ x_k }{ 3^{k-1} }=\sum_{k=1}^{\infty}\frac{ x_{k+1} }{ 3^k }=\varphi_3(x_2,\ldots, x_n,x_{n+1},\ldots)
+			\end{equation}
+			Vu que par hypothèse \( x_2,\ldots, x_{n+1}\) sont dans \( \{ 0,2 \}\) nous avons \( 3\varphi_3(x)\in K_n\) par hypothèse de récurrence. Cela implique que \( \varphi_3(x)\in K_{n+1}\).
+			\spitem[Si \( x_1=2\)]
+			Alors
+			\begin{equation}
+				\varphi_3(x)=\frac{ 2 }{ 3 }+\sum_{k=2}^{\infty}\frac{ x_k }{ 3^k },
+			\end{equation}
+			et
+			\begin{equation}
+				3\varphi_3(x)-2=\sum_{k=1}^{\infty}\frac{ x_{k+1} }{ 3^k }=\varphi(x_2,\ldots, x_{n+1},\ldots),
+			\end{equation}
+			et donc là nous avons \( 3\varphi_3(x)-2\in K_n\), ce qui implique encore \( \varphi_3(x)\in K_{n+1}\).
+		\end{subproof}
+
+		\spitem[Sens réciproque]
+
+		Nous devons maintenant prouver que \( \varphi_3(x)\in K_{n+1}\) implique \( x_1,\ldots, x_{n+1}\in\{ 0,2 \}\). Par le même calcul que précédemment nous avons soit
+		\begin{equation}
+			3\varphi_3(x)=\varphi_3(x_2,\ldots, x_{n+1},\ldots),
+		\end{equation}
+		si \( x_1=0\), soit
+		\begin{equation}
+			3\varphi_3(x)-2=\varphi_3(x_2,\ldots, x_{n+1},\ldots),
+		\end{equation}
+		si \( x_1=2\). Dans les deux cas, si \( x_l=1\) pour un certain \( 2\leq l\leq n+1\), alors l'hypothèse de récurrence donne que ces éléments ne sont pas dans \( K_n\) et donc \( \varphi_3(x)\) pas dans \( K_{n+1}\).
+
+	\end{subproof}
+\end{proof}
+
+\begin{corollary}[\cite{MonCerveau}]   \label{CorSEDooJmeXt}
+	En posant \( \eE=\{ x\in\eD_3\tq x_i\neq 1\forall i \}\) nous avons \( K=\varphi_3(\eE)\). Et plus précisément, \( \varphi_3\colon \eE\to K\) est une bijection.
+\end{corollary}
+
+\begin{proof}
+	Nous divisons la preuve en trois étapes.
+	\begin{subproof}
+		\spitem[Image contenue dans \( K\)]
+		Si \( x\in \eE\) et \( n\in \eN\) nous avons \( x_1,\ldots, x_n\in\{ 0,2 \}\) et donc \( \varphi_3(x)\in K_n\) par la proposition~\ref{LemAZGoosKzEm}. Donc
+		\begin{equation}
+			\varphi_3(x)\in\bigcap_{n\geq 1}K_n=K.
+		\end{equation}
+		\spitem[Injective]
+		L'application \( \varphi_3\colon \eE\to K\) est injective parce qu'elle est déjà injective depuis \( \eD_3\).
+		\spitem[Surjective]
+		Soit \( p\in K\subset\mathopen[ 0 , 1 [\). Vu que \( \varphi_3\colon \eD_3\to \mathopen[ 0 , 1 [\) est surjective (théorème~\ref{ThoRXBootpUpd}), il existe \( x\in \eD_3\) tel que \( \varphi_3(x)=p\). Pour tout \( n\) nous avons \( \varphi_3(x)\in K_n\) et donc \( x_1,\ldots, x_n\in\{ 0,2 \}\) et donc au final \( x\in \eE\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]    \label{PropTPPooDySbm}
+	L'ensemble de Cantor est non dénombrable.
+\end{proposition}
+
+\begin{proof}
+
+	Nous avons prouvé à la proposition~\ref{PropNNHooYTVFw} que l'ensemble \( \eD_2\) n'était pas dénombrable. Nous allons à présent prouver que l'application
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon \eD_2 & \to K                                                                   \\
+			c                & \mapsto \varphi_3(   c\text{ en remplaçant les } 1\text{ par des } 2  )
+		\end{aligned}
+	\end{equation}
+	est une bijection. Le fait que \( \psi\) soit injective est une conséquence du fait que ce soit la composition de deux applications injectives (le remplacement et \( \varphi_3\)). Il faut par contre montrer que l'image est égale à \( K\), en notant qu'il n'est pas évident à priori que l'image soit contenue dans \( K\).
+
+	L'opération qui consiste à remplacer les \( 1\) par des \( 2\) est une bijection \( \eD_2\to \eE\). Le corolaire~\ref{CorSEDooJmeXt} nous dit aussi que \( \varphi_3\colon \eE\to K\) est une bijection. En tant que composée de bijections, \( \psi\) est une bijection.
+
+	Étant en bijection avec \( \eD_2\) qui n'est pas dénombrable par la proposition~\ref{PropNNHooYTVFw}, l'ensemble de Cantor n'est pas dénombrable.
+\end{proof}
+
+\begin{proposition}[Ensemble de Cantor]    \label{PropBEWooXZdKN}
+	L'ensemble de Cantor\footnote{Définition~\ref{DefIYDooVIDJs}} est borélien, non dénombrable et de mesure nulle.
+\end{proposition}
+
+\begin{proof}
+	Nous reprenons les notations de la définition~\ref{DefIYDooVIDJs}. Le fait que l'ensemble de Cantor soit non dénombrable a été prouvé dans la proposition~\ref{PropTPPooDySbm}.
+
+	L'ensemble de Cantor étant une intersection dénombrable de boréliens, il est borélien par le lemme~\ref{LemBWNlKfA}. Vu que \( K_n\subset\mathopen[ 0 , 1 [\) nous avons \( \frac{1}{ 3 }K_n\leq \frac{1}{ 3 }\) et \( \frac{1}{ 3 }(K_n+2)\geq \frac{ 2 }{ 3 }\), donc \( K_n\) est une union disjointe de \( 2^n\) intervalles de mesure \( 2/3^n\). Nous avons donc
+	\begin{equation}
+		\lambda(K_n)=\left( \frac{ 2 }{ 3 } \right)^n.
+	\end{equation}
+	L'ensemble de Cantor étant contenu dans chacun des \( K_n\), sa mesure est plus petite que la mesure de chacun des \( K_n\) (lemme~\ref{LemPMprYuC}) et donc \( \lambda(K)\leq \left( \frac{ 2 }{ 3 } \right)^n\) pour tout \( n\); ergo \( \lambda(K)=0\).
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Mesure positive sans intervalle}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Vu que la mesure de Lebesgue est basée sur la mesure des intervalles et quelques extensions, nous sommes en droit de croire qu'une partie de mesure strictement positive de \( \eR\) doit toujours contenir un intervalle, éventuellement à partie de mesure nulle près. Eh bien non.
+
+\begin{example}[\cite{BIBooHPTSooFQrjLy}]       \label{EXooVZVIooXZvDaE}
+	Soient une énumération \( (q_i)\) de \( \eQ\cap\mathopen] 0 , 1 \mathclose[\) et une suite \( (r_i)\) telle que \( \sum_{i=0}^{\infty}r_i<\frac{ 1 }{2}\). Quitte à prendre \( r_i\) plus petit, supposons de plus que \( B(q_i,r_i)\subset \mathopen[ 0 , 1 \mathclose]\).
+
+	Nous posons \( J_n=B(q_n,r_n/2)\), \( J=\bigcup_{n=0}^{\infty}J_n\) et
+	\begin{equation}
+		B=\mathopen[ 0 , 1 \mathclose]\setminus J.
+	\end{equation}
+	Les parties \( J_i\) ne sont pas disjointes, donc, en notant \( \lambda\) la mesure de Lebesgue,
+	\begin{equation}
+		0<\lambda(J)\leq \sum_{i=0}^{\infty}\lambda(J_i)\leq \frac{ 1 }{2}.
+	\end{equation}
+	Mais, par définition, l'union \( \mathopen[ 0 , 1 \mathclose]=B\cup J\) est disjointe, donc
+	\begin{equation}
+		1=\lambda\big( \mathopen[ 0 , 1 \mathclose] \big)=\lambda(J)+\lambda(B).
+	\end{equation}
+	Nous en déduisons que
+	\begin{equation}
+		\frac{ 1 }{2}\leq \lambda(B)\leq 1.
+	\end{equation}
+
+	Je plaide que cette partie \( B\) ne contient non seulement aucun intervalle, mais qu'il est impossible de le compléter par une partie de mesure nulle pour obtenir un intervalle.
+
+	Soit un intervalle \( I\) dans \( \mathopen[ 0 , 1 \mathclose]\). Il existe \( q_i\in I\) et donc\footnote{C'est ici que nous utilisons le fait que \( r_i\) est choisi pour que \( B(q_i,r_i)\) ne déborde pas de \( \mathopen[ 0 , 1 \mathclose]\). Sinon il aurait fallu chipoter et prendre seulement une partie de la boule.}
+	\begin{equation}
+		J_i\subset B\setminus I.
+	\end{equation}
+	Donc il n'existe pas de parties de mesure nulle qui, ajoutée à \( B\), contiendrait \( I\).
+\end{example}
+
+Vous voulez un truc dingue à propos de la partie \( J\) de l'exemple \ref{EXooVZVIooXZvDaE} ? Le théorème \ref{THOooJNMCooPMvCDq} nous dit qu'il existe dans \( J\) des compacts de mesure arbitrairement proches de \( \lambda(J)\). Il existe donc des compacts non seulement de mesure strictement positive mais même de mesure assez grande, tout en étant infiniment découpés.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Intégrale par rapport à une mesure}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{normaltext}
+	Nous n'en avons pas encore terminé avec la théorie de la mesure, mais nous devons quand même définir les intégrales et voir quelques propriétés avant de continuer avec la mesure parce que la définition de la mesure sur un espace mesurable produit\footnote{Théorème~\ref{ThoWWAjXzi}.} passe par une intégrale.
+\end{normaltext}
+
+\begin{normaltext}      \label{NORMooFZEDooIxSgLe}
+	En théorie de l'intégration, la convention est la suivante : pour une fonction \( f\colon X\to \eR\), nous considérons sur \( X\) la tribu des ensembles mesurables au sens de Lebesgue sur \( X\), \emph{tout en gardant celle des boréliens sur l'ensemble d'arrivée}. C'est-à-dire qu'en théorie de l'intégration, c'est
+	\begin{equation}
+		f\colon \big( X,\Lebesgue(X) \big)\to \big( \eR,\Borelien(\eR) \big).
+	\end{equation}
+	En particulier, \( f\colon \eR^n\to \eR^m\) sera mesurable si pour tout borélien \( A\) de \( \eR^m\) l'ensemble \( f^{-1}(A)\) est Lebesgue-mesurable dans \( \eR^n\).
+
+	Étant donné qu'il est franchement difficile de créer des ensembles non mesurables au sens de Lebesgue, il est franchement difficile de créer des fonctions non mesurables à valeurs réelles. L'hypothèse de mesurabilité est donc toujours satisfaite dans les cas pratiques.
+
+	Voir aussi le point \ref{NORMooNFOMooYnaflN}, et les résultats qui suivent.
+\end{normaltext}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Définition pour les fonctions à valeurs positives}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Voir le thème \ref{THEMEooHINHooJaSYQW}.
+
+Une mesure \( \mu\) sur un espace mesurable \( (\Omega,\tribA)\) permet de définir une fonctionnelle linéaire sur l'ensemble des fonctions mesurables \( \Omega\to \eR\). Cette fonctionnelle linéaire est l'intégrale que nous allons définir à présent.
+
+\begin{definition}  \label{DefTVOooleEst}
+	Soient \( (\Omega,\tribA,\mu)\) un espace mesuré ainsi que \( Y\in\tribA\). Notre but est de définir
+	\begin{equation}
+		\int_Yfd\mu
+	\end{equation}
+	que nous nommons \defe{intégrales de \( f\)}{intégrale d'une fonction} sur \( Y\) pour la mesure \( \mu\).
+	\begin{subproof}
+		\spitem[Fonction étagée]		\label{ITEMooQVEAooZhRtUG}
+		Si \(f \colon \Omega\to \mathopen[ 0,\infty\mathclose[  \) est une fonction étagée\footnote{Définition~\ref{DefBPCxdel}.}, et si sa forme canonique\footnote{Définition \ref{DEFooKWQLooBRGore}. C'est le fait d'utiliser la forme canonique qui nous épargne de devoir prouver que la formule \eqref{EqooGAFMooZLzjPs} ne dépend pas de choix.} est \( f=\sum_{i=1}^n\alpha_i\mtu_{A_i}\) alors nous définissons
+		\begin{equation}        \label{EqooGAFMooZLzjPs}
+			\int_Yfd\mu=\sum_i\alpha_i\mu(Y\cap A_i).
+		\end{equation}
+
+		\spitem[Fonction mesurable à valeurs positives]		\label{ITEMooQGKEooZVhHHq}
+		Pour une fonction \( \tribA\)-mesurable \( f\colon \Omega\to \mathopen[ 0 , \infty \mathclose]\) nous définissons l'intégrale de \( f\) sur \( Y\) par
+		\begin{equation}        \label{EqDefintYfdmu}
+			\int_Yfd\mu=\sup\Big\{ \int_Y\psi d\mu\,\text{où } \psi\text{ est une fonction étagée finie telle que } 0\leq \psi\leq f \Big\}.
+		\end{equation}
+
+	\end{subproof}
+\end{definition}
+
+\begin{corollary}[\cite{MonCerveau}]	\label{CORooZPLOooXgbtDs}
+	Si \(f \colon Z\to \mathopen[ 0,\infty\mathclose]  \) sur \( Z\subset \Omega\) et si \( \mu(Z)=0\), alors
+	\begin{equation}
+		\int_Zf=0.
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Notons d'abord que si \( A\) est une partie mesurable de \( Z\), alors \( \mu(A)=0\) par le lemme \ref{LEMooECDQooEBtMxL}. Si \( f\) ne prend que des valeurs finies, tous les termes de \eqref{EqooGAFMooZLzjPs} sont nuls.
+
+	Si une fonction prends des valeurs infinies, la partie \ref{ITEMooQVEAooZhRtUG} de la définition n'est pas applicable. La partie \ref{ITEMooQGKEooZVhHHq} demande alors de prendre un supremum sur des fonctions qui rentrent dans la partie \ref{ITEMooQVEAooZhRtUG}.
+
+	Si \( \psi\) est une fonction étagée finie sur \( Z\), alors \( \int_Z\psi=0\) parce que tous les termes de \eqref{EqooGAFMooZLzjPs} sont nuls.
+\end{proof}
+
+
+\begin{remark}[Pourquoi se limiter aux fonctions positives]
+	Toute fonction mesurable à valeurs dans \(  \mathopen[ 0 , +\infty \mathclose]   \) est intégrable (l'intégrale vaut éventuellement \( +\infty\)). Au moment où une fonction commence à prendre des valeurs positives et négatives, nous demandons à pouvoir intégrer séparément les parties positives et négatives. C'est pour cela que nous disons qu'une fonction \( f\) à valeurs dans \( \eR\) est intégrable si \( | f |\) l'est.
+\end{remark}
+
+\begin{normaltext}
+	Le nombre \( \int_0^{\infty}f\) est défini directement par \eqref{EqDefintYfdmu} complètement indépendamment d'une éventuelle limite \( \lim_{x\to \infty} \int_{0}^xf\).
+	% laisser ce saut de ligne.
+	Cette limite sera traitée dans le lemme \ref{LEMooKGZDooWiKiHR}.
+\end{normaltext}
+
+\begin{normaltext}      \label{NORMooXTGBooKDnAhZ}
+	Si la fonction n'est pas mesurable ? Alors nous n'avons pas défini son intégrale. Supposons la plus simple des fonctions non mesurables sur \( \Omega\) : la fonction indicatrice d'une partie non mesurable :
+	\begin{equation}
+		f(x)=\begin{cases}
+			1 & \text{si } x\in A \\
+			0 & \text{sinon. }
+		\end{cases}
+	\end{equation}
+	où \( A\subset \Omega\) n'est pas mesurable\footnote{Ça existe, par exemple \ref{EXooCZCFooRPgKjj}.}.
+
+	Nous supposons que l'espace mesuré \( (\Omega,\tribF,\mu)\) est complet (définition~\ref{DefBWAoomQZcI}). Vu que \( A\) n'est pas mesurable, il n'est pas contenu dans une partie négligeable (parce que l'espace est complet), et nous voulons que l'intégrale ne soit pas nulle; sinon on se demande bien à quoi sert une intégrale.
+
+	Toute fonction étagée minorant \( f\) est forcément nulle en dehors de \( A\). Dès que \( B\) est une partie mesurable de mesure non nulle dans \( A\), le complémentaire de \( B\) dans \( A\) est encore non mesurable, et nous voulons encore que l'intégrale de \( f\) sur ce complémentaire soit non nulle.
+
+	Mais comme \( A\) n'est pas mesurable et que \( \mtu_A\) n'est le supremum d'aucune suite de fonctions mesurables (lemme~\ref{LemIGKvbNR}), bien que le supremum qui définirait l'intégrale de \( f\) existe (toute partie de \( \eR\) a un supremum), il est sans espoir que ce supremum ait un sens que l'on puisse interpréter en tant que mesure de \( f\).
+\end{normaltext}
+
+\begin{lemma}  \label{LEMooHAUGooWITETb}
+	L'intégrale d'une fonction positive nulle presque partout est nulle.
+\end{lemma}
+
+\begin{proof}
+	Soient un espace mesuré \( (\Omega, \tribA,\mu)\), et une fonction mesurable \(f \colon \Omega\to \mathopen[ 0 , \infty \mathclose]\). Nous posons
+	\begin{equation}
+		\Omega_+=\{ x\in \Omega\tq f(x)\neq 0 \}.
+	\end{equation}
+	L'hypothèse est que \( \mu(\Omega_+)=0\). Nous devons prouver que \( \int_{\Omega}fd\mu=0\). Vu que \( f\) est positive, nous utilisons la définition \ref{EqooGAFMooZLzjPs}. Soit une fonction étagée positive \( \psi\) minorant \( f\). Nous la décomposons en
+	\begin{equation}
+		\psi=\sum_{k=1}^n\psi_k\mtu_{A_k}
+	\end{equation}
+	où les \( A_k\) sont mesurables et \( \psi_k\in\mathopen[ 0 , \infty \mathclose[\). Nous allons prouver que \( \psi_i\mu(A_k)=0\) pour tout \( k\), en séparant trois cas.
+
+	\begin{subproof}
+		\spitem[Si \( A_k\cap \Omega_+=\emptyset\)]
+		Soit \( x\in A_k\). Nous avons
+		\begin{equation}
+			0=\psi(x)=\sum_k\psi_k\mtu_{A_k}(x)=\psi_k.
+		\end{equation}
+		Donc \( \psi_k=0\).
+		\spitem[Si \( A_k\subset\Omega_+\)]
+		Alors, par le lemme \ref{LemPMprYuC}, \( \mu(A_k)\leq \mu(\Omega_+)=0\) et donc \( \psi_k\mu(A_k)=0\).
+		\spitem[Si \( A_k\cap \Omega_+\neq A_k\)]
+		Soit \( x\in A_k\setminus \Omega_+\). Nous avons
+		\begin{equation}
+			\psi_k=\psi(x)\leq f(x)=0,
+		\end{equation}
+		et donc encore \( \psi_k=0\).
+	\end{subproof}
+	Nous avons donc prouvé que pour toute fonction étagée positive minorant \( f\),
+	\begin{equation}
+		\int_{\Omega}\psi d\mu= \sum_{k=1}^n\psi_k\mu(A_k)=0.
+	\end{equation}
+	Le supremum est donc nul.
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Premières propriétés}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{normaltext}
+	Si \( (\Omega,\tribA,\mu)\) est un espace mesurable, et si \( Y\) est un élément de \( \tribA\), nous avons l'espace mesurable \( (Y,\tribA_Y,\mu_Y)\) donné par
+	\begin{itemize}
+		\item \( \tribA_y=\{ B\cap Y\tq B\in \tribA \}\),
+		\item \( \mu_Y=\mu\).
+	\end{itemize}
+	Et là, nous arrivons à un problème de notations parce que \( \int_Yfd\mu\) peut désigner l'intégrale de \( f\) sur \( Y\) dans \( (\Omega,\tribA,\mu)\) ou l'intégrale de \( f\) sur \( Y\) dans \( (Y,\tribA_Y,\mu_Y)\).
+
+	Heureusement, nous allons tout de suite montrer que ces deux choses sont identiques.
+\end{normaltext}
+
+
+\begin{lemma}
+	Soit un espace mesuré \( (\Omega,\tribA,\mu)\) ainsi que \( Y\in\tribA\). Nous considérons une fonction \( f\colon \Omega\to \eR^+\) qui est \( \tribA\)-mesurable et intégrable sur \( Y\).
+
+	Alors, avec des notations que j'espère être claires,
+	\begin{enumerate}
+		\item
+		      \( f\) est \( \tribA_Y\)-mesurable,
+		\item
+		      \( f\) est \( (Y,\tribA_Y,\mu_Y)\)-intégrable,
+		\item
+		      nous avons l'égalité
+		      \begin{equation}
+			      \int_{(Y,\tribA_Y,\mu_Y)}f|_Y=\int_{(Y\subset \Omega,\tribA,\mu)}f.
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Nous considérons les deux ensembles suivants :
+	\begin{subequations}
+		\begin{align}
+			S_1 & =\{ \psi\text{ étagées sur } Y\text{ et majorées par } f|_Y \}    \\
+			S_2 & =\{ \psi\text{ étagées sur } \Omega\text{ et majorées par } f \}.
+		\end{align}
+	\end{subequations}
+	Nous considérons l'application suivante :
+	\begin{equation}
+		\begin{aligned}
+			s\colon S_1 & \to S_2                      \\
+			s(\psi)(x)  & =\begin{cases}
+				               \psi(x) & \text{si } x\in Y \\
+				               0       & \text{sinon.}
+			               \end{cases}
+		\end{aligned}
+	\end{equation}
+	L'application \( s\) est une bijection.
+
+	Pour \( \psi\in S_1\) nous avons
+	\begin{equation}
+		\psi=\sum_{k=1}^n\psi_k\mtu_{A_k}|_Y
+	\end{equation}
+	avec \( A_k\in \tribA_Y\subset \tribA\) et \( \mtu_{A_k}|_Y\colon Y\to \{ 0,1 \}\). Nous avons aussi
+	\begin{equation}
+		s(\psi)=\sum_{k}\psi_k\mtu_{A_k}
+	\end{equation}
+	avec \( \mtu_{A_k}\colon \Omega\to \{ 0,1 \}\).
+
+	En ce qui concerne les intégrales de ces fonctions étagées, nous avons
+	\begin{subequations}
+		\begin{align}
+			\int_{(Y,\tribA_Y,\mu_Y)}\psi & =\sum_{k=1}^n\psi_k\mu_Y(A_k\cap Y)                     \\
+			                              & =\sum_{k=1}^n\psi_k\mu(A_k) \label{SUBEQooGWYGooOuucEo} \\
+			                              & =\int_{(Y\subset \Omega,\tribA,\mu)}s(\psi).
+		\end{align}
+	\end{subequations}
+	Justifications. Pour passer à \eqref{SUBEQooGWYGooOuucEo} nous avons utilisé d'abord que \( A_k\subset Y\) et ensuite que \( \mu_Y(A_k)=\mu(A_k)\).
+
+	Nous sommes maintenant prêts à prouver l'égalité du lemme. Nous avons ceci :
+	\begin{subequations}
+		\begin{align}
+			\int_{(Y,\tribA_Y,\mu_Y)}f|_Y & =\sup\{ \int_{(Y,\tribA_Y,\mu_Y)}\psi\tq \psi\in S_1 \}                 \\
+			                              & =\sup\{ \int_{(Y\subset \Omega,\tribA,\mu)}s(\psi)\tq \psi\in S_1 \}    \\
+			                              & =\sup\{ \int_{(Y\subset \Omega,\tribA,\mu)}\varphi\tq \varphi\in S_2 \} \\
+			                              & =\int_{(Y\subset\Omega,\tribA,\mu)}f.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{lemma}       \label{LemooPJLNooVKrBhN}
+	Si \( (\Omega,\tribA,\mu)\) est un espace mesuré et si \( B\in \tribA\) alors
+	\begin{equation}
+		\mu(B)=\int_B1d\mu=\int_{\Omega}\mtu_B.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	La fonction caractéristique d'une partie mesurable est une fonction étagée dont la forme canonique est \( \mtu_B=1\cdot \mtu_B+0\times \mtu_{B^c}\). Son intégrale est donc
+	\begin{equation}
+		\int\mtu_Bd\mu=1\times \mu(B)+0\times \mu(B^c)=\mu(B)
+	\end{equation}
+	parce que \( 0\times \mu(B^c)=0\), même si \( \mu(B^c)=\infty\), comme nous l'avons convenu en~\ref{normooGAAJooUPCbzG}.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooGTMVooPHcrRl}
+	Soient une fonction \( f\colon (\Omega,\tribA,\mu)\to \eR^+\) et une fonction \( g\) intégrable sur \( \Omega\) telle que \( f\leq g\). Alors \( f\) est intégrable.
+\end{proposition}
+
+\begin{proof}
+	Une fonction étagée qui minore \( f\) minore également \( g\). Donc l'ensemble sur lequel il faut faire le supremum pour définir \( \int_{\Omega}f\) est inclus dans celui pour \( \int_{\Omega}g\). Le second supremum étant fini, le premier l'est également.
+\end{proof}
+
+\begin{lemma}       \label{LEMooSPOFooBxDEAV}
+	Soient un espace mesuré \( (\Omega,\tribA,\mu)\), une fonction \( f\colon \Omega\to \eR^+\) et \( Y\in\tribA\). Nous avons :
+	\begin{equation}        \label{EQooSBDKooPTDEcr}
+		\int_Yfd\mu=\int_{\Omega}f\mtu_Yd\mu.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties, selon la généralité.
+	\begin{subproof}
+		\spitem[Si \( f\) est étagée]
+		Nous posons \( f=\sum_{k=1}^nf_k\mtu_{A_k}\) avec \( f_k\in \eR^+\). Dans ce cas,
+		\begin{equation}
+			f\mtu_Y=\sum_kf_k\mtu_{A_k\cap Y}
+		\end{equation}
+		est encore une fonction étagée. Donc nous avons d'une part
+		\begin{equation}
+			\int_{\Omega}f\mtu_Y=\int_{\Omega}\sum_kf_k\mtu_{A_k\cap Y}=\sum_kf_k\mu(A_k\cap Y),
+		\end{equation}
+		et d'autre part,
+		\begin{equation}
+			\int_Yfd\mu=\sum_kf_k\mu(Y\cap A_k),
+		\end{equation}
+		\spitem[Si \( f\) est à valeurs positives]
+		Nous posons
+		\begin{equation}
+			S_1=\{ \psi\text{ étagées sur } \Omega\tq 0\leq \psi\leq  f\mtu_{Y} \}
+		\end{equation}
+		et
+		\begin{equation}
+			S_2=\{ \psi\mtu_Y\tq \psi\text{ étagée avec } 0\leq\psi\leq f \}.
+		\end{equation}
+		Nous prouvons que \( S_1=S_2\).
+
+		Si \( \psi\in S_1\), alors
+		\begin{equation}
+			0\leq \psi\leq f\mtu_Y\leq f.
+		\end{equation}
+		De plus comme \( \psi=0\) hors de \( Y\) nous avons \( \psi=\psi\mtu_Y\).
+
+		Pour l'autre inclusion, soit \( 0\leq \psi\leq f\) pour une fonction étagée \( \psi\) et montrons que \( \psi\mtu_Y\in S_1\). L'application \( \psi\mtu_Y\) est étagée sur \( \Omega\) et vérifie
+		\begin{equation}
+			0\leq \psi\mtu_Y\leq f\mtu_Y
+		\end{equation}
+		parce que \( \psi\leq f\).
+		\spitem[L'égalité à prouver]
+		Dans l'égalité \ref{EQooSBDKooPTDEcr} à prouver, le membre de droite est, d'après la définition \ref{EqDefintYfdmu},
+		\begin{equation}
+			\int_{\Omega}f\mtu_Y=\sup\{ \int\psi\tq \psi\in S_1 \}.
+		\end{equation}
+		Il nous reste donc à prouver que \(  \int_Yf\) se calcule de la même façon avec les éléments de \( S_2\). D'abord nous copions la définition :
+		\begin{equation}
+			\int_Yf=\sup\{ \int_Y\psi\tq 0\leq \psi\leq f \}.
+		\end{equation}
+		Ensuite nous réfléchissons un peu. Si \( 0\leq \psi\leq f\) avec \( \psi=\sum_k\psi_k\mtu_{A_k}\), alors
+		\begin{equation}
+			\int_Y\psi=\sum_k\mu(A_k\cap Y)\psi_k=\int_Y\psi\mtu_{Y}=\int_{\Omega}\psi\mtu_Y.
+		\end{equation}
+		La dernière égalité est la partie déjà faite, à propos des fonctions étagées. Nous avons donc bien
+		\begin{equation}
+			\int_Yf=\sup\{ \int_Ys\tq s\in S_2 \}.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Propriétés plus avancées}
+%---------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Convergence monotone}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Le théorème suivant est très utile parce que le théorème fondamental d'approximation~\ref{THOooXHIVooKUddLi} donne les fonctions étagées qu'il faut.
+
+\begin{theorem}[Théorème de la convergence monotone ou de Beppo-Levi\cite{mathmecaChoi}] \label{ThoRRDooFUvEAN}
+	Soit un espace mesuré \( (\Omega,\tribA,\mu)\) et \( (f_n)\) une suite croissante de fonctions mesurables à valeurs dans \( \mathopen[ 0 , \infty \mathclose]\). Alors la limite ponctuelle \( \lim_{n\to \infty} f_n\) existe, est mesurable et
+	\begin{equation}    \label{EqFHqCmLV}
+		\lim_{n\to \infty} \int_{\Omega}f_nd\mu= \int_{\Omega}\lim_{n\to \infty} f_nd\mu,
+	\end{equation}
+	cette intégrable valant éventuellement \( \infty\).
+\end{theorem}
+\index{théorème!convergence!monotone}
+\index{théorème!Beppo-Levi}
+\index{permuter!limite et intégrale!convergence monotone}
+
+\begin{proof}
+	La limite ponctuelle de la suite est la fonction à valeurs dans \( \mathopen[ 0 , \infty \mathclose]\) donnée par
+	\begin{equation}
+		f(x)=\lim_{n\to \infty} f_n(x).
+	\end{equation}
+	Ces limites existent parce que pour chaque \( x\) la suite \( f_n(x)\) est une suite numérique croissante. Nous notons
+	\begin{equation}
+		I_0=\int_{\Omega}fd\mu.
+	\end{equation}
+	Nous posons par ailleurs
+	\begin{equation}
+		I_n=\int_{\Omega}f_n.
+	\end{equation}
+	Cela est une suite numérique croissante qui a par conséquent une limite que nous notons \( I=\lim_{n\to \infty} I_n\). Notre objectif est de montrer que \( I=I_0\). D'abord par croissance de la suite, pour tous \( n\) nous avons \( I_n\leq I_0\), par conséquent \( I\leq I_0\).
+
+	Nous prouvons maintenant l'inégalité dans l'autre sens en nous servant de la définition \eqref{EqDefintYfdmu}. Soit une fonction étagée \( h\) telle que \( h\leq f\), et une constante \( 0<C<1\). Nous considérons les ensembles
+	\begin{equation}
+		E_n=\{ x\in\Omega\tq f_n(x)\geq Ch(x) \}.
+	\end{equation}
+	Ces ensembles vérifient les propriétés \( E_n\subset E_{n+1}\) et \( \bigcup_{n=1}^{\infty}E_n=\Omega\). Pour chaque \( n\) nous avons les inégalités
+	\begin{equation}
+		\int_{\Omega}f_n\geq\int_{E_n}f_n\geq C\int_{E_n}h.
+	\end{equation}
+	Si nous prenons la limite \( n\to\infty\) dans ces inégalités,
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}f_n\geq C\lim_{n\to \infty} \int_{E_n}h=C\int_{\Omega}h.
+	\end{equation}
+	Par conséquent \( \lim_{n\to \infty} \int f_n\geq C\int_{\Omega}h\). Mais étant donné que cette inégalité est valable pour tout \( C\) entre \( 0\) et \( 1\), nous pouvons l'écrire sans le \( C\) :
+	\begin{equation}        \label{EqzAKEaU}
+		\lim_{n\to \infty} \int_{\Omega}f_n\geq \int_{\Omega}h.
+	\end{equation}
+	Par définition, l'intégrale de \( f\) est donné par le supremum des intégrales de \( h\) où \( h\) est une fonction simple dominée par \( f\). En prenant le supremum sur \( h\) dans l'équation \eqref{EqzAKEaU} nous avons
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}f_n\geq\int_{\Omega}f,
+	\end{equation}
+	ce qu'il nous fallait.
+\end{proof}
+
+\begin{remark}
+	La proposition~\ref{THOooXHIVooKUddLi} ainsi que le lemme~\ref{LemYFoWqmS} montrent qu'une fonction mesurable peut-être écrite comme limite croissante de fonctions simples. Cela permet de démontrer des théorèmes en commençant par prouver sur les fonctions simples et en utilisant Beppo-Levi pour généraliser.
+\end{remark}
+
+\begin{remark}
+	Une des raisons de demander la positivité des fonctions \( f_n\) est de n'avoir pas d'ambiguïté à parler d'intégrales qui valent \( \infty\). Si par exemple nous prenons \( \Omega=\mathopen[ 0 , 1 \mathclose]\) et que nous considérons
+	\begin{equation}
+		f_n(x)=\begin{cases}
+			0             & \text{si } x\leq \frac{1}{ n } \\
+			\frac{1}{ x } & \text{sinon}.
+		\end{cases}
+	\end{equation}
+	Ce sont des fonctions intégrables, mais la limite étant la fonction \( 1/x\), l'égalité \eqref{EqFHqCmLV} est une égalité entre deux intégrales valant \( \infty\).
+\end{remark}
+
+\begin{corollary}[Inversion de somme et intégrales] \label{CorNKXwhdz}
+	Si \( (u_n)\) est une suite de fonctions mesurables positives ou nulles, alors
+	\begin{equation}
+		\sum_{i=0}^{\infty}\int u_i=\int\sum_{i=0}^{\infty}u_i.
+	\end{equation}
+\end{corollary}
+\index{permuter!somme et intégrale}
+
+\begin{proof}
+	Nous considérons la suite des sommes partielles de \( (u_n)\) : \( f_n(x)=\sum_{i=0}^nu_i(x)\). Le théorème de la convergence monotone (théorème~\ref{ThoRRDooFUvEAN}) implique que
+	\begin{equation}
+		\lim_{n\to \infty} \int f_n=\int\lim_{n\to \infty} f_n.
+	\end{equation}
+	Nous remplaçons maintenant \( f_n\) par sa valeur en termes des \( u_i\) et dans le membre de gauche nous permutons l'intégrale avec la somme finie :
+	\begin{equation}
+		\lim_{n\to \infty} \sum_{i=0}^{n}\int u_i=\int\sum_{i=0}^{\infty}u_n,
+	\end{equation}
+	ce qu'il fallait démontrer.
+\end{proof}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Lemme de Fatou}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+\begin{lemma}[Lemme de Fatou]\index{lemme!Fatou}\index{Fatou}   \label{LemFatouUOQqyk}
+	Soit \( (\Omega,\tribA,\mu)\) un espace mesuré et \( f_n\colon \Omega\to \mathopen[ 0 , \infty \mathclose]  \) une suite de fonctions mesurables. Alors la fonction \( f(x)=\liminf f_n(x)\) est mesurable et
+	\begin{equation}
+		\int_{\Omega}\liminf f_nd\mu\leq\liminf\int_{\Omega}f_nd\mu.
+	\end{equation}
+\end{lemma}
+%TODOooPOCPooVfFRWH : Il faut encore prouver la mesurabilité. Pour ça, il faudra citer un théorème du genre de celui fait avec le sup.
+% c'est déjà dans ma liste.
+
+\begin{proof}
+	Nous posons
+	\begin{equation}
+		g_n(x)=\inf_{i\geq n}f_i(x).
+	\end{equation}
+	Cela est une suite croissance de fonctions positives mesurables telles que, par définition,
+	\begin{equation}
+		\lim_{n\to \infty}g_n(x)=\liminf f_n(x).
+	\end{equation}
+	Nous pouvons y appliquer le théorème de la convergence monotone,
+	\begin{equation}
+		\lim_{n\to \infty} \int g_n(x)=\int\liminf f_n(x).
+	\end{equation}
+	Par ailleurs, pour chaque \( i\geq n\) nous avons
+	\begin{equation}
+		\int g_n\leq \int f_i,
+	\end{equation}
+	en passant à l'infimum nous avons
+	\begin{equation}
+		\int g_n\leq \inf_{i\geq n}\int f_i,
+	\end{equation}
+	et en passant à la limite nous avons
+	\begin{equation}
+		\int\liminf f_n=\lim_{n\to \infty} \int g_n\leq \lim_{n\to \infty} \inf_{i\geq n}\int f_i=\liminf_{i\to\infty}\inf f_i.
+	\end{equation}
+\end{proof}
+
+L'inégalité donnée dans ce lemme n'est en général pas une égalité, comme le montre l'exemple suivant :
+\begin{equation}
+	f_i=\begin{cases}
+		\mtu_{\mathopen[ 0 , 1 \mathclose]} & \text{si } i\text{ est pair}    \\
+		\mtu_{\mathopen[ 1 , 2 \mathclose]} & \text{si } i\text{ est impair}.
+	\end{cases}
+\end{equation}
+Nous avons évidemment \( g_n(x)=0\) tandis que \( \int_{\mathopen[ 0 , 2 \mathclose]}f_i=1\) pour tout \( i\).
+
+\begin{theorem}[\cite{MesureLebesgueLi}]        \label{ThoooCZCXooVvNcFD}
+	Soient \( f,g\) des fonctions étagées positives\footnote{Pour le cas plus général, voir \ref{PROPooFIYEooCpdmwZ}.} sur \( (\Omega,\tribA,\mu)\). Alors si \( \alpha\in\mathopen[ 0 , \infty \mathclose]\) nous avons
+	\begin{enumerate}
+		\item
+		      \begin{equation}
+			      \int_{\Omega}(\alpha f)d\mu=\alpha\int_{\Omega}fd\mu.
+		      \end{equation}
+		\item       \label{ITEMooBLEVooDznQTY}
+		      \begin{equation}
+			      \int_{\Omega}(f+g)d\mu=\int_{\Omega}fd\mu+\int_{\Omega}gd\mu.
+		      \end{equation}
+		      \item\label{ITEMooOJRAooQkoQyD}
+		      Si \( a_k\in \eR^+\) et si les \( f_k\) sont étagées positives,
+		      \begin{equation}
+			      \int_{\Omega}\left( \sum_{k=1}^na_kf_k \right)=\sum_{k=1}^na_k\left( \int_{\Omega} f_kd\mu \right).
+		      \end{equation}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En ce qui concerne le produit par un nombre, tout repose sur le fait que
+	\begin{equation}
+		(\alpha f)^{-1}(\alpha a_i)=f^{-1}(a_i),
+	\end{equation}
+	ce qui fait que si la représentation canonique de \( f\) est \( f=\sum_ia_i\mtu_{A_i}\) alors la représentation canonique de \( \alpha f\) est \( \alpha f=\sum_i(\alpha a_i)\mtu_{A_i}\). Donc
+	\begin{equation}
+		\int_{\Omega}\alpha fd\mu=\sum_i\alpha a_i\mu(A_i)=\alpha \sum_ia_i\mu(A_i)=\alpha\int_{\Omega}fd\mu.
+	\end{equation}
+
+	Pour la somme c'est plus lourd. Soient les formes canoniques
+	\begin{subequations}
+		\begin{align}
+			f & =\sum_ia_i\mtu_{A_i}  \\
+			g & =\sum_jb_j\mtu_{B_j}.
+		\end{align}
+	\end{subequations}
+	Vu que l'union des \( B_j\) est \( \Omega\) nous avons l'union disjointe \( A_i=\bigcup_jA_i\cap B_j\) et donc \( \mu(A_i)=\sum_j\mu(A_i\cap B_j)\). Nous avons donc pour les intégrales :
+	\begin{subequations}
+		\begin{align}
+			\int_{\Omega}fd\mu & =\sum_ia_i\sum_j\mu(A_i\cap B_j)  \\
+			\int_{\Omega}gd\mu & =\sum_kb_k\sum_l\mu(B_k\cap A_l).
+		\end{align}
+	\end{subequations}
+	Pour la somme :
+	\begin{equation}
+		\int_{\Omega}fd\mu+\int_{\Omega}gd\mu=\sum_{k,l}(a_k+b_l)\mu(A_k\cap B_l).
+	\end{equation}
+
+	Nous devons maintenant évaluer \( \int_{\Omega}(f+g)d\mu\). Pour cela nous remarquons que si \( c\in (f+g)(\Omega)\) (l'ensemble des valeurs atteintes pas \( f+g\)), alors nous notons
+	\begin{equation}
+		I_c=\{ (k,l)\tq a_k+b_l=c \}
+	\end{equation}
+	et nous avons
+	\begin{equation}
+		\{ f+g=c \}=\bigcup_{(k,l)\in I_c}(A_k\cap B_l),
+	\end{equation}
+	et comme cette union est disjointe, nous pouvons faire la somme des mesures :
+	\begin{equation}
+		\mu(f+g=c)=\sum_{(k,l)\in I_c}\mu(A_k\cap B_l).
+	\end{equation}
+	Cela nous permet de faire le calcul suivant :
+	\begin{subequations}
+		\begin{align}
+			\int_{\Omega}(f+g)d\mu & =\sum_{c\in (f+g)(\Omega)}c\mu(f+g=c)                                   \\
+			                       & =\sum_{c\in(f+g)(\Omega)}c\sum_{(k,l)\in I_c}\mu(A_k\cap B_l)           \\
+			                       & =\sum_{c\in(f+g)(\Omega)}\sum_{(k,l)\in I_c} (a_k+b_l) \mu(A_k\cap B_l)
+		\end{align}
+	\end{subequations}
+	Dans cette double somme, tous les couples \( (k,l)\) sont tirés une et une seule fois parce qu'ils sont tous dans un et un seul des \( I_c\), donc
+	\begin{subequations}
+		\begin{align}
+			\int_{\Omega}(f+g)d\mu & = \sum_{c\in(f+g)(\Omega)}\sum_{(k,l)\in I_c} (a_k+b_l) \mu(A_k\cap B_l) \\
+			                       & =\sum_{(k,l)}(a_k+b_l)\mu(A_k\cap B_l)                                   \\
+			                       & =\int_{\Omega}fd\mu+\int_{\Omega}gd\mu.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{remark}
+	Si \( f=\sum_ka_k\mtu_{A_k}\) n'est pas une décomposition canonique, il n'en reste pas moins que chacun des \( \mtu_{A_k}\) est la forme canonique de lui-même. Donc le théorème~\ref{ThoooCZCXooVvNcFD} s'applique et nous avons quand même
+	\begin{equation}
+		\int_{\Omega}fd\mu=\sum_ka_k\mu(A_k).
+	\end{equation}
+\end{remark}
+
+\begin{proposition} \label{PROPooOVDEooDJvOau}
+	Soient deux fonctions mesurables \( f,g\colon \Omega\to \mathopen[ 0 , +\infty \mathclose]\). Alors
+	\begin{equation}
+		\int_{\Omega}(f+g)=\int_{\Omega}f+\int_{\Omega}g.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Soient des suites \( f_n\to f\) et \( g_n\to g\) fournies par le théorème fondamental d'approximation~\ref{THOooXHIVooKUddLi}. Par le théorème de la convergence monotone~\ref{ThoRRDooFUvEAN} nous avons d'une part
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}(f_n+g_n)=\int_{\Omega}(f+g),
+	\end{equation}
+	et par le théorème~\ref{ThoooCZCXooVvNcFD} nous avons d'autre part
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}(f_n+g_n)=\lim_{n\to \infty} \big( \int f_n+\int g_n \big)=\int f+\int g
+	\end{equation}
+	où nous avons encore utilisé la convergence monotone.
+
+	En égalant les deux, nous avons notre résultat.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Fonctions à valeurs réelles}
+%---------------------------------------------------------------------------------------------------------------------------
+
+L'intégrale d'une fonction à valeurs dans \( \mathopen[ 0 , +\infty \mathclose]\) étant faite, nous passons aux fonctions à valeurs dans \( \mathopen[ -\infty, +\infty \mathclose]\).
+
+\begin{proposition}[\cite{MonCerveau}]  \label{DefTCXooAstMYl}	\label{PROPooPVBTooFZEZCK}
+	Soit une fonction mesurable \( f\colon \Omega\to  \bar \eR \). Nous considérons les deux fonctions suivantes à valeurs dans \( \mathopen[ 0 , +\infty \mathclose]\) :
+	\begin{subequations}
+		\begin{align}
+			f^+(x) & =\begin{cases}
+				          0    & \text{si } f(x)<0      \\
+				          f(x) & \text{si } f(x)\geq 0.
+			          \end{cases}  \\
+			f^-(x) & =\begin{cases}
+				          0     & \text{si } f(x)>0      \\
+				          -f(x) & \text{si } f(x)\leq 0.
+			          \end{cases}
+		\end{align}
+	\end{subequations}
+	Nous avons \( \int_{\Omega}| f |<\infty\) si et seulement si \( \int_{\Omega} f^+<\infty  \) et \( \int_{\Omega}f^-<\infty\).
+\end{proposition}
+
+\begin{proof}
+	Vu que \( f\) est mesurable, les fonctions \( f^+\) et \( f^-\) sont également mesurables et nous avons l'égalité
+	\begin{equation}
+		| f |=f^++f^-.
+	\end{equation}
+	La proposition~\ref{PROPooOVDEooDJvOau} nous dit alors que
+	\begin{equation}
+		\int_{\Omega} | f |=\int_{\Omega}f^++\int_{\Omega}f^-.
+	\end{equation}
+	Dans cette égalité, tous les nombres sont dans \( \mathopen[ 0 , \infty \mathclose]\). Le membre de gauche vaut \( +\infty\) si et seulement si au moins un des deux de droite vaut \( +\infty\).
+\end{proof}
+
+\begin{normaltext}[Intégrable, qui existe, etc.\cite{BIBooLDKNooWBAIyl}]		\label{NORMooRDHAooKRniYt}
+	Plusieurs définitions à ne pas confondre.
+	\begin{enumerate}
+		\item
+		      Si
+		      \begin{equation}		\label{EQooCUTSooBRpBvt}
+			      \min\left( \int_{\Omega}f^+,\int_{\Omega}f^-\right)<\infty,
+		      \end{equation}
+		      alors nous disons que \( \int_{\Omega}f\) \defe{existe}{intégrale existe}, et nous posons
+		      \begin{equation}	\label{EQooOGFDooUSfCDg}
+			      \int_{\Omega}f=\int_{\Omega}f^+-\int_{\Omega}f^-
+		      \end{equation}
+		      où les intégrales de droite sont définies par \ref{DefTVOooleEst}. Une intégrale qui existe peut très bien valoir \( +\infty\) ou \( -\infty\).
+		\item
+		      Si \( \int_{\Omega}| f |<\infty\), alors nous disons que \( f\) est \defe{intégrable}{fonction intégrable}.
+	\end{enumerate}
+	D'après ces définitions, en prenant fonction constante \( f(x)=1\), nous avons:
+	\begin{itemize}
+		\item \( \int_{\eR}1dx\) existe parce que sa partie négative est identiquement nulle, de telle sorte que \( \int_{\eR}f^-=0<\infty\).
+		\item La fonction \( f\) n'est pas intégrable parce que \( \int_{\eR}| 1 |dx=\infty\).
+	\end{itemize}
+\end{normaltext}
+
+Nous verrons comment donner un sens à \( \int_{\Omega}f\) dans certains cas où \( f\) n'est pas intégrable sur \( \Omega\) dans la section~\ref{SecGAVooBOQddU} sur les intégrales impropres.
+
+Nous définissons aussi
+\begin{equation}
+	\mu(f)=\int_{\Omega}f
+\end{equation}
+si \( f\) est une fonction mesurable sur \( \Omega\).
+
+\begin{lemma}       \label{LEMooMWKTooIKomSw}
+	Pour \( f\colon \Omega\to \eR\) nous avons \( \int_{\Omega}| f |<\infty\) si et seulement si \( \int_{\Omega}f\) existe et est finie.
+\end{lemma}
+
+\begin{proof}
+	Deux sens.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		La proposition \ref{PROPooPVBTooFZEZCK} dit que si \( \int_{\Omega}| f |<\infty\), alors \( \int_{\Omega}f^+<\infty \) et \( \int_{\Omega}f^-<\infty\). La condition \eqref{EQooCUTSooBRpBvt} est alors remplie et l'intégrale \( \int_{\Omega}f\) existe. Et comme les deux bouts sont finis, la définition \eqref{EQooOGFDooUSfCDg} dit que \( \int_{\Omega}f<\infty\).
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Vu que \( \int_{\Omega}f\) existe, au moins un des deux parmi \( \int_{\Omega}f^+\) et \( \int_{\Omega}f^-\) est finie. Comme la différence entre les deux est finie (définition \eqref{EQooOGFDooUSfCDg}), nous déduisons que les deux sont finies. La proposition \ref{PROPooPVBTooFZEZCK} dit alors que \( \int_{\Omega}| f |<\infty\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}		\label{PROPooDOMBooIVNzlZ}
+	Soit une fonction \( f\) sur l'espace mesuré \( \Omega\). Si \( \int_{\Omega}|f|<\infty\), alors
+	\begin{equation}
+		\big| \int_{\Omega}f \big|\leq \int_{\Omega}| f |<\infty.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	La proposition \ref{PROPooPVBTooFZEZCK} dit immédiatement que \( \int_{\Omega}f^+<\infty\) et \( \int_{\Omega}f^-<\infty\). Calcul :
+	\begin{subequations}
+		\begin{align}
+			\big|  \int_{\Omega}f \big | & =\big| \int_{\Omega}f^+-\int_{\Omega}f^- \big|                                                                                \\
+			                             & \leq \big| \int_{\Omega}f^+ \big |+\big| \int_{\Omega}f^- \big| & \text{lem. \ref{LemooANTJooYxQZDw}\ref{ItemooOMKNooRlanvk}} \\
+			                             & = \int_{\Omega}f^++\int_{\Omega}f^-                                                                                           \\
+			                             & =\int_{\Omega}(f^++f^-)                                                                                                       \\
+			                             & =\int_{\Omega}| f |.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{remark}
+	Dans \( \eR^d\), quasiment toutes les fonctions et ensembles sont mesurables. En effet la construction d'ensembles non mesurables demande obligatoirement l'utilisation de l'axiome du choix; de tels ensembles doivent être construits «exprès pour». Il y a très peu de chances pour que vous tombiez sur un ensemble non mesurable de \( \eR^d\) sans que vous ne vous en rendiez compte.
+
+	Il y en a un en l'exemple \ref{EXooCZCFooRPgKjj}.
+\end{remark}
+
+\begin{remark}
+	«Mesurable» ne signifie pas «intégrable». Par exemple la fonction
+	\begin{equation}
+		\begin{aligned}
+			f\colon \eR & \to \bar\eR                                         \\
+			\omega      & \mapsto\begin{cases}
+				                     \frac{1}{ \omega } & \text{si } \omega\neq 0 \\
+				                     \infty             & \text{si }\omega=0.
+			                     \end{cases}
+		\end{aligned}
+	\end{equation}
+	est mesurable, mais non intégrable.
+\end{remark}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Additivité de l'intégrale}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}   \label{LemPfHgal}
+	Soit une fonction \( f\colon \Omega\to \eR\) telle que \( | f(x)|\leq g(x) \) pour tout \( x\in\Omega\). Si \( g\) est intégrable, alors \( f\) est intégrable.
+\end{lemma}
+
+\begin{proof}
+	La fonction \( g\) est manifestement à valeurs réelles positives. La proposition~\ref{PROPooGTMVooPHcrRl} nous dit alors que \( | f |\) est intégrable. Ensuite c'est au tour de la proposition~\ref{DefTCXooAstMYl} de conclure à l'intégrabilité de \( f\).
+\end{proof}
+
+\begin{proposition}     \label{PROPooFIYEooCpdmwZ}
+	Soient deux fonctions intégrables sur \( (S,\tribF,\mu)\) et à valeurs dans \( \eC\). Alors \( f+g\) est intégrable et
+	\begin{equation}
+		\int_S(f+g)d\mu=\int_Sfd\mu+\int_Sgd\mu.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs étapes suivant la généralité de \( f\) et \( g\).
+	\begin{subproof}
+		\spitem[Si \( f\) et \( g\) sont étagées et positives]
+		C'est le théorème~\ref{ThoooCZCXooVvNcFD}\ref{ITEMooBLEVooDznQTY} déjà prouvé.
+		\spitem[Si \(f\) et \( g\) sont à valeurs positives]
+		Le théorème fondamental d'approximation~\ref{THOooXHIVooKUddLi} nous permet de considérer des suites croissantes de fonctions étagées positives \( (f_k)\) et \( (g_k)\) qui vérifient \( f_k\to f\) et \( g_k\to g\).
+
+		Pour chaque \( k\) nous avons
+		\begin{equation}        \label{EQooXXYOooUhkOJL}
+			\int_S(f_k+g_k)d\mu=\int_Sf_kd\mu+\int_Sg_kd\mu.
+		\end{equation}
+		De plus, la suite \( k\mapsto f_k+g_k\) est une suite croissante de fonctions étagées positives convergeant vers \( f+g\). Le théorème de la convergence monotone~\ref{ThoRRDooFUvEAN} nous permet donc de passer à la limité dans \eqref{EQooXXYOooUhkOJL} et de permuter toutes les limites avec toutes les intégrales, des deux côtés.
+		\spitem[\( f\) et \( g\) à valeurs réelles]
+		Il faut diviser le domaine en de nombreuses régions suivant les signes de \( f\), \( g\) et \( f+g\).
+	\end{subproof}
+\end{proof}
+
+Nous prouvons à présent l'additivité de l'intégrale pour des unions finie. Une version pour les unions dénombrables sera donnée dans les propositions \ref{PROPooTFOAooJBwmCV} et \ref{PROPooDWYNooWKJmEV}.
+\begin{proposition}[\( \sigma\)-additivité finie]     \label{PropOPSCooVpzaBt}
+	Soient des parties \( A,B\subset \Omega\) disjointes dans \( (\Omega,\tribA,\mu)\). Soit une fonction \( f\colon \Omega\to \eR\). Alors les intégrales \( \int_Af\) et \( \int_Bf\) existent si et seulement si l'intégrale \( \int_{A\cup B}f\). Dans ce cas nous avons :
+	\begin{equation}
+		\int_{A\cup B}f=\int_Af+\int_Bf.
+	\end{equation}
+	%TODOooIDLBooTmfsBI. Ce n'est prouvé que dans un sens pour l'instant.
+\end{proposition}
+
+\begin{proof}
+	Vu que \( A\) et \( B\) sont disjoints, \( \mtu_{A\cup B}=\mtu_A+\mtu_B\). En utilisant alors le lemme \ref{LEMooSPOFooBxDEAV} et la proposition \ref{PROPooFIYEooCpdmwZ} nous avons le calcul
+	\begin{equation}
+		\int_{A\cup B}f=\int_{\Omega}f\mtu_{A\cup B}=\int_{\Omega} f\mtu_A+\int_{\Omega}f\mtu_B=\int_Af+\int_Bf.
+	\end{equation}
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Fonctions à valeurs vectorielles (dimension finie)}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous voulons intégrer des fonctions du type
+\begin{equation}
+	f \colon \Omega\to V
+\end{equation}
+où \( \Omega\) et \( V\) sont des espaces vectoriels. Nous expliquons à présent plus précisément le cadre.
+
+\begin{normaltext}      \label{NORMooTQBIooBaScjt}
+	Nous considérons à présent un espace vectoriel normé \( (V,\| . \|)\) de dimension finie, et un espace mesuré \( (\Omega,\tribA,\mu)\).
+
+	Attention à ne pas confondre espace de départ et espace d'arrivée. Vu que \( V\) est un espace topologique, nous avons bien entendu les boréliens de \( V\), et pour peut que nous ayons une mesure sur \( V\) (qui qui n'est pas compliqué à créer à partir de celle canonique de \( \eR^n\) et un isomorphisme), nous avons déjà une définition de \( \int_Vfd\mu\) lorsque \( f\colon V\to \eR\).
+
+	Ici nous nous proposons non d'intégrer \( f\colon V\to \eR\) mais bien \( f\colon (\Omega,\tribA,\mu)\to V\) où \( V\) est un espace vectoriel normé.
+
+	Le lemme suivant est le point de départ pour définir les intégrales de fonctions à valeurs dans un espace vectoriel de dimension finie. Pour les fonctions à valeurs dans un espace de dimension infinie (par exemple de Banach), il existe des choses, mais c'est un peu plus compliqué.
+\end{normaltext}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooCVHDooLJASAs}
+	Soit un espace vectoriel \( V\) réel de dimension finie, muni de la norme \( N\). Soient une base \( \{ e_i \}\) de \( V\), et une fonction \( f\colon (\Omega,\tribA,\mu)\to V\) telle que la norme \( N(f)\colon \Omega\to \eR^+\) soit intégrable. Nous notons \( f_i\) les composantes de \( f\) : \( f(x)=\sum_if_i(x)e_i\).
+
+	Alors pour chaque \( i\),
+	\begin{enumerate}
+		\item
+		      la fonction \( | f_i |\colon \Omega\to \eR^+\) est intégrable,
+		\item
+		      la fonction \( f_i\colon \Omega\to \eR\) est intégrable.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Si \( V\) était un espace muni d'un produit scalaire, et si la base \( \{ e_i \}\) était orthonormée, ce serait facile parce que la norme majore toutes les composantes. Hélas, ce n'est pas spécialement le cas. La base \( \{ e_i \}\) n'est pas spécialement orthonormée et même la norme \( N\) ne dérive pas spécialement d'un produit scalaire.
+
+	Nous allons utiliser l'équivalence de toutes les normes en dimension finie (théorème~\ref{ThoNormesEquiv}) pour nous ramener au cas d'une norme euclidienne.
+
+	Nous considérons sur \( V\) la norme «euclidienne» construite sur la base \( \{ e_i \}\) : \( \| \sum_iv_ie_i \|=\sum_i| v_i |^2\). Par équivalence des normes nous avons des nombres non nuls \( \lambda_1\) et \( \lambda_2\) tels que
+	\begin{equation}
+		N(v)\leq \lambda_1\| v \|,
+	\end{equation}
+	et
+	\begin{equation}
+		\| v \|\leq \lambda_2 N(v)
+	\end{equation}
+	pour tout \( v\in V\). Pour un \( i\) fixé nous avons alors les majorations
+	\begin{equation}
+		N\big( f_i(x)e_i \big)\leq \lambda_1\| f_i(x)e_i \|\leq \lambda_1\| f(x) \|\leq \lambda_1\lambda_2N\big( f(x) \big).
+	\end{equation}
+	En posant \( N_i=N(e_i)\) nous avons la majoration\footnote{Vous notez l'utilisation de la condition~\ref{ItemDefNormeii} de la définition~\ref{DefNorme} de la norme pour «convertir» la norme \( N\) en valeur absolue.}
+	\begin{equation}
+		| f_i(x) |\leq \frac{ \lambda_1\lambda_2 }{ N(e_i) }N\big( f(x) \big).
+	\end{equation}
+	L'application
+	\begin{equation}
+		\begin{aligned}
+			| f_i |\colon \Omega & \to \eR^+          \\
+			x                    & \mapsto | f_i(x) |
+		\end{aligned}
+	\end{equation}
+	est donc une fonction à valeurs réelles positives, majorée par une fonction intégrable (la fonction \( x\mapsto N\big( f(x) \big)\)). Elle est donc intégrable par le lemme~\ref{LemPfHgal}.
+
+	La fonction \( f_i\) elle-même est alors intégrable par la proposition~\ref{DefTCXooAstMYl}.
+\end{proof}
+
+Notons que ce lemme est en réalité très simple si \( V\) est un espace vectoriel normé dont la norme découle d'un produit scalaire, comme c'est le cas pour \( \eC\). D'ailleurs, il ne faut pas se voiler la face : le cas d'intégrales de fonctions à valeurs dans \( \eC\) sera dans le Frido le cas de loin le plus courant. À ce propos, nous n'avons pas encore défini ce que nous voulons noter \( \int_{\Omega}fd\mu\) lorsque \( f\) est une fonction à valeurs vectorielles. Comblons vite ce manque \ldots
+
+\begin{propositionDef}[\cite{MonCerveau}]       \label{PROPooOFSMooLhqOsc}
+	Soit une fonction \( f\colon \Omega\to V\) où \( V\) est un espace vectoriel normé de dimension finie. Soit une base \( \{ e_i \}\) de \( V\).  Si la fonction \( \| f \|\colon \Omega\to \eR^+\) est intégrable, alors
+	\begin{enumerate}
+		\item
+		      toutes les composantes \( f_i\colon \Omega\to \eR\) sont intégrables,
+		\item
+		      le vecteur
+		      \begin{equation}        \label{EQooQCKMooZCbybq}
+			      \sum_i(\int_{\Omega}f_i) e_i
+		      \end{equation}
+		      ne dépend pas de la base choisie.
+	\end{enumerate}
+	Dans ce cas, la fonction \( f\) est dite \defe{intégrable}{intégrable!fonction à valeurs vectorielles} et nous définissons
+	\begin{equation}
+		\int_{\Omega}fd\mu=\sum_i(\int_{\Omega}f_i) e_i.
+	\end{equation}
+\end{propositionDef}
+
+\begin{proof}
+	Le fait que les composantes soient intégrables est le lemme~\ref{LEMooCVHDooLJASAs}. Soient deux bases de \( V\), \( \{ e_i \}\) et \( \{ s_{\alpha} \}\), liées conformément à \eqref{EQooFRQRooSMsQQB} par la relation \( s_{\alpha}=\sum_iQ_{i\alpha}e_i\) pour une certaine matrice inversible \( Q\). Nous avons pour tout \( x\in \Omega\) :
+	\begin{equation}
+		f(x)=\sum_if_i(x)e_i=\sum_{\alpha}f_{\alpha}(x)s_{\alpha}
+	\end{equation}
+	avec \( f_{\alpha}(x)=\sum_if_i(x)Q_{\alpha i}^{-1}\) par la proposition \ref{PROPooNYYOooHqHryX}.
+
+	Notons pour être pointilleux que les ensembles \( \{ e_i \}\) et \( \{ s_{\alpha} \}\) ne sont pas indexés par le même ensemble, de telle sorte que \( f_i\) ne peut pas être confondu avec \( f_{\alpha}\), même lorsqu'on attribue des valeurs à \( i\) et à \( \alpha\).
+
+	Comme combinaisons linéaires des fonctions \( f_i\) qui sont intégrables, les fonctions \( f_{\alpha}\) sont intégrables (proposition~\ref{PROPooFIYEooCpdmwZ}). En écrivant \( \int_{\Omega}f\) par rapport à la base \( \{ s_{\alpha} \}\) nous trouvons :
+	\begin{subequations}
+		\begin{align}
+			\sum_{\alpha}(\int f_{\alpha})s_{\alpha} & =\sum_{\alpha}\big( \int \sum_if_i(x)Q_{\alpha i}^{-1}dx \big)\sum_jQ_{j\alpha}e_j \\
+			                                         & =\sum_j\int\sum_{\alpha i}f_i(x)Q_{\alpha i}^{-1}Q_{j\alpha}dxe_j                  \\
+			                                         & =\sum_j\int f_j(x)dxe_j                                                            \\
+			                                         & =\sum_j(\int f_j)e_j
+		\end{align}
+	\end{subequations}
+	où nous avons permuté des sommes finies et des intégrales des fonctions \( f_i\), à valeurs dans \( \eR\) en vertu de la proposition~\ref{PROPooFIYEooCpdmwZ}
+\end{proof}
+
+La proposition suivante est, pour les intégrales à valeurs vectorielles, analogue à la proposition \ref{DefTCXooAstMYl}.
+
+\begin{proposition}     \label{PROPooNSCPooCMkrZl}
+	Soit une fonction mesurable \( f\colon \Omega\to (V,\| . \|)\). Soit une base \( \{ e_i \}\) de \( V\) et la décomposition \( f=\sum_if_ie_i\).
+
+	Nous avons équivalence entre
+	\begin{enumerate}
+		\item       \label{ITEMooYLADooCXKEds}
+		      \( \int_{\Omega}\| f \|<\infty\)
+		\item       \label{ITEMooLEYEooQTGwmt}
+		      \( \int_{\Omega}| f_i |<\infty\)
+		\item       \label{ITEMooYDDAooMKwDIR}
+		      \( \int_{\Omega}f_i^+<\infty\) et \( \int_{\Omega}f_i^-<\infty\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	L'équivalence entre les points~\ref{ITEMooLEYEooQTGwmt} et~\ref{ITEMooYDDAooMKwDIR} est la proposition~\ref{DefTCXooAstMYl}. Nous démontrons l'équivalence entre~\ref{ITEMooYLADooCXKEds} et~\ref{ITEMooLEYEooQTGwmt}.
+
+	Vu que toutes les normes sont équivalentes sur \( V\), nous considérons en particulier la norme associée à la base \( \{ e_i \}\) donnée par
+	\begin{equation}
+		N(x)=\sum_i| x_i |.
+	\end{equation}
+	Il existe des constantes \( \lambda_1\) et \( \lambda_2\) telles que
+	\begin{equation}
+		\lambda_1\big( \sum_i| f_i(x) | \big)\leq \| f(x) \|\leq \lambda_2\big( \sum_i| f_i(x) | \big)
+	\end{equation}
+	pour tout \( x\in \Omega\).
+
+	La première inégalité dit que si \( \int_{\Omega}\| f \|<\infty\), alors \( \lambda_1\big( \sum_i\int_{\Omega}| f-i | \big)<\infty\). Et vu que chacun des termes est positif, ils sont tous finis.
+
+	La seconde inégalité donne l'implication réciproque.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Quelques propriétés}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Le lemme suivant nous aide à détecter des fonctions presque partout nulles.
+\begin{lemma}   \label{Lemfobnwt}
+	Soit \( f\) une fonction mesurable positive ou nulle telle que
+	\begin{equation}
+		\int_{\Omega}fd\mu=0.
+	\end{equation}
+	Alors \( f=0\) \( \mu\)-presque partout.
+\end{lemma}
+
+\begin{proof}
+	L'ensemble des points \( x\in\Omega\) tels que \( f(x)\neq 0\) peut s'écrire comme une union dénombrable disjointe :
+	\begin{equation}
+		\{ x\in\Omega\tq f(x)\neq 0 \}=\bigcup_{i=0}^{\infty}E_i
+	\end{equation}
+	avec
+	\begin{subequations}
+		\begin{align}
+			E_0 & =\{ x\in\Omega\tq f(x)>1 \}                                  \\
+			E_i & =\{ x\in\Omega\tq \frac{1}{ i+1 }\leq f(x)<\frac{1}{ i } \}.
+		\end{align}
+	\end{subequations}
+	Si un des ensembles \( E_i\) est de mesure non nulle, alors nous pouvons considérer la fonction simple \( h(x)=\frac{1}{ i+1 }\mtu_{E_i}\) dont l'intégrale sur \( \Omega\) est strictement positive. Par conséquent le supremum de la définition \eqref{EqDefintYfdmu} est strictement positif.
+
+	Nous savons donc que \( \mu(E_i)=0\) pour tout \( i\). Étant donné que la mesure d'une union disjointe dénombrable est égale à la somme des mesures, nous avons
+	\begin{equation}
+		\mu\{ x\in\Omega\tq f(x)\neq 0 \}=0,
+	\end{equation}
+	ce qui signifie que \( f\) est nulle \( \mu\)-presque partout.
+\end{proof}
+
+\begin{corollary}   \label{CorjLYiSm}
+	Soit \( f\) une fonction mesurable sur l'espace mesuré \( (\Omega,\tribA,\mu)\) telle que
+	\begin{equation}
+		\int_{\Omega}f\mtu_{f>0}d\mu=0.
+	\end{equation}
+	Alors \( f\leq 0\) presque partout.
+\end{corollary}
+
+\begin{proof}
+	Nous avons l'égalité d'ensembles
+	\begin{equation}
+		\{ f\mtu_{f>0}\neq 0 \}=\{ \mtu_{f>0}\neq 0 \}.
+	\end{equation}
+	Mais lemme~\ref{Lemfobnwt} implique que \( f\mtu_{f>0}\) est nulle presque partout, c'est-à-dire que la mesure de l'ensemble du membre de gauche est nulle par conséquent
+	\begin{equation}
+		\mu\{ \mtu_{f>0}\neq 0 \}=0.
+	\end{equation}
+	Cela signifie que la fonction \( f\) est presque partout négative ou nulle.
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooLXVGooUDuQzc}
+	Soit un espace mesuré \( (\Omega,\tribA, \mu)\) ainsi qu'une partie \( X\in\tribA\) telle que \( \mu(X)>0\). Si \(f \colon \Omega\to \eR  \) vérifie \( f>0\) sur \( X\), alors
+	\begin{equation}
+		\int_Xf>0.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous posons, pour \( n\in \eN\),
+	\begin{equation}
+		A_n=\{ x\in x\tq \frac{1}{ n}\geq f(x)>\frac{1}{ n+1} \},
+	\end{equation}
+	\begin{equation}
+		A_0=\{ x\in X\tq f(x)>1 \}.
+	\end{equation}
+	Nous avons l'union disjointe \( X=\bigcup_{i=0}^{\infty}A_i\), et donc \( \mu(X)=\sum_{i=0}^{\infty}\mu(A_i)\). Nous en déduisons qu'il existe \( i\in \eN\) tel que \( \mu(A_i)>0\). Nous posons alors
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon X & \to \eR                               \\
+			x            & \mapsto \begin{cases}
+				                       0    & \text{si } x\notin A_i \\
+				                       1/2i & \text{si }x\in A_i.
+			                       \end{cases}
+		\end{aligned}
+	\end{equation}
+	Cette fonction \( \psi\) est étagée et vérifie \( 0\leq \psi\leq f\). Comme l'intégrale de \( f\) sur \( X\) est le supremum des intégrales de ce type de fonctions, nous avons
+	\begin{equation}
+		\int_Xfd\mu\geq \int_X\psi d\mu=\frac{1}{ 2i}\mu(A_i)>0.
+	\end{equation}
+\end{proof}
+
+\begin{probleme}
+	Je n'ai pas vérifié le lemme suivant. Écrivez-moi si vous avez une démonstration.
+\end{probleme}
+
+\begin{lemma}		\label{LEMooVZXFooZAQWKY}
+	Si \( f\in L^1(\Omega,\tribA, \mu)\) et si \( \int_Afd\mu=0\), alors \( \mu(A)=0\)
+\end{lemma}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Permuter limite et intégrale}
+%---------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Convergence uniforme}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}[Permuter limite et intégrale]       \label{PropbhKnth}
+	Soit \( f_n\to f\) uniformément sur un ensemble mesuré \( A\) de mesure finie. Alors si les fonctions \( f_n\) et \( f\) sont intégrables sur \( A\), nous avons
+	\begin{equation}
+		\lim_{n\to \infty} \int_A f_n=\int_A \lim_{n\to \infty} f_n.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Notons \( f\) la limite de la suite \( (f_n)\). Pour tout \( n\) nous avons les majorations
+	\begin{subequations}
+		\begin{align}
+			\left| \int_A f_n d\mu-\int_A fd\mu \right| & \leq \int_A| f_n-f |d\mu             \\
+			                                            & \leq \int_A \| f_n-f \|_{\infty}d\mu \\
+			                                            & =\mu(A)\| f_n-f \|_{\infty}
+		\end{align}
+	\end{subequations}
+	où \( \mu(A)\) est la mesure de \( A\). Le résultat découle maintenant du fait que \( \| f_n-f \|_{\infty}\to 0\).
+\end{proof}
+Il existe un résultat considérablement plus intéressant que cette proposition. En effet, l'intégrabilité de \( f\) n'est pas nécessaire. Cette hypothèse peut être remplacée soit par l'uniforme convergence de la suite (théorème~\ref{ThoUnifCvIntRiem}), soit par le fait que les normes des \( f_n\) sont uniformément bornées (théorème de la convergence dominée de Lebesgue~\ref{ThoConvDomLebVdhsTf}).
+
+\begin{theorem}[\cite{BJblWiS}]			\label{ThoUnifCvIntRiem}
+	La limite uniforme d'une suite de fonctions intégrables sur un borné est intégrable, et on peut permuter la limite et l'intégrale.
+
+	Plus précisément, soit \( A\) un ensemble de \( \mu\)-mesure finie et \( f_n\colon A\to \eR\) des fonctions intégrables sur \( A\). Si la limite \( f_n\to f\) est uniforme, alors \( f\) est intégrable sur \( A\) et nous pouvons inverser la limite et l'intégrale :
+	\begin{equation}
+		\lim_{n\to \infty} \int_A f_n=\int_A\lim_{n\to \infty} f_n.
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Soit \( \epsilon>0\) et \( n\) tel que \( \| f_n-f \|_{\infty}\leq \epsilon\) (ici la norme uniforme est prise sur \( A\)). Étant donné que \( f_n\) est intégrable sur \( A\), il existe une fonction simple \( \varphi_n\) qui minore \( f_n\) telle que
+	\begin{equation}
+		\left| \int_{A}\varphi_n-\int_A f_n \right| <\epsilon.
+	\end{equation}
+	La fonction \( \varphi_n+\epsilon\) est une fonction simple qui majore la fonction \( f\). Si \( \psi\) est une fonction simple qui minore \( f\), alors
+	\begin{equation}
+		\int_A\psi\leq\int_A\varphi_n+\epsilon\leq\int_A f_n+\epsilon\mu(A).
+	\end{equation}
+	Par conséquent le supremum qui définit \( \int_A f\) existe, ce qui montre que \( f\) est intégrable. Le fait qu'on puisse inverser la limite et l'intégrale est maintenant une conséquence de la proposition~\ref{PropbhKnth}.
+\end{proof}
+
+\begin{remark}
+	L'hypothèse sur le fait que \( A\) soit de mesure finie est importante. Il n'est pas vrai qu'une suite uniformément convergente de fonctions intégrables est intégrables. En effet nous avons par exemple la suite
+	\begin{equation}
+		f_n(x)=\begin{cases}
+			1/x & \text{si } x<n \\
+			0   & \text{sinon}
+		\end{cases}
+	\end{equation}
+	qui converge uniformément vers \( f(x)=1/x\) sur \( A=\mathopen[ 1 , \infty [\). Le limite n'est cependant guerre intégrable sur \( A\).
+\end{remark}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsubsection{Convergence dominée de Lebesgue}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem}[Convergence dominée de Lebesgue]        \label{ThoConvDomLebVdhsTf}
+	Soit une suite de fonctions \( (f_n)_{n\in \eN}\) sur \( (\Omega,\tribA,\mu)\) à valeurs dans \( \eC\) ou \( \eR\). Nous supposons que
+	\begin{enumerate}
+		\item
+		      Pour chaque \( n\) nous avons \( f_n\in L^1(\Omega,\tribA,\mu)\),
+		\item
+		      \( f_n\to f\) simplement presque partout sur \( \Omega\),
+		\item
+		      Il existe une fonction \( g\in L^1(\Omega)\) telle que
+		      \begin{equation}
+			      | f_n(x) | \leq g(x)
+		      \end{equation}
+		      pour presque\footnote{Si il n'y avait pas le «presque» ici, ce théorème serait à peu près inutilisable en probabilité ou en théorie des espaces \( L^p\), comme dans la démonstration du théorème de Fischer-Riesz~\ref{ThoGVmqOro} par exemple.} tout \( x\in\Omega\) et pour tout \( n\in \eN\).
+	\end{enumerate}
+	Alors
+	\begin{enumerate}
+		\item
+		      \( f\) est intégrable\footnote{C'est-à-dire que \( \int_{\Omega}| f |<\infty\), voir le vocabulaire en \ref{NORMooRDHAooKRniYt}.},
+		\item
+		      \( \lim_{n\to \infty} \int_{\Omega}f_n=\int_\Omega f\),
+		\item
+		      \( \lim_{n\to \infty} \int_{\Omega}| f_n-f |=0\).
+	\end{enumerate}
+\end{theorem}
+\index{théorème!convergence!dominée de Lebesgue}
+\index{dominée!convergence (Lebesgue)}
+\index{permuter!limite et intégrale!convergence dominée}
+
+\begin{proof}
+
+	La fonction limite \( f\) est intégrable parce que \( | f |\leq g\) et \( g\) est intégrable\footnote{Par le lemme \ref{LemPfHgal}}. Par hypothèse nous avons
+	\begin{equation}
+		-g(x)\leq f_n(x)\leq g(x).
+	\end{equation}
+	En particulier la fonction \( g_n=f_n+g\) est positive et mesurable si bien que le lemme de Fatou~\ref{LemFatouUOQqyk} implique
+	\begin{equation}
+		\int_{\Omega}\liminf g_n\leq\liminf\int_{\Omega}g_n.
+	\end{equation}
+	Évidemment nous avons \( \liminf g_n=f+g\), de telle sorte que
+	\begin{equation}
+		\int f+\int g\leq \liminf\int g_n=\liminf\int f_n+\int g,
+	\end{equation}
+	et le nombre \( \int g\) étant fini, nous pouvons le retrancher des deux côtés de l'inégalité :
+	\begin{equation}        \label{EQooXGKRooDqUDlG}
+		\int f\leq\liminf\int f_n.
+	\end{equation}
+	Afin d'obtenir une minoration de \( \int f\) nous récrivons \eqref{EQooXGKRooDqUDlG} pour la suite de fonctions \( k_n=-f_n\to k=-f\) :
+	\begin{equation}
+		\int k\leq \liminf\int k_n.
+	\end{equation}
+	En utilisant le lemme \ref{LEMooMTRDooBMxFmn}, nous obtenons
+	\begin{equation}
+		-\int f\leq \liminf\int-f_n=-\limsup\int f_n,
+	\end{equation}
+	et donc
+	\begin{equation}
+		\limsup\int f_n\leq \int f.
+	\end{equation}
+	En combinant avec \eqref{EQooXGKRooDqUDlG}, nous avons la suite d'inégalités
+	\begin{equation}
+		\limsup\int f_n\leq \int f\leq\liminf\int f_n.
+	\end{equation}
+	La limite supérieure étant plus grande ou égale à la limite inférieure, les trois quantités sont égales.
+
+	Nous prouvons maintenant le troisième point. Soit la suite de fonctions
+	\begin{equation}
+		h_n(x)=| f_n(x)-f(x) |
+	\end{equation}
+	qui tend ponctuellement vers zéro. De plus
+	\begin{equation}
+		h_n(x)\leq | f_n(x) |+| f(x) |\leq 2g(x),
+	\end{equation}
+	ce qui prouve que les \( h_n\) majorés par une fonction intégrable. Donc
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}| f_n-f |= \lim_{n\to \infty} \int_{\Omega}h_n(x)dx=\int_{\Omega}\lim_{n\to \infty} | f_n(x)-f(x) |=0
+	\end{equation}
+\end{proof}
+
+\begin{remark}
+	Lorsque nous travaillons sur des problèmes de probabilités, la fonction \( g\) peut être une constante parce que les constantes sont intégrables sur un espace de probabilité.
+\end{remark}
+
+\begin{corollary}       \label{CorCvAbsNormwEZdRc}
+	Soit \( (a_i)_{i\in \eN}\) une suite numérique absolument convergente. Alors elle est convergente. Il en est de même pour les séries de fonctions si on considère la convergence ponctuelle.
+\end{corollary}
+
+\begin{proof}
+	L'hypothèse est la convergence de l'intégrale \( \int_{\eN}| a_i |dm(i)\) où \( dm\) est la mesure de comptage. Étant donné que \( | a_i |\leq | a_i |\), la fonction \( a_i\) (fonction de \( i\)) peut jouer le rôle de \( g\) dans le théorème de la convergence dominée de Lebesgue (théorème~\ref{ThoConvDomLebVdhsTf}).
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Additivité de l'intégrale de Lebesgue}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Les propositions \ref{PROPooTFOAooJBwmCV} et \ref{PROPooDWYNooWKJmEV} démontrent la même chose. La différence est la méthode utilisée pour permuter une somme et une intégrale. Dans le premier cas, nous utilisons la convergence monotone (et sommes obligés de séparer le cas où \( f\) est positive), alors que dans le second cas, nous utilisons la convergence dominée de Lebesgue, et nous ne devons pas faire de séparation d'après la positivité de \( f\).
+
+\begin{proposition}[\( \sigma\)-additivité dénombrable\cite{MonCerveau}]      \label{PROPooTFOAooJBwmCV}
+	Si \( (A_i)_{i\in \eN} \) sont des parties mesurables disjointes de \( (\Omega,\tribA,\mu)\) et si \( f\colon \Omega\to \eR\) est intégrable sur \( \bigcup_{i=0}^{\infty}A_i\)  alors les intégrales \( \int_{A_i}fd\mu\) existent et
+	\begin{equation}
+		\int_{\bigcup_iA_i}fd\mu=\sum_{i=0}^{\infty}\int_{A_i}fd\mu.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	En deux cas d'après la positivité de \( f\).
+	\begin{subproof}
+		\spitem[Si \( f\) est positive]
+		Nous posons \( f_N=f\mtu_{\bigcup_{i=0}^NA_i}\). Cette suite de fonctions vérifie la limite
+		\begin{equation}
+			\lim_{N\to \infty} f_N=f\mtu_{\bigcup_{i=0}^{\infty}A_i}.
+		\end{equation}
+		De plus, pour chaque \( N\) nous avons
+		\begin{equation}
+			\int_{\Omega}f_N=\int_{\Omega}f\mtu_{\bigcup_iA_i}=\int_{\bigcup_iA_i}f=\sum_{i=0}^N\int_{A_i}f
+		\end{equation}
+		Justifications:
+		\begin{itemize}
+			\item La proposition \ref{LEMooSPOFooBxDEAV} pour l'introduction de la fonction caractéristique de \( \bigcup_iA_i\)
+			\item La proposition \ref{PropOPSCooVpzaBt} qui traite le cas de la sous-additivité finie pour la dernière égalité.
+		\end{itemize}
+		La suite \( (f_N)_{n\in \eN}\) est une suite croissante de fonctions mesurables\footnote{La fonction \( f\) elle-même est mesurable; c'est inclus dans la définition de «intégrable».} et positives. Donc le théorème de la convergence monotone \ref{ThoRRDooFUvEAN} s'applique et
+		\begin{subequations}
+			\begin{align}
+				\sum_{i=0}^{\infty}\int_{A_i}f & =\lim_{N\to \infty} \sum_{i=0}^N\int_{A_i}f
+				=\lim_{N\to \infty} \int_{\bigcup_{i=0}^{N}A_i}f
+				=\lim_{N\to \infty} \int_{\Omega}f_N                                         \\
+				                               & =\int_{\Omega}\lim_{N\to \infty} f_N
+				=\int_{\Omega}f\mtu_{\bigcup_{i=0}^{\infty}A_i}
+				=\int_{\bigcup_iA_i}fd\mu.
+			\end{align}
+		\end{subequations}
+		\spitem[Si \( f\) est à valeurs réelles]
+		Si \( f\) est à valeurs dans \( \eR\), alors \( f=f_{+}-f_{-}\) où \( f_{+}\) et \( f_{-}\) sont intégrables. Nous avons alors
+		\begin{subequations}
+			\begin{align}
+				\int_{\bigcup_{i=0}^{\infty}A_i}fd\mu & =\int_{\bigcup_iA_i}f_{+}-\int_{\bigcup_iA_i}f_{-}                                             \\
+				                                      & =\sum_{k=0}^{\infty}\int_{A_k}f_+- \sum_{k=0}^{\infty}  \int_{A_k} f_-                         \\
+				                                      & =\sum_{k=0}^{\infty}\big( \int_{A_k}f_+-\int_{A_k}f_- \big)        \label{SUBEQooMTZPooLqMHKP} \\
+				                                      & =\sum_{k=0}^{\infty}\int_{A_k}f.       \label{SUBEQooVZNMooRmFoLq}
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooMTZPooLqMHKP}, c'est l'associativité de la somme, proposition \ref{PROPooUEBWooUQBQvP}.
+			\item Pour \eqref{SUBEQooVZNMooRmFoLq}, c'est la proposition \ref{PROPooFIYEooCpdmwZ}.
+		\end{itemize}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\( \sigma\)-additivité\cite{BIBooAWGNooUzLMUB}]     \label{PROPooDWYNooWKJmEV}
+	Soit un espace mesuré \( (\Omega,\tribA,\mu)\). Nous considérons des parties disjointes \( \{ A_i \}_{i\in \eN}\) de \( \Omega\) telles que \( \bigcup_{k=0}^{\infty}A_k=\Omega\). Si \( f\in L^1(\Omega)\), alors
+	\begin{equation}
+		\int_{\Omega}fd\mu=\sum_{k=0}^{\infty}\int_{A_k}fd\mu.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous posons \( \Omega_n=\bigcup_{k=0}^nA_k\) ainsi que \( f_n=f\mtu_{\Omega_n}\). Pour chaque \( N\in \eN\) nous avons
+	\begin{subequations}        \label{EQSooBREOooWzviSK}
+		\begin{align}
+			\sum_{k=0}^N\int_{A_k}fd\mu & =\int_{\bigcup_{k=0}^NA_k}f     \label{EQooCVVVooTIINmz} \\
+			                            & =\int_{\Omega_N}f                                        \\
+			                            & =\int_{\Omega}f_N.     \label{SUBEQooJZLQooKlOoes}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{EQooCVVVooTIINmz}, c'est la proposition \ref{PropOPSCooVpzaBt} qui traite du cas de sommes finies.
+		\item Pour \eqref{SUBEQooJZLQooKlOoes}  c'est la proposition \ref{PROPooTFOAooJBwmCV}.
+	\end{itemize}
+	L'idée est maintenant de passer à la limite des deux côtés de \eqref{EQSooBREOooWzviSK}. Voici le raisonnement :
+	\begin{itemize}
+		\item Nous montrons qu'à droite, la limite existe et vaut \( \int_{\Omega}fd\mu\).
+		\item Le fait que la limite du membre de droite existe implique l'existence de la limite du membre de gauche.
+		\item La limite du membre de gauche vaut \( \sum_{k=0}^{\infty}\int_{A_k}fd\mu\).
+	\end{itemize}
+	La limite du membre de droite s'établi avec le théorème de la convergence dominée de Lebesgue \ref{ThoUnifCvIntRiem}.
+	\begin{itemize}
+		\item Nous avons convergence simple \( f_n\to f\) parce que \( \bigcup_{n=0}^{\infty}A_i=\Omega\).
+		\item La fonction \( g=| f |\) est intégrable sur \( \Omega\) parce que \( f\in L^1(\Omega)\) par hypothèse.
+		\item Pour tout \( n\in \eN\) et pour tout \( x\in \Omega\) nous avons \( | f_n(x) |\leq g(x)\) parce que \( | f_n(x) |\) est soit égal à \( g(x)\) soit égal à zéro suivant que \( x\in \Omega_n\) ou non.
+	\end{itemize}
+	Donc le théorème de la convergence dominée est applicable. La limite du membre de droite de \eqref{EQSooBREOooWzviSK} existe et vaut :
+	\begin{equation}
+		\lim_{N\to \infty} \int_{\Omega}f_N=\int_{\Omega}f.
+	\end{equation}
+	Nous pouvons alors prendre aussi la limite du membre de gauche dans \eqref{EQSooBREOooWzviSK} et obtenir le résultat attendu.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Produit d'une mesure par une fonction (mesure à densité)}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{propositionDef}[Produit d'une mesure par une fonction\cite{MonCerveau,ooGMNAooSLnIio}]\label{PropooVXPMooGSkyBo}
+	Soit un espace mesuré \( (\Omega,\tribF,\mu)\) et une fonction mesurable positive \( w\colon \Omega\to \bar\eR^+\). Alors la formule
+	\begin{equation}
+		(w\cdot \mu)(A)=\int_Awd\mu
+	\end{equation}
+	pour tout \( A\in \tribF\) définit une mesure positive sur \( (\Omega,\tribF)\) appelée \defe{produit}{produit!d'une mesure par une fonction} de la mesure \( \mu\) par la fonction \( w\). La fonction \( w\) est la \defe{densité}{densité!mesure} de la mesure \( w\cdot \mu\) par rapport à la mesure \( \mu\).
+\end{propositionDef}
+
+\begin{proof}
+	D'abord \( (w\cdot \mu)(\emptyset)=0\) parce que le lemme~\ref{LemooPJLNooVKrBhN} donne
+	\begin{equation}
+		(w\cdot \mu)(\emptyset)=\int_{\Omega}w\mtu_{\emptyset}d\mu=\int_{\Omega}0d\mu=0\times \mu(\Omega)=0
+	\end{equation}
+	où nous avons (éventuellement) utilisé deux fois la convention \( 0\times \infty=0\).
+
+
+	Ensuite si les ensembles \( A_i\) sont des éléments deux à deux disjoints de \( \tribF\) alors nous avons \( \mtu_{\bigcup_{i=1}^{\infty}A_i}=\sum_{i=1}^{\infty}\mtu_{A_i}\), et donc
+	\begin{equation}
+		(w\cdot \mu)(\bigcup_{i=0}^{\infty}A_i) = \int_{\bigcup_{i=0}^{\infty}A_i}wd\mu=\sum_{i=0}^{\infty}\int_{A_i}wd\mu=\sum_{i=0}^{\infty}(w\cdot\mu)(A_i).  \end{equation}
+	où nous avons utilisé la \( \sigma\)-additivité dénombrable de l'intégrale de la proposition \ref{PROPooTFOAooJBwmCV}.
+\end{proof}
+
+En particulier nous parlons souvent de mesure à densité par rapport à la mesure de Lebesgue. C'est alors la construction suivante.
+
+\begin{definition}		\label{DEFooJNQYooKUcezo}
+	Si \( \mu\) est une mesure sur \( \eR^d\), une fonction \( f\colon \eR^d\to \eR\) est une \defe{densité}{densité d'une mesure} pour \( \mu\) si pour tout \( A\subset\eR^d\) nous avons
+	\begin{equation}
+		\mu(A)=\int_Af(x)dx
+	\end{equation}
+	où \( dx\) est la mesure de Lebesgue.
+
+	Si la mesure \( \mu\) admet une densité, nous disons que c'est une \defe{mesure à densité}{mesure à densité} par rapport à la mesure de Lebesgue. Nous disons aussi que \( \mu\) est \defe{absolument continue}{mesure absolument continue}.
+\end{definition}
+
+\begin{example}
+	Toutes les mesures n'admettent pas de densité. Par exemple la mesure de Dirac donnée par
+	\begin{equation}        \label{EQooDMFCooVEManF}
+		\nu(A)=\begin{cases}
+			1 & \text{si } 0\in A \\
+			0 & \text{sinon. }
+		\end{cases}
+	\end{equation}
+	n'a pas de densité par rapport à la mesure de Lebesgue.
+\end{example}
+
+La mesure \( \nu\) de l'exemple \ref{EQooDMFCooVEManF} admet, au sens des distributions, la mesure de Dirac \( \delta\) comme densité, mais c'est une autre histoire qui vous sera contée une autre fois.
+
+\begin{proposition}[\cite{ooGMNAooSLnIio}]  \label{PropooJMWAooDzfpmB}
+	Soit une fonction mesurable \( w\colon (S,\tribF,\mu)\to \bar \eR^+\).
+	\begin{enumerate}
+		\item
+		      Si \( f\colon S\to \bar\eR^+\) est mesurable, alors \( f\cdot(w\cdot \mu)=(fw)\cdot \mu\).
+		\item
+		      Si \( f\colon S\to \bar \eR\) ou \( \eC\) est mesurable, elle est \( w\cdot\mu\)-intégrable si et seulement si \( fw\) est \( \mu\)-intégrable. Dans ce cas, nous avons encore \( f\cdot(w\cdot \mu)=(fw)\cdot\mu\).
+	\end{enumerate}
+	Attention : dans le cas où \( f\) est à valeurs dans \( \eC\), alors il faut que \( w\) soit à valeurs finies dans \( \eR\) parce que nous n'avons pas défini \( \infty\times z\) lorsque \( z\in \eC\).
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par prouver le résultat pour la fonction caractéristique de l'ensemble mesurable \( A\). Nous avons : \( \mtu_A\cdot(w\cdot \mu)(B)=\int_B\mtu_Ad(w\cdot \mu)\). Mais par définition, l'intégrale d'une fonction indicatrice est la mesure de l'ensemble indiqué. En passant sur le fait que \( \mtu_A\mtu_B=\mtu_{A\cap B}\),
+	\begin{equation}
+		\int_B\mtu_Ad(w\cdot \mu)=   (w\cdot\mu)(A\cap B)=\int_S\mtu_{A\cap B}wd\mu=\int_S\mtu_A\mtu_Bwd\mu=\int_B\mtu_Awd\mu=(\mtu_Aw)\cdot\mu(B).
+	\end{equation}
+
+	Supposons maintenant que \( f\) soit une fonction étagées qui s'écrit \( f=\sum_ka_k\mtu_{A_k}\) où les \( A_k\) sont des ensembles mesurables disjoints. Alors le calcul est le suivant, en utilisant le fait que sur \( A_k\), on a \( a_k=f(x)\) :
+	\begin{subequations}
+		\begin{align}
+			f\cdot(g\cdot \mu)B & =\int_Bfd(g\cdot \mu)            \\
+			                    & =\sum_ka_k(g\cdot\mu)(A_k\cap B) \\
+			                    & =\sum_ka_k\int_{A_k\cap B}gd\mu  \\
+			                    & =\int_{A_k\cap B}f(x)g(x)d\mu(x) \\
+			                    & =\sum_k(fg\cdot\mu)(A_k\cap B)   \\
+			                    & =(fg\cdot\mu)(B)
+		\end{align}
+	\end{subequations}
+	parce que les \( A_k\cap B\) forment une partition de l'ensemble \( B\) (voir le point~\ref{ItemQFjtOjXiii} de la définition~\ref{DefBTsgznn}).
+
+	Si \( f\colon S\to \bar\eR^+\) est mesurable, le théorème~\ref{THOooXHIVooKUddLi} donne une suite croissante \( f_n\) de fonctions étagées positives convergeant (ponctuellement) vers \( f\). Vu que la fonction \( w\) est positive, nous avons aussi la limite positive et croissante \( wf_n\to wf\). Ainsi l'utilisation du théorème de la convergence monotone est justifié dans le calcul suivant :
+	\begin{equation}
+		\int_Sfd(w\cdot \mu)=\lim_{n\to \infty} \int_Sf_nd(w\cdot\mu)=\lim_{n\to \infty} \int_S(wf_n)d\mu=\int_Swfd\mu.
+	\end{equation}
+
+	Nous passons maintenant au cas général où \( f\) est une fonction à valeurs dans \( \bar\eR\) ou \( \eC\) (avec \( w\) finie dans ce dernier cas). Nous avons la chaine d'équivalences
+	%\begin{itemize}{\( \Leftrightarrow\)}
+	\begin{itemize}
+		\renewcommand{\labelitemi}{\( \Leftrightarrow\)}
+		\item \( f\) est \( (w\cdot\mu)\) intégrable
+		\item \( | f |\) est \( (w\cdot\mu)\)-intégrable
+		\item \( | f |w\) est \( \mu\)-intégrable
+		\item \( | fw |\) est \( \mu\)-intégrable.
+	\end{itemize}
+
+	Si cela est le cas, la formule se démontre en se ramenant au cas déjà prouvé des fonctions positives en utilisant les \( (fw)^+=f^+w\), \( (fw)^-=f^-w\) etc.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Mesure et topologie}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{example}[Un compact n'est pas toujours de mesure finie]      \label{EXooKQDRooVMWaEC}
+	Soit l'espace mesurable \( (\eR,\Borelien(\eR))\) réel avec ses boréliens et la fonction
+	\begin{equation}
+		\begin{aligned}
+			w\colon \big( \eR,\Borelien(\eR) \big) & \to\big( \bar \eR,\Borelien(\bar \eR) \big)    \\
+			x                                      & \mapsto \begin{cases}
+				                                                 \frac{1}{ | x | } & \text{si } x\neq 0 \\
+				                                                 +\infty           & \text{si }x=0.
+			                                                 \end{cases}
+		\end{aligned}
+	\end{equation}
+	Essayons d'étudier la mesure de densité \( w\) par rapport à la mesure de Lebesgue.
+	\begin{subproof}
+		\spitem[\( w\) est mesurable]
+		Soit un borélien \( B\) de \( \bar \eR\). Si \( B\) ne contient pas \( \infty\) alors \( w^{-1}(B)\) est un borélien de \( \eR\) par continuité de l'application restreinte \( w\colon \eR\setminus\{ 0 \}\to \eR \). Ici nous avons par exemple appliqué la proposition~\ref{PropooLNBHooBHAWiD} à chacun des deux intervalles \( \mathopen] -\infty , 0 \mathclose[\) et \( \mathopen] 0 , \infty \mathclose[\). Si \( +\infty\in B\) alors
+		\begin{equation}
+			w^{-1}(B)=w^{-1}\big( B\setminus\{ \infty \} \big)\cup w^{-1}(\{ \infty \})=  w^{-1}\big( B\setminus\{ \infty \} \big)\cup \{ 0 \},
+		\end{equation}
+		qui est borélien par union de boréliens.
+		\spitem[Mesure produit]
+		La proposition~\ref{PropooVXPMooGSkyBo} nous assure alors qu'en posant\footnote{Avec un mini abus de notation : si \( 0\in B\), cette notation n'est pas tout à fait correcte.}
+		\begin{equation}
+			\mu(B)=\int_B\frac{1}{ | x | }d\lambda(x)
+		\end{equation}
+		où \(  \lambda \) est la mesure de Lebesgue, nous avons une mesure.
+
+		\spitem[Mesure du singleton]
+
+		Pour avoir les idées claires, nous pouvons nous demander la mesure \( \mu\big( \{ 0 \} \big)\). Nous cela nous devons calculer
+		\begin{equation}
+			\int_{\{ 0 \}}\frac{1}{ | x | }d\lambda(x)=\int_{\{ 0 \}}w(x)d\lambda(x)
+		\end{equation}
+		où là, l'abus de notation n'est plus possible. Mais quelle que soit la fonction étagée \( h=\sum_i\alpha_i\caract_{A_i}\) considérée,
+		\begin{equation}
+			\int_{\{ 0 \}}h(x)d\lambda(x)=\sum_i\alpha_i\lambda\big( A_i\cap\{ 0 \} \big)=0.
+		\end{equation}
+
+		Attention : ceci n'a rien de particulier à la fonction \( x\mapsto 1/| x |\). Lorsqu'une mesure a une densité par rapport à Lebesgue, la mesure d'un singleton sera toujours nulle.
+
+		\spitem[Mesure de la boule compacte]
+
+		Il n'en reste pas moins que \( \mu\big( \mathopen[ -1 , 1 \mathclose] \big)=\infty\).
+
+	\end{subproof}
+\end{example}
+
+\begin{normaltext}
+	En réalité, il n'y a pas de liens forts entre mesure et topologie. Un espace topologique est une chose, et y mettre une mesure en est une autre. Bien entendu, une topologie étant donnée, nous pouvons considérer la tribu des boréliens et y mettre une mesure un peu quelconque. Il n'y a pas de choix canonique.
+
+	Notons que même dans l'exemple de compact de mesure infinie~\ref{EXooKQDRooVMWaEC}, la mesure introduite n'est pas sans lien avec la topologie de \( \eR\). En effet pour avoir une mesure à densité par rapport à Lebesgue, nous avons dû prendre une application mesurable par rapport à la tribu des boréliens, laquelle est éminemment liée à la topologie. Il y a donc parfaitement moyen de construire des espaces mesurés tenant compte de la topologie, et ayant des propriétés qui ne sont pas celle attendues.
+\end{normaltext}
+
+Quand les choses sont faciles, ça se passe bien. La proposition suivante dit qu'une fonction continue sur un compact y est intégrable; sauf que pour dire cela de façon précise, il faut un peu bosser parce qu'il y a de écueils à éviter, tels que l'exemple \ref{EXooKQDRooVMWaEC}.
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooKFRSooANzglT}
+	Soit un espace mesuré \( (K,\tribA, \mu)\) et une fonction \( f\colon K\to \eR\). Nous supposons pas mal de trucs techniques :
+	\begin{enumerate}
+		\item
+		      La mesure est finie : \( \mu(K)<\infty\).
+		\item
+		      L'ensemble \( K\) est par ailleurs un espace topologique compact\footnote{Nous ne prétendons pas que la tribu \( \tribA\) soit liée à la topologie de \( K\).}.
+		\item   \label{ITEMooBKYHooWnxUGL}
+		      La fonction \( f\) est continue pour les topologies de \( K\) et de \( \eR\).
+		\item   \label{ITEMooJCNUooJzIlKI}
+		      La fonction \( f\) est mesurable pour la tribu \( \tribA\) de \( K\) et la tribu des boréliens de \( \eR\).
+	\end{enumerate}
+	Alors \( f\) est intégrable sur \( K\) et \( \int_K| f |<\infty\).
+\end{proposition}
+
+L'hypothèse \ref{ITEMooJCNUooJzIlKI} ne se déduit pas nécessairement de l'hypothèse \ref{ITEMooBKYHooWnxUGL}. Dans les cas usuels, nous avons bien «continue implique mesurable», mais si \( \tribA\) n'a aucun rapport avec la topologie \ldots{} hum \ldots
+
+\begin{proof}
+	Si nous écrivons \( f(x)=f^+(x)-f^-(x)\) avec \( f^+\) et \( f^-\) prenant des valeurs positives ou nulles\cite{ooFSBCooVpuWaV}, en vertu de la proposition \ref{DefTCXooAstMYl}, si nous devons prouver séparément \( \int_Kf^+<\infty\) et \( \int_Kf^-<\infty\). Nous allons donc prouver cette proposition en plusieurs étapes.
+	\begin{subproof}
+		\spitem[Si \( f\) est positive]
+		La fonction \( f\) est continue sur \( K\) qui est compact (même en tant qu'espace topologique en soi; il n'est pas nécessaire d'être compact \emph{dans} quelque chose), donc elle a un maximum par le théorème \ref{ThoWeirstrassRn} nommons \( M\) ce maximum. Donc \( f\colon K\to \mathopen[ 0 , M \mathclose]\). De plus la mesure \( \mu\) sur \( K\) est finie et vérifie disons \( \mu(K)=m\).
+
+		Soit une fonction étagée \( h\colon K\to \eR^+\) majorée par \( f\). Nous notons
+		\begin{equation}
+			h(x)=\sum_{i=1}^n\alpha_i\mtu_{A_i}(x)
+		\end{equation}
+		où les \( A_i\) sont des éléments de \( \tribA\). Vu que \( 0\leq h(x)\leq f(x)\leq M\), nous avons\footnote{Définition \eqref{EqooGAFMooZLzjPs}.}
+		\begin{equation}
+			\int_Kh=\sum_{i=1}^n\alpha_i\mu(K\cap A_i)\leq \sum_{i=1}^nM\mu(K\cap A_i)\leq M\mu(K)=Mm
+		\end{equation}
+		parce que les \( A_i\) sont disjoints et vérifient \( \bigcup_iA_i=K\) (lemme \ref{LEMooNWLTooCDuRQI}).
+
+		Donc tous les éléments de l'ensemble sur lequel nous prenons le supremum dans la définition \eqref{EqDefintYfdmu} sont contenus dans \( \mathopen[ 0 , Mm \mathclose]\). Le supremum est donc dans \( \mathopen[ 0 , Mm \mathclose]\) et est alors strictement plus petit que l'infini.
+
+		\spitem[Si \( f\) est positive ou négative]
+		Nous appliquons la première partie séparément à \( f^+\) et \( f^-\). Et nous avons alors que \( f\) est intégrable et
+		\begin{equation}
+			\int_K| f |=\int_Kf^++\int_Kf^-<\infty.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{theorem}[\cite{ooGMNAooSLnIio}]      \label{THOooVADUooLiRfGK}
+	Soient deux espaces mesurables \( (S_1,\tribF_1)\) et \( (S_2,\tribF_2)\) ainsi qu'une application mesurable \( \varphi\colon S_1\to S_2\). Soit encore \( \mu\), une mesure positive sur \( (S_1,\tribF_1)\).
+
+	Si \( f\colon S_2\to\bar \eR\) ou \( \eC\) est mesurable alors,
+	\begin{enumerate}
+		\item      \label{ItemooKMBIooZpHJSS}
+		      \( f\) est \( \varphi(\mu)\)-intégrable si et seulement si \( f\circ\varphi\) est \( \mu\)-intégrable.
+		\item       \label{ItemooLAPYooUreDEl}
+		      dans le cas où \( f\) est \( \varphi(\mu)\)-intégrable, nous avons
+		      \begin{equation}        \label{EqooSOHXooXSbdoy}
+			      \int_{S_2}fd\big( \varphi(\mu) \big)=\int_{S_1}(f\circ\varphi)d\mu.
+		      \end{equation}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	L'intégrabilité est la définition~\ref{DefTCXooAstMYl}, et demande que \( | f |\) soit intégrable. L'égalité \eqref{EqooSOHXooXSbdoy} a un sens si les deux membres sont infinis. Tant que les fonctions considérées sont positives, le point~\ref{ItemooKMBIooZpHJSS} est immédiat. Ce n'est qu'au moment où les fonctions considérées deviennent à valeurs dans \( \eC\) ou \( \eR\) que l'intégrabilité de \( | f |\) commence à jouer parce qu'il faut que \(  f^+  \) et \( f^-\) soient séparément intégrables.
+
+	Nous allons prouver la formule \eqref{EqooSOHXooXSbdoy} pour des fonctions de plus en plus générales. Pour la suite nous notons \( \mu'=\varphi(\mu)\).
+
+	\begin{subproof}
+		\spitem[Pour \( f=\mtu_B\), \( B \) mesurable]
+		Soit \( B\in\tribF_2 \). Nous avons \( \mtu_B\circ\varphi=\mtu_{\varphi^{-1}(B)}\). Donc en utilisant le lemme~\ref{LemooPJLNooVKrBhN} nous avons
+		\begin{equation}
+			\int_{S_2}\mtu_{B}d\mu'=\mu'(B)=\mu\big( \varphi^{-1}(B) \big)=\int_{S_1}\mtu_{\varphi^{-1}(B)}d\mu=\int_{S_1}(\mtu_B\circ \varphi)d\mu.
+		\end{equation}
+		\spitem[\( f\) est étagée positive]
+
+		La fonction \( f\) peut être écrite sous la forme
+		\begin{equation}
+			f=\sum_{k=1}^na_k\mtu_{B_k}
+		\end{equation}
+		avec \( B_k\in\tribF_2\) et \( a_k\in \eR^+\). Nous avons alors, en utilisant la sous-additivité de l'intégrale du théorème~\ref{ThoooCZCXooVvNcFD}\ref{ITEMooOJRAooQkoQyD},
+		\begin{subequations}
+			\begin{align}
+				\int_{S_2}fd\mu' & =\sum_ka_k\int_{S_2}\mtu_{B_k}d\mu'                          \\
+				                 & =\sum_ka_k\int_{S_1}(\mtu_{B_k}\circ\varphi)d\mu             \\
+				                 & =\int_{S_1}\Big( \sum_ka_k\mtu_{B_k} \Big)\circ \varphi d\mu \\
+				                 & =\int_{S_1}(f\circ\varphi)d\mu.
+			\end{align}
+		\end{subequations}
+		\spitem[\( f\) à valeurs dans \( \bar \eR^+\)]
+
+		Vu que \( f\) est mesurable, par le théorème~\ref{THOooXHIVooKUddLi} il existe une suite croissante de fonctions étagées positives convergeant vers \( f\). Soit donc cette suite, \( f_n\colon S_2\to \eR^+\). Les fonctions \( f_n\circ\varphi\) sont étagées et positives et nous avons aussi la limite ponctuelle et croissante \( f_n\circ\varphi\to f\circ\varphi\) parce que \( \varphi\) est continue. Le théorème de la convergence monotone (théorème~\ref{ThoRRDooFUvEAN}) permet d'écrire ceci :
+		\begin{equation}
+			\int_{S_2}fd\mu'=\lim\int_{S_2}f_nd\mu'= \lim\int_{S_1}(f_n\circ\varphi)d\mu=\int_{S_1}(f\circ\varphi)d\mu.
+		\end{equation}
+		\spitem[Pour \( f\colon S_2\to \bar \eR\) ou \( \eC\) ]
+
+		C'est maintenant que l'intégrabilité va jouer. Nous avons \( | f |\circ\varphi=| f\circ\varphi |\), donc
+		\begin{equation}
+			\int_{S_2}| f |d\mu'=\int_{S_1}| f |\circ\varphi d\mu=\int_{S_1}| f\circ \varphi |d\mu,
+		\end{equation}
+		ce qui montre que \( f\) est \( \mu'\)-intégrable si et seulement si \( f\circ\varphi\) est \( \mu\)-intégrable.
+
+		De plus si \(f=f^+-f^- \) alors \( f^+\circ\varphi=(f\circ\varphi)^+\), \( f^-\circ\varphi=(f\circ\varphi)^-\), et de façon similaire pour les parties imaginaires et réelles.
+	\end{subproof}
+\end{proof}

@@ -1,0 +1,723 @@
+% This is part of (everything) I know in mathematics
+% Copyright (c) 2011-2017, 2019, 2021-2023
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Isométries de l'espace euclidien}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Nous considérons l'espace affine euclidien \( A=\affE_n(\eR)\) modelé sur \( \eR^n\) avec sa métrique usuelle. Un premier grand résultat sera le théorème~\ref{ThoDsFErq} qui dira que les isométries de cet espace sont des applications linéaires.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Structure du groupe  \texorpdfstring{\( \Isom(\eR^n)\)}{Isom(Rn)} }
+%---------------------------------------------------------------------------------------------------------------------------
+
+Si vous ne voulez pas savoir ce qu'est un produit semi-direct de groupes, vous pouvez lire seulement le point~\ref{ITEMooLLUIooIGsknv} du théorème suivant, et passer directement à la remarque~\ref{REMooLUEZooIwvTqu}.
+\begin{theorem}     \label{THOooQJSRooMrqQct}
+	Un peu de structure sur \( \Isom(\eR^n)\).
+	\begin{enumerate}
+		\item       \label{ITEMooLLUIooIGsknv}
+		      L'application
+		      \begin{equation}
+			      \begin{aligned}
+				      \psi\colon T(n)\times \gO(n) & \to \Isom(\eR^n)           \\
+				      (v,\Lambda)                  & \mapsto \tau_v\circ\Lambda
+			      \end{aligned}
+		      \end{equation}
+		      est une bijection. Ici,  \( T(n)\) est le groupe des translations de \( \eR^n\).
+		\item
+		      Un couple \( (v,\Lambda)\in T(n)\times\SO(n)\) agit sur \( x\in \eR^n\) par
+		      \begin{equation}
+			      (v,\Lambda)x=\Lambda x+v
+		      \end{equation}
+		      au sens où \( \psi(v,\Lambda)x=\Lambda x+v\).
+		\item       \label{ITEMooEWSIooNKzRxB}
+		      En tant que groupes,
+		      \begin{equation}
+			      \Isom(\eR^n)\simeq T(n)\times_{\rho}\gO(n)
+		      \end{equation}
+		      où \( \rho\) représente l'action adjointe de \( \gO(n)\) sur \( T(n)\) et \( \times_{\rho}\) dénote le produit semi-direct de la définition~\ref{DEFooKWEHooISNQzi}.
+		\item     \label{ITEMooSKUPooBDvNWX}
+		      Une isométrie de \( \eR^n\) est une application affine\footnote{Définition \ref{DEFooUAWZooXcMKve}.}.
+		\item     \label{ITEMooQLNPooSyHaps}
+		      La partie linéaire\footnote{Définition \ref{LEMooYJCDooOGAHkF}.} d'une isométrie \( f\) est \( \psi^{-1}(f)_2\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Point par point.
+	\begin{enumerate}
+		\item
+		      Prouvons que l'application proposée est injective et surjective. Notons aussi que ce point ne parle pas de structure de groupe, mais seulement d'une bijection en tant qu'ensembles.
+		      \begin{subproof}
+			      \spitem[Injection]
+			      Si \( \psi(v,\Lambda)=\psi(w,\Lambda')\) alors en appliquant sur \( x=0\) nous avons tout de suite \( v=w\). Et ensuite \( \Lambda=\Lambda'\) est immédiat.
+			      \spitem[Surjection]
+			      Une isométrie \( g\in\Isom(\eR^n)\) est une application \( g\colon \eR^n\to \eR^n\) telle que \( d(x,y)=d\big( g(x),g(y) \big)\). Dans le cas de \( \eR^n\) cela se traduit par
+			      \begin{equation}
+				      \| x-y \|=\big\| g(x)-g(y) \big\|,
+			      \end{equation}
+			      Comme \( x\mapsto\| x \|^2\) est une forme quadratique, elle tombe sous le coup du théorème~\ref{ThoDsFErq}, ce qui nous permet de dire que \( g\) est affine. Or par définition une application est affine lorsqu'elle est la composée d'une translation et d'une application linéaire.
+
+			      Donc \( g=\tau_v\circ \Lambda\) pour une certaine application linéaire isométrique \( \Lambda\colon \eR^n\to \eR^n\). L'application \( \Lambda\) est donc dans \( \gO(n)\) par la proposition \ref{PropKBCXooOuEZcS}\ref{ITEMooOWMBooHUatNb}.
+		      \end{subproof}
+		\item
+		      C'est seulement le fait que \( (\tau_v\circ\Lambda)x=\tau_v\big( \Lambda x \big)=\Lambda(x)+v\).
+		\item
+		      Nous allons étudier l'application
+		      \begin{equation}
+			      \psi\colon T(n)\times_{\rho}O(n)\to \Isom(\eR^n).
+		      \end{equation}
+		      \begin{subproof}
+			      \spitem[Le produit semi-direct est bien défini]
+			      Il faut montrer que
+			      \begin{equation}
+				      \begin{aligned}
+					      \rho\colon O(n) & \to \Aut\big( T(n) \big) \\
+					      \Lambda         & \mapsto \AD(\Lambda)
+				      \end{aligned}
+			      \end{equation}
+			      est correcte.
+
+			      D'abord pour \( \Lambda\in O(n)\), nous avons bien \( \rho_{\Lambda}(\tau_v)\in T(n)\) parce qu'en appliquant à \( x\in \eR^n\),
+			      \begin{equation}
+				      (\Lambda\tau_v\Lambda^{-1})(x)=\Lambda\big( \tau_v(\Lambda^{-1} x) \big)=\Lambda\big( \Lambda^{-1}x+v \big)=x+\Lambda(v)=\tau_{\Lambda(v)}(x).
+			      \end{equation}
+			      Donc \( \rho_{\Lambda}(\tau_v)=\tau_{\Lambda(v)}\).
+
+			      De plus, \( \rho_{\Lambda}\in\Aut\big( T(n) \big)\) parce que
+			      \begin{equation}
+				      \rho_{\Lambda}\big( \tau_v\circ \tau_w \big)=\rho_{\Lambda}(\tau_v)\circ\rho_{\Lambda}(\tau_w),
+			      \end{equation}
+			      comme on peut aisément vérifier que les deux membres sont égaux à \( \tau_{\Lambda(v+w)}\).
+			      \spitem[\( \psi\) est une bijection]
+			      Cela est déjà vérifié.
+			      \spitem[\( \psi\) est un morphisme]
+			      Nous avons d'une part
+			      \begin{equation}
+				      \psi\big( (v,g)(w,h) \big)=\psi\big( v\rho_g(w),gh \big)=\tau_v\circ g\circ\tau_w\circ g^{-1}\circ g\circ h=\tau_v\circ g\circ\tau_w\circ h.
+			      \end{equation}
+			      Et d'autre part,
+			      \begin{equation}
+				      \psi(v,g)\circ\psi(w,h)=\tau_v\circ g\circ \tau_w\circ h,
+			      \end{equation}
+			      ce qui est la même chose.
+		      \end{subproof}
+		\item
+		      Si \(f \) est une isométrie de \( \eR^n\), et si \( \psi(f)=(v,\Lambda)\), nous avons
+		      \begin{equation}
+			      f(a+x)=\tau_v\big( \Lambda(a)+\Lambda(x) \big)=\Lambda(a)+\Lambda(x)+v=f(a)+\Lambda(x).
+		      \end{equation}
+		      Donc \( f\) est affine et l'application qui serait notée \( u_M\) dans \eqref{EqMqIoWX} est \( u_M=\Lambda\) pour tout \( M\).
+		\item
+		      Si \( f(x)=\psi(v,\Lambda)x=\Lambda x+v\), nous avons
+		      \begin{equation}
+			      f(a+x)=\psi(v,\Lambda)(a+x)=f(a)+\Lambda(x),
+		      \end{equation}
+		      et donc \( \Lambda\) est bien la partie linéaire de \( f\).
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}      \label{REMooLUEZooIwvTqu}
+	Notons au passage la loi de groupe sur les couples qui est donnée, pour tout \( v,v'\in \eR^n\), \( \Lambda,\Lambda'\in\SO(n)\), par
+	\begin{equation}    \label{EqDiHcut}
+		(v,\Lambda)\cdot(v',\Lambda')=(\Lambda v'+v,\Lambda\Lambda')
+	\end{equation}
+	comme le montre le calcul suivant :
+	\begin{subequations}
+		\begin{align}
+			(v,\Lambda)\cdot(v',\Lambda')x & =(v,\Lambda)(\Lambda'x+v')        \\
+			                               & =\Lambda\Lambda'x+\Lambda v'+v    \\
+			                               & =(\Lambda v'+v,\Lambda\Lambda')x.
+		\end{align}
+	\end{subequations}
+\end{remark}
+
+\begin{proposition}[\cite{ooZYLAooXwWjLa}]      \label{PROPooDHYWooXxEXvl}
+	Soient \( n\geq 1\) et \( R\) un élément de \( \gO(n)\) de déterminant \( -1\) tels que \( R^2=\id\). En posant \( C_2=\{ \id,R \}\) nous avons
+	\begin{equation}
+		\gO(n)=\SO(n)\times_{\rho} C_2
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Notons qu'un élément \( R\) comme décrit dans l'énoncé existe. Par exemple il y a l'application  \( (x_1,\ldots, x_n)\mapsto (-x_1,x_2,\ldots, x_n)\).
+
+	Cela étant dit, nous allons montrer que
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon \SO(n)\times C_2 & \to \gO(n)  \\
+			(A,h)                       & \mapsto Ah.
+		\end{aligned}
+	\end{equation}
+	est un isomorphisme.
+	\begin{subproof}
+		\spitem[Injectif]
+		Soient \( A,B\in \SO(n)\) et \( h,k\in C_2\) tels que \( \psi(A,h)=\psi(B,k)\), c'est-à-dire tels que \( Ah=Bk\). Puisque \( \det(A)=\det(B)=1\), nous avons \( \det(h)=\det(k)\). Mais comme \( C_2\) contient un élément de déterminant \( 1\) et un élément de déterminant \( -1\), nous avons \( h=k\). De là \( A=B\).
+		\spitem[Surjectif]
+		Soit \( X\in\gO(n)\). Si \( \det(X)=1\) alors \( X\in \SO(n)\) et \( X=\psi(X,\mtu)\). Si par contre \( \det(X)=-1\), alors \( XR\in\SO(n)\) parce que \( \det(XR)=1\), et nous avons
+		\begin{equation}
+			\psi(XR,R)=XR^2=X.
+		\end{equation}
+		\spitem[Morphisme]
+		Nous avons
+		\begin{equation}
+			\psi\Big( (A,h)(B,k) \Big)=\psi\big( A\rho_h(B),hk \big)=A(hBh^{-1})hk=AhBk,
+		\end{equation}
+		tandis que
+		\begin{equation}
+			\psi(A,h)\psi(B,k)=AhBk,
+		\end{equation}
+		qui est la même chose.
+	\end{subproof}
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Isométries dans \( \eR^n\)}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}
+	Un \defe{hyperplan}{hyperplan} de \( \eR^n\) est un sous-espace affine de dimension \( n-1\).
+\end{definition}
+
+\begin{lemmaDef}		\label{LEMooPXIOooSlMIIY}
+	Si un hyperplan \( H\) de \( \eR^n\) est donné, et si \( x\in \eR^n\), il existe un unique point \( y\in \eR^n\) tel que
+	\begin{enumerate}
+		\item
+		      \( x-y\perp H\),
+		\item
+		      Le segment \( [x,y]\) coupe \( H\) en son milieu.
+	\end{enumerate}
+	La \defe{réflexion}{réflexion!par rapport à un hyperplan} \( \sigma_H\) est l'application \( \sigma_H\colon \eR^n\to \eR^n \) qui à \( x\) fait correspondre ce \( y\).
+\end{lemmaDef}
+
+\begin{proof}
+	Il faut vérifier que les conditions données définissent effectivement un unique point de \( \eR^n\). Soit \( H_0\) le sous-espace vectoriel parallèle à \( H\) et une base orthonormée \( \{ e_1,\ldots, e_{n-1} \}\) de \( H_0\). Nous complétons cette partie en une base orthonormée de \( \eR^n\) avec un vecteur \( e_n\). Si \( H=H_0+v\), quitte à décomposer \( v\) en une partie parallèle et une partie perpendiculaire à \( H\), nous avons
+	\begin{equation}
+		H=H_0+\lambda e_n
+	\end{equation}
+	pour un certain \( \lambda\).
+
+	Une droite passant par \( x\) et perpendiculaire à \( H\) est de la forme \( t\mapsto x+te_n\). Si \( x=\sum_{i=1}^{n}x_ie_i\) alors l'unique point de cette droite à être dans \( H\) est le point tel que \(   x_ne_n+te_n=\lambda e_n   \), c'est-à-dire \( t=\lambda-x_n\). L'unique point \( y\) sur cette droite à être tel que \( [x,y ]\) coupe \( H\) en son milieu est celui qui correspond à \( t=2(\lambda-x_n)\).
+\end{proof}
+
+\begin{lemma}
+	Soit un hyperplan vectoriel \( H_0\) de \( \eR^n\). Nous considérons une base \( \{ e_1,\ldots,e_n \}\) de \( \eR^n\) telle que \( \{ e_1,\ldots,e_{n-1} \}\) soit une base de \( H_0\) et \( e_n\perp  H_0\).
+
+	Soit l'hyperplan affine \( H=H_0+\lambda e_n\).
+
+	La réflexion de plan \( H \) est donnée par
+	\begin{equation} \label{EQooRTWLooLPsUpY}
+		\begin{aligned}
+			\sigma\colon \eR^n & \to \eR^n                    \\
+			x                  & \mapsto x-2(x_n-\lambda)e_n.
+		\end{aligned}
+	\end{equation}
+\end{lemma}
+
+
+\begin{proof}
+	En posant \( y=x-2(x_n-\lambda)\), nous avons
+	\begin{equation}
+		x-y=2(x_n-\lambda)e_n\perp H,
+	\end{equation}
+	et
+	\begin{equation}
+		\frac{ x+y }{ 2 }=\frac{ 2x-2(x_n-\lambda)e_n }{ 2 }=x-(x_n-\lambda)e_n=\sum_{i=1}^{n-1}x_ie_i+\lambda e_n\in H_0+\lambda e_n=H.
+	\end{equation}
+	Les deux conditions de la définition \ref{LEMooPXIOooSlMIIY} sont donc vérifiées.
+\end{proof}
+
+
+\begin{lemma}       \label{LEMooWYVRooQmWqvM}
+	Si \( H_0\) est un plan vectoriel, si \( \{ e_1,\ldots,e_{n-1} \}\) est une base de \( H_0\), si \( e_n\perp H_0\) et si \( H=H_0+\lambda e_n\), alors
+	\begin{equation}
+		\sigma_H=\sigma_{H_0}+2\lambda e_n.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	En posant \( \lambda=0\) dans la formule \eqref{EQooRTWLooLPsUpY}, nous avons \( \sigma_{H_0}(x)=x-2x_ne_n\). Nous avons donc
+	\begin{equation}
+		\sigma_H(x)=x+2(\lambda-x_n)e_n=x-2x_ne_n+2\lambda e_n=\sigma_{H_0}(x)+2\lambda e_n.
+	\end{equation}
+\end{proof}
+
+Le lemme suivant est une généralisation du fait que tous les points de la médiatrice d'un segment sont à égale distance des deux extrémités du segment (très utile lorsqu'on étudie les triangles isocèles).
+\begin{lemma}[\cite{ooZYLAooXwWjLa}]        \label{LEMooDPLYooJKZxiM}
+	Soient deux points distincts \( x_0,y_0\in \eR^n\) l'ensemble \( H\subset \eR^n\) donné par
+	\begin{equation}
+		H=\{ x\in \eR^n\tq d(x,x_0)=d(x,y_0) \}.
+	\end{equation}
+	Alors
+	\begin{enumerate}
+		\item
+		      \( H\) est hyperplan.
+		\item
+		      \( H\perp  y_0-x_0\)
+		\item
+		      \( H\) contient le milieu du segment \( [x_0,y_0]\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Nous savons que
+	\begin{equation}
+		d(x,x_0)^2=\langle x-x_0, x-x_0\rangle =\| x \|^2+\| x_0 \|^2-2\langle x, x_0\rangle,
+	\end{equation}
+	ou encore
+	\begin{equation}
+		\| x_0 \|^2-\| y_0 \|^2=2\langle x, x_0-y_0\rangle .
+	\end{equation}
+	En posant \( v=y_0-x_0\) et en considérant la forme linéaire
+	\begin{equation}
+		\begin{aligned}
+			\beta\colon \eR^n & \to \eR                       \\
+			x                 & \mapsto \langle x, v\rangle ,
+		\end{aligned}
+	\end{equation}
+	Nous avons \( x\in H\) si et seulement si \( \beta(x)=\frac{ 1 }{2}\big( \| y_0 \|^2-\| x_0 \|^2 \big)=\lambda\). En d'autres termes, \( H=\beta^{-1}(\lambda)\). Par la proposition~\ref{PROPooAKJBooMkmsiV} la partie \( H\) est un sous-espace affine. C'est même un translaté de \( \ker(\beta)\), et comme \( \ker(\beta)\) est l'espace vectoriel des vecteurs perpendiculaires à \( v\), nous avons \( \dim(H)=\dim\big( \ker(\beta) \big)=n-1\).
+
+	Le fait que \( H\) contienne le milieu du segment \( [x_0,y_0]\) est par définition.
+\end{proof}
+
+Pour le lemme suivant, et pour que la récurrence se passe bien nous disons que l'ensemble vide est un espace vectoriel de dimension \( -1\).
+\begin{lemma}[Cartan-Dieudonné\cite{ooYVHDooLeexeT,JGAdTA}]       \label{LEMooJCDRooGAmlwp}
+	Soit un espace euclidien \( E\) de dimension \( n\).
+	\begin{enumerate}
+		\item       \label{ITEMooFYEDooIJZBjP}
+		      Si \( f\) est une isométrie de \( E\) satisfaisant
+		      \begin{equation}
+			      \dim\big( \Fix(f) \big)=n-k
+		      \end{equation}
+		      alors \( f\) peut être écrit comme composition de \( k\) réflexions hyperplanes.
+		\item       \label{ITEMooJTZVooWvyfDD}
+		      Une isométrie de \( E\) peut être écrite sous la forme de \( \rank(f-\id)\) réflexions, mais pas moins.
+		\item       \label{ITEMooUCZWooSbyPwt}
+		      Toute isométrie de \( E\) peut être écrite comme composition de \( n+1\) réflexions.
+	\end{enumerate}
+\end{lemma}
+\index{théorème de Cartan-Dieudonné}
+
+\begin{proof}
+	Les deux parties importantes à démontrer sont les points \ref{ITEMooFYEDooIJZBjP} et la partie «pas moins» de \ref{ITEMooJTZVooWvyfDD}. Le reste proviendra de reformulations.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooFYEDooIJZBjP}]
+		Nous faisons une récurrence sur \( k\geq 0\).
+
+		Pour l'initialisation, si \( k=0\) alors \( \dim\big( \Fix(f) \big)=n\), c'est-à-dire que \( f\) fixe tout \( \eR^n\), autant dire que \( f\) est l'identité, une composition de zéro réflexions.
+
+		Pour la récurrence, nous supposons que le lemme est démontré jusqu'à \( k\geq 0\). Soit donc \( f\in\Isom(\eR^n)\) tel que
+		\begin{equation}
+			\dim\big( \Fix(f) \big)=n-(k+1).
+		\end{equation}
+		Puisque \( k\geq 0\), la dimension de \( \Fix(f)\) est strictement plus petite que \( n\), donc il existe un \( x_0\in \eR^n\) tel que \( f(x_0)\neq x_0\). Nous posons
+		\begin{equation}
+			H=\{ x\in E\tq d(x,x_0)=d\big( x,f(x_0) \big)  \}.
+		\end{equation}
+		Par le lemme~\ref{LEMooDPLYooJKZxiM}, ce \( H\) est l'hyperplan orthogonal à \( v=f(x_0)-x_0\) et passant par le milieu du segment \( [x_0,f(x_0)]\).
+
+		Nous posons \( g=\sigma_H\circ f\). Comme \( g(x_0)=\sigma_H(f(x_0))=x_0\), ce \( x_0\) est un point fixe de \( g\). Le fait que \( \sigma_H\big( f(x_0) \big)=x_0\) est vraiment la définition de l'hyperplan \( H\).
+
+		Nous avons donc
+		\begin{equation}
+			x_0\in\Fix(g)\setminus\Fix(f).
+		\end{equation}
+		Mais nous prouvons de plus que \( \Fix(f)\subset\Fix(g)\). En effet si \( y\in \Fix(f)\) alors \( y\in H\) parce que
+		\begin{equation}
+			d(y,x_0)=d\big( f(y),f(x_0) \big)=d\big( y, f(x_0) \big).
+		\end{equation}
+		Puisque \( y\in H\) nous avons \( y\in \Fix(g)\) parce que
+		\begin{equation}
+			g(y)=\sigma_H\big( f(y) \big)=\sigma_H(y)=y.
+		\end{equation}
+		Tout cela pour dire que l'ensemble \( \Fix(g)\) est \emph{strictement} plus grand que \( \Fix(f)\). Et comme ce sont des espaces affines, nous pouvons parler de dimension :
+		\begin{equation}
+			\dim\big( \Fix(g) \big)>\dim\big( \Fix(f) \big).
+		\end{equation}
+		Par hypothèse de récurrence, l'application \(  g\) peut être écrite comme composition de \( k\) réflexions. Donc l'application
+		\begin{equation}
+			f=\sigma_H\circ g
+		\end{equation}
+		est une composition de \( k+1\) réflexions.
+		\spitem[Pour \ref{ITEMooJTZVooWvyfDD}, existence]
+
+		Ce point est une reformulation du point \ref{ITEMooFYEDooIJZBjP}. Le fait est que \( \Fix(f)=\ker(f-\id)\) parce que \( x\in\Fix(f)\) si et seulement si \( f(x)=x\) si et seulement si \( (f-\id)x=0\). Nous utilisons le théorème du rang \ref{ThoGkkffA} à l'endomorphisme \( f-\id\) :
+		\begin{equation}
+			\dim\big( \Fix(f) \big)=\dim\big( \ker(f-\id) \big)=\dim(E)-\rank(f-\id).
+		\end{equation}
+		En remplaçant par les valeurs :
+		\begin{equation}
+			n-k=n-\rank(f-\id).
+		\end{equation}
+		Or le point \ref{ITEMooFYEDooIJZBjP} donnait \( f\) comme composée de \( n-k\) réflexions. Donc \( f\) est composée de \( \rank(f-\id)\) réflexions.
+		\spitem[Pour \ref{ITEMooJTZVooWvyfDD}, «pas moins»]
+
+		Supposons que \( f=\sigma_1\circ\ldots \circ \sigma_r\) où \( \sigma_i\) est la réflexion de l'hyperplan \( H_i\). Nous devons prouver que \( r\geq \rank(f-\id)\). Nous avons
+		\begin{equation}
+			\bigcap_{i=1}^rH_i\subset \ker(f-\id).
+		\end{equation}
+		D'autre part, la proposition \ref{PROPooRCLNooJpIMMl} nous donne \( \dim\bigcap_iH_i\geq n-r\). Donc
+		\begin{equation}
+			n-r\leq \dim\big( \bigcap_{i=1}^r H_i\big)\leq\dim\big( \ker(f-\id) \big)=n-\rank(f-\id).
+		\end{equation}
+		Donc \( n-r\leq n-\rank(f-\id)\) ou encore
+		\begin{equation}
+			r\geq \rank(f-\id).
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooUCZWooSbyPwt}]
+		Le rang de \( f-\id\) vaut au maximum \( n\). Donc \( f\) peut être écrite comme composition de \( n+1\) réflexions par le point \ref{ITEMooJTZVooWvyfDD}.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PROPooUSKEooUbNVfs}
+	Un élément de \( \SO(3)\) qui fixe deux vecteurs linéairement indépendants est l'identité.
+\end{proposition}
+
+\begin{proof}
+	Soit un élément \( A\in \SO(3)\) et deux vecteurs linéairement indépendants \( v_1,v_2\in \eR^3\) tels que \( Av_1=v_1\) et \( Av_2=v_2\). Puisque \( v_1\) et \( v_2\) sont linéairement indépendants, le théorème de la base incomplète \ref{ThonmnWKs} nous permet de considérer \( v_3\in \eR^3\) tel que \( \{ v_1,v_2,v_3 \}\) soit une base. Dans cette base, la matrice de \( A\) est de la forme
+	\begin{equation}
+		A=\begin{pmatrix}
+			1 & 0 & a \\
+			0 & 1 & b \\
+			0 & 0 & c
+		\end{pmatrix}.
+	\end{equation}
+	Le déterminant de cette matrice est \( c\). Or \( \det(A)=1\) parce qu'elle est dans \( \SO(3)\). Donc \( c=1\). Le fait que \( A\) soit orthogonale implique que la troisième colonne doit être un vecteur de norme \( 1\). Donc \( a=b=0\).
+
+	Donc \( A=\id\).
+\end{proof}
+
+\begin{corollary}       \label{CORooJCURooSRzSFb}
+	Tout élément de \( \SO(3)\) peut être écrit comme composée de deux réflexions.
+\end{corollary}
+
+\begin{proof}
+	Un élément de \( \SO(3)\) est une isométrie de \( \eR^3\) parce que si \( A\in\SO(3)\) alors\footnote{Opérateur orthogonal, définition \ref{DEFooYKCSooURQDoS}.}
+	\begin{equation}
+		\langle Ax, Ay\rangle =\langle A^*Ax, y\rangle =\langle x, y\rangle .
+	\end{equation}
+	Donc si le rang de \( A\) est \( k\), alors \( A\) est la composée de \( 3-k\) réflexions par le lemme \ref{LEMooJCDRooGAmlwp}.
+
+	Si \( A=\id\), c'est bon parce que l'identité est la composée de deux réflexions égales. Nous supposons que \( A\) n'est pas l'identité.
+
+	Comme discuté dans l'exemple \ref{EXooIPLOooSNfiWg}, l'opérateur \( A\) possède trois valeurs propres dans \( \eC\) dont une réelle, et deux complexes conjuguées. Nous les notons \( \lambda\in \eR\) et \( \alpha,\bar \alpha\in \eC\). Le déterminant de \( A\), qui vaut \( 1\), est le produit de ces trois valeurs propres, c'est-à-dire \( \lambda| \alpha |^2\). En particulier \( \lambda>0\).
+
+	Si \( v\) est un vecteur propre correspondant à la valeur propre \( \lambda\), nous avons \(  \| v \|= \| Av \|=| \lambda |\| v \|\) parce que \( A\) est une isométrie. Donc \( \lambda=\pm 1\).
+
+	Au final, \( \lambda=1\). Cela signifie que \( A\) laisse au moins un vecteur invariant. Vu que \( A\) n'est pas l'identité, la proposition \ref{PROPooUSKEooUbNVfs} nous indique qu'il n'y a pas d'autres vecteurs de \( \eR^3\) à être fixé par \( A\). Donc \( \dim\big( \Fix(A) \big)=1\) et le lemme \ref{LEMooJCDRooGAmlwp}\ref{ITEMooFYEDooIJZBjP} s'écrit avec \( n=3\), \( k=2\) et implique que \( A\) est la composée de deux réflexions.
+\end{proof}
+
+\begin{lemma}       \label{LEMooMCVKooKzmlAg}
+	Soit un hyperplan \( H\) et un vecteur \( v\) de \( \eR^n\). Nous avons
+	\begin{equation}
+		\tau_v\circ \sigma_H\circ\tau_v^{-1}=\sigma_{\tau_v(H)}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Pour ce faire, nous considérons une base adaptée. Les vecteurs \( \{ e_1,\ldots, e_{n-1} \}\) forment une base orthonormée de \( H_0\) et \( e_n\) complète en une base orthonormée de \( \eR^n\). Soit \( H_0\) l'hyperplan parallèle à \( H\) et passant par l'origine; nous avons, pour un certain \( \lambda\in \eR\),
+	\begin{equation}
+		H=H_0+\lambda e_n
+	\end{equation}
+	D'un autre côté, le vecteur \( v\) peut être décomposé en \( v=v_1+v_2\) où \( v_1\perp H\) et \( v_2\parallel H\). Alors
+	\begin{equation}
+		\tau_v(H)=H+v=H+v_2=H_0+\lambda e_n+v_2.
+	\end{equation}
+	Nous pouvons maintenant utiliser le lemme~\ref{LEMooWYVRooQmWqvM} pour exprimer la transformation \( \sigma_{\tau_v(H)}\) :
+	\begin{equation}        \label{EQooNYKFooXprXav}
+		\sigma_{\tau_v(H)}(x)=\sigma_{H_0}(x)+ 2\lambda e_n+2v_2
+	\end{equation}
+
+	Mais d'autre part,
+	\begin{equation}
+		(\tau_v\circ \sigma_H\circ\tau_{v}^{-1})(x)=v+\sigma_H(x-v)=v+\sigma_{H_0}(x-v)+2\lambda e_n.
+	\end{equation}
+	Vue la décomposition de \( v=v_1+v_2\) nous avons \( \sigma_{H_0}(v)=-v_1+v_2\) et donc
+	\begin{equation}        \label{EQooGOHEooALPRFB}
+		(\tau_v\circ \sigma_H\circ\tau_{v}^{-1})(x)= v+  \sigma_{H_0}(x)+v_1-v_2+2\lambda e_n=\sigma_{H_0}+2v_1+2\lambda e_n.
+	\end{equation}
+	Les expressions \eqref{EQooNYKFooXprXav} et \eqref{EQooGOHEooALPRFB} coïncident, d'où l'égalité recherchée.
+\end{proof}
+
+\begin{proposition}     \label{PROPooLYCUooRQgGtF}
+	Soit un hyperplan \( H\) de \( \eR^n\) passant par l'origine. Il existe une base orthonormée \( \{ e_1,\ldots, e_n \}\) de \( \eR^n\) telle que \( \{ e_1,\ldots, e_{n-1} \}\) soit une base orthonormée de \( H\) et \( e_n\perp H\).
+\end{proposition}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Préserver l'orientation}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Le fait qu'une isométrie puisse être décomposé en réflexions est le lemme \ref{LEMooJCDRooGAmlwp}.
+
+\begin{propositionDef}[Isométrie positive et négative\cite{ooZYLAooXwWjLa}]      \label{DEFooUZFHooXVVLBL}
+	Nous utilisons la bijection \( \psi\colon T(n)\times \gO(n)\to \Isom(\eR^n)\) décrite par le théorème \ref{THOooQJSRooMrqQct}, et nous définissons
+	\begin{equation}
+		\begin{aligned}
+			\epsilon\colon \Isom(\eR^n) & \to \{ \pm 1 \}                         \\
+			f                           & \mapsto \det\big( \psi^{-1}(f)_2 \big).
+		\end{aligned}
+	\end{equation}
+	Cette application \( \epsilon\) est un morphisme de groupes.
+
+	Nous disons que \( f\in\Isom(\eR^n)\) est \defe{positive}{isométrie positive} ou \defe{préserve l'orientation}{préserve l'orientation} si \( \epsilon(f)=1\), et nous notons
+	\begin{equation}
+		\Isom^+(\eR^n)=\epsilon^{-1}(1).
+	\end{equation}
+\end{propositionDef}
+
+\begin{lemma}       \label{LEMooVRELooESIWQl}
+	La partie \( \Isom^+(\eR^n)\) des isométries positives est un sous-groupe de \( \Isom(\eR^n)\).
+\end{lemma}
+
+\begin{lemma}[\cite{ooZYLAooXwWjLa}]    \label{LEMooJABDooOKHwWv}
+	Si \( H\) est un hyperplan et si \( \sigma_{H}\) est la réflexion de cet hyperplan, alors \( \epsilon(\sigma_H)=-1\).
+\end{lemma}
+
+\begin{proof}
+	Nous commençons par supposer que \( H\) passe par l'origine, de telle sorte que \( \sigma_H\) soit linéaire, et que \( \epsilon(\sigma_H)=\det(\sigma_H)\).
+
+	Nous choisissons une base orthonormée de \( \eR^n\) comme dans la proposition \ref{PROPooLYCUooRQgGtF} : \( \{ e_1,\ldots, e_{n-1} \}\) est une base de \( H\) et \( e_n\perp H\). Nous avons alors
+	\begin{equation}
+		\sigma_H(e_i)=\begin{cases}
+			e_i    & \text{si } i=1,\ldots, n-1 \\
+			-e_{n} & \text{si } i=n.
+		\end{cases}
+	\end{equation}
+	Calculons ce déterminant à l'ancienne, en utilisant les définitions \ref{LEMooQTRVooAKzucd} et \ref{DEFooODDFooSNahPb}. Nous posons \( \mu_i=1\) pour \( i=1,\ldots, n-1\) et \( \mu_n=-1\), de telle sorte à avoir \( \sigma_H(e_i)=\mu_ie_i\). Nous posons aussi \( B=(e_1,\ldots, e_n)\). Ensuite c'est parti pour le calcul :
+	\begin{subequations}
+		\begin{align}
+			\det_B\big( f(B) \big) & =\sum_{s\in S_n}\epsilon(s)\prod_{i=1}^ne^*_{s(i)}\big( f(e_i) \big)       \\
+			                       & =\sum_{s\in S_n}\epsilon(s)\prod_{i=1}^n\langle e_{s(i)}, \mu_ie_i\rangle  \\
+			                       & =\sum_{s\in S_n}\epsilon(s)\prod_{i=1}^n\mu_i\langle e_{s(i)}, e_i\rangle.
+		\end{align}
+	\end{subequations}
+	Vu que la base est orthogonale, \( \langle e_{s(i)}, e_i\rangle =\delta_{s(i), i}\) et il ne reste, dans la somme sur \( S_n\), que le terme \( s=\id\) dont la signature est \( \epsilon(\id)=1\). Donc
+	\begin{equation}
+		\det_B\big( f(B) \big)=\prod_{i=1}^n\mu_i=-1.
+	\end{equation}
+
+	Et si \( H\) ne passe pas par l'origine ? Soit \( v\in \eR^n\) tel que \( \tau_v(H)\) passe par l'origine (prendre pour \( v\) l'opposé de n'importe que élément de \( H\)). Le lemme \ref{LEMooMCVKooKzmlAg} nous indique que
+	\begin{equation}
+		\sigma_{\tau_v(H)}=\tau_v\circ \sigma_H\circ \tau_v^{-1}.
+	\end{equation}
+	Comme \( \epsilon\) est un morphisme,
+	\begin{equation}
+		\epsilon\big( \sigma_{\tau_v(H)} \big)=\epsilon(\tau_v\sigma_H\tau_v^{-1})=\epsilon(\tau_v)\epsilon(\sigma_H)\epsilon(\tau_v^{-1})=\epsilon(\sigma_H).
+	\end{equation}
+	Nous avons utilisé le fait que \( \epsilon(g^{-1})=\epsilon(g)^{-1}\). Tout ça pour dire que
+	\begin{equation}
+		\epsilon(\sigma_H)=\epsilon(\sigma_{\tau_v(H)})=-1
+	\end{equation}
+	parce que \( \tau_v(H)\) passe par l'origine.
+\end{proof}
+
+\begin{theorem}[\cite{ooZYLAooXwWjLa}]      \label{THOooQEWRooYeOIfZ}
+	Une isométrie de \( (\eR^n,d)\) préserve l'orientation\footnote{Définition \ref{DEFooUZFHooXVVLBL}.} si et seulement si elle est composition d'un nombre pair de réflexions hyperplanes.
+\end{theorem}
+
+\begin{proof}
+	Le lemme \ref{LEMooJCDRooGAmlwp} nous indique qu'une isométrie \( f\) de \( \eR^n\) peut être décomposée en réflexions hyperplanes. Le lemme \ref{LEMooJABDooOKHwWv} nous dit que chacune de ces réflexions est négative. Donc si \( f=\sigma_1\circ\ldots\circ \sigma_r\), alors
+	\begin{equation}
+		\epsilon(f)=\epsilon(\sigma_1)\ldots \epsilon(\sigma_r)=(-1)^r.
+	\end{equation}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Groupes finis d'isométries}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}      \label{DEFooCUYLooAlbtzv}
+	Si \( X\) est une partie finie de \( \eR^n\), le \defe{barycentre}{barycentre!cas vectoriel} de \( X\) est le point
+	\begin{equation}
+		B_X=\frac{1}{ | X | }\sum_{x\in X}x
+	\end{equation}
+	où \( | X |\) est le cardinal de \( X\).
+\end{definition}
+Cela est à mettre en relation avec la définition dans le cadre affine~\ref{LemtEwnSH}.
+
+\begin{lemma}[\cite{ooZYLAooXwWjLa}]        \label{LEMooSEZYooYceLIb}
+	Les applications affines de \( \eR^n\) préservent le barycentre\footnote{Définition \ref{DEFooCUYLooAlbtzv}.} des parties finies.
+\end{lemma}
+
+\begin{proof}
+	Soit une partie finie \( X\) de \( \eR^n\) et une application affine \( f\in\Aff(\eR^n)\). Nous devons prouver que
+	\begin{equation}
+		f(B_X)=B_{f(X)}.
+	\end{equation}
+
+	Nous savons que toute application affine est une composée de translation et d'une application linéaire : \( f=\tau_v\circ g\) avec \( v\in \eR^n\) et \( g\in \End(n,\eR)\). Nous vérifions le résultat séparément pour \( \tau_v\) et pour \( g\).
+
+	D'une part,
+	\begin{equation}
+		B_{\tau_v(X)}=\frac{1}{ | \tau_v(X) | }\sum_{y\in \tau_v(X)}y=\frac{1}{ | X | }\sum_{x\in X}(x+v)=B_x+\frac{1}{ | X | }\sum_{x\in X}v=B_x+v=\tau_v(B_X).
+	\end{equation}
+	Nous avons utilisé le fait que \( X\) et \( \tau_v(X)\) possèdent le même nombre d'éléments, ainsi que le fait d'avoir une somme de \( | X |\) termes tous égaux à \( v\).
+
+	D'autre part,
+	\begin{equation}
+		B_{g(X)}=\frac{1}{ | X | }\sum_{x\in X}g(x)=g\big( \frac{1}{ |X | }\sum_{x\in X}x \big)=g(B_X)
+	\end{equation}
+	où nous avons utilisé la linéarité de \( g\) dans tous ses retranchements.
+\end{proof}
+
+\begin{proposition}     \label{PROPooLAEBooWdcBoe}
+	Points fixes d'un sous-groupe.
+	\begin{enumerate}
+		\item
+		      Soit \( H\) un sous-groupe fini des isométries de \( (\eR^n,d)\). Alors il existe \( v\in \eR^n\) tel que \( f(v)=v\) pour tout \( f\in H\).
+		\item
+		      Si \( H\) est un sous-groupe de \( \Isom(\eR^n,d)\) n'acceptant pas de point fixe, alors il est infini.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Le groupe \( H\) agit sur \( \eR^n\), et si \( x\in \eR^n\) nous pouvons considérer son orbite
+	\begin{equation}
+		Hx=\{f(x)\tq f\in H\},
+	\end{equation}
+	qui est une partie finie de \( \eR^n\). Considérons son barycentre \( v=B_{Hx}\). Soit \( f\in H\). Alors
+	\begin{subequations}
+		\begin{align}
+			f(v) & =f(B_{Hx})                                 \\
+			     & =B_{f(Hx)}     \label{SUBEQooOQBZooYlIbgN} \\
+			     & =B_{Hx}        \label{SUBEQooXWEGooSoezYg} \\
+			     & =v,
+		\end{align}
+	\end{subequations}
+	Justifications:
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooOQBZooYlIbgN}, c'est le lemme \ref{LEMooSEZYooYceLIb}.
+		\item Pour \eqref{SUBEQooXWEGooSoezYg}, c'est le fait que, \( f\in H\) étant donné, l'application \( g\mapsto fg\) est une bijection de \( H\), donc
+		      \begin{equation}
+			      f(Hx)=\{(fg)(x)\tq h\in H\}=\{g(x)\tq g\in H\}=Hx.
+		      \end{equation}
+	\end{itemize}
+	Bref, \( v\) est fixé par \( H\).
+
+	La seconde affirmation n'est rien d'autre que la contraposée de la première.
+\end{proof}
+
+\begin{proposition}     \label{PROPooEUFIooDUIYzi}
+	À propos de groupes finis d'isométries.
+	\begin{enumerate}
+		\item
+		      Tout sous-groupe fini de \( \Isom(\eR^n)\) est isomorphe à un sous-groupe fini de \( \gO(n)\).
+		\item
+		      Tout sous-groupe fini de \( \Isom^+(\eR^n)\) est isomorphe à un sous-groupe fini de \( \SO(n)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Soit \( H\) un sous-groupe fini de \( \Isom(\eR^n)\) et \( v\in \eR^n\) un élément fixé par \( H\) (comme garanti par la proposition~\ref{PROPooLAEBooWdcBoe}). Nous posons
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon H & \to \Isom(\eR^n)                        \\
+			f            & \mapsto \tau_v^{-1}\circ f\circ \tau_v.
+		\end{aligned}
+	\end{equation}
+
+	\begin{subproof}
+		\spitem[\( \phi\) est un morphisme]
+		Les opération du type \( \phi=\AD(\tau_v)\) sont toujours des morphismes.
+		\spitem[\( \phi\) consiste à extraire la partie linéaire]
+		Si \( f=\tau_w\circ g\) alors
+		\begin{subequations}
+			\begin{align}
+				\phi(f)(x) & =(\tau_{-v}\circ\tau_w\circ g\circ\tau_v)(x) \\
+				           & =\tau_{w-v}(   g(x)+g(v)  )                  \\
+				           & =g(x)+g(v)-v+w
+			\end{align}
+		\end{subequations}
+		Mais \( g(v)+w=f(v)\) et nous savons que \( f(v)=v\). Donc il ne reste que \( \phi(f)(x)=g(x)\).
+		\spitem[\( \phi\) est injective]
+		Si \( f=\tau_w\circ g\) vérifie \( \phi(f)=\id\), il faut en particulier que \( g=\id\). Mais \( H\) est fini et ne peut donc pas contenir de translations non triviales. Donc \( w=0\) et \( f=\id\).
+	\end{subproof}
+	Donc \( \phi\) est une injection à valeur dans les transformations linéaires de \( \Isom(\eR^n)\). Autrement dit, \( \phi\) est un isomorphisme entre \( H\) et son image, laquelle image est dans \( \gO(n)\).
+
+	En ce qui concerne la seconde partie, si \( f\in\Isom^+(\eR^n)\), alors \( \phi(f)\), qui est la partie linéaire de \( f\) (théorème \ref{THOooQJSRooMrqQct}\ref{ITEMooQLNPooSyHaps}), est dans \( \gO(n)\) avec un déterminant égal à \( 1\). Autrement dit, \( \phi(f)\in\SO(n)\).
+\end{proof}
+
+L'extraction de la partie linéaire est injective ? Certe c'est prouvé, mais on peut se demander ce qu'il se passe si \( H\) contient deux éléments qui ont la même partie linéaire. Cela n'est pas possible parce si \( f_1=\tau_{w_1}\circ g\) et \( f_2=\tau_{w_2}\circ g\) sont dans \( H\) alors \( f_1f_2^{-1}=\tau_{w_1-w_2}\) est également dans \( H\). Vu que \( H\) est fini, cela n'est possible que si \( w_1=w_2\), c'est-à-dire si \( f_1=f_2\).
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Points fixés par une affinité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}[\cite{JGAdTA}]        \label{LEMooGUEGooTUXRsQ}
+	Si \( n\geq 3\), alors toute droite est intersection de deux plans non isotropes\footnote{Sous-espace isotrope, définition \ref{DefVKMnUEM}.}.
+\end{lemma}
+
+\begin{proof}
+	Soit une droite \( d\) dans \( E\), ainsi que \( x\in d\). Soit \( x\) est isotrope, soit il ne l'est pas.
+	\begin{subproof}
+		\spitem[Si \( x\) est isotrope]
+		%-----------------------------------------------------------
+
+		Étant donné que \( f\) est non dégénérée, il existe \( y\in E\) tel que \( f(x,y)\neq 0\). Le plan \( P=\Span\{x,y\}\) est alors non isotrope. En effet, considérons \( z\in P\cap P^{\perp}\). Nous avons alors \( f(z,x)=f(z,x)=0\). Vu que \( z\in P\) nous pouvons l'écrire sous la forme \( z=\alpha x+\beta y\). La première condition sur \( z\) donne :
+		\begin{equation}
+			0=f(\alpha x+\beta y,x)=\beta f(y,x)
+		\end{equation}
+		parce que \( f(x,x)=0\). Étant donné que \( f(x,y)\neq 0\) nous en déduisons que \( \beta=0\). La seconde condition donne alors \( f(\alpha x, y)=0\), ce qui donne \( \alpha=0\).
+
+		Le plan \( P\) étant non isotrope, le plan \( P^{\perp}\) est également non isotrope par le lemme \ref{LEMooOTVGooRAOyaD}.
+
+		Nous fixons maintenant \( z\in P^{\perp}\).
+
+		L'élément \( z\) n'est pas dans \( P\) parce que \( P\cap P^{\perp}=\{ 0 \}\). L'élément \( y+z\) n'est pas dans \( P\) non plus parce que \( P\) est vectoriel, \( y\in P\) et \( z\notin P\).
+
+		Nous considérons donc le plan \( Q=\Span\{ x,y+z \}\).
+
+		Ce plan est non isotrope. En effet, soit \( u\in Q\cap Q^{\perp}\). Nous avons \( u=\alpha x+\beta(y+z)\), et cela doit vérifier \( f(u,x)=f(y,y+z)=0\). Nous avons d'abord
+		\begin{equation}
+			0=f(u,x)=\alpha \underbrace{f(x,x)}_{=0}+\beta \underbrace{f(x,y)}_{\neq 0}+\beta \underbrace{f(x,z)}_{=0}.
+		\end{equation}
+		Nous en déduisons que \( \beta=0\). Il reste \( u=\alpha x\), et nous imposons la seconde condition :
+		\begin{equation}
+			0=f(u,y+z)=\alpha f(x,y)+\alpha f(x,z).
+		\end{equation}
+		Vu que \( f(x,y)\neq 0\) et \( f(x,z)=0\) nous déduisons \( \alpha=0\) et donc \( u=0\).
+
+		Au final, les plans \( P\) et \( Q\) sont non isotropes et \( P\cap Q=d\).
+
+		\spitem[Si \( x\) n'est pas isotrope]
+		%-----------------------------------------------------------
+		Nous supposons maintenant que \( x\) n'est pas isotrope. Le lemme \ref{LEMooRXMMooAvvOjF} sur les dimensions, appliqué à l'espace de dimension \( 1\) engendré par \( x\) donne  \( \dim(x^{\perp})+1=\dim(E)\). Vu que \( \dim(E)\geq 3\), nous déduisons que \( \dim(x^{\perp})\geq 2\).
+
+		Nous considérons une base \( f\)-orthogonale de \( x^{\perp}\) (proposition \ref{PROPooRERSooFHwWtB}). Les vecteurs de cette base ne sont pas isotropes. Soient \( y\) et \( z\) les vecteurs de cette base. Il nous reste à prouver que les plans \( P=\Span\{ x,y \}\) et \( Q=\Span\{ x,z \}\) font l'affaire.
+
+		Vu que \( x\) n'est pas isotrope, les vecteurs \( y\) et \( z\) ne sont pas dans \( d\); ce sont donc de vrais plans de dimension \( 2\), et leur intersection est \( d\). Montrons que \( P\) n'est pas isotrope, en considérant \( v=\alpha x+\beta y\in P\cap P^{\perp}\). Vu que \( v\in P^{\perp}\), il vérifie les deux conditions \( f(v,x)=f(v,y)=0\).
+
+		La première condition donne
+		\begin{equation}
+			0=\alpha \underbrace{f(x,x)}_{\neq 0}+\beta \underbrace{f(y,x)}_{=0}= \alpha f(x,x)
+		\end{equation}
+		parce que \( y\in x^{\perp}\). Il nous reste \( v=\beta y\). Appliquons la seconde condition :
+		\begin{equation}
+			0= f(v,y)= \alpha f(y,y).
+		\end{equation}
+		Le scalaire \( f(y,y)\in \eK\) n'est pas nul parce que nous avons choisi une base orthogonale. Au final \( v=0\), et \( P\) est non isotrope. Exactement le même raisonnement montre que \( Q\) n'est pas isotrope non plus.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{ooZYLAooXwWjLa}]      \label{PROPooVEEUooJQmmkN}
+	Si une isométrie de \( \eR^n\) fixe un ensemble \( F\) de points, alors elle fixe l'espace affine engendrée par \( F\).
+\end{proposition}
+
+\begin{proof}
+	Soit \( f\in \Isom(\eR^n)\) fixant \( F\). Par le théorème~\ref{ThoDsFErq}, c'est une application affine et l'ensemble \( \Fix(f)\) des points fixés par \( f\) est un sous-espace affine de \( \eR^n\), grâce à la proposition~\ref{PROPooYRCJooIcmUVI}.
+
+	Donc \( \Fix(f)\) est un espace affine contenant \( F\). Puisque l'espace affine engendré par \( F\) est l'intersection de tous les espaces affines contenant \( F\), il est en particulier contenu dans \( \Fix(f)\).
+\end{proof}
+
+\begin{corollary}       \label{CORooZHZZooDgTzsW}
+	Si \( f\) et \( g\) sont des isométries de \( \eR^n\) qui coïncident sur \( F\), alors elles coïncident sur l'espace affine engendré par \( F\).
+\end{corollary}
+
+\begin{proof}
+	Nous considérons \( h=g^{-1}\circ f\) qui est une isométrie de \( \eR^n\) fixant \( F\). Elle fixe donc, par la proposition~\ref{PROPooVEEUooJQmmkN}, l'espace affine engendré par \( F\). Or tout point fixé par \( h\) est un point sur lequel \( g\) et \( f\) coïncident.
+\end{proof}

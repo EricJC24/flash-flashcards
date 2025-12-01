@@ -1,0 +1,573 @@
+% This is part of Giulietta 
+% Copyright (c) 2010-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+% SCRIPT MARK -- DECLARATIVE PART
+\RequirePackage{luatex85}		% Pour xy (voir https://tex.stackexchange.com/questions/328602/lualatex-and-xypic)
+\documentclass[french]{book}
+
+
+\usepackage{ifthen}
+\usepackage{etoolbox}           % Ceci devrait remplacer ifthen.
+
+
+% The following booleans serve to know in what type of compilation we are.
+% They are set to 'true' by the pre-compilation scripts.
+% http://ftp.oleane.net/pub/CTAN/macros/latex/contrib/etoolbox/etoolbox.pdf
+% They are set quite early because some parts of the headings are changed
+% by some plugins (ex: the colors in 'configuration.tex')
+\newbool{isFrido}
+\newbool{isGiulietta}
+\newbool{isEnVolume}
+\newbool{isBook}
+\newbool{isVect}
+\boolfalse{isFrido}
+\boolfalse{isGiulietta}
+\boolfalse{isEnVolume}      % This list is hard-coded in 'gardeVolume.tex'.
+\boolfalse{isBook}
+
+% The following line is changed by pytex. You can change the title
+% but not the exact string ``\newcommand{\pdftitle}''.
+\newcommand{\pdftitle}{Giulietta}
+
+\input{e_mazhe}
+
+% 1 on utilise external et 0 on ne l'utilise pas
+\newcounter{useexternal} \setcounter{useexternal}{1}
+\ifthenelse{\value{useexternal}=1}{ \usetikzlibrary{external} \tikzexternalize[prefix=auto/pictures_tikz/] }{ \newcommand{\tikzsetnextfilename}[1]{} }
+
+\makeindex
+\makenomenclature
+
+
+\begin{document}
+
+% La valeur de GitCommitHexsha est modifiée automatiquement par pytex.
+\newcommand{\GitCommitHexsha}{\info{missing information}}
+
+\emptyInputPath
+\addInputPath{tex/front_back_matter}
+
+% SCRIPT MARK -- GARDE MES NOTES
+\selectlanguage{french}
+\ifbool{isFrido}
+{
+	\input{gardeFrido}
+}{}
+
+\notbool{isBook}{
+	\input{166_description_version}
+	\newpage
+}{}
+
+\newpage
+
+% SCRIPT MARK -- GARDE MAZHE
+\selectlanguage{english}
+\input{gardeGiulietta}
+
+% SCRIPT MARK -- GARDE ENSEIGNEMENT
+\selectlanguage{french}
+\input{gardeEnseignement}
+
+% SCRIPT MARK -- TOC
+
+\newpage
+\phantomsection\addcontentsline{toc}{chapter}{Thématique}
+\setcounter{chapter}{-1}
+\input{157_thematique}
+
+\newpage
+\phantomsection\addcontentsline{toc}{chapter}{Table des matières}
+\tableofcontents
+\printindex
+
+\phantomsection\addcontentsline{toc}{chapter}{Liste des notations}
+\printnomenclature
+
+% SCRIPT MARK -- ENGLISH INTRODUCTION
+
+%\setcounter{chapter}{-2}
+\selectlanguage{english}
+\chapter*{Introduction in English}
+\input{AvertissementMazhe}
+
+% SCRIPT MARK -- FRIDO
+\selectlanguage{french}
+
+\part{Le Frido}
+
+\setcounter{chapter}{-1}
+\chapter{Introduction}
+\input{remerciements}
+
+\emptyInputPath
+\addInputPath{tex/frido}
+
+\chapter{Construction des ensembles de nombres}
+\input{42_nombres}
+\input{215_nombres}
+\input{239_nombres}
+\input{216_nombres}
+\input{240_nombres}
+\input{217_nombres}
+
+\chapter{Théorie des groupes}
+\input{46_groupes}
+\input{47_groupes}
+
+\chapter{Anneaux}
+\input{48_StructAnneaux}
+\input{194_StructAnneaux}
+
+\chapter{Espaces vectoriels (début)}
+\input{55_EspacesVectos}
+\input{221_EspacesVectos}
+\input{227_EspacesVectos}
+
+\chapter{Classification de certains groupes}
+\input{186_groupes}
+
+\chapter{Corps}
+\input{49_StructCorps}
+\input{196_StructCorps}
+\input{50_StructCorps}
+
+\chapter{Topologie générale}
+\input{53_topologie}
+\input{224_topologie}
+\input{185_topologie}
+\input{199_topologie}
+\input{54_topologieR}
+
+
+\chapter{Espaces vectoriels (encore)}
+\input{56_EspacesVectos}
+\input{188_EspacesVectos}
+\input{57_EspacesVectos}
+\input{226_EspacesVectos}
+\input{225_EspacesVectos}
+\input{59_EspacesVectos}
+\input{138_EspacesVectos}
+\input{141_EspacesVectos}
+
+\chapter{Analyse réelle : topologie et continuité}
+\input{64_analyseR}
+\input{212_topologie}
+\input{220_analyseR}
+
+
+\chapter{Espaces vectoriels normés}
+\input{181_espace_vecto_norme}
+\input{222_espace_vecto_norme}
+\input{187_espace_vecto_norme}
+\input{242_espace_vecto_norme}
+
+
+\chapter{Espaces affines}
+\input{140_EspacesAffines}
+
+
+\chapter{Analyse réelle : limites et dérivation}
+\input{66_analyseR}
+\input{218_analyseR}
+\input{241_analyseR}
+\input{219_analyseR}
+\input{173_analyseR}
+\input{67_analyseR}
+\input{68_analyseR}
+\input{69_analyseR}
+\input{250_analyseR}
+
+
+\chapter{Analyse sur des groupes}
+\input{61_representations}
+
+\chapter{Tribus, théorie de la mesure, intégration}
+\input{40_mesure}
+\input{41_mesure}
+\input{135_mesure}
+\input{43_mesure}
+\input{244_mesure}
+\input{189_mesure}
+
+\chapter{Suites et séries de fonctions}
+\input{75_series_fonctions}
+\input{198_series_fonctions}
+\input{76_series_fonctions}
+
+
+\chapter{Représentations et caractères}
+\input{63_representations}
+
+\chapter{Encore de l'analyse (et c'est pas fini)}
+\input{77_series_fonctions}
+\input{184_SuiteAnalyse}
+\input{79_inversion_locale}
+\input{80_Newton}
+
+
+\chapter{Trigonométrie, isométries}
+\input{175_trigono}
+\input{177_trigono}
+\input{190_trigono}
+\input{230_trigono}
+\input{231_trigono}
+\input{192_trigono}
+\input{232_trigono}
+\input{208_trigono}
+
+\chapter{Corps finis, racines de l'unité}
+\input{197_racines}
+
+\chapter{Intégration sur des variétés}
+\input{72_Integration}
+\input{155_Integration}
+\input{73_Integration}
+\input{38_Integration}
+\input{2_Integration}
+
+
+\chapter{Arcs paramétrés}
+\input{74_Chap_courbes_parametre}
+\input{152_Chap_courbes_parametre}
+
+
+\chapter{Géométrie hyperbolique}
+\input{160_hyperbolique}
+
+\chapter{Espaces projectifs}
+\input{161_EspacesProjectifs}
+\input{170_EspacesProjectifs}
+
+
+\chapter{Analyse vectorielle}
+\input{37_anal_vectorielle}
+
+\chapter{Espaces de Hilbert}
+\input{81_Hilbert}
+
+\chapter{Analyse complexe}          \label{ChapICHIooXbLccl}
+\input{84_AnalyseComplexe}
+\input{85_AnalyseComplexe}
+\input{228_AnalyseComplexe}
+
+\chapter{Analyse fonctionnelle}
+\input{82_analyse_fonctionnelle}
+\input{249_analyse_fonctionnelle}
+\input{83_analyse_fonctionnelle}
+\input{235_analyse_fonctionnelle}
+\input{248_analyse_fonctionnelle}
+\input{243_jordan}
+\input{237_analyse_fonctionnelle}
+\input{236_analyse_fonctionnelle}
+
+\chapter{Séries de Fourier}
+\input{86_Fourier}
+
+\chapter{Transformation de Fourier}
+\input{87_Fourier}
+
+\chapter{Distributions}
+\input{88_distributions}
+
+\chapter{Espaces de Sobolev, équations elliptiques}      \label{CHAPooVTIIooGOEvXT}
+\input{158_Sobolev}
+
+\chapter{Équations différentielles ordinaires}
+\input{89_Equations_diff}
+\input{90_Equations_diff}
+\input{180_Equations_diff}
+\input{150_ED_analyseCTU}
+
+\chapter{Équations aux dérivées partielles}
+\input{179_edp}
+
+\chapter{Numérique}
+\input{145_numerique}
+\input{148_numerique}
+\input{159_numerique}
+\input{182_numerique}
+
+\chapter{Méthode des différences finies}
+\input{193_numerique}
+\input{233_numerique}
+\input{234_numerique}
+
+\chapter{Variables aléatoires et théorie des probabilités}
+\input{91_vars_al}
+\input{92_vars_al}
+\input{93_vars_al}
+\input{203_vars_al}
+
+\chapter{Statistiques}
+\input{94_statistiques}
+
+\chapter{Chaînes de Markov à temps discret}
+\input{95_Markov}
+
+\chapter{Martingales}
+\input{96_Martingales}
+
+\chapter{Processus de Poisson}
+\input{97_ProcessusPoisson}
+
+\chapter{Langages}
+\input{202_langages}
+
+\chapter{Utilisation dans les autres sciences}
+\input{146_relativite}
+
+\chapter{Exemples avec Sage}
+\input{44_sage}
+
+
+\chapter{Épilogue : la constante de Weiner}
+\input{191_weiner}
+
+% SCRIPT MARK -- DÉVELOPPEMENTS POSSIBLES
+% -------------------------------------------------------------------------
+
+\chapter{Développements possibles}
+\input{98_liste_developpements}
+
+% SCRIPT MARK -- RESEARCH PART
+
+\emptyInputPath
+\addInputPath{tex/research}
+
+\selectlanguage{english}
+\part{Giulietta}
+
+\chapter{Some old results}
+\input{app_statement}
+
+\chapter{Categories}        \label{chap_category}
+\input{categorie}
+
+\chapter{Topology}              \label{chap_topology}
+\input{147_topo}
+\input{213_directedSets}
+
+\chapter{Manifolds} \label{Chapitre_FB}
+\input{154_var_diff}
+\input{251_var_diff}
+\input{252_var_diff}
+\input{229_var_diff}
+\input{204_diff_geom}
+
+\chapter{Representations}
+\input{207_representations}
+
+\chapter{Lie algebras}
+\input{99_mazhe}
+\input{100_mazhe}
+\input{101_mazhe}
+\input{102_mazhe}
+\input{103_mazhe}
+\input{104_helgaLie}
+
+\chapter{Lie groups}
+\input{143_Lie_gp_and_subgp}
+
+\chapter{Lie group and Lie algebra}
+\input{206_lie_group_algebra}
+\input{238_lie_group_algebra}
+\input{214_lie_group_algebra}
+
+\chapter{A lot of algebra}
+\input{110_algebre}
+\input{111_algebre}
+\input{Cyclic_homol}
+
+\chapter{Examples of groups and representations}        \label{ChapThoComsGroupes}
+\input{107_iwasawa}
+\input{108_mazhe}
+\input{210_lorentz}
+\input{211_groups}
+
+\chapter{Fiber bundle}
+\input{105_fibre_bundle}
+\input{246_fibre_bundle}
+\input{106_fibre_bundle}
+
+\chapter{Integration on manifolds}
+\input{245_int_manifold}
+\input{247_int_manifold}
+
+\chapter{Lie groups of transformations}
+\input{109_helga}
+
+\chapter{Classical mechanics}
+\input{Mecanique}
+
+\chapter{Hilbert spaces}
+\input{Hilbert}
+\input{reprez_Lie_Hilbert}
+
+\chapter{Sobolev spaces}
+\input{167_Sobolev}
+
+\chapter{Analysis}
+\input{136_garding}
+\input{app_oscilla}
+\input{Dixmier_tr}
+
+\chapter{Partial derivative equation}
+\input{171_pde}
+
+\chapter{Finite elements}
+\input{156_finite_elements}
+
+\chapter{Chain complexes}
+\input{chaines}
+
+\chapter{Homogeneous and symmetric spaces}
+\input{112_homo}
+\input{113_homo}
+\input{114_homo}
+
+\chapter{Heat kernel expansions}
+\input{chaleur}
+
+\chapter{From Clifford algebras to Dirac operator}
+\input{115_CliffordSpin}
+\input{116_CliffordSpin}
+
+\chapter{Relativistic fields and group theory}
+\input{MQ}
+
+\chapter{Relativistic fields and fiber bundle formalism}
+\input{117_Fibre_QFT}
+
+\chapter{Conformal fields theory}
+\input{142_CFT}
+
+\chapter{Banach and \texorpdfstring{$C^*$}{C*}-algebras}
+\input{118_cstar}
+\input{119_cstar}
+\input{120_cstar}
+
+\chapter{Compact quantum groups}
+\input{149_compact_quantum_groups}
+
+\chapter{von Neumann algebras}
+\input{121_VN_algebras}
+\input{122_VN_algebras}
+\input{123_VN_algebras}
+\input{124_VN_algebras}
+
+\chapter{Dirichlet forms}
+\input{Dirichlet}
+
+\chapter{K-theory}
+\input{ktheory}
+
+\chapter{BF theory}
+\input{bf_theory}
+
+\chapter{BTZ black hole from identifications}
+\input{PetiteDim}
+\input{oldBTZ}
+\input{BTZ_3}
+
+\chapter{BTZ black holes in anti de Sitter spaces}                  \label{ChapBHinAdS}
+\input{introduction}
+\input{125_BTZ}
+\input{126_BTZ}
+\input{127_BTZ}
+\input{128_BTZ}
+\input{129_DiracAdS}
+\input{130_DiracAdS}
+\input{conclThese}
+
+\chapter{General non commutative geometry}
+\input{131_noncommutative_geometry}
+\input{132_noncommutative_geometry}
+
+
+\chapter{Deformations: formal aspects}          \label{ChapDefo}
+\input{deformation_formal}
+
+\chapter{Deformations: non-formal aspects}
+\input{twists_general}
+\input{qansl}
+\input{KG}
+
+\chapter{WKB quantization}
+\input{universel}
+
+\chapter{Deformation of anti de Sitter spaces}   \label{ChDefoBH}
+\input{deformation_AdS4}
+
+\chapter{Two notes for further developments}        \label{ChapNoteDev}
+\input{axplusb}
+\input{unif_so2n}
+
+\chapter{Gravitation and noncommutative geometry}
+\input{NCgrav}
+
+\chapter{Levy Processes and such}
+\input{LevyProcess}
+
+\chapter{Complements}
+\input{app_Wigner}
+\input{app_Maxima}
+
+\input{erreurs}
+\input{faq}
+
+
+
+% SCRIPT MARK -- MATLAB
+
+\emptyInputPath
+\addInputPath{tex/matlab}
+
+\selectlanguage{french}
+\part{Matlab}
+\input{133_matlab}
+
+
+% SCRIPT MARK -- EXERCICES
+
+\emptyInputPath
+\addInputPath{tex/exercices}
+\part{Exercices}
+
+\input{TD_SVT}
+\input{164_part_exercices}
+
+\input{209_exo_outils_math}
+
+% SCRIPT MARK -- CdI
+
+\chapter{Exercices de calcul différentiel et intégral 1}
+\input{exoUnif}
+\input{suiteCorr}
+
+\chapter{Exercices de calcul différentiel et intégral 2}
+\input{listeExo}
+\input{listeExo_cv}
+\input{listeExo_eqdiff}
+
+\chapter{Exercices pour analyse CTU}
+\input{151_exercices_analyseCTU}
+
+\ifbool{isFrido}{}
+{
+	\corrChapitre{Corrigés systématiques}
+}
+
+% SCRIPT MARK -- FINAL
+
+
+\emptyInputPath
+\addInputPath{tex/front_back_matter}
+\input{134_choses_finales}
+\end{document}
+
+% SCRIPT MARK -- AFTER DOCUMENT
+% Ma réserve d'exercices est dans le fichier réserve.tex

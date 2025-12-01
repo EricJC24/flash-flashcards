@@ -29,10 +29,16 @@ def parse_tex(file_path):
         stripped_line = line.strip()
         
         # Check for section (Chapter)
-        section_match = re.match(r'\\section\{(.*?)\}', stripped_line)
+        # Need to handle nested braces in titles like "Subspaces of $\mathbb{R}^n$"
+        section_match = re.match(r'\\section\{(.+)\}', stripped_line)
         if section_match:
             current_chapter_num += 1
-            current_chapter_title = section_match.group(1)
+            # Extract content between first { and last }
+            title_content = section_match.group(1)
+            # Convert to Unicode for display in dropdowns
+            title_content = title_content.replace('$\\mathbb{R}^n$', 'ℝⁿ')
+            title_content = title_content.replace('$\\mathbb{R}^{{n}}$', 'ℝⁿ')
+            current_chapter_title = title_content
             continue
 
         # Check for start of environment

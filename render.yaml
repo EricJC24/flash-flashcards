@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: flash-flashcards
+    env: python
+    buildCommand: pip install -r requirements.txt && chmod +x build.sh && ./build.sh
+    startCommand: gunicorn server:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite:///database/flashcards.db
+    disk:
+      name: flashcards-data
+      mountPath: /opt/render/project/src/database
+      sizeGB: 1

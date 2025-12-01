@@ -1,0 +1,1716 @@
+% This is part of Le Frido
+% Copyright (c) 2006-2025
+%   Laurent Claessens, Carlotta Donadello
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Droites dans un espace vectoriel}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\begin{definition}      \label{DEFooTQIFooKcloeY}
+	Soit un espace vectoriel \( E\).
+	\begin{enumerate}
+		\item
+		      Une \defe{droite vectorielle}{droite vectorielle} dans \( E\) est un sous-espace vectoriel de dimension \( 1\).
+		\item		\label{ITEMooLJZFooEzSkMT}
+		      Une \defe{droite affine}{droite affine} est une partie de \( E\) de la forme \( a+V\) où \( a\in E\) et \( V\) est un sous-espace vectoriel de dimension \( 1\) de \( E\).
+		\item
+		      Un \defe{plan vectoriel}{plan vectoriel} est un sous-espace vectoriel de dimension \( 2\).
+		\item		\label{ITEMooQNAYooZymIqK}
+		      Une partie \( P\) est un \defe{plan affine}{plan affine} si il existe un \( v\in E\) tel que \( P-v\) soit un plan vectoriel.
+	\end{enumerate}
+	Le plus souvent, nous parlerons de «droite» et «plan» sans préciser «vectoriel» ou «affine». Dans ces cas, le plus souvent, ce sera «affine».
+\end{definition}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQTZYooYWmnlu}
+	Si \( D\) est une droite dans \( E\), alors il existe \( u\in E\) et \( a\in E\) tels que
+	\begin{equation}
+		D=\{ \lambda u+a \}_{\lambda\in \eK}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Par définition \ref{DEFooTQIFooKcloeY}\ref{ITEMooLJZFooEzSkMT}, il existe un sous-espace vectoriel \( V\) de dimension  \( 1\) et un point \( a\in E\) tels que \( D=V+a\). Si \( \{ u \}\) est une base de \( V\), alors \( V=\{ \lambda u \}_{\lambda\in \eK}\) et donc \( D=\{ \lambda v+a \}_{\lambda\in \eK}\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooLIASooAvjTvt}
+	Soient un espace vectoriel \( E\), un sous-espace \( V\) de dimension \( 1\) ainsi que \( a,b\in E\) tels que \( V+a\cap V+b\neq \emptyset\). Alors \( V+a=V+b\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( p\in V+a\cap V+b\). Il existe \( \lambda_a\in \eK\) et \( \lambda_b\in \eK\) tels que
+	\begin{equation}
+		p=\lambda_a u+a=\lambda_b u+b.
+	\end{equation}
+	Un élément générique de \( V+a\) est \( \lambda u+a\). Nous montrons que \( \lambda u+a\in V+b\) :
+	\begin{subequations}
+		\begin{align}
+			\lambda u+a & =\lambda_a u+a+(\lambda-\lambda_a)u \\
+			            & =\lambda_b u+b+(\lambda-\alpha_a)u  \\
+			            & =(\lambda-\lambda_a+\lambda_b)u+b   \\
+			            & \in V+b.
+		\end{align}
+	\end{subequations}
+	Cela prouve que \( V+a\subset V+b\). Nous montrons de même que \( V+b\subset V+a\).
+\end{proof}
+
+
+\begin{proposition}     \label{PROPooRSKLooVrxrFz}
+	Soient deux points distincts \( a\) et \( b\) de l'espace vectoriel \( E\).
+	\begin{enumerate}
+		\item		\label{ITEMooQSJMooKUBHwf}
+		      Il existe une unique droite contenant \( a\) et \( b\).
+		\item		\label{ITEMooEOJNooSMCXtA}
+		      Cette droite est donnée par \( \{ \lambda (b-a)+a \}_{\lambda\in \eK}\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous posons \( V=\{ \lambda (b-a)+a \}_{\lambda\in \eK}\). Il est vite vérifié en posant \( \lambda=0\) et \( \lambda=1\) que \( a,b\in d_1\). Cela prouve le point \ref{ITEMooEOJNooSMCXtA}.
+
+	Soit maintenant une autre droite, \( W+x\) contenant également \( a\) et \( b\). Nous posons \( V=\{ \lambda(b-a) \}_{\lambda\in \eK}\). Nous devons montrer que \( W+x=V+a\). Vu que \( a,b\in W+x\), il existe \( w_a,w_b\in W\) tels que
+	\begin{subequations}
+		\begin{numcases}{}
+			w_a+x=a\\
+			w_b+x=b.
+		\end{numcases}
+	\end{subequations}
+	En faisant la différence, \( w_b-w_a=b-a\) et donc \( b-a\in W\). Cela montre que \( W=V\) parce que \( V\) et \( W\) ont une base commune (\( \{ b-a \}\)).
+
+	Il reste à prouver que \( V+a=W+x\). Le lemme \ref{LEMooLIASooAvjTvt} fait le boulot parce que \( V+a\) et \( V+x\) ont deux points d'intersection : \( a\) et \( b\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooWDADooGuKwvZ}
+	Soit un espace vectoriel \( E\) sur le corps \( \eK\). Soient une droite \( D\) ainsi que \( 4\) points \( a,b,x,y\in D\) avec \( a\neq b\). Alors il existe \( \sigma\in \eK\) tels que
+	\begin{equation}
+		a-b=\sigma(x-y).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Par la proposition \ref{PROPooQTZYooYWmnlu}, il existe \( u,w\in E\) tels que \( D=\{ \lambda u+w \}_{\lambda\in \eK}\). Il existe donc \( \lambda_a, \lambda_b,\lambda_x,\lambda_y\in \eK\), tels que
+	\( 	a=\lambda_a u+w\), \( b=\lambda_b u+w\), \( x=\lambda_x u+w\), \( y=\lambda_y u+w\). Nous avons donc \( a-b=(\lambda_a-\lambda_b)u\) et \( x-y=(\lambda_x-\lambda_y)u\). Étant donné que les points \( a\neq b\) sont distincts, nous avons \( \lambda_a-\lambda_b\leq 0\), et en posant
+	\begin{equation}
+		\sigma=\frac{ \lambda_x-\lambda_y }{ \lambda_a-\lambda_b },
+	\end{equation}
+	nous avons bien
+	\begin{subequations}
+		\begin{align}
+			\sigma (a-b) & =\frac{ \lambda_x-\lambda_y }{ \lambda_a-\lambda_b }(\lambda_a-\lambda_b)u \\
+			             & =(\lambda_x-\lambda_y)u                                                    \\
+			             & =x-y.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooEBXLooKewanh}
+	Soit un espace vectoriel \( E\) sur le corps \( \eK\). Si les points \( a,m,b\) sont alignés et distincts, alors il existe \( \lambda\in \eK\) tel que
+	\begin{equation}
+		b=m+\lambda(m-a).
+	\end{equation}
+	%TODOooSJGTooEWUdAv. Prouver ça.
+\end{proposition}
+
+
+%-------------------------------------------------------
+\subsection{Parallélisme et perpendicularité}
+%----------------------------------------------------
+
+
+\begin{definition}[Perpendiculaires et parallèles]		\label{DEFooXVWGooIDYXGj}
+	Soient un espace vectoriel \( E\) ainsi que deux sous-espaces \( V\) et \( W\) de dimension \( 1\).
+	\begin{enumerate}
+		\item		\label{ITEMooWTVKooPohmUX}
+		      Nous disons que les droites \( a+V\) et \( b+W\) sont \defe{parallèles}{droites parallèles} lorsque \( V=W\).
+		\item
+		      Nous disons que les droites \( a+V\) et \( b+W\) sont \defe{perpendiculaires}{droites perpendiculaires} si pour tout \( v\in V\) et \( w\in W\) nous avons \( v\cdot w=0\).
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooZMVZooSRwCLT}
+	Soient deux droites parallèles\footnote{Définition \ref{DEFooXVWGooIDYXGj}\ref{ITEMooWTVKooPohmUX}.} \( D\) et \( E\). Soient \( a,b\in D\) et \( x,y\in E\). Alors il existe \( \sigma\in \eK\) tel que \( b-a=\sigma(y-x)\).
+	%TODOooDVUFooQqqjYb. Prouver ça.
+\end{proposition}
+
+
+Vous noterez que le parallélisme est une notion vectorielle alors que la perpendicularité dépend du produit scalaire; c'est une notion comme qui dirait «métrique».
+
+\begin{proposition}     \label{PROPooADJNooMyXUxG}
+	Les propriétés usuelles.
+	\begin{enumerate}
+		\item		\label{ITEMooSXVYooBUvvxj}
+		      Deux droites parallèles ayant une intersection sont confondues.
+		\item
+		      Le parallélisme est une relation d'équivalence sur l'ensemble des droites de \( E\).
+		\item
+		      Si la droite \( d_1\) est parallèle à la droite \( d_2\), alors une droite est perpendiculaire à \( d_1\) si et seulement si elle est perpendiculaire à \( d_2\).
+	\end{enumerate}
+	%TODOooPOKGooUTBVQN. Prouver les deux autres points.
+\end{proposition}
+
+\begin{proof}
+	Pour \ref{ITEMooSXVYooBUvvxj}, il s'agit du lemme \ref{LEMooLIASooAvjTvt}.
+	%TODOooPOKGooUTBVQN. Prouver les deux autres points.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooKWJLooIYVKhs}
+	Soient deux droites parallèles \( d_1\) et \( d_2\)dans l'espace vectoriel \( E\). Si \( a,b\in d_1\) et si \( x,y\in d_2\), alors il existe \( \sigma\in \eK\) tel que \( b-a=\sigma(y-x)\).
+\end{proposition}
+
+\begin{proof}
+	Par définition \ref{DEFooXVWGooIDYXGj}\ref{ITEMooWTVKooPohmUX}, il existe \( u\in E\) tel que \( d_2=d_1+u\). Vu que \( x,y\in d_2\), il existe \( x',y'\in d_1\) tels que \( x=x'+u\) et \( y=y'+u\). Nous avons
+	\begin{equation}
+		y-x=y'-x'.
+	\end{equation}
+	Comme \( a,b,x',y'\in d_1\), le lemme \ref{LEMooWDADooGuKwvZ} dit qu'il existe \( \sigma\in \eK\) tel que \( b-a=\sigma(y'-x')\). Et donc aussi \( b-a=\sigma(y-x)\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooRLFQooJADark}
+	Deux droites perpendiculaires ont un unique point d'intersection.
+	%TODOooNDLPooYlZwKv. Prouver ça. et aussi PROPooPWNWooYuyrOc
+\end{lemma}
+
+\begin{proposition}     \label{PROPooPWNWooYuyrOc}
+	Soient une droite \( d\) et un point \( p\).
+	\begin{enumerate}
+		\item
+		      Il existe une unique droite parallèle à \( d\) contenant \( p\).
+		\item
+		      Il existe une unique droite perpendiculaire à \( d\) contenant \( p\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{lemma}       \label{LEMooQQFFooEZYeck}
+	Si \( D\) est une droite et si \( a,b\in D\), alors \( D-a=D-b\) et \( D-a\) est une droite vectorielle.
+\end{lemma}
+
+\begin{proof}
+	Vu que \( D\) est une droite, il existe \( v\in V\) tel que \( D-v\) soit une droite vectorielle que nous notons \( L\). Nous allons montrer que \( D-a=D-v\). Comme \( a\) est arbitraire, cela suffit.
+
+	\begin{subproof}
+		\spitem[\( D-a\subset D-v\)]
+		Un élément de \( D-a\) est de la forme \( x-a\) avec \( x\in D\). Nous écrivons \( x-a\) sous la forme \( y-v\) et nous espérons que \( y\in D\). Allons-y : d'abord nous isolons \( y\) dans \( x-a=y-v\) :
+		\begin{subequations}
+			\begin{align}
+				y=x-a+v=(x-v)-(a-v)+v.
+			\end{align}
+		\end{subequations}
+		Puisque \( x-v\) et \( a-v\) sont des éléments de \( L\), la somme est dans \( L\) et donc \( y=l+v\) pour un certain élément de \( l\in L\). Nous avons donc prouvé que \( y\in D\) et donc que \( x-a=y-v\in D-v\).
+
+		\spitem[\( D-v\subset D-a\)]
+		Nous notons \( x-v\) un élément générique de \( D-v\) (\( x\in D\)). En posant \( y-a=x-v\), nous trouvons
+		\begin{equation}
+			y=x-v+a=\underbrace{x-v}_{\in L}+\underbrace{(a-v)}_{\in L}+v
+		\end{equation}
+		Donc \( y\in D\) et \( x-v=y-a\in D-a\).
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Droites et applications linéaires}
+%----------------------------------------------------
+
+
+\begin{lemma}       \label{LEMooRWASooOfwjdw}
+	Soit un espace vectoriel \( V\) sur le corps \( \eK\).
+	\begin{enumerate}
+		\item       \label{ITEMooYQCIooOrhRwj}
+		      Si \( L\) est une droite vectorielle, alors pour tout \( a\neq 0\) dans \( L\), nous avons \( L=\Image(f)\) où \( f\) est l'application linéaire donnée par
+		      \begin{equation}
+			      \begin{aligned}
+				      f\colon \eK & \to V              \\
+				      \lambda     & \mapsto \lambda a.
+			      \end{aligned}
+		      \end{equation}
+		\item       \label{ITEMooZIGMooGruFMP}
+		      Si \( D\) est une droite, alors pour tout \( a\neq b\) sur \( D\) nous avons \( D=\Image(f)\) où \( f\) est l'application affine donnée par
+		      \begin{equation}
+			      \begin{aligned}
+				      f\colon \eK & \to V                   \\
+				      \lambda     & \mapsto a+\lambda(b-a).
+			      \end{aligned}
+		      \end{equation}
+		\item     \label{ITEMooOKJZooIHYDIk}
+		      Une partie \( D\subset V\) est une droite (affine) si et seulement si il existe \( a,v\in V\) tels que
+		      \begin{equation}
+			      D=\{ a+\lambda v \}_{\lambda\in \eK}.
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooYQCIooOrhRwj}]
+		%---------------------------------------------------------------------------------------------------
+		Comme \( L\) est un sous-espace de dimension \( 1\), il possède une base contenant un unique élément, disons \( \{ b \}\). En particulier \( a=\mu b\) pour un certain \( \mu\in \eK\). Si \( x\in L\) nous avons \( x=\lambda_x b\) pour un certain \( \lambda_x\), et donc
+		\begin{equation}
+			x=\frac{ \lambda_x }{ \mu }a.
+		\end{equation}
+		Donc \( x=f(\lambda_x/\mu)\). Cela prouve que \( L\subset\Image(f)\).
+
+		L'inclusion inverse est simplement le fait que \( \lambda a\in L\) dès que \( a\in L\) parce que \( L\) est vectoriel.
+
+		\spitem[Pour \ref{ITEMooZIGMooGruFMP}]
+		%---------------------------------------------------------------------------------------------------
+		Le lemme \ref{LEMooQQFFooEZYeck} nous indique qu'il existe une droite vectorielle \( L\) telle que \( D-x=L\) pour tout \( x\in D\).
+		\begin{subproof}
+			\spitem[\( D\subset\Image(g)\)]
+			Nous nommons \( f\colon \eK\to V\) l'application linéaire qui donne \( L\). Puisque \( b-a\in L\) nous avons
+			\begin{equation}
+				f(\lambda)=\lambda(b-a),
+			\end{equation}
+			et tout élément de \( L\) est de la forme \( f(\lambda)\). Nous avons aussi \( D=L+a\); donc un élément de \( D\) est de la forme \( f(\lambda)+a\) et donc de la forme \( \lambda(b-a)+a=g(\lambda)\).
+
+			\spitem[\( \Image(g)\subset D\)]
+			Un élément de \( \Image(g)\) est de la forme \( a+\lambda(b-a)\) avec \( \lambda\in \eK\). Mais \( b-a\in L\), donc \( \lambda(b-a)\in L\) et
+			\begin{equation}
+				g(\lambda)=a+\lambda(b-a)\in a+L=D.
+			\end{equation}
+		\end{subproof}
+
+		\spitem[Pour \ref{ITEMooOKJZooIHYDIk}]
+		%-----------------------------------------------------------
+		En deux parties.
+		\begin{subproof}
+			\spitem[\( \Rightarrow\)]
+			%-----------------------------------------------------------
+			Si \( D\subset V\) est une droite, alors \( D=D_0+a\) où \( D_0\) est un sous-espace de dimension \( 1\) et \( a\in V\). Nous avons \( D_0=\{ \lambda v \}_{\lambda\in \eK}\), et donc
+			\begin{equation}
+				D=D_0+a=\{ a+\lambda v \}_{\lambda \in \eK}.
+			\end{equation}
+
+			\spitem[\( \Leftarrow\)]
+			%-----------------------------------------------------------
+			Si \( D=\{ a+\lambda v \}_{\lambda\in \eK}\), alors en posant \( D_0=\{ \lambda v \}_{\lambda\in \eK}\), nous avons bien \( D=a+D_0\).
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}     \label{PROPooNTHVooWWyafJ}
+	L'image d'une droite par une application affine\footnote{Définition \ref{DEFooVTXWooVXfUnc}.} est une droite.
+	%TODOooWSHOooDmSCIY. Prouver ça.
+\end{proposition}
+
+
+\begin{proposition}     \label{PROPooTFTJooJejuBU}
+	Soient deux droites \( d_1\) et \( d_2\) dans \( \eR^n\) (\( n\geq 2\)). Alors nous sommes dans une des trois situations suivantes :
+	\begin{enumerate}
+		\item
+		      \( d_1\cap d_2=\emptyset\).
+		\item
+		      \( \Card(d_1\cap d_2)=1\)
+		\item
+		      \( d_1=d_2\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Il y a \( 3\) possibilités : \( \Card(d_1\cap d_2)\) peut être \( 0\), \( 1\) ou \( \Card(d_1\cap d_2)\geq 2\). Je vous laisse trouver des exemples explicites des deux premiers cas. Dans le troisième cas, la proposition \ref{PROPooRSKLooVrxrFz} dit que \( d_1=d_2\).
+\end{proof}
+
+\begin{example}
+	Les exemples les plus courants d'applications affines sont les droites et les plans ne passant pas par l'origine.
+	\begin{description}
+		\item[Les droites] Une droite dans \( \eR^2\) (ou \( \eR^3\)) qui ne passe pas par l'origine est l'image d'une fonction de la forme \( s(t) =u t +v\), avec \( t \in \eR\), et \( u\) et \( v\) dans \( \eR^2\) ou \( \eR^3\) selon le cas.
+
+		      En choisissant des coordonnées adéquates, les droites peuvent être aussi vues comme graphes de fonctions affines. Dans le cas de \( \eR^2\), on retrouve la fonction de l'exemple~\ref{ex_affine}, pour \( n = m = 1 \).
+
+		\item[Les plans]
+		      De la même façon nous savons que tout plan qui ne passe pas par l'origine dans \( \eR^3\) est le graphe d'une application affine, \( P(x,y)= (a,b)^T\cdot(x,y)^T+(c,d)^T\), lorsque les coordonnées sont bien choisies.
+	\end{description}
+\end{example}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooTVSZooOJTnnn}
+	Soient trois points \( a\), \( b\), \( c\) distincts et non alignés de \( \eR^n\).
+	\begin{enumerate}
+		\item
+		      Il existe un unique plan contenant \( a\), \( b\) et \( c\).
+		\item
+		      Ce plan est donné par \( P=\{ a+\lambda(b-a)+\mu(c-a)\tq \lambda,\mu\in \eR^n \}\).
+	\end{enumerate}
+	%TODOooLHWOooPbjHgA. Prouver ça.
+\end{proposition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooUDLRooShTGmV}
+	Soit un espace vectoriel \( V\) sur \( \eK\). Soient \( a,b\in V\). Si \( x\) est un point de la droite \( (ab)\), alors il existe \( \lambda\in \eK\) tel que \( x=\lambda(b-a)\).
+	%TODOooONVGooPwTvKH. Prouver ça.
+\end{proposition}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Projection orthogonale}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Le théorème suivant n'est pas indispensablissime parce qu'il est le même que le théorème de la projection sur les espaces de Hilbert\footnote{Théorème~\ref{ThoProjOrthuzcYkz}}. Cependant la partie existence est plus simple en se limitant au cas de dimension finie.
+\begin{theoremDef}[Théorème de la projection]  \label{ThoWKwosrH}
+	Soit \( E\) un espace vectoriel réel ou complexe de dimension finie, \( x\in E\), et \( C\) un sous-ensemble fermé convexe de \(E\).
+	\begin{enumerate}
+		\item
+		      Les deux conditions suivantes sur \( y\in E\) sont équivalentes:
+		      \begin{enumerate}
+			      \item   \label{zzETsfYCSItemi}
+			            \( \| x-y \|=\inf\{ \| x-z \|\tq z\in C \}\),
+			      \item\label{zzETsfYCSItemii}
+			            pour tout \( z\in C\), \( \real\langle x-y, z-y\rangle \leq 0\).
+		      \end{enumerate}
+		\item
+		      Il existe un unique \( y\in E\), noté \( y=\pr_C(x)\) vérifiant ces conditions.
+	\end{enumerate}
+\end{theoremDef}
+
+\begin{proof}
+	Nous commençons par prouver l'existence et l'unicité d'un élément dans \( C\) vérifiant la première condition. Ensuite nous verrons l'équivalence.
+
+	\begin{subproof}
+		\spitem[Existence]
+
+		Soit \( z_0\in C\) et \( r=\| x-z_0 \|\). La boule fermée \( \overline{ B(x,r) }\) est compacte\footnote{C'est ceci qui ne marche plus en dimension infinie.} et intersecte \( C\). Vu que \( C\) est fermé, l'ensemble \( C'=C\cap\overline{ B(x,r) }\) est compact. Tous les points qui minimisent la distance entre \( x\) et \( C\) sont dans \( C'\); la fonction
+		\begin{equation}
+			\begin{aligned}
+				C' & \to \eR        \\
+				z  & \mapsto d(x,z)
+			\end{aligned}
+		\end{equation}
+		est continue sur un compact et donc a un minimum qu'elle atteint\footnote{Théorème~\ref{ThoMKKooAbHaro}.}. Un point \( P\) réalisant ce minimum prouve l'existence d'un point vérifiant la première condition.
+
+		\spitem[Unicité]
+		Soient \( y_1\) et \( y_2\), deux éléments de \( C\) minimisant la distance avec \( x\), et soit \( d\) ce minimum. Nous avons par l'identité du parallélogramme \eqref{EqYCLtWfJ} que
+		\begin{equation}
+			\| y_1-y_2 \|^2=-4\left\| \frac{ y_1+y_2-x }{2} \right\|^2+2\| y_1-x \|^2+2\| y_2-x \|^2\leq -4d+2d+2d=0.
+		\end{equation}
+		Par conséquent \( y_1=y_2\).
+
+		\spitem[\ref{zzETsfYCSItemi}\( \Rightarrow\)~\ref{zzETsfYCSItemii}]
+		Soit \( z\in C\) et \( t\in \mathopen] 0 , 1 \mathclose[\); nous notons \( P=\pr_Cx\). Vu que \( y\) et \( P\) sont dans \( C\) et que \( C\) est convexe\footnote{Définition \ref{DEFooQQEOooAFKbcQ}.}, le point \( z=ty+(1-t)P\) est également dans \( C\), et par conséquent,
+		\begin{equation}
+			\| x-P \|^2\leq\| x-tz-(1-t)P \|^2=\| (x-P)-t(z-P) \|^2.
+		\end{equation}
+		Nous sommes dans un cas \( \| a \|^2\leq | a-b |^2\), qui implique \( 2\real\langle a, b\rangle \leq \| b \|^2\). Dans notre cas,
+		\begin{equation}
+			2\real\langle x-P , t(z-P)\rangle \leq t^2\| z-P \|^2.
+		\end{equation}
+		En divisant par \( t\) et en faisant \( t\to 0\) nous trouvons l'inégalité demandée\footnote{Ici nous utilisons la proposition \ref{PROPooKPOXooEHIXJs}, et c'est une des choses qui font que cette partie sur la «géométrie élémentaire» demande en réalité d'être placée après déjà une partie de l'analyse réelle.} :
+		\begin{equation}
+			2\real\langle x-P, z-P\rangle \leq 0.
+		\end{equation}
+
+		\spitem[\ref{zzETsfYCSItemii}\( \Rightarrow\)~\ref{zzETsfYCSItemi}]
+
+		Soit un point \( P\in C\) vérifiant
+		\begin{equation}
+			\real\langle x-P, z-P\rangle \leq 0
+		\end{equation}
+		pour tout \( z\in C\). Alors en notant \( a=x-P\) et \( b=P-z\),
+		\begin{equation}
+			\begin{aligned}[]
+				\| x-z \|^2=\| x-P+P-z \|^2 & =\| a+b \|^2                                       \\
+				                            & =\| a \|^2+\| b \|^2+2\real\langle a, b\rangle     \\
+				                            & =\| a \|^2+\| b \|^2-2\real\langle x-P, z-P\rangle \\
+				                            & \geq \| b \|^2,
+			\end{aligned}
+		\end{equation}
+		ce qu'il fallait.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PROPooHGGIooIssaTA}
+	Soient une droite \( d\) dans \( \eR^3\) ainsi qu'un point \( p\). La projection\footnote{Définition \ref{ThoWKwosrH}.} \( \pr_d(p)\) est le point d'intersection\footnote{Lemme \ref{LEMooRLFQooJADark}.} entre \( d\) et la perpendiculaire à \( d\) passant par \( p\).
+\end{proposition}
+
+\begin{proof}
+	Nous considérons la droite \( d=\{ a+\lambda v \}_{\lambda\in \eR}\) et un point \( p\in \eR^3\). Nous notons \( x(\lambda)=a+\lambda v\) le point courant dans \( d\). Conformément à la définition \ref{ThoWKwosrH} de la projection orthogonale, nous allons minimiser la distance \( \| p-x(\lambda) \|\) par rapport à \( \lambda\).
+
+	Puisque \( \| p-x(\lambda) \|\) est toujours positif, nous pouvons chercher à minimiser le carré :
+	\begin{equation}
+		\| p- x(\lambda) \|^2=\| p \|^2-2p\cdot a-2\lambda p\cdot v+\| a \|^2+| \lambda |^2\| v \|^2+2\lambda a\cdot v.
+	\end{equation}
+	Quitte à minimiser ça par rapport à \( \lambda\), nous pouvons oublier les termes ne contenant pas \( \lambda\). Nous posons donc
+	\begin{equation}
+		f(\lambda)=\| v \|^2\lambda^2+ 2(a-p)\cdot v\lambda
+	\end{equation}
+
+	Comme le coefficient de \( \lambda^2\) est positif, la proposition \ref{PROPooEZIKooKjJroH} nous dit que cette fonction aura un minimum (et non un maximum). La valeur \( \lambda_0\) pour laquelle \( f\) est minimal se découvre grâce à \ref{PROPooEZIKooKjJroH}\ref{ITEMooHQTBooZuaPAs} :
+	\begin{equation}
+		\lambda_0=\frac{ -2(a-p)\cdot v }{ 2\| v \|^2 }.
+	\end{equation}
+	Cela est la valeur de \( \lambda\) pour laquelle
+	\begin{equation}
+		\pr_d(p)=x(\lambda_0);
+	\end{equation}
+	nous avons donc
+	\begin{equation}
+		x(\lambda_0)=a-\frac{ (a-p)\cdot v }{ \| v \|^2 }v.
+	\end{equation}
+	Nous devons voir maintenant que \( \big( p-x(\lambda_0) \big)\cdot v=0\). Il suffit d'un peu déballer :
+	\begin{equation}
+		\big( p-x(\lambda_0) \big)\cdot v=p\cdot v-a\cdot v+\frac{ (a-p)\cdot v }{ \| v \|^2 }\| v \|^2=p\cdot v-a\cdot v+(a-p)\cdot v=0.
+	\end{equation}
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Géométrie dans le plan}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{lemma}[Équation de droite\index{équation de droite}]       \label{LEMooYIHXooEwmlPo}
+	Si \( D\) est une droite\footnote{Définition \ref{DEFooTQIFooKcloeY}, mais c'est surtout la caractérisation du lemme \ref{LEMooRWASooOfwjdw}\ref{ITEMooOKJZooIHYDIk} que nous devons avoir en tête.} dans \( \eR^2\), alors \( D\) est d'une des deux formes suivantes :
+	\begin{itemize}
+		\item Soit il existe \( \alpha\in \eR\) tel que
+		      \begin{equation}
+			      D=\{ (x,y)\in \eR^2\tq x=\alpha \},
+		      \end{equation}
+		\item soit il existe \( \alpha,\beta\in \eR\) tels que
+		      \begin{equation}
+			      D=\{ (x,y)\in \eR^2\tq y=\alpha x+\beta \}.
+		      \end{equation}
+	\end{itemize}
+	Le premier cas correspond aux droites verticales.
+\end{lemma}
+
+\begin{proof}
+	Nous prenons une droite \( D\) et une application affine \( f\) donnée par \eqref{LEMooRWASooOfwjdw}\ref{ITEMooOKJZooIHYDIk}. Il y a deux possibilités : soit \( b-a\) est un multiple de \( e_2\), sois pas.
+	\begin{subproof}
+		\spitem[Si \( b-a=\mu e_2\)]
+		%-----------------------------------------------------------
+		Alors \( f(\lambda)=a+\lambda\mu e_2\). Nous avons alors
+		\begin{subequations}
+			\begin{align}
+				D & =\{ a+\lambda e_2 \}_{\lambda\in \eR}                                                    \\
+				  & =	\{ \lambda e_2+a_1e_1 \}             & \text{cf. justif.}		\label{SUBEQooEKMNooQgkSeC} \\
+				  & = \{ (a_1,\lambda) \}_{\lambda\in \eR}                                                   \\\
+				  & =\{ (x,y)\in \eR^2\tq x=a_1 \}.
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item
+			      Pour \ref{SUBEQooEKMNooQgkSeC}. Parce que \( a_2e_2+\lambda e_2\) prend toutes les valeurs de la forme \( \lambda e_2\).
+		\end{itemize}
+		\spitem[Sinon]
+		%-----------------------------------------------------------
+		Nous avons
+		\begin{equation}
+			f(\lambda)=\begin{pmatrix}
+				a_1+\lambda(b-a)_1 \\
+				a_2+\lambda(b-a)_2
+			\end{pmatrix}
+		\end{equation}
+		En posant \( \alpha=(b-a)_2/(b-a)_1\) et \( \beta=-\alpha a_1+a_2\), nous avons bien
+		\begin{equation}
+			f(\lambda)_2=\alpha f(\lambda)_1+\beta.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PROPooOFKXooARiQZK}
+	Une partie \( D\subset \eR^2\) est une droite si et seulement si il existe une application affine\footnote{Définition \ref{DEFooVTXWooVXfUnc}.} qui n'est pas une translation \( f\colon \eR^2\to \eR\) telle que
+	\begin{equation}
+		D=\{ x\in \eR^2\tq f(x)=0 \}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Dans les deux sens.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Soit une droite \( D\). Elle est de la forme \( D=D_0+a\) où \( D_0\) est un sous-espace vectoriel de dimension \( 1\). Autrement dit, il existe \( u\in \eR^2\) tel que \( D_0=\{ \lambda u \}_{\lambda\in \eR}\). Nous considérons un vecteur \( v\in \eR^2\) tel que \( \{ u,v \}\) soit une base de \( \eR^2\), et nous posons
+		\begin{equation}
+			\begin{aligned}
+				f_0\colon \eR^2 & \to \eR     \\
+				x               & \mapsto x_v
+			\end{aligned}
+		\end{equation}
+		où \( x_v\) est la composante de \( x\) dans la direction de \( v\) dans la base \( \{ u,v \}\). On vérifie que \( f_0\) est linéaire. Nous avons \( D_0=\{ f_0=0 \}\).
+
+		Maintenant en posant
+		\begin{equation}
+			\begin{aligned}
+				f\colon \eR^2 & \to \eR           \\
+				x             & \mapsto f_0(x-a),
+			\end{aligned}
+		\end{equation}
+		nous avons \( D=\{ f=0 \}\).
+		\begin{subproof}
+			\spitem[\( f\) est affine]
+			%-----------------------------------------------------------
+			C'est immédiat parce que \( f(x)=f_0(x)-f_0(a)\). L'application \( f_0\) est linéaire et \( f_0(a)\) est une constante.
+			\spitem[\( \{ f=0 \}\subset D\)]
+			%-----------------------------------------------------------
+			Si \( f(x)=0\), alors \( f_0(x-a)=0\). Cela signifie que \( x-a\in D_0\) et donc que \( x\in D_0+a=D\).
+			\spitem[\( D\subset\{ f=0 \}\)]
+			%-----------------------------------------------------------
+			Si \( x\in D\), alors \( x-a\in D_0\) et \( f(x)=f_0(x-a)=0\).
+		\end{subproof}
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Soit une application affine \(f \colon \eR^2\to \eR  \). Nous montrons que \( D=\{ f=0 \}\) est une droite. Il existe une application linéaire \(\alpha \colon \eR^2\to \eR  \) et \( a\in \eR\) tels que \( f(x)=\alpha(x)+a\). Posons \( D_0=\{ \alpha=0 \}\). La proposition \ref{PROPooKUAVooCbjDcR} dit qu'il existe \( u\in \eR^2\) tel que \( \alpha(u)=0\). Vu que \( \alpha\) est linéaire, \( \alpha(\lambda u)=\lambda\alpha(u)\) pour tout \( \lambda\in \eR\) et donc \( \{ \lambda u \}_{\lambda \in \eR}\subset D_0\). Inversement, si \( v\in\{ \alpha=0 \}\) avec \( v\) hors de \( \eR u\), alors \( \{ u,v \}\) est une base de \( \eR^2\) et nous aurions \( \alpha=0\).
+
+		Nous avons donc \( D_0=\{ \alpha=0 \}\). Maintenant avec \( f(x)=\alpha(x)+a\), nous avons \( D=\{ f=0 \}=D_0-a\). Donc \( D\) est une droite.
+	\end{subproof}
+\end{proof}
+
+Si \( f\) est une application affine quelle que \( f(x)=0\) donne la droite \( D\), alors pour tout réel non nul \( \lambda\), l'application affine \( \lambda f\)  donnent également \( D\). Il n'y a donc pas d'unicité.
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooTIIUooNtbQLz}
+	Soient \( v\in \eR^2\) et \( c\in \eR\). Nous posons
+	\begin{subequations}
+		\begin{align}
+			D_0 & =\{ x\in \eR^2\tq x\cdot v=0 \} \\
+			D   & =\{ x\in \eR^2\tq x\cdot v=c \}
+		\end{align}
+	\end{subequations}
+	Nous considérons \( w\neq 0\in D_0\) et \( b\in D\). Alors
+	Alors
+	\begin{enumerate}
+		\item		\label{ITEMooSTSZooKMQImS}
+		      \begin{equation}
+			      D_0=\{ x\in \eR^2\tq x\cdot v=0 \}=\{ \lambda w\tq \lambda\in \eR \}
+		      \end{equation}
+		\item		\label{ITEMooWNRSooLcCikX}
+		      \begin{equation}
+			      D=\{ x\in \eR^2\tq x\cdot v=c \}=\{ b+\lambda w\tq \lambda\in \eR \}
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooWNRSooLcCikX}]
+		%-----------------------------------------------------------
+		Nous posons \( E_0=\{ \lambda w\tq \lambda\in \eR \}\), et nous prouvons que \( D_0=E_0\).
+		\begin{subproof}
+			\spitem[\( D_0\subset E_0\)]
+			%-----------------------------------------------------------
+			Soit \( x\in D_0\). Nous avons \( x\cdot v=w\cdot v=0\), c'est-à-dire
+			\begin{subequations}		\label{EQooUPMEooCPCrqw}
+				\begin{align}
+					x_1v_1+x_2v_2 & =0   \\
+					w_1v_1+w_2v_2 & = 0.
+				\end{align}
+			\end{subequations}
+			\begin{subproof}
+				\spitem[Si \( v_1\neq 0\)]
+				%-----------------------------------------------------------
+				Nous avons
+				\begin{subequations}
+					\begin{align}
+						x_1 & =-\frac{ v_2 }{ v_1 }x_2  \\
+						w_1 & =-\frac{ v_2 }{ v_1 }w_2.
+					\end{align}
+				\end{subequations}
+				\begin{subproof}
+					\spitem[Si \( w_2\neq 0\)]
+					%-----------------------------------------------------------
+					Alors en posant \( \lambda=x_2/w_2\) nous avons \( x_2=\lambda w_2\), et
+					\begin{equation}
+						x_1=-\frac{ v_2 }{ v_1 }\lambda w_2=-\frac{ v_2 }{ v_1 }w_2\lambda=\lambda w_1.
+					\end{equation}
+					Et donc nous avons bien \( x_1=\lambda w_1\) et \( x_2=\lambda w_2\), c'est-à-dire \( x=\lambda w\).
+					\spitem[Si \( w_2= 0\)]
+					%-----------------------------------------------------------
+					Alors, vu que \( w\neq 0\), nous avons \( w_1\neq 0\). Mais aussi : \( w_1v_1=0\). Et comme nous avons dit que \( v_1\neq 0\), c'est impossible.
+				\end{subproof}
+				\spitem[Si \( v_1= 0\)]
+				%-----------------------------------------------------------
+				Les équations \eqref{EQooUPMEooCPCrqw} deviennent
+				\begin{subequations}
+					\begin{align}
+						x_2v_2 & =0 \\
+						w_2v_2 & =0
+					\end{align}
+				\end{subequations}
+				Vu que \( v\neq 0\), nous avons \( v_2\neq 0\) et donc \( x_2=w_2=0\). Comme \( v_2\neq 0\), il suffi de poser \( \lambda=x_1/w_1\) pour avoir \( x_1=\lambda w_1\) et donc \( x=\lambda w\).
+			\end{subproof}
+			\spitem[\( E_0\subset D_0\)]
+			%-----------------------------------------------------------
+			Soit \( x\in E_0\). Il existe \( \lambda\in \eR\) tel que \( x=\lambda w\). Vu que \( w\in D_0\), nous avons \( w\cdot v=0\). Donc
+			\begin{equation}
+				x\cdot v=\lambda w\cdot v=0.
+			\end{equation}
+			Donc \( x\in D_0\).
+		\end{subproof}
+		\spitem[Pour \ref{ITEMooWNRSooLcCikX}]
+		%-----------------------------------------------------------
+		Soient \( w\in D_0\) et \( b\in D\). Nous posons
+		\begin{subequations}
+			\begin{align}
+				D & =\{ x\in \eR^2\tq x\cdot v=c \}       \\
+				E & =\{ b+\lambda w\tq \lambda\in \eR \},
+			\end{align}
+		\end{subequations}
+		et nous prouvons que \( D=E\).
+		\begin{subproof}
+			\spitem[\( D\subset E\)]
+			%-----------------------------------------------------------
+			Soit \( x\in \eR^2\) tel que \( x\cdot v=c\). Alors \( (x-b)\cdot v=0\) parce que \( b\in D\). Donc \( x-b\in D_0\). Par le point \ref{ITEMooSTSZooKMQImS}, il existe \( \lambda\in \eR\) tel que \( x-b=\lambda w\). Et donc \( x=b+\lambda w\), c'est-à-dire \( x\in E\).
+			\spitem[\( E\subset D\)]
+			%-----------------------------------------------------------
+			Vu que \( b\in D\) et \( w\in D_0\), nous avons  \( b\cdot v=c\) et \( w\cdot v=0\). Donc \( (b+\lambda w)\cdot v=c\) et donc \( b+\lambda w\in D\).
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooJSBKooJspdiF}
+	Si \( D\) est une droite de \( \eR^2\), alors il existe \( c\in \eR\) et \( v\in \eR^2\) tels que
+	\begin{equation}
+		D=\{ x\in \eR^2 \tq x\cdot v=c \}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par supposer que notre droite a la forme
+	\begin{equation}
+		E_0=\{ \lambda w\tq \lambda\in \eR \}
+	\end{equation}
+	pour un certain \( \lambda\in \eR\). En choisissant \( v\in \eR^2\) tel que \( v\cdot w=0\) nous posons \( D_0=\{ x\in \eR^2\tq v\cdot x=0 \}\). Vu que \( w\in D_0\), nous avons \( E_0=D_0\) par la proposition \ref{PROPooTIIUooNtbQLz}.
+
+	Prenons maintenant une droite générale  \( D=\{ a+\lambda w\tq \lambda\in \eR \}\) avec \( a\in \eR^2\) et \( w\in \eR^2\). En posant \( D_0=\{ \lambda w \}\), nous avons \( D=D_0+a\). Par la première partie, il existe \( v\in \eR^2\) tel que \( D_0=\{ x\in \eR^2\tq x\cdot v=0 \}\). En posant \( c=a\cdot v\) et \( D'=\{ x\in \eR^2\tq x\cdot v=c \}\), nous avons \( a\in D'\) et \( w\in D_0\). Et donc
+	\begin{equation}
+		D'=\{ a+\lambda w\tq \mu \in \eR \}=D_0+a=D.
+	\end{equation}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Segment, médiatrice et équidistance}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[\cite{MonCerveau}]	\label{DEFooDLBFooYmJPhQ}
+	Soient deux points \( a\) et \( b\) dans \( \eR^2\). Nous posons \( m=(a+b)/2\), et nous disons que la \defe{médiatrice}{médiatrice} du segment \( \mathopen[a,b\mathclose]\) est la partie
+	\begin{equation}		\label{EQooTOACooUQjNJa}
+		M=\{ x\in \eR^2\tq (x-m)\cdot (a-b)=0 \}.
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooPOKCooMoEfOB}
+	La médiatrice du segment \( \mathopen[ a,b\mathclose]\) est une droite. Si \( w\) vérifie \( w\cdot (a-b)=0\), alors en posant \( m=(a+b)/2\) et \( c=m\cdot(a-b)\), la médiatrice est  également donnée par
+	\begin{equation}		\label{EQooYJKWooIMBdjO}
+		M=\{ x\in \eR^2\tq x\cdot v=c \}=\{ m+\lambda w\tq \lambda\in \eR \}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	La définition \eqref{EQooTOACooUQjNJa} dit que \( M=\{ x\in \eR^2\tq (x-m)\cdot (a-b)=0 \}\). En posant \( c=m\cdot (a-b)\) et \( v=(a-b)\), nous avons
+	\begin{equation}
+		M=\{ x\in \eR^2\tq x\cdot v=c \}.
+	\end{equation}
+	La proposition \ref{PROPooTIIUooNtbQLz} dit que c'est une droite. En ce qui concerne la seconde expression de \eqref{EQooYJKWooIMBdjO}, il s'agit de prendre la proposition \ref{PROPooTIIUooNtbQLz}\ref{ITEMooWNRSooLcCikX}. En notant \( M_0=\{ x\in\eR^2\tq x\cdot v=0 \}\), nous avons \( M=\{ m+\lambda w \}\) pour tout \( w\in M_0\). En particulier pour le \( w\) vérifiant les hypothèses (\( w\cdot v=w\cdot(b-a)=0\)).
+\end{proof}
+
+
+\begin{lemma}   \label{LEMooSZZWooPDHnGl}
+	Un point \( M\) est sur la médiatrice\footnote{Médiatrice, définition \ref{DEFooDLBFooYmJPhQ}.} du segment \( [A,B]\) si et seulement si \( \| M-A \|=\| M-B \|\).
+\end{lemma}
+
+\begin{proof}
+	Nous posons \( I=(A+B)/2\). D'une part l'expression que \( M\) est sur la médiatrice est que
+	\begin{equation}
+		(M-I)\cdot (A-B)=0.
+	\end{equation}
+	D'autre part, l'expresson d'être équidistant de \( A\) est de \( B\) est
+	\begin{equation}
+		\| M-A \|^2-\| M-B \|^2=0.
+	\end{equation}
+	La preuve consiste à montrer que
+	\begin{equation}
+		2(M-I)\cdot (B-A)=\| M-A \|^2-\| M-B \|^2.
+	\end{equation}
+	Pour cela, il suffit d'injecter \( I=(A+B)/2\) et d'effectuer les produits.
+
+	Nous avons par exemple
+	\begin{subequations}
+		\begin{align}
+			2(M-I)\cdot (B-A) & =(2M-A-B)\cdot(B-A)                                        \\
+			                  & =2M\cdot B-2M\cdot A-A\cdot B+\| A \|^2-\| B \|^2+A\cdot B \\
+			                  & =2M\cdot (B-A)+\| A \|^2-\| B \|^2.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooIPKSooAOfTDy}
+	Il n'existe pas \( 4\) points distincts de \( \eR^2\) deux à deux équidistants.
+\end{proposition}
+
+\begin{proof}
+	Soient deux points distincts \( a,b\in \eR^2\). Nous nommons \( \ell \) la distance \( \| a-b \|\). Si les points \( c,d\in \eR^2\) sont équidistants de \( a\) et \( b\), alors ils doivent être sur la médiatrice (lemme \ref{LEMooSZZWooPDHnGl}). La proposition \ref{PROPooPOKCooMoEfOB} nous indique que, si nous posons \( m=(a+b)/2\) et si nous considérons \( w\in \eR^2\) tel que \( w\cdot(a-b)=0\), alors la médiatrice est
+	\begin{equation}
+		M=\{ m+\lambda w\tq \lambda\in \eR \}.
+	\end{equation}
+	Il existe donc \( \lambda_c\) et \( \lambda_d\) tels que \( c=m+\lambda_c w\) et \( d=m+\lambda_dw\). Nous cherchons donc les \( x\in \eR^2\) tels que \( \| x-a \|=\| x-b \|=\ell\) sous la forme \( x=l+\lambda x\). Nous posons donc
+	\begin{equation}
+		\| m+\lambda w-a \|=\ell
+	\end{equation}
+	et nous cherchons pour quelles valeurs de \( \lambda\) l'égalité est respectée. En utilisant le fait que \( w\cdot(b-a)=0\), nous avons
+	\begin{subequations}
+		\begin{align}
+			\| m+\lambda w-a \|^2 & =\| \frac{ b-a }{2}+\lambda w \|^2                                                \\
+			                      & =\big( \frac{ b-a }{2}+\lambda w \big)\cdot \big( \frac{ b-a }{2}+\lambda w \big) \\
+			                      & =\frac{1}{ 4}\| b-a \|^2+\lambda^2\| w \|^2.
+		\end{align}
+	\end{subequations}
+	Le tout doit être égal à \( \ell^2=\| b-a \|^2\). Nous avons donc \( \lambda^2=\frac{ 3\ell^2 }{ 4\| w \|^2 }\). Vu que \( \ell\) et \( \| w \|\) sont positifs, nous pouvons passer à la racine carrée :
+	\begin{equation}
+		\lambda_{\pm}=\pm\frac{ \sqrt{3} }{ 2 }\frac{ l }{ \| w \| }.
+	\end{equation}
+	Les points \( c\) et \( d\) sont donc forcément \( c=m+\lambda_+w\) et \(d=m+\lambda_-w \). C'est la seule manière de garantir \( \| a-b \|=\| a-c \|=\| b-c \|=\| a-d \|=\| b-d \|\). Hélas, de cette façon nous n'avons pas \( \| c-d \|=\ell\) parce que
+	\begin{equation}
+		\| c-d \|=2\lambda \| w \|=\sqrt{3}\ell\neq \ell.
+	\end{equation}
+\end{proof}
+
+
+Si \( A'\) est l'image de \( A\) par \( \sigma_{\ell}\) alors \( \ell\) est la médiatrice du segment \( [A,A']\). Voir le lemme \ref{LEMooTCIEooXdyuHu}.
+
+\begin{definition}
+	Soit une application affine \( f\colon \eR^2\to \eR\). Nous appelons \defe{demi-plans}{demi-plan} associés à \( f\) les parties
+	\begin{equation}
+		H_f^+=\{ x\in \eR^2\tq f(x)>0 \}
+	\end{equation}
+	et
+	\begin{equation}
+		H_f^-=\{ x\in \eR^2\tq f(x)<0 \}.
+	\end{equation}
+\end{definition}
+
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooEZEDooSDbrkq}
+	Les demi-plans sont convexes\footnote{Définition \ref{DEFooQQEOooAFKbcQ}.}.
+\end{lemma}
+
+\begin{proof}
+	Soit une applications affine \( f\colon \eR^2\to\eR\) ainsi que \( a,b\in \eR^2\) tels que \( f(a)>0\) et \( f(b)>0\). Vu que \( f\) est affine, il existe une application linéaire \( l\colon \eR^2\to \eR\) ainsi que \( \alpha\in \eR\) tels que \( f(x)=l(x)+\alpha\) pour tout \( x\).
+
+	Nous considérons
+	\begin{equation}
+		\begin{aligned}
+			\gamma\colon \eR & \to \eR^2         \\
+			t                & \mapsto a+t(b-a).
+		\end{aligned}
+	\end{equation}
+	Nous devons prouver que \( (f\circ\gamma)(t)>0\) pour tout \( t\in\mathopen[ 0 , 1 \mathclose]\).
+
+	Nous avons \( (f\circ\gamma)(0)>0\) et \( (f\circ\gamma)(1)>0\). Nous avons d'abord
+	\begin{subequations}
+		\begin{align}
+			(f\circ\gamma)(t) & =l\big( a+t(b-a) \big)+\alpha                      \\
+			                  & =l(a)+fl(b)-tl(a)+\alpha                           \\
+			                  & =(1-t)l(a)+tl(b)+t\alpha+(1-t)\alpha               \\
+			                  & =(1-t)f(a)+tf(b).      \label{SUBEQooXZIPooMoJCRm}
+		\end{align}
+	\end{subequations}
+	Les nombres \( f(a)\) et \( f(b)\) sont strictement positifs. Les nombres \( (1-t)\) et \( t\) sont positifs, mais ne s'annulent pas en même temps. Donc dans \eqref{SUBEQooXZIPooMoJCRm}, au moins un des deux termes est strictement positifs tandis que l'autre est positif ou nul. Bref, \( (f\circ\gamma)(t)>0\).
+
+	Cela prouve que le demi-plan \( f(x)>0\) est convexe. Le même raisonnement tient pour le demi-plan \( f(x)<0\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooXLNZooFyqPxG}
+	Si \( f,g\colon \eR^2\to \eR\) sont affines et si \( \ker(f)=\ker(g)\), alors
+	\begin{equation}
+		\{H_f^+,H_f^-\}=\{ H_g^+,H_g^- \}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Il existe un \( a\in \eR^2\) tel que \( f(a)>0\). En effet \( f(x)=l(x)+\alpha\) où \( l\colon \eR^2\to \eR\) est linéaire et \( \alpha\in \eR\). Il suffit de prendre \( x\) tel que \( l(x)<-\alpha\).
+	Soit \( a\in \eR^2\) tel que \( f(a)>0\). Il y a deux possibilités : \( g(a)>0\) ou \( g(a)<0\) parce que \( g(a)=0\) n'est pas possible du fait que \( f\) et \( g\) s'annulent aux mêmes points..
+
+	\begin{subproof}
+		\spitem[Si \( g(a)>0\)]
+		Nous allons prouver qu'alors \( H^+_f=H^+_g\) et \( H^-_f=H^-_g\). Soit \( b\in H_f^+\). Nous savons que \( H_f^+\) est convexe (lemme \ref{LEMooEZEDooSDbrkq}), de telle sorte que \( f\big( \mathopen[ a , b \mathclose] \big)>0\). En particulier \( f\) ne s'annule pas sur le segment \( \mathopen[ a , b \mathclose]\), et \( g\) non plus. Autrement dit, la fonction
+		\begin{equation}
+			\begin{aligned}
+				s\colon \mathopen[ 0 , 1 \mathclose] & \to \eR                        \\
+				t                                    & \mapsto g\big( (1-t)a+tb \big)
+			\end{aligned}
+		\end{equation}
+		ne s'annule pas. Vu que \( s(0)=g(a)>0\), le théorème des valeurs intermédiaires\footnote{Théorème \ref{ThoValInter}.} nous indique que \( g(b)= s(1)>0\). Donc \( b\in H_g^+\).
+
+		Nous avons prouvé que \( H_f^+\subset H_g^+\). En inversant les rôles de \( f\) et \( g\) nous prouvons que \( H_g^+\subset H_f^+\).
+		\spitem[Si \( g(a)<0\)]
+		Il se prouve de même que \( H^+_f=H^-_g\) et \( H^-_f=H^+_g\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PROPooSIANooTOKlBI}
+	Si \( f\colon \eR^2\to \eR\) est une application affine non constante, alors \( \ker(f)\) est une droite\footnote{La caractérisation \ref{LEMooRWASooOfwjdw}\ref{ITEMooOKJZooIHYDIk} est plus pratique que la définition.}.
+\end{proposition}
+
+\begin{proof}
+	Posons \( f(x)=l(x)+\alpha\) où \( l\colon \eR^2\to \eR\) est linéaire et \( \alpha\in \eR\).
+
+	Commençons avec \( \alpha=0\). Considérons \( a\in \ker(f)\) et prouvons que \( \ker(f)=\{ \lambda a \}_{\lambda\in \eR}\). D'abord \( f(\lambda a)=l(\lambda a)=\lambda l(a)=0\). Donc \( \{ \lambda a \}_{\lambda\in \eR}\subset \ker(f)\). D'autre part si \( f(x)=0\) alors que \( x\) n'est pas de la forme \( \lambda a\). Dans ce cas, \( \{ x,a \}\) forment une base de \( \eR^2\) et nous concluons que \( \ker(f)=\eR^2\), ce qui est contraire à l'hypothèse comme quoi \( f\neq 0\).
+
+	Nous ne supposons plus que \( \alpha=0\). Soit \( a\in \eR^2\) tel que \( l(a)=-\alpha\). Nous allons prouver que \( \ker(f)=a+\ker(l)\).
+	\begin{subproof}
+		\spitem[\( a+\ker(l)\subset \ker(f)\)]
+		Soit \( z\in \ker(l)\). Nous avons \( f(a+z)=l(a)+l(z)+\alpha=-\alpha+0+\alpha=0\). Donc \( a+z\in\ker(f)\).
+		\spitem[\( \ker(f)\subset a+\ker(l)\)].
+		Soit \( b\in \ker(f)\). Nous prouvons que \( b-a\in \ker(l)\). Nous avons \( 0=f(b)=l(b)+\alpha\) et donc \( l(b)=-\alpha\). Donc
+		\begin{equation}
+			l(b-a)=l(b)-l(a)=-\alpha+\alpha=0.
+		\end{equation}
+		parce que \( l(a)=-\alpha\).
+	\end{subproof}
+	La conclusion est que \( \ker(f)=a+\ker(l)\). La première partie ayant déjà montré que \( \ker(l)\) est une droite, nous avons fini.
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau,BIBooRTZNooZBNRXG}]       \label{LEMooTOUOooJbpLVB}
+	Soit une fonction affine \( f\colon \eR^2\to \eR\). Soient \( a,b\in \eR^2\) tels que \( f(a),f(b)\neq 0\).
+
+	\begin{enumerate}
+		\item       \label{ITEMooXLCFooQiDCrR}
+		      L'intersection \( \mathopen[ a , b \mathclose]\cap\ker(f)\) contient \( 0\) ou \( 1\) point.
+		\item       \label{ITEMooMORGooTzNefp}
+		      Si \( \mathopen[ a , b \mathclose]\cap\ker(f)=\emptyset\) alors \( f(a)\) et \( f(b)\) ont même signe.
+		\item       \label{ITEMooDWIQooXnoMJT}
+		      Si \( \mathopen[ a , b \mathclose]\cap\ker(f)\neq\emptyset\) alors \( f(a)\) et \( f(b)\) sont de signe opposés.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Point par point.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooXLCFooQiDCrR}]
+		Nous savons que \( \ker(f)\) est une droite (proposition \ref{PROPooSIANooTOKlBI}). Vu que \( f(a)\neq 0\), l'unique droite passant par \( a\) et \( b\) (proposition \ref{PROPooRSKLooVrxrFz}) n'est pas la droite \( \ker(f)\). Donc parmi les trois possibilités de la proposition \ref{PROPooRSKLooVrxrFz}, nous sommes forcément dans le cas où l'intersection est vide ou réduite à un unique point.
+		\spitem[Pour \ref{ITEMooMORGooTzNefp}]
+		Nous supposons que \( \ker(f)\cap\mathopen[ a , b \mathclose]=\emptyset\). Considérons la fonction
+		\begin{equation}
+			\begin{aligned}
+				s\colon \mathopen[ 0 , 1 \mathclose] & \to \eR                         \\
+				t                                    & \mapsto f\big( (1-t)a+tb \big).
+			\end{aligned}
+		\end{equation}
+		La fonction \( s\) est continue et ne s'annule pas parce que les points \( (1-t)a+tb\) sont ceux de \( \mathopen[ a , b \mathclose]\). Si \( s(0)\) et \( s(1)\) étaient de signe différents, le théorème des valeurs intermédiaires \ref{ThoValInter} donnerait un \( t_0\in\mathopen] 0 , 1 \mathclose[\) tel que \( s(t_0)=0\). Donc \( s(0)\) et \( s(1)\) ont le même signe.
+
+		\spitem[Pour \ref{ITEMooDWIQooXnoMJT}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous prouvons la contraposée. Supposons que \( f(a)\) et \( f(b)\) aient le même signe (strict), et disons que \( f(a), f(b)>0\) pour fixer les idées. Cela signifie que \( a\) et \( b\) sont dans le demi-plan \( H_f^+\). Par convexité de ce dernier (lemme \ref{LEMooEZEDooSDbrkq}), nous avons \( f(x)>0\) pour tout \( x\in\mathopen[ a , b \mathclose]\).
+
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooBWFSooBkIcOg}
+	Soient une application affine \( f\). Soient \( a\in\ker(f)\) et \( v\in \eR^2\) tels que\footnote{Si on en croit la proposition \ref{PROPooSIANooTOKlBI}, ça existe parce que le noyau d'une application affine est une droite.} \( \ker(f)=\{ a+\lambda v \}_{\lambda\in \eR}\). Soit un vecteur non nul \( w\in \eR^2\) non parallèle à \( v\).
+	\begin{enumerate}
+		\item       \label{ITEMooYDYPooRzupcO}
+		      \( \{ v,w \}\) est une base de \( \eR^2\).
+		\item       \label{ITEMooHKVWooLAEMTm}
+		      Nous considérons l'application
+		      \begin{equation}
+			      \begin{aligned}
+				      p\colon \eR^2   & \to \eR       \\
+				      \lambda v+\mu w & \mapsto  \mu.
+			      \end{aligned}
+		      \end{equation}
+		      Alors l'application
+		      \begin{equation}
+			      \begin{aligned}
+				      g\colon \eR^2 & \to \eR        \\
+				      x             & \mapsto p(x-a)
+			      \end{aligned}
+		      \end{equation}
+		      est affine.
+		\item       \label{ITEMooGRZGooMFQPjM}
+		      Les demi-plans de \( f\) et de \( g\) sont les mêmes.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Point par point.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooYDYPooRzupcO}]
+		Les vecteurs \( v\) et \( w\) ne sont pas colinéaire et forment donc une base par le lemme \ref{LEMooRWQHooIxrQek}\ref{ITEMooKWULooCTmOqM}.
+		\spitem[Pour \ref{ITEMooHKVWooLAEMTm}]
+		L'application \( p\) est linéaire. Nous avons
+		\begin{equation}
+			g(x)=p(x-a)=p(x)-p(a).
+		\end{equation}
+		L'application \( g\) est donc bien affine.
+		\spitem[Pour \ref{ITEMooGRZGooMFQPjM}]
+		Les applications \( f\) et \( g\) sont affines. Si \( x\in\ker(g)\), alors \( p(x-a)=0\), c'est-à-dire que \( x-a=\lambda v\) et donc \( x=\lambda v+a\in \ker(f)\). Donc \( \ker(g)\subset\ker(f)\). De même nous trouvons que \( \ker(f)\subset\ker(g)\).
+
+		Deux applications affines ayant le même noyau ont les mêmes demi-plans par le lemme \ref{LEMooXLNZooFyqPxG}.
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]       \label{LEMooURPNooYRsuaI}
+	Soit une application affine \( f\) ainsi qu'une application continue \( g\colon \eR^2\to \eR\) telles que \( \ker(f)=\ker(g)\). Supposons l'existence de \( a,b\in \eR^2\) tels que \( g(a)>0\) et \( g(b)<0\).
+
+	Alors les demi-plans de \( f\) sont les parties \( \{ x\tq g(x)>0 \}\) et \( \{ x\tq g(x)<0 \}\).
+\end{lemma}
+
+\begin{proof}
+	Vu que \( g(a)\neq 0\) et que \( \ker(f)=\ker(g)\), nous avons \( f(a)\neq 0\). Pour fixer les idées\footnote{L'expression «pour fixer les idées» signifie «je ne fais que la moitié de la démonstration, mais vous devriez être capable de la faire complètement».}, nous supposons que \( f(a)>0\). Nous allons prouver que \( H_f^+=\{ g>0 \}\).
+
+	\begin{subproof}
+		\spitem[\( H_f^+\subset\{ g>0 \}\)]
+		%-----------------------------------------------------------
+		Soit \( x\in H_f^+\). Nous avons \( f(a)>0\) et \( g(a)>0\). Vu que \( H_f^+\) est convexe\footnote{Lemme \ref{LEMooEZEDooSDbrkq}.}, en posant
+		\begin{equation}
+			\begin{aligned}
+				\gamma\colon \mathopen[ 0,1\mathclose] & \to \eR^2             \\
+				t                                      & \mapsto tx+(1-t)a   ,
+			\end{aligned}
+		\end{equation}
+		nous avons \( \gamma(t)\in H_f^+\) pour tout \( t\) dans \( \mathopen[ 0,1\mathclose]\). Nous avons donc
+		\begin{equation}
+			\gamma\big( \mathopen[ 0,1\mathclose] \big)\cap\ker(g)= 			\gamma\big( \mathopen[ 0,1\mathclose] \big)\cap\ker(f)\subset H^+_f\cap\ker(f)=\emptyset.
+		\end{equation}
+		Vu que \( \gamma\) et \( g\) sont continues, l'application \( g\circ\gamma\) est continue\footnote{Composée d'applications continues, proposition \ref{PROPooCNTBooTkOJuK}.} et vérifie \( (g\circ \gamma)(0)=g(a)>0\), nous avons aussi\footnote{Corolaire \ref{CORooQXHDooWjSiKm} au théorème des valeurs intermédiaires.} \( (g\circ\gamma)(1)>0\), c'est-à-dire \( g(x)>0\).
+
+		\spitem[\( \{ g>0 \}\subset H_f^+\)]
+		%-----------------------------------------------------------
+		Soit \( x\in \{ g>0 \}\), c'est-à-dire \( g(x)>0\). Supposons que \( f(x)<0\). Alors le segment \( \mathopen[ x,b\mathclose]\) est dans \( H_f^-\), et donc \( g(b)<0\) impliquerait \( g(x)<0\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]     \label{PROPooTPHKooXnpJaV}
+	Soit une droite \( d\) dans \( \eR^2\) et une chemin dérivable \( \gamma\colon \eR\to \eR^2\). Nous supposons que \( \gamma(t_0)\in d\) et que \( \gamma'(t_0)\) est non nul et non parallèle à \( d\).
+
+	Alors il existe \( \delta\) tel que pour tout \( \epsilon<\delta\), \( \gamma(t_0+\epsilon)\) est dans un demi-plan de \( d\) et \( \gamma(t_0-\epsilon)\) est dans l'autre demi-plan de \( d\).
+\end{proposition}
+
+\begin{proof}
+	Posons \( a=\gamma(t_0)\). Nous considérons un vecteur \( b_1\in \eR^2\) tel que \( d=\{ a+\lambda b_1 \}_{\lambda\in \eR}\), ainsi que \( b_2\) tel que \( \{ b_1,b_2 \}\) soit une base de \( \eR^2\).
+
+	Tout élément de \( \eR^2\) peut être écrit de façon unique sous la forme
+	\begin{equation}
+		x=a+x_1b_1+x_2b_2.
+	\end{equation}
+	Cela nous donne des fonctions continues \( \sigma_i\colon \eR\to \eR\) telles que
+	\begin{equation}
+		\gamma(t)=a+\sigma_1(t)b_1+\sigma_2(t)b_2,
+	\end{equation}
+	et que
+	\begin{equation}
+		\gamma'(t)=\sigma_1'(t)b_1+\sigma_2'(t)b_2.
+	\end{equation}
+	Vu que \( \gamma'(t_0)\) n'est pas parallèle à la droite \( d\), nous avons \( \sigma_2'(t_0)\neq 0\). De plus \( \gamma(t_0)=a\), de telle sorte que \( \sigma_1(t_0)=\sigma_2(t_0)=0\).
+
+	Que dites-vous ? La fonction dérivable \( \sigma_2\colon \eR\to \eR\) vaut zéro en \( t_0\) et sa dérivée y est non nulle ? Supposons pour fixer les idées que \( \sigma_2'(t_0)>0\). Il existe donc un \( \epsilon>0\) tel que \( \sigma_2\) est strictement positive sur \( \mathopen[ t_0-\epsilon , t_0 \mathclose[\) et strictement négative sur \( \mathopen] t_0 , t_0+\epsilon \mathclose]\).
+
+	En vertu du lemme \ref{LEMooBWFSooBkIcOg}, les points de \( \gamma\) tels que \( \sigma_2>0\) sont dans un demi-plan de \( d\) et les points de \( \gamma\) avec \( \sigma_2<0\) sont dans l'autre demi-plan.
+\end{proof}
+
+\begin{definition}[\cite{MonCerveau}]	\label{DEFooIOALooFNlswL}
+	Soit un espace vectoriel \( V\) sur le corps \( \eK\). Soient \( a\in V\) et \( \lambda\in \eK\). L'\defe{homothétie}{homothétie} de rapport \( \lambda\) centrée en \( a\) est l'application
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon V & \to V                   \\
+			x            & \mapsto a+\lambda(x-a).
+		\end{aligned}
+	\end{equation}
+\end{definition}
+
+
+\begin{theorem}[Théorème de Thalès\cite{BIBooJRAPooHayrWy}]     \label{THOooFMMLooLmAnAd}
+	Soient trois points \( A\), \( B\), \( C\) non alignés dans \( \eR^2\). Soient \( D\in (AB)\) et \( E\in (AC)\). Nous supposons que \( (DE)\) est parallèle à \( BC\).
+
+	Alors
+	\begin{enumerate}
+		\item
+		      \begin{equation}		\label{EQooRDBYooEXWwGl}
+			      \frac{ \| D-A \| }{ \| B-A \| }=\frac{ \| E-A \| }{ \| C-A \| }=\frac{ \| E-D \| }{ \| C-B \| }
+		      \end{equation}
+		\item
+		      Il existe une homothétie\footnote{Définition \ref{DEFooIOALooFNlswL}.} \( \phi\colon \eR^2\to \eR^2\) centrée en \( A\) telle que \( \phi(D)=B\) et \( \phi(E)=C\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Nous définissons \( u,v,w\in \eR^2\) par \( B=A+u\), \( C=A+v\) et \( C=B+w\). Vu que \( D\) est sur la droite \( (AB)\), il existe\footnote{Proposition \ref{PROPooUDLRooShTGmV}.} \( \lambda\in \eR\) tel que \( D=A+\lambda u\). De même il existe \( \mu\in \eR\) tel que \( E=A+\mu v\).
+
+	Le fait que \( (ED)\) soit parallèle à \( (CB)\) implique qu'il existe \( \sigma\in \eR\) tel que \( E-D=\sigma w\) (proposition \ref{PROPooZMVZooSRwCLT}).
+
+	Nous écrivons \( C\) de deux façons différentes : \( C=A+v\) et \( C=B+w=A+u+w\), de telle sorte que \( v=u+w\) ou encore
+	\begin{equation}
+		w=v-u.
+	\end{equation}
+	D'autre part, nous avons
+	\begin{equation}
+		\sigma w=E-D=A+\mu v-(A+\lambda u)=\mu v-\lambda u.
+	\end{equation}
+	Vu que \( w=v-u\) nous avons
+	\begin{equation}		\label{EQooMTYXooLBlpBm}
+		\mu v-\lambda u=\sigma w=\sigma v-\sigma u
+	\end{equation}
+	Vu que \( \{ u,v \}\) est une base\footnote{Parce que les points \( A\), \( B\) et \( C\) ne sont pas alignés, lemme \ref{LEMooRWQHooIxrQek}.} de \( \eR^2\), l'unicité de la décomposition d'un vecteur dans une base ainsi que \ref{EQooMTYXooLBlpBm} donne que \( \mu=\sigma\) et \( \lambda=\sigma\). Nous avons donc déjà prouvé que
+	\begin{equation}
+		\mu=\sigma=\lambda.
+	\end{equation}
+
+	Les équations \eqref{EQooRDBYooEXWwGl} sont maintenant faciles à prouver parce que
+	\begin{equation}
+		\frac{ \| D-A \| }{ \| B-A \| }=\frac{ \| \lambda u \| }{ \| u \| }=| \lambda |,
+	\end{equation}
+	et
+	\begin{equation}
+		\frac{ \| E-A \| }{ \| C-A \| }=\frac{ \| \mu v \| }{ \| v \| }=| \mu |,
+	\end{equation}
+	et
+	\begin{equation}
+		\frac{ \| E-D \| }{ \| C-B \| }=\frac{ \| \sigma w \| }{ \| w \| }=| \sigma |.
+	\end{equation}
+
+	Nous prouvons maintenant l'existence de l'homothétie. Nous avons déjà vu que
+	\begin{subequations}
+		\begin{align}
+			D-A & =\lambda(B-A)  \\
+			E-A & =\lambda(C-A).
+		\end{align}
+	\end{subequations}
+	Maintenant nous posons \( \rho=1/\lambda\) et nous considérons
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon \eR^2 & \to \eR^2            \\
+			x                & \mapsto A+\rho(x-A).
+		\end{aligned}
+	\end{equation}
+	Nous avons
+	\begin{equation}
+		\phi(E)=A+\rho(E-A)=A+\rho\lambda(C-A)=C,
+	\end{equation}
+	et
+	\begin{equation}
+		\phi(D)=A+\rho(D-A)=A+\phi\lambda(B-A)=B.
+	\end{equation}
+\end{proof}
+
+\begin{theorem}[Théorème de Thalès dans le cercle\cite{BIBooODOZooLXsOQk}]      \label{THOooGFTWooACQLFJ}
+	Soient des points \( M\), \( A\), \( B\), \( C\) distincts dans \( \eR^2\) tels que
+	\begin{enumerate}
+		\item
+		      \( \| A-M \|=\| B-M \|=\| C-M \|\).
+		\item
+		      \( A\), \( M\) et \( B\) sont alignés.
+	\end{enumerate}
+	Alors le triangle \( ABC\) est rectangle en \( C\), c'est-à-dire que \( (C-A)\cdot(B-C)=0\).
+\end{theorem}
+
+\begin{proof}
+	Vu que \( A\), \( M\) et \( B\) sont alignés, la proposition \ref{PROPooEBXLooKewanh} dit qu'il existe \( \lambda\in \eR\) tel que \( B=M+\lambda(M-A)\). Nous avons donc \( \| B-M \|=| \lambda |\| M-A \|\) et donc \( \lambda=\pm 1\). Notons qu'avec \( \lambda=-1\) nous aurions \( B=M-M+A\), c'est-à-dire \(B=A\). Donc \( \lambda=1\) et nous avons
+	\begin{equation}
+		B=2M-A.
+	\end{equation}
+	Nous devons calculer \( (C-A)\cdot (B-C)=(C-A)\cdot(2M-A-C)\). Pour cela nous substituons \( 2M-A-C=(M-A)+(M-C)\) et \( C-A=(C-M)+(A-M)\) et nous effectuons toutes les distributivités utiles :
+	\begin{subequations}
+		\begin{align}
+			(C-A)\cdot (B-C) & =(C-A)\cdot(M-A)+(C-A)\cdot (M-C)                   \\
+			                 & =\big( (M-A)+(C-M) \big)\cdot (M-A)                 \\
+			                 & \qquad \nonumber+\big( (C-M)-(A-M) \big)\cdot (M-C) \\
+			                 & =\| M-A \|^2+(C-M)\cdot(M-A)                        \\
+			                 & \qquad\nonumber-\| C-M \|^2-(A-M)\cdot(M-C)         \\
+			                 & =0
+		\end{align}
+	\end{subequations}
+	parce que \( \| M-A \|^2=\| C-M \|^2\).
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Géométrie dans l'espace}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{normaltext}
+	Les notions de droites, plans et parallélisme sont des notions vectorielles qui auraient pu être traitées beaucoup plus haut. La chose qui rend la géométrie un peu piquante est la notion de perpendicularité. Cette notion demande un produit scalaire et fait intervenir ici et là des polynômes du second degré. Travailler avec le second degré demande la connaissance des racines carrés\footnote{Définition \ref{DEFooGQTYooORuvQb}.} et donc d'un peu de topologie réelle et de continuité. La résolution dans \( \eR\) du polynôme du second degré est la proposition \ref{PROPooEZIKooKjJroH}.
+\end{normaltext}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Droites et plans dans l'espace}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La notion d'application affine entre espaces vectoriels est la définition \ref{DEFooVTXWooVXfUnc}.
+
+\begin{proposition}[Équation de plan dans \( \eR^3\)\cite{MonCerveau}]	\label{PROPooONJHooDArmPT}
+	Si \( P\) est un plan dans \( \eR^3\), alors il existe \( v,w\in \eR^3\) tels que \( \| v \|=\| w \|=1\), \( v\cdot w=0\) et tels que pour tout \( a\in P\), nous avons
+	\begin{equation}
+		P=\{ a+\lambda v+\mu w\tq \lambda,\mu\in \eR \}.
+	\end{equation}
+	Dans ce cas l'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \eR^2 & \to P                     \\
+			(\lambda,\mu)       & \mapsto a+\lambda v+\mu v
+		\end{aligned}
+	\end{equation}
+	est une bijection vérifiant
+	\begin{equation}
+		\| \varphi(\alpha)-\varphi(\beta) \|=\| \alpha-\beta \|
+	\end{equation}
+	pour tout \( \alpha,\beta\in \eR^2\).
+	%TODOooIFTMooKrOsbi. Prouver ça. La dernière formule est prouvée, pas le reste.
+\end{proposition}
+
+\begin{proof}
+	Nous démontrons la dernière formule\quext{Pour le reste, vous pouvez m'envoyer une preuve et je l'ajouterai.}. Soient \( x,y,s,t\in \eR\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			\| \varphi(x,y)-\varphi(s,t) \|^2 & =\| a+xv+yw-a-sv-tw \|                                 \\
+			                                  & =\| (x-s)v+(y-t)w \|^2                                 \\
+			                                  & =(x-s)^2+(y-t)^2       & \text{\( v\), \( w\) orthon.} \\
+			                                  & =\| (x,y)-(s,t) \|^2.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{proposition}[Équation de droite dans l'espace\cite{MonCerveau}]	\label{PROPooRACBooQdhyEg}
+	Soit une droite \( D\) dans \( \eR^3\). Il existe \( w\in \eR^3\) tel que pour tout \( a\in D\),
+	\begin{equation}
+		D=\{ a+\lambda w\tq \lambda\in \eR \}.
+	\end{equation}
+	%TODOooQHWLooLaiJcU. Prouver ça.
+\end{proposition}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQZGVooLTtyQT}
+	Si deux droites non confondues de \( \eR^n\) s'intersectent, alors il existe un unique plan\footnote{Définition \ref{DEFooTQIFooKcloeY}\ref{ITEMooQNAYooZymIqK}.} contenant les deux droites.
+\end{proposition}
+
+\begin{proof}
+	Soient deux droites \( D_1\) et \( D_2\). Si \( a=D_1\cap D_2\) alors la proposition \ref{PROPooRACBooQdhyEg} nous assure qu'il existe \( v,w\in \eR^n\) tels que \( D_1=\{ a+\lambda v \}\) et \( D_2=\{ a+\mu w \}\). Donc en posant \( P=\{ a+\lambda v+\mu w\tq \lambda,\mu\in \eR \}\) nous avons bien un plan contenant les deux droites.
+
+	En ce qui concerne l'unicité, un plan contenant \( D_1\) et \( D_2\) doit contenir les trois points \( a\), \( a+v\) et \( a+w\) (qui sont non alignés parce que \( D_1\) et \( D_2\) sont non confondues). La proposition \ref{PROPooTVSZooOJTnnn} donne alors l'unicité.
+\end{proof}
+
+
+Une application affine n'est pas linéaire, mais presque au sens où des incréments égaux dans le paramètre donne des incréments égaux dans la valeur.
+\begin{lemma}       \label{LEMooEQEAooQaFCMW}
+	Si \( f\) est affine alors pour tout \( a,b,v\in V\) nous avons
+	\begin{equation}
+		f(a+v)-f(a)=f(b+v)-f(b).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Simple calcul :
+	\begin{equation}
+		f(a+v)-f(a)=u(a+v)+\alpha-u(a)-\alpha=u(a)+u(v)-u(a)=u(v).
+	\end{equation}
+	Le même calcul partant de \( f(b+v)\) donnera évidemment aussi \( u(v)\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooGUVMooPXtXnV}
+	Soit \( v_1\in \eR^3\). Il existe des vecteurs \( v_2\) et \( v_3\) tels que les \( v_i\) sont deux à deux perpendiculaires.
+\end{lemma}
+
+\begin{proof}
+	Nous considérons \( w\neq v\) dans \( \eR^3\) et nous profitons de la proposition \ref{PROPooTUVKooOQXKKl} pour poser \( v_2=v_1\times w\). Enfin nous définissons \( v_3=v_1\times v_2\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooGXGCooDfgbqG}
+	Soient trois éléments \( v_1,v_2,v_3\in \eR^3\) deux à deux perpendiculaires. Si \( x\perp v_1\), alors \( x\in \Span\{ v_2,v_3 \}\).
+\end{lemma}
+
+\begin{proof}
+	Il faut se rappeler de la proposition \ref{PropVectsOrthLibres} qui fait de \( \{ v_1,v_2,v_3 \}\) une partie libre. Elle est donc une base par la proposition \ref{PROPooVEVCooHkrldw}\ref{ITEMooSGGCooOUsuBs}.
+
+	Soit \( x\perp v_1\). Nous le décomposons dans la base \( \{ v_1,v_2,v_3 \}\) : \( x=\lambda_1 v_1+\lambda_2 v_2+\lambda_3v_3\). En prenant le produit scalaire par \( v_1\), et en tenant compte du fait que \( v_1\cdot v_2=v_2\cdot v_3=0\) nous trouvons \( 0=v_1\cdot x=\lambda_1\| v_1 \|^2\). Donc \( \lambda_1=0\) et \( x\in \Span\{ v_2,v_3 \}\).
+\end{proof}
+
+Voici une version dans \( \eR^3\) de la proposition \ref{PROPooIPKSooAOfTDy}.
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooVSOQooMwxHNa}
+	Il n'existe pas de plan dans \( \eR^3\) contenant \( 4\) points distincts équidistants.
+\end{proposition}
+
+\begin{proof}
+	Soit un plan \( P\) dans \( \eR^2\). Nous considérons la bijection
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \eR^2 & \to P                     \\
+			(\lambda, \mu)      & \mapsto a+\lambda v+\mu w
+		\end{aligned}
+	\end{equation}
+	de la proposition \ref{PROPooONJHooDArmPT}. Si \( a\), \( b\), \( c\) et \( d\) sont \( 4\) points distincts deux à deux équidistants dans \( P\), alors les points \( \varphi^{-1}(a)\), \( \varphi^{-1}(b)\), \( \varphi^{-1}(c)\) et \( \varphi^{-1}(d)\) sont \( 4\) points distincts deux à deux équidistants de \( \eR^2\). La proposition \ref{PROPooIPKSooAOfTDy} dit que de tels points n'existent pas.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Plan médiateur}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}[plan médiateur\cite{MonCerveau}]        \label{PROPooSNUDooTxovMz}
+	Soient un espace euclidien \( V\) ainsi que deux points distincts \( a,b\in V\). Si \( m=(a+b)/2\), nous avons
+	\begin{equation}
+		\{ x\in V\tq x-m\perp b-a \}=\{ x\in V\tq \| x-a \|=\| x-b \| \}.
+	\end{equation}
+	Dans le cas de \( V=\eR^3\), alors cet ensemble est un plan\footnote{Définition \ref{DEFooTQIFooKcloeY}.}.
+
+	Ce plan est le \defe{plan médiateur}{plan médiateur} du segment \( [a,b]\).
+\end{proposition}
+
+\begin{proof}
+	Nous notons
+	\begin{subequations}
+		\begin{align}
+			M & =\{ x\in V\tq x-m\perp b-a \},        \\
+			N & =\{ x\in V\tq \| x-a \|=\| x-b \| \}.
+		\end{align}
+	\end{subequations}
+	\begin{subproof}
+		\spitem[\( M\subset N\)]
+		Soit \( x\in M\). Nous avons \( (x-m)\cdot (b-a)=0\), et nous pouvons utiliser Pythagore \ref{THOooHXHWooCpcDan} dans les triangles \( xbm\) et \( xma\):
+		\begin{subequations}        \label{SUBEQSooVEPCooKnyPoq}
+			\begin{align}
+				\| x-a \|^2 & =\| x-m \|^2+\| a-m \|^2  \\
+				\| x-b \|^2 & =\| x-m \|^2+\| m-b \|^2.
+			\end{align}
+		\end{subequations}
+		Vu que \( m\) est le milieu, nous avons \( a-m=m-b\) et donc \( \| a-m \|=\| m-b \|\). Nous voyons donc que les membres de droites des deux équations \eqref{SUBEQSooVEPCooKnyPoq} sont égaux. Donc \( \| x-a \|^2=\| x-b \|^2\). Comme une norme est toujours positive, les carrés peuvent être simplifiés : \( \| x-a \|=\| x-b \|\).
+
+		Donc \( x\in N\).
+
+		\spitem[\( N\subset M\)]
+		Soit \( x\in N\). Nous posons \( h=\pr_{(ab)}(x)\), la projection de \( x\) sur la droite \( (ab)\). La proposition \ref{PROPooHGGIooIssaTA} nous dit que \( h\) est l'unique point de \( (ab)\) tel que \( x-h\perp b-a\).
+
+		Le théorème de Pythagore \ref{THOooHXHWooCpcDan} dans le triangle \( ahx\) donne
+		\begin{equation}
+			\| x-a \|^2=\| a-h \|^2+\| x-h \|^2
+		\end{equation}
+		et dans le triangle \( bhx\) il donne :
+		\begin{equation}
+			\| b-x \|^2=\| b-h \|^2+\| h-x \|^2.
+		\end{equation}
+		Par hypothèse nous avons \( \| x-a \|^2=\| x-b \|^2\) et donc
+		\begin{equation}
+			\| a-h \|=\| b-h \|.
+		\end{equation}
+		Nous cherchons à présent quel(s) point(s) \( h\) de la droite \( (ab)\) vérifie(nt) cette condition, et nous espérons que ce sera \( (a+b)/2\).
+
+		Nous cherchons \( h\) sous la forme \( h=a+\lambda(b-a)\). D'une part nous avons \( \| a-h \|^2=\| \lambda(b-a) \|^2=\lambda^2\| b-a \|^2\), et d'autre part
+		\begin{equation}
+			\| b-h \|^2=\| b-a-\lambda(b-a) \|^2=| 1-\lambda |^2\| b-a \|^2
+		\end{equation}
+		Nous en déduisons que \( | \lambda |=| 1-\lambda |\). Cela laisse deux possibilités : la première est \( \lambda=1-\lambda\) qui donne \( \lambda=1/2\) et la seconde est \( \lambda=-(1-\lambda)\) qui est impossible. Donc \( \lambda=1/2\) et
+		\begin{equation}
+			h=a+\frac{ b-a }{ 2 }=\frac{ a+b }{ 2 }.
+		\end{equation}
+		Donc en posant \( m=(a+b)/2\) nous avons bien \( b-a\perp x-m\).
+
+		\spitem[C'est un plan]
+		Nous nous mettons maintenant dans le cas où \( V\) est l'espace \( \eR^3\) muni de sa norme usuelle. Posons \( f_1=b-a\) et considérons deux vecteurs \( f_2,f_3\) tels que les \( f_i\) soient deux à deux perpendiculaires (lemme \ref{LEMooGUVMooPXtXnV}).
+
+		Nous allons prouver que \( M=\Span\{ f_2,f_3 \}+m\).
+
+		\begin{subproof}
+			\spitem[Une inclusion]
+			Si \( x\in \Span(f_2,f_3)+m\), alors \( x=\alpha f_2+\beta f_3+m\) et nous avons bien \( x-m\perp b-a\).
+			\spitem[L'autre inclusion]
+			Soit \( x\in M\). Donc \( x-m\perp b-a\). Le lemme \ref{LEMooGXGCooDfgbqG} nous indique alors que \( x-m\in\Span\{ f_2,f_3 \}\), ce qu'il fallait.
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Tétraèdre}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[\cite{MonCerveau}]   \label{DEFooMUUMooFVxKyb}
+	Un \defe{tétraèdre régulier}{tétraèdre régulier} est un ensemble de \( 4\) points \( A\), \( B\), \( C\) et \( D\) de \( \eR^3\) deux à deux équidistants.
+
+	Nous allons nommer \( \{ a_i \}\) les segments entre les points, \( \{ d_i \}\) les droites sur ces segments, et \( \{ s_i \}\) les sommets.
+\end{definition}
+
+\begin{lemma}
+	Un tétraèdre régulier existe.
+\end{lemma}
+
+\begin{proof}
+	Prenez un triangle équilatéral \( ABC\) dans le plan \( (.,.,0)\), et prenez ensuite un point \( D\) à la verticale du centre, placé à la bonne hauteur pour que les longueurs \( \| AD \|\), \( \| BD \|\) et \( \| CD \|\) soient égales à \( \| AB \|\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooNWELooZeSEMN}
+	Si \( T\) est un tétraèdre régulier, nous avons \( d_i\cap T=a_i\).
+	%TODOooUAHZooOcJyLl. Prouver ça. 
+\end{lemma}
+
+\begin{lemma}       \label{LEMooUSKVooQJiBuz}
+	Les droites \( \{ d_i \}_{i=1,\ldots, 6}\) ne sont pas confondues ni parallèles.
+\end{lemma}
+
+\begin{proof}
+	Si trois points \( A\), \( B\), \( C\) sont alignés, il n'est pas possible d'avoir \( \| AB \|=\| AC \|=\| BC \|\). Donc il n'y a pas deux droites parmi les \( \{ d_i \}\) qui sont confondues.
+
+	Supposons que deux des droites \( AB\) et \( CD\) sont parallèles. En particulier, les points \( A\), \( B\), \( C\) et \( D\) sont dans un même plan : le plan \( A+\Span\{ B-A, C-A \}\). Il n'est pas possible d'avoir \( 4\) points dans un plan, tous équidistants deux à deux (proposition \ref{PROPooVSOQooMwxHNa}).
+\end{proof}
+
+Dans la suite, quand nous parlerons du «tétraèdre», nous parlerons de ses six points et six segments les joignant. L'ensemble \( T\subset \eR^3\) ne contient pas les surfaces et les volumes.
+
+\begin{lemma}   \label{LEMooJCMKooOjMqtw}
+	Soit un tétraèdre régulier \( T\). Un point de \( \eR^3\) est un sommet si et seulement si il est l'intersection de deux des droites \( \{ d_i \}\) différentes.
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Sens direct]
+
+		Par définition les sommets sont les points \( A \), \( B\), \( C\), \( D\); et les droites \( d_i\) sont les droites \( (AB)\), \( (AC)\), \( (AD)\), \( (BC)\), \( (DB)\) et \( (CD)\). Donc oui, les sommets sont à des intersections de ces droites.
+
+		\spitem[Sens inverse]
+		Soit un point \( X\in \eR^3\) à l'intersection entre deux des \( d_i\). Nous avons déjà vu dans le lemme \ref{LEMooUSKVooQJiBuz} que ces droites ne sont ni parallèles ni confondues. Donc elles ont au plus un point d'intersection. Voyons les couples possibles de droites. Les droites possibles sont \( (AB)\), \( (AC)\), \( (AD)\), \( (BC)\), \( (BD)\) et \( (CD)\). Il y a \( 15 \) couples possibles que nous regroupons de la façon suivante :
+		\begin{subequations}
+			\begin{align}
+				(AB), (AC) &  & (AB), (CD) \\
+				(AB), (AD) &  & (AC), (BD) \\
+				(AB), (BC) &  & (AD), (BC) \\
+				(AB), (BD) &  &            \\
+				(AC), (AD) &  &            \\
+				(AC), (BD) &  &            \\
+				(AC), (CD) &  &            \\
+				(AD), (BD) &  &            \\
+				(AD), (CD) &  &            \\
+				(BC), (BD) &  &            \\
+				(BC), (CD) &  &            \\
+				(BD), (CD) &  &
+			\end{align}
+		\end{subequations}
+		Dans la colonne de gauche, nous voyons tout de suite que le point d'intersection est un des sommets. Qui de la colonne de droite ? Si \( (AB)\cap (CD)\) a une intersection, alors ce sont deux droites coplanaires (proposition \ref{PROPooQZGVooLTtyQT}). Dans ce cas, les points \( A\), \( B\), \( C\) et \( D\) sont coplanaires et équidistants. Impossible par la proposition \ref{PROPooVSOQooMwxHNa}.
+
+		On a une série de possibilités comme \( (AB)\cap(AC)\). Dans ce cas, l'intersection entre ces deux droits est \( A\) qui est un des sommets. Ensuite nous avons une série de possibilités comme \( (AB)\cap (CD)\). Ces deux droites n'ont pas d'intersection parce que si elles en avaient, les points \( A\), \( B\), \( C\) et \( D\) seraient dans le même plan, ce qui est impossible\footnote{La proposition \ref{PROPooQZGVooLTtyQT} dit que deux droites qui ont une intersection sont coplanaires.}. Donc deux droites \( d_i\) ont soit, pas d'intersection, soit, une intersection qui est un sommet.
+	\end{subproof}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Plan médiateur dans l'espace}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{lemma}       \label{LEMooVBVUooOTFFXT}
+	Soient \( A\) et \( B\) deux points de \( \eR^3\). Alors le plan médiateur du segment \( [A,B]\) est le lieu des points de \( \eR^3\) qui sont équidistants de \( A\) et \( B\).
+\end{lemma}
+
+\begin{proof}
+	Nous nommons \( \sigma\) ce plan.
+
+	Soit \( X\) un point équidistant de \( A\) et \( B\). Alors dans le plan \( (A,B,X)\), le triangle \( ABX\) est isocèle en \( X\), et la hauteur issue de \( X\) coupe perpendiculairement \( [A,B]\) en son milieu. Cela prouve que \( X\) est dans le plan médiateur du segment \( [A,B]\) (lemme~\ref{LEMooSZZWooPDHnGl}).
+
+	Réciproquement, supposons que \( X\) soit dans le plan médiateur de \( [A,B]\). Soit \( M\) le point du segment \( [A,B]\) équidistant de \( A\) et \( B\). Nous avons \( (X,M)\perp (A,B)\). Donc le triangle \( A,B,X\) est isocèle en \( X\) et donc \( X\) est équidistant de \( A\) et \( B\).
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Dérivée : exemples introductifs}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{La vitesse}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Lorsqu'un mobile se déplace à une vitesse variable, nous obtenons la \emph{vitesse instantanée} en calculant une vitesse moyenne sur des intervalles de plus en plus petits. Si le mobile a un mouvement donné par \( x(t)\), la vitesse moyenne entre \( t=2\) et \( t=5\) sera
+\[
+	v_{\text{moy}}(2\to 5)=\frac{ x(5)-x(2) }{ 5-2 }.
+\]
+Plus généralement, la vitesse moyenne entre \( 2\) et \( 2+\Delta t\) est donnée par
+\[
+	v_{\text{moy}}(2\to 2+\Delta t)=\frac{ x(2+\Delta t)-x(2) }{ \Delta t }.
+\]
+Cela est une fonction de \( \Delta t\). Oui, mais rappellons qu'on a dans l'idée de calculer une vitesse instantanée, c'est-à-dire de voir ce que vaut la vitesse moyenne sur un intervalle très {\small très} {\footnotesize très} {\scriptsize très} {\tiny petit}. La notion de limite semble toute indiquée pour décrire mathématiquement l'idée physique de vitesse instantanée.
+
+Nous allons dire que la vitesse instantanée d'un mobile est la limite quand \( \Delta t\) tend vers zéro de sa vitesse moyenne sur l'intervalle de temps \( \Delta t\), ou en formule :
+\begin{equation}		\label{Eqvinstlimite}
+	v(t_0)=\lim_{\Delta t\to 0}\frac{ x(t_0)-x(t_0+\Delta t) }{ \Delta t }.
+\end{equation}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{La tangente à une courbe}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Passons maintenant à tout autre chose, mais toujours dans l'utilisation de la notion de limite pour résoudre des problèmes intéressants. Comment trouver l'équation de la tangente à la courbe \( y=f(x)\) au point \( (x_0,f(x_0))\) ?
+
+Essayons de trouver la tangente au point \( P\) donné de la courbe donnée à la figure~\ref{LabelFigTangenteQuestion}.
+
+\newcommand{\CaptionFigTangenteQuestion}{Comment trouver la tangente à la courbe au point \( P\) ?}
+\input{auto/pictures_tex/Fig_TangenteQuestion.pstricks}
+
+La tangente est la droite qui touche la courbe en un seul point sans la traverser. Afin de la construire, nous allons dessiner des droites qui touchent la courbe en \( P\) et un autre point \( Q\), et nous allons voir ce qu'il se passe quand \( Q\) est très proche de \( P\). Cela donnera une droite qui, certes, touchera la courbe en deux points, mais en deux points \emph{tellement proches que c'est comme si c'étaient les mêmes}. On sent que la notion de limite va encore intervenir.
+
+%Pour rappel cette figure TangenteDetail est générée par phystricksRechercheTangente.py
+\newcommand{\CaptionFigTangenteDetail}{Traçons d'abord une corde entre le point \( P\) et un point \( Q\) un peu plus loin.}
+\input{auto/pictures_tex/Fig_TangenteDetail.pstricks}
+
+Nous avons placé le point, sur la figure~\ref{LabelFigTangenteDetail}, le point \( P\) en \( a\) et le point \( Q\) un peu plus loin, en \( x\). En d'autres termes leurs coordonnées sont
+\begin{align}
+	P=\big(a,f(a)\big) &  & Q=\big(x,f(x)\big).
+\end{align}
+En regardant par exemple la figure~\ref{LabelFigTangenteDetail}, le coefficient directeur de la droite qui passe par ces deux points est donné par
+\begin{equation}
+	\frac{ f(x)-f(a) }{ x-a },
+\end{equation}
+et bang ! Encore le même rapport que celui qu'on avait trouvé à l'équation \eqref{Eqvinstlimite} en parlant de vitesses. En regardant la figure~\ref{LabelFigLesSubFigures}, on constate réellement qu'en faisant tendre \( x\) vers \( a\), on obtient la tangente.
+
+\newcommand{\CaptionFigLesSubFigures}{Recherche de la tangente par approximations successives.}
+\input{auto/pictures_tex/Fig_LesSubFigures.pstricks}
+%See also the subfigure~\ref{LabelFigLesSubFiguressssubZ}
+%See also the subfigure~\ref{LabelFigLesSubFiguressssubO}
+%See also the subfigure~\ref{LabelFigLesSubFiguressssubT}
+%See also the subfigure~\ref{LabelFigLesSubFiguressssubTh}
+%See also the subfigure~\ref{LabelFigLesSubFiguressssubF}
+%See also the subfigure~\ref{LabelFigLesSubFiguressssubFi}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{L'aire en dessous d'une courbe}		\label{SubSecAirePrimInto}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Encore un exemple. Nous voudrions bien pouvoir calculer l'aire en dessous d'une courbe. Nous notons \( S_f(x)\) l'aire en dessous de la fonction \( f\) entre l'abscisse \( 0\) et \( x\), c'est-à-dire l'aire bleue de la figure~\ref{LabelFigNOCGooYRHLCn}. % From file NOCGooYRHLCn
+\newcommand{\CaptionFigNOCGooYRHLCn}{L'aire en dessous d'une courbe. Le rectangle rouge d'aire \( f(x)\Delta x\) approxime l'augmentation de l'aire lorsqu'on passe de \( x\) à \( x+\Delta x\).}
+\input{auto/pictures_tex/Fig_NOCGooYRHLCn.pstricks}
+
+Si la fonction \( f\) est continue et que \( \Delta x\) est assez petit, la fonction ne varie pas beaucoup entre \( x\) et \( x+\Delta x\). L'augmentation de surface entre \( x\) et \( x+\Delta x\) peut donc être approximée par le rectangle de surface \( f(x)\Delta x\). Ce que nous avons donc, c'est que quand \( \Delta x\) est très petit,
+\begin{equation}
+	S_f(x+\Delta x)-S_f(x)=f(x)\Delta x,
+\end{equation}
+c'est-à-dire
+\begin{equation}
+	f(x)=\lim_{\Delta x\to 0}\frac{  S_f(x+\Delta x)-S_f(x)}{ \Delta x }.
+\end{equation}
+Donc, la fonction \( f\) est la dérivée de la fonction qui représente l'aire en dessous de \( f\). Calculer des surfaces revient donc au travail inverse de calculer des dérivées.
+
+Nous avons déjà vu que calculer la dérivée d'une fonction n'est pas très compliqué. Aussi étonnant que cela puisse paraitre, il se fait que le processus inverse est très compliqué : il est en général extrêmement difficile (et même souvent impossible) de trouver une fonction dont la dérivée est une fonction donnée.
+
+Une fonction dont la dérivée est la fonction \( f\) s'appelle une \defe{primitive}{primitive} de \( f\), et la fonction qui donne l'aire en dessous de la fonction \( f\) entre l'abscisse \( 0\) et \( x\) est notée
+\begin{equation}
+	S_f(x)=\int_0^xf(t)dt.
+\end{equation}
+Nous pouvons nous demander si, pour une fonction \( f\) donnée, il existe une ou plusieurs primitives, c'est-à-dire si il existe une ou plusieurs fonctions \( F\) telles que \( F'=f\). La réponse viendra par le corolaire \ref{CorZeroCst}.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Dérivation de fonctions réelles}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{seccontetderiv}
+
+\begin{example}
+	Montrons que la fonction \( f : \eR \to \eR : x\mapsto x\) est continue et dérivable\footnote{Définition \ref{DEFooOYFZooFWmcAB}.}. Exceptionnellement (bien qu'on sache que la dérivabilité implique la continuité), montrons ces deux assertions séparément.
+	\begin{description}
+		\item[Continuité] Pour prouver la continuité au point \( a \in \eR\) nous devons montrer que
+		      \begin{equation}
+			      \limite x a x = a
+		      \end{equation}
+		      c'est-à-dire
+		      \begin{equation}
+			      \forall \epsilon > 0, \exists \delta > 0 :  \forall x \in \eR \abs{x-a} <
+			      \delta \Rightarrow \abs{x-a} < \epsilon
+		      \end{equation}
+		      ce qui est clair en prenant \( \delta = \epsilon\).
+
+		\item[Dérivabilité] Soit \( a \in \eR\). Calculons la limite du quotient différentiel
+		      \begin{equation}
+			      \limite[x\neq a]{x}{a} \frac{x-a}{x-a} = \limite[x\neq a]x a 1 = 1
+		      \end{equation}
+		      ce qui prouve que \( f\) est dérivable et que sa dérivée vaut \( 1\) en
+		      tout point \( a\) de \( \eR\).
+	\end{description}
+
+	On a donc montré que la fonction \( x \mapsto x\) est continue, dérivable, et que sa dérivée vaut \( 1\) en tout point \( a\) de son domaine.
+
+\end{example}
+
+\begin{proposition} \label{PropSFyxOWF}
+	Une fonction dérivable sur un intervalle est continue sur cet intervalle.
+\end{proposition}
+
+\begin{proof}
+	Soit \( I\) un intervalle sur lequel la fonction \( f\) est dérivable, et soit \( x_0\in I\). Nous allons prouver la continuité de \( f\) en \( x_0\).
+
+	Si \( \epsilon\) est assez petit, nous pouvons poser
+	\begin{equation}
+		\begin{aligned}
+			g\colon \mathopen] -\epsilon,\epsilon\mathclose[\setminus\{ 0 \} & \to \eR                                   \\
+			h                                                                & \mapsto    \frac{ f(x_0+h)-f(x_0) }{ h }.
+		\end{aligned}
+	\end{equation}
+	En vertu de la proposition \ref{PropOpsSimplesLimites}\ref{ITEMooNGWTooSDlEkp}, nous avons
+	\begin{subequations}
+		\begin{align}
+			\lim_{h\to0}hg(h) & =\big(\lim_{h\to 0}h\big)\big(\lim_{h\to 0}g(h)\big) \\
+			                  & =0\cdot f'(x_0)                                      \\
+			                  & =0,
+		\end{align}
+	\end{subequations}
+	autrement dit, \( \lim_{h\to 0}\big( f(x_0+h)-f(x_0) \big)=0\) ou encore
+	\begin{equation}
+		\lim_{h\to 0}f(x_0+h)=f(x_0).
+	\end{equation}
+	La proposition \ref{PROPooXWNDooGHDXTa} dit alors que \( \lim_{x\to x_0}f(x)=f(x_0)\), ce signifie la continuité de \( f\) en vertu du théorème \ref{ThoLimCont}.
+\end{proof}
+
+\begin{theorem} \label{THOooFFOZooCYGets}
+	Toute fonction dérivable en un point est continue en ce point.
+\end{theorem}
+
+\begin{proof}
+	Soient \( f\colon \eR\to \eR\) et \( a\in \eR\). Nous supposons que \( f\) n'est pas continue en \( a\) et nous allons en déduire qu'elle n'est pas non plus dérivable en \( a\). Pour cela nous considérons le lien entre limite et continuité donné dans le théorème \ref{ThoLimCont}. Nier que \( f\) est continue en \( a\) revient à dire qu'il existe un voisinage \( V\) de \( f(a)\) tel que
+	\begin{equation}
+		\forall r>0,\,\exists \epsilon<r \tq f(a+\epsilon)\notin V.
+	\end{equation}
+	Si \( B\big( f(a),R \big)\subset V\)\footnote{Existence par la définition de la topologie métrique \ref{ThoORdLYUu}.}, et si \( r=1/n\), nous construisons une suite \( \epsilon_n\to 0\) telle que
+	\begin{equation}
+		| f(a+\epsilon_n)-f(a) |>R.
+	\end{equation}
+	Avec cela nous avons
+	\begin{equation}
+		\frac{ | f(a+\epsilon_n)-f(a) | }{ \epsilon_n }>\frac{ R }{ \epsilon_n }\to \infty.
+	\end{equation}
+	Donc la fonction \( f\) ne peut pas être dérivable en \( a\).
+\end{proof}
+
+\begin{remark}
+	La réciproque du théorème précédent n'est pas vraie : il existe bien des fonctions qui sont continues en un point \( x_0\), mais qui ne sont pas dérivables en \( x_0\). La fonction valeur absolue, \( x\mapsto |x|\), par exemple est continue sur tout \( \eR\) mais elle n'est pas dérivable en \( 0\).
+\end{remark}
+
+Si \( f\) est une fonction dérivable, il peut arriver que la fonction dérivée \( f'\) soit elle-même dérivable. Dans ce cas nous notons \( f''\) ou \( f^{(2)}\) la dérivée de la fonction \( f'\). Cette fonction \( f''\) est la \defe{dérivée seconde}{dérivée!seconde} de \( f\). Elle peut encore être dérivable; dans ce cas nous notons \( f^{(3)}\) sa dérivée, et ainsi de suite. Nous définissons \( f^{(n)}=(f^{(n-1)})'\) la dérivée \( n\)\ieme\ de \( f\). Nous posons évidemment \( f^{(0)}=f\).
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Exemples}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{example}
+	Commençons par la fonction \( f(x)=x\). Dans ce cas nous avons
+	\begin{equation}
+		\frac{ f(x)-f(a) }{ x-a }=\frac{ x-a }{ x-a }=1.
+	\end{equation}
+	La dérivée est donc \( 1\).
+\end{example}
+
+\begin{proposition}
+	La dérivé de la fonction \( x\mapsto x\) vaut \( 1\), en notations compactes : \( (x)'=1\).
+\end{proposition}
+
+\begin{proof}
+	D'après la définition de la dérivée, si \( f(x)=x\), nous avons
+	\begin{equation}
+		f(x)=\lim_{\epsilon\to 0}\frac{ (x+\epsilon) -x }{\epsilon} =\lim_{\epsilon\to 0}\frac{ \epsilon }{\epsilon} =1,
+	\end{equation}
+	et c'est déjà fini.
+\end{proof}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{La fonction carré}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Prenons ensuite \( f(x)=x^2\). En utilisant le produit remarquable \( (x^2-a^2)=(x-a)(x+a)\) nous trouvons
+\begin{equation}
+	\frac{ f(x)-f(a) }{ x-a }=x+a.
+\end{equation}
+Lorsque \( x\to a\), cela devient \( 2a\). Nous avons par conséquent
+\begin{equation}
+	f'(x)=2x.
+\end{equation}
+
+\begin{lemma}           \label{LemDeccCarr}
+	Si \( f(x)=x^2\), alors \( f'(x)=2x\).
+\end{lemma}
+
+\begin{proof}
+	Utilisons la définition, et remplaçons \( f\) par sa valeur :
+	\begin{subequations}
+		\begin{align}
+			f'(x) & =\lim_{\epsilon\to 0}\frac{ f(x+\epsilon)-f(x) }{ \epsilon }            \\
+			      & =\lim_{\epsilon\to 0}\frac{ (x+\epsilon)^2-x^2 }{ \epsilon }            \\
+			      & =\lim_{\epsilon\to 0}\frac{ x^2+2x\epsilon+\epsilon^2-x^2 }{ \epsilon } \\
+			      & =\lim_{\epsilon\to 0}\frac{\epsilon(2x+\epsilon)}{ \epsilon }           \\
+			      & =\lim_{\epsilon\to 0}(2x+\epsilon)                                      \\
+			      & =2x,
+		\end{align}
+	\end{subequations}
+	ce qu'il fallait prouver.
+\end{proof}
+
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{La fonction racine carré}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Considérons maintenant la fonction \( f(x)=\sqrt{x}\). Nous avons
+\begin{equation}
+	\begin{aligned}[]
+		\frac{ f(x)-f(a) }{ x-a } & =\frac{ \sqrt{x}-\sqrt{a} }{ x-a }                                           \\
+		                          & =\frac{ (\sqrt{x}-\sqrt{a})(\sqrt{x}+\sqrt{a}) }{ (x-a)(\sqrt{x}+\sqrt{a}) } \\
+		                          & =\frac{1}{ \sqrt{x}+\sqrt{a} }.
+	\end{aligned}
+\end{equation}
+Lorsque \( x\to a\), nous obtenons
+\begin{equation}
+	f'(a)=\frac{1}{ 2\sqrt{a} }.
+\end{equation}
+Notons que la dérivée de \( f(x)=\sqrt{x}\) n'existe pas en \( x=0\). En effet elle serait donnée par le quotient
+\begin{equation}
+	f'(0)=\lim_{x\to 0} \frac{ \sqrt{x}-\sqrt{0} }{ x }=\lim_{x\to 0} \frac{ \sqrt{x} }{ x }=\lim_{x\to 0} \frac{1}{ \sqrt{x} }.
+\end{equation}
+Mais si \( x\) devient très petit, la dernière fraction tend vers l'infini.
+
+%--------------------------------------------------------------------------------------------------------------------------
+\subsection[Interprétation géométrique : tangente]{Interprétation géométrique de la dérivée : tangente}
+%--------------------------------------------------------------------------------------------------------------------------
+
+Considérons le \defe{graphe}{graphe} de la fonction \( f\) sur \( I\), c'est-à-dire l'ensemble
+\begin{equation}
+	\big\{ \big( x,f(x) \big)\tq x\in I \big\}.
+\end{equation}
+Le nombre
+\begin{equation}
+	\frac{ f(x)-f(a) }{ x-a }
+\end{equation}
+est la pente de la droite qui joint les points \( \big( x,f(x) \big)\) et \( \big( a,f(a) \big)\), voir la figure ~\ref{LabelFigGWOYooRxHKSm}. % From file GWOYooRxHKSm
+\newcommand{\CaptionFigGWOYooRxHKSm}{Le coefficient directeur de la corde entre \( a\) et \( x\).}
+\input{auto/pictures_tex/Fig_GWOYooRxHKSm.pstricks}
+
+Étant donné que \( f'(a)\) est le coefficient directeur de la tangente au point \( \big( a,f(a) \big)\), l'équation de la tangente est
+\begin{equation}		\label{EqTgfaen}
+	y-f(a)=f'(a)(x-a).
+\end{equation}
+
+%--------------------------------------------------------------------------------------------------------------------------
+\subsection[Interprétation géométrique : approximation affine]{Interprétation géométrique de la dérivée : approximation affine}
+%--------------------------------------------------------------------------------------------------------------------------
+
+Le fait que la fonction \( f\) soit dérivable au point \( a\in I\) signifie que
+\begin{equation}
+	\lim_{x\to a} \frac{ f(x)-f(a) }{ x-a }=\ell
+\end{equation}
+pour un certain nombre \( \ell\). Cela peut être réécrit sous la forme
+\begin{equation}
+	\lim_{x\to a} \frac{ f(x)-f(a) }{ x-a }-\ell=0,
+\end{equation}
+ou encore
+\begin{equation}
+	\lim_{x\to a} \frac{ f(x)-f(a)-\ell(x-a) }{ x-a }=0.
+\end{equation}
+Introduisons la fonction
+\begin{equation}
+	\alpha(t)=\frac{ f(a+t)-f(a)-t\ell }{ t }.
+\end{equation}
+Cette fonction est faite exprès pour que
+\begin{equation}		\label{EqIntermsaxaama}
+	\alpha(x-a)=\frac{ f(x)-f(a)-\ell(x-a) }{ x-a };
+\end{equation}
+par conséquent \( \lim_{x\to a} \alpha(x-a)=0\). Nous récrivons l'équation \eqref{EqIntermsaxaama} sous la forme
+\begin{equation}        \label{EqCodeDerviffxam}
+	f(x)-f(a)-\ell(x-a)=(x-a)\alpha(x-a).
+\end{equation}
+Le second membre tend vers zéro lorsque \( x\) tend vers \( a\) avec une «vitesse au carré» : c'est le produit de deux facteurs tous deux tendant vers zéro. Si \( x\) n'est pas très loin de \( a\), il n'est donc pas une mauvaise approximation de dire
+\begin{equation}
+	f(x)-f(a)-\ell(x-a)\simeq 0,
+\end{equation}
+c'est-à-dire
+\begin{equation}		\label{Eqfxsimesfa}
+	f(x)\simeq f(a)+f'(a)(x-a).
+\end{equation}
+Nous avons retrouvé l'équation \eqref{EqTgfaen}. La manipulation que nous venons de faire revient donc à dire que la fonction \( f\), au voisinage de \( a\), est bien approximée par sa tangente.
+
+L'équation \eqref{Eqfxsimesfa} peut être aussi écrite sous la forme
+\begin{equation}		\label{EqfxdxSimeqfxfpx}
+	f(x+\Delta x)\simeq f(x)+f'(x)\Delta x
+\end{equation}
+qui est une approximation d'autant meilleure que \( \Delta x\) est petit.

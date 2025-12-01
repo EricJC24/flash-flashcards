@@ -1,0 +1,832 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2011-2016,2019-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Théorème d'isomorphisme de Banach}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{theorem}[théorème d'isomorphisme de Banach\cite{BIBooNHKFooWCtYOv}]  \label{ThofQShsw}
+	Une application linéaire continue et bijective entre deux espaces de Banach est un homéomorphisme\footnote{Définition \ref{DEFooYPGQooMAObTO}.}.
+\end{theorem}
+\index{théorème!isomorphisme de Banach}
+
+\begin{proof}
+	Soit une application linéaire bijective et continue \( f\colon E\to F\) entre deux espaces de Banach. En particulier elle est surjective, et le théorème de l'application ouverte \ref{THOooATZKooXHWCRD} s'applique : \( f\) est une application ouverte.
+
+	Vu que \( f\) est bijective et ouverte, la proposition \ref{PROPooXGEGooHoMsne} implique que \( f^{-1}\) est continue. L'application \( f\) est donc continue d'inverse continue. Elle est donc un homéomorphisme.
+\end{proof}
+
+\begin{probleme}
+	Il est donné dans \cite{BIBooQRUCooMqayTg} un exemple d'application linéaire et bijective dont l'inverse n'est pas continue. Si un jour vous le mettez au propre, faites-m'en profiter en m'envoyant une photo de votre feuille.
+\end{probleme}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Théorème d'Ascoli}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\begin{propositionDef}[Application compacte\cite{JIFGuct}] \label{PropDGsPtpU}
+	Soient \( E\) et \( F\) deux espaces vectoriels normés sur \( \eR\) ou \( \eC\) et une application \( f\in\aL(E,F)\). Les propriétés suivantes sont équivalentes.
+	\begin{enumerate}
+		\item       \label{ITEMooAFNXooUGbZsh}
+		      L'image d'un borné de \( E\) par \( f\) est relativement compacte\footnote{Relativement compact, définition \ref{DEFooBODRooEFhzeT}.} dans \( F\).
+		\item   \label{ItemJIkpUbLii}
+		      L'image par \( f\) de la boule unité fermée est relativement compacte dans \( F\).
+		\item   \label{ITEMooQKISooBpyyee}
+		      Si \( (x_n)\) est une suite bornée dans \( E\), alors nous pouvons en extraire une sous-suite \( (x_{\varphi(n)})\) telle que
+		      \( y_n = f\big( x_{\varphi(n)} \big)\) converge dans \( F\).
+	\end{enumerate}
+	Une application vérifiant les conditions équivalentes de la proposition~\ref{PropDGsPtpU} est dite \defe{compacte}{compact!opérateur}.
+\end{propositionDef}
+
+\begin{proof}
+	En trois parties.
+	\begin{subproof}
+		\spitem[\ref{ITEMooAFNXooUGbZsh} \( \Rightarrow\) \ref{ItemJIkpUbLii}]
+		% -------------------------------------------------------------------------------------------- 
+		La boule unité fermée est bornée, et donc son image est relativement compacte.
+		\spitem[\ref{ItemJIkpUbLii} \( \Rightarrow\) \ref{ITEMooQKISooBpyyee}]
+		% -------------------------------------------------------------------------------------------- 
+		Soient \( (x_n)\) bornée dans \( E\), et soit \( M\), une borne. Nous avons donc
+		\begin{equation}
+			z_n=f\left( \frac{ x_n }{ M } \right)\in f\big( B(0,1) \big)\subset \overline{f\big( B(0,1) \big)}.
+		\end{equation}
+		Par hypothèse, la partie \( \overline{f\big( B(0,1) \big)}\) est compacte; la suite \( (z_n)\) est contenue dans ce compact. Nous en déduisons que \( (z_n)\) admet une sous-suite convergente. Soit donc \( \varphi\colon \eN\to \eN\) telle que
+		\begin{equation}
+			f\left( \frac{ x_{\varphi(n)} }{ M } \right)\to y.
+		\end{equation}
+		Vu que \( f\) est linéaire, nous avons aussi \( f\big( x_{\varphi(n)} \big)\to My\).
+		\spitem[\ref{ITEMooQKISooBpyyee} \( \Rightarrow\) \ref{ITEMooAFNXooUGbZsh}]
+		% -------------------------------------------------------------------------------------------- 
+		Soit une partie bornée \( A\) de \( F\). Nous prouvons que \( \overline{ f(A) }\) est compact. Pour cela nous considérons une suite \( (y_n)\) dans \( \overline{ f(A) }\). Soit \( \epsilon_k\to 0\). Pour chaque \( n\), l'élément \( y_n\) est dans la fermeture de \( f(A)\), c'est-à-dire qu'il existe un élément de \( f(A)\) dont la distance à \( y_n\) est plus petite que \( \epsilon_n\). Bref, il existe une suite \( (x_n)\) dans \( A\) telle que
+		\begin{equation}
+			\| f(x_n)-y_n \|\leq \epsilon_k.
+		\end{equation}
+		La suite \( (x_n)\) est bornée parce qu'elle est contenue dans \( A\). Donc il existe une sous-suite \( \varphi\colon \eN\to \eN\) telle que
+		\begin{equation}
+			f\big( x_{\varphi(n)} \big)\to y
+		\end{equation}
+		pour un certain \( y\in \overline{ f(A) }\). Le fait que \( y\) soit dans \( \overline{ f(A) }\) est dû au fait que la suite \( n\mapsto f(x_n)\) est une suite dans \( f(A)\); donc la limite est dans la fermeture de \( f(A)\).
+
+		Nous avons
+		\begin{subequations}
+			\begin{align}
+				\| y_{\varphi(n)}-y \| & \leq \| y_{\varphi(n)}-f\big( x_{\varphi(n)} \big) \|+\| f\big( x_{\varphi(n)} \big)-y \| \\
+				                       & \leq \epsilon_k+\| f\big( x_{\varphi(n)} \big)-y \|\to 0.
+			\end{align}
+		\end{subequations}
+		Donc la suite \( (y_{\varphi(n)})\) converge vers \( y\in \overline{ f(A) }\). Nous avons montré que toute dans \( \overline{ f(A) }\) possédait une sous-suite convergente dans \( \overline{ f(A) }\). Le théorème de Bolzano-Weierstrass \ref{ThoBWFTXAZNH} conclut que \( \overline{ f(A) }\) est compact et donc que \( f(A)\) est relativement compact.
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooQCJTooNmMXEC}
+	Soient un espace métrique \( (E,d)\) ainsi qu'un espace compact \( K\). Nous considérons la distance uniforme \( d_{\infty}\) sur \( C^0(K,E)\). L'application d'évaluation
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \big(C^0(K,E),d_{\infty}\big) & \to (E,d)     \\
+			f                                           & \mapsto f(x).
+		\end{aligned}
+	\end{equation}
+	est continue.
+\end{lemma}
+
+\begin{proof}
+	Soit \( y\in E\). Tout ouvert contenant \( y\) contient une boule \( B(y,r)\). Nous montrons que \( \varphi^{-1}\big( B(y,r) \big)\) est ouverte. Soit \( f_0\in\varphi^{-1}\big( B(y,r) \big)\). Nous allons trouver un \( \epsilon>0\) tel que \( B(f_0,\epsilon)\subset\varphi^{-1}\big( B(y,r) \big)\). Les éléments \( f_0\), \( x\) et \( y\) sont fixés, et nous avons \( d\big( f_0(x),r \big)<r\). Il existe donc \( \alpha>0\) tel que\footnote{Par exemple par le lemme \ref{LemooHLHTooTyCZYL}\ref{ITEMooGVTMooQsoTCi}.}
+	\begin{equation}
+		d\big( f_0(x),y \big)<\alpha<r.
+	\end{equation}
+	Nous choisissons \( \epsilon<r-\alpha\) et nous calculons un peu :
+	\begin{subequations}
+		\begin{align}
+			d\big( g(x),y \big) & \leq d\big( g(x),f_0(x) \big)+d\big( f_0(x),y \big) \\
+			                    & =\epsilon+d\big( f_0(x),y \big)                     \\
+			                    & <\epsilon+\alpha                                    \\
+			                    & <r.
+		\end{align}
+	\end{subequations}
+	Donc \( B(f_0,\epsilon)\subset\varphi^{-1}\big( B(y,r) \big)\).
+
+	Cela étant fait, nous prouvons que \( \varphi\) est continue. Soit un ouvert \( A\) de \( E\). Pour montrer que \( \varphi^{-1}(A)\) est ouvert dans \( C^0(K,E)\), nous considérons \( f_0\in\varphi^{-1}(A)\) et nous allons trouver un ouvert \( S\) tel que \( f_0\in S\subset\varphi^{-1}(A)\).
+
+	Nous avons \( f_0(x)\in A\); nous considérons une boule \( B\big( f_0(x),r \big)\subset A\), et nous allons trouver un ouvert \( S\subset C^0(K,E)\) tel que \( f_0\in S\subset\varphi^{-1}(A)\). La partie \( A\) étant ouverte dans le métrique \( E\) nous pouvons considérer \( r>0\) tel que \( B\big( f_0(x),r \big)\subset A\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooKWGOooKzqDud}
+	Soient des espaces topologiques \( X\) et \( Y\). Nous considérons la topologie de la norme uniforme sur \( C^0(X,Y)\). Soit une partie \( A\) de \( C^0(X,Y)\). Si \( f\in \Adh_{C^0(X,Y)}(A)\), alors \( f(x)\in\Adh_Y\big( A(x) \big)\).
+\end{lemma}
+
+\begin{proof}
+	Si \( f\in \Adh(A)\), alors il existe une suite \( (f_n)\) dans \( A\) telle que \( f_n\stackrel{ C^0(X,Y)}{\longrightarrow} f\), et donc telle que \( f_n(x)\stackrel{ Y}{\longrightarrow} x\). Vu que chacun des \( f_n(x)\) est dans \( A(x)\), nous avons bien \( f(x)\in\Adh_Y\big( A(x) \big)\).
+\end{proof}
+
+\begin{proposition}[\cite{ooYDVWooPWLUGW}]	\label{PROPooCGBHooCpKycz}
+	Soient des espaces topologiques \( X\) et \( Y\). Nous considérons une suite équicontinue d'applications \(f_n \colon X\to Y  \) telle que \( f_n\stackrel{ simple}{\longrightarrow} f\). Alors la convergence est uniforme sur tout compact.
+\end{proposition}
+
+
+\begin{theorem}[Théorème d'Ascoli\cite{LBLADXV}]        \label{ThoKRbtpah}
+	Soient un espace topologique compact \( K\) et un espace métrique \( (E,d)\). Nous considérons la topologie de la distance uniforme\footnote{Définition \ref{PROPooNSCCooJuqOQe}.} sur \( C^0(K,E)\). Une partie \( A\) de \( C^0(K,E)\) est relativement compacte\footnote{Sa fermeture est compacte, définition \ref{DEFooBODRooEFhzeT}.} si et seulement si les deux conditions suivantes sont remplies :
+	\begin{enumerate}
+		\item
+		      \( A\) est équicontinu\footnote{Définition \ref{DEFooDHQDooFfIvsX}.},
+		\item
+		      \( \forall x\in K\), l'ensemble \( A(x)= \{ f(x)\tq f\in A \}\) est relativement compact dans \( E\).
+	\end{enumerate}
+\end{theorem}
+\index{théorème!Ascoli}
+
+\begin{proof}
+	Attention, ça va être un peu long.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( A\subset C^0(K,E)\) est relativement compact. Nous notons \( B\) un compact contenant \( A\). Soit \( x\in K\). L'application d'évaluation
+		\begin{equation}
+			\begin{aligned}
+				\varphi\colon \big(C^0(K,E),d_{\infty}\big) & \to (E,d)     \\
+				f                                           & \mapsto f(x).
+			\end{aligned}
+		\end{equation}
+		est continue par le lemme \ref{LEMooQCJTooNmMXEC}. La partie \( B\) est compacte dans \( C^0(K,E)\). Donc \( B(x)=\varphi(B)\) est compacte dans \( E\) par le théorème \ref{ThoImCompCotComp}. Vu que \( A(x)\subset B(x)\) nous avons montré que \( A(x)\) est relativement compact.
+
+		Nous devons montrer que \( A\) est équicontinu. Nous prouvons que \( B\) est équicontinu en \( x\) en utilisant la caractérisation du lemme \ref{LEMooKEMRooYyqsBl}. Vu que \( B\) est compact, il existe un nombre fini de \( f_0,\ldots,f_n\in B\) tels que
+		\begin{equation}
+			B\subset \bigcup_{k=0}^nB(f_i,\epsilon)
+		\end{equation}
+		où \( B(f_i,\epsilon)\) est la boule dans \( \big( C^0(K,E),d_{\infty} \big)\). Chacune des \( f_i\) est continue en \( x\); donc il existe un voisinage \( V_i\) de \( x\) tel que \( d\big( f_i(x),f_i(y) \big)<\epsilon\) pour tout \( y\in V_i\). Nous posons
+		\begin{equation}
+			V=\bigcap_{i=1}^nV_i
+		\end{equation}
+		qui, en tant que réunion finie d'ouverts contenant \( x\), est un ouvert contenant \( x\). Pour \( f\in B\) et \( y\in V\) nous avons
+		\begin{equation}
+			d\big( f(x),f(y) \big)\leq d\big( f(x),f_j(x) \big)+d\big( f_j(x),f_j(y) \big)+d\big( f_j(y),f(y) \big)<3\epsilon.
+		\end{equation}
+
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		En plusieurs parties. Nous considérons l'adhérence \( B\) de \( A\) dans \( C^0(K,E)\).
+		\begin{subproof}
+			\spitem[\( A\) est précompact]
+			%-----------------------------------------------------------
+			Nous montrons que \( A\) est précompact (définition \ref{DEFooLZDTooZlAtdL}). Soit \( \epsilon>0\). Étant donné que \( A\) est équicontinu, pour chaque \( x\in K\), il existe un voisinage ouvert \( U_x\) de \( x\) tel que
+			\begin{equation}
+				d\big( f(y),f(x) \big)<\epsilon
+			\end{equation}
+			pour tout \( y\in U_x\) et pour tout \( f\in A\). Les parties \( \{ U_x \}_{x\in K}\) forment un recouvrement du compact \( K\) par des ouverts. Il existe donc \( x_1,\ldots,x_n\in K\) tels que \( U_{x_1},\ldots,U_{x_n}\) recouvrent \( K\).
+
+			Nous posons
+			\begin{equation}
+				L=A(x_1)\cup\ldots \cup A(x_n).
+			\end{equation}
+			La partie \( L\) est relativement compacte parce qu'elle est contenue dans \( B_{x_1}\cup\ldots B(x_n)\) qui est relativement compact comme union de relativement compacts.
+			\begin{subproof}
+				\spitem[Les parties \( C_a\)]
+				%-----------------------------------------------------------
+
+				Par relative compacité, il existe une partie finie \( J\) de \( E\) telle que
+				\begin{equation}
+					L\subset \bigcup_{s\in J}B(s,\epsilon).
+				\end{equation}
+				Pour \( a=(a_1,\ldots,a_n)\in J^n\) nous posons
+				\begin{equation}
+					C_a=\{ f\in C^0(K,E)\tq \forall i=1,\ldots,n\forall y\in U_{x_i},d\big( f(y),a_i \big)<2\epsilon \}.
+				\end{equation}
+				Notons que \( J^n\) étant fini, il existe seulement une quantité finie de telles parties.
+
+				\spitem[Les \( C_a\) recouvrent \( A\)]
+				%-----------------------------------------------------------
+				Nous vérifions maintenant que les \( \{ C_a \}_{a\in J^n}\) recouvrent \( A\). Soit \( f\in A\). Vu que \( f(x_i)\in A(x_i)\subset L\) nous avons \( f(x_i)\in B(s_i,\epsilon)\) pour un certain \( s_i\in J\subset E\). Nous considérons l'élément \( s=(s_1,\ldots,s_n)\in J^n\). Nous prouvons que \( f\in C_s\). En effet soit \( i=1,\ldots,n\) et \( y\in U_{s_i}\). Nous avons
+				\begin{equation}
+					d\big( f(y),s_i \big)\leq d\big( f(y),f(x_i) \big)+d\big( f(x_i),s_i \big).
+				\end{equation}
+				D'abord \( d\big( f(x_i),s_i \big)\leq \epsilon\) parce que \( s_i\) a été choisi pour que \( f(x_i)\in B(s_i,\epsilon)\). Ensuite \( d\big( f(y),f(x_i) \big)\leq\epsilon\) parce que \( y\in U_{x_i}\). Bref, \( d\big( f(y),s_i \big)\leq 2\epsilon\) et \( f\in C_s\).
+
+				\spitem[\( A\) est précompact]
+				%-----------------------------------------------------------
+				Chacun des \( C_a\) est contenu dans une boule de taille \( 2\epsilon\). Donc \( A\) est recouvert par un nombre fini de boules de rayon \( 2\epsilon\).
+
+			\end{subproof}
+			\spitem[\( B\) est précompact]
+			%-----------------------------------------------------------
+			Pour rappel, \( B\) est l'adhérence de \( A\) dans \( C^0(K,E)\). La proposition \ref{PROPooDWUDooGrgZpP} dit que \( B\) est précompacte en tant qu'adhérence du précompact \( A\).
+
+			\spitem[\( B\) est complet]
+			%-----------------------------------------------------------
+			Soit une suite de Cauchy \( (f_n)\) dans \( \Adh_{C^0(K,E)}(A)\). Alors, étant donné le lemme \ref{LEMooKWGOooKzqDud}, pour chaque \( x\in K\), la suite \(  \big( f_n(x) \big) \) est une suite dans \( \Adh_E\big( A(x) \big)\). Montrons qu'elle est même une suite de Cauchy. Soit \( \epsilon>0\). Il existe \( N\in \eN\) tel que si \( m,n\geq N\), alors \( d_{\infty}(f_m,f_n)< \epsilon\). Pour de tels \( N,m,n\) nous avons
+			\begin{equation}
+				d\big( f_n(x),f_m(x) \big)\leq \sup_{y\in K} d\big( f_n(y),f_m(y) \big)=d_{\infty}(f_m,f_n)<\epsilon.
+			\end{equation}
+			La partie \( A(x)\) étant relativement compacte, elle est contenue dans un compact \( S\) de \( E\). Il se fait que \( S\) est complet par la proposition \ref{PROPooTGCKooRsmoLx}. Donc \( f_n(x)\) converge dans \( E\). Nous notons \( f(x)\) cette limite. Cela nous définit une application \(f \colon K\to E  \).
+
+			Nous avons \( f_n\stackrel{ simple}{\longrightarrow} f\), mais n'indique pour l'instant que \( f\in C^0(K,X)\) et encore moins que \( f_n\stackrel{ C^0(K,X)}{\longrightarrow} f\). C'est ce que nous voyons maintenant.
+
+			D'après la proposition \ref{PROPooCGBHooCpKycz}, la convergence est uniforme sur tout compact. Or justement \( f_n\to f\) est une convergence simple sur le compact \( K\). Donc c'est une convergence uniforme et la limite est continue par la proposition \ref{PropCZslHBx}. La convergence uniforme étant également celle de \( C^0(K,E)\), nous avons bien \( f_n\stackrel{ C^0(K,E)}{\longrightarrow} f\). Et donc \( f\in \Adh_{C^0(K,E)}(A)\) parce que \( f_n\in\Adh_{C^0(K,E)}(A)\) pour chaque \( n\).
+
+			Cela montre que \( B\) est complet.
+
+			\spitem[\( B\) est compact]
+			%-----------------------------------------------------------
+			Nous savons que \( B\) est précompact et complet. La proposition \ref{PROPooZRXDooUyFBFG} dit qu'alors \( B\) est compact.
+
+			\spitem[Conclusion]
+			%-----------------------------------------------------------
+			Vu que l'adhérence de \( A\) est compacte, nous déduisons que \( A\) est précompact.
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+
+La version suivante du théorème de Banach-Steinhaus est énoncée de façon \emph{ad hoc} pour fonctionner avec l'espace \( \swD(K)\) des fonctions de classe \(  C^{\infty}\) à support dans le compact \( K\). Un énoncé un peu plus fort est donné dans le cadre des espaces de Fréchet dans \cite{TQSWRiz}.
+\begin{theorem}[Banach-Steinhaus avec des seminormes\cite{MonCerveau}]  \label{ThoNBrmGIg}
+	Soit \( (E,d)\) un espace vectoriel métrique complet dont la topologie est également\footnote{Au sens où les ouverts sont les mêmes.} donnée par une famille \( \mP=\{ p_i \}_{i\in I}\) de seminormes. Soit \( \{ T_{\alpha} \}_{\alpha\in A}\) une famille d'applications linéaires continues \( T_{\alpha}\colon E\to \eR\) telles que pour tout \( x\in E\) nous ayons
+	\begin{equation}
+		\sup_{\alpha\in A}\big| T_{\alpha}(x) \big|<\infty.
+	\end{equation}
+	Alors il existe une constante \( K>0\) et un sous-ensemble fini \( J\subset I\) tels que pour tout \( x\in E\) et pour tout \( \alpha\in A\) nous ayons
+	\begin{equation}    \label{EqIFNGhtr}
+		\big| T_{\alpha} (x)\big|\leq K\max_{j\in J}p_j(x).
+	\end{equation}
+\end{theorem}
+\index{théorème!Banach-Steinhaus!avec seminormes}
+
+\begin{proof}
+	Pour chaque \( k\in \eN\setminus\{ 0 \}\) nous posons
+	\begin{equation}
+		\Omega_k=\{ x\in E\tq \sup_{\alpha\in A}\big| T_{\alpha}(x) \big|>k \}.
+	\end{equation}
+	Ces ensembles sont des ouverts (pour la même raison que dans la preuve du théorème~\ref{ThoPFBMHBN}) et leur union est \( E\) en entier parce que par hypothèse \( \sup_{\alpha\in A}\big| T_{\alpha}(x) \big|<\infty\).
+
+	\begin{subproof}
+		\spitem[Les \( \Omega_k\) ne sont pas tous denses]
+		Le théorème \ref{ThoBBIljNM} nous dit que \( (E,d)\) est un espace de Baire. Supposons que les \( \Omega_k\) sont tous denses. Dans ce cas, l'intersection des \( \Omega_k\) est également dense (c'est la définition \ref{DEFooYEMNooLSXLYa} d'un espace de Baire), et en particulier non vide.
+
+		Soit \( x_0\in\bigcap_{k\in \eN}\Omega_k\). Nous avons
+		\begin{equation}
+			\sup_{\alpha\in A}\big| T_{\alpha}(x_0) \big|=\infty,
+		\end{equation}
+		ce qui contredirait l'hypothèse. Donc les \( \Omega_k\) ne sont pas tous denses.
+
+		\spitem[Un non dense]
+		Soit \( k_0\in \eN^*\) tel que \( \Omega_{k_0}\) n'est pas dense dans \( E\). Il existe donc \( x_0\in E\) et un ouvert \( \mO\) autour de \( x_0\) n'intersectant pas \( \Omega_{k_0}\).
+
+		\spitem[Topologie]
+
+		Parlons de topologie sur \( E\). L'ouvert \( \mO\) est un \( d\)-ouvert et donc un \( \mP\)-ouvert, lequel contient une \( \mP\)-boule ouverte\footnote{Définition \ref{DEFooZTKAooWYUyDa}.}. Cette dernière boule n'est pas spécialement une \( d\)-boule, mais c'est un \( d\)-ouvert.
+
+		\spitem[Une majoration]
+
+		Il existe dont \( J\) fini dans \( I\) et \( \rho>0\) tels que \( B_J(x_0,\rho)\subset \mO\) et donc tels que
+		\begin{equation}
+			B_J(x_0,\rho)\cap\Omega_{k_0}=\emptyset.
+		\end{equation}
+		Donc pour tout \( z\in B_J(x_0,\rho)\) nous avons
+		\begin{equation}
+			\sup_{\alpha\in A}\big| T_{\alpha}(z) \big|\leq k_0.
+		\end{equation}
+		Si maintenant \( y\in B_J(0,\rho)\), nous avons \( y=(x_0+y)-x_0\) et donc
+		\begin{subequations}
+			\begin{align}
+				\big| T_{\alpha}(y) \big| & =\big| T_{\alpha}(x_0+y)-T_{\alpha}(x_0) \big|                 \\
+				                          & \leq \big| T_{\alpha}(x_0+y) \big|+\big| T_{\alpha}(x_0) \big| \\
+				                          & \leq k_0+C.
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item
+			      \( x_0+y\in B_J(x_0,\rho)\), donc \( \big| T_{\alpha}(x_0+y) \big|\leq k_0\).
+			\item
+			      nous avons posé \( C=\sup_{\alpha\in A}\big| T_{\alpha}(x_0) \big|\)
+		\end{itemize}
+		\spitem[Sur la boule unité]
+		En divisant par \( \rho\), pour \( y\in B_J(0,1)\) nous avons
+		\begin{equation}        \label{EQooOVHIooSonniq}
+			\big| T_{\alpha}(y) \big|\leq \rho^{-1}(k_0+C).
+		\end{equation}
+		\spitem[Un bon élément dans la boule unité]
+		Pour n'importe quel \( x\in E\) nous avons
+		\begin{equation}
+			\frac{ x }{ \max_{j\in J}p_j(x) }\in B_J(0,1).
+		\end{equation}
+		Nous pouvons donc appliquer \eqref{EQooOVHIooSonniq} à cet élément :
+		\begin{equation}
+			\left| T_{\alpha}\left( \frac{ x }{ \max_{j\in J} p_j(x) } \right) \right| \leq \rho^{-1}(k_0+C).
+		\end{equation}
+		Utilisant encore la linéarité de \( T_{\alpha}\) nous trouvons ce que nous devions trouver :
+		\begin{equation}
+			\big| T_{\alpha}(x) \big|\leq \max_{j\in J}p_j(x)\rho^{-1}(k_0+C)=K\max_{j\in J}p_j(x)
+		\end{equation}
+		en posant \(K= \rho^{-1}(k_0+C)\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{corollary}[\cite{MonCerveau,BIBooFDGQooYferue}]   \label{CorPGwLluz}
+	Soit \( \big( X, \{ p_i \}_{i\in I} \big)\), un espace vectoriel sur \( \eC\) seminormé qui est
+	\begin{enumerate}
+		\item
+		      localement compact\footnote{Définition \ref{DefEIBYooAWoESf}.},
+		\item
+		      métrisable et complet.
+	\end{enumerate}
+	Soit \( (T_j)_{j\in \eN}\) une suite d'application linéaires continues \( X\to \eC\) telles que pour tout \( x\in X\) il existe\footnote{L'unicité des \( \alpha_x\) et donc le fait que tout le reste ait un sens provient de l'hypothèse de séparabilité et la proposition \ref{PropUniciteLimitePourSuites}.} \( \alpha_x\in \eC\) tel que
+	\begin{equation}
+		T_jx\stackrel{\eC}{\longrightarrow}\alpha_x.
+	\end{equation}
+	Si nous posons \( Tx=\alpha_x\) alors
+	\begin{enumerate}
+		\item   \label{ItemAEOtOMLi}
+		      L'application \( T\) est linéaire et continue.
+		\item       \label{ITEMooEVIXooBpaWOc}
+		      Si \( x_k\stackrel{X}{\longrightarrow}x\), alors
+		      \begin{equation}
+			      | T_k(x_k)-T(x_k) |\stackrel{\eR}{\longrightarrow}0.
+		      \end{equation}
+		\item       \label{ITEMooJYOVooPIkHBo}
+		      Pour tout compact \( K\) dans \( X\) nous avons
+		      \begin{equation}
+			      \sup_{x\in K}|T_kx-Tx|\stackrel{\eR}{\longrightarrow}0.
+		      \end{equation}
+		\item   \label{ItemAEOtOMLiii}
+		      si \( x_k\to x\) dans \( X\) alors
+		      \begin{equation}
+			      T_kx_k\stackrel{\eC}{\longrightarrow} Tx.
+		      \end{equation}
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Linéaire]
+		Vu que \( X\) est seminormé et que \( \eC\) est un corps valué, la proposition \ref{PROPooGXGQooLRTwvH} nous indique que \( X\) est un espace vectoriel topologique et la proposition \ref{PROPooZRCBooKiJhDg} nous dit que la limite de suite est une opération linéaire. Pour \( x,y\in X\) nous pouvons donc faire
+		\begin{subequations}
+			\begin{align}
+				T(x+y) & =\lim_{j\to \infty} \big( T_j(x+y) \big)             \\
+				       & =\lim_{j\to \infty} \big( T_j(x)+T_j(y) \big)        \\
+				       & =\lim_{j\to \infty} T_j(x)+\lim_{j\to \infty} T_j(y) \\
+				       & =T(x)+T(y).
+			\end{align}
+		\end{subequations}
+		De même nous avons
+		\begin{subequations}
+			\begin{align}
+				T(\lambda x) & =\lim_{k\to \infty} \big( T_j(\lambda x) \big) \\
+				             & =\lim_{j\to \infty} \big( \lambda T_j(x) \big) \\
+				             & =\lambda\lim_{j\to \infty} T_j(x)              \\
+				             & =\lambda T(x).
+			\end{align}
+		\end{subequations}
+		\spitem[Séquentiellement continue]
+		Nous prouvons que \( T\) est séquentiellement continue\footnote{Définition \ref{DefENioICV}}. Soit une suite \( x_k\stackrel{X}{\longrightarrow}x\). Nous voulons utiliser le théorème de Banach-Steinhaus \ref{ThoNBrmGIg}. L'ensemble \( \{ T_k \}_{k\in \eN}\) est un ensemble d'applications linéaires continues. De plus, si \( x\in X\), la suite \( k\mapsto T_k(x)\) est une suite convergente dans \( \eC\); elle est donc bornée :
+		\begin{equation}
+			\sup_{k\in \eN}| T_k(x) |<\infty.
+		\end{equation}
+		Le théorème de Banach-Steinhaus nous dit qu'il existe un \( C>0\) et \( J\) fini dans \( I\) tels que pour tout \( k\) et pour tout \( x\) nous ayons
+		\begin{equation}
+			| T_k(x) |\leq C\max_{j\in J} p_j(x).
+		\end{equation}
+		Un seul \( i\in J\) nous suffira. Soient donc \( C>0\) et \( i\in I\) tels que \( | T_k(x) |\leq C p_i(x)\) pour tout \( x\). Vu que le module est une opération continue sur \( \eC\), elle commute avec la limite et nous pouvons faire le calcul suivant :
+		\begin{subequations}
+			\begin{align}
+				| T(x) | & =| \lim_{k\to \infty} T_k(x) |  \\
+				         & =\lim_{k\to \infty} | T_k(x) |  \\
+				         & \leq \lim_{k\to \infty} Cp_i(x) \\
+				         & =Cp_i(x).
+			\end{align}
+		\end{subequations}
+		Avec ça nous pouvons prouver que \( T\) est séquentiellement continue. Soit \( x_k\stackrel{X}{\longrightarrow}0\). En utilisant la proposition \ref{PropQPzGKVk} nous avons :
+		\begin{equation}
+			| T(x_k) |\leq C p_i(x_k)\stackrel{\eR}{\longrightarrow}0
+		\end{equation}
+		Donc \( | T(x_k) |\to 0\) et \( T\) est séquentiellement continue en zéro. Vu que \( T\) est linéaire, elle est séquentiellement continue partout.
+		\spitem[Continue]
+		Vu que l'espace \( X\) est métrisable, la proposition \ref{PropXIAQSXr} conclut que \( T\) est continue.
+		\spitem[Point \ref{ITEMooEVIXooBpaWOc}]
+
+		Nous passons à la preuve de \ref{ITEMooEVIXooBpaWOc}. Supposons que \( x_k\stackrel{X}{\longrightarrow}x\). Voici des majorations avec justifications juste en-dessous :
+		\begin{subequations}
+			\begin{align}
+				| T_k(x_k)-T(x_k) | & \leq | T_{k}(x_{k})-T_{k}(x) |+| T_{k}(x)-T(x_k) |                                   \\
+				                    & =| T_k(x_k-x) |+| T_{k}(x)-T(x_{k}) |                                                \\
+				                    & \leq C p_i\big( x_{k}-x \big) + | T_{k}(x)-T(x_k) |      \label{SUBEQooQLXIooSvvNcx} \\
+				                    & \leq C \epsilon +    | T_{k}(x)-T(x_{k}) |          \label{SUBEQooVLNVooOVsQno}      \\
+				                    & \leq C \epsilon    +| T_{k}(x)-T(x) |+| T(x)-T(x_{k}) |                              \\
+				                    & \leq (C+2)\epsilon.        \label{SUBEQooHSTIooJgfChZ}
+			\end{align}
+		\end{subequations}
+		Justifications:
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooQLXIooSvvNcx}. C'est le théorème de Banach-Steinhaus \ref{ThoNBrmGIg} qui nous assure l'existence d'un \( i\in I\) et d'une \( C\in \eR^+\) qui donne la majoration.
+			\item Pour \eqref{SUBEQooVLNVooOVsQno}. Nous nous sommes fixé un \( \epsilon>0\) et nous avons pris \( k\) assez grand. Pour la topologie des seminormes, la convergence \( y_k\stackrel{X}{\longrightarrow}y\) implique la limite \( p_i(y_k-y)\stackrel{\eR}{\longrightarrow}0\) pour toutes les seminormes, et en particulier pour celle donnée par le théorème de Banach-Steinhaus.
+			\item Pour \eqref{SUBEQooHSTIooJgfChZ}. D'une part, par hypothèse et par définition de \( T\), nous avons \( T_{k}(x)\stackrel{\eC}{\longrightarrow}T(x)\) et d'autre part par continuité séquentielle de \( T\) et par convergence de \( x_{k}\stackrel{X}{\longrightarrow}x\) nous avons \( T(x_{k})\stackrel{\eC}{\longrightarrow} T(x)\).
+
+			      En prenant \( k\) encore plus grand, nous avons toutes les majorations en même temps.
+		\end{itemize}
+		Nous avons donc bien
+		\begin{equation}
+			| T_{k}(x_{k})-T(x_{k}) |\stackrel{\eR}{\longrightarrow}0.
+		\end{equation}
+
+		\spitem[Point \ref{ITEMooJYOVooPIkHBo}]
+		Nous nous lançons dans la preuve du point \ref{ITEMooJYOVooPIkHBo}. En vertu du point \ref{ItemAEOtOMLi}, l'application
+		\begin{equation}
+			\begin{aligned}
+				S_k\colon K & \to \eR                 \\
+				x           & \mapsto | T_k(x)-T(x) |
+			\end{aligned}
+		\end{equation}
+		est continue. Vu que \( K\) est un compact, le théorème \ref{ThoWeirstrassRn}, nous indique qu'il existe \( x_k\) tel que
+		\begin{equation}
+			| T_k(x_k)-T(x_k) |=\sup_{x\in K}| T_k(x)-T(x) |.
+		\end{equation}
+		Nous considérons la suite
+		\begin{equation}
+			a_k=| T_k(x_k)-T(x_k) |
+		\end{equation}
+		et nous allons montrer que
+		\begin{itemize}
+			\item toutes les sous-suites convergentes de \( (a_k)\) convergent vers \( 0\).
+			\item la suite \( (a_k)\) est contenue dans un compact de \( \eR\).
+		\end{itemize}
+		Ensuite le corolaire \ref{CORooBTIPooUYWucb} terminera.
+		\begin{subproof}
+
+			\spitem[Toutes les sous-suites convergentes]
+			Soit \( \varphi\colon \eN\to \eN\) telle que la suite \( b_k=a_{\varphi(k)}\) soit convergente. Nous allons trouver une sous-suite qui converge vers \( 0\).  La suite \( k\mapsto a_{\varphi(k)}\) est une suite dans le compact \( K\); elle contient donc une sous-suite convergente. Soit donc \( \psi\colon \eN\to \eN\) telle que \( k\mapsto a_{(\varphi\circ\psi)(k)}\) soit convergente. Nous étudions la sous-suite \( c_k=b_{\psi(k)}\) et nous allons prouver que \( c_k\to 0\).
+
+			Pour ne pas mourir sous les notations, nous posons \( \sigma=\varphi\circ\psi\). Nous avons donc \( x_{\sigma(k)}\stackrel{X}{\longrightarrow}x\), et donc  \( | T_{\sigma(k)}(x_{\sigma(k)})-T(x_{\sigma(k)}) |\stackrel{\eR}{\longrightarrow}0\) par le point \ref{ITEMooEVIXooBpaWOc}.
+
+
+			Donc la suite \( a_{\varphi(k)}\) qui est convergente contient une sous-suite qui converge vers \( 0\). La suite \( a_{\varphi(k)}\) converge donc vers \( 0\).
+			\spitem[Dans un compact]
+			Nous allons prouver que \( | T_k(x_k)-T(x_k) |\) est bornée. Supposons que ce ne soit pas le cas. Pour chaque \( n\in \eN\), il existe un \( k\) tel que \( | T_k(x_k)-T(x_k) |>n\). En numérotant bien, il existe une application \( \varphi\colon \eN\to \eN\) telle que
+			\begin{equation}        \label{EQooRGVOooXJDkQy}
+				| T_{\varphi(k)}(x_{\varphi(k)})-T(x_{\varphi(k)}) |>k.
+			\end{equation}
+			La suite \( k\mapsto x_{\varphi(k)}\) est une suite dans le compact \( K\). Elle admet une sous-suite convergente. En nommant \( x_{\sigma(k)}\) cette sous-suite, nous avons \( x_{\sigma(k)}\stackrel{X}{\longrightarrow}x\), et nous nous avons encore \( | T_{\sigma(k)}(x_{\sigma(k)})-T(x_{\sigma(k)}) |\stackrel{\eR}{\longrightarrow}0\).
+
+			Ouais mais bon. Une suite qui vérifie \eqref{EQooRGVOooXJDkQy} ne peut pas avoir une sous-suite convergente. Contradiction.
+		\end{subproof}
+		\spitem[Point \ref{ItemAEOtOMLiii}]
+		Nous avons la majoration
+		\begin{equation}
+			| T_kx_k-Tx |\leq | T_kx_k-Tx_k |+| Tx_k-T_x |.
+		\end{equation}
+		Par le point \ref{ITEMooEVIXooBpaWOc}, le premier terme tend vers zéro. La continuité de \( T\) (point \ref{ItemAEOtOMLi}) s'occupe du deuxième terme.
+	\end{subproof}
+\end{proof}
+
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Espaces de Lebesgue \texorpdfstring{\( L^p\)}{Lp}}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SecVKiVIQK}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Généralités}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}      \label{DEFooKMJQooXeaUtp}
+	Soit \( (\Omega,\tribF,\mu)\) un espace mesuré. Deux fonctions à valeurs complexes \( f\) et \( g\) sur cet espaces sont dites \defe{équivalentes}{equivalence@équivalence!classe de fonctions} et nous notons \( f\sim g\) si elles sont \( \mu\)-presque partout égales. Nous notons \( [f]\) la classe de \( f\) pour cette relation.
+\end{definition}
+
+Nous allons souvent noter \( f\) indifféremment pour la fonction \( f\) et un des représentants de la classe de \( f\). Toutefois, lorsque la distinction sera importante, nous essayerons de faire faire l'effort de distinguer la fonction \( f\) de sa classe \( [f]\).
+
+\begin{lemma}
+	Une classe contient au maximum une seule fonction continue.
+\end{lemma}
+
+\begin{proof}
+	Soient deux fonctions continues \( f_1\) et \( f_2\) avec \( f_1(a)\neq f_2(a)\). Si \( | f_1(a)-f_2(a) |>\delta\) alors il existe un \( \epsilon\) tel que \( | f_1(x)-f_1(a) |>\delta\) pour tout \( x\in B(a,\epsilon)\). En particulier \( f_1\neq f_2\) sur \( B(a,\epsilon)\). Cette dernière boule est de mesure de Lebesgue non nulle; ergo \( f_1\) et \( f_2\) ne sont pas dans la même classe.
+\end{proof}
+
+\begin{definition}      \label{DEFooTHIDooWYzBtn}
+	Pour \( p\geq 1\), nous introduisons l'opération
+	\begin{equation}        \label{EQooBDBXooCHRmpo}
+		\| f \|_p=\left( \int_{\Omega}| f(x) |^pd\mu(x) \right)^{1/p}
+	\end{equation}
+	et nous notons \( \mL^p(\Omega,\mu)\)\nomenclature[Y]{\( \mL^p\)}{espace de Lebesgue, sans les classes} l'ensemble des fonctions mesurables sur \( \Omega\) telles que \( \| f \|_p<\infty\).
+\end{definition}
+
+\begin{normaltext}
+	Le fait que \( f\) doive être mesurable pour être dans \( L^p\) est bien dans la définition de \( L^p\), et non une propriété qui pourrait être déduite de la finitude de l'intégrale \eqref{EQooBDBXooCHRmpo}.
+
+	Soit \( \Omega=\eR\) muni de ses boréliens ou même de sa tribu de Lebesgue et de la mesure de Lebesgue. Si \( A\) est une partie bornée non mesurable (exemple \ref{EXooCZCFooRPgKjj}), alors nous considérons un borné mesurable \( K\) contenant \( A\) et la fonction
+	\begin{equation}
+		f(x)=\begin{cases}
+			1  & \text{si } x\in A            \\
+			-1 & \text{si } x\in K\setminus A \\
+			0  & \text{sinon. }
+		\end{cases}
+	\end{equation}
+	Nous avons alors \( | f |=\mtu_K\). Vu que \( K\) est borné, \( \int_{\eR}| f |=\mu(K)\) ne présente pas de problèmes. Donc \( f\) serait un élément de \( L^1(\eR)\) sans être mesurable.
+
+	Pour éviter cela, nous incluons la mesurabilité dans la définition de \( \mL^p\).
+\end{normaltext}
+
+\begin{lemma}[\cite{MonCerveau}]       \label{LEMooHVZGooRwHXMk}
+	L'ensemble \( \mL^p\) est un espace vectoriel sur \( \eC\).
+\end{lemma}
+
+\begin{proof}
+	Pour rappel, nous ne considérons les choses que pour \( p\geq 1\). Le fait que si \( f\in L^p\), alors \( \lambda f\in L^p\) est évident. Ce qui est moins immédiat, c'est le fait que \( f+g\in L^p\) lorsque \( f\) et \( g\) sont dans \( L^p\). Cela découle d'une part du fait que la fonction \( \varphi\colon x\mapsto x^p\) est convexe sur les positifs (lemme \ref{LEMooSXTXooZOmtKq}), de telle sorte que
+	\begin{equation}
+		\varphi\left( \frac{ |a|+|b| }{2} \right)\leq\frac{ \varphi(|a|)+\varphi(|b|) }{2},
+	\end{equation}
+	ou encore
+	\begin{equation}    \label{EqZFSduFa}
+		(|a|+|b|)^p\leq 2^{p-1}(|a|^p+|b|^p)
+	\end{equation}
+	Et d'autre part, nous savons que pour \( z_1,z_2\in \eC\), \( | z_1+z_2 |\leq | z_1 |+| z_2 |\) (proposition \ref{PROPooEEFGooACcCll}\ref{ITEMooDVMDooFDmOur}). Donc
+	\begin{subequations}        \label{EQooKRMEooSLHUUc}
+		\begin{align}
+			\int_{\Omega}| f+g |^pd\mu & =\int_{\Omega}| f(\omega)+g(\omega) |^pd\mu(\omega)                              \\
+			                           & \leq \int_{\Omega}\big( | f(\omega) |+| g(\omega) | \big)^pd\mu(\omega)          \\
+			                           & \leq 2^{p-1}\int_{\Omega}\big( | f(\omega) |^p+| g(\omega) |^p \big)d\mu(\omega) \\
+			                           & =2^{p-1}\big( \| f \|_p^p+| g |_p^p \big).
+		\end{align}
+	\end{subequations}
+	Donc si \( f\) et \( g\) sont dans \( \mL^p\), alors \( f+g\) est dans \( \mL^p\).
+\end{proof}
+
+\begin{normaltext}
+	Il est à noter que nous ne considérons que des valeurs \( p\geq 1\), précisément parce que la fonction \( x\mapsto | x |^p\) n'est pas convexe lorsque \( p<1\).
+
+	Dans le même ordre d'idées, si \( p\geq 1\), alors le \( q\in \eR\) tel que
+	\begin{equation}
+		\frac{1}{ p }+\frac{1}{ q }=1
+	\end{equation}
+	est également \( q\geq 1\). Cela est important pour un certain nombres de théorèmes qui vont venir, en particulier l'inégalité de Hölder \eqref{EqLPKooPBCQYN}.
+
+	Si vous en voulez à propos de \( 0<p<1\), vous pouvez lire \cite{ooECQXooZUqbSO}.
+\end{normaltext}
+
+\begin{normaltext}
+	L'opération \( f\mapsto \| f \|_p\) n'est pas une norme sur \( \mL^p\) parce que pour \( f\) presque partout nulle, nous avons \( \| f \|_p=0\). Il y a donc des fonctions non nulles sur lesquelles \( \| . \|_p\) s'annule.
+\end{normaltext}
+
+\begin{normaltext}
+	Soit un espace mesuré non complet\footnote{Définition \ref{DefBWAoomQZcI}.} \( (\Omega,\tribA,\mu)\). Il existe une partie \( N\) de mesure nulle et \( A\subset N\) non mesurable. Considérons
+	\begin{equation}
+		f(x)=\begin{cases}
+			2 & \text{si } x\in A            \\
+			1 & \text{si } x\in N\setminus A \\
+			0 & \text{sinon. }
+		\end{cases}
+	\end{equation}
+	Cette fonction est non nulle exactement sur \( N\). Donc \( f\sim 0\). Mais \( f\) n'est pas mesurable parce que \( f^{-1}(2)=A\) n'est pas mesurable.
+
+	Il est donc possible d'être dans la classe d'équivalence d'une fonction mesurable sans être mesurable. Ceci est cependant un détail (presque) sans importance pour deux raisons.
+	\begin{itemize}
+		\item La mesure de Lebesgue est complète par définition (définition \ref{DefooYZSQooSOcyYN}) si nous considérons bien la tribu de Lebesgue et non seulement les boréliens.
+		\item Dans le cas des espaces de Lebesgue \( L^p(\Omega,\tribA,\mu)\), il s'agit d'un quotient de \( \mL^p\) qui ne contient que des fonctions mesurables. Donc dans l'étude de \( L^p\), tous les représentants sont mesurables, même si \( (\Omega,\tribA,\mu)\) n'est pas complet.
+	\end{itemize}
+\end{normaltext}
+
+\begin{lemma}       \label{LemKZVHVAR}
+	Si \( f\in \mL^p(\Omega)\) et \( f\sim g\), alors \( g\in \mL^p(\Omega)\) et \( \| f \|_p=\| g \|_p\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( h(x)=| g(x) |^p-| f(x) |^p\); c'est une fonction par hypothèse presque partout nulle et donc intégrable sur \( \Omega\); son intégrale y vaut zéro. Nous avons
+	\begin{equation}
+		\int_{\Omega}| f(x) |^pd\mu(x)=\int_{\Omega}\Big( | f(x) |^p+h(x)\big)d\mu(x)=\int_{\Omega}| g(x) |^pd\mu(x).
+	\end{equation}
+	Cela prouve que la dernière intégrale existe et vaut la même chose que la première.
+\end{proof}
+
+Nous pouvons donc considérer la norme \( | . |_p\) comme une norme sur l'ensemble des classes plutôt que sur l'ensemble des fonctions. Nous notons \( L^p\)\nomenclature[Y]{\( L^p\)}{espace de Lebesgue avec les classes} l'ensemble des classes des fonctions de \(\mL^p\). Cet espace est muni de la norme
+\begin{equation}
+	\| [f] \|_p=\| f \|_p,
+\end{equation}
+formule qui ne dépend pas du représentant par le lemme~\ref{LemKZVHVAR}.
+
+\begin{proposition}     \label{PROPooTYCYooAKJWOX}
+	Soient un espace mesuré \( (\Omega,\tribA,\mu)\), et \( p\geq 1\).
+	\begin{enumerate}
+		\item
+		      L'ensemble des classes \( L^p(\Omega,\tribA,\mu)\) est un espace vectoriel.
+		\item		\label{ITEMooZNXPooGzFnIK}
+		      La formule
+		      \begin{equation}
+			      \| [f] \|_p=\left( \int_{\Omega}| f(x) |^pd\mu(x) \right)^{1/p}
+		      \end{equation}
+		      définit une norme\footnote{Définition \ref{DefNorme}.} sur \( L^p(\Omega,\tribA,\mu)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+
+	En deux parties.
+	\begin{subproof}
+		\spitem[Espace vectoriel]
+		Le lemme \ref{LEMooHVZGooRwHXMk} dit que \( \mL^p\) est un espace vectoriel. Une structure d'espace vectoriel sur \( L^p(\Omega,\tribA,\mu)\) est donnée en posant
+		\begin{equation}
+			[f]+[g]=[f+g]
+		\end{equation}
+		et
+		\begin{equation}
+			\lambda[f]=[\lambda f]
+		\end{equation}
+		qui sont deux définitions correctes parce qu'elles ne dépendent pas du choix du représentant. De plus le lemme \ref{LEMooHVZGooRwHXMk} dit que \( f+g\in \mL^p\) dès que \( f,g\in \mL^p\). Donc \( [f+g]\in L^p\) dès que \( [f],[g]\in \L^p\).
+		\spitem[Norme]
+
+		Pour être une norme, il faut vérifier les trois propriétés de la définition \ref{DefNorme}.
+
+		D'abord, si \( \| [f] \|_p=0\), nous avons
+		\begin{equation}
+			\int_{\Omega}| f(x) |^pd\mu(x)=0,
+		\end{equation}
+		ce qui par le lemme~\ref{Lemfobnwt} implique que \( | f(x) |^p=0\) pour presque tout \( x\). Ou encore \( f\sim 0\), c'est-à-dire \( [f]=[0]\) au niveau des classes.
+
+		Ensuite pour \( \lambda\in \eC\) et \( f\in L^p\) nous avons
+		\begin{subequations}
+			\begin{align}
+				\| \lambda f \|_p & =\left( \int_{\Omega}| \lambda f(\omega) |^pd\mu(\omega) \right)^{1/p}      \\
+				                  & =\left( \int_{\Omega}| \lambda |^p| f(\omega) |^pd\mu(\omega) \right)^{1/p} \\
+				                  & =| \lambda |\| f \|_p.
+			\end{align}
+		\end{subequations}
+		Et enfin, en suivant le calcul \eqref{EQooKRMEooSLHUUc} nous avons
+		\begin{equation}
+			\| f+g \|_p\leq \| f \|_p+\| g \|_p.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	À partir de maintenant \( \big( L^p(\Omega,\mu),\| . \|_p \big)\) est un espace métrique avec toute la topologie qui va avec.
+
+	Dans la suite nous n'allons pas toujours écrire \( [f]\) pour la classe de \( f\). Par abus de notations nous allons souvent parler de \( f\in L^p\) comme si c'était une fonction.
+
+	De même nous notons \( L^p(\Omega)\) ou \( L^p(\Omega,\mu)\) ou \( L^p(\Omega,\tribA,\mu)\) d'après ce sur quoi nous voulons insister. Mais seule la dernière notation est parfaitement correcte.
+\end{normaltext}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooRSDBooHEjQDq}
+	Soit un espace mesuré \( \sigma\)-fini\footnote{Définition \ref{DefWUPHooEklLmR}.} \( (\Omega,\tribA, \mu)\). Soit une fonction mesurable \(f \colon \Omega\to \eC  \). Il existe des parties mesurables \( \Omega_n\) telles que pour tout \( n\)
+	\begin{enumerate}
+		\item		\label{ITEMooXSINooDDPzmb}
+		      \( \mu(\Omega_n)<\infty\),
+		\item		\label{ITEMooEGWEooAtEWfw}
+		      \( \Omega_n\subset \Omega_{n+1}\)
+		\item		\label{ITEMooGEEZooIjPQmv}
+		      \( \int_{\Omega_n}| f |<\infty\)
+		\item		\label{ITEMooSDPTooOuiyOj}
+		      \( \bigcup_n\Omega_n= \{ | f |\neq \infty \}\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Vu que \( \Omega\) est \( \sigma\)-finie, il existe des parties mesurables \( S_n\) telles que \( \mu(S_n)<\infty\) et \( \bigcup_nS_n=\Omega\). Nous commençons par poser \( A_n=\bigcup_{i=1}^ns_i\). Les parties \( A_n\) vérifient déjà \ref{ITEMooXSINooDDPzmb} et \ref{ITEMooEGWEooAtEWfw}.
+
+	Pour les conditions \ref{ITEMooGEEZooIjPQmv} et \ref{ITEMooSDPTooOuiyOj}, il suffit de poser \( \Omega_n=A_n\cap\{ | f |<n \}\).
+\end{proof}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQNNVooTKRdyC}
+	Soit un espace mesuré \( \sigma\)-fini \( (\Omega,\tribA,\mu)\). Soit une fonction \(f \colon \Omega\to \eC  \) vérifiant \( \mu\big( | f |=\infty \big)=0\). Nous considérons des parties mesurables \( \Omega_k\) telles que
+	\begin{enumerate}
+		\item
+		      \( \mu(\Omega_n)<\infty\),
+		\item
+		      \( \Omega_n\subset \Omega_{n+1}\)
+		\item
+		      \( \int_{\Omega_n}| f |<\infty\)
+		\item
+		      \( \bigcup_n\Omega_n= \{ | f |\neq \infty \}\).
+	\end{enumerate}
+	Alors en notant \( \| f \|_{n,p}\) la norme \( L^p\) de \( f\) sur \( \Omega_n\), nous avons
+	\begin{equation}
+		\| f \|_{k,p}\to \| f \|_p
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous utilisons la convergence monotone \ref{ThoRRDooFUvEAN} en posant \( g_k(x)=| f(x) |^p\mtu_{\Omega-k}\). Les fonctions \( g_k\) sont à valeurs dans \( \mathopen[ 0,\infty\mathclose]\) et nous avons \( g_k\to | f |^p\) ponctuellement. Donc
+	\begin{subequations}
+		\begin{align}
+			\lim_{k\to \infty}\int_{\Omega_k}| f |^p & =\lim_{k\to \infty}\int_{\Omega}g_k \\
+			                                         & =\int_{\Omega}\lim_{k\to\infty}g_k  \\
+			                                         & =\int_{\Omega}| f |^p,
+		\end{align}
+	\end{subequations}
+	ce qu'il fallait démontrer.
+\end{proof}
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Un peu de convergence de suites}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}[\cite{bJOSNQ}]  \label{PropWoywYG}
+	Soit \( 1\leq p\leq \infty\) et supposons que la suite \( [f_n]\) dans \( L^p(\Omega,\tribF,\mu)\) converge vers \( [f]\) au sens \( L^p\). Alors il existe une sous-suite \( (h_n)\) qui converge ponctuellement \( \mu\)-presque partout vers \( f\).
+\end{proposition}
+\index{espace!\( L^p\)}
+\index{suite!de fonctions}
+\index{limite!inversion}
+
+\begin{proof}
+	Si \( p=\infty\) nous sommes en train de parler de la convergence uniforme et il ne faut même pas prendre ni de sous-suite ni de « presque partout ».
+
+	Supposons que \( 1\leq p<\infty\). Nous considérons une sous-suite \( [h_n]\) de \( [f_n]\) telle que
+	\begin{equation}
+		\| [h_j]-[f] \|_p<2^{-j},
+	\end{equation}
+	puis nous posons \( u_k(x)=| h_k(x)-f(x) |^p\). Notons que ce \( u_k\) est une vraie fonction, pas une classe. Et en plus c'est une fonction positive. Nous avons
+	\begin{equation}
+		\int_{\Omega}u_kd\mu=\int_{\Omega}| h_k(x)-f(x) |^pd\mu(x)=\| h_k-f \|_p^p\leq 2^{-kp}.
+	\end{equation}
+	Vu que \( u_k\) est une fonction positive la suite des sommes partielles de \( \sum_ku_k\) est croissante et vérifie donc le théorème de la convergence monotone~\ref{ThoRRDooFUvEAN} :
+	\begin{equation}
+		\int_{\Omega}\left( \sum_{k=0}^{\infty}u_k(x) \right)d\mu(x)=\sum_{k=0}^{\infty}\int_{\Omega}u_k(x)d\mu(x)
+		\leq\sum_{k=0}^{\infty}2^{-kp}<\infty.
+	\end{equation}
+	Le fait que l'intégrale de la fonction \( \sum_ku_k\) est finie implique que cette fonction est finie \( \mu\)-presque partout. Donc le terme général tend vers zéro presque partout, c'est-à-dire
+	\begin{equation}
+		| h_k(x)-f(x) |^p\to 0.
+	\end{equation}
+	Cela signifie que \( h_k\to f\) presque partout ponctuellement.
+\end{proof}
+
+Est-ce qu'on peut faire mieux que la convergence ponctuelle presque partout d'une sous-suite ? En tout cas on ne peut pas espérer grand chose comme convergence pour la suite elle-même, comme le montre l'exemple suivant.
+
+\begin{example}[\cite{BIBooABVJooKBRJG}] \label{ExPOmxICc}
+	Nous allons montrer une suite de fonctions qui converge vers zéro dans \( L^p[0,1]\) (avec \( p<\infty\)) mais qui ne converge ponctuellement pour \emph{aucun} point.
+
+	Nous construisons la suite de fonctions par paquets. Le premier paquet est formé de la fonction constante \( 1\).
+
+	Le second paquet est formé de deux fonctions. La première est \( \mtu_{\mathopen[0 , 1/2 \mathclose]}\) et la seconde \( \mtu_{\mathopen[ 1/2 , 1 \mathclose]}\).
+
+	Plus généralement le paquet numéro \( k\) est constitué des \( k\) fonctions \( \mtu_{\mathopen[ i/k , (i+1)/k \mathclose]}\) avec \( i=0,\ldots, k-1\).
+
+	Vu que les fonctions du paquet numéro \( k\) ont pour norme \( \| f \|_p=\frac{1}{ k }\), nous avons évidemment \( f_n\to 0\) dans \( L^p\). Il est par contre visible que chaque paquet passe en revue tous les points de \( \mathopen[ 0 , 1 \mathclose]\). Donc pour tout \( x\) et pour tout \( N\), il existe (même une infinité) \( n>N\) tel que \( f_n(x)=1\). Il n'y a donc convergence ponctuelle nulle part.
+\end{example}
+
+La proposition suivante est une espèce de convergence dominée de Lebesgue pour \( L^p\).
+\begin{proposition} \label{PropBVHXycL}
+	Soit \( f\in L^p(\Omega)\) avec \( 1\leq p<\infty\) et \( (f_n)\) une suite de fonctions convergeant ponctuellement vers \( f\) et telle que \( | f_n |\leq | f |\). Alors \( f_n\stackrel{L^p}{\longrightarrow}f\).
+\end{proposition}
+
+\begin{proof}
+	Nous avons immédiatement \( | f_n(x) |^p\leq | f(x) |^p\), de telle sorte que le théorème de la convergence dominée implique que \( f_n\in L^p\). La convergence dominée donne aussi que \( \| f_n \|_p\to\| f \|_p\), mais cela ne nous intéresse pas ici.
+
+	Nous posons \( h_n(x)= | f_n(x)-f(x) | \). En reprenant la formule de majoration \eqref{EqZFSduFa} et en tenant compte du fait que \( | f_n(x) |\leq | f(x) |\), nous avons
+	\begin{equation}
+		h_n(x)\leq 2^{p-1}\big( | f_n(x) |^p+| f(x) |^p \big)\leq 2^p| f(x) |^p,
+	\end{equation}
+	ce qui prouve que \( | h_n |\) est uniformément (en \( n\)) majorée par une fonction intégrable, donc \( h_n\) est intégrable et on peut permuter la limite et l'intégrale (théorème de la convergence dominée~\ref{ThoConvDomLebVdhsTf}) :
+	\begin{equation}
+		\lim_{n\to \infty} \| f_n-f \|^p_p=\lim_{n\to \infty} \int_{\eR^d}| f_n(x)-f(x) |^pdx=\int_{\eR^d}\lim_{n\to \infty} h_n(x)dx=0.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}] \label{PropRERZooYcEchc}
+	Soit un espace mesuré \( (\Omega,\tribA,\mu)\) et une fonction mesurable \( f\colon \Omega\to \eC \) telle que
+	\begin{equation}
+		\int_{\Omega}f\mtu_Ad\mu=0
+	\end{equation}
+	pour toute partie mesurable \( A\) de mesure finie. Alors \( [f]=0\), c'est-à-dire que \( f\) est non nulle uniquement sur une partie de mesure nulle.
+\end{proposition}
+
+\begin{proof}
+	Nous rappelons que dire que \( f\) est intégrable signifie que \( \real(f)^+\), \( \real(f)^-\), \( \imag(f)^+\) et \( \imag(f)^-\) sont intégrables.
+
+	Les parties
+	\begin{equation}
+		\{ x\in \Omega \tq \real(f)^+(x)\in \mathopen[ k , k+1 \mathclose[ \}_{k=1,\ldots}
+	\end{equation}
+	et
+	\begin{equation}
+		\{ x\in \Omega \tq \real(f)^+(x)\in \mathopen[ \frac{1}{ k+1 } , \frac{1}{ k } \mathclose[ \}_{k=1,\ldots}
+	\end{equation}
+	sont mesurables en tant qu'images inverses de mesurables par la fonction mesurable \( \real(f)^+\).
+
+	Nous notons \( \{ A_i \}_{i\in \eN}\) une énumération quelconque de ces parties. L'important est que
+	\begin{equation}
+		\bigcup_{i\in \eN}A_i=\{ x\in \Omega\tq \real(f)^+(x)\neq 0 \}
+	\end{equation}
+	et que pour chaque \( i\), il existe \( \alpha_i>0\) tel que \( \real(f)^+(x)>\alpha_i\) pour tout \( x\) dans \( A_i\).
+
+	Par hypothèse nous avons \( \int_{\Omega}f\mtu_{A_i}d\mu=0\). En particulier,
+	\begin{equation}
+		0=\int_{\Omega}\real(f\mtu_{A_i})^+=\int_{\Omega}\real(f)^+(x)\mtu_{A_i}(x)d\mu(x).
+	\end{equation}
+	Mais pour tout \( x\in A_i\) nous avons \( \real(f)^+(x)>\alpha_i>0\), donc
+	\begin{equation}
+		0=\int_{\Omega}\real(f)^+(x)\mtu_{A_i}(x)d\mu(x)\geq \alpha_i\int_{\Omega}\mtu_{A_i}=\alpha_i\mu(A_i)\geq 0.
+	\end{equation}
+	Vu cet encadrement par zéro, nous avons \( \alpha_i\mu(A_i)=0\) et donc \( \mu(A_i)=0\) pour tout \( i\).
+
+	Nous en déduisons, par union dénombrable de parties de mesures nulles, que \( \real(f)^+\) est non nulle seulement sur une partie de mesure nulle.
+
+	Le même raisonnement pour \( \real(f)^-\), \( \imag(f)^+\) et \( \imag(f)^-\) donne que \( f\) est non nulle sur une partie de mesure nulle. Donc \( f=0\) au sens des classes dans \( L^p\).
+\end{proof}

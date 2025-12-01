@@ -1,0 +1,2737 @@
+% This is part of Le Frido
+% Copyright (c) 2006-2025
+%   Laurent Claessens, Carlotta Donadello
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Suites et séries : généralités}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SECooTDZNooJvjPks}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Norme supremum}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{lemma}       \label{LEMooLPRZooUPsWTR}
+	Soient un espace compact \( K\) et une fonction continue \( f\colon K\to \eC\) qui se décompose en partie réelle et complexe comme \( f(x)=u(x)+iv(x)\). Alors
+	\begin{enumerate}
+		\item
+		      Les fonctions \( u\) et \( v\) sont continues sur \( K\).
+		\item
+		      \( \| u \|_{\infty}\leq \| f \|_{\infty}\),
+		\item
+		      \( \| v \|_{\infty}\leq \| f \|_{\infty}\)
+	\end{enumerate}
+	où \( \| . \|_{\infty}\) est la norme supremum \ref{DEFooSFNFooBygeXX}.
+	%TODOooTCWHooFnTnrC. Prouver ça.
+\end{lemma}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Convergence uniforme}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{theorem}[Limite uniforme de fonctions continues]			\label{ThoUnigCvCont}
+	Soit \( A\), un ensemble mesuré et \( f_n\colon A\to \eR^n\), une suite de fonctions continues convergeant uniformément vers \( f\). Si les fonctions \( f_n\) sont toutes continues en \( x_0\in A\), alors \( f\) est continue en \( x_0\).
+\end{theorem}
+
+\begin{proof}
+	Soit \( \epsilon>0\). Si \( x\in A\) nous avons, pour tout \( n\), la majoration
+	\begin{subequations}
+		\begin{align}
+			\| f(x)-f(x_0) \| & \leq \| f(x)-f_n(x) \|+\| f_n(x)-f_n(x_0) \|+\| f_n(x_0)-f(x_0) \| \\
+			                  & \leq\| f_n(x)-f_n(x_0) \|+2\| f_n-f \|_{\infty}.
+		\end{align}
+	\end{subequations}
+	Grâce à l'uniforme convergence, nous considérons \(N\in \eN\) tel que \( \| f_n-f \|\leq \epsilon\) pour tout \( n\geq N\). Pour de tels \( n\), nous avons
+	\begin{equation}
+		\| f(x)-f(x_0) \|\leq 2\epsilon+\| f_n(x)-f_n(x_0) \|.
+	\end{equation}
+	La continuité de \( f_n\) nous fournit un \( \delta>0\) tel que \( \| f_n(x_0)-f_n(x) \|<\epsilon\) dès que \( \| x-x_0 \|<\delta\). Pour ce \( \delta\), nous avons alors \( \| f_n(x)-f_n(x_0) \|<\epsilon\).
+
+	Donc lorsque \( n\geq N\) (\( N\) est choisi en fonction de \( \epsilon\)), et \( \| x-x_0 \|<\delta\) (\( \delta\) est choisi en fonction de \( N\)), nous avons
+	\begin{equation}
+		\| f(x)-f(x_0) \|\leq 3\epsilon,
+	\end{equation}
+	ce qui prouve la continuité de \( f\) en \( x_0\).
+\end{proof}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Complétude avec la norme uniforme}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+\begin{proposition}[Limite uniforme de fonctions continues]\label{PropCZslHBx}
+	Soit \( X\) un espace topologique et \( (Y,d)\) un espace métrique. Si une suite de fonctions \( f_n\colon X\to Y\) continues converge uniformément\footnote{Convergence uniforme, définition \ref{DEFooOHRYooWUsYTi}.}, alors la limite est séquentiellement continue\footnote{Si \( X\) est métrique, alors c'est la continuité usuelle par la proposition~\ref{PropFnContParSuite}.}.
+\end{proposition}
+
+\begin{proof}
+	Soit \( a\in X\) et prouvons que \( f\) est séquentiellement continue en \( a\). Pour cela nous considérons une suite \( x_n\to a\) dans \( X\). Nous savons que \( f(x_n)\stackrel{Y}{\longrightarrow}f(x)\). Pour tout \(k\in \eN\), tout \( n\in \eN\) et tout \( x\in X\) nous avons la majoration
+	\begin{subequations}
+		\begin{align}
+			\big\| f(x_n)-f(x) \big\| & \leq \big\| f(x_n)-f_k(x_n) \big\|+\big\| f_k(x_n)-f_k(x) \big\|+\big\| f_k(x)-f(x) \big\| \\
+			                          & \leq 2\| f-f_k \|_{\infty}+\big\| f_k(x_n)-f_k(x) \big\|.
+		\end{align}
+	\end{subequations}
+	Soit \( \epsilon>0\). Si nous choisissons \( k\) suffisamment grand la premier terme est plus petit que \( \epsilon\). Et par continuité de \( f_k\), en prenant \( n\) assez grand, le dernier terme est également plus petit que \( \epsilon\).
+\end{proof}
+
+\begin{proposition} \label{PropSYMEZGU}
+	Soit \( X\) un espace topologique métrique \( (Y,d)\) un espace métrique complet. Alors les espaces
+	\begin{enumerate}
+		\item
+		      \( \big( C^0_b(X,Y),\| . \|_{\infty} \big)\) des fonctions continues et bornées \( X\to Y\),
+		\item
+		      \( \big( C^0_0(X,Y),\| . \|_{\infty} \big)\) des fonctions continues et s'annulant à l'infini
+		\item
+		      \( \big( C^k_0(X,Y),\| . \|_{\infty} \big)\) des fonctions de classe \( C^k\) et s'annulant à l'infini
+	\end{enumerate}
+	sont complets.
+\end{proposition}
+
+\begin{proof}
+	Soit \( (f_n)\) une suite de Cauchy dans \( C(X,Y)\), c'est-à-dire que pour tout \( \epsilon>0\) il existe \( N\in \eN\) tel que si \( k,l>N\) nous avons \( \| f_k-f_l \|_{\infty}\leq \epsilon\). Cette suite vérifie le critère de Cauchy uniforme~\ref{PropNTEynwq} et donc converge uniformément vers une fonction \( f\colon X\to Y\). La continuité (ou l'aspect \( C^k\)) de la fonction \( f\) découle de la convergence uniforme et de la proposition~\ref{PropCZslHBx} (c'est pour avoir l'équivalence entre la continuité séquentielle et la continuité normale que nous avons pris l'hypothèse d'espace métrique).
+
+	Si les fonctions \( f_k\) sont bornées ou s'annulent à l'infini, la convergence uniforme implique que la limite le sera également.
+\end{proof}
+Notons que si \( X\) est compact, les fonctions continues sont bornées par le théorème~\ref{ThoImCompCotComp} et nous pouvons simplement dire que \( C^0(X,Y)\) est complet, sans préciser que nous parlons des fonctions bornées.
+
+
+\begin{lemma}       \label{LemdLKKnd}
+	Soient un espace topologique compact \( A\) et un espace complet \( B\). L'ensemble des fonctions continues de \( A\) vers \( B\) muni de la norme uniforme est complet.
+
+	Dit de façon courte : \( \big( C(A,B),\| . \|_{\infty} \big)\) est complet.
+\end{lemma}
+
+\begin{proof}
+	Soit \( (f_k)\) une suite de Cauchy de fonctions dans \( C(A,B)\). Pour chaque \( x\in A \) nous avons
+	\begin{equation}
+		\| f_k(x)-f_l(x) \|_B\leq \| f_k-f_l \|_{\infty},
+	\end{equation}
+	de telle sorte que la suite \( (f_k(x))\) est de Cauchy dans \( B\) et converge donc vers un élément de \( B\). La suite de Cauchy \( (f_k)\) converge donc ponctuellement vers une fonction \( f\colon A\to B\). Nous devons encore voir que cette fonction est continue; ce sera l'uniformité de la norme qui donnera la continuité. En effet soit \( x_n\to x\) une suite dans \( A\) qui converge vers \( x\in A\). Pour chaque \( k\in \eN\) nous avons
+	\begin{equation}
+		\| f(x_n)-f(x) \|\leq \| f(x_n)-f_k(x_n) \|  +\| f_k(x_n)-f_k(x) \|+\| f_k(x)-f(x) \|.
+	\end{equation}
+	En prenant \( k\) et \( n\) assez grands, cette expression peut être rendue aussi petite que l'on veut; le premier et le troisième terme par convergence ponctuelle \( f_k\to f\), le second terme par continuité de \( f_k\). La suite \( f(x_n)\) est donc convergente vers \( f(x)\) et la fonction \( f\) est continue.
+\end{proof}
+
+\begin{probleme}
+	Il serait sans doute bon de revoir cette preuve à la lumière du critère de Cauchy uniforme~\ref{PropNTEynwq}.
+\end{probleme}
+
+
+\begin{normaltext}[\cite{ooXYZDooWKypYR}]
+	Le théorème de Stone-Weierstrass indique que les polynômes sont denses pour la topologie uniforme dans les fonctions continues. Donc il existe des limites uniformes de fonctions \( C^{\infty}\) qui ne sont même pas dérivables. Les espaces de type \( C^p\) munis de \( \| . \|_{\infty}\) ne sont donc pas complets sans quelques hypothèses. Voir la proposition~\ref{PropSYMEZGU} et le thème~\ref{THMooOCXTooWenIJE}.
+\end{normaltext}
+
+\begin{theorem}[Théorème de Dini\cite{JIFGuct}] \label{ThoUFPLEZh}
+	Soient un espace métrique complet \( D\) et une suite de fonctions \( f_n\in C(D,\eR)\) telle que
+	\begin{enumerate}
+		\item
+		      \( f_n\to g\) ponctuellement,
+		\item
+		      \( g\in C(D,\eR)\),
+		\item
+		      la suite \( (f_n)\) est croissante, c'est-à-dire que pour tout \( x\in D\) et pour tout \( n\geq 0\) nous avons \( f_{n+1}(x)\geq f_n(x)\).
+	\end{enumerate}
+	Alors la convergence est uniforme.
+\end{theorem}
+\index{convergence!uniforme!théorème de Dini}
+\index{compacité!théorème de Dini}
+\index{théorème!Dini}
+
+\begin{proof}
+	Soit \( x\in D\) et \( \epsilon>0\). Il existe \( N(x)\in \eN\) tel que
+	\begin{equation}
+		g(x)-\epsilon\leq f_{N(x)}\leq g(x).
+	\end{equation}
+	De plus \( g\) et \( f_{N(x)}\) sont des fonctions continues, donc il existe \( \eta(x)\) tel que si \( y\in B\big( x,\eta(x) \big)\) alors
+	\begin{subequations}
+		\begin{align}
+			g(y)        & \in B\big( g(x),\epsilon \big) \label{subEqXKjgKgv}           \\
+			f_{N(x)}(y) & \in B\big( f_{N(x)}(x),\epsilon \big)   \label{subEqHTiYZLd}.
+		\end{align}
+	\end{subequations}
+	Si \( n\geq N(x)\) et si \( y\in B(x,\eta(x))\) alors nous avons les majorations
+	\begin{equation}
+		g(y)\geq f_n(y)
+		\geq f_{N(x)}(y)
+		\geq f_{N(x)}(x)-\epsilon
+		\geq g(x)-2\epsilon
+		\geq g(y)-3\epsilon.
+	\end{equation}
+	Justifications :
+	\begin{multicols}{2}
+		\begin{enumerate}
+			\item
+			      Les deux premières inégalités sont la croissance de la suite.
+			\item
+			      La suivante est \eqref{subEqHTiYZLd}.
+			\item
+			      Ensuite il y a le choix de \( N(x)\).
+			\item
+			      Et enfin il y a \eqref{subEqXKjgKgv}.
+		\end{enumerate}
+	\end{multicols}
+	Nous retenons que si \( x\in D\) et si \( n\geq N(x)\) alors
+	\begin{equation}    \label{EqJCMktdj}
+		g(y)\geq f_n(y)\geq g(y)-3\epsilon
+	\end{equation}
+	pour tout \( y\in B(x,\eta(x))\).
+
+	Nous utilisons maintenant la compacité de \( D\). Pour chaque \( x\in D\) nous pouvons considérer la boule ouverte \( B\big( x,\eta(x) \big)\); ces boules recouvrent \( D\). Nous en extrayons un sous-recouvrement fini, c'est-à-dire un ensemble fini d'éléments \( x_1\),\ldots, \( x_K\) tels que
+	\begin{equation}
+		D=\bigcup_{k=1}^K B\big(x_k,\eta(x_k)\big).
+	\end{equation}
+	Si à ce moment vous ne comprenez pas pourquoi c'est une égalité au lieu d'une inclusion, il faut lire l'exemple~\ref{ExKYZwYxn}. Considérons
+	\begin{equation}
+		n\geq N=\max\{ N(x_1),\ldots, N(x_K) \}.
+	\end{equation}
+	Pour tout \( y\in D\) il existe \( k\in\{ 1,\ldots, K \}\) tel que \( y\in B\big( x_k,\eta(x_k) \big)\), et vu que \( n\geq N(x_k)\) nous reprenons la majoration \eqref{EqJCMktdj} :
+	\begin{equation}
+		g(y)\geq f_n(y)\geq g(y)-3\epsilon.
+	\end{equation}
+	Pour le \( n\) choisi nous avons ces inégalités pour tout \( y\in D\), c'est-à-dire que nous avons \( \| f_n-g \|\leq 3\epsilon\) et donc la convergence uniforme.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooFWVIooCzXojO}
+	Soient une suite de fonctions continues \( u_i\colon \eR\to \eR\) et une fonction continue \( u\) telle que \( u_i\to u\) simplement. Alors la convergence est uniforme sur tout compact.
+\end{proposition}
+
+\begin{proof}
+	Soit un compact \( K\); nous notons \( \| . \|\) la norme uniforme sur \( K\). Supposons que la limite ne soit pas uniforme, c'est-à-dire qu'il existe un \( \epsilon>0\) tel que
+	\begin{equation}
+		\| u_i-u \|> 2\epsilon
+	\end{equation}
+	pour tout \( i\). Cela permet de considérer pour tout \( i\) un élément \( x_i\in K\) tel que\footnote{Notez l'inégalité stricte, obetenue en considérant \( 2\epsilon\) plus haut.}
+	\begin{equation}
+		\| u_i(x_i)-u(x_i) \|> \epsilon.
+	\end{equation}
+	Pour cela, il faut noter que \( K\) est compact et que la fonction \( x\mapsto \| u_i(x)-u(x) \|\) est continue sur \( K\). Elle est donc bornée et atteint son maximum (c'est le théorème de Weierstrass \ref{ThoWeirstrassRn}).
+
+	La suite \( i\mapsto x_i\) est une suite dans un compact, et quitte à prendre une sous-suite, nous supposons qu'elle converge vers \( a\in K\) (ça, c'est Bolzano-Weierstrass \ref{LemMGQqgDG}).
+
+	La convergence ponctuelle \( u_i\to u\), prise en \( a\), dit qu'il existe un \( N\) tel que \( | u_i(a)-u(a) |<\epsilon\) pour tout \( i\geq N\). Pour un tel \( i\), nous avons aussi
+	\begin{equation}
+		| u_i(x)-u(x) |<\epsilon
+	\end{equation}
+	sur un voisinage de \( a\), parce que \( u_i-u\) est continue. Mais tout voisinage de \( a\) contient un élément \( x_j\) pour lequel
+	\begin{equation}
+		| u_i(x_j)-u(x_j) |>\epsilon.
+	\end{equation}
+	Contradiction.
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Série de fonctions}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Les séries de fonctions sont des cas particuliers de suites.
+
+\begin{definition}      \label{DEFooYEIUooCAgrxI}
+	Si \( (f_n)\) est une suite de fonctions, nous définissons la somme des \( f_n\) de la façon suivante :
+	\begin{equation}
+		\sum_{n=1}^{\infty}f_n=\lim_{N\to \infty} \sum_{n=1}^{N}f_n.
+	\end{equation}
+	Le membre de droite est une définition de la notation introduite dans le membre de gauche.
+\end{definition}
+Avant de vous lancer, relisez une bonne fois les définitions de convergence absolue (définition \ref{DefVFUIXwU}) et de convergence uniforme (équation \ref{EqLNCJooVCTiIw}).
+
+\begin{lemma}			\label{LEMooJDYSooRnurKb}
+	Soit un ensemble dénombrable \( I\). Soient des fonctions \( (u_i\colon \Omega\to \eC)_{i\in I}\). Si il existe des réels positifs \( (a_i)_{i\in I}\) telle que
+	\begin{enumerate}
+		\item
+		      pour tout \( z\in \Omega\) et pour tout \( i\in I\) nous avons \( | u_i(z) |\leq a_i\) (c'est-à-dire \( a_i\geq \| u_i \|_{\infty}\)),
+		\item
+		      la somme \( \sum_{i\in I}a_i\) converge,
+	\end{enumerate}
+	alors la série de fonctions \( \sum_{n=0}^{\infty}u_n\)
+	\begin{enumerate}
+		\item
+		      converge normalement\footnote{Définition~\ref{DefVBrJUxo}.},
+		\item
+		      converge uniformément.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Le premier point découle du lemme de comparaison~\ref{LemgHWyfG}. Le second point est alors le lemme \ref{LEMooJZTBooIopLok}.
+\end{proof}
+
+\begin{theorem}				\label{ThoSerCritAbel}
+	Soit \( \sum_{k=1}^{\infty}g_k(x)\), une série de fonctions complexes où \( g_k(x)=\varphi_k(x)\psi_k(x)\). Supposons que
+	\begin{enumerate}
+
+		\item
+		      \( \varphi_k\colon A\to \eC\) et \( | \sum_{k=1}^K\varphi_k(x) |\leq M\) où \( M\) est indépendant de \( x\) et \( K\),
+		\item
+		      \( \psi_k\colon A\to \eR\) avec \( \psi_k(x)\geq 0\) et pour tout \( x\) dans \( A\), \( \psi_{k+1}(x)\leq \psi_k(x)\), et enfin supposons que \( \psi_k(x)\) converge uniformément vers \( 0\).
+
+	\end{enumerate}
+	Alors \( \sum_{k=1}^{\infty}g_k\) est uniformément convergente.
+	%TODOooHOHYooCgBtWR. Prouver ça.
+\end{theorem}
+
+\begin{theorem}		\label{ThoAbelSeriePuiss}
+	Soit une série de puissances réelle dont le disque de convergence est \( B(x_0,R)\). Si la série converge en \( x=x_0+R\), alors elle converge uniformément sur \( \mathopen[ x_0-R-\epsilon , x_0+R \mathclose]\) (\( \epsilon>0\)) vers une fonction continue.
+	%TODOooJXVIooKyYdOo. Prouver ça.
+\end{theorem}
+
+\begin{proposition} \label{PropOMBbwst}
+	Soient \( E\) et \( F\), deux espaces vectoriels normés, \( \Omega\) une partie ouverte de \( E\) et une suite de fonctions continues \( u_n\colon \Omega\to F\) convergeant normalement sur \( \Omega\), c'est-à-dire que \( \sum_n\| u_n \|_{\infty}\) converge, la norme \( \| . \|_{\infty} \) devant être comprise comme la norme supremum sur \( \Omega\). Alors la fonction \( u=\sum_nu_n\) est continue sur \( \Omega\).
+\end{proposition}
+
+\begin{proof}
+	Soit \( x,x'\in \Omega\) en supposant que \( \| x-x' \|\) est petit. Soit encore \( \epsilon>0\). Nous allons montrer la continuité en \( x\). Pour cela nous savons que pour tout \( N\) l'inégalité suivante est correcte :
+	\begin{equation}
+		\| u(x)-u(x') \|\leq \left\|  \sum_{n=0}^Nu_n(x)-\sum_{n=0}^{N}u_n(x') \right\|+\sum_{n=N+1}^{\infty}\| u_n(x) \|+\sum_{n=N+1}^{\infty}\| u_n(x') \|.
+	\end{equation}
+	Les deux derniers termes sont majorés par \( \sum_{n=N+1}^{\infty}\| u_n \|_{\infty}\) qui, par hypothèse, peut être rendu aussi petit que souhaité en choisissant \( N\) assez grand. Nous choisissons donc un \( N\) tel que ces deux termes soient plus petits que \( \epsilon\). Ce \( N\) étant fixé, la fonction \( \sum_{n=0}^{N}u_n\) est continue et nous pouvons choisir \( x'\) assez proche de \( x\) pour que le premier terme soit majoré par \( \epsilon\).
+\end{proof}
+
+\begin{theorem}[Série uniforme de fonctions continues\cite{MonCerveau}]			\label{ThoSerUnifCont}
+	Soit un espace topologique \( X\) ainsi qu'un espace vectoriel normé \( V\). Soient des fonctions continues \( f_n\colon X\to V\). Si la série \( \sum_{n=0}^{\infty}f_n\) converge uniformément\footnote{Définition \ref{DEFooPABSooPMXMOV}.}, alors la fonction somme est séquentiellement continue.
+
+	Si \( X\) est métrisable, alors la somme est continue.
+\end{theorem}
+
+\begin{proof}
+	Nous notons \( f\) la somme (qui existe par hypothèse) et par \( (s_N)\) la suite des sommes partielles. En tant que somme finie de fonctions continues, chacune des fonctions \( s_N\) est continue. Ce que dit la définition \ref{DEFooPABSooPMXMOV}, c'est que la convergence des sommes partielles est uniforme :
+	\begin{equation}
+		s_N\stackrel{unif}{\longrightarrow}f.
+	\end{equation}
+	La proposition \ref{PropCZslHBx} dit alors que \( f\) est séquentiellement continue.
+
+	Nous en déduisons la continuité de \( f\) dans le cas d'un espace métrisable avec la proposition \ref{PropXIAQSXr}.
+\end{proof}
+
+Le corolaire suivant permet de considérer des séries de fonctions indexées par exemple par \( \eZ\) plutôt que par \( \eN\).
+\begin{corollary}		\label{CORooEWOBooShCysg}
+	Une famille dénombrable de fonctions continues convergeant normalement converge vers une fonction continue.
+\end{corollary}
+
+\begin{proof}
+	Soit \( I\) dénombrable. Considérons une famille de fonctions continues \( (f_n)_{n\in I}\) telles que la famille \( (\| f_i \|_{\infty})_{i\in I}\) soit sommable. Le proposition~\ref{PropoWHdjw} nous permet d'utiliser une bijection entre \( I\) et \( \eN\). La proposition \ref{PropOMBbwst} s'applique alors.
+\end{proof}
+
+\begin{theorem}[Critère de Weierstrass]\index{critère!Weierstrass!série de fonctions}		\label{ThoCritWeierstrass}
+	Soit une suite de fonctions \( f_k\colon A\to \eC\) telles que \( | f_k(x) |\leq M_k\in\eR\), \( \forall x\in A\). Si \( \sum_{k=1}^{\infty}M_k\) converge, alors \( \sum_{k=1}^{\infty}f_k\) converge absolument et uniformément.
+\end{theorem}
+
+\begin{proof}
+	La convergence normale est facile : l'hypothèse dit que \( \| f_k \|_{\infty}\leq M_k\), et donc que
+	\begin{equation}
+		\sum_{k=1}^{\infty}\| f_k \|_{\infty}\leq \sum_kM_k<\infty.
+	\end{equation}
+
+	La convergence uniforme est à peine plus subtile. Nous nommons \( F\) la fonction somme. Pour tout \( x\) et pour tout \( N\), nous avons
+	\begin{subequations}
+		\begin{align}
+			\left\| \sum_{n=1}^Nf_n(x)-F(x) \right\| & =\| \sum_{n=N}^{\infty}f_n(x) \|            \\
+			                                         & \leq\sum_{n=N}^{\infty}\| f_k(x) \|         \\
+			                                         & \leq \sum_{n=N}^{\infty}\| f_n \|_{\infty}.
+		\end{align}
+	\end{subequations}
+	La convergence normale étant assurée, la série \( \sum_{n_1}^{\infty}\| f_n \|_{\infty}\) est finie, ce qui implique que la queue de somme \( \sum_{n=N}^{\infty}\| f_n \|_{\infty}\) tend vers zéro lorsque \( N\to \infty\). Pour tout \( \epsilon\), il existe donc un \( N\) (non dépendant de \( x\)) tel que
+	\begin{equation}
+		\| \sum_{n=1}^Nf_n(x)-F(x) \|\leq \epsilon.
+	\end{equation}
+	En prenant le supremum sur \( x\in A\) nous trouvons la convergence uniforme.
+\end{proof}
+
+\begin{remark}
+	Il n'y a pas de critère correspondant pour les suites. Il n'est pas vrai que si \( \lim_{n\to \infty}\| f_n \| \) existe, alors \( \lim_{n\to \infty} f_n\) existe, comme le montre l'exemple
+	\begin{equation}
+		f_n(x)=\begin{cases}
+			1 & \text{si } x\in\mathopen[ 0 , 1 \mathclose]\text{ et } n\text{ est pair}   \\
+			1 & \text{si } x\in\mathopen[ 1 , 2 \mathclose]\text{ et } n\text{ est impair} \\
+			0 & \text{sinon.}
+		\end{cases}
+	\end{equation}
+\end{remark}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Permuter limite et dérivée}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Une version avec intégrales de la démonstration qui suit est dans \ref{NORMALooGYUEooKrYjyz}. Le même pour les dérivées partielles sera le théorème  \ref{ThoSerUnifDerr}.
+\begin{theorem}[\cite{TrenchRealAnalisys,ooCPZDooOqIIEz, MonCerveau}, thème \ref{THEMEooJGEHooNzQkMT}]     \label{THOooXZQCooSRteSr}
+	Soient une suite de fonctions \( f_i\colon \eR\to \eR\), une fonction \( f\colon \eR\to \eR\) et une fonction \( g\colon \eR\to \eR\) telles que
+	\begin{enumerate}
+		\item
+		      \( f_i\) est de classe \( C^1\) pour tout \( i\),
+		\item
+		      \( f_i\to f\) simplement,
+		\item
+		      \( f_i'\to g\) uniformément sur tout compact.
+	\end{enumerate}
+	Alors
+	\begin{enumerate}
+		\item       \label{ITEMooYSWDooFFeQCd}
+		      \( f_i\to f\) uniformément sur tout compact.
+		\item       \label{ITEMooFAWUooVQJPZh}
+		      \( f'=g\),
+		\item
+		      \( f\) est de classe \( C^1\),
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Un point à la fois.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooYSWDooFFeQCd}]
+		Soit un compact \( K\subset \eR\). Dans cette partie, toutes les fonctions en jeu sont restreintes à \( K\). En particulier, lorsque nous parlerons du module de continuité\footnote{Définition \ref{DEFooYARJooYyzMMP}.} \( \omega_g\) pour \( g\) ou \( \omega_i\) pour \( f'_i\), nous parlerons en réalité des fonctions \( g|_K\) et \( f'_i|_K\).
+
+		Ceci dit, nous allons montrer que \( (f_i)\) est une suite de Cauchy pour la norme uniforme\footnote{Et si vous avez bien suivi l'avertissement, c'est bien de la norme uniforme sur \( K\) que nous parlons.}.
+
+		Soit~\( \epsilon > 0\). On note~\( \omega_i\) le module de continuité de~\( f_i'\). Soient \( y\in K\), \( n \in \eN\) et posons \( \alpha_n = \frac{y-x}{n+1}\).
+		Pour tout~\( i \geq 0\), nous avons la somme télescopique
+		\begin{equation}
+			f_i(y) = f_i(x) + \sum_{k=0}^n \Big[  f_i(x+(k+1)\alpha_n) - f_i(x+k\alpha_n) \Big].
+		\end{equation}
+		Par le théorème des accroissements finis \ref{ThoAccFinis}, il existe pour tout~\( 0\leq k\leq n\)
+		un réel~\( u_{n,i,k} \in [k\alpha_n,(k+1)\alpha_n]\) tel que
+		\begin{equation}
+			f_i(x+(k+1)\alpha_n) - f_i(x+k\alpha_n) = |\alpha_n| f'_i(x+ u_{n,i,k}),
+		\end{equation}
+		de sorte que
+		\begin{equation}
+			f_i(y) = f_i(x) + |\alpha_n| \sum_{k=0}^n  f'_i(x+ u_{n,i,k}).
+		\end{equation}
+		Et pour tout~\( i,j \geq 0\), on obtient
+		\begin{subequations}      \label{SUBEQSooUYFTooWPVfWt}
+			\begin{align}
+				\left| f_i(y) - f_j(y) \right| & \leq \left| f_i(x) - f_j(x) \right| + |\alpha_n| \sum_{k=0}^n \left| f'_i(x+ u_{n,i,k}) - f'_j(x+u_{n,j,k}) \right|                            \\
+				                               & \leq | f_i(x)-f_j(x) |                                                                                                                         \\
+				                               & \qquad+|\alpha_n|\sum_{k=0}^n \left| f'_i(x+ u_{n,i,k}) - f'_i(x+u_{n,j,k}) \right| \nonumber                                                  \\
+				                               & \qquad +  |\alpha_n|\sum_{k=0}^n\left| f'_i(x+ u_{n,j,k}) - f'_j(x+u_{n,j,k}) \right| \nonumber                                                \\
+				                               & \leq | f_i(x)-f_j(x) |      \label{EQooYMHKooDFYPIf}                                                                                           \\
+				                               & \qquad+ |\alpha_n|\sum_{k=0}^n \left| f'_i(x+ u_{n,i,k}) - f'_i(x+u_{n,j,k}) \right|\nonumber                                                  \\
+				                               & \qquad + |\alpha_n|\sum_{k=0}^n  \| f'_i-f'_j \|   \nonumber                                                                                   \\
+				                               & \leq  | f_i(x)-f_j(x) |+|\alpha_n|\sum_{k=0}^n  \omega_i(|\alpha_n|) + |\alpha_n|\sum_{k=0}^n  \| f'_i-f'_j \|        \label{EQooGHDOooMMNXdj} \\
+				                               & \leq  \left| f_i(x) - f_j(x) \right| + |x-y| \left(\omega_i(|\alpha_n|) + \|f'_i-f'_j\|_K \right)      \label{EQooZCFIooNDojBX}                \\
+				                               & \leq | f_i(x)-f_j(x) |+M\Big( \omega_i\big( \frac{ M }{ n+1 } \big)+\| f_i'-f_j' \|_K \Big)        \label{SUBEQooISWEooBfnJVN}
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item Pour \eqref{EQooYMHKooDFYPIf}
+			      La norme supremum est forcément plus grande que la valeur en un point.
+			\item Pour \eqref{EQooGHDOooMMNXdj}
+			      Remarquer que \( \| x+u_{n,i,k}-(x+u_{n,j,k}) \|=\| u_{n,i,k}-u_{n,j,k} \|\leq |\alpha_n|\). Cela est donc une bonne occasion de prendre la définition \eqref{EQooKWUVooSORHXN} du module de continuité :
+			      \begin{equation}
+				      \left| f'_i(x+ u_{n,i,k}) - f'_i(x+u_{n,j,k}) \right|\leq \omega_i(\alpha_n) .
+			      \end{equation}
+			\item  Pour \eqref{EQooZCFIooNDojBX}, il y a \( n+1\) termes dans les sommes et \( \alpha_n=(y-x)/(n+1)\).
+			\item Pour \eqref{SUBEQooISWEooBfnJVN}, nous travaillons uniquement sur le compact \( K\). En particulier \( x,y\in K\) et il existe un nombre \( M\) ne dépendant que de \( K\) tel que \( | y-x |<M\). De plus \( \omega_i\) est décroissante. Donc en remplaçant \( | y-x |\) par \( M\) nous majorons.
+		\end{itemize}
+
+		Recopions notre dernière inéquation :
+		\begin{equation}
+			| f_i(y) - f_j(y)| \leq | f_i(x)-f_j(x) |+M\Big( \omega_i\big( \frac{ M }{ n+1 } \big)+\| f_i'-f_j' \|_K \Big)
+		\end{equation}
+		Vu que \( f_i\) est de classe \( C^1\), la fonction \( f'_i\) est continue. Et vu que nous travaillons sur le compact \( K\), elle est même uniformément continue (proposition \ref{PROPooBWUFooYhMlDp}). Le lemme \ref{LemeERapq} dit qu'une fonction uniformément continue a un module de continuité continu en zéro : \( \lim_{\delta\to 0} \omega_i(\delta) = 0\). Nous pouvons donc prendre la limite \( n\to 0\) pour nous supprimer le module de continuité :
+		\begin{equation}
+			| f_i(y)-f_j(y) |\leq | f_i(x)-f_j(x) |+M\| f_i'-f_j' \|_K.
+		\end{equation}
+		Nous prenons maintenant le supremum par rapport à~\( y\) :
+		\begin{equation}
+			\|f_i-f_j\|_K \leq  \left| f_i(x) - f_j(x) \right| + M \|f'_i+f'_j\|_K.
+		\end{equation}
+
+		Par hypothèse nous avons la convergence simple \( f_i\to f\), c'est-à-dire la convergence \( f_i(x)\stackrel{\eR}{\longrightarrow}f_i(x)\) pour tout \( x\). Pour le \( x\) que nous nous sommes fixés, la suite \( i\mapsto f_i(x)\) est donc une suite de Cauchy dans \( \eR\).
+
+		Soit \( \epsilon>0\). Il existe \( N\in \eN\) tels que si \( i,j>N\) nous avons \( | f_i(x)-f_j(x) |<\epsilon\). De même la convergence uniforme \( f'_i\stackrel{\| . \|_K}{\longrightarrow} g\) implique que \( f'_k\) est également de Cauchy pour la norme uniforme. Donc pour un \( i,j>N\) (éventuellement un autre \( N\), mais on prend le maximum entre les deux), nous avons \( \| f'_i-f'_j \|<\epsilon\).
+
+		Donc si \( i,j>N\) nous avons
+		\begin{equation}
+			\|f_i-f_j\|_K \leq \epsilon + M \epsilon=(M+1)\epsilon.
+		\end{equation}
+
+		Nous avons donc prouvé que \( (f_i)\) est une suite de Cauchy pour la norme \( \| . \|_K \). Cela implique que \( (f_i)\) a une limite uniforme sur \( K\). Vu que nous avons déjà \( f_i\to f\), nous en déduisons que sur \( K\), cette limite est uniforme :
+		\begin{equation}
+			f_i\stackrel{\| . \|_K}{\longrightarrow}f.
+		\end{equation}
+		Voilà qui prouve la convergence uniforme sur tout compact.
+
+		\spitem[Pour \ref{ITEMooFAWUooVQJPZh}]
+		Nous ne savons encore rien de la fonction limite \( f\). Nous montrons qu'elle est dérivable et que \( f'=g\).
+
+		Soient \( y\in \eR\) et un voisinage compact \( K=\overline{ B(y,\delta) }\) de~\( y\) avec \( \delta>0\). Pour tout \( i>0\) nous avons :
+		\begin{subequations}
+			\begin{align}
+				\Big| & \frac{ f(y+\delta)-f(y) }{ \delta }  - g(y) \Big|                                                                                                   \\
+				      & \leq   \frac{ | f(y)-f_i(y)|}{ \delta }  +\frac{ | f(y+\delta)-f_i(y+\delta) | }{ \delta }+\big| \frac{ f_i(y+\delta)-f_i(y) }{ \delta }-g(y) \big| \\
+				      & \leq \frac{ 2 }{ \delta } \|f_i - f\|_K + \big| \frac{ f_i(y+\delta)-f_i(y) }{ \delta }-g(y) \big|                                                  \\
+				      & \leq \frac{ 2 }{ \delta }\| f_i-f \|_K+| f_i'(u)-g(y) |  \label{SUBEQooUKMFooGvbSKz}                                                                \\
+				      & \leq \frac{ 2 }{ \delta }\| f_i-f \|_K+| f'_i(u)-f_i'(y) |+| f_i'(y)-g(y) |                                                                         \\
+				      & \leq \frac{ 2 }{ \delta }\| f_i-f \|_K+| f'_i(u)-f_i'(y) |+\| f_i'-g \|_K  \label{SUBEQooWHLZooCGTjeH}                                              \\
+				      & \leq \frac{ 2 }{ \delta }\| f_i-f \|_K+   \omega_i(| u-y |)    +\| f_i'-g \|_K                                                                      \\
+				      & \leq \frac{ 2 }{ \delta }\| f_i-f \|_K      +\| f_i'-g \|_K + \omega_i(2\delta)    \label{SUBEQooVRWIooCwEWPE}                                      \\
+				      & \leq \frac{ 2 }{ \delta }\| f_i-f \|_K      +\| f_i'-g \|_K + \omega_g(2\delta)    \label{SUBEQooQNMMooRsAjyb}
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item
+			      Pour \ref{SUBEQooUKMFooGvbSKz}. Nous avons utilisé le théorème des accroissements finis \ref{ThoAccFinis}, qui assure l'existence de \( u\in B(y,\delta) \) tel que
+			      \begin{equation}
+				      \frac{ f_i(y+\delta)-f_i(y) }{ \delta }=f_i'(u).
+			      \end{equation}
+			\item Pour \ref{SUBEQooWHLZooCGTjeH}. Nous faisons un supremum sur le \( y\in K\) dans le dernier terme.
+			\item Pour \ref{SUBEQooVRWIooCwEWPE}. Nous majorons \( | u-y |\) par le diamètre \( 2\delta\) du compact \( K=\overline{ B(y,\delta) }\).
+			\item Pour \ref{SUBEQooQNMMooRsAjyb}. Le lemme \ref{LEMooKPPSooPIncvn} et le fait que \(   f'_i\stackrel{\| . \|_K}{\longrightarrow}g \).
+		\end{itemize}
+
+		Recopions la dernière inégalité :
+		\begin{equation}
+			\big| \frac{ f(y+\delta)-f(y) }{ \delta }-g(y) \big|\leq \frac{ 2 }{ \delta }\| f_i-f \|_K+\| f'_i-g \|_K+\omega_g(2\delta).
+		\end{equation}
+		Nous prenons la limite \( i\to \infty\). Par le point \ref{ITEMooYSWDooFFeQCd} nous savons que \( \| f_i-f \|_K\to 0\). Par hypothèse nous savons aussi que \( \| f'_i-g \|_K\to 0\). Nous restons donc avec
+		\begin{equation}
+			\big| \frac{ f(y+\delta)-f(y) }{ \delta }-g(y) \big|\leq \omega_g(2\delta).
+		\end{equation}
+		Or, par uniforme continuité de \( g\), nous avons \( \lim_{\delta\to 0}\omega_g(\delta) = 0\), donc la limite dans le membre de gauche se passe bien et
+		\begin{equation}
+			\lim_{\delta\to \delta}\frac{ f(y+\delta)-f(y) }{ \delta }=g(y),
+		\end{equation}
+		ce qui signifie que \( f\) est dérivable en \( y\) et que la dérivée est \( g(y)\).
+	\end{subproof}
+\end{proof}
+
+\begin{probleme}
+	Aussi incroyable que cela puisse paraitre, je n'ai pas trouvé d'énoncés du théorème \ref{ThoSerUnifDerr}. Donc soyez \randomGender{prudent}{prudente}. C'est donc une adaptation personnelle du cas sur \( \eR\). Écrivez-moi si vous avez un problème ou un doute.
+\end{probleme}
+
+\begin{probleme}
+	De plus, l'énoncé de \ref{ThoSerUnifDerr} demande la convergence uniforme des dérivées directionnelles dans toutes les directions. Je ne serais pas étonné que la convergence uniforme seulement des dérivées partielles dans les directions «de base» suffise.
+\end{probleme}
+
+\begin{theorem}[\cite{TrenchRealAnalisys,ooCPZDooOqIIEz, MonCerveau}, thème \ref{THEMEooJGEHooNzQkMT}]	\label{ThoSerUnifDerr}
+	Soient des espaces vectoriels normés \( V\) et \( W\). Soient un ouvert \( U\) de \( V\) et des fonctions \( f_k\colon U\to W\), une autre fonction \( f\colon U\to W\) ainsi que, pour toute direction\footnote{Ici le mot «direction» n'a pas de sens particulier; c'est juste un élément quelconque. Si nous faisions de la géométrie différentielle hard-core, ce serait un vecteur tangent.} \( \alpha\in V\), des fonctions \( g_{\alpha}\colon U\to W\). Nous supposons que
+	\begin{enumerate}
+		\item
+		      Les \( f_k\) sont de classe \( C^1\).
+		\item
+		      \( f_k\to f\) simplement.
+		\item
+		      \( \partial_{\alpha}f_k\to g_{\alpha}\) uniformément sur tout compact.
+	\end{enumerate}
+	Alors
+	\begin{enumerate}
+		\item       \label{ITEMooQOSUooQGSUXC}
+		      Nous avons la convergence \( f_i\to f\) uniformément sur tout compact.
+		\item        \label{ITEMooGFPLooGYEvkh}
+		      Pour toute direction \( \alpha\), nous avons \( \partial_{\alpha}f=g_{\alpha}\).
+		\item
+		      La fonction \( f\) est de classe \( C^1\) sur \( U\).
+	\end{enumerate}
+\end{theorem}
+\index{permuter!dérivée et limite}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Uniforme convergence sur les boules fermées]
+		Soit \( a\in U\). Nous considérons \( r>0\) tel que \( \overline{ B(a,r) }\subset U\) (ça existe parce que \( U\) est ouvert; il suffit de prenre \( r\) plus petit qu'un qui fait que \( B(a,r)\subset U\)), et nous posons \( K=\overline{ B(a,r) }\). Nous allons prouver l'uniforme convergence \( f_i\stackrel{\|  .\|_{\overline{ B(a,r) }}}{\longrightarrow}f\), et nous verrons plus tard comment faire pour l'uniforme convergence sur un compact général dans \( U\).
+
+		Nous restreignons toutes les fonctions à \( K\). Nous notons \( \omega_{\alpha, i}\) le module de continuité\footnote{Définition \ref{DEFooYARJooYyzMMP}.} de \( \partial_{\alpha}f_i\). Pour chaque \( n\in \eN\) nous définissons encore
+		\begin{equation}
+			\begin{aligned}
+				\alpha_n\colon V & \to V                        \\
+				x                & \mapsto \frac{ a-x }{ n+1 }.
+			\end{aligned}
+		\end{equation}
+		Soit \( x\in \overline{ B(a,r) }\). Nous écrivons la somme télescopique
+		\begin{equation}        \label{EQooMXVLooXFceGH}
+			f_i(x)=f_i(a)+\sum_{k=0}^n\big[ f_i\big(a+(k+1)\alpha_n(x)\big)-f_i\big(a+k\alpha_n(x)\big) \big]
+		\end{equation}
+		Notez que les points auxquels sont évalués \( f_i\) sont dans \( \overline{ B(a,r) }\) parce que, si \( l\in \mathopen[ 0 , n+1 \mathclose]\), nous avons
+		\begin{equation}
+			\| a+l\alpha_n(x)-a \|=\| l\alpha_n(x) \|
+			=l\frac{ \| a-x \| }{ n+1 }
+			\leq\| a-x \|
+			\leq r.
+		\end{equation}
+		Ce point est important parce que rien ne nous dit que \(U\) est convexe; pour la suite nous avons besoin que tous les points sur les segments entre \( a\) et les différents points que nous allons considérer restent dans \( \overline{ B(a,r) }\). C'est d'ailleurs pour cette convexité de la boule que nous commençons notre preuve par le cas où \( K\) est une boule. Bref.
+
+		Le théorème des accroissements finis \ref{PROPooCAWBooINcNxj} nous assure l'existences d'éléments
+		\begin{equation}
+			y_{k,i}\in \mathopen\big[ a+(k+1)\alpha_n(x)   , a+k\alpha_n(x) \mathclose\big]
+		\end{equation}
+		tels que
+		\begin{equation}
+			f_i\big( a+(k+1)\alpha_n(x) \big)-f_i\big( a+k\alpha_n(x) \big)=(\partial_{\beta}f)\big( y_{k,i}(x) \big)\alpha_n(x).
+		\end{equation}
+		Notez que les \( y_{j,i}(x)\) sont dans \( \overline{ B(a,r) }\).
+
+		Soit \( \epsilon>0\). Nous allons calculer \( \| f_i(x)-f_j(x) \|\) en substituant les valeurs de \( f_i(x)\) et \( f_j(x)\) données par \eqref{EQooMXVLooXFceGH}. Nous avons :
+		\begin{subequations}
+			\begin{align}
+				\clubsuit=  \| f_i(x)-f_j(x) \| & \leq \| f_i(a)-f_j(a) \|+\sum_{k=0}^n\| \alpha_n(x) \|\| (\partial_{\beta}f_i)\big( y_{k,i}(x) \big)-(\partial_{\beta}f_j)\big( y_{k,j}(x) \big) \|  \\
+				                                & \leq \epsilon+\frac{r }{ n+1 }  \sum_{k=0}^n\| (\partial_{\beta}f_i)\big( y_{k,i}(x) \big)-(\partial_{\beta}f_j)\big( y_{k,j}(x) \big) \|            \\            \label{SUBEQooMORPooGIwgIE}
+				                                & \leq \epsilon+\frac{r }{ n+1 }  \sum_{k=0}^n\| (\partial_{\beta}f_i)\big( y_{k,i}(x) \big)-(\partial_{\beta}f_i)\big( y_{k,j}(x) \big)\|             \\
+				\nonumber                       & \qquad+ \frac{ r }{ n+1 }\sum_{k=0}^n\|(\partial_{\beta}f_i)\big( y_{k,j}(x) \big) -(\partial_{\beta}f_j)\big( y_{k,j}(x) \big) \|                   \\
+				                                & \leq \epsilon+\frac{r }{ n+1 }  \sum_{k=0}^n\big\|    \omega_{\beta,i}\big( \| y_{k,i}(x)-y_{k,j}(x) \| \big)  \big\|    \label{SUBEQooGWYAooNOSapX} \\
+				\nonumber                       & \qquad+\frac{ r }{ n+1 }\sum_{k=0}^n \| \partial_{\beta}f_i-\partial_{\beta}f_j   \|                                                                 \\
+				                                & \leq \epsilon+\frac{r }{ n+1 }  \sum_{k=0}^n\big\|    \omega_{\beta,i}\big( \| y_{k,i}(x)-y_{k,j}(x) \| \big)  \big\|
+				+\frac{ r }{ n+1 }\sum_{k=0}^n \epsilon    \label{SUBEQooSFKSooDDPIbd}
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooMORPooGIwgIE}.  Majoration \( \| \alpha_n(x) \|\leq \frac{ r }{ n+1 }\). De plus nous considérons des \( i\) et \( j\) assez grands pour que \( \| f_i(a)-f_j(a) \|_K\leq \epsilon\). Cela est possible parce que \( (f_i)\) est une suite de Cauchy pour la norme uniforme sur \( K\).
+			\item Pour \eqref{SUBEQooGWYAooNOSapX}. Utilisation du module de continuité, définition \ref{DEFooYARJooYyzMMP}.
+			\item Pour \eqref{SUBEQooSFKSooDDPIbd}. Nous avons la convergence uniforme \( \partial_{\beta}f_i\stackrel{\overline{ B(a,r) }}{\longrightarrow}g_{\beta}\), de sorte que \( i\mapsto \partial_{\beta}f_i\) est une suite de Cauchy. Si \( i\) et \( j\) sont assez grands, nous pouvons majorer \( \| \partial_{\beta}f_i-\partial_{\beta}f_j \|\leq \epsilon\).
+		\end{itemize}
+		Étudions deux minutes ce qui est dans le module de continuité de \eqref{SUBEQooSFKSooDDPIbd}. Nous avons \( y_{k,i}(x)\in\mathopen\big[ a+(k+1)\alpha_n(x) , a+k\alpha_n(x) \mathclose]\), donc la différence \( \| y_{k,i}(x)-y_{k,j}(x) \|\) se majore par la taille de cet intervalle :
+		\begin{equation}
+			\| y_{k,i}(x)-y_{k,j}(x) \|\leq \| a-k\alpha_n(x)-\big( a+(k+1)\alpha_n(x) \big) \|=\| \alpha_n(x) \|.
+		\end{equation}
+		Vu que le module de continuité est une fonction croissante,
+		\begin{equation}
+			\omega_{\beta,i}\big( \| y_{k,i}(x)-y_{k,j}(x) \| \big)\leq \omega_{\beta,i}\big( \| \alpha_n(x) \| \big)\leq \omega_{\beta,i}\left( \frac{ \| a-x \| }{ n+1 } \right)\leq \omega_{\beta,i}\left( \frac{ r }{ n+1 } \right).
+		\end{equation}
+		En substituant tout ça dans \eqref{SUBEQooSFKSooDDPIbd}, nous continuons :
+		\begin{equation}
+			\clubsuit\leq \epsilon+\frac{ r }{ n+1 }\sum_{k=0}^n\omega_{\beta,i}\big(  \frac{ r }{ n+1 }  \big)+r\epsilon
+			\leq \epsilon+r\omega_{\beta,i}\left( \frac{ r }{ n+1 } \right)+r\epsilon
+		\end{equation}
+		Résumons. Pour tout \( x\in \overline{ B(a,r) }\), pour tout \( n\in \eN\), si \( i\) et \( j\) sont assez grands, nous avons la majoration
+		\begin{equation}
+			\| f_i(x)-f_j(x) \|\leq \epsilon+r\omega_{\beta,i}\big( \frac{ r }{ n+1 } \big)+r\epsilon.
+		\end{equation}
+		Nous pouvons prendre la limite \( n\to \infty\) de deux côtés. Vu que \( \partial_{\beta}f_i\) est uniformément continue\footnote{Elle est continue sur un compact, proposition \ref{PROPooBWUFooYhMlDp}.}, le module de continuité tend vers zéro (lemme \ref{LemeERapq}).
+
+		Si \( i\) et \( j\) sont assez grands, nous avons donc
+		\begin{equation}
+			\| f_i(x)-f_j(x) \|\leq \epsilon(1+r),
+		\end{equation}
+		et donc aussi
+		\begin{equation}
+			\| f_i-f_j \|_{\overline{ B(a,r) }}\leq \| f_i(x)-f_j(x) \|\leq \epsilon(1+r).
+		\end{equation}
+		Cela prouve que \( (f_i)\) est une suite de Cauchy pour \( \| . \|_K\). Donc \( f_i\) converge uniformément vers une certaine fonction. Vu qu'elle converge simplement vers \( f\), elle converge uniformément vers \( f\).
+
+		Nous avons donc prouvé que
+		\begin{equation}
+			f_i\stackrel{\| . \|_{\overline{ B(a,r) }}}{\longrightarrow}f,
+		\end{equation}
+		c'est-à-dire la convergence uniforme sur toute boule compacte.
+		\spitem[Convergence uniforme sur tout compact]
+		Soient un compact \( K\) de \( U\), et \( \epsilon>0\). L'ensemble \( \{ B(x,r) \}_{x\in K, r>0}\) est un recouvrement de \( K\) par des ouverts. On en extrait un sous-recouvrent fini, et on ferme les boules sans changer le fait que ce soit un recouvrement :
+		\begin{equation}
+			K\subset \bigcup_{i=1}^n\overline{ B(a_i, r_i) }.
+		\end{equation}
+		Vue la convergence uniforme sur toute boule fermée, pour chaque \( i\), il existe \( N_i\) tel que \( n>N_i\) implique
+		\begin{equation}
+			\| f_n-f \|_{\overline{ B(a_i,r_i) }}<\epsilon.
+		\end{equation}
+		En prenant \( N>\max\{ N_i \}\), nous avons
+		\begin{equation}
+			\| f_n-f \|_K<\epsilon
+		\end{equation}
+		pour tout \( n>N\).
+		\spitem[Pour \ref{ITEMooGFPLooGYEvkh}]
+		Soit \( a\in U\) et un voisinage compact \( K=\overline{ B(a,\delta) }\) de \( a\). Nous considérons une direction \( u\) avec \( \| u \|=1\). Nous calculons un peu :
+		\begin{subequations}
+			\begin{align}
+				\heartsuit=\| \frac{ f(a+\delta u)-f(a) }{ \delta }-g_u(a) \| & \leq \| \frac{ f(a+\delta u)-f_i(a+\delta u) }{ \delta } \|                                 \\
+				                                                              & \quad +\|  \frac{ f_i(a+\delta u)-f_i(a) }{ \delta }-g_u(a) \|      \nonumber               \\
+				                                                              & \quad +\| \frac{ f_i(a)-f(a) }{ \delta } \|        \nonumber                                \\
+				                                                              & \leq \frac{ 2 }{ \delta }\| f_i-f \|+\| \frac{ f_i(a+\delta u)-f_i(a) }{ \delta }-g_u(a) \|
+			\end{align}
+		\end{subequations}
+		Ici, la norme \( \| f_i-f \|\) est une norme supremum sur \( K\) (vous devriez l'avoir deviné du contexte). C'est le moment d'utiliser le théorème des accroissements finis \ref{PROPooCAWBooINcNxj} : il existe \( y\in \mathopen[ a+\delta u , a \mathclose]\) tel que
+		\begin{equation}
+			\frac{ f_i(a+\delta u)-f_i(a) }{ \delta }=(\partial_if_i)(y)
+		\end{equation}
+		Nous continuons :
+		\begin{subequations}
+			\begin{align}
+				\heartsuit & \leq\frac{ 2 }{ \delta }\| f_i-f \|+\| (\partial_uf_i)(y)-g_u(a) \|                                                                          \\
+				           & \leq \frac{ 2 }{ \delta }\| f_i-f \|+\| (\partial_uf_i)(y)-(\partial_uf_i)(a) \|+\| (\partial_uf_i)(a)-g_u(a) \| \label{SUBEQooCLCQooGcFAZD}
+			\end{align}
+		\end{subequations}
+		Nous introduisons le module de continuité\footnote{Définition \ref{DEFooYARJooYyzMMP}.} \( \omega_{i,u}\) de \( (\partial_uf_i)\) pour traiter le premier terme :
+		\begin{equation}
+			\| (\partial_uf_i)(y)-(\partial_uf_i)(a) \|\leq\omega_{i,u}\big( \| y-a \| \big)\leq \omega_{i,u}(\delta).
+		\end{equation}
+		Nous utilisons aussi la convergence uniforme sur tout compact (point \ref{ITEMooQOSUooQGSUXC}) \( \partial_uf_i\stackrel{\| . \|_K}{\longrightarrow}g_u\) pour majorer le second terme de \eqref{SUBEQooCLCQooGcFAZD} par \( \epsilon\) lorsque \( i\) est grand.
+
+		Nous continuons. Pour tout \( i\) assez grand, nous avons
+		\begin{equation}
+			\| \frac{ f(a+\delta u)-f(a) }{ \delta }-g_u(a) \|\leq \frac{ 2 }{ \delta }\| f_i-f \|+\epsilon+\omega_{i,u}(\delta).
+		\end{equation}
+		Nous prenons la limite \( i\to \infty\) en tenant compte du lemme \ref{LEMooKPPSooPIncvn} : \( \lim_{i\to \infty} \omega_{i,u}(\delta)=\omega_g(\delta)\) :
+		\begin{equation}
+			\| \frac{ f(a+\delta u)-f(a) }{ \delta }-g_u(a) \|\leq \epsilon+\omega_g(\delta).
+		\end{equation}
+		Et enfin en prenant la limite \( \delta\to 0\) nous trouvons que pour tout \( \epsilon\),
+		\begin{equation}
+			\lim_{\delta\to 0} \| \frac{ f(a+\delta u)-f(a) }{ \delta }-g_u(a) \|\leq \epsilon,
+		\end{equation}
+		et donc nous avons prouvé que
+		\begin{equation}
+			\lim_{\delta\to 0} \| \frac{ f(a+\delta u)-f(a) }{ \delta }-g_u(a) \|=0.
+		\end{equation}
+		Cela prouve que \( (\partial_uf)(a)\) existe et vaut \( g_u(a)\).
+	\end{subproof}
+	Vu que les \( g_u\) sont continues, la fonction \( f\) est également de classe \( C^1\) par le théorème \ref{THOooBEAOooBdvOdr}.
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{La fonction puissance}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Si \( x\) et \( y\) sont des réels, définir \( x^y\) n'est pas une mince affaire. Pour l'instant nous savons déjà définir \( x^n\) lorsque \( x\in \eR\) et \( n\in \eN\). Voir la définition \ref{DEFooGVSFooFVLtNo} et le thème \ref{THEMEooBSBLooWcaQnR}.
+
+Pour la suite nous notons
+\begin{subequations}
+	\begin{numcases}{}
+		f_{\alpha}(x)=x^{\alpha}\\
+		g_{a}(x)=a^x
+	\end{numcases}
+\end{subequations}
+pour autant que ces fonctions sont définies\footnote{L'objet des pages suivantes est de déterminer pour quelles valeurs de \( a\), \( \alpha\) et \(  x\) nous pouvons trouver des définitions raisonnables pour ces fonctions.}.
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Sur les naturels}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}      \label{DEFooKEBIooZtPkac}
+	La fonction puissance définie sur \( \eN\) s'étend à \( \eZ\) de la façon suivante :
+	\begin{equation}
+		x^{-n}=\frac{1}{ x^n }
+	\end{equation}
+	pour \( n\geq 0\). Cela donne donne donc \( x^n\) pour \( x\in \eR\) et \( n\in \eZ\) a l'exception de \( x=0\) lorsque \( n<0\).
+\end{definition}
+
+Nous étudions quelques propriétés de cette fonction pour \( n>0\) fixé.
+
+\begin{normaltext}
+	La limite
+	\begin{equation}
+		\lim_{x\to \infty} x^n=\infty
+	\end{equation}
+	demande la topologie sur la droite réelle achevée. C'est le lemme \ref{LEMooFCIXooJuHFqk}.
+\end{normaltext}
+
+\begin{proposition}     \label{PROPooXQYFooPxoEHE}
+	Soit \( n\in \eN\setminus\{ 0 \}\); nous posons \( f_n(x)=x^n\).
+
+	Si \( n\) est pair,
+	\begin{equation}
+		f_n\colon \mathopen[ 0 , \infty \mathclose[\to \mathopen[ 0 , \infty \mathclose[
+	\end{equation}
+	est bijective.
+
+	Si \( n\) est impair,
+	\begin{equation}
+		f_n\colon \eR \to \eR
+	\end{equation}
+	est bijective.
+
+	Toutes les fonctions \( f_n\) sont continues sur \( \eR\).
+\end{proposition}
+
+\begin{proof}
+	En plusieurs morceaux, pas spécialement dans l'ordre auquel on s'attend.
+	\begin{subproof}
+		\spitem[Continuité]
+
+		Soit \( x\in \eR\). En vertu de~\ref{ThoLimCont} nous allons prouver que \( \lim_{\epsilon\to 0}f_n(x+\epsilon)=f_n(x)\). Pour cela nous utilisons la formule du binôme~\ref{PropBinomFExOiL} avec \( x,h>0\) :
+		\begin{equation}
+			f_n(x+h)=(x+h)^n=\sum_{k=0}^n{n\choose k}x^{n-k}h^k.
+		\end{equation}
+		Nous fixons \( x_0\in \eR\). Calcul :
+		\begin{subequations}
+			\begin{align}
+				| f_n(x_0+h)-f_n(x) | & =| \sum_{k=1}^n{n\choose k}x_0^{n-k}h^k |          \\
+				                      & \leq \sum_{k=1}^n{n\choose k}| x_0 |^{n-k} |h|^k   \\
+				                      & =h\sum_{k=1}^n{n\choose k}| x_0 |^{n-k}| h |^{k-1} \\
+				                      & \leq h\sum_{k=1}^n{n\choose k}| x_0 |^{n-k}.
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item
+			      Le terme \( k=0\) est égal à \( x^n=f_n(x)\) parce que \( {n\choose 0}=1\).
+			\item
+			      Dans la somme nous avons majoré \( | h |\) par \( 1\), opération justifiée par le fait que nous ayons dans l'idée de faire \( h\to 0\).
+		\end{itemize}
+		Nous avons donc
+		\begin{equation}
+			\lim_{h\to 0} | f_n(x_0+h)-f_n(x) | \leq\lim_{h\to 0}  h\sum_{k=1}^n{n\choose k}| x_0 |^{n-k}=0.
+		\end{equation}
+		D'où la continuité de \( f_n\) en tout point \( x_0\in \eR\).
+
+		\spitem[Pour \( n\) pair ou impair, bijection sur les positifs]
+		Ceci sera déjà le résultat complet pour les \( n\) pairs, et a moitié du résultat pour les \( n\) impairs.
+		\begin{subproof}
+			\spitem[Stricte croissance]
+			Soit \( n\neq 0\) dans \( \eN\). Nous commençons par prouver que \( f_n\) est strictement croissante sur \( \mathopen[ 0 , \infty \mathclose[\). Nous repartons de la formule du binôme, mais cette fois, nous séparons les termes \( k=0\) et \( k=n\) des autres (si \( n=1\), il y a un peu de réécriture) en tenant compte de \( {n\choose 0}={n\choose n}=1\) :
+			\begin{equation}
+				f_n(x+h)=x^n+h^n+\sum_{k=1}^{n-1}{n\choose k}x^{n-k}h^k>x^n=f_n(x).
+			\end{equation}
+			Vous noterez que l'inégalité est stricte même si \( n=1\).
+
+			Vu que nous avons stricte monotonie, le théorème~\ref{ThoKBRooQKXThd}\ref{ITEMooMAWXooZXmVwA} nous dit que
+			\begin{equation}
+				f_n\colon \mathopen[ 0 , \infty \mathclose[\to f_n\big( \mathopen[ 0 , \infty \mathclose[ \big)
+			\end{equation}
+			est une bijection.
+			\spitem[Bijection]
+
+			Nous prouvons que \( f_n\big( \mathopen[ 0 , \infty \mathclose[ \big)=\mathopen[ 0 , \infty \mathclose[\). Si \( x>0\) alors \( f_n(x)>0\), cela prouve une inclusion.
+
+			Pour l'autre inclusion nous savons que \( \lim_{x\to \infty} f_n(x)=\infty\) par le lemme \ref{LEMooFCIXooJuHFqk}. Si \( y\in \mathopen[ 0 , \infty \mathclose[\), alors il existe \( x_0\) tel que \( f_n(x_0)>y\). Étant donné que \( f_n(0)=0\) et que nous avons déjà prouvé que \( f_n\) était continue (proposition~\ref{PROPooXQYFooPxoEHE}), le théorème des valeurs intermédiaires~\ref{ThoValInter} nous indique l'existence de \( x_1\in \mathopen[ 0 , x_0 \mathclose[\) tel que \( f_n(x_1)=y\).
+
+		\end{subproof}
+
+		Nous avons prouvé que pour tout \( n\), la fonction
+		\begin{equation}        \label{EQooYWHGooJWMTUI}
+			f_n\colon \mathopen[ 0 , \infty \mathclose[\to \mathopen[ 0 , \infty \mathclose[
+		\end{equation}
+		est une bijection.
+
+		\spitem[Pour \( n\) impair]
+
+		Nous montrons à présent que si \( n\) est impair, alors
+		\begin{equation}        \label{EQooTSLJooMAAUXH}
+			f_n\colon \mathopen] -\infty , 0 \mathclose]\to \mathopen] -\infty , 0 \mathclose]
+		\end{equation}
+		est une bijection.
+
+		Tout se base sur le fait que si \( x>0\) alors \( f_n(-x)=-f_n(x)\). Le fait que \eqref{EQooYWHGooJWMTUI} soit injective et surjective montre alors tout de suite le fait que \eqref{EQooTSLJooMAAUXH} soit également injective et surjective.
+	\end{subproof}
+\end{proof}
+
+Vous noterez que la continuité de \( f_n\) démontrée dans la proposition \ref{PROPooXQYFooPxoEHE} est indépendant de la proposition \ref{LEMooUAFBooAwiXxj} qui sera invoquée plus tard pour définir \( a^x\) lorsque \( a>0\) dans \( \eR\).
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Sur les rationnels, racines}
+%---------------------------------------------------------------------------------------------------------------------------
+
+L'existence, pour tout réel \( a\geq 0\), d'un réel \( r\) tel que \( r^2=a\) est déjà faite en la proposition \ref{PROPooUHKFooVKmpte}.
+
+\begin{definition}[Exposant rationnels]        \label{DEFooJWQLooWkOBxQ}
+	La proposition \ref{PROPooXQYFooPxoEHE} nous dit entre autres que pour tout \( n\in \eN\), la fonction
+	\begin{equation}
+		\begin{aligned}
+			f_n\colon \mathopen[ 0 , \infty \mathclose[ & \to \mathopen[ 0 , \infty \mathclose[ \\
+			x                                           & \mapsto x^n
+		\end{aligned}
+	\end{equation}
+	est bijective. Nous définissions alors, pour \( a\in \mathopen[ 0 , \infty \mathclose[\),
+	\begin{equation}
+		a^{1/n}=f_n^{-1}(a).
+	\end{equation}
+	Autrement dit, le nombre \( a^{1/n}\) est l'unique solution positive de
+	\begin{equation}
+		x^n=a.
+	\end{equation}
+\end{definition}
+
+\begin{normaltext}      \label{NORMooDUNZooUNdUKg}
+	Nous ne définissons pas \( a^{1/n}\) pour \( a<0\), du moins pas encore. Vu que \( f_3\) est bijective sur \( \eR\), il serait tentant de définir \( (-1)^{1/3}=f_3^{-1}(-1)=-1\).
+
+	Cela causera un certain nombre de problèmes plus tard vu que nous aurons envie de deux choses en même temps :
+	\begin{itemize}
+		\item d'une part \( \ln(-1)=i\pi\),
+		\item d'autre part, \( a^x= e^{x\ln(a)}\).
+	\end{itemize}
+	De cette façon, nous devrions avoir
+	\begin{equation}
+		(-1)^{1/3}= e^{i\pi /3},
+	\end{equation}
+	qui est un nombre complexe non réel. Voici un exemple de ce que ça donne avec Sage :
+	\lstinputlisting{tex/sage/sageSnip019.sage}
+\end{normaltext}
+
+\begin{definition}[Racine]     \label{DEFooPOELooPouwtD}
+	Pour \( n\in \eN\) nous définissons \( \sqrt[n]{ x }=f_n^{-1}(x)\). Lorsque \( n\) est pair, la fonction \( x\mapsto\sqrt[n]{ x }\) n'est définie que sur \( \eR^+\), et lorsque \( n\) est impair, elle est définie sur tout \( \eR\).
+\end{definition}
+
+\begin{normaltext}      \label{NORMooYPRNooWCjEgR}
+	Notons que les fonctions \( x\mapsto \sqrt[3]{ x }\) et \( x\mapsto x^{1/3}\) ne sont pas les mêmes : la première est définie sur tout \( \eR\) et donne des valeurs réelles tandis que la seconde n'est (pour l'instant) définie que sur les positifs, et donnera (quand on l'aura définie par l'exponentielle) des nombres complexes sur les négatifs.
+
+	En suivant cette convention, c'est-à-dire en réservant la notation \( \sqrt{  }\) pour l'inverse de \( f_2\), nous ne devrions pas écrire des choses comme «\( \sqrt{ -1 }=i\)», mais plutôt «\( (-1)^{1/2}=i \)». En effet, \( \sqrt{ -1 }\) n'est pas défini et ne sera jamais défini alors que \( (-1)^{1/2}\) n'est pas encore défini, mais sera défini par
+	\begin{equation}
+		(-1)^{1/2}= e^{\frac{ 1 }{2}\ln(-1)}= e^{i\pi/2}=i.
+	\end{equation}
+\end{normaltext}
+
+En résumé, nous avons les fonctions suivantes :
+\begin{enumerate}
+	\item
+	      \( \sqrt[n]{  }\colon \eR\to \eR\) si \( n\) est impair,
+	\item
+	      \( \sqrt[n]{  }\colon \mathopen[ 0 , \infty \mathclose[\to \mathopen[ 0 , \infty \mathclose[ \) si \( n\) est pair,
+	\item
+	      \( x^{1/n}\colon \mathopen[ 0 , \infty \mathclose[\to \mathopen[ 0 , \infty \mathclose[\) pour tout \( n\in \eN\).
+\end{enumerate}
+Cependant nous n'hésiterons pas à utiliser la notation \( \sqrt{ x }\) pour \( x^{1/2}\) même lorsque \( x\) est négatif, parce c'est une notation très pratique. Il faut garder en tête que cette façon de faire est incohérente parce qu'elle inciterait à penser que \( \sqrt[3]{-1  }= e^{i\pi/3}\) au lieu de \( \sqrt[3]{-1  }=-1\).
+
+Pour toute la suite de cette section, nous allons considérer \( a^x\) uniquement pour \( a>0\).
+
+\begin{definition}      \label{DEFooHXUFooOJTVXA}
+	Pour \( m,n\in \eN\) nous définissons (\( a^{1/n}\) est la définition \ref{DEFooJWQLooWkOBxQ})
+	\begin{equation}        \label{EQooZFOAooTsMbub}
+		a^{m/n}=(a^m)^{1/n},
+	\end{equation}
+	ce qui définit la fonction puissance sur \( \eQ^+\). Enfin nous posons
+	\begin{equation}        \label{DEFooTUCVooXikxRh}
+		a^{-q}=\frac{1}{ a^q }
+	\end{equation}
+	lorsque \( q\in \eQ^+\).
+
+	Et avec tout ça, lorsque \( a>0\) nous avons défini \( a^q\) pour tout \( q\in \eQ\).
+\end{definition}
+
+Nous allons souvent noter la définition \eqref{EQooZFOAooTsMbub} sous la forme
+\begin{equation}        \label{EQooZIKKooVfjkZo}
+	f_{m/n}(x)^n=x^m.
+\end{equation}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooOFPMooIEmSNA}
+	Si \( a,b >0\), nous avons
+	\begin{enumerate}
+		\item       \label{ITEMooEFUAooYBeJza}
+		      Pour \( n\in \eN\) nous avons \( (ab)^{1/n}=a^{1/n}b^{1/n}\).
+		\item       \label{ITEMooHGPPooDBzWKx}
+		      Pour \( n,m\in \eN\) nous avons \( (ab)^{1/n}=a^{1/n}b^{1/n}\).
+		\item       \label{ITEMooUYTLooHzXwtf}
+		      Pour \(q\in \eN\) nous avons \( (ab)^{q}=a^{q}b^{q}\).
+	\end{enumerate}
+	%TODOooSNVDooCiqLVl faire la preuve des deux derniers points
+\end{lemma}
+
+\begin{proof}
+	Point par point.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooEFUAooYBeJza}]
+		% -------------------------------------------------------------------------------------------- 
+		Utilisant la formule pour les exposants entiers, nous avons
+		\begin{equation}
+			\Big[ (a^{1/n})(b^{1/n}) \Big]^n=(a^{1/n})^n(b^{1/n})^n=ab.
+		\end{equation}
+		Donc le nombre \( x=a^{1/n}b^{1/n}\) vérifie \( x^n=ab\). Autrement dit \( x=f_n^{-1}(ab)=(ab)^{1/n}\)
+		\spitem[Pour \ref{ITEMooHGPPooDBzWKx}]
+		% -------------------------------------------------------------------------------------------- 
+		\spitem[Pour \ref{ITEMooUYTLooHzXwtf}]
+		% -------------------------------------------------------------------------------------------- 
+
+
+	\end{subproof}
+
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooIDLJooZALNaD}
+	Pour \( a>0\) et \( p,q\in \eZ\) nous avons :
+	\begin{equation}
+		a^{p/q}=(a^p)^{1/q}=(a^{1/q})^p.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous divisons la preuve en fonction de la positivité du numérateur et du dénominateur.
+	\begin{subproof}
+		\spitem[Numérateur et dénominateurs positifs]
+
+		Nous commençons avec \( p,q\in \eN\). La première égalité est la définition \ref{DEFooJWQLooWkOBxQ}. Pour la seconde, la définition de \( (a^p)^{1/q}\) est d'être le \( x>0\) tel que
+		\begin{equation}
+			x^q=a^p.
+		\end{equation}
+		La définition de \( a^{1/q}\) est d'être le \( y>0\) tel que
+		\begin{equation}
+			y^q=a.
+		\end{equation}
+		Ce \( y\) vérifie donc aussi \( y^{pq}=a^p\) et donc \( (y^p)^q=a^p\). Autrement dit, \( y^p=x\), c'est-à-dire exactement
+		\begin{equation}
+			(a^{1/q})^p=(a^p)^{1/q}.
+		\end{equation}
+		Le lemme est prouvé dans le cas où \( p,q\in \eN\).
+
+		\spitem[Numérateur et dénominateur négatifs]
+
+		Si \( p\) et \( q\) sont tous les deux négatifs, nous remarquons que \( p/q=(-p)/(-q)\) et nous sommes dans le même cas qu'avant.
+
+		\spitem[Numérateur négatif, dénominateur positif]
+
+		Pour simplifier les notations nous supposons toujours \( p,q\in \eN\) mais nous considérons \( a^{(-p)/q}\). Nous avons d'une part :
+		\begin{equation}
+			a^{(-p)/q}=a^{-(p/q)}=\frac{1}{ a^{p/q} }=\frac{1}{ (a^{1/q})^p }=(a^{1/q})^{-p}.
+		\end{equation}
+		Dans ce calcul, nous avons utilisé au dénominateur le résultat dans le cas positif.
+
+		Le lemme \ref{PROPooBHRBooJMZYSg}\ref{ITEMooUYTLooHzXwtf} nous dit que \( (1/a^p)=(1/a)^p\). Nous faisons le calcul suivant :
+		\begin{equation}
+			(a^{-p})^{1/q}=\left( \left( \frac{1}{ a } \right)^p \right)^{1/q}=\left( \left( \frac{1}{ a } \right)^{1/q} \right)^p=\left( \frac{1}{ a^{1/q} } \right)^p=\frac{1}{ (a^{1/q})^p }=(a^{1/q})^{-p}
+		\end{equation}
+		où nous avons utilisé le résultat avec \( 1/a\) en guise de \( a\).
+
+		\spitem[Numérateur positif, dénominateur négatif]
+
+		Nous traitons maintenant \( a^{p/(-q)}\). Nous avons d'une part
+		\begin{equation}
+			a^{p/(-q)}=a^{-(p/q)}=\frac{1}{ a^{p/q} }=\frac{1}{ (a^p)^{1/q} }=(a^p)^{-(1/q)}=(a^p)^{1/(-q)}.
+		\end{equation}
+		Et d'autre part :
+		\begin{equation}
+			a^{p/(-q)}=\frac{1}{ a^{p/q} }=\frac{1}{ (a^{1/q})^p }=\left( \frac{1}{ a^{1/q} } \right)^p=\left( a^{-(1/q)} \right)^p=(a^{1/(-q)})^p.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+Le lemme suivant montre que la définition sur \( \eQ^-\) est cohérente avec celle sur \( \eQ^+\), au sens où finalement nous retrouvons que \( a^{m/n}\) vérifie \( x^n=a^m \) quel que soient les signes de \( m\) et \( n\).
+\begin{lemma}[\cite{MonCerveau}]
+	Le nombre \( y=a^{-m/n}\) vérifie l'équation \( y^{-n}=a^m\)
+\end{lemma}
+
+\begin{proof}
+	Nous posons \( x=a^{m/n}\), c'est-à-dire \( x^n=a^m\). Nous avons, par définition \( y=a^{-m/n}=\frac{1}{ x }\). Alors
+	\begin{equation}
+		y^{-n}=\frac{1}{ \left( \frac{1}{ x } \right)^n }=x^n=a^m,
+	\end{equation}
+	donc c'est bon.
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooJYGUooHhLASp}
+	Pour \( a>0\) et \( q,q'\in \eQ\) nous avons
+	\begin{equation}
+		a^qa^{q'}=a^{q+q'}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous mettons \( q\) et \( q'\) au même dénominateur. Soient \( q=s/c\) et \( q'=r/c\) avec \( s,r\in \eZ\) et \( c\in \eN\). En utilisant les égalités du lemme \ref{LEMooIDLJooZALNaD} nous trouvons
+	\begin{equation}
+		a^{s/c}a^{r/c}=(a^{1/c})^s(a^{1/c})^r=(a^{1/c})^{s+r}=a^{(s+r)/c}=a^{q+q'}.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooXJXUooLoiTMo}
+	La fonction puissance prend les valeurs suivantes.
+	\begin{enumerate}
+		\item
+		      Si \( a=1\) alors \( a^q=1\) pour tout \( q\in \eQ\).
+		\item       \label{ITEMooKZCGooKskUQx}
+		      Si \( a>1\) alors
+		      \begin{itemize}
+			      \item \( a^q>1\) si \( q>0\)
+			      \item \( a^q<1\) si \( q<0\)
+			      \item \( a^0=1\).
+		      \end{itemize}
+		\item
+		      Si \( a<1\) alors
+		      \begin{itemize}
+			      \item \( a^q<1\) si \( q>0\)
+			      \item \( a^q>1\) si \( q<0\)
+			      \item \( a^0=1\).
+		      \end{itemize}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Si \( a=1\) alors \( a^k=1\) pour tout \( k\in \eN\). Ensuite, pour \( m,n\in \eN\), \( a^{n/m}\) est solution de \( x^m=a^n=1\), donc \( x=1\). En ce qui concerne les puissances négatives, \( 1/1=1\).
+
+	Si \( a>1\) alors \( a^k>1\) pour tout \( k\in \eN\). De plus pour \( q>0\) nous avons \( q=m/n\) avec \( m,n\in \eN\). Alors \( a^{m/n}\) est solution de \( x^m=a^n>1\). Or pour \( x\leq 1\) nous avons \( x^m\leq 1\), donc la solution à \( x^m=a^n\) vérifie forcément \( x>1\).
+
+	Toujours avec \( a>1\), si \( q<0\) nous posons \( q=-q'\) avec \( q'>0\). Alors
+	\begin{equation}
+		a^q=q^{-q'}=\frac{1}{ a^{q'} }.
+	\end{equation}
+	Mais \( a^{q'}>1\), donc l'inverse est inférieur à \( 1\).
+
+	En ce qui concerne les cas \( a<1\), ils sont obtenus en posant \( b=1/a\) et en calculant
+	\begin{equation}
+		a^q=\left( \frac{1}{ b } \right)^q=\frac{1}{ b^q }=b^{-q}.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]\label{PROPooVXKBooQPPjMn}
+	Soit \( a>1\). Alors
+	\begin{equation}
+		\lim_{n\to \infty} a^n=\infty.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Soient \( a>1\) et  \( M>0\). Nous devons prouver qu'il existe \( n\in \eN\) tel que \( a^n>M\). Nous posons \( a=1+h\). Alors en utilisant la formule du binôme,
+	\begin{equation}
+		a^n=(1+h)^n=\sum_{k=0}^n{n\choose k}h^{n-k}.
+	\end{equation}
+	Tous les termes de la somme sont strictement positifs. Prenons le terme \( k=n-1\). Il vaut
+	\begin{equation}
+		{n\choose n-1}h=nh.
+	\end{equation}
+	Donc \( a^n\geq nh\), donc oui, cela peut être rendu arbitrairement grand avec \( n\) sans toucher à \( a\) parce que \( \eN\) est archimédien par la proposition \ref{PROPooCCVNooYUYcqG}.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooGCBZooTcyGtO}
+	Pour \( a>0\) nous considérons la fonction
+	\begin{equation}
+		\begin{aligned}
+			g_a\colon \eQ & \to \eR      \\
+			q             & \mapsto a^q.
+		\end{aligned}
+	\end{equation}
+	\begin{enumerate}
+		\item
+		      Si \( a\in \mathopen] 0 , 1 \mathclose[\) alors \( g_a\) est décroissante et
+		      \begin{subequations}
+			      \begin{align}
+				      \lim_{q\to \infty} g_a(q)=0, &  & \lim_{q\to -\infty} g_a(q)=\infty.
+			      \end{align}
+		      \end{subequations}
+		\item      \label{ITEMooGOEVooKVoVpZ}
+		      Si \( a>1\)  alors \( g_a\) est croissante et
+		      \begin{subequations}
+			      \begin{align}
+				      \lim_{q\to \infty} g_a(q)=\infty, &  & \lim_{q\to -\infty} g_a(q)=0.
+			      \end{align}
+		      \end{subequations}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous prouvons le cas \( a>1\). L'autre cas s'en déduit en posant \( b=1/a\). Pour la croissance, soient \( q\in \eQ\) et \( r>0\) dans \( \eQ\). En utilisant le lemme \ref{LEMooJYGUooHhLASp}, nous avons
+	\begin{equation}
+		a^{q+r}=a^qa^r>a^q
+	\end{equation}
+	parce que \( a^r>1\) par le lemme \ref{LEMooXJXUooLoiTMo}.
+
+	En ce qui concerne la limite \( q\to \infty\), la fonction \( g_a\) est croissante et non bornée par la proposition \ref{PROPooVXKBooQPPjMn}. Donc sa limite est \( \infty\).
+
+	Pour la limite \( q\to -\infty\), nous avons
+	\begin{equation}
+		\lim_{q\to -\infty} a^q=\lim_{q\to \infty} a^{-q}=\lim_{q\to \infty} \frac{1}{ a^q }=0.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooIIDGooTRtlUD}
+	Soit \( a>0\). Nous avons
+	\begin{equation}
+		\lim_{q\to 0} a^q=1.
+	\end{equation}
+	Notons que cette limite est une limite dans \( \eQ\) parce que nous n'avons même pas encore défini \( a^x\) lorsque \( x\) est irrationnel.
+\end{proposition}
+
+\begin{proof}
+	Nous notons, comme à l'accoutumée, \( g_a(x)=a^x\). Nous allons prouver que pour toute suite \( (x_k)\) dans \( \eQ\) telle que \( x_k\to 0\), nous avons \( a^{x_k}\to 1\).
+	\begin{subproof}
+		\spitem[Suite positive]
+		% -------------------------------------------------------------------------------------------- 
+		Soit une suite de rationnels \( x_k\to 0\) avec \( x_k>0\). En définissant \( y_k\) par \( x_k=1/y_k\) nous savons que \( a^{1/y_k}\) est la solution de \( x^{y_k}=a\).
+
+		Nous posons \( t_k=a^{x_k}\) et notre but est de prouver que \( t_k\to 1\). Pour tout \( k\) nous avons la relation
+		\begin{equation}
+			t_k^{y_k}=a.
+		\end{equation}
+		Soit \( s>1\). Il existe un \( M>0\) tel que \( y_k>M\) implique \( s^{y_k}>a\) (proposition \ref{PROPooVXKBooQPPjMn}). Donc dès que \( y_k>M\) nous avons \( t_k<s\).
+
+		De la même manière, si \( r<1\), il existe un \( R>0\) tel que \( y_k>R\) implique \( r^{y_k}<a\). Donc dès que \( y_k>R\) nous avons \( t_k>r\).
+
+		Soit donc un voisinage \( \mathopen] r , s \mathclose[\) de \( 1\) (avec \( r<1\) et \( s>1\)). Nous avons les nombres \( M\) et \( R\) correspondant et nous posons \( L=\max\{ M,R \}\). Soit \( K\) tel que \( k>K\) implique \( y_k>L\). Alors pour \( k>K\) nous avons aussi \( t_k<s\) et \( t_k>r\), c'est-à-dire \( t_k\in \mathopen] r , s \mathclose[\).
+
+		Cela prouve que \( t_k\to 1\).
+		\spitem[Suite négative]
+		% -------------------------------------------------------------------------------------------- 
+		Supposons maintenant que \( (x_k)\) est une suite de rationnels vérifiant \( x_k\to 0\) avec \( x_k<0\). En posant \( z_k=-x_k\), la suite \( (z_k)\) est dans le cas précédent et nous avons
+		\begin{equation}
+			a^{x_k}=a^{-z_k}=\frac{1}{ a^{z_k} }\to 1.
+		\end{equation}
+
+		\spitem[Suite générale]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( x_k\stackrel{\eQ}{\longrightarrow}0\) avec \( x_k\neq 0\). Nous considérons la suite \( t_k=a^{x_k}\). Toute sous-suite contient une sous-suite avec \( x_k>0\) ou une sous-suite avec \( x_k<0\). Dans les deux cas, la sous-sous-suite converge vers \( 1\). Le lemme \ref{LEMooSJKMooKSiEGq} conclut que \( t_k\to 1\).
+		\spitem[Conclusion]
+		% -------------------------------------------------------------------------------------------- 
+		Pour toute suite \( x_k\to 0\) nous avons \( g_a(x_k)\to 1\). Par le critère séquentiel de la limite (proposition \ref{PROPooJYOOooZWocoq}) nous avons \( \lim_{x\to 0} g_a(x)=1\).
+	\end{subproof}
+
+\end{proof}
+
+\begin{lemma}       \label{LEMooKDBPooLQwxMD}
+	Soit \( a>0\). La fonction
+	\begin{equation}
+		\begin{aligned}
+			g_a\colon \eQ & \to \eR     \\
+			x             & \mapsto a^x
+		\end{aligned}
+	\end{equation}
+	est continue.
+\end{lemma}
+
+\begin{proof}
+	Soient \( x\in \eQ\) et une suite \( x_k\to 0\) (toujours dans \( \eQ\)) et utilisons le lemme \ref{LEMooJYGUooHhLASp} :
+	\begin{equation}
+		a^{x+x_k}=a^xa^{x_k}.
+	\end{equation}
+	Cela est, dans \( \eR\), le produit entre une constante (\( a^x\)) et une suite. La limite est donc le produit de cette constante et la limite de la suite (si elle existe). Par la proposition \ref{PROPooIIDGooTRtlUD} nous avons la limite \( a^{x_k}\to 1\), et donc
+	\begin{equation}
+		\lim_{k\to \infty} a^{x+x_k}=a^x,
+	\end{equation}
+	ce qui prouve la continuité (caractérisation séquentielle, proposition \ref{PropFnContParSuite}) de \( g_a\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau,BIBooRTZNooZBNRXG}]     \label{PROPooQRFSooVzYdJM}
+	Soit \( a>0\) dans \( \eR\). La fonction
+	\begin{equation}
+		\begin{aligned}
+			g_a\colon \eQ & \to \eR     \\
+			q             & \mapsto a^q
+		\end{aligned}
+	\end{equation}
+	est Cauchy-continue.
+\end{proposition}
+
+\begin{proof}
+	En quelque étapes.
+	\begin{subproof}
+		\spitem[Pour \( a>1\)]
+		Avant de nous lancer dans la preuve directe, nous prouvons une petite formule. Soit \( \epsilon>0\). Vu que, par la proposition \ref{PROPooIIDGooTRtlUD}, \( \lim_{q\to 0} g_a(q)=1\), il existe \( \delta>0\) tel que \( 0<q<\delta\) implique \( | 1-g_a(q) |<\epsilon\).
+
+		Soient maintenant \( p,q\in \eQ\) tels que \( | p-q |<\delta\). En utilisant de plus la définition \eqref{DEFooTUCVooXikxRh} et la formule du lemme \ref{LEMooJYGUooHhLASp},
+		\begin{subequations}
+			\begin{align}
+				| g_a(q)-g_a(p) | & =| g_a(q) |\left| 1-\frac{ g_a(p) }{ g_a(q) } \right| \\
+				                  & =| g_a(q) | | 1-g_a(p-q) |                            \\
+				                  & \leq | g_a(q) |\epsilon.
+			\end{align}
+		\end{subequations}
+
+		Nous y allons pour la preuve directe. Soit une suite de Cauchy \( (q_n)\) dans \( \eQ\). Nous devons prouver que la suite \( n\mapsto g_a(q_n)\) est de Cauchy dans \( \eR\). Soit \( \epsilon>0\).
+
+		La suite \((q_n)\) étant de Cauchy dans \( \eQ\), elle l'est également dans \( \eR\), elle est bornée parce que convergente vu que \( \eR\) est complet\footnote{Théorème \ref{THOooNULFooYUqQYo}.}. Vu que \( g_a\) est croissante\footnote{Proposition \ref{PROPooGCBZooTcyGtO}\ref{ITEMooGOEVooKVoVpZ}.} et que \( (q_n)\) est bornée, il existe \( M\) tel que \( | g_a(q_n) |\leq M\) pour tout \( n\).
+
+		Nous considérons \( \delta\) tel que \( 0<q<\delta\) implique \( | 1-g_a(q) |\leq \epsilon\), ainsi que \( N\) tel que \( i,j>N\) implique \( | q_i-q_j |\leq \delta\) (là nous utilisons le fait que \( (q_n)\) est de Cauchy). Pour de tels \( N, i,j\) nous avons
+		\begin{equation}
+			| g_a(q_i)-g_a(q_j) |\leq M\epsilon.
+		\end{equation}
+		Donc la suite \( g_a(q_n)\) est de Cauchy.
+
+		\spitem[Pour \( a=1\)]
+		La fonction \( g_a\) est constante.
+		\spitem[Pour \( a=0\)]
+		% -------------------------------------------------------------------------------------------- 
+		Dans ce cas \( a^q=0\) pour tout \( q\), et l'image de toute suite de Cauchy est de Cauchy.
+		\spitem[Pour \( 0< a<1\)]
+		% -------------------------------------------------------------------------------------------- 
+		Considérons une suite de Cauchy \( (q_i)\) dans \( \eQ\). Nous posons \( b=1/a\), et nous utilisons la définition \ref{DEFooHXUFooOJTVXA} ainsi que le lemme \ref{LEMooOFPMooIEmSNA} :
+		\begin{equation}
+			a^{q_i}=\frac{1}{ b^{q_i} }=b^{-q_i}.
+		\end{equation}
+		La suite \( (-q_i)\) est de Cauchy et \( b>1\), donc la suite \( i\mapsto b^{-q_i}\) est de Cauchy par le point précédent.
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	L'ingrédient magique qui fait fonctionner la proposition \ref{PROPooQRFSooVzYdJM} est le fait que \( g_a(x+y)=g_a(x)g_a(y)\) couplé au fait que \( \lim_{q\to 0} g_a(q)=1\).
+	C'est cela qui débloque la situation pour étendre la fonction puissance de \( \eQ\) vers \( \eR\) en utilisant le lemme \ref{LEMooUAFBooAwiXxj}.
+
+	Le chemin suivi par \cite{BIBooXUZHooOHWxiF} pour étendre la fonction puissance de \( \eQ\) vers \( \eR\) est un peu différent : il définit \( a^x=\sup\{ a^q\tq q<x,q\in \eQ \}\). La preuve que cette définition donne \( x\mapsto a^x\) continue sur \( \eR\) repose, elle aussi, essentiellement sur le fait que \( \lim_{q\to 0} a^q=1\).
+
+	Il y a donc une certaine justice.
+\end{normaltext}
+
+\begin{propositionDef}[Fonction puissance\cite{MonCerveau}]  \label{DEFooOJMKooJgcCtq}
+	Si \( a>0\) la fonction
+	\begin{equation}
+		\begin{aligned}
+			g_a\colon \eQ & \to \eR      \\
+			x             & \mapsto a^x.
+		\end{aligned}
+	\end{equation}
+	est Cauchy-continue par la proposition \ref{PROPooQRFSooVzYdJM}. Si \( x\in \eR\) nous définissons
+	\begin{equation}
+		a^x=\tilde g_a(x)
+	\end{equation}
+	où \( \tilde g_a\) est l'extension de \( g_a\) donnée par le lemme \ref{LEMooUAFBooAwiXxj}.
+
+	Nous allons la noter \( g_a\) également, et écrire \( a^x\) la valeur de \( g_a\) même lorsque \( x\) n'est pas un rationnel.
+\end{propositionDef}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooVADRooLCLOzP}
+	Quelques propriétés de la fonction puissance.
+	\begin{enumerate}
+		\item       \label{ITEMooQHYRooJIewyp}
+		      Pour \( a>0\), la fonction \( g_a\colon x\mapsto a^x\) est continue sur \( \eR\).
+		\item       \label{ITEMooIZBLooSGtWIp}
+		      Pour \( a>1\), la fonction \( g_a\colon x\mapsto a^x\) est croissante.
+		\item       \label{ITEMooSCJBooNVJZah}
+		      Pour \( a>0\) et \( x,y\in \eR\) nous avons
+		      \begin{equation}        \label{EQooEWIHooDRAQGR}
+			      a^xa^y=a^{x+y}.
+		      \end{equation}
+		      En particulier,
+		      \begin{equation}
+			      a^{-x}=\frac{1}{ a^x }.
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	La continuité de \( x\mapsto a^x\) est par construction. Le point \ref{ITEMooQHYRooJIewyp} est fait.
+
+	Pour le point \ref{ITEMooIZBLooSGtWIp}, lorsque \( a>1\), la fonction \( f_a\colon \eQ\to \eR\) est croissante (proposition \ref{PROPooGCBZooTcyGtO}). Donc par la proposition \ref{PROPooTNIAooNAJDzL}, la fonction \( x\mapsto a^x\) est croissante sur \( \eR\).
+
+	Et enfin pour le point \ref{ITEMooSCJBooNVJZah}, il faut faire un peu plus attention. Soient des suites \( x_i\to x\) et \( y_i\to y\) dans \( \eQ\). Calculons :
+	\begin{subequations}        \label{SUBEQSooMPNLooPoyjwJ}
+		\begin{align}
+			a^xa^y & =(\lim_ia^{x_i})a^y      \label{SUBEQooOCIOooZcewMo}                   \\
+			       & =\lim_i\big( a^{x_i}a^y \big)   \label{SUBEQooEKQXooPLqzcG}            \\
+			       & =\lim_i\big( \lim_ka^{x_i}a^{y_k} \big)    \label{SUBEQooZEXDooRytDvS} \\
+			       & =\lim_i\big( \lim_k a^{x_i+y_k} \big)     \label{SUBEQooSYNBooIQZJzl}  \\
+			       & =\lim_ia^{x_i+y}                           \label{SUBEQooKHKCooGwaPDQ} \\
+			       & =a^{x+y}.                                  \label{SUBEQooMZBFooSoSgKU}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \ref{SUBEQooOCIOooZcewMo}. Définition de \( a^x\) lorsque \( x\in \eR\).
+		\item Pour \ref{SUBEQooEKQXooPLqzcG}. Nous entrons le nombre \( a^y\) dans la limite. Entrer un facteur dans une limite convergente dans \( \eR\) est un acte anodin.
+		\item Pour \ref{SUBEQooZEXDooRytDvS}. Définition de \( a^y\), et renter le nombre réel \( a^{x_i}\) dans la limite sur \( k\).
+		\item Pour \ref{SUBEQooSYNBooIQZJzl}. Utilisation du lemme \ref{LEMooJYGUooHhLASp}, valable pour \( x_i,y_k\in \eQ\).
+		\item Pour \ref{SUBEQooKHKCooGwaPDQ}. Pour \( i\) fixé, la suite \( k\mapsto x_i+x_k\) est une suite de rationnels qui converge vers le réel \( x_i+y\). Par définition \ref{DEFooOJMKooJgcCtq} de la fonction puissance nous avons alors \( \lim_ka^{x_i+y_k}=a^{x_i+y}\).
+		\item Pour \ref{SUBEQooMZBFooSoSgKU}. La suite de réels \( i\mapsto x_i+y\) converge dans \( \eR\) vers le réel \( x+y\). Par la continuité de \( t\mapsto a^t\) (ça fait partie du lemme \ref{LEMooUAFBooAwiXxj} définissant la fonction puissance sur \( \eR\)) nous avons \( \lim_ia^{x_i+y}=a^{x+y}\).
+	\end{itemize}
+
+	Vous remarquerez que les limites sur \( k\) et sur \( i\) ne s'enlèvent pas tout à fait avec la même justification. Nous aurions pu invoquer la continuité sur \( \eR\) de \( t\mapsto a^t\) pour les deux limites. Mais cette continuité, dans le cas d'une suite purement constituée de rationnels, est la définition de la prolongation vers \( \eR\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooIPLLooCgpCIn}
+	Soient \( a,b>0\). Si \( 1<x<y\) alors
+	\begin{equation}
+		a-b<ay-bx.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous posons \( y=x+s\) avec \( s>0\). Alors
+	\begin{equation}
+		ay-bx=a(x+s)-bx=(a-b)x+as>(a-b)x>a-b
+	\end{equation}
+	parce que \( as>0\) et \( x>1\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooJXHFooCDwxCS}
+	Pour \( q>0\) dans \( \eQ\), la fonction
+	\begin{equation}
+		\begin{aligned}
+			f_{q}\colon \eQ^+ & \to \eR       \\
+			x                 & \mapsto x^{q}
+		\end{aligned}
+	\end{equation}
+	est strictement croissante.
+\end{proposition}
+
+\begin{proof}
+	Division selon la généralité de \(q\).
+	\begin{subproof}
+		\spitem[Si \( q\) est entier positif]
+		Soit \( q=n\in \eN\). Si \( s>0\) alors l'inégalité \( (x+s)^n>x^n\) découle du binôme de Newton de la proposition \ref{PropBinomFExOiL}.
+		\spitem[Si \( q\) est rationnel]
+		Soient un rationnel \( q=m/n\) et un nombre strictement positif \( s\). Nous avons, par la définition \ref{DEFooJWQLooWkOBxQ} sous la forme \eqref{EQooZIKKooVfjkZo} :
+		\begin{equation}
+			f_{m/n}(x+s)^n=(x+s)^m>x^m=f_{m/n}(x)^n.
+		\end{equation}
+		Nous avons utilisé la stricte croissance de \( x\mapsto x^m\). Cela donne
+		\begin{equation}
+			f_{m/n}(x+s)^n>f_{m/n}(x)^n.
+		\end{equation}
+		En utilisant encore la stricte croissance de \( x\mapsto x^n\), nous avons le résultat.
+	\end{subproof}
+\end{proof}
+
+\begin{corollary}       \label{CORooYWNNooLwKmiD}
+	Soient \( 1<b<a\) dans \( \eR\) et des rationnels strictement positifs \( p<q\). Alors
+	\begin{equation}
+		a^p-b^p<a^q-b^q
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Nous notons \( q=p+r\) avec \( r>0\) dans \( \eQ\). Par la proposition \ref{PROPooJXHFooCDwxCS},
+	\begin{equation}
+		a^r>b^r.
+	\end{equation}
+	Cela nous permet d'utilise le lemme \ref{LEMooIPLLooCgpCIn} pour écrire
+	\begin{equation}
+		a^p-b^p<a^pa^r-b^pb^r=a^q-b^q.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooKWRGooMTbRdU}
+	Soient \( a,b>0\) et \( \alpha\in \eR\). Nous avons :
+	\begin{equation}
+		a^{\alpha}b^{\alpha}=(ab)^{\alpha}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous supposons que c'est bon pour \( \alpha\in \eN\) et \( \alpha\in \eZ\). Pour les autres, nous donnons plus de détails.
+	\begin{subproof}
+		\spitem[\( \eQ^+\)]
+		Soit \( q=m/n\) avec \( m,n\in \eN\). Si \( a^{m/n}=x\) et \( b^{m/n}=y\), alors
+		\begin{subequations}
+			\begin{align}
+				x^n & =a^m    \label{EQooGNMAooQJMNsL} \\
+				y^n & =b^m
+			\end{align}
+		\end{subequations}
+		par \eqref{EQooZIKKooVfjkZo}. Nous multiplions \eqref{EQooGNMAooQJMNsL} par \( y^n\) à gauche et par \( b^m\) à droite : \( x^ny^n=a^mb^m\). En tenant compte du résultat pour \( \eN\), nous avons
+		\begin{equation}
+			(xy)^n=(ab)^m,
+		\end{equation}
+		ce qui signifie que le nombre \( xy\) est \( (ab)^{m/n}\).
+		\spitem[Pour \( \eQ^-\)]
+		Soit \( q\in \eQ^+ \), nous avons le calcul
+		\begin{equation}
+			a^{-q}b^{-q}=\frac{1}{ a^qb^q }=\frac{1}{ (ab)^q }=(ab)^{-q}.
+		\end{equation}
+		\spitem[Pour \( \eR\)]
+		Soit une suite de rationnels \( \alpha_i\to \alpha\). Nous avons
+		\begin{equation}
+			a^{\alpha}b^{\alpha}=\big( \lim_ia^{\alpha_i} \big)\big( \lim_j b^{\alpha_j} \big)=\lim_i\big( a^{\alpha_i}b^{\alpha_i}\big)=\lim_i(ab)^{\alpha_i}=(ab)^{\alpha}.
+		\end{equation}
+		Justifications :
+		\begin{itemize}
+			\item la proposition \ref{PROPooIQOAooJPMoDD} pour le produit des limites,
+			\item le résultat dans \( \eQ\) que nous venons de prouver,
+			\item la définition de \( (ab)^{\alpha}\) comme limite de \( (ab)^{\alpha_i}\).
+		\end{itemize}
+	\end{subproof}
+\end{proof}
+
+Pour rappel, la proposition suivante, dans le cas de \( \alpha\in \eQ^+\) est la proposition \ref{PROPooJXHFooCDwxCS}.
+\begin{proposition}[\cite{MonCerveau}]     \label{PROPooUOFKooYyGwIr}
+	Pour \( \alpha>0\), la fonction
+	\begin{equation}
+		\begin{aligned}
+			f_{\alpha}\colon\mathopen] 0 , \infty \mathclose[ & \to \eR            \\
+			x                                                 & \mapsto x^{\alpha}
+		\end{aligned}
+	\end{equation}
+	est strictement croissante.
+\end{proposition}
+
+\begin{proof}
+	Nous rappellons que le cas \( \alpha\in \eQ^+\) est déjà traité par la proposition \ref{PROPooJXHFooCDwxCS}. Soient \( x\in \mathopen] 0 , \infty \mathclose[\) et \( s>0\). Nous allons montrer que \( f_{\alpha}(x+s)-f_{\alpha}(x)>0\). Pour cela nous décomposons en plusieurs cas.
+	\begin{subproof}
+		\spitem[\( x>1\)]
+		% -------------------------------------------------------------------------------------------- 
+		Par la proposition \ref{PROPooFGBOooHiZqbs}, nous considérons une suite strictement croissante de rationnels strictement positifs \( \alpha_i\to \alpha\). Pour tout \( i\) nous avons \( \alpha_i>\alpha_0\).
+
+		En utilisant la stricte croissance de \( f_{\alpha_0}\) et le lemme \ref{LEMooXJXUooLoiTMo}\ref{ITEMooKZCGooKskUQx}, nous avons les inégalités \( 1<x^{\alpha_0}<(x+s)^{\alpha_0}\), et en particulier
+		\begin{equation}
+			0<(x+s)^{\alpha_0}-x^{\alpha_0}.
+		\end{equation}
+		De plus nous avons \( 1<x<x+s\) et \( \alpha_0<\alpha_i\) pour tout \( i\). Donc le corolaire \ref{CORooYWNNooLwKmiD} s'applique et nous avons, pour tout \( i\) :
+		\begin{equation}
+			0<(x+s)^{\alpha_0}-x^{\alpha_0}<(x+s)^{\alpha_i}-x^{\alpha_i}.
+		\end{equation}
+		C'est le moment de passer à la limite \( i\to \infty\). La seconde inégalité devient non stricte, mais la première reste :
+		\begin{equation}
+			0<(x+s)^{\alpha_0}-x^{\alpha_0}\leq(x+s)^{\alpha}-x^{\alpha}.
+		\end{equation}
+		Nous avons donc bien la stricte croissance de \( f_{\alpha}\) sur \( \mathopen] 1 , \infty \mathclose[\).
+
+		\spitem[\(0< x\leq 1\)]
+		% -------------------------------------------------------------------------------------------- 
+		Nous choisissons encore \( \alpha_i\to \alpha\) strictement croissante dans \( \eQ\). Pour chaque \( i\), nous avons encore
+		\begin{equation}
+			(x+s)^{\alpha_i}-x^{\alpha_i}>0.
+		\end{equation}
+		Le passage à la limite change l'inégalité stricte en inégalité large, et ne permet donc pas de conclure immédiatement. Nous devons donc ruser. Soit \( k\in \eN\) tel que \( k(x+s)>1\) et \( kx>1\) (existence parce que \( \eR\) est archimédien, proposition \ref{ThoooKJTTooCaxEny}). Nous avons :
+		\begin{equation}
+			\big( k(x+s) \big)^{\alpha}-(kx)^{\alpha}>0
+		\end{equation}
+		par la partie «\( x>1\)» que nous venons de prouver. Grâce à la proposition \ref{PROPooKWRGooMTbRdU} nous pouvons factoriser \( k^{\alpha}\) :
+		\begin{equation}
+			0<\big( k(x+s) \big)^{\alpha}-(kx)^{\alpha}=k^{\alpha}\big( (x+s)^{\alpha}-x^{\alpha} \big).
+		\end{equation}
+		Vu que \( k^{\alpha}>0\), cela implique \( (x+s)^{\alpha}-x^{\alpha}>0\), ce qu'il fallait.
+	\end{subproof}
+	Nous avons fini de prouver que la fonction \( f_{\alpha}\) était strictement croissante sur \( \mathopen] 0 , \infty \mathclose[\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooJVXQooDPUuuJ}
+	Si \( p\geq 1\) et si \( x\in \mathopen[ 0 , 1 \mathclose]\) alors \( x^p\leq x\).
+\end{lemma}
+
+\begin{proof}
+	Vu que \( p\geq 1\), nous avons \( p=1+\alpha\) avec \( \alpha\geq 0\). Nous pouvons donc écrire\footnote{En utilisant la proposition \ref{PROPooVADRooLCLOzP}\ref{ITEMooSCJBooNVJZah}.}
+	\begin{equation}
+		x^p=x^{1+\alpha}=xx^{\alpha}=xf_{\alpha}(x).
+	\end{equation}
+	Vu que \( f_{\alpha}\) est croissante (proposition \ref{PROPooUOFKooYyGwIr}), que \( f_{\alpha}(0)=1\) et que \( f_{\alpha}(1)=1\), nous avons \( f_{\alpha}(x)\in\mathopen[ 0 , 1 \mathclose]\) dès lors que \( x\in\mathopen[ 0 , 1 \mathclose]\). Donc
+	\begin{equation}
+		xf_{\alpha}(x)\leq x.
+	\end{equation}
+\end{proof}
+
+Nous prouvons à présent que \( f_{\alpha}\) est localement injective; nous en avons besoin pour prouver la continuité. Or cette continuité est nécessaire à prouver que \( f_{\alpha}\) est localement bijective. Donc nous ne pouvons pas énoncer la bijectivité ici. Ce sera la proposition \ref{PROPooEXGKooCqzLor}.
+
+\begin{proposition}     \label{PROPooHKTKooCUEBjh}
+	Soient \( \alpha\neq 0\) et \( x\in \eR\setminus\{ 0 \}\). Il existe un voisinage \( V\) de \( x\) sur lequel
+	\begin{equation}
+		f_{\alpha}\colon V \to f_{\alpha}(V)
+	\end{equation}
+	est injective.
+\end{proposition}
+
+\begin{proof}
+	Soit \( x>0 \); nous considérons un voisinage \( V\) de \( x\) inclu à \( \mathopen] 0 , \infty \mathclose[\). Soit \( y\in V\); pour fixer les idées nous supposons \( y<x\). Par la stricte croissance de \( f_{\alpha}\) sur \( \mathopen] 0 , \infty \mathclose[\) (proposition \ref{PROPooUOFKooYyGwIr}), nous avons \( f_{\alpha}(y)<f_{\alpha}(x)\) et en particulier \( f_{\alpha}(x)\neq f_{\alpha}(y)\).
+
+		Le cas \( x<0\) se traite de façon analogue, avec la stricte décroissance de \( f_{\alpha}\) sur \( \mathopen] -\infty , 0 \mathclose[\).
+\end{proof}
+Notons que les voisinages sur lesquels \( f_{\alpha}\) est injective sont assez grands. Ils peuvent être toute une demi-droite, si l'on veut.
+
+\begin{lemma}   \label{LEMooQTNKooLVEytN}
+	Soient \( \alpha>0\), une suite de rationnels strictement décroissante \( \alpha_i\to \alpha\) ainsi que les fonctions
+	\begin{equation}
+		\begin{aligned}
+			f_{\alpha_i}\colon \mathopen] 1 , \infty \mathclose[ & \to \eR               \\
+			x                                                    & \mapsto x^{\alpha_i}.
+		\end{aligned}
+	\end{equation}
+	La famille \( \{ f_{\alpha_i} \}_{i\in \eN}\) est équicontinue\footnote{Définition \ref{DEFooDHQDooFfIvsX}.}.
+\end{lemma}
+
+\begin{proof}
+	Soient \( x>1\), et \( \alpha>0\). Nous allons montrer que \( \{ f_{\alpha_i} \}\) est équicontinue en \( x\). Soit \( s\) tel que \( 1<x<x+s\); le corolaire \ref{CORooYWNNooLwKmiD} nous enseigne que
+	\begin{equation}
+		(x+s)^p-x^p<(x+s)^q-x^q
+	\end{equation}
+	dès que \( p<q\). En particulier, \( f_p\) étant croissante par la proposition \ref{PROPooUOFKooYyGwIr},
+	\begin{equation}
+		0<(x+s)^{\alpha_i}-x^{\alpha_i}<(x+s)^{\alpha_0}-x^{\alpha_0}.
+	\end{equation}
+	Soit \( \epsilon>0\) et \( \delta\) tel que \( s<\delta\) implique \( | (x+s)^{\alpha_0}-x^{\alpha_0} |<\epsilon\). Alors nous avons aussi, pour de tels \( \delta\) et \( s\) :
+	\begin{equation}
+		|(x+s)^{\alpha_i}-x^{\alpha_i}|<|(x+s)^{\alpha_0}-x^{\alpha_0}|<\epsilon.
+	\end{equation}
+	En procédant de même\ pour \( s<0\), nous trouvons bien que
+	\begin{equation}
+		| y^{\alpha_i}-x^{\alpha_i} |\leq \epsilon
+	\end{equation}
+	pour tout \( y\in B(x,\delta)\).
+
+	Cela signifie que \( \{ f_i \}\) est équicontinue.
+\end{proof}
+
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooUQNZooSSHLqr}
+	Soit \( \alpha>0\) dans \( \eR\). La fonction
+	\begin{equation}
+		\begin{aligned}
+			f_{\alpha}\colon \eR & \to \eR            \\
+			x                    & \mapsto x^{\alpha}
+		\end{aligned}
+	\end{equation}
+	est continue.
+\end{proposition}
+
+\begin{proof}
+	Nous allons subdiviser quelque cas.
+	\begin{subproof}
+		\spitem[Pour \( \alpha\in \eN\)]
+		Nous prouvons que \( f_n\) est continue pour tout \( n\) par récurrence. D'abord la fonction \( f_1\) est continue parce que c'est l'identité. Pour les autres, il s'agit d'une récurrence en utilisant le théorème \ref{THOooWRXOooUvKgkQ}\ref{ITEMooSHMVooZPNtCv}.
+
+		\spitem[Pour \( \alpha\in \eQ^+\)]
+		Soit \( q=m/n\) avec \( m,n\in \eN\). Soit aussi \( \epsilon>0\). Nous avons :
+		\begin{subequations}
+			\begin{align}
+				f_{m/n}(x)^n          & =x^m                                              \\
+				f_{m/n}(x+\epsilon)^n & =(x+\epsilon)^m.      \label{SUBEQooGNCSooWAeRcL}
+			\end{align}
+		\end{subequations}
+		L'équation \eqref{SUBEQooGNCSooWAeRcL} s'écrit aussi bien sous la forme
+		\begin{equation}
+			f_n\big( f_{m/n}(x+\epsilon) \big)=(x+\epsilon)^m.
+		\end{equation}
+		En prenant la limite,
+		\begin{equation}
+			\lim_{\epsilon\to 0}\big[ f_n\big( f_{m/n}(x+\epsilon) \big) \big]=x^m=f_{m/n}(x)^n.
+		\end{equation}
+		Vu que \( f_n\) est continue, nous pouvons la permuter avec la limite dans le membre de gauche tout en écrivant \( f_{m/n}(x)^n=f_n\big( f_{m/n}(x) \big)\) dans le membre de droite :
+		\begin{equation}
+			f_n\big[ \lim_{\epsilon\to 0}f_{m/n}(x+\epsilon) \big]=f_n\big( f_{m/n}(x) \big).
+		\end{equation}
+		La fonction \( f_n\) étant injective dans un voisinage autour de \( x\) (proposition \ref{PROPooHKTKooCUEBjh}),
+		\begin{equation}
+			\lim_{\epsilon\to 0}f_{m/n}(x+\epsilon)=f_{m/n}(x),
+		\end{equation}
+		ce qui est la continuité de \( f_{m/n}\) en \( x\).
+
+		\spitem[Pour \( \alpha\in \eR^+\)]
+
+		Nous prouvons séparément le cas \( x<1\) et le cas \( x\geq 1\).
+
+		\begin{subproof}
+			\spitem[Si \( x\in \mathopen\rbrack 1 , \infty \mathclose\lbrack\)]
+			% -------------------------------------------------------------------------------------------- 
+
+			Commençons par \( x\in \mathopen\rbrack 1 , \infty \mathclose\lbrack\).
+
+			Soit une suite \( \alpha_i\to \alpha\) strictement décroissante dans \( \eQ^+\). Le lemme \ref{LEMooQTNKooLVEytN} nous dit que l'ensemble de fonctions  \( \{ f_{\alpha_i}\colon \mathopen] 1 , \infty \mathclose[\to \eR \}_{i\in \eN}\) est équicontinu. La convergence simple \( f_{\alpha_i}\to f_{\alpha}\) étant par définition, la proposition \ref{PROPooICNNooAMjcut} nous dit que la fonction \( f_{\alpha}\colon \mathopen] 1 , \infty \mathclose[\to \eR\) est continue.
+
+				\spitem[Si \( x\in \mathopen\rbrack 0 , 1 \mathclose\rbrack\)]
+				% -------------------------------------------------------------------------------------------- 
+
+				Soient maintenant \( x\in \mathopen] 0 , 1 \mathclose]\), et \( \epsilon>0\). Il existe \( k\in \eN\) tel que \( kx>1\), et \( k^{\alpha}>1\). Soit \( \delta_1>0\) tel que \( B(x,\delta_1)>0\). Si \( y\in B(x,\delta_1)\), alors
+			\begin{equation}
+				| y^{\alpha}-x^{\alpha} |\leq k^{\alpha}| y^{\alpha}-x^{\alpha} |=\big| (ky)^{\alpha}-(kx)^{\alpha} \big|.
+			\end{equation}
+
+			Par ailleurs, vu que \( kx>1\), la fonction \( f_{\alpha}\) est continue en \( kx\). Il existe donc \( \delta_2\) tel que
+			\begin{equation}
+				z\in B(kx,\delta_2)\,\Rightarrow\,\big| z^{\alpha}-(kx)^{\alpha} \big|<\epsilon.
+			\end{equation}
+
+			Nous considérons \( \delta<\min(\delta_1,\delta_2/k)\). Si \( y\in B(x,\delta)\), alors d'une part
+			\begin{equation}
+				| ky-kx |=k| y-x |\leq k\delta<\delta_2.
+			\end{equation}
+			Pour un tel \( y\) nous avons donc \( ky\in B(kx,\delta_2)\) et donc
+			\begin{equation}
+				| y^{\alpha}-x^{\alpha} |\leq \big| (ky)^{\alpha}-(kx)^{\alpha} \big|<\epsilon.
+			\end{equation}
+			Donc la continuité de \( f_{\alpha}\) en \( x\).
+
+		\end{subproof}
+
+		\spitem[Pour \( \alpha\in \eR^{-}\)]
+		% -------------------------------------------------------------------------------------------- 
+
+		Si \( \alpha>0\), la fonction \( f_{-\alpha}\) est donnée par
+		\begin{equation}
+			f_{-\alpha}(x)=\frac{1}{  f_{\alpha}(x) }
+		\end{equation}
+		et est donc continue (sauf en \( x=0\) où elle n'existe pas).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]     \label{PROPooDWZKooNwXsdV}
+	Soient \( a>0\) ainsi que \( x,y\in \eR\). Alors
+	\begin{equation}
+		(a^x)^y=(a^y)^x=a^{xy}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous découpons en fonction de la nature de \( x\) et \( y\).
+
+	\begin{subproof}
+		\spitem[\( x\) rationnel, \( y\) naturel]
+		Si \( q\in \eQ\) et \( n\in \eN\) alors la formule
+		\begin{equation}
+			(a^q)^n=a^{nq}
+		\end{equation}
+		découle seulement d'une récurrence sur la formule \ref{EQooEWIHooDRAQGR}.
+
+		\spitem[ \( x,y\in \eQ\)]
+		Soient \( y=m/n\) avec \( n\in \eZ\), \( m\in \eN\) et \( q\in \eQ\). Nous avons, en utilisant la partie déjà démontrée et le lemme \ref{LEMooIDLJooZALNaD},
+		\begin{equation}
+			(a^q)^{y}=(a^q)^{m/n}=\big( (a^q)^m \big)^{1/n}=(a^{mq})^{1/n}=a^{mq/n}=a^{yq}.
+		\end{equation}
+		\spitem[\( x,y\) irrationnels]
+
+		Soient des suites des rationnels \( x_i\to x\) et \( y_i\to y\). En utilisant les définitions,
+		\begin{equation}        \label{EQooXITUooHYNSPU}
+			(a^x)^y=\lim_i(a^x)^{y_i}=\lim_i\big( \lim_j a^{x_j} \big)^{y_i}.
+		\end{equation}
+		Fixons un \(i\) pour commencer. Nous avons, par la continuité de \( f_{y_i}\) (proposition \ref{PROPooUQNZooSSHLqr})
+		\begin{equation}
+			\big( \lim_ja^{x_j} \big)^{y_i}=f_{y_i}\big( \lim_ja^{x_j} \big)=\lim_j\big( f_{y_i}(a^{x_j}) \big)=\lim_ja^{x_jy_i}.
+		\end{equation}
+		Nous avons utilisé le résultat déjà démontré dans le cas des rationnels. La suite \( j\mapsto x_jy_i\) est une suite dans \( \eQ\) qui converge vers le réel \( xy_i\), donc la limite sur \( j\) redonne la fonction puissance :
+		\begin{equation}        \label{EQooWORSooFoRBod}
+			\big( \lim_ja^{x_j} \big)^{y_i}=\lim_ja^{x_jy_i}=a^{xy_i}.
+		\end{equation}
+		Le résultat découle maintenant de la prise de limite dans \eqref{EQooXITUooHYNSPU} qui revient à prendre la limite \( i\to \infty\) de l'expression dans \eqref{EQooWORSooFoRBod} :
+		\begin{equation}
+			(a^x)^y=\lim_i\big( \lim_j a^{x_j} \big)^{y_i}=\lim_ia^{xy_i}=a^{xy}.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooURSHooFfEsFS}
+	Soient \( a,b>0\) et \( \alpha\in \eR\). Nous avons
+	\begin{equation}
+		(ab)^{\alpha}=a^{\alpha}b^{\alpha}.
+	\end{equation}
+	%TODOooKGJUooEtWSOV. Prouver ça.
+\end{proposition}
+
+
+\begin{proposition}     \label{PROPooJRWCooGiXAYt}
+	Soit \( \alpha>0\) dans \( \eR\). Nous avons
+	\begin{equation}
+		\lim_{x\to \infty} x^{\alpha}=\infty.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous séparons la preuve en fonction de la nature de \( \alpha\).
+	\begin{subproof}
+		\spitem[Si \( \alpha\in \eN\)]
+		C'est le lemme \ref{LEMooFCIXooJuHFqk}.
+		\spitem[Si \( \alpha=1/n\)]
+		Soit \( n\neq 0\) dans \( \eN\), et prouvons que \( \lim_{x\to \infty} x^{1/n}=\infty\). La proposition \ref{PROPooVADRooLCLOzP} nous indique que \( x\mapsto x^{1/n}=f_n^{-1}(u)\) est croissante et continue. Elle possède donc une limite \( \ell\) éventuellement infinie par la proposition \ref{PROPooGQHKooWgykjW}. Posons
+		\begin{equation}
+			\lim_{x\to \infty} f_n^{-1}(x)=\ell.
+		\end{equation}
+		Nous voulons appliquer \( f_n\) des deux côtés et profiter de la continuité de \( f_n\) pour permuter avec la limite. Si vous avez peur du cas \( \ell=+\infty\), supposez \( \ell\neq +\infty\) et considérez ce qui suit comme une preuve par l'absurde que \( \ell=+\infty\). Nous avons :
+		\begin{equation}
+			f_n\big( \lim_{x\to \infty} f_n^{-1}(x) \big)=\lim_{x\to \infty} f_n\big( f_n^{-1}(x) \big)=\lim_{x\to \infty} x=\infty.
+		\end{equation}
+		donc \( f_n(\ell)=\infty\), et nous concluons que \( \ell=\infty\).
+		\spitem[Si \( \alpha\in \eQ\)]
+		Nous posons \( \alpha=p/q\) avec \( p,q\in \eN\). Alors
+		\begin{equation}
+			x^{\alpha}=(x^{1/q})^p
+		\end{equation}
+		par la proposition \ref{PROPooDWZKooNwXsdV}. Autrement dit,
+		\begin{equation}
+			\lim_{x\to \infty} x^{\alpha}=\lim_{x\to \infty} (f_p\circ f_{1/q})(x)=\infty
+		\end{equation}
+		parce que tant \( f_p\) que \( f_{1/q}\) ont une limite \( +\infty\).
+		\spitem[Le cas général]
+		Nous considérons enfin \( \alpha>0\) dans \( \eR\). Le lemme \ref{LemooHLHTooTyCZYL} nous permet de considérer \( q\in \eQ\) tel que \( 0<q<\alpha\). La proposition \ref{PROPooVADRooLCLOzP}\ref{ITEMooIZBLooSGtWIp} nous dit que, pour chaque \( x\), \( x^q<x^{\alpha}\). Donc
+		\begin{equation}
+			\lim_{x\to \infty} x^{\alpha}\geq \lim_{x\to \infty} x^q=\infty
+		\end{equation}
+		en utilisant le point précédent.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PROPooEXGKooCqzLor}
+	Soit \( \alpha>0\). La fonction
+	\begin{equation}
+		\begin{aligned}
+			f_{\alpha}\colon \mathopen[ 0 , \infty \mathclose[ & \to \mathopen[ 0 , \infty \mathclose[ \\
+			x                                                  & \mapsto x^{\alpha}
+		\end{aligned}
+	\end{equation}
+	est bijective.
+\end{proposition}
+
+\begin{proof}
+	La proposition \ref{PROPooUOFKooYyGwIr} nous dit que \( f_{\alpha}\colon \mathopen] 0 , \infty \mathclose[\to \eR\) est strictement croissante. Vu que  \( f_{\alpha}(0)=0\), nous savons que \( f_{\alpha}(\mathopen[ 0 , \infty \mathclose[)\subset\mathopen[ 0 , \infty \mathclose[\). La stricte croissance nous dit également que \( f_{\alpha}\) est injective.
+
+	Il reste à voir que \( f_{\alpha}\) est surjective. Rappelons quelque faits.
+	\begin{itemize}
+		\item D'abord une facile :     \( f_{\alpha}(0)=0\).
+		\item
+		      Nous avons \( \lim_{x\to \infty} x^{\alpha}=\infty\) par la proposition \ref{PROPooJRWCooGiXAYt}.
+		\item
+		      La fonction \( f_{\alpha}\) est continue par la proposition \ref{PROPooUQNZooSSHLqr}.
+	\end{itemize}
+	Le théorème des valeurs intermédiaires\footnote{Dans sa version de la proposition \ref{PROPooIJZWooCAFPRn}.} conclut que \( f_{\alpha}\) est surjective sur \( \mathopen[ 0 , \infty \mathclose[\).
+\end{proof}
+
+Le lemme suivant montre en gros que \( x^y\) croît plus rapidement en \( y\) qu'en \( x\).
+\begin{lemma}       \label{LemLJOSooEiNtTs}
+	Pour tout \( \alpha>0\) et \( a<1\) nous avons la limite
+	\begin{equation}
+		\lim_{n\to \infty} n^{\alpha}a^n=0
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Soit \( k\in \eN\) plus grand que \( \alpha\).
+	Soit la suite numérique \( s_n=n^ka^n\). Tous ses termes sont positifs et
+	\begin{equation}
+		\frac{ s_n }{ s_{n+1} }=\left( \frac{ n }{ n+1 } \right)^k\frac{1}{ a }.
+	\end{equation}
+	Étant donné que \( n/n+1\to 1\) et que \( a<1\), il existe un certain rang à partir duquel la suite \( (s_n)\) est décroissante. Deux conclusions :
+	\begin{itemize}
+		\item Elle est majorée par une constante \( M\).
+		\item Elle est convergente par le lemme~\ref{LemSuiteCrBorncv}.
+	\end{itemize}
+	Soit \( l\) tel que \( ka^l<1\) et \( n>l\) alors
+	\begin{equation}
+		s_{n+l}=(n+l)^ka^{n+l}\leq kn^ka^na^l=ka^ls_n\leq ka^lM.
+	\end{equation}
+	La majoration est due au fait que dans \( (n+l)^k\) nous avons \( k\) termes tous plus petits que \( n^k\). De la même façon,
+	\begin{equation}
+		s_{2n+2l}\leq ka^{2l}s_{2n}\leq ka^{2l}M.
+	\end{equation}
+	En posant \( \varphi(i)=in+il\) nous avons
+	\begin{equation}
+		s_{\varphi(i)}\leq ka^iM,
+	\end{equation}
+	qui est une sous-suite convergente vers \( 0\). Or si une suite est convergente (ce qui est le cas de \( (s_n)\)), toutes les sous-suites convergent vers la même limite. Nous en concluons que \( s_n\to 0\).
+\end{proof}
+
+\begin{normaltext}
+	Une conséquence est que si vous voulez choisir un mot de passe fort, la longueur du mot est plus importante que la taille de l'alphabet choisi : il est plus efficace de choisir une combinaison longue qu'une combinaison mélangeant des lettres, chiffres et symboles spéciaux.
+
+	Exemple : si vous choisissez un mot de passe contenant majuscules, minuscules, chiffres et symboles spéciaux complètement mélangés (ne mentez pas, vous ne le faites pas), mais que vous ne le choisissez que de taille \( 6\), vous avez \( 72^6\) possibilités (en supposant un jeu de 10 symboles spéciaux).
+
+	Eh bien, en seulement \( 8\) lettres minuscules, vous avez plus de possibilités : \( 26^8>72^6\).
+
+	De nombreux sites font l'erreur de considérer que
+	\begin{itemize}
+		\item « ggzxzheaiynshunxuydajkwyohgqxz » est un mot de passe faible,
+		\item «azerty.2019A» est un mot de passe fort.
+	\end{itemize}
+	Il n'en est rien. Le premier est considérablement meilleur que le second, même si le second, très superficiellement, mélange les lettres majuscules, minuscules, chiffres et symboles spéciaux.
+
+	Voilà voilà. La prochaine fois qu'un site vous refusera un mot de passe de 30 lettres minuscules mélangées, vous saurez pourquoi il n'y a rien qui marche en informatique, et en particulier pourquoi la sécurité générale de nos systèmes d'information est désastreuse.
+\end{normaltext}
+
+\begin{theorem}     \label{THOooHWNWooTewPvt}
+	Soit une matrice \( A\in \eM(N,\eC)\). La suite \( (A^nx)\) tend vers zéro pour tout \( x\) si et seulement si \( \rho(A)<1\) où \( \rho(A)\)\index{rayon!spectral} est le rayon spectral de \( A\)
+\end{theorem}
+\index{décomposition!Dunford!exponentielle de matrice}
+
+\begin{proof}
+	Dans le sens direct, il suffit de prendre comme \( x\), un vecteur propre de \( A\). Dans ce cas nous avons \( A^nx=\lambda^nx\). Mais \( \lambda^kx\) ne tend vers zéro que si \( \lambda<1\). Donc toutes les valeurs propres de \( A\) doivent être plus petites que \( 1\) et \( \rho(A)<1\).
+
+	Pour l'autre sens nous utilisons la décomposition de Dunford (théorème~\ref{ThoRURcpW}) : il existe une matrice inversible \( P\) telle que
+	\begin{equation}
+		A=P^{-1}(D+N)P
+	\end{equation}
+	où \( D\) est diagonale, \( N\) est nilpotente et \( [D,N]=0\). Étant donné que \( D+N\) est triangulaire, son polynôme caractéristique est
+	\begin{equation}
+		\chi_{D+N}(X)=\prod_i( D_{ii}-X).
+	\end{equation}
+	Par similitude, c'est le même polynôme caractéristique que celui de \( A\) et nous savons alors que la diagonale de \( D\) contient les valeurs propres de \( A\).
+
+	Vu que \( A^n=P^{-1}(D+N)^nP\), nous allons montrer que \( \| (D+N)^n \|\to 0\), et ce sera suffisant. Notons \( r\) l'ordre de nilpotence de \( N\) (c'est-à-dire \( N^r=0\)), et prenons \( n>r\). En utilisant le fait que \( D\) et \( N\) commutent, pour tout \( n\geq r\) nous avons :
+	\begin{subequations}
+		\begin{align}
+			\| (D+N)^n \| & \leq \| \sum_{k=0}^n\binom{ n }{ k }D^{n-k}N^k \|                                   \\
+			              & \leq \sum_{k=0}^n\binom{ n }{ k }\| D \|^{n-k}\| N^k \|                             \\
+			              & =\sum_{k=0}^{r-1}\binom{ n }{ k }\rho(D)^{n-k}\| N \|^k                             \\
+			              & \leq c\sum_{k=0}^{r-1}\binom{ n }{ k }\rho(D)^n \label{SUBEQooDAUQooCeRKjl}         \\
+			              & =c\rho(D)^n\sum_{k=0}^{r-1}\binom{ n }{ k }                                         \\
+			              & \leq c\rho(D)^n\sum_{k=0}^{r-1}\frac{ n^{k-1} }{ k! }   \label{SUBEQooJZVDooEdbjFI} \\
+			              & \leq c\rho(D)^n\sum_{k=0}^{r-1}n^{r-2}  \label{SUBEQooXONCooBlYmbR}                 \\
+			              & =cr\rho(D)^nn^{r-2}.
+		\end{align}
+	\end{subequations}
+	Justifications.
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooDAUQooCeRKjl}. Nous avons posé \( c=\max_{k=1,\ldots, r-1}\| N \|^k\rho(D)^{-k}\).
+		\item Pour \eqref{SUBEQooJZVDooEdbjFI}. Lemme \ref{LEMooLPCXooYIzJsD}.
+		\item Pour \eqref{SUBEQooXONCooBlYmbR}. On oublie le \( k!\) et on remplace \( k\) par \( r-1\).
+	\end{itemize}
+
+	Récapitulons ces inéquations :
+	\begin{equation}
+		\| (D+N)^n \|\leq c'\rho(D)^nn^{r-2}
+	\end{equation}
+	où \( c'\) est une nouvelle constante. Du coup si \( \rho(D)<1\) alors \( \| (D+N)^k \|\to 0\) par lemme \ref{LemLJOSooEiNtTs}.
+\end{proof}
+
+
+
+
+\begin{lemma}[\cite{BIBooPWRQooGjpqBi,MonCerveau}]	\label{LEMooZWXGooQkgsqw}
+	Soient \( a_n\geq 0\) tels que
+	\begin{equation}
+		\sum_{n=0}^{\infty}a_n| x |^n<\infty
+	\end{equation}
+	pour tout \( x\in B(0,r)\).
+
+	Alors
+	\begin{equation}
+		\lim_{t\to 0}\sum_{n=2}^{\infty}a_nt^{n-1}=0.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Soit \( 0<\epsilon<1\). Soit \( 0<x<\min\{ r,1 \}\). Nous notons \(M= \sum_{n=2}^{\infty}a_nx^n\). Nous considérons un nombre \( 0<t_0<1\) tel que
+	\begin{equation}
+		t_0<x^2.
+	\end{equation}
+	En utilisant les propositions \ref{PROPooDWZKooNwXsdV} et \ref{PROPooUOFKooYyGwIr}, nous avons \( t_0^{n-1}<x^{2n-2}\). Mais vu que nous ne considérons que \( n\geq 2\) et que \( 0<x<1\), nous en déduisons
+	\begin{equation}
+		t_0^{n-1}<x^{2n-2}<x^n.
+	\end{equation}
+	Nous posons enfin \( t_1<\epsilon t_0\) de telle sorte à avoir, en utilisant \ref{PROPooURSHooFfEsFS},
+	\begin{equation}
+		a_nt_1^{n-1}<a_n\epsilon^{n-1}t_0^{n-1}<\epsilon^na_nx^n<\epsilon a_nx^n.
+	\end{equation}
+	Enfin nous avons
+	\begin{equation}
+		\sum_{n=2}^{\infty}a_nt_1^{n-1}\leq \epsilon\sum_{n=2}^{\infty}a_nx^n=\epsilon M.
+	\end{equation}
+	Nous avons donc trouvé un \( t>0\) (donné par \( \epsilon t_0\)) tel que si \( t_1<t\) alors \( \sum_{n=2}^{\infty}a_nt^{n-1}<\epsilon M\). Cela prouve bien la limite demandée.
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Densité des polynômes}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Théorème de Stone-Weierstrass}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Voir le thème~\ref{THEooPUIIooLDPUuq}.
+
+Note : le lemme~\ref{LemYdYLXb} est utilisé dans la démonstration du théorème~\ref{ThoWmAzSMF}; c'est pour cela que nous l'avons isolé.
+
+\begin{lemma}       \label{LemYdYLXb}
+	Il existe une suite de polynômes sur \( \mathopen[ 0 , 1 \mathclose]\) convergeant uniformément vers la fonction racine carrée.
+\end{lemma}
+
+\begin{proof}
+	Nous donnons cette suite par récurrence :
+	\begin{subequations}
+		\begin{align}
+			P_0(t)     & =0                                           \\
+			P_{n+1}(t) & =P_n(t)+\frac{ 1 }{2}\big( t-P_n(t)^2 \big).
+		\end{align}
+	\end{subequations}
+	Nous commençons par montrer que pour tout \( t\in \mathopen[ 0 , 1 \mathclose]\), \( P_n(t)\in\mathopen[ 0 , \sqrt{t} \mathclose]\). Pour \( P_0\), c'est évident. Ensuite nous avons
+	\begin{subequations}
+		\begin{align}
+			P_{n+1}(t)-\sqrt{t} & =P_n(t)-\sqrt{t}+\frac{ 1 }{2}(t-P_n(t)^2)                                                       \\
+			                    & =\big( P_n(t)-\sqrt{t} \big)\left( 1-\frac{ 1 }{2}\frac{ t-P_n(t)^2 }{ P_n(t)-\sqrt{t} } \right) \\
+			                    & =\big( P_n(t)-\sqrt{t} \big)\left( 1-\frac{ \sqrt{t}+P_n(t) }{2} \right)                         \\
+			                    & \leq 0
+		\end{align}
+	\end{subequations}
+	parce que \( \sqrt{t} \leq 1\) et \( P_n(t)\leq 1\) par hypothèse de récurrence.
+
+	Nous savons au passage que \( P_n(t)\) est une suite réelle croissante parce que \( t-P_n(t)^2\geq t-(\sqrt{t})^2=0\). La suite \( P_n(t)\) est donc croissante et majorée par \( \sqrt{t}\); elle converge donc. Les candidats limites sont déterminés par l'équation
+	\begin{equation}
+		\ell=\ell+\frac{ 1 }{2}(t-\ell^2),
+	\end{equation}
+	dont les solutions sont \( \ell=\pm\sqrt{t}\). La suite étant positive, nous avons une convergence ponctuelle de \( P_n\) vers la racine carrée. Cette suite étant une suite croissante de fonctions continues sur un compact, convergeant ponctuellement vers une fonction continue, la convergence est uniforme par le théorème de Dini~\ref{ThoUFPLEZh}.
+\end{proof}
+
+\begin{lemma}           \label{LemUuxcqY}
+	Soit \( K\), un compact de \( \eR\) et \( f_n\) une suite de fonctions sur \( K\) convergeant uniformément vers \( f\). Soient un espace topologique \( X\) et une application \( g\colon X\to K\). Alors \( f_n\circ g\) converge uniformément vers \( f\circ g\).
+\end{lemma}
+
+\begin{proof}
+	En effet, pour tout \( x\in X\) nous avons
+	\begin{equation}
+		\| (f_n\circ g)-(f\circ g) \|_{\infty}=\sup_{x\in X} \| f_n\big( g(x) \big)-f\big( g(x) \big) \|\leq \| f_n-f \|_{\infty}.
+	\end{equation}
+	Par conséquent, si \( \epsilon>0\) est donné, il suffit de choisir \( n\) de telle sorte à avoir \( \| f_n-f \|_{\infty}<\epsilon\) et nous avons \( \| (f_n\circ g)-(f\circ g) \|_{\infty}\leq \epsilon\).
+\end{proof}
+
+\begin{definition}
+	Nous disons qu'une algèbre \( A\) de fonctions sur un espace \( X\) \defe{sépare les points}{sépare!les points} de \( X\) si pour tout \( x_1\neq x_2\) il existe \( g\in A\) telle que \( g(x_1)\neq g(x_2)\).
+\end{definition}
+
+Nous pouvons maintenant énoncer et démontrer une forme nettement plus générale du théorème de Stone-Weierstrass. Le théorème \ref{ThoWmAzSMF} le donne pour \( C(X,\eC)\) et le théorème \ref{THOooMDILooGPXbTW} le donne pour \( C(X,\eR)\).
+
+\begin{theorem}[Stone-Weierstrass\cite{MGecheleSW}] \label{THOooMDILooGPXbTW}
+	Soient \( X\), un espace compact et Hausdorff. Soit \( A\), une sous-algèbre de \( C(X,\eR)\) contenant une fonction constante non nulle. Alors \( A\) est dense dans \( \Big( C(X,\eR),\| . \|_{\infty}\Big)\) si et seulement si \( A\) sépare les points de \(X\).
+\end{theorem}
+\index{théorème!Stone-Weierstrass}
+
+\begin{proof}
+	Nous allons écrire la démonstration en plusieurs étapes (dont la première est le lemme~\ref{LemYdYLXb}). Nous commençons par la première partie, sur les réels.
+
+	\begin{description}
+		\item[Première étape] Pour tout \( x\neq y\in X\) et pour tout \( \alpha,\beta\in \eR\), il existe une fonction \( f\in A\) telle que \( f(x)=\alpha\) et \( f(y)=\beta\).
+
+		      En effet, vu que \( A\) sépare les points nous pouvons considérer une fonction \( g\in A\) telle que \( g(x)\neq g(y)\) et ensuite poser
+		      \begin{equation}
+			      f(z)=\alpha-\frac{ \alpha-\beta }{ g(y)-g(x) }\big( g(z)-g(x) \big).
+		      \end{equation}
+		      Les constantes faisant partie de \( A\), cette fonction \( f\) est encore dans \( A\).
+
+		\item[Seconde étape] Pour tout \( n\)-uples de fonctions \( f_1,\ldots, f_n\) dans \( \bar A\), les fonctions \( \min(f_1,\ldots, f_n)\) et \( \max(f_1,\ldots, f_n)\) sont dans \( \bar A\).
+
+		      Nous le démontrons pour \( n=2\); le reste allant évidemment par récurrence. Soient \( f,g\in \bar A\). Étant donné que
+		      \begin{subequations}
+			      \begin{align}
+				      \max(f,g) & =\frac{ f+g }{2}+\frac{ | f-g | }{2}  \\
+				      \min(f,g) & =\frac{ f+g }{2}-\frac{ | f-g | }{2},
+			      \end{align}
+		      \end{subequations}
+		      if suffit de montrer que si \( f\in\bar A\) alors \( | f |\in \bar A\). Si \( f\) est nulle, c'est évident; supposons que \( f\neq 0\) et posons \( M=\| f \|_{\infty}\neq 0\). Pour tout \( x\in X\) nous avons
+		      \begin{equation}
+			      \frac{ f(x)^2 }{ M^2 }\in \mathopen[ 0 , 1 \mathclose].
+		      \end{equation}
+		      Nous considérons alors la suite
+		      \begin{equation}
+			      h_n=P_n\circ\frac{ f^2 }{ M^2 }
+		      \end{equation}
+		      où \( P_n\) est une suite de polynômes convergent uniformément vers la racine carrée (voir lemme~\ref{LemYdYLXb}). Le lemme~\ref{LemUuxcqY} nous assure que \( h_n\) converge uniformément vers \( \frac{ | f | }{ M }\) dans \( C(X,\eR)\). Étant donné que \( \bar A\) est également une algèbre, \( h_n\) est dans \( \bar A\) pour tout \( n\) et la limite s'y trouve également (pour rappel, la fermeture \( \bar A\) est celle de la topologie de la convergence uniforme).
+
+		\item[Troisième étape] Soit \( \epsilon>0\), \( f\in C(X,\eR)\) et \( x\in X\). Il existe une fonction \( g_x\in \bar A\) telle que
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      g_x(x)=f(x)\\
+				      g_x(y)\leq f(y)+\epsilon
+			      \end{numcases}
+		      \end{subequations}
+		      pour tout \( y\in X\).
+
+		      Soit \( z\in X\setminus\{ x \}\) et une fonction \( h_z\) telle que \( h_z(x)=f(x)\) et \( h_z(z)=f(z)\). Une telle fonction existe par une des étapes précédentes. Étant donné que \( f\) et \( h_z\) sont continues, il existe un voisinage ouvert \( V_z\) de \( z\) sur lequel
+		      \begin{equation}
+			      h_z(y)\leq f(y)+\epsilon
+		      \end{equation}
+		      pour tout \( y\in V_z\). Nous pouvons sélectionner un nombre fini de points \( z_1,\ldots, z_n\) tels que les ouverts \( V_{z_1},\ldots, V_{z_n}\) recouvrent \( X\) (parce que \( X\) est compact, de tout recouvrement par des ouverts, nous extrayons un sous recouvrement fini.). Nous posons
+		      \begin{equation}
+			      g_x=\min(h_{z_1},\ldots, h_{z_n})\in \bar A.
+		      \end{equation}
+		      Si \( y\in X\), nous sélectionnons le \( i\) tel que \( h_{z_i}(y)\leq f(y)+\epsilon\) et nous avons
+		      \begin{equation}
+			      g_x(y)\leq h_{z_i}(y)\leq f(y)+\epsilon.
+		      \end{equation}
+
+		\item[Étape \wikipedia{fr}{Final_Doom}{finale}] Soit \( \epsilon>0\) et \( f\in C(X,\eR)\). Pour chaque \( x\in X\) nous considérons une fonction \( g_x\in \bar A\) telle que
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      g_x(x)=f(x)\\
+				      g_x(y)\leq f(y)+\epsilon
+			      \end{numcases}
+		      \end{subequations}
+		      pour tout \( y\in X\). Les fonctions \( f\) et \( g_x\) sont continues, donc il existe un voisinage ouvert \( W_x\) de \( x\) sur lequel
+		      \begin{equation}
+			      g_x(y)\geq f(y)-\epsilon.
+		      \end{equation}
+		      De ces \( W_x\) nous extrayons un sous recouvrement fini de \( X\) : \( W_{x_1},\ldots, W_{x_m}\) et nous posons
+		      \begin{equation}
+			      \varphi=\max(g_{x_1},\ldots, g_{x_n})\in \bar A.
+		      \end{equation}
+		      Si \( y\in X\), il existe un \( i\) tel que
+		      \begin{equation}
+			      \varphi(y)\geq g_{x_i}(y)\geq f(y)-\epsilon.
+		      \end{equation}
+		      La première inégalité est le fait que \( \varphi\) est le maximum des \( g_{x_k}\), et la seconde est le choix de \( i\). Donc pour tout \( y\in X\) nous avons
+		      \begin{equation}        \label{EqJMxHaF}
+			      f(y)-\epsilon\leq \varphi(y)\leq f(y)+\epsilon.
+		      \end{equation}
+		      La première inégalité est ce que l'on vient de faire. La seconde est le fait que pour tout \( i\) nous ayons \( g_{x_i}(y)\leq f(y)+\epsilon\); le fait que \( \varphi\) soit le maximum sur les \( i\) ne change pas l'inégalité.
+
+		      Le fait que les inégalités \eqref{EqJMxHaF} soient vraies pour tout \( y\in X\) signifie que \( \| \varphi-f \|_{\infty}\leq \epsilon\), et donc que \( f\in \Adh\big( \Adh(A) \big)=\Adh(A)\).
+	\end{description}
+
+	Tout cela prouve que \( C(X,\eR)\subset \Adh(A)\). L'inclusion inverse est le fait que \( C(X,\eR)\) est fermé pour la norme \( \| . \|_{\infty}\), étant donné qu'une limite uniforme de fonctions continues est continue.
+
+	Nous pouvons maintenant nous tourner vers l'énoncé concernant \( C(X,\eC)\).
+\end{proof}
+
+\begin{theorem}[Stone-Weierstrass\cite{MonCerveau}] \label{ThoWmAzSMF}
+	Soit \( X\), un espace compact et Hausdorff. Soit une sous-algèbre\footnote{Algèbre, définition \ref{DefAEbnJqI}.} \( A\) stable par conjugaison\footnote{Pour tout \( g\in A\), nous avons \( \bar g\in A\).} de \( C(X,\eC)\) contenant une fonction constante non nulle. Alors \( A\) est dense dans \( \Big( C(X,\eC),\| . \|_{\infty}\Big)\) si et seulement si \( A\) sépare les points de \(X\).
+
+	Entendons-nous bien : ici \( A\) et \( C(X,\eC)\) sont des algèbres à coefficients dans \( \eC\).
+\end{theorem}
+
+\begin{proof}
+	La preuve de cette version dans \( C(X,\eC)\) va bien entendu fortement reposer sur le cas dans \( C(X,\eR)\) que nous venons de prouver. Soit donc \( A\), une sous-algèbre vérifiant les hypothèses.
+	\begin{subproof}
+		\spitem[\( \real(A)\subset A\)]
+		Nous prouvons que si \( f\in A\), alors \( \real(f)\in A\). En effet, vu que \( A\) est stable par conjugaison, si \( f\in A\), alors \( \bar f\in A\) et \( f+\bar f=2\real(f)\in A\).
+	\end{subproof}
+	Nous posons
+	\begin{equation}
+		A_1=\{ \real(g)\tq g\in A \}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[\( A_1\) est une sous-algèbre de \( A\)]
+		Le fait que les éléments de \( A_1\) soient dans \( A\) est déjà fait. Pour le produit, si \( g_1,h_1\in A_1\), alors il existe \( g,h\in A\) tels que \( g_1=\real(g)\) et \( h_1=\real(h)\). Nous avons
+		\begin{equation}
+			(g_1+ig_2)(h_1+ih_2)=g_1h_1-g_2h_2+i(g_1h_2+g_2h_1)\in A.
+		\end{equation}
+		La partie réelle de cela est dans \( A_1\), donc
+		\begin{equation}        \label{EQooYAGUooJVpaEa}
+			g_1h_2-g_2h_1\in A_1.
+		\end{equation}
+		Mais comme \( g_1+ig_2\in A\), nous avons aussi \( g_1-ig_2\in A \) et donc
+		\begin{equation}
+			(g_1-ig_2)(h_1+ih_2)=g_1h_1+g_2h_2+i(g_1h_2-g_2h_1)\in A.
+		\end{equation}
+		La partie réelle de cela est dans \( A_1\). Donc
+		\begin{equation}
+			g_1h_1+g_2h_2\in A_1.
+		\end{equation}
+		En comparant avec \eqref{EQooYAGUooJVpaEa}, nous avons \( g_1h_1\in A_1\).
+		\spitem[\( A_1\) sépare les points de \( X\)]
+		Soient \( x,y\in X\) ainsi que \( f\in A\) séparant les points \( x\) et \( y\), c'est-à-dire
+		\begin{equation}
+			f(x)\neq f(y).
+		\end{equation}
+		Supposons \( f_1(x)=f_1(y)\). Vu que \( f\) sépare, si ce ne sont pas les parties réelles, ce sont les parties imaginaires. C'est-à-dire que  \( f_2(x)\neq f_2(y)\). Mais d'autre part, \( if=-f_2+if_1\in A\),  donc en réalité \( f_2\in A_1\) également.
+	\end{subproof}
+	Le partie \( A_1\) dans \( C(X,\eR)\) vérifie les hypothèses de Stone-Weierstrass réel \ref{THOooMDILooGPXbTW}, donc \( A_1\) est dense dans \( C(X,\eR)\). Le même raisonnement montre que \( A_2\) est également dense dans \( C(X,\eR)\)\quext{Il me semble même que \( A_1=A_2\) et qu'il y a un raccourci possible dans cette preuve en exploitant ce fait. Écrivez-moi pour dire ce que vous en pensez.}
+
+	Soit maintenant le vif de la preuve : \( f\in C(X,\eC)\) avec \( f=u+iv\), les fonctions \( u\) et \( v \) étant dans \( C(X,\eR)\). Nous avons des suites \( u_{k}\stackrel{unif}{\longrightarrow}u\) et \( v_k\stackrel{unif}{\longrightarrow}v\) pour des suites \( (u_k) \) et \( (v_k)\) dans \( C(X,\eR)\).
+
+	Par le même genre de raisonnements que nous avons déjà fait, nous nous convainquons que \( u_k+iv_k\in A\) pour chaque \( k\). Nous avons
+	\begin{equation}
+		\| u_k+iv_k-u-iv \|_{\infty}\leq \| u_k-u \|_{\infty}+\| v_k-v \|_{\infty}
+	\end{equation}
+	En prenant \( k\) assez grand, les deux termes peuvent être rendus plus petit que \( \epsilon\).
+\end{proof}
+
+\begin{corollary}[\cite{MonCerveau}]        \label{CORooNIUJooLDrPSv}
+	Soit \( B\), la boule fermée de centre \( 0\) et de rayon \( 1\) dans \( \eR^n\). La partie \( C^{\infty}(B,\eR^n)\) est dense dans \( \big( C(B,B),\| . \|_{\infty} \big)\).
+\end{corollary}
+
+\begin{proof}
+	Soit \( f \in C(B,B)\) et \( \epsilon>0\). La fonction donnant la composante \( i\) est une fonction \( f_i\in C(B,\eR)\) et il existe donc, par le théorème de Stone-Weierstrass~\ref{ThoWmAzSMF}, une fonction \( g_i\in  C^{\infty}(B,\eR)\) telle que \( \| g_i-f_i \|_{\infty}\leq \epsilon\).
+
+	La fonction \( g\) dont les composantes sont les \( g_i\) ainsi construits vérifie \( \| g-f \|_{\infty}\leq n\epsilon\).
+\end{proof}
+
+Attention toutefois que rien n'assure que les fonctions construites par le corolaire~\ref{CORooNIUJooLDrPSv} prennent leurs valeurs dans \( B\).
+
+Le théorème suivant est un des énoncés les plus classiques de Stone-Weierstrass. Il découle évidemment du théorème général~\ref{ThoWmAzSMF} (encore qu'il faut alors bien comprendre qu'il faut traiter la fonction \( x\mapsto \sqrt{x}\) séparément). Il en existe cependant une preuve indépendante via les polynômes de Bernstein, dans le théorème \ref{ThoDJIvrty}. Par contre, n'allez pas croire que c'est plus simple.
+
+\begin{theorem}[Stone-Weierstrass]     \label{ThoGddfas}
+	Soit \( f\), une fonction continue sur un compact \( K\subset \eR\) à valeurs dans \( \eR\). Alors pour tout \( \epsilon>0\), il existe un polynôme \( P\) tel que \( \| P-f \|_{\infty}<\epsilon\).
+
+	Autrement dit, les polynômes sont denses dans \(\big(  C^0(K,\eR) ,\| . \|_{\infty}\big)\).
+\end{theorem}
+\index{théorème!Stone-Weierstrass}
+
+\begin{proof}
+	Nous allons prouver que les polynômes sur \( \eR\), restreins à \( K\) satisfont les hypothèses du théorème de Stone-Weierstrass \ref{THOooMDILooGPXbTW}.
+	\begin{subproof}
+		\spitem[Partie de \(  C^0(K,\eR)\)]
+		Les polynômes sont des fonctions continues par la proposition \ref{PROPooUQNZooSSHLqr}.
+		\spitem[Sous-algèbre]
+		Les produits et sommes de polynômes restent des polynômes.
+		\spitem[Contient une fonction constante non nulle]
+		Les fonctions constantes sont des polynômes.
+		\spitem[Sépare les points de \( K\)]
+		Le polynôme \( P(x)=x\) sépare tous les points que vous voulez.
+	\end{subproof}
+\end{proof}
+
+
+\begin{theorem}[Stone-Weierstrass]     \label{THOooJGAJooBcTtDH}
+	Soit \( f\in C^0(K, \eR^n)\) où \( K\) est un compact \( K\subset \eR^n\) à valeurs dans \( \eR\). Alors pour tout \( \epsilon>0\), il existe un polynôme \(P \colon \eR^n\to \eR^n  \) tel que \( \| P-f \|_{K}<\epsilon\).
+
+	Autrement dit, les polynômes sont denses dans \(\big(  C^0(K,\eR^n) ,\| . \|_{K}\big)\).
+\end{theorem}
+\index{théorème!Stone-Weierstrass}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Primitive de fonction continue}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{proposition}[\cite{MQKDooSuEGxk}]    \label{PropQACVooBnHtRJ}
+	Soit un intervalle compact \( K\) de \( \eR\) et une suite \( (f_n)\) de fonctions continues sur \( K\) telles que \( f_n\stackrel{unif}{\longrightarrow}f\). Si chacune des fonctions \( f_n\) a une primitive sur \( K\) alors \( f\) également.
+\end{proposition}
+
+\begin{proof}
+	Soit \( x_0\in K\) et les primitives \( F_n\) choisies\footnote{Les fonctions \( F_n\) étant dérivables sont continues.} pour avoir \( F_n'=f_n\) et \( F_n(x_0)=0\). Nous allons voir que \( (F_n)\) est une suite de Cauchy dans \( \big( K,\| . \|_{\infty} \big)\). Soient \( n,m\in \eN\) et \( x\in K\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			\| F_n-F_m \|_{\infty}=\sup_{x\in K}\| F_n(x)-F_m(x) \|                                                                   \\
+			 & =\sup_{x\in K}\| (F_n-F_m)(x) \|                                                                                       \\
+			 & \leq\sup_{x\in K}\Big( \| F_n'-F_m' \|_{\mathopen[ x , x_0 \mathclose]}\| x-x_0 \| \Big)   \label{SUBEQooDABTooNgyVaG} \\
+			 & \leq\sup_{x\in K}\Big( \| f_n-f_m \|\diam(K) \Big) \label{SUBEQooKTTOooMJVsEZ}                                         \\
+			 & \leq \diam(K)\| f_n-f_m \|_K.
+		\end{align}
+	\end{subequations}
+	Justifications.
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooDABTooNgyVaG}. Théorème des accroissements finis~\ref{ThoNAKKght}.
+		\item Pour \eqref{SUBEQooKTTOooMJVsEZ}. Parce que \( x\in K\) et que \( K\) est borné, \( \| x-x_0 \|\) est majoré par \( \diam(K)\).
+	\end{itemize}
+	Vu que \( (f_n) \) est de Cauchy, si \( n\) et \( m\) sont assez grands, cela tend vers zéro. La suite \( (F_n)\) converge donc vers une certaine fonction \( F\).
+
+	Le théorème~\ref{THOooXZQCooSRteSr} nous permet de permuter la limite et la dérivée pour conclure que \( F'=f\) et donc que \( f\) a une primitive sur \( K\).
+\end{proof}
+
+\begin{proposition}[\cite{MQKDooSuEGxk}]        \label{PropKKGAooDQYGKg}
+	Soit un intervalle ouvert \( I\) de \( \eR\) et une fonction \( f\colon I\to \eR\) qui admet une primitive sur tout compact de \( I\). Alors \( f\) a une primitive sur \( I\).
+\end{proposition}
+\index{primitive!de fonction continue}
+
+\begin{proof}
+	Nous considérons une suite exhaustive\footnote{Voir le lemme~\ref{LemGDeZlOo}.} de compacts \( K_n\) pour \( I\) et \( x_0\in K_0\). Nous considérons aussi \( F_n\) la primitive de \( f\) sur \( K_n\) telle que \( F_n(x_0)=0\) (possible parce que \( x_0\in K_n\) pour tout \( n\)). Les fonctions \( F_n\) sont des restrictions les unes des autres, et nous pouvons définir
+	\begin{equation}
+		\begin{aligned}
+			F\colon I & \to \eR                             \\
+			x         & \mapsto F_n(x)\text{ si } x\in K_n.
+		\end{aligned}
+	\end{equation}
+	Nous avons évidemment \( F(x_0)=0\) et nous allons prouver que \( F\) est une primitive de \( f\) sur \( I\). Soit \( x\in I\) vu que \( I\) est ouvert, nous pouvons choisir \( n_0\) tel que \( x\in\Int(K_{n_0})\). Les fonctions \( F\) et \( F_{n_0}\) sont égales sur \( K_n\) et donc sur un ouvert autour de \( x\). Par conséquent \( F\) est dérivable en \( x\) et \( F'(x)=F'_{n_0}(x)=f(x)\).
+\end{proof}
+
+\begin{theorem}    \label{ThoEXXyooCLwgQg}
+	Soit \( I\) un intervalle ouvert de \( \eR\). Une fonction continue sur \( I\) admet une primitive\footnote{Définition~\ref{DefXVMVooWhsfuI}.} sur \( I\).
+\end{theorem}
+
+\begin{proof}
+	Sur chaque compact de \( I\), la fonction \( f\) est limite uniforme de polynômes\footnote{Si tu veux te passer de Stone-Weierstrass, tu peux prouver que toute fonction continue sur un compact est limite uniforme de fonctions affines par morceaux, par exemple. Voir \cite{MQKDooSuEGxk}.} (théorème de Stone-Weierstrass~\ref{ThoGddfas}). Donc \( f\) est primitivable sur tout compact de \( I\) (proposition~\ref{PropQACVooBnHtRJ}) et donc sur \( I\) par la proposition~\ref{PropKKGAooDQYGKg}.
+\end{proof}
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Dérivation de la fonction puissance (première)}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous n'allons pas complètement résoudre la question de la dérivation de la fonction \( x\mapsto a^x\); il faudrait des logarithmes, et nous ne les avons pas encore définis. Le logarithme sera introduit comme fonction inverse de l'exponentielle en \ref{DEFooELGOooGiZQjt}.
+
+\begin{proposition}[\cite{BIBooXUZHooOHWxiF}]       \label{PROPooMXCDooBffXbl}
+	Soit la fonction puissance
+	\begin{equation}
+		\begin{aligned}
+			g_a\colon \eR & \to \eR      \\
+			x             & \mapsto a^x.
+		\end{aligned}
+	\end{equation}
+	\begin{enumerate}
+		\item
+		      La fonction \( g_a\) est dérivable.
+		\item
+		      La dérivée vérifie l'équation
+		      \begin{equation}        \label{EQooNIUJooPqDnax}
+			      g_a'(x)=g_a'(0)g_a(x).
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	La fonction \( g_a\) est continue par \ref{PROPooVADRooLCLOzP}\ref{ITEMooQHYRooJIewyp}. La proposition \ref{ThoEXXyooCLwgQg} nous dit donc que la fonction \( g_a\) admet une primitive sur \( \eR\). Nous notons \( F\) une telle primitive.
+
+	Soit \( x\in \eR\). En posant \( F_x(t)=F(x+t)\), nous avons une primitive de \( t\mapsto a^xa^t\). En effet
+	\begin{equation}
+		F_x'(t)=F'(x+t)\Dsdd{ x+t }{t}{0}=a^{x+t}=a^xa^t.
+	\end{equation}
+	Par ailleurs la fonction \( t\mapsto a^xF(t)\) est également une primitive de \( t\mapsto a^xa^t\). Donc il existe un nombre \( C(x)\) tel que
+	\begin{equation}
+		F_x(t)=F(x+t)=a^xF(t)+C(x).
+	\end{equation}
+
+	Le nombre \( F(1)-F(0)\) est un nombre sans histoires. Nous avons :
+	\begin{subequations}        \label{SUBALIGNooVARJooIcPEHN}
+		\begin{align}
+			g_a(x)\big( F(1)-F(0) \big) & =g_a(x)F(1)-g_a(x)F(0)   \\
+			                            & =F_x(1)-C(x)-F_x(0)+C(x) \\
+			                            & =F_x(1)-F_x(0)           \\
+			                            & =F(1+x)-F(x).
+		\end{align}
+	\end{subequations}
+	La fonction \( F\) étant dérivable, nous en déduisons que \( g_a\) est dérivable.
+
+	Vu que nous n'avons aucune idée de la forme de \( F\), nous ne pouvons pas tirer beaucoup d'informations d'une dérivation des membres de gauche et de droite de \eqref{SUBALIGNooVARJooIcPEHN}.
+
+	En ce qui concerne la formule, nous écrivons la fameuse équation fonctionnelle\footnote{Pour rappel, proposition \ref{PROPooVADRooLCLOzP}\ref{ITEMooSCJBooNVJZah}.}
+	\begin{equation}
+		g_a(x+y)=g_a(x)g_a(y)
+	\end{equation}
+	Nous fixons \( x\) et dérivons par rapport à \( y\) en \( y=y_0\) :
+	\begin{equation}
+		g_a'(x+y_0)=g_a(x)g_a'(y_0).
+	\end{equation}
+	En posant \( y_0=0\) nous trouvons le résultat demandé.
+\end{proof}
+
+\begin{normaltext}
+	La démonstration donnée dans \cite{BIBooXUZHooOHWxiF} s'assure d'abord de l'existence d'une intégrale (lemme \ref{LEMooWKSWooPptdEm}), pose ensuite  \( A=\int_0^1g_a(t)dt\) et fait le calcul suivant :
+	\begin{equation}
+		Ag_a(x)=\int_{0}^1g_a(x)g_a(t)dt=\int_{0}^1g_a(x+t)dt=\int_x^{x+1}g_a(t)dt.
+	\end{equation}
+	Vu que le membre de droite est une fonction dérivable de \( x\), nous concluons que \( g_a\) est dérivable. Cela demande donc toute la théorie de l'intégration pour prouver la \emph{dérivabilité} d'une fonction.
+
+	La démonstration donnée ici est à peine mieux. Elle utilise l'existence d'une primitive et donc tout le théorème de Stone-Weierstrass \ref{ThoGddfas}.
+
+	Dans les deux cas, je trouve que la situation n'est pas fameuse. Si vous êtes capable de montrer l'existence de la limite
+	\begin{equation}
+		\lim_{\epsilon\to 0}\frac{ a^{\epsilon}-1 }{ \epsilon }
+	\end{equation}
+	sans recourir à autre chose que des astuces sur les limites, je suis preneur. Ou, au contraire, si vous avez un argument pour dire que c'est impossible, dites-le moi également. Écrivez-moi.
+\end{normaltext}
+
+
+
+Nous posons une définition
+\begin{definition}      \label{DEFooPJKMooOfZzgy}
+	Soit \( a>0\). Nous nommons l'\defe{équation fonctionnelle}{équation fonctionnelle} l'équation
+	\begin{subequations}        \label{EQooULHBooByFVec}
+		\begin{numcases}{}
+			f(x+y)=f(x)f(y)\\
+			f(1)=a
+		\end{numcases}
+	\end{subequations}
+	pour la fonction inconnue \( f\colon \eR\to \eR\).
+\end{definition}
+
+Note : une équation du même type, avec \( f(x+y)=f(x)+f(y)\) sera dans le lemme \ref{LEMooXRMAooRADhOM}.
+
+
+\begin{definition}      \label{DEFooXMQTooSbZzqJ}
+	Soit \( a>0\). Nous nommons l'\defe{équation exponentielle}{équation exponentielle} l'équation
+	\begin{subequations}        \label{EQooGDBYooUoAFPW}
+		\begin{numcases}{}
+			y'=y\\
+			y(1)=a
+		\end{numcases}
+	\end{subequations}
+	pour la fonction inconnue \( y\colon \eR\to \eR\).
+\end{definition}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooWUQBooXzjmZv}
+	Si elle existe, la solution au problème
+	\begin{subequations}
+		\begin{numcases}{}
+			y'=y\\
+			y(0)=1
+		\end{numcases}
+	\end{subequations}
+	vérifie \( y(x)=1/y(-x)\).
+
+	En particulier une telle solution ne s'annule pas sur \( \eR\).
+\end{lemma}
+
+\begin{proof}
+	Supposons que \( y\) soit une solution, et posons \( h(x)=y(x)y(-x)\). Une dérivation montre que \( h'(x)=0\). Vu que \( h(0)=1\), nous avons \( h(x)=1\) pour tout \( x\). Par conséquent \( y(x)y(-x)=1\) pour tout \( x\).
+\end{proof}
+
+
+\begin{proposition}[Unicité de l'exponentielle] \label{PropDJQSooYIwwhy}
+	Si elle existe, la solution au problème
+	\begin{subequations}
+		\begin{numcases}{}
+			y'=y\\
+			y(0)=1
+		\end{numcases}
+	\end{subequations}
+	est unique.
+\end{proposition}
+\index{exponentielle!unicité}
+
+\begin{proof}
+	Soient \( y\) et \( g\) deux solutions et considérions la fonction \( h(x)=g(x)y(-x)\). Un calcul immédiat donne
+	\begin{equation}
+		h'(x)=0
+	\end{equation}
+	et donc \( h\) est constante. Vu que \( h(0)=1\) nous avons \( g(x)y(-x)=1\) pour tout \( x\). Grâce au lemme \ref{LEMooWUQBooXzjmZv} qui nous indisque que \( y\) ne s'annule pas, nous pouvons alors écrire
+	\begin{equation}
+		g(x)=\frac{1}{ y(-x) }=y(x).
+	\end{equation}
+\end{proof}
+
+\begin{normaltext}
+	Nous savons qu'il existe une unique solution de l'équation exponentielle avec \( a=1\). Avec la relation
+	\begin{equation}
+		g_a'(x)=g_a(x)g_a'(0),
+	\end{equation}
+	de la proposition \ref{PROPooMXCDooBffXbl}, nous n'en sommes pas loin. Il faut encore savoir si il existe un \( a>0\) tel que \( g_a'(0)=1\). Notre culture générale nous dit qu'un tel réel existe et est la fameuse constante \( e\).
+
+	Nous nous attelons maintenant à la tâche de montrer l'existence de la chose.
+\end{normaltext}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Équation fonctionnelle}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Il n'est un secret pour personne (proposition \ref{PROPooVADRooLCLOzP}\ref{ITEMooSCJBooNVJZah}) que la fonction
+\begin{equation}
+	\begin{aligned}
+		g_a\colon \eR & \to \eR     \\
+		x             & \mapsto a^x
+	\end{aligned}
+\end{equation}
+vérifie l'équation fonctionnelle \eqref{EQooULHBooByFVec}. Nous pouvons nous demander à quel point cette propriété caractérise la fonction puissance.
+
+
+\begin{proposition}[\cite{BIBooXUZHooOHWxiF}]       \label{PROPooJDPEooYTDVtU}
+	Encore plusieurs résultats sur la fonction \( g_a\) avec \( a>0\).
+	\begin{enumerate}
+		\item       \label{ITEMooZJUEooVoqKul}
+		      La fonction \( g_a\) vérifie l'équation fonctionnelle.
+		\item       \label{ITEMooCSQXooUDyiMq}
+		      La dérivée vérifie \( g_a'(0)\neq 0\).
+		\item       \label{ITEMooCKIHooNuDwrk}
+		      Pour tout \( a\), en posant \( \alpha=1/g'_a(0)\) nous avons
+		      \begin{equation}
+			      g_{a^{\alpha}}'(0)=1.
+		      \end{equation}
+		\item       \label{ITEMooQQFRooWtlViJ}
+		      Il existe un unique \( e>0\) tel que
+		      \begin{equation}
+			      g_e'=g_e.
+		      \end{equation}
+		\item       \label{ITEMooERTLooWLjlnZ}
+		      Pour la valeur de \( e\) donnée en \ref{ITEMooQQFRooWtlViJ}, la fonction \( g_e\) vérifie l'équation exponentielle \eqref{EQooGDBYooUoAFPW}
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      g_e'=g_e\\
+				      g_e(1)=e.
+			      \end{numcases}
+		      \end{subequations}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Un point à la fois.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooZJUEooVoqKul}]
+		Le fait que \( g_a\) vérifie l'équation fonctionnelle est la proposition \ref{PROPooVADRooLCLOzP}\ref{ITEMooSCJBooNVJZah}.
+
+		\spitem[Pour \ref{ITEMooCSQXooUDyiMq}]
+
+		La formule \eqref{EQooNIUJooPqDnax} de la proposition \ref{PROPooMXCDooBffXbl} nous assure que
+		\begin{equation}        \label{EQooSCDJooTvnjEp}
+			g_a'(x)=g_a(x)g_a'(0).
+		\end{equation}
+		Donc \( g_a'(0)=0\) impliquerait que \( g_a\) est constante, ce qui n'est pas le cas.
+
+		\spitem[Pour \ref{ITEMooCKIHooNuDwrk}]
+		Par ailleurs la proposition \ref{PROPooDWZKooNwXsdV} nous permet d'écrire
+		\begin{equation}
+			g_a(\alpha x)=g_{a^{\alpha}}(x).
+		\end{equation}
+		En dérivant des deux côtés,
+		\begin{equation}        \label{EQooIHCDooGSEGNm}
+			\alpha g_a'(\alpha x)=g'_{a^{\alpha}}(x).
+		\end{equation}
+		En posant donc \( \alpha=g'_a(0)\) et en évaluant \eqref{EQooIHCDooGSEGNm} en \( x=0\) nous trouvons le résultat.
+
+		\spitem[Pour \ref{ITEMooQQFRooWtlViJ}, existence]
+
+		Pour les valeurs de \( \alpha\) données par le point \ref{ITEMooCKIHooNuDwrk}, nous avons \( g'_{a^{\alpha}}(0)=1\), et l'équation \eqref{EQooSCDJooTvnjEp} nous donne alors
+		\begin{equation}
+			g_{a^{\alpha}}'(x)=g_{a^{\alpha}}(x).
+		\end{equation}
+		Comme de plus \( g_{a^{\alpha}}(0)=1\), cette fonction vérifie bien l'équation exponentielle.
+		\spitem[Pour \ref{ITEMooQQFRooWtlViJ}, unicité]
+
+		Si \( a\) et \( b\) font en sorte que \( g_a'=g_a\) et \( g_b'=g_b\), alors nous avons aussi \( g_a'(0)=g_b'(0)=1\) à cause de \eqref{EQooSCDJooTvnjEp}. Donc \( g_a\) et \( g_b\) vérifient l'équation de la proposition \ref{PropDJQSooYIwwhy} dont la solution est unique. Donc \( g_a=g_b\).
+
+		Pour tout \( x\) nous avons \( g_a(x)=g_b(x)\). En particulier pour \( x=1\) nous avons \( a=b\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooXUZHooOHWxiF}]    \label{PROPooGBUPooWtWaFI}
+	Soit \( a>0\). Nous considérons l'équation fonctionnelle \ref{DEFooPJKMooOfZzgy} et l'équation exponentielle \ref{DEFooXMQTooSbZzqJ} pour une fonction \( f\colon \eR\to \eR\).
+	\begin{enumerate}
+		\item       \label{ITEMooYHAVooWzJqBj}
+		      Si \( f\) vérifie l'équation fonctionnelle, alors
+		      \begin{equation}
+			      f(q)=a^q
+		      \end{equation}
+		      pour tout \( q\in \eQ\).
+		\item       \label{ITEMooQHOMooNVzSxn}
+		      Si \( f\) vérifie l'équation fonctionnelle et est monotone, alors \( f=g_a\).
+		\item       \label{ITEMooCNXOooZcrxeB}
+		      Si \( f\) vérifie l'équation fonctionnelle et est continue, alors \( f=g_a\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En beaucoup de parties. Nous commençons par prouver \ref{ITEMooYHAVooWzJqBj}. Nous supposons que \( f\colon \eR\to \eR\) est une fonction vérifiant l'équation fonctionnelle\footnote{Bien que ce ne soit pas strictement nécessaire ici, nous rappelons qu'une telle fonction existe par la proposition \ref{PROPooJDPEooYTDVtU}.}.
+	\begin{subproof}
+		\spitem[\( f(x)\geq 0\)]
+		Quel que soit \( x\in \eR\) nous avons
+		\begin{equation}
+			f(x)=f(\frac{ x }{2}+\frac{ x }{2})=f(\frac{ x }{2})^2\geq 0.
+		\end{equation}
+		Vous noterez que cet argument ne fonctionne pas si \( f\) est à valeurs dans \( \eC\) au lieu de \( \eR\).
+		\spitem[Pour \( n\in \eN\)]
+		Soit \( n\in \eN\). Je vous laisse rédiger la récurrence correctement, mais l'idée est que \( f(1)=a\) et ensuite que
+		\begin{equation}
+			f(n+1)=f(n)f(1)=f(1)^nf(1)=f(1)^{n+1}.
+		\end{equation}
+		\spitem[Pour \( m\in \eZ\)]
+		Nous avons d'une part que \( f(-m+m)=f(0)=1\), mais d'autre part que \( f(-m+m)=f(-m)f(m)\). Donc \( 1=f(-m)f(m)\); et nous concluons que
+		\begin{equation}
+			f(-m)=\frac{1}{ f(m) }.
+		\end{equation}
+		\spitem[Pour \( q=1/n\)]
+		Nous savons que \( f(1)=a\), mais \( 1=\frac{1}{ n }+\ldots\frac{1}{ n }\) (avec \( n\) termes), donc
+		\begin{equation}
+			a=f(\frac{1}{ n }+\ldots \frac{1}{ n })=f(\frac{1}{ n })^n.
+		\end{equation}
+		Cela implique que \( f(\frac{1}{ n })^n=a\). La proposition \ref{PROPooXQYFooPxoEHE} indique qu'il existe un unique \( x>0\) tel que \( x^n=a\). Vu que nous savons déjà que \( f\) est partout positive\footnote{C'est ici que l'hypothèse de fonction à valeurs dans \( \eR\) est cruciale. Pour \( f\colon \eR\to \eC\) ceci ne fonctionne pas, et de loin.}, cette contrainte fixe \( f(1/n)\) et la définition \ref{DEFooJWQLooWkOBxQ} nous permet d'écrire
+		\begin{equation}
+			f(\frac{1}{ n })=a^{1/n}.
+		\end{equation}
+		\spitem[Pour \( q\in \eQ\)]
+		Nous posons \( q=m/n\). Le nombre \( q\) peut être écrit sous la forme \( \frac{ m }{ n }=\frac{1}{ n }+\ldots +\frac{1}{ n }\) avec \( m\) termes. Donc
+		\begin{equation}
+			f(\frac{ m }{ n })=f(\frac{1}{ n }+\ldots \frac{1}{ n })=f(\frac{1}{ n })^{m}=(a^{1/n})^m=a^{m/n}
+		\end{equation}
+		où nous avons utilisé le lemme \ref{LEMooIDLJooZALNaD}.
+	\end{subproof}
+	La preuve de \ref{ITEMooYHAVooWzJqBj} est terminée.
+
+	\begin{subproof}
+		\spitem[Démonstration de \ref{ITEMooQHOMooNVzSxn}]
+		Nous faisons maintenant la preuve de \ref{ITEMooQHOMooNVzSxn}. Nous supposons que \( f\) vérifie l'équation fonctionnelle et qu'elle est monotone. Pour fixer les idées, nous supposons qu'elle est monotone croissante\footnote{Si \( f\) est monotone décroissante, soit vous adaptez la preuve, soit vous essayez de voir si on ne peut pas recycler le cas croissant en l'appliquant à \( -f\).}.
+
+		Nous considérons les parties\footnote{Il du meilleur gout de citer le lemme \ref{LemooHLHTooTyCZYL} pour dire qu'ils sont non vides.}
+		\begin{subequations}
+			\begin{align}
+				A=\{ q\in \eQ\tq q<x \} \\
+				B=\{ q\in \eQ\tq q>x \}.
+			\end{align}
+		\end{subequations}
+		Vu que \( f\) est croissante, nous avons \( f(x)\geq f(q)\) pour tout \( q\in A\) et \( f(x)\leq f(q)\) pour tout \( q\in B\). En passant au supremum et à l'infimum,
+		\begin{equation}
+			\sup_{q\in A}f(q)\leq f(x)\leq \inf_{q\in B}f(q).
+		\end{equation}
+		Mais il existe dans \( A\) une suite strictement croissante convergente \( q_i\) vers \( x\) (parce que \( x=\sup(A)\)), donc
+		\begin{equation}
+			a^x=\lim_ia^{q_i}
+		\end{equation}
+		par la définition \ref{DEFooOJMKooJgcCtq}. Et de même, il existe une suite \( r_i\) décroissante dans \( B\) telle que \( x=\lim r_i\). Cette suite donne aussi
+		\begin{equation}
+			a^x=\lim_i a^{r_i}.
+		\end{equation}
+		Nous avons donc l'encadrement
+		\begin{equation}
+			a^x\leq f(x)\leq a^x,
+		\end{equation}
+		qui implique que \( f(x)=a^x\).
+
+		\spitem[Démonstration de \ref{ITEMooCNXOooZcrxeB}]
+
+		Nous ne supposons plus que \( f\) est monotone. Au lieu de cela nous supposons qu'elle est continue. Nous avons déjà vu en \ref{ITEMooYHAVooWzJqBj} que \( f=g_a\) sur \( \eQ\). Mais par hypothèse \( f\) est continue et par la proposition \ref{PROPooVADRooLCLOzP}, \( g_a\) est continue. La proposition \ref{PROPooXWHYooFiVYfi} conclut que \( f=g_a\) sur \( \eR\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooXUZHooOHWxiF}]       \label{PROPooLTLWooBGcXAZ}
+	Soit \( a\in \eR\).
+
+	\begin{enumerate}
+		\item		\label{ITEMooJDMKooAfUWnv}
+		      Si elle existe, une solution \( y\) à l'équation différentielle
+		      \begin{subequations}		\label{EQooSJBOooWbgvDg}
+			      \begin{numcases}{}
+				      y'=y\\
+				      y(1)=a.
+			      \end{numcases}
+		      \end{subequations}
+		      est nulle soit sur tout \( \eR\) soit nulle part.
+
+		\item		\label{ITEMooYPYAooHtCflq}
+		      L'équation différentielle
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      y'=y\\
+				      y(1)=a.
+			      \end{numcases}
+		      \end{subequations}
+		      possède une unique solution \(y \colon \eR\to \eR  \). Cette solution est donnée par
+		      \begin{equation}		\label{EQooNHOOooLLGzRR}
+			      y(x)=\frac{ a }{ e }e^x
+		      \end{equation}
+		      où \( e\) est la constante définie en \ref{PROPooJDPEooYTDVtU}\ref{ITEMooQQFRooWtlViJ}.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooJDMKooAfUWnv}]
+		%-----------------------------------------------------------
+		Supposons que \( y\) est une solution non identiquement nulle. Soit \( x_1\in \eR\) tel que \( y(x_1)\neq 0\). Alors en posant
+		\begin{equation}
+			z(x)=\frac{ y(x+x_1) }{ y(x_1) }
+		\end{equation}
+		nous avons \( z'=z\) et \( z(0)=1\). Le lemme \ref{LEMooWUQBooXzjmZv} nous dit alors que \( z\) ne s'annule pas. Donc \( y\) non plus.
+
+		\spitem[Pour \ref{ITEMooYPYAooHtCflq}, existence]
+		%-----------------------------------------------------------
+		Si \( a=0\) alors nous avons la solution \( y=0\) qui fonctionne. Sinon, il suffit de vérifier que \eqref{EQooNHOOooLLGzRR} fonctionne. C'est le cas grâce à la proposition \ref{PROPooJDPEooYTDVtU} et au fait que \( y=\frac{ a }{ e }g_e\).
+
+		\spitem[Pour \ref{ITEMooYPYAooHtCflq}, unicité]
+		%-----------------------------------------------------------
+		Si \( a=0\) alors le point \ref{ITEMooJDMKooAfUWnv} dit que l'unique solution est \( y=0\). Si \( a\neq 0\) alors nous savons qu'aucune solution ne s'annule où que ce soit, et nous pouvons travailler.
+
+		Nous supposons que \( y\) et \( g\) sont des solutions du problème \eqref{EQooSJBOooWbgvDg}. En posant \( h_1(x)=y(x)y(-x)\) et en dérivant nous trouvons que \( h\) est constante. Nous posons \( A=h(x)\). En particulier pour \( x=1\) nous avons \( y(1)=a\) et donc
+		\begin{equation}
+			A=h(1)=ay(-1).
+		\end{equation}
+		Nous faisons de même avec \( h_2(x)=g(x)y(-x)\). Nous trouvons de même que \( h_2\) est constante et nous posons \( h_2(x)=B\). En évaluant en \( x=1\) nous trouvons
+		\begin{equation}
+			B=h_2(1)=ay(-1),
+		\end{equation}
+		de telle sorte que \( A=B\).
+
+		Nous avons le calcul suivant :
+		\begin{subequations}
+			\begin{align}
+				g(x) & =\frac{ h_2(x) }{ y(-x) } \\
+				     & =\frac{ B }{ y(-x) }      \\
+				     & =B\frac{ y(x) }{ A }      \\
+				     & =y(x).
+			\end{align}
+		\end{subequations}
+		Notons que ce calcul est possible parce que \( y(-x)\neq 0\) pour tout \( x\). D'où l'importance du point \ref{ITEMooJDMKooAfUWnv}.
+	\end{subproof}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Dérivation de la fonction puissance (seconde)}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La proposition suivante donne la dérivée de \( x\mapsto x^q\) pour tout \( q\in \eQ\). La formule donnée est encore valable pour \( x\mapsto x^{\alpha}\) pour tout \( \alpha\in \eR\), mais elle demandera plus de théorie pour être démontrée, voir la proposition \ref{PROPooKIASooGngEDh}.
+\begin{proposition}[\cite{MonCerveau}]     \label{PROPooSGLGooIgzque}
+	Pour tout \( \alpha\in \eQ\), si \( f_{\alpha}(x)=x^{\alpha}\) alors
+	\begin{equation}
+		f'_{\alpha}(x)=\alpha x^{\alpha-1}.
+	\end{equation}
+	En particulier, \( f_{\alpha}\) est de classe \(  C^{\infty}\) sur \( \eR\setminus\{ 0 \}\).
+\end{proposition}
+
+\begin{proof}
+	Petit à petit.
+	\begin{subproof}
+		\spitem[Naturel]
+		Nous prouvons que \( (x^n)'=nx^{n-1}\) par récurrence en utilisant la règle de Leibniz de la propositon  \ref{PROPooOUZOooEcYKxn}\ref{ITEMooMQERooBCqnvS}.
+
+		D'abord pour \( n=1\) nous avons \( f_1(x)=x\) et donc
+		\begin{equation}
+			f_1'(x)=\lim_{\epsilon\to 0}\frac{ (x+\epsilon)-x }{ \epsilon }=1.
+		\end{equation}
+		Supposons que \( f_k'(x)=kx^{k-1}\) pour un certain \( k\in \eN\). Nous prouvons que \( f_{k+1}'(x)=(k+1)x^{k}\).  Nous avons
+		\begin{equation}
+			x^{k+1}=xx^k.
+		\end{equation}
+		En utilisant la règle de Leibniz et l'hypothèse de récurrence,
+		\begin{equation}
+			\big( x^{k+1} \big)'=(x)'x^k+x\big( x^k \big)'
+			=x^k+x\big( kx^{k-1} \big)
+			=x^k+kx^k
+			=(k+1)x^k,
+		\end{equation}
+		ce qu'il fallait démontrer.
+
+		\spitem[Rationnel positif]
+		Soit donc \( \alpha=p/q\) avec \( p,q\in \eN\). Le lemme \ref{LEMooIDLJooZALNaD} nous permet d'écrire \( f_{p/q}(x)=x^{p/q}=(x^p)^{1/q}\). Cela donne
+		\begin{equation}
+			f_{p/q}(x)^q=x^p.
+		\end{equation}
+		Nous dérivons cette relation par rapport à \( x\) en utilisant à la fois la règle pour les entiers et la règle des fonctions composées\footnote{Proposition \ref{PROPooOUZOooEcYKxn}\ref{ITEMooLYZCooVUPTyh}.} :
+		\begin{equation}
+			qf_{p/q}'(x)^{q-1}f_{p/q}(x)=px^{p-1}.
+		\end{equation}
+		En isolant \( f_{p/q}'(x)\) dans cette expression et en utilisant le fait que \( \frac{ x^a }{ x^b }=x^{a-b}\), nous trouvons le résultat.
+
+		\spitem[Rationnels négatifs]
+
+		Soit \( \alpha=-p/q\) avec \( p,q\in \eN\). Nous avons \( x^{-p/q}=\frac{1}{ f_{p/q}(x) }\). En utilisant la proposition \ref{PROPooOUZOooEcYKxn}\ref{ITEMooMUNQooLiKffz} et le point déjà prouvé sur les rationnels positifs,
+		\begin{equation}
+			f'_{p/q}=-\frac{ f'_{-p/q} }{ f_{p/q}^2 }=-\frac{ (-p/q)x^{-p/q-1} }{ x^{-2p/q} }=(p/q)x^{p/q-1}.
+		\end{equation}
+		Notez l'utilisation de la proposition \ref{PROPooDWZKooNwXsdV} au dénominateur.
+
+		\spitem[Irrationnel]
+
+		Ah ah ! On vous a bien eu. Les irrationnels, c'est pour la proposition \ref{PROPooKIASooGngEDh}.
+	\end{subproof}
+	En ce qui concerne le fait que la fonction \( f_{\alpha}\) est de classe \(  C^{\infty}\) sur \( \eR\setminus\{ 0 \}\), c'est simplement une récurrence. Attention : si le rationnel \( \alpha\) est négatif, \( f_{\alpha}(0)\) n'est pas défini. Mais, lorsque \( \alpha\) est positif non entier, à partir d'un certain ordre, les dérivées font intervenir \( x^{\beta}\) avec \( \beta<0\). D'où la restriction à \( \eR\setminus\{ 0 \}\) du domaine sur lequel \( f_{\alpha}\) est de classe \(  C^{\infty}\).
+
+	Si \( \alpha\) est positif entier, alors \( f_{\alpha}\) est de classe \(  C^{\infty}\) sur tout \( \eR\) parce que toutes les dérivées sont nulles à partir d'un certain ordre.
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Vers les complexes}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous avons déjà vu la proposition \ref{PROPooJDPEooYTDVtU} qui dit essentiellement que si une fonction continue \( f\colon \eR\to \eR\) vérifie \( f(x+y)=f(x)f(y)\), alors \( f(x)=a^x\). Comme indiqué durant la preuve, cette proposition (et en particulier sa preuve) ne fonctionne pas pour les fonctions à valeurs complexes. L'endroit où cela coinçait est que la contrainte
+\begin{equation}
+	f(\frac{1}{ n })^n=a
+\end{equation}
+n'implique pas grand chose lorsque \( f\) est à valeurs complexes.
+
+Nous allons maintenant attaquer ce problème.
+
+
+\begin{lemma}       \label{LEMooDEGEooXheixp}
+	Soit \( \alpha\in \eC\). Si elle existe, la solution au problème
+	\begin{subequations}
+		\begin{numcases}{}
+			y'=\alpha y\\
+			y(0)=1
+		\end{numcases}
+	\end{subequations}
+	pour \( y\colon \eR\to S^1\) est unique.
+\end{lemma}
+
+\begin{proof}
+	Soient deux solutions \( y_1\) et \( y_2\). Nous posons \( h(x)=y_1(x)y_2(-x)\). Une dérivation donne
+	\begin{equation}
+		h'(x)=y_1'(x)y_2(-x)-y_1(x)y'_2(-x).
+	\end{equation}
+	En y substituant \( y'_1(x)=\alpha y_1(x)\) et \( y'_2(-x)=\alpha y_2(x)\) nous trouvons \( h'(x)=0\). Donc \( h\) est constante et nous avons
+	\begin{equation}        \label{EQooTWBQooBLLKSt}
+		y_1(x)y_2(-x)=1
+	\end{equation}
+	pour tout \( x\). Notons que cette identité est encore valable avec \( y_1=y_2\). Nous avons en particulier les égalités \( y_1(x)y_1(-x)=1\) et \( y_2(x)y_2(-x)=1\), et nous notons au passage que \( y_1(x)\) et \( y_2(x)\) ne s'annulent pas.
+
+	En substituant dans \eqref{EQooTWBQooBLLKSt} la valeur \( y_2(-x)=\frac{1}{ y_2(x) }\) nous trouvons
+	\begin{equation}
+		\frac{ y_1(x) }{ y_2(x) }=1,
+	\end{equation}
+	ce qui signifie \( y_1(x)=y_2(x)\).
+\end{proof}
+
+Dans la proposition suivante, \( S^1\) désigne l'ensemble des nombres complexes de norme \( 1\), dont un paramétrage sera donné dans la proposition \ref{PROPooXELTooYKjDav}\ref{ITEMooOHRHooRXvxrL} :
+\begin{equation}
+	S^1=\{  e^{ix}\tq x\in \eR \}=\{  e^{ix}\tq x\in \mathopen[ 0 , 2\pi \mathclose[ \}.
+\end{equation}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooVJLYooOzfWCd}
+	Soit une fonction continue \( f\colon \eR\to S^1\) vérifiant
+	\begin{equation}        \label{EQooHANKooHirpTL}
+		f(x+y)=f(x)f(y).
+	\end{equation}
+	Alors
+	\begin{enumerate}
+		\item
+		      \( f\) est dérivable,
+		\item
+		      \( f\) satisfait au système
+		      \begin{subequations}
+			      \begin{numcases}{}
+				      f'(x)=f'(0)f(x)\\
+				      f(0)=1,
+			      \end{numcases}
+		      \end{subequations}
+		\item
+		      il existe \( m\in \eR\) tel que \( f(x)= e^{imx}\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Pour chaque \( m\in \eR\), la fonction
+	\begin{equation}
+		g_m(x)= e^{imx}
+	\end{equation}
+	vérifie évidemment toutes les conditions. Le but de cette démonstration est de montrer que les conditions imposées à \( f\) la déterminent de façon univoque (à part ce \( m\)).
+
+	La condition \eqref{EQooHANKooHirpTL} nous dit que \( f(0)=1\). Soit une primitive \( F\) de \( f\). Il existe \( s>0\) tel que \( F(s)>F(0)\) parce que \( F'=f\) et \( f(0)=1\).
+
+	Soit \( a\in \eR\). La fonction \( G_a\) donnée par \( G_a(x)=F(x+a)\) est une primitive de \( x\mapsto f(x)f(a)\). Donc \( G_a(x)=f(a)F(x)\). Cela dit nous avons
+	\begin{equation}
+		f(x)\big( F(s)-F(0) \big)=f(x)F(s)-f(x)F(0)=G_1(x)-G_0(x).
+	\end{equation}
+	Le membre de droite est évidemment dérivable, et \( F(s)-F(0)\neq 0\). Donc \( f\) est dérivable.
+
+	Nous dérivons maintenant la relation \( f(x+y)=f(x)f(y)\) par rapport à \( y\) en \( y=0\). Cela donne
+	\begin{equation}
+		f'(x)=f'(0)f(x).
+	\end{equation}
+	Donc il existe \( \alpha\in \eC\) tel que \( f'(x)=\alpha f(x)\).
+
+	Jusqu'ici nous avons prouvé qu'il existe \( \alpha\in \eC\) tel que
+	\begin{subequations}
+		\begin{numcases}{}
+			f'(x)=\alpha f(x)\\
+			f(0)=1.
+		\end{numcases}
+	\end{subequations}
+	Or le lemme \ref{LEMooDEGEooXheixp} donne l'unicité de la solution à ce système, et il ne faut pas chercher loin : la solution est
+	\begin{equation}
+		f(x)= e^{\alpha x}.
+	\end{equation}
+
+	Pour avoir \( f(x)\in S^1\), nous devons de plus imposer que \( \alpha\) soit imaginaire pur. Donc, en posant \( \alpha=im\), nous avons \( m\in \eR\) tel que \( f(x)= e^{imx}\).
+\end{proof}

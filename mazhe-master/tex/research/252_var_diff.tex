@@ -1,0 +1,1307 @@
+% This is part of Giulietta
+% Copyright (c) 2010-2017, 2019, 2021-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Product of manifolds}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%-------------------------------------------------------
+\subsection{Definition, charts}
+%----------------------------------------------------
+
+
+\begin{propositionDef}[\cite{MonCerveau}]      \label{DEFooYOLXooDPrnHa}
+	Let \( \big( M,\{ \varphi_{\alpha} \}_{\alpha\in \Lambda} \big)\) and \( \big( N,\{ \phi_i \}_{i\in I} \big)\) be smooth manifolds. We consider the maps
+	\begin{equation}
+		\begin{aligned}
+			\sigma_{\alpha,i}\colon U_{\alpha}\times U_i & \to M\times N                                       \\
+			(x,y)                                        & \mapsto \big( \varphi_{\alpha}(x), \phi_i(y) \big).
+		\end{aligned}
+	\end{equation}
+	\begin{enumerate}
+		\item
+		      The maps \( \sigma_{\alpha i}\) give a smooth manifold structure on \( M\times N\).
+		\item
+		      The manifold topology on \( M\times N\) is the same as the product topology on \( M\times N\).
+	\end{enumerate}
+	If the manifolds \( M\) and \( N\) are analytic, the manifold \( M\times N\) is analytic.
+\end{propositionDef}
+
+\begin{proof}
+	Several parts.
+	\begin{proofpart}
+		Topological manifold
+	\end{proofpart}
+	We use the theorem \ref{THOooFIHIooLiSUxH}. As far as the notations are concerned, we say that \( U_{\alpha}\) is open in the normed space \( E_{\alpha}\).
+	\begin{enumerate}
+		\item
+		      The part \( U_{\alpha}\times U_i\) is open in \( E_{\alpha}\times E_i\).
+		\item
+		      We have to show that \( \bigcup_{\alpha,i\in \Lambda\times I}\sigma_{\alpha,i}(U_{\alpha}\times U_i)=M\times N\). Let \( (m,n)\in M\times N\). There exists \( \alpha\in \Lambda\) and \( i\in I\) such that \( m\in \varphi_{\alpha}(U_{\alpha}) \) and \( n\in \phi_i(U_i)\). If \( x=\varphi_{\alpha}^{-1}(m)\) and \( y=\phi^{-1}_i(n)\), we have
+		      \begin{equation}
+			      (m,n)=\sigma_{\alpha,i}(x,y).
+		      \end{equation}
+		\item
+		      For each \( (\alpha,i)\) the map \( \sigma_{\alpha,i}\) is injective because \( \varphi_{\alpha}\) and \( \phi_i\) are injective.
+		\item
+		      We prove that for every \( \alpha\), \( \beta\), \( i\), \( j\), the set
+		      \begin{equation}
+			      \sigma_{\alpha i}^{-1}\big( \sigma_{\alpha i}(U_{\alpha}\times U_i)\cap \sigma_{\beta j}(U_{\beta}\times U_j) \big)
+		      \end{equation}
+		      is open in \( E_{\alpha}\times E_i\). With obvious notations, \( \sigma_{\alpha,i}=\varphi_{\alpha}\times \phi_i\), so
+		      \begin{subequations}
+			      \begin{align}
+				      (\varphi_{\alpha}\times \phi_i)^{-1} & \Big( \varphi_{\alpha}(U_{\alpha})\times \phi_i(U_i)\cap \varphi_{\beta}(U_{\beta})\times \phi_j(U_j) \Big)                                               \\
+				                                           & = (\varphi_{\alpha}\times \phi_i)^{-1}\Big( [\varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})]\times [\phi_i(U_i)\cap \phi_j(U_j)] \Big)       \\
+				                                           & = \varphi_{\alpha}^{-1}\Big( \varphi_{\alpha}(U_{\alpha})\cap\varphi_{\beta}(U_{\beta}) \Big)\times \phi_i^{-1}\Big( \phi_i(U_i)\times \phi_j(U_j) \Big),
+			      \end{align}
+		      \end{subequations}
+		      which is open in product space as product of open sets.
+	\end{enumerate}
+	At this point we know that \( M\times N\) is a topological manifold.
+
+	\begin{proofpart}
+		Smooth manifold
+	\end{proofpart}
+	We suppose that the maps \( \varphi_{\alpha}\), \( \varphi_{\beta}\), \( \phi_i\) and \( \phi_j\) are smooth and we prove that
+	\begin{equation}
+		\sigma_{\alpha i}^{-1}\circ \sigma_{\beta j} \colon \sigma_{\alpha i}^{-1}\Big( \sigma_{\beta j}(U_{\beta\times U_j}) \Big)\to U_{\alpha}\times U_i
+	\end{equation}
+	is smooth. We have
+	\begin{subequations}
+		\begin{align}
+			(\sigma_{\alpha i}^{-1}\circ\sigma_{\beta j})(x,y) & =\sigma_{\alpha i}^{-1}\big( \varphi_{\beta}(x), \phi_j(y) \big)                         \\
+			                                                   & =\Big( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(x),(\phi_i^{-1}\circ\phi_j)(x) \Big),
+		\end{align}
+	\end{subequations}
+	so that \( \sigma_{\alpha i}^{-1}\circ\sigma_{\beta j}=(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})\times (\phi_i^{-1}\circ \phi_j)\).
+
+	This map is smooth by proposition \ref{PROPooPESTooQmWGRJ}.
+	\begin{proofpart}
+		Analytic manifold
+	\end{proofpart}
+	Same as smooth, again by proposition \ref{PROPooPESTooQmWGRJ}.
+	\begin{proofpart}
+		Product topology
+	\end{proofpart}
+	Let \( \tau_M\) be the topology of \( M\), let \( \tau_N\) be the topology of \( N\). The set \( M\times N\) has at least two topologies : \( \tau_p\) is the product topology\footnote{Product of topology, definition \ref{DefIINHooAAjTdY}.} and \( \tau_d\) the topology induced by the maps \( \sigma_{\alpha i}\) by the theorem \ref{THOooFIHIooLiSUxH}. Here we prove that \( \tau_p=\tau_d\).
+
+	\begin{subproof}
+		\spitem[\( \tau_p\subset \tau_d\)]
+		%-----------------------------------------------------------
+		Let \( \mO\in\tau_p\). In order to see that \( \mO\in \tau_d\), we consider \( (m,n)\in \mO\) and we prove that \( \tau_d\) contains a neighbourhood of \( (m,n)\) contained in \( \mO\). Since \( \mO\) is open for the product topology, there exists \( A_m\in\tau_M\) and \( B_n\in \tau_N\) such that
+		\begin{equation}
+			(m,n)\in A_m\times A_n\subset\mO.
+		\end{equation}
+		We consider a map \( \varphi_m\) of \( M\) around \( m\) and \( \varphi_n\) of \( n\) around \( d\) and we set
+		\begin{equation}
+			\begin{aligned}[]
+				A'_m & =A_m\cap \varphi_m(U_m)  \\
+				B'_n & =B_n\cap \varphi_n(U_n).
+			\end{aligned}
+		\end{equation}
+		We have
+		\begin{equation}
+			(m,n)\in A'_m\times B'_n\subset \mO
+		\end{equation}
+		and
+		\begin{equation}
+			\mO=\bigcup_{(m,n)\in \mO}A'_m\times B'_n,
+		\end{equation}
+		so that we have to prove that \( A'_m\times B'_n\in\tau_d\). We have
+		\begin{equation}
+			A'_m\times B'_n=\sigma_{mn}\big( \varphi_m^{-1}(A'_m)\times \phi_n^{-1}(B'_n) \big),
+		\end{equation}
+		and then
+		\begin{equation}		\label{EQooAMYEooMZVThm}
+			\sigma_{mn}^{-1}(A'_m\times B'_n)=\varphi_m^{-1}(A'_m)\times \phi_n^{-1}(B'_n).
+		\end{equation}
+
+		We know that
+		\begin{equation}
+			\varphi_m^{-1}(A'_m)=\varphi_m^{-1}\big(A_m\cap\varphi_m(U_m)\big).
+		\end{equation}
+		Since \( A_m\) and \( \varphi_m(U_m)\) are open, the whole is open: \( \varphi_m^{-1}(A'_m)\) is open in \( E_m\). We deduce that \eqref{EQooAMYEooMZVThm} is open in \( E_m\times E_n\).
+
+		\spitem[\( \tau_d\subset\tau_p\)]
+		%-----------------------------------------------------------
+		Let \( \mO\in\tau_d\). Let \( (m,n)\in\mO\). We want to find \( A_m\in\tau_M\) and \( B_n\in \tau_N\) such that
+		\begin{equation}		\label{EQooASLNooIAslfO}
+			(m,n)\in A_m\times A_n\subset \mO.
+		\end{equation}
+		Recall that
+		\begin{equation}
+			\{ \sigma_{\alpha,i}(S)\tq S\text{ is open in }U_{\alpha}\times U_i \}
+		\end{equation}
+		is a basis of the topology \( \tau_d\). Thus there exists an open \( S\) of \( U_{\alpha}\times U_i\) such that
+		\begin{equation}
+			(m,n)\in\sigma_{m,n}(S)\subset \mO.
+		\end{equation}
+		By definition of the product topology on \( E_{\alpha}\times E_i\) there exists open part \( S_m\) around \( \varphi_m^{-1}(m)\) and \( S_n\) around \( \phi_i^{-1}(n)\) such that \( S_m\times S_n\subset S\). We consider \( A_m=\varphi_m(S_m)\) and \( B_n=\phi_n(S_n)\) and we prove that they satisfy \eqref{EQooASLNooIAslfO}.
+
+		We have
+		\begin{subequations}
+			\begin{align}
+				(m,n) & =\sigma_{m,n}\big( \varphi_m^{-1}(m), \phi_n^{-1}(n) \big) \\
+				      & \in \sigma_{m,n}(S_m\times S_n)                            \\
+				      & =\varphi_m(S_m)\times \phi_n(S_n)                          \\
+				      & =A_m\times B_n,
+			\end{align}
+		\end{subequations}
+		and
+		\begin{equation}
+			A_m\times B_n=\sigma_{m,n}(S_m\times S_n)\subset \sigma_{m,n}(S)\subset\mO.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooCHVLooVFScOl}
+	Let \( \mA\) be a class of functions: \( C^k\), smooth or analytic.  Let \( M\) and \( N\) be \( \mA\)-manifolds.
+	\begin{enumerate}
+		\item
+		      The permutation
+		      \begin{equation}
+			      \begin{aligned}
+				      \sigma\colon M\times N & \to N\times M \\
+				      (p,q)                  & \mapsto (q,p)
+			      \end{aligned}
+		      \end{equation}
+		      is in the class \( \mA\).
+		\item       \label{ITEMooRFFAooRSeBPl}
+		      The projection
+		      \begin{equation}
+			      \begin{aligned}
+				      \pi_1\colon M\times N & \to M     \\
+				      (p,q)                 & \mapsto p
+			      \end{aligned}
+		      \end{equation}
+		      is in the class \( \mA\).
+		\item
+		      Let \( p\in M\). The inclusion map
+		      \begin{equation}
+			      \begin{aligned}
+				      \iota\colon N & \to M\times N \\
+				      q             & \mapsto (p,q)
+			      \end{aligned}
+		      \end{equation}
+		      is in the class \( \mA\).
+	\end{enumerate}
+	%TODOooTZBBooPcWcyZ. Prouver ça.
+\end{proposition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooXFUTooCNzDHf}
+	Let \( M_1\), \( M_2\), \( N_1\) and \( N_2\) be smooth manifolds. Let \(f \colon M_1\to N_1  \) and \(g \colon M_2\to N_2  \) be smooth maps. Then the map
+	\begin{equation}
+		\begin{aligned}
+			f\times g\colon M_1\times M_2 & \to N_1\times N_2              \\
+			(a,b)                         & \mapsto \big( f(a), g(b) \big)
+		\end{aligned}
+	\end{equation}
+	is smooth.
+	%TODOooNHTGooUaiidf. Prouver ça.
+\end{proposition}
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Tangent vector}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{normaltext}		\label{NORMooPEHNooAiyUqc}
+	If \(f \colon M\times N\to  \eR  \) and \( (m,n)\in M\times N\) are given, we consider the maps
+	\begin{equation}
+		\begin{aligned}
+			f_1\colon M & \to \eR        \\
+			p           & \mapsto f(p,n)
+		\end{aligned}
+	\end{equation}
+	and \begin{equation}
+		\begin{aligned}
+			f_2\colon N & \to \eR         \\
+			q           & \mapsto f(m,q).
+		\end{aligned}
+	\end{equation}
+\end{normaltext}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooYUUCooDsSyuO}
+	Let \( M,N\) be smooth manifolds. Let \( m\in M\) and \( n\in N\). If \(\gamma \colon \eR\to M\times N  \) is smooth, we denote by \(\gamma_1 \colon \eR\to M  \) and \(\gamma_2 \colon \eR\to N  \) the paths such that \( \gamma(t)=\big( \gamma_1(t),\gamma_2(t) \big)\).
+
+	The maps \( \gamma_1\) and \( \gamma_2\) are smooth.
+\end{lemma}
+
+\begin{proof}
+	We consider the chart \(\sigma_{\alpha i} \colon U_{\alpha}\times U_i\to M\times N  \). The hypothesis means that the map
+	\begin{equation}
+		\sigma_{\alpha i}^{-1}\circ \gamma \colon \eR\to  U_{\alpha}\times U_i
+	\end{equation}
+	is \( C^k\). But we have
+	\begin{equation}
+		(\sigma_{\alpha i}^{-1}\circ \gamma)(t)=\Big( (\varphi_{\alpha}^{-1}\circ \gamma_1)(t),(\varphi_i^{-1}\circ\gamma_2)(t) \Big).
+	\end{equation}
+	The proposition \ref{PROPooHYASooHxYIBc} says then that \( \varphi_{\alpha j}^{-1}\circ \gamma_1\) and \( \varphi_i^{-1}\circ\gamma_2\) are \( C^k\). This means that \( \gamma_1\) and \( \gamma_2\) are \( C^k\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooAKWIooGxTwnQ}
+	Let \( M,N\) be smooth manifolds. Let \( m\in M\) and \( n\in N\). If \(\gamma \colon \eR\to M\times N  \) is smooth, we denote by \(\gamma_1 \colon \eR\to M  \) and \(\gamma_2 \colon \eR\to N  \) the paths such that \( \gamma(t)=\big( \gamma_1(t),\gamma_2(t) \big)\).
+
+	We fix \( (m,n)\in M\times N\) and for a smooth map \(f \colon M\times N\to \eR  \). Then we have\footnote{With the notations of \ref{NORMooPEHNooAiyUqc}.}
+	\begin{equation}
+		\nabla_{\gamma}(f)=\nabla_{\gamma_1}(f_1)+\nabla_{\gamma_2}(f_2).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	We consider a chat \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) around \( m\) and \(\phi_i \colon U_i\to N  \) around \( n\). Then we consider the maps
+	\begin{equation}
+		\begin{aligned}
+			\tilde \varphi_{\alpha}\colon U_{\alpha} & \to M\times N                              \\
+			x                                        & \mapsto \big( \varphi_{\alpha}(x), n \big)
+		\end{aligned}
+	\end{equation}
+	and
+	\begin{equation}
+		\begin{aligned}
+			\tilde \phi_i\colon U_i & \to M\times N                    \\
+			y                       & \mapsto \big( m,\phi_i(y) \big).
+		\end{aligned}
+	\end{equation}
+	We have
+	\begin{subequations}		\label{SUBEQSooXRISooUJIdlF}
+		\begin{align}
+			\nabla_{\gamma}(f) & =\frac{d}{dt} \left[ f\Big( \gamma_1(t),\gamma_2(t) \Big)  \right]_{t=0}                                                                        \\
+			                   & =\frac{d}{dt} \left[ (f\circ\sigma_{\alpha,i})\Big( (\varphi_{\alpha}^{-1}\circ\gamma_1)(t),(\phi_i^{-1}\circ\gamma_2)(t) \Big)  \right]_{t=0}.
+		\end{align}
+	\end{subequations}
+	We say \( \dim(M)=d_1\) and \( \dim(N)=d_2\). Let \( a=\varphi_{\alpha}^{-1}(m)\in U_{\alpha}\) and \( b=\phi_i^{-1}(n)\in U_i\). For \( k=1,\ldots,d_1\), we have
+	\begin{subequations}
+		\begin{align}
+			\partial_k(f\circ\sigma_{\alpha,i})(a,b) & =\frac{d}{dt} \left[ (f\circ\sigma_{\alpha,i})(a_1,\ldots,a_{k-1},a_k+t,a_{k+1},\ldots,a_{d_1}, b_1,\ldots,d_{d_2})  \right]_{t=0} \\
+			                                         & =\frac{d}{dt} \left[ f\big( \varphi_{\alpha}(a+te_k),\phi_i(b) \big)  \right]_{t=0}                                                \\
+			                                         & =\frac{d}{dt} \left[ f\big( \tilde \varphi_{\alpha}(a+te_k) \big)  \right]_{t=0}                                                   \\
+			                                         & =\partial_k(f\circ \tilde \varphi_{\alpha})(a).
+		\end{align}
+	\end{subequations}
+	In the same way, for \( k=d_1+1,\ldots,d_2\) we have
+	\begin{equation}
+		\partial_k(f\circ\sigma_{\alpha,i})(a,b)=\partial_{k-d_1}(f\circ\tilde \phi_i)(b).
+	\end{equation}
+	Putting that in \eqref{SUBEQSooXRISooUJIdlF},
+	\begin{subequations}
+		\begin{align}
+			\nabla_{\gamma}(f) & =\sum_{k=1}^{d_1}\partial_k(f\circ\tilde \varphi_{\alpha})(a)(\varphi_{\alpha}^{-1}\circ\gamma_1)_k'(0)+\sum_{k=d_1+1}^{d_1+d_2}\partial_{k-d_1}(f\circ\tilde \phi_i)(b)(\phi_i^{-1}\circ\gamma_2)_{k-d_1}(0) \\
+			                   & =\sum_{k=1}^{d_1}\partial_k(f\circ\tilde \varphi_{\alpha})(a)(\varphi_{\alpha}^{-1}\circ\gamma_1)_k'(0)+\sum_{k=1}^{d_2}\partial_k(f\circ\tilde \phi_i)(b)(\phi_i^{-1}\circ\gamma_2)_k'(0).
+		\end{align}
+	\end{subequations}
+	In order to simplify further, remark that
+	\begin{equation}
+		(f\circ\tilde \varphi_{\alpha})(x)=f\big( \varphi_{\alpha}(x),n \big)=(f_1\circ\varphi_{\alpha})(x).
+	\end{equation}
+	In other words, \( f\circ\tilde \varphi_{\alpha}=f_1\circ\varphi_{\alpha}\), and then
+	\begin{equation}
+		\sum_k\partial_k(f\circ\tilde \varphi_{\alpha})(a)(\varphi_{\alpha}^{-1}\circ\gamma_1)_k(0)=
+		\sum_k\partial_k(f_1\circ\varphi_{\alpha})(a)(\varphi_{\alpha}^{-1}\circ\gamma_1)_k'(0).
+	\end{equation}
+	Using proposition \ref{PROPooMJKEooLvsYjl}, it reads
+	\begin{equation}
+		\nabla_{\gamma}(f)=\nabla_{\gamma_1}(f_1)+\nabla_{\gamma_2}(f_2).
+	\end{equation}
+\end{proof}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooPSELooDDwFru}
+	Let \( M,N\) be smooth manifolds. Let \( m\in M\) and \( n\in N\). If \(\gamma \colon \eR\to M\times N  \) is smooth, we denote by \(\gamma_1 \colon \eR\to M  \) and \(\gamma_2 \colon \eR\to N  \) the paths such that\footnote{They are smooth by lemma \ref{LEMooYUUCooDsSyuO}.} \( \gamma(t)=\big( \gamma_1(t),\gamma_2(t) \big)\).
+
+	The map
+	\begin{equation}		\label{EQooYNFOooMqKQuQ}
+		\begin{aligned}
+			\mu\colon T_{(m,n)}(M\times N) & \to T_mM\times T_nN                                     \\
+			\nabla_{\gamma}                & \mapsto \big( \nabla_{\gamma_1},\nabla_{\gamma_2} \big)
+		\end{aligned}
+	\end{equation}
+	is a well defined vector space isomorphism.
+\end{proposition}
+
+\begin{proof}
+	Several steps.
+	\begin{subproof}
+		\spitem[Well defined]
+		%-----------------------------------------------------------
+		Let \(\gamma,\alpha \colon \eR\to M\times N  \) such that \( \nabla_{\gamma}=\nabla_{\alpha}\). We have to prove that \( \nabla_{\gamma_i}=\nabla_{\alpha_i}\). Following the proposition \ref{PROPooAKWIooGxTwnQ}, we have
+		\begin{equation}		\label{EQooSZLWooPSshZM}
+			\nabla_{\gamma}(f)=\nabla_{\gamma_1}(f_1)+\nabla_{\gamma_2}(f_2)=\nabla_{\alpha}(f)=\nabla_{\alpha_1}(f_1)+\nabla_{\alpha_2}(f_2)
+		\end{equation}
+		for every function \( f\). We have to deduce \( \nabla_{\gamma_1}=\nabla_{\alpha_1}\). For that, let \(g \colon M\to \eR  \) and consider the function
+		\begin{equation}
+			\begin{aligned}
+				f\colon M\times N & \to \eR       \\
+				(p,q)             & \mapsto g(p).
+			\end{aligned}
+		\end{equation}
+		We have \( f_1(p)=g(p)\) and \( f_2(q)=g(m)\). Notice that \( m\) being fixed from the beginning, the map \( f_2\) is constant, so that \( \nabla_{\gamma_2}(f_2)=\nabla_{\alpha_{2}}(f_2)=0\). Thus for this choice of \( f\), the relation \eqref{EQooSZLWooPSshZM} becomes
+		\begin{equation}
+			\nabla_{\gamma_1}(f_1)=\nabla_{\alpha_1}(f_1),
+		\end{equation}
+		in other words, \( \nabla_{\gamma_1}(g)=\nabla_{\alpha_1}(g)\). The function \( g\) being arbitrary we conclude that \( \nabla_{\gamma_1}=\nabla_{\alpha_1}\).
+
+		The same kind of argument shows that \( \nabla_{\gamma_2}=\nabla_{\alpha_2}\). The map \( \mu\) is well defined.
+
+		\spitem[\( \mu\) is injective]
+		%-----------------------------------------------------------
+		We prove that \( \mu\) is injective. If \(\alpha,\beta \colon \eR\to M\times N  \) satisfy \( \nabla_{\alpha}=\nabla_{\beta}\), then
+		\begin{equation}
+			\big( \nabla_{\alpha_1},\nabla_{\alpha_2} \big)=\big( \nabla_{\beta_1},\nabla_{\beta_2} \big)
+		\end{equation}
+		as we already seen in the "well defined part".
+
+		\spitem[\( \mu\) is surjective]
+		%-----------------------------------------------------------
+		Let \(\alpha \colon \eR\to M  \) and \(\beta \colon \eR\to N  \). We need \(\gamma \colon \eR\to M\times N  \) such that \( \mu(\nabla_{\gamma})=\big( \nabla_{\alpha},\nabla_{\beta} \big)\). It is the case with
+		\begin{equation}
+			\gamma(t)=\big( \alpha(t), \beta(t) \big).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}       \label{LEMooTONEooFiysTA}
+	Let \( M\) and \( N\) be \( C^k\) manifolds\footnote{The product of manifolds is defined in \ref{DEFooYOLXooDPrnHa}.}. Let \( \gamma_M\colon I\to M\) and \( \gamma_N\colon I\to N\) be \( C^k\) paths. We define
+	\begin{equation}
+		\begin{aligned}
+			\gamma\colon I & \to M\times N                                \\
+			t              & \mapsto \big( \gamma_M(t),\gamma_N(t) \big).
+		\end{aligned}
+	\end{equation}
+	We have:
+	\begin{enumerate}
+		\item
+		      A vector space isomorphism \( T_{(a,b)}(M\times N)\simeq T_aM\times T_bN\).
+		\item
+		      Under that isomorphism,
+		      \begin{equation}
+			      \Dsdd{ \gamma(t) }{t}{0}=\big( \gamma_M'(0),\gamma_N'(0) \big).
+		      \end{equation}
+	\end{enumerate}
+	%TODOooOMQWooNlqCfo. Prouver ça.
+\end{lemma}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooJIFTooGboJoI}
+	Let \( M\) and \( N\) be smooth manifolds. Let \(f \colon M\to \eR  \) and \(s \colon N\times N\to M  \) be smooth maps. We consider the partial maps
+	\begin{equation}
+		\begin{aligned}
+			\ell_a\colon N & \to M          \\
+			x              & \mapsto s(a,x)
+		\end{aligned}
+	\end{equation}
+	et
+	\begin{equation}
+		\begin{aligned}
+			r_b\colon N & \to M           \\
+			x           & \mapsto s(x,b).
+		\end{aligned}
+	\end{equation}
+	If \( X\in T_aN\) and \( Y\in T_bN\), we have
+	\begin{equation}
+		\mu^{-1}(X,Y)(f\circ s)=X(f\circ r_b)+Y(f\circ \ell_a)
+	\end{equation}
+	where \(\mu \colon T_{(a,b)}(N\times N)\to T_aN\times T_bN  \) is the is the isomorphism of proposition \eqref{PROPooPSELooDDwFru}.
+\end{proposition}
+
+\begin{proof}
+	Let \(\gamma_1 \colon \eR\to N  \) and \(\gamma_2 \colon \eR\to N  \) be such that \( X=\gamma_1'(0)\) and \( Y=\gamma_2'(0)\). If we let
+	\begin{equation}
+		\gamma(t)=\big( \gamma_1(t),\gamma_2(t) \big)
+	\end{equation}
+	we have \( \mu^{-1}(X,Y)(f\circ s)=\nabla_{\gamma}(f\circ s)\). We use proposition \ref{PROPooAKWIooGxTwnQ}:
+	\begin{subequations}
+		\begin{align}
+			\mu^{-1}(X,Y)(f\circ s) & =\nabla_{\gamma}(f\circ s)                                                            \\
+			                        & =\nabla_{\gamma_1}\big( (f\circ s)_1 \big)+\nabla_{\gamma_2}\big( (f\circ s)_2 \big).
+		\end{align}
+	\end{subequations}
+	We develop the first term.
+	\begin{subequations}
+		\begin{align}
+			\nabla_{\gamma_1}\big( (f\circ s)_1 \big) & =\frac{d}{dt} \left[ (f\circ s)_1\big( \gamma_1(t) \big)  \right]_{t=0} \\
+			                                          & =\frac{d}{dt} \left[ (f\circ s)\big( \gamma_1(t),b \big)  \right]_{t=0} \\
+			                                          & =\frac{d}{dt} \left[ (f\circ r_b)\big( \gamma_1(t) \big)  \right]_{t=0} \\
+			                                          & =X(f\circ r_b).
+		\end{align}
+	\end{subequations}
+	In the same way, \( \nabla_{\gamma_2}\big( (f\circ s)_2 \big)=Y(f\circ \ell_a)\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooYACVooMwEhBj}
+	Let \( M\) and \( N\) be \( C^k\) manifolds. We consider a \( C^k\) function \(f \colon M\times N\to \eR  \), a point \( (a,b)\in M\times N\) and \(X\in T_aM \). We have
+	\begin{equation}
+		\mu^{-1}(X,0)f=X(f_{1,b})
+	\end{equation}
+	where \( f_{1,b}\) is the function
+	\begin{equation}
+		\begin{aligned}
+			f_{1,b}\colon M & \to \eR         \\
+			m               & \mapsto f(m,b).
+		\end{aligned}
+	\end{equation}
+	We also have
+	\begin{equation}		\label{EQooNAGYooKZCLKz}
+		\mu^{-1}(0,Y)f =Y(f_{2,a})
+	\end{equation}
+	when \( 0\in T_aM\) and \( Y\in T_bN\).
+\end{proposition}
+
+\begin{proof}
+	Let \(\gamma_1 \colon \eR\to M  \) be a \( C^k\) map such that \( X=\gamma'(0)\). The vector \( 0\in T_bN\) is \( \gamma_2'(0)\) with \( \gamma_2(t)=b\) (the constant path). We have
+	\begin{equation}
+		\mu^{-1}(X,0)=\frac{d}{dt} \left[ \big( \gamma_1(t),b \big)  \right]_{t=0},
+	\end{equation}
+	so that
+	\begin{subequations}
+		\begin{align}
+			\mu^{-1}(X,0)f & =\frac{d}{dt} \left[ f\big( \gamma_1(t),b \big)  \right]_{t=0}     \\
+			               & =\frac{d}{dt} \left[ f_{1,b}\big( \gamma_1(t) \big)  \right]_{t=0} \\
+			               & =X(f_{1,b}).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Vector field}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooKGDFooQeEVOl}
+	Let \( M\) and \( N\) be \( C^k\) manifolds. Let \(X \colon M\to TM  \) and \(Y \colon N\to TN  \) be \( C^k\) vector fields. Then the vector field
+	\begin{equation}
+		\begin{aligned}
+			\mu^{-1}(X,Y)\colon M\times N & \to T(M\times N)          \\
+			(m,n)                         & \mapsto \mu^{-1}(X_m,Y_n)
+		\end{aligned}
+	\end{equation}
+	is \( C^k\).
+\end{proposition}
+
+\begin{proof}
+	We consider a chart \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) and a chart \(\varphi_i \colon U_i\to N  \). We know the charts of definitions \ref{THOooTSQXooLvJMQb} and \ref{DEFooYOLXooDPrnHa} on the tangent bundle and the product manifold. We have to check that the map
+	\begin{equation}
+		\psi_{\alpha i}^{-1}\circ\mu^{-1}(X,Y)\circ\sigma_{\alpha i} \colon U_{\alpha}\times U_i\to (U_{\alpha}\times U_i)\times \eR^{n+m}
+	\end{equation}
+	is \( C^k\).
+
+	Since \( X\) and \( Y\) are \( C^k\) vector fields, there exists\footnote{Proposition \ref{PROPooXURIooYPytwa}.} \( C^k\) maps \(v \colon M\to \eR^m  \) and \(w \colon N\to \eR^n  \) such that \( X_m=\sum_kv_i(m)\partial_k\) and \( Y_n=\sum_kw_k(n)\partial_k\). We define \( v'=v\circ\varphi_{\alpha}\) and \( w'=w\circ\varphi_i\). First we have
+	\begin{subequations}
+		\begin{align}
+			\mu^{-1}(X,Y)\circ\sigma_{\alpha i}(x,y) & =\mu^{-1}\left(   \sum_kv_k\big( \varphi_{\alpha}(x) \big)\partial_k,\sum_lw_l\big( \varphi_i(y) \big)\partial_j   \right)                                          \\
+			                                         & =\mu^{-1}\left(   \frac{d}{dt} \left[ \varphi_{\alpha}\big( x+tv'(x) \big)  \right]_{t=0},\frac{d}{dt} \left[ \varphi_i\big( y+tw'(y) \big)  \right]_{t=0}  \right) \\
+			                                         & =\frac{d}{dt} \left[ \varphi_{\alpha}\big( x+tv'(x) \big),\varphi_i\big( y+tw'(y) \big)  \right]_{t=0}	\label{SUBEQooTBBKooBqPykI}
+		\end{align}
+	\end{subequations}
+	We can simplify the content of the derivative :
+	\begin{subequations}
+		\begin{align}
+			\Big( \varphi_{\alpha}\big( x+tv'(x) \big),\varphi_i\big( y+tw'(y) \big) \Big) & =\sigma_{\alpha i}\Big( x+tv'(x),y+tw'(y) \Big)               \\
+			                                                                               & =\sigma_{\alpha i}\Big( (x,y)+t\big( v'(x),w'(y) \big) \Big).
+		\end{align}
+	\end{subequations}
+	Injecting in \eqref{SUBEQooTBBKooBqPykI} and applying \( \psi_{\alpha i}^{-1}\) we have
+	\begin{subequations}
+		\begin{align}
+			\big( \psi_{\alpha i}^{-1}\circ\mu^{-1}(X,Y)\circ \sigma_{\alpha i} \big)(x,y) & =\psi_{\alpha i}^{-1}\frac{d}{dt} \left[ \sigma_{\alpha i}\Big( (x,y)+t\big( v'(x)+w'(y) \big) \Big)  \right]_{t=0} \\
+			                                                                               & =\Big( (x,y),\big( v'(x),w'(y) \big) \Big).		\label{SUBEQooXLPXooEJapcW}
+		\end{align}
+	\end{subequations}
+	Since \(v \colon M\to \eR^m  \) is \( C^k\), the map \( v'=v\circ\varphi_{\alpha}\) is \( C^k\) and we see that the expression \eqref{SUBEQooXLPXooEJapcW} is \( C^k\).
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Differential}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooFNVKooVxPulA}
+	Let \( M,N,E\) be smooth manifolds. Let \(s \colon M\times N\to E  \) be a smooth map. We consider \( (m,n)\in M\times N\) and \( X=\gamma'(0)\in T_{(m,n)}(M\times N)\). For every smooth function \(f \colon M\times N\to \eR  \) we have\footnote{With the notations described in \ref{NORMooPEHNooAiyUqc}.}
+	\begin{equation}
+		(ds_{(m,n)}X)(f)=\nabla_{\gamma_1}(f\circ s)_1+\nabla_{\gamma_2}(f\circ s)_2
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	We have
+	\begin{subequations}
+		\begin{align}
+			(ds_{(m,n)X}X)(f) & =\frac{d}{dt} \left[ f\big( (s\circ \gamma)(t) \big)  \right]_{t=0}                  \\
+			                  & = \frac{d}{dt} \left[   (f\circ s)\big( \gamma_1(t),\gamma_2(t) \big)  \right]_{t=0} \\
+			                  & =\nabla_{\gamma}(f\circ s).
+		\end{align}
+	\end{subequations}
+	The result is now the proposition \ref{PROPooAKWIooGxTwnQ}.
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Rank theorem}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+We proof a generalization of the rank theorem \ref{ThoGkkffA}.
+
+\begin{definition}
+	Let \( M\) and \( N\) be smooth manifolds of dimension \( m\) and \( n\). Let a smooth map \( f\colon M\to N\). The \defe{rank}{rank} of \( f\) at \( p\in M\) is the rank of the linear map \( df_p\colon T_pM\to T_{f(p)N}\).
+\end{definition}
+
+\begin{lemma}
+	Let a smooth map \( f\colon M\to N\) and \( p\in M\). Let \( \varphi\colon U\to M\) and \( \psi\colon V\to N\) be chats around \( p\) and \( f(p)\). Then
+	\begin{equation}
+		\rank(df_p)=\rank\big( f_{\varphi^{-1}(p)}(\psi^{-1}\circ f\circ \varphi) \big)
+	\end{equation}
+	where the rank on the right han side is the usual rank of a map \( \eR^m\to \eR^n\).
+\end{lemma}
+
+\begin{proof}
+	By proposition \ref{PROPooEGNBooIffJXc} we can compute the rank of a linear map in whatever base. When a basis is chosen in \( \eR^m\) and \( \eR^n\) we know from lemma \ref{LEMooVCSJooEuDZFz} that the matrix of \( df_p\) is the same as the one of \(  f_{\varphi^{-1}(p)}(\psi^{-1}\circ f\circ \varphi) \). Since these two linear maps have the same matrix, they have the same rank.
+\end{proof}
+
+\begin{theorem}[Constant rank theorem\cite{BIBooVYIRooZyqygg}]       \label{THOooSWKVooTJQsXc}
+	Let \( M\) and \( N\) be smooth manifolds of dimension \( m\) and \( n\). Let \( f\colon M\to N\) be a smooth map. Let \( p\in M\). We suppose that the rank of \( f\) is equal to \( k\) at every point \( x\) in a neighbourhood of \( p\).
+
+	There exists charts \( \varphi\colon U\to M\) around \( p\in M\) and \( \psi\colon V\to N\) around \( f(p)\in M\) such that
+	\begin{enumerate}
+		\item
+		      \( \varphi(0)=p\),
+		\item
+		      \( \psi(0)=f(p)\)
+		\item
+		      the function \( f\) is more or less trivialized in the sense that
+		      \begin{equation}
+			      (\psi^{-1}\circ f\circ\varphi)(x_1,\ldots, x_m)=(x_1,\ldots, x_k,0,\ldots, 0)
+		      \end{equation}
+		      for every \( (x_1,\ldots, x_m)\in U\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	We prove in two parts. Fist we consider the case in which \( M\) and \( N\) are open sets of \( \eR^m\) and \( \eR^n\). Then we will generalize to any smooth manifolds.
+	\begin{subproof}
+		\spitem[The case of \( \eR^m\) and \( \eR^n\)]
+		Let \( W\) be open in \( \eR^m\), \( W'\) be open in \( \eR^n\). We consider a smooth map \( f\colon W\to W'\) such that \( f(0)=0\) and \( \rank(f)=k\) on \( W\).
+
+		By hypothesis, the rank of \( df_0\) is \( k\), so that is one chooses good bases on \( \eR^m\) and \( \eR^n\) we can suppose that the matrix of \( df_0\) has a upper-left square \( k\times k\) with non-zero determinant. We write \( A\) that square matrix:
+		\begin{equation}
+			A_{ij}=\frac{ \partial f_i }{ \partial x_j }(0)
+		\end{equation}
+		with \( i,j\leq k\).
+
+		\begin{subproof}
+			\spitem[On the \( \eR^m\) side]
+
+			We consider the map
+			\begin{equation}
+				\begin{aligned}
+					\varphi\colon W\subset \eR^m & \to \eR^m                                                                                  \\
+					(x_1,\ldots, x_m)            & \mapsto \big( f_1(x_1,\ldots, x_m),\ldots, f_k(x_1,\ldots, x_m),x_{k+1},\ldots, x_m \big).
+				\end{aligned}
+			\end{equation}
+			We have \( \varphi(0)=0\) because \( f_i(0)=f(0)_i=0\). The matrix of the differential is
+			\begin{equation}
+				d\varphi_0=\begin{pmatrix}
+					A & *          \\
+					0 & \mtu_{n-k}
+				\end{pmatrix}
+			\end{equation}
+			where \( A\) is \( k\times k\) and \( *\) is some \( k\times (n-k)\) matrix. Thus we have \( \det(d\varphi_0)=\det(A)\neq 0\). From the inverse function theorem \ref{ThoXWpzqCn}, the map \( \varphi\) is a local diffeomorphism, more precisely there exists an open set \( W_1\subset W\subset \eR^m\) such that the restriction
+			\begin{equation}
+				\varphi\colon W_1\to W_1
+			\end{equation}
+			is a diffeomorphism. From now on we only consider \( \varphi\) as being that restriction.
+
+			The vector \( (y_1,\ldots, y_m)\) such that \( \varphi^{-1}(x_1,\ldots, x_m)=(y_1,\ldots, y_m)\) has the property that
+			\begin{equation}
+				\varphi(y_1,\ldots, y_m)=(x_1,\ldots, x_m),
+			\end{equation}
+			which means that\footnote{At this point, it is really important that \( f\) takes its values in \( \eR^n\), not in a general manifold: if \( (y)\) was in a manifold, the expression \( f_i(y)\) would not make sense.}
+			\begin{equation}
+				f_i(y_1,\ldots, y_m)=x_i
+			\end{equation}
+			when \( i=1,\ldots, k\) and
+			\begin{equation}
+				y_l=x_l
+			\end{equation}
+			when \( l=k+1,\ldots, m\).
+
+			\spitem[On the middle side]
+
+			Thus we have
+			\begin{subequations}
+				\begin{align}       \label{EQooAQJGooLqlnXJ}
+					(f\circ \varphi^{-1})(x_1,\ldots, x_m) & =f(y_1,\ldots, y_m)                                                                \\
+					                                       & =\big( x_1,\ldots, x_k,f_{k+1}(y_1,\ldots, y_m),\ldots, f_n(y_1,\ldots, y_m) \big) \\
+					                                       & =\big( x_1,\ldots, x_k,\tilde f_{k+1}(x),\ldots, \tilde f_n(x)\big)
+				\end{align}
+			\end{subequations}
+			where \( \tilde f_i=f_i\circ \varphi^{-1}\colon W_1\to \eR\) are some smooth functions.
+
+			For every \( x\in W_1\) we have
+			\begin{equation}        \label{EQooEDJIooLyPslk}
+				f(f\circ \varphi^{-1})_x=\begin{pmatrix}
+					\mtu_{k\times k} & 0           \\
+					*                & d\tilde f_x
+				\end{pmatrix}
+			\end{equation}
+			where \( d\tilde f_x\) is the matrix whose elements are \( \left( \frac{ \partial \tilde f_i }{ \partial x_s } \right)\) with \( i=k+1,\ldots, n\) and \( s=k+1,\ldots, m\). This is not a square matrix by the way. We have, by theorem \ref{THOooIHPIooIUyPaf},
+			\begin{equation}
+				d(f\circ\varphi^{-1})_x=df_{\varphi^{-1}(x)}\circ(d\varphi^{-1})_x
+			\end{equation}
+			while \( (d\varphi^{-1})_x\) is invertible. Thus
+			\begin{equation}
+				\rank\big( d(f\circ\varphi^{-1})_x \big)=\rank\big( df_{\varphi^{-1}(x)} \big)=k.
+			\end{equation}
+			So the rank of \( f\circ\varphi^{-1}\) is \( k\) all over \( W_1\). But the image of \( d(f\circ\varphi^{-1})_x\) is spanned by the columns of its differential given by \eqref{EQooEDJIooLyPslk}. The \( k \) columns spanned by the identity matrix are obviously linearly independent; these are thus a basis of the image. Since the vectors in the ``\( d\tilde f_x\)'' part are linearly independent of these \( k\) vectors, they must be vanishing:
+			\begin{equation}
+				\frac{ \partial \tilde f_i }{ \partial x_s }(x)=0
+			\end{equation}
+			for every \( x\in W_1\), \( i=k+1,\ldots, m\) and \( s=k+1,\ldots, n\).
+
+			\spitem[On the \( \eR^n\) side]
+
+			We do not know if \( n\geq m\) or \( m\geq n\). If \( n\geq n\), we choose \( V_1\) such that the projection of \( V_1\) on its \( m\) first components is included in \( W_1\). If \( n<m\) we choose \( V_1\) such that the projection of \( W_1\) on its \( n\) first components is included in \( V_1\)\quext{This precision about the choice of \( V_1\) is not done in \cite{BIBooVYIRooZyqygg} and seems strange to me. Am I correct ? By the way, there could be a misprint in the definition of \( T\) in \cite{BIBooVYIRooZyqygg}: \( y\) must have \( n\) components, not \( m\).}.
+
+			With that choice of \( V_1\) in mind we can remember the functions \( \tilde f_i\colon W_1\to \eR\). If \( y\in V_1\), we define \( \tilde f(y)\) as \( \tilde f(x)\) with \( x\in W_1\) created from \( y\) either by adding zeroes or by projecting on \( \eR^m\). In both cases, the resulting \( y\) belongs to \( V_1\).
+
+			So now we consider the map
+			\begin{equation}        \label{EQooKEZOooSOTBlo}
+				\begin{aligned}
+					T\colon V_1       & \to \eR^n                                                                                \\
+					(y_1,\ldots, y_n) & \mapsto \big( y_1,\ldots, y_k,y_{k+1}+\tilde f_{k+1}(y),\ldots, y_n+\tilde f_n(y) \big).
+				\end{aligned}
+			\end{equation}
+			If \( y\in V_1\), the differential is the matrix given by
+			\begin{equation}
+				(dT_y)_{ij}=\frac{ \partial T_i }{ \partial y_j }(y)
+			\end{equation}
+			where
+			\begin{itemize}
+				\item
+				      The upper-left \( k\times k\) corner is \( \mtu_{k\times k}\).
+				\item
+				      The upper-right \( k\times (n-k)\) corner (non square in general) is given by elements of the form
+				      \begin{equation}
+					      \frac{ \partial y_i }{ \partial y_{j} }
+				      \end{equation}
+				      with \( i\leq k\) and \( j>k\). So this is vanishing.
+				\item
+				      The lower-left (non square in general) corner is made of
+				      \begin{equation}
+					      \frac{ \partial (y_i+\tilde f_i(y)) }{ \partial y_j }=\frac{ \partial \tilde f_i(y) }{ \partial y_j }
+				      \end{equation}
+				      with \( i>k\) and \( j\leq k\). The elements in this pars are some numbers.
+				\item
+				      The lower-right square \( (n-k)\times (n-k)\) corner is made of
+				      \begin{equation}
+					      \frac{ \partial (y_i+\tilde f_i(y)) }{ \partial y_j }=\delta_{ij}+\frac{ \partial \tilde f_i }{ \partial y_j }
+				      \end{equation}
+				      with \( i>k\) and \( j\geq k\). For these elements we have \( \frac{ \partial \tilde f_i(y) }{ \partial y_j }=0\) and then the identity matrix.
+			\end{itemize}
+			With all that,
+			\begin{equation}
+				dT_y=\begin{pmatrix}
+					\mtu_{k\times k} & 0          \\
+					*                & \mtu_{n-k}
+				\end{pmatrix}.
+			\end{equation}
+			Moreover \( T(0)=0\) because
+			\begin{equation}
+				\tilde f_i(0)=f_i\big( \varphi^{-1}(0) \big)=f_i(0)=0.
+			\end{equation}
+			We deduce that there exist an open set \( V\subset \eR^n\) included in \( V_1\) such that \( T\colon V\to T(V)\) is a diffeomorphism. We restrict \( V\) in such a way that \( T(V)\subset V_1\).
+
+			\spitem[The final map]
+
+			Finally we consider the map
+			\begin{equation}
+				T^{-1}\circ f\circ \varphi^{-1}\colon W_1 \to V.
+			\end{equation}
+			If \( (x_1,\ldots, x_m)\in W_1\) from \eqref{EQooAQJGooLqlnXJ} we have
+			\begin{equation}
+				(f\circ \varphi^{-1})(x_1,\ldots, x_m)=\big( x_1,\ldots, x_k,\tilde f_{k+1}(x),\ldots, \tilde f_n(x) \big).
+			\end{equation}
+			Using the definition \eqref{EQooKEZOooSOTBlo} we see that
+			\begin{equation}
+				T(x_1,\ldots, x_k,0,\ldots, 0)=\big( x_1,\ldots, x_k,\tilde f_{k+1}(x),\ldots, \tilde f_n(x) \big)
+			\end{equation}
+			which proves that
+			\begin{equation}
+				T^{-1}\big( x_1,\ldots, ,x_k,\tilde f_{k+1}(x),\ldots, \tilde f_n(x) \big)=(x_1,\ldots, x_k,\,\ldots, 0).
+			\end{equation}
+		\end{subproof}
+
+		\spitem[The general case]
+
+		Now we consider the manifolds \( M\) and \( N\) with the map \( f\colon M\to N\). Let \( p\in M\) and charts \( \varphi_0\colon U_0\to M\), \( \psi_0\colon V_0\to N\) where \( U_0\) is a neighbourhood of \( 0\) in \( \eR^m\) and \( V_0\) a neighbourhood of \( 0\) in \( \eR^n\). We suppose that \( \varphi_0(0)=p\) and \( \psi_0(0)=f(p)\).
+
+		Now we consider the function \( \tilde f=\psi_0^{-1}\circ f\circ \varphi_0\) from \( U_0\) to \( V_0\) and we are left in the previous case.
+	\end{subproof}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Submanifold}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+In this section, for \( n>r\), we consider the map
+\begin{equation}
+	\begin{aligned}
+		j\colon \eR^r & \to \eR^n      \\
+		x             & \mapsto (x,0).
+	\end{aligned}
+\end{equation}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooUBLWooXnPzjn}
+	The map \(j \colon \eR^r\to \eR^n  \) is continuous.
+\end{lemma}
+
+\begin{proof}
+	The sequential continuity is easy to check because \( \| j(x) \|_{\eR^n}=\| x \|_{\eR^r}\). Then if \( a_k\stackrel{ \eR^r}{\longrightarrow} a\) we have
+	\begin{equation}
+		\| j(a_k)-j(a) \|_n=\| a_k-a \|_r\to 0.
+	\end{equation}
+	Thus \( j(a_j)\stackrel{ \eR^n}{\longrightarrow} j(a)\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooURMPooEBfsTF}
+	Let \( \mO\) be open on \( \eR^n\). Then the part \( \pr_r\big( j(\eR^r)\cap \mO \big)\) is open in \( \eR^r\).
+\end{lemma}
+
+\begin{proof}
+	Let \( a\in\pr_r\big( j(\eR^r)\cap \mO \big)\). The point \( a'=(a_1,\ldots,a_r,0,\ldots,0)\) belongs to \( \mO\) which is open in \( \eR^n\). There exists \( r>0\) such that \( B(a',r)\subset\mO\). We check that \( B(a,r)\subset \pr_k\big( j(\eR^r)\cap\mO \big)\).
+
+	Let \( b\in B(a,r)\). We have to check that \( (b_1,\ldots,b_r,0,\ldots,0)\in j(\eR^r)\cap B(a',r)\). We have
+	\begin{equation}
+		\| (b_1,\ldots,b_r,0,\ldots,0)-(a_1,\ldots,a_r,0,\ldots,0) \|^2=\sum_{l=1}^k| b_l-a_l |^2=\| a-b \|^2<r^2.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooBIYBooHTFNsQ}
+	Let \( n>k\). Let \( A\) be open in \( \eR^k\). Let \( B\subset A\) be such that \( j(B)\) is open in \( j(A)\) (induced topology from \( \eR^n\)). Then \( B\) is open in \( \eR^k\)
+\end{lemma}
+
+\begin{proof}
+	Let \( b\in B\). We will prove that there exists \( r>0\) such that \( B(b,r)\subset B\). Since \( b\in B\subset A\) and since \( A\) is open, there exits \( r_1>0\) such that \( B(b,r_1)\subset A\).
+
+	Since \( j(B)\) is open in \( j(A)\), there exists \( \mO\in\tau_{j(A)}\) such that \( j(b)\subset\mO\subset j(B)\). By definition of the induced topology, there exists an open \( U\) of \( \eR^n\) such that \( \mO=U\cap j(A)\). We consider \( r_2>0\) such that \( B\big( j(b),r_2 \big)\subset U\). We have
+	\begin{equation}
+		B\big( j(b),r_2 \big)\cap j(A)\subset U\cap j(A)\subset j(B).
+	\end{equation}
+	Now let \( 0<r<\min(r_1,r_2)\). We prove that \( B(b,r)\subset B\). Let \( x\in B(b,r)\). Since \( r<r_1\) we have \( x\in A\). But we also have
+	\begin{equation}
+		\| j(x)-j(b) \|=\| x-b \|<r_1<r.
+	\end{equation}
+	Thus \( j(b)\in B\big( j(b),r_2 \big)\). Since \( x\in A\) we thus have
+	\begin{equation}
+		j(x)\in B\big( j(b),r_2 \big)\cap j(A)\subset j(B).
+	\end{equation}
+	We have \( j(x)\in j(B)\) and then \( x\in B\).
+\end{proof}
+
+%-------------------------------------------------------
+\subsubsection{Setting and some lemmas}
+%----------------------------------------------------
+
+
+
+\begin{definition}[submanifold]      \label{DEFooLQHWooMOTgzq}
+	Let \( M\) be a \( \mA\)-manifold. Let \( Q\subset M\).
+
+	If \( \{ (\varphi_{\alpha},U_{\alpha}) \}_{\alpha\in \Lambda}\) is an atlas\footnote{See \ref{PROPooNVVSooAVVLOM}.} with \( U_{\alpha}\subset \eR^n\) for every \( \alpha\in \Lambda\). For each \( q\in Q\) we consider
+	\begin{equation}		\label{EQooPIPMooWqyrsn}
+		\Lambda(q)=\{ \alpha\in\Lambda\tq
+		\begin{cases}
+			\varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap Q \big)= j(\eR^r)\cap U_{\alpha} = \{ (x_1,\ldots,x_r,0,\ldots,0)\in U_{\alpha} \} \\
+			\varphi_{\alpha}(0)=q
+		\end{cases}
+		\}.
+	\end{equation}
+	If there exists an atlas \( \Lambda\) of \( M\) such that \( \Lambda(q)\neq\emptyset\) for every \( q\in Q\), then we say that \( Q\) is a \( r\)-dimensional \defe{submanifold}{submanifold} of \( M\).
+\end{definition}
+
+Let \( Q\) be a \( r\)-dimensional submanifold of \( M\). We consider an atlas \( \{ (\varphi_{\alpha},U_{\alpha})_{\alpha\in \Lambda} \}\) such that \( \Lambda(q)\neq \emptyset\) for every \( q\in Q\).
+
+We consider the projection \(\pr_r \colon \eR^n\to \eR^r  \).
+
+Let \( \Gamma=\bigcup_{q\in Q}\Lambda(q)\). For \( \alpha\in \Gamma\) we define
+\begin{subequations}
+	\begin{align}
+		S_{\alpha} & =\varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap Q \big) =j(\eR^r)\cap U_{\alpha} \\
+		V_{\alpha} & =\pr_r(S_{\alpha}).
+	\end{align}
+\end{subequations}
+Then we consider the maps
+\begin{equation}
+	\begin{aligned}
+		\phi_{\alpha}\colon V_{\alpha} & \to Q                                 \\
+		x                              & \mapsto (\varphi_{\alpha}\circ j)(x).
+	\end{aligned}
+\end{equation}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooUYHPooLPfNVr}
+	The map \(\phi_{\alpha} \colon V_{\alpha}\to \varphi_{\alpha}(U_{\alpha})\cap Q  \) is bijective and its inverse is given by
+	\begin{equation}
+		\phi_{\alpha}^{-1}=\proj_r\circ\varphi_{\alpha}^{-1}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	We prove that \(\phi_{\alpha} \colon V_{\alpha}\to \varphi_{\alpha}(U_{\alpha})\cap Q  \) is bijective.
+	\begin{subproof}
+		\spitem[Injective]
+		%-----------------------------------------------------------
+		Because \( \varphi_{\alpha}\) and \( j\) are injective.
+
+		\spitem[Surjective]
+		%-----------------------------------------------------------
+		Let \( m\in \varphi_{\alpha}(U_{\alpha})\cap Q\); we consider \( \proj_r\big( \varphi_{\alpha}^{-1}(m) \big)\). We will prove that \( x\in V_{\alpha}\) and \( \phi_{\alpha}(x)=m\).
+		\begin{subproof}
+			\spitem[\( x\in V_{\alpha}\)]
+			%-----------------------------------------------------------
+			Since \( \alpha\in \Lambda(q)\) we have
+			\begin{equation}
+				\varphi_{\alpha}^{-1}(m)\in\varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap Q \big)=j(\eR^r)\cap U_{\alpha}=S_{\alpha},
+			\end{equation}
+			and then
+			\begin{equation}
+				x=\proj_r\big( \varphi_{\alpha}^{-1}(m) \big)\in\proj_r(S_{\alpha})=V_{\alpha}.
+			\end{equation}
+
+			\spitem[\( \phi_{\alpha}(x)=m\)]
+			%-----------------------------------------------------------
+			We have to compute
+			\begin{equation}	\label{EQooQMOHooWsMwys}
+				\phi_{\alpha}(x)=(\phi_{\alpha}\circ\proj_r\circ\varphi_{\alpha}^{-1})(m)=(\varphi_{\alpha}\circ j\circ\proj_r\circ\varphi_{\alpha}^{-1})(m).
+			\end{equation}
+		\end{subproof}
+		If \( a\varphi_{\alpha}(m)\) we have \( a\in j(\eR^r)\cap U_{\alpha}\) and then \( a=(a_1,\ldots,a_r,0,\ldots,0)\). Thus \( (j\circ\proj_r)(a)=a\). Substituting in \eqref{EQooQMOHooWsMwys} we get \( \phi_{\alpha}(x)=(\varphi_{\alpha}\circ\varphi_{\alpha}^{-1})(m)=m\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooKRKXooINCjyh}
+	If \( q_0\in Q\) and \( \alpha\in \Lambda(q)\), we have
+	\begin{equation}
+		\varphi_{\alpha}^{-1}(q_0)=(j\circ\phi_{\alpha}^{-1})(q_0).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	We have
+	\begin{equation}	\label{EQooVRBMooGGFkXN}
+		(j\circ\phi_{\alpha}^{-1})(q_0)=(j\circ\proj_r\circ\varphi_{\alpha}^{-1})(q_0).
+	\end{equation}
+	Since \( \alpha\in\Lambda(q)\) we have \( \varphi_{\alpha}^{-1}(q_0)\in j(\eR^r)\) so that \( (j\circ\proj_r)\big( \varphi_{\alpha}^{-1}(q_0) \big)=\varphi_{\alpha}^{-1}(q_0)\). Thus equation \eqref{EQooVRBMooGGFkXN} becomes
+	\begin{equation}
+		(j\circ\phi_{\alpha}^{-1})(q_0)=\varphi_{\alpha}^{-1}(q_0).
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooDGZVooBPBSow}
+	Let \( Q\) be a submanifold of \( M\). Let \( H\subset M_{\alpha\beta} \). We have
+	\begin{equation}
+		(j\circ\phi_{\alpha}^{-1})(H\cap Q)=j(V_{\alpha})\cap\varphi_{\alpha}^{-1}(H).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Several parts.
+	\begin{subproof}
+		\spitem[First inclusion]
+		%-----------------------------------------------------------
+		Let \( x\in(j\circ\phi_{\alpha}^{-1})(H\cap Q)\). We know from lemma \ref{LEMooUYHPooLPfNVr} that \(\phi_{\alpha} \colon V_{\alpha}\to \varphi_{\alpha}(U_{\alpha})\cap Q  \) is bijective. We have
+		\begin{equation}
+			H\cap Q\subset M_{\alpha\beta}\cap Q\subset\varphi_{\alpha}(U_{\alpha})\cap Q=\phi_{\alpha}(V_{\alpha}).
+		\end{equation}
+		Thus \( (j\circ\phi_{\alpha}^{-1})(H\cap Q)\subset j(V_{\alpha})\). We still have to prove that \( x\in\varphi_{\alpha}^{-1}(H)\). By definition of \( x\), there exists \( h\in H\cap Q\) such that \( x=(j\circ\phi_{\alpha}^{-1})(h)\). We apply \( \varphi_{\alpha}\) on both sides and we use \( \phi_{\alpha}^{-1}=\proj_r\circ\varphi_{\alpha}^{-1}\) :
+		\begin{equation}		\label{EQooUXYLooGWtwLS}
+			\varphi_{\alpha}(x)=(\varphi_{\alpha}\circ j\circ\proj_r\circ\varphi_{\alpha}^{-1})(h).
+		\end{equation}
+		Since \( h\in Q\) and \( \alpha\in\Gamma\), we have \( \varphi_{\alpha}^{-1}(h)\in j(\eR^r)\) and then \( (j\circ\proj_r)\big( \varphi_{\alpha}^{-1}(h) \big)=\varphi_{\alpha}^{-1}(h)\). Equation \eqref{EQooUXYLooGWtwLS} thus says \( \varphi_{\alpha}(x)=h\). This proves that \( x\in\varphi_{\alpha}^{-1}(H)\).
+
+		\spitem[Second inclusion]
+		%-----------------------------------------------------------
+		Let \( x\in j(V_{\alpha})\cap \varphi_{\alpha}^{-1}(H)\). There is \( h\in H\) such that \( h=\varphi_{\alpha}(x)\). Since \( x\in j(V_{\alpha})\), there is \( x'\in V_{\alpha}\) such that \( x=j(x')\). Then
+		\begin{equation}
+			\varphi_{\alpha}(x)=(\varphi_{\alpha}\circ j)(x')=\phi_{\alpha}(x')\in Q.
+		\end{equation}
+		This proves that \( h=\varphi_{\alpha}(x)\in Q\), so that
+		\begin{equation}
+			h=\varphi_{\alpha}(x)\in Q\cap H.
+		\end{equation}
+		Since \( h\in Q\), lemma \ref{LEMooKRKXooINCjyh} says \( \varphi_{\alpha}^{-1}(h)=(j\circ\phi_{\alpha}^{-1})(h)\). At the end of the day we have
+		\begin{equation}
+			x=\varphi_{\alpha}^{-1}(h)=(j\circ\phi_{\alpha}^{-1})(h)\in(j\circ\phi_{\alpha}^{-1})(Q\cap H).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%-----------------------------------
+\subsubsection{The theorem}
+%-------------------------------------------------------
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooMKLBooTkqrph}
+	Let \( Q\) be a \( r\)-dimensional submanifold of \( M\). We consider an atlas \( \{ (\varphi_{\alpha},U_{\alpha})_{\alpha\in \Lambda} \}\) such that \( \Lambda(q)\neq \emptyset\) for every \( q\in Q\).
+
+	We consider the projection \(\pr_r \colon \eR^n\to \eR^r  \).
+
+	Let \( \Gamma=\bigcup_{q\in Q}\Lambda(q)\). For \( \alpha\in \Gamma\) we define
+	\begin{subequations}
+		\begin{align}
+			S_{\alpha} & =\varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap Q \big) =j(\eR^r)\cap U_{\alpha} \\
+			V_{\alpha} & =\pr_r(S_{\alpha}).
+		\end{align}
+	\end{subequations}
+	Then we consider the maps
+	\begin{equation}
+		\begin{aligned}
+			\phi_{\alpha}\colon V_{\alpha} & \to Q                                 \\
+			x                              & \mapsto (\varphi_{\alpha}\circ j)(x).
+		\end{aligned}
+	\end{equation}
+
+
+	The maps \( \{ \phi_{\alpha} \}_{\alpha\in\Gamma}\) give \( Q\) a \( \mA\)-manifold of dimension \( r\) structure.
+\end{proposition}
+
+\begin{proof}
+
+	For the manifold structure, we follow the theorem \ref{THOooFIHIooLiSUxH}.
+	\begin{subproof}
+		\spitem[\( V_{\alpha}\) is open in \( \eR^r\)]
+		%-----------------------------------------------------------
+		The part  \(U_{\alpha} \) is open in \( \eR^n\). By lemma \ref{LEMooURMPooEBfsTF} we know that the part \( V_{\alpha}=\pr_r\big( j(\eR^r)\cap U_{\alpha} \big) \) is open in \( \eR^r\).
+
+		\spitem[\( \bigcup_{\alpha\in\Gamma}\phi_{\alpha}(V_{\alpha})=Q\)]
+		%-----------------------------------------------------------
+		Let \( q\in Q\). We have \( \Lambda(q)\subset \Gamma\). Let \( \alpha\in \Lambda(q)\); by definition \eqref{EQooPIPMooWqyrsn} we have \( q=\phi_{\alpha}(0)\).
+
+		\spitem[\( \phi_{\alpha}\) is injective]
+		%-----------------------------------------------------------
+		Lemma \ref{LEMooUYHPooLPfNVr}.
+
+		\spitem[\( \phi_{\alpha}^{-1}\big( \phi_{\alpha}(V_{\alpha})\cap \phi_{\beta}(V_{\beta}) \big)\) is open]
+		%-----------------------------------------------------------
+		Let \( A=\phi_{\alpha}^{-1}\big( \phi_{\alpha}(V_{\alpha})\cap \phi_{\beta}(V_{\beta}) \big)\). We have to prove that \( A\) is open in \( \eR^r\). Let \( x_0\in A\). We consider
+		\begin{equation}
+			m_0=\phi_{\alpha}(x_0)=(\varphi_{\alpha}\circ j)(x_0)\in M.
+		\end{equation}
+		Since \( M_{\alpha\beta}=\varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})\) is open in \( M\) and since \( m_0\in M_{\alpha\beta}\), we consider an open \( H\) of \( M\) such that
+		\begin{equation}
+			m_0\in H\subset M_{\alpha\beta}.
+		\end{equation}
+		We will show that \( \phi_{\alpha}^{-1}(H\cap Q)\) is an open part of \( \eR^r\) containing \( x_0\) and contained in \( A\). So \( A\) contains a neighbourhood of each of its points and we are done. Ok. So we have to prove the following points:
+		\begin{enumerate}
+			\item		\label{ITEMooKUCIooNVTOnu}
+			      \( x_0\in\phi_{\alpha}^{-1}(H\cap Q)\).
+			\item		\label{ITEMooPCQMooVBoAZp}
+			      \( \phi_{\alpha}^{-1}(H\cap Q)\subset A\),
+			\item  \label{ITEMooYQNPooKqwkrU}
+			      \( \phi_{\alpha}^{-1}(H\cap Q)\) is open in \( \eR^r\),
+		\end{enumerate}
+		Here we go.
+		\begin{subproof}
+			\spitem[For \ref{ITEMooKUCIooNVTOnu}]
+			%-----------------------------------------------------------
+			By definition of \( H\) we have \( m_0\in H\). Moreover \( m_0=\phi_{\alpha}(x_0)\subset Q\). Thus \( x_0=\phi_{\alpha}^{-1}(m_0)\in \phi_{\alpha}^{-1}(H\cap Q)\).
+			\spitem[For \ref{ITEMooPCQMooVBoAZp}]
+			%-----------------------------------------------------------
+			We have
+			\begin{subequations}
+				\begin{align}
+					H\cap Q & \subset\varphi_{\alpha}(U_{\alpha})\cap\varphi_{U_{\beta}}\cap Q                                                                             \\
+					        & \subset \big( \varphi_{\alpha}(U_{\alpha})\cap Q \big)\cap\big( \varphi_{\beta}(U_{\beta})\cap Q \big)                                       \\
+					        & =\phi_{\alpha}(V_{\alpha})\cap\phi_{\beta}(V_{\beta})                                                  & \text{lem. \ref{LEMooUYHPooLPfNVr}} \\
+					        & =A.
+				\end{align}
+			\end{subequations}
+			\spitem[For \ref{ITEMooYQNPooKqwkrU}]
+			%-----------------------------------------------------------
+			We know from lemma \ref{LEMooDGZVooBPBSow} that
+			\begin{equation}
+				(j\circ\phi_{\alpha}^{-1})(H\cap Q)=j(V_{\alpha})\cap\varphi_{\alpha}^{-1}(H).
+			\end{equation}
+			Since \( H\) is open in \( M\), the part \( \varphi_{\alpha}^{-1}(H)\) is open in \( \eR^n\). As intersection between \( j(V_{\alpha})\) and an open of \( \eR^n\), the part \( (j\circ\phi_{\alpha}^{-1})(H\cap Q)\) is open in \( j(V_{\alpha})\). We can use lemma \ref{LEMooBIYBooHTFNsQ}:
+			\begin{enumerate}
+				\item
+				      \( V_{\alpha}\) is open in \( \eR^r\)
+				\item
+				      \( \phi_{\alpha}^{-1}(H\cap Q)\subset V_{\alpha}\)
+				\item
+				      \( j\big( \phi_{\alpha}^{-1}(H\cap Q) \big)\) is open in \( j(V_{\alpha})\).
+			\end{enumerate}
+			Thus \( \phi_{\alpha}^{-1}(H\cap Q)\) is open in \( \eR^r\).
+		\end{subproof}
+
+		\spitem[\( \phi_{\alpha}^{-1}\circ\phi_{\alpha}\) is continuous]
+		%-----------------------------------------------------------
+		We know that \( \proj_r\) and \( j\) are continuous (lemma \ref{LEMooUBLWooXnPzjn}) and that \(\varphi_{\alpha}^{-1}\circ\varphi_{\beta}\) is continuous. Using the inverse given by lemma \ref{LEMooUYHPooLPfNVr},
+		\begin{equation}		\label{EQooVZPEooPwSXyX}
+			\phi_{\alpha}^{-1}\circ\phi_{\beta}=\proj_r\circ(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})\circ j.
+		\end{equation}
+		As composition of continuous maps, \( \phi_{\alpha}^{-1}\circ\phi_{\beta}\) is continuous.
+	\end{subproof}
+	At this point, theorem \ref{THOooFIHIooLiSUxH} says that \( Q\) is a topological manifold.
+
+	The maps \( \phi_{\alpha}^{-1}\circ\phi_{\beta}\) are \( C^k\), smooth or analytic when \( \varphi_{\alpha}^{-1}\circ\varphi_{\beta}\) are. The reason is the equality \eqref{EQooVZPEooPwSXyX} and the fact that \( \proj_r\) and \( j\) are linear and then smooth and analytic\footnote{Proposition \ref{PROPooMGWOooTeCDRk}.}.
+\end{proof}
+
+\begin{lemma}[\cite{BIBooDUPSooZjcTHL}]		\label{LEMooMGIZooIzoLNR}
+	Let \( S\) be a smooth submanifold of the smooth manifold \( M\). Let \( p\in S\). We consider a map \( \varphi\colon U\to M\) around \( p\) such that
+	\begin{equation}
+		\varphi^{-1}\big( \varphi(U)\cap S \big)=U\cap j(\eR^k).
+	\end{equation}
+	Let \( X=\varphi(U)\cap S\) and \( Y=(\proj_k\circ\varphi^{-1})(X)\). Then we define
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon Y & \to X                        \\
+			x            & \mapsto (\varphi\circ j)(x).
+		\end{aligned}
+	\end{equation}
+	We have:
+	\begin{enumerate}
+		\item
+		      \( \psi\) is bijective,
+		\item
+		      for every chart \( \varphi_{\alpha}\colon U_{\alpha}\to M\) of \( M\), the maps
+		      \begin{equation}        \label{EQooBAGFooDnpctJ}
+			      \psi^{-1}\circ\varphi_{\alpha}\colon \varphi_{\alpha}^{-1}\big( \psi(Y) \big)\to Y
+		      \end{equation}
+		      and
+		      \begin{equation}        \label{EQooKQIUooDCCczD}
+			      \varphi_{\alpha}^{-1}\circ\psi\colon \psi^{-1}\big( \varphi_{\alpha}(U_{\alpha}) \big)\to U_{\alpha}
+		      \end{equation}
+		      are smooth.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	In several parts.
+	\begin{subproof}
+		\spitem[\( \psi\) is injective]
+		Let \( a,b\in Y\subset \eR^k\) such that \( \psi(a)=\psi(b)\), that is \( (\varphi\circ j)(a)=(\varphi\circ j)(b)\). Since \( \varphi\) and \( j\) are injective, we have \( a=b\).
+		\spitem[\( j\circ\proj_k=\id|_{j(\eR^k)}\)]
+		If \( a\in j(\eR^k)\), we have \( a=(a_1,\ldots, a_k,0,\ldots, 0)\), so that
+		\begin{equation}
+			j\circ\proj_k(a)=j(a_1,\ldots, a_k)=(a_1,\ldots, a_k,0,\ldots, 0)=a.
+		\end{equation}
+		\spitem[\( \psi\) is surjective]
+		Let \( x\in X\). By definition of \( Y\), we have \( y=\proj_k\big( \varphi^{-1}(x) \big)\in Y\). We prove that \( \psi(y)=x\). We have
+		\begin{equation}        \label{EQooFFSTooCddIyX}
+			\psi(y)=(\psi\circ\proj_k\circ\varphi^{-1})(x)=(\varphi\circ j\circ\proj_k\circ\varphi^{-1})(x).
+		\end{equation}
+		Since \( x\in X=\varphi(U)\cap S\) we have \( \varphi^{-1}(x)\subset U\cap j(\eR^k)\). We know that \( j\circ\proj_k=\id|_{j(\eR^k)}\), so that
+		\begin{equation}
+			(j\circ\proj_k)\big( \varphi^{-1}(x) \big)=\varphi^{-1}(x).
+		\end{equation}
+		We continue \eqref{EQooFFSTooCddIyX}:
+		\begin{equation}
+			\psi(y)=(\varphi\circ j\circ\proj_k\circ\varphi^{-1})(x)=\varphi\big( \varphi^{-1}(x) \big)=x.
+		\end{equation}
+		So \( \psi\) is surjective. And we proved that \( \psi\) is a bijection.
+
+		By the way, we have a formula for the inverse of \( \psi\) :
+		\begin{equation}        \label{EQooQSZUooWsAqCz}
+			\psi^{-1}=\proj_k\circ\varphi^{-1}\colon X\to Y.
+		\end{equation}
+		\spitem[First smoothness]
+		We prove that \eqref{EQooBAGFooDnpctJ} is smooth. First notice that
+		\begin{equation}
+			\varphi_{\alpha}\Big( \varphi_{\alpha}^{-1}\big( \psi(Y) \big) \Big)\subset\psi(Y)=X=\varphi(U)\cap S\subset \varphi(U).
+		\end{equation}
+		Thus it makes sense to write
+		\begin{equation}        \label{EQooOTSUooXHGAZz}
+			\psi^{-1}\circ\varphi_{\alpha}=\psi^{-1}\circ\varphi\circ\varphi^{-1}\circ\varphi_{\alpha}
+		\end{equation}
+		as maps defined on \( \varphi_{\alpha}^{-1}\big( \psi(Y) \big)\). Since \( \varphi\) and \( \varphi_{\alpha}\) are charts, the map \( \varphi^{-1}\circ\varphi_{\alpha}\) is smooth.
+
+		We know the inverse of \( \psi\) from equation \eqref{EQooQSZUooWsAqCz}. We have
+		\begin{equation}
+			\psi^{-1}\circ\varphi=\proj_k\circ\varphi^{-1}\circ\varphi=\proj_k,
+		\end{equation}
+		which is smooth.
+
+		Equation \eqref{EQooOTSUooXHGAZz} is now the composition of two smooth functions.
+		\spitem[Second smoothness]
+		We prove that \eqref{EQooKQIUooDCCczD} is smooth. We have
+		\begin{equation}
+			\varphi_{\alpha}^{-1}\circ\psi=\varphi_{\alpha}^{-1}\circ\varphi\circ j
+		\end{equation}
+		while \( \varphi_{\alpha}^{-1}\), \( \varphi\) and \( j\) are smooth.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooFFDYooLmwISw}
+	Let \( M\) be a \( C^k\) manifold. Let \( (N_i)_{i\in I}\) be \( r\)-dimensional submanifolds of \( M\). Then \( N=\bigcup_{i\in I}N_i\) is a \( k\)-dimensional \( C^k\)-manifold.
+\end{proposition}
+
+\begin{proof}
+	Following the notations of definition \ref{DEFooLQHWooMOTgzq}, we consider the charts \( \{ \varphi_{\alpha} \}_{\alpha\in\Lambda_i}\) of \( N_i\) and the special ones \( \Lambda_i(q)\) at \( q\). For every \( q\in N\) we have \( \Lambda_i(q)\neq \emptyset\), so that the charts \( \bigcup_{q\in N}\bigcup_{i\in I}\Lambda_i(q)\) satisfy the hypothesis of \ref{DEFooLQHWooMOTgzq}.
+\end{proof}
+
+\begin{definition}      \label{DEFooZKUIooXWVGvh}
+	Let a map $\dpt{f}{M_1}{M_2}$.
+	\begin{enumerate}
+		\item
+		      It is an \defe{immersion}{immersion} at $p\in M_1$ if $\dpt{df_p}{T_pM_1}{T_{f(p)}M_2}$ is injective\footnote{Differential of map, definition \ref{DEFooDRGUooDPFIJa}.}.
+		\item
+		      It is a \defe{submersion}{submersion} if $df_p$ is surjective.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}[\cite{BIBooDUPSooZjcTHL}]       \label{PROPooEWUCooTStAvb}
+	If \( S\) is a submanifold of \( M\), the inclusion map \( i\colon S \to M\) is an immersion\footnote{Definition \ref{DEFooZKUIooXWVGvh}}.
+\end{proposition}
+
+\begin{proof}
+	Let \( \mA\) be the class of the manifold: \( C^k\), smooth or analytic. We have to prove that \(di_q \colon T_qS\to T_qM  \) is injective. We consider a path \(\gamma \colon \eR\to S  \) in the class \( \mA\) and we suppose that \( di_q(\nabla_{\gamma})=0\) in \( T_qM\). In other words, for every \(\tilde f \colon M\to \eR  \) in the class \( \mA\) we have
+	\begin{equation}	\label{EQooVUPBooZuIQfV}
+		\frac{d}{dt} \left[ (\tilde f\circ \gamma)(t)  \right]_{t=0}=0.
+	\end{equation}
+
+	We have to deduce that \( \nabla_{\gamma}=0\) in \( T_qS\).
+
+	Let \(f \colon S\to \eR  \) be a function in the class \( \mA\). There exists \( \alpha\in \Gamma\) such that \( q\in \phi_{\alpha}(V_{\alpha})\). With that \( \alpha\) we build the function
+	\begin{equation}
+		\tilde f=f\circ\phi_{\alpha}\circ\proj_r\circ\varphi_{\alpha}^{-1}=f\circ\varphi_{\alpha}\circ j\circ \proj_r\circ\varphi_{\alpha}^{-1}.
+	\end{equation}
+	This function is the function \( f\) extended to a neighbourhood of \( q\) in \( M\). Since \( j\circ\proj_r\) is linear, it is \( C^{\infty}\) and analytic, so that \( \tilde  f\) is in the class \( \mA\).
+
+	We have
+	\begin{equation}
+		\nabla_{\gamma}(f)=\frac{d}{dt} \left[ (f\circ \gamma)(t)  \right]_{t=0},
+	\end{equation}
+	but since \( \gamma\) take its values in \( S\), we have \( \tilde f\circ\gamma=f\circ\gamma\), so that
+	\begin{equation}
+		\nabla_{\gamma}(f)=\frac{d}{dt} \left[ (f\circ \gamma)(t)  \right]_{t=0}=\frac{d}{dt} \left[ (\tilde f\circ\gamma)(t)  \right]_{t=0}
+	\end{equation}
+	which vanishes because of the hypothesis \ref{EQooVUPBooZuIQfV}.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau,BIBooARJKooLuqoxW}]     \label{PROPooZACHooCNgLSl}
+	Let \( M\) and \( S\) be manifolds in the class \( \mA\) (\( C^k\), analytic). We suppose that \( S\subset M\) and that the inclusion \(i \colon S\to M  \) is \( \mA\)-regular:
+	\begin{enumerate}
+		\item
+		      \( i\) is in the class \( \mA\),
+		\item
+		      For every \( q\in S\) the differential \(di_q \colon T_qS\to T_{i(q)}M  \) is injective.
+	\end{enumerate}
+	Then \( S\) is a submanifold of \( M\).
+\end{proposition}
+
+\begin{proof}
+	We have to check the definition \ref{DEFooLQHWooMOTgzq}, that is: we have to prove the existence of an atlas \( \Lambda\) for \( M\) such that \( \Lambda(q)\neq \emptyset\) for every \( q\in S\).
+
+	Since the dimension of \( T_qS\) is constant, the rank of \( i\) is constant. The constant rank theorem \ref{THOooSWKVooTJQsXc} says that for each \( q\in S\), there exists charts \(\phi_q \colon V_q\to S  \) and \(\varphi_q \colon U_q\to M  \) such that \( \phi_q(0)=\varphi_q(0)=q\) and
+	\begin{equation}
+		(\varphi_q^{-1}\circ i\circ\phi_q)(x_1,,x_r)=(x_1,\ldots,x_r,0,\ldots,0)
+	\end{equation}
+	for every \( (x_1,\ldots,x_r)\in V_q\). Since \( V_q\) and \( U_q\) are neighbourhood of \( 0\) (not in the same dimension), we can restrict \( U_q\) so that \( \pr_r(U_q)\subset V_q\), i.e. if \( (x_1,\ldots,x_r,0,\ldots,0)\in U_q\) then \( (x_1,\ldots,x_r)\in V_q\).
+
+	We consider an atlas for \( M\) containing all the maps \( \{ \varphi_q \}_{q\in S}\). We prove that \( \varphi_q\in \Lambda(q)\):
+	\begin{equation}
+		\varphi_q^{-1}\big( \varphi_q(U_q)\cap S \big)=\{ (x_1,\ldots,x_r,0,\ldots,0)\in U_{q} \}.
+	\end{equation}
+
+	\begin{subproof}
+		\spitem[First inclusion]
+		%-----------------------------------------------------------
+		Let \( x\in U_q\) be such that \( \varphi_q(x)\in S\). Then there exists \( y\in V_q\) such that \( \varphi_q(x)=\phi_q(y)\). But \( \phi_q(y)=(i\circ \phi_q)(y)\), so that
+		\begin{equation}
+			\varphi_q(x)=(i\circ \phi_q)(y)
+		\end{equation}
+		and \( x=(\varphi_q^{-1}\circ i\circ \phi_q)(y)\) which proves that \( x\) has the form \( x=(x_1,\ldots,x_r,0,\ldots,0)\). We have proven that
+		\begin{equation}
+			\varphi_q^{-1}\big( \varphi_q(U_q)\cap S \big)\subset\{ (x_1,\ldots,x_r,0,\ldots,0)\in U_q \}.
+		\end{equation}
+
+		\spitem[The other inclusion]
+		%-----------------------------------------------------------
+		An element of \( U_q\) of the form \( (x_1,\ldots,x_r,0,\ldots,0)\) satisfy \( (x_1,\ldots,x_r)\in V_q\) because we have restricted \( U_q\) in order to have that.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}\label{prop:topo_sub_manif}
+	The own topology of a submanifold is finer than the induced one from the manifold.
+	\index{topology!on submanifold}
+\end{proposition}
+
+\begin{proof}
+	Let $M$ be a manifold of dimension $n$ and $N$ a submanifold\footnote{In the whole proof, we should say ``there exists a sub-neighbourhood such that\ldots``} of dimension $k<n$. We consider $V$, an open subset of $N$ for the induced topology, so $V=N\cap\mO$ for a certain open subset $\mO$ of $M$. The aim is to show that $V$ is an open subset in the topology of $N$.
+
+	Let us define $\mP=\varphi^{-1}(\mO)$.  The charts of $N$ are the projection to $\eR^k$ of the ones of $M$. We have to consider $W=\varphi^{-1}(V)$, since $N$ is a submanifold, $\varphi^{-1}(\mO\cap N)=\eR^k\cap\mP$. It is clear that $W=\eR^k\cap\mP$ is an open subset of $\eR^k$ because it is the projection on the $k$ first coordinates of an open subset of $\eR^n$.
+
+	The subset $V$ of $N$ will be open in the sense of the own topology of $N$ if $\varphi'{}^{-1}(V\cap\varphi'(\mU'))$ is open in $\eR^k$ where $\varphi'$ is the restriction of $\varphi$ to his $k$ first coordinates: $\varphi'(a)=\varphi(a,0)$ and $\mU'$ is the projection of $\mU$.
+\end{proof}
+
+
+\begin{proposition}\label{prop:subvar_ouvert}
+	A submanifold is open if and only if it has the same dimension as the main manifold.
+\end{proposition}
+
+\begin{proof}
+	\subdem{Necessary condition}
+	We consider some charts $\dpt{\varphi_i}{U_i}{M}$ on some open subsets $U_i$ of $\eR^n$. If $N$ is open in $M$, then this can be written as
+	\[
+		N=\bigcup_iU_i.
+	\]
+	If we choose the charts on $M$ in such a manner that $\dpt{\varphi_i}{U_i\cap \eR^k}{N}$ are charts of $N$, we must have $\varphi_i(U_i\cap\eR^k)=\varphi_i(U_i)$. Then it is clear that $k=n$ is necessary.
+	\subdem{Sufficient condition}
+	If $N$ has same dimension as $M$, the charts $\dpt{\varphi_i}{U_i}{M}$ are trivially restricted to $N$.
+\end{proof}
+
+The following result allow to extend a smooth function defined on a submanifold to an open set of the «larger» manifold.
+\begin{proposition}     \label{PROPooOTZQooIfboXV}
+	Let \( N\) be a submanifold of \( M\) and \( f\in  C^{\infty}(N)\). Let \( p\in N\). There exists a neighbourhood \( W\) of \( p\) in \( M\) and a function \( \tilde f\in  C^{\infty}(W)\) such that
+	\begin{equation}
+		\tilde f(n)=f(n)
+	\end{equation}
+	for every \( n\in N\).
+\end{proposition}
+
+\begin{proof}
+	Since \( N\) is a submanifold of \( M\), the definition \ref{DEFooLQHWooMOTgzq} provides a chart \( \varphi\colon U\to M\) around \( p\) such that
+	\begin{equation}
+		\varphi^{-1}\big( \varphi(U)\cap N \big)=\{ (x_1,\ldots, x_n,0,\ldots, 0) \}.
+	\end{equation}
+	From the function \( f\colon N\to \eR\) we consider
+	\begin{equation}
+		\begin{aligned}
+			f_1\colon \varphi^{-1}\big( \varphi(U)\cap N \big) & \to \eR        \\
+			f_1                                                & =f\circ\varphi
+		\end{aligned}
+	\end{equation}
+	This is the function \( f\) seen through the chart. The function \( f_1\) is only defined on the ``\( N\)'' part of the chart, but can be extended as
+	\begin{equation}
+		\begin{aligned}
+			\tilde f_1\colon U & \to \eR                                   \\
+			(x_1,\ldots, x_m)  & \mapsto f_1(x_1,\ldots, x_n,0,\ldots, 0),
+		\end{aligned}
+	\end{equation}
+	which is a good definition since \( (x_1,\ldots, x_n,0,\ldots, 0)\) is in \( \varphi^{-1}\big( \varphi(U)\cap N \big)\).
+
+	Finally we write
+	\begin{equation}
+		\begin{aligned}
+			\tilde f\colon \varphi(U) & \to \eR                       \\
+			\tilde f                  & =\tilde f_1\circ\varphi^{-1}.
+		\end{aligned}
+	\end{equation}
+	This is the extension we are searching for. Indeed it is defined on \( \varphi(U)\) which is an open set in \( M\) which contains \( p\) and if \( q\in N\cap\varphi(U)\) we have \( q=\varphi(x_1,\ldots, x_n,0,\ldots, 0)\) and then
+	\begin{subequations}
+		\begin{align}
+			\tilde f(q) & =(\tilde f_\circ\varphi^{-1})\varphi(x_1,\ldots, x_n,0,\ldots, 0) \\
+			            & =\tilde f_1(x_1,\ldots, x_n,0,\ldots, 0)                          \\
+			            & =f_1(x_1,\ldots, x_n,0,\ldots, 0)                                 \\
+			            & =(f\circ\varphi)(x_1,\ldots, x_n,0,\ldots, 0)                     \\
+			            & =f(q).
+		\end{align}
+	\end{subequations}
+	Thus \( \tilde f=f\) on \( \varphi(U)\cap N\).
+\end{proof}

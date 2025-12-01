@@ -326,6 +326,15 @@ a_{m, 1} x_1+a_{m, 2} x_2+\cdots+a_{m, n} x_n & =d_m
 has the solution $(s_1,s_2,\ldots,s_n)$ if that $n$-tuple is a solution of all of the equations.
 \end{defn}
 
+
+\begin{defn}[Number of solutions of a linear system]
+\
+\\
+A system of equations is said to be \textbf{consistent} if there is at least one solution; it is \textbf{inconsistent} if there are no solutions.
+\end{defn}
+
+
+
 \begin{thm}[Gauss's Method a.k.a Gauss-Jordan or Row Reduction] \label{th:GaussMethod}
 \
 \\
@@ -392,6 +401,19 @@ have infinitely many elements.
 \end{itemize}
 \end{cor}
 
+
+\begin{thm}[Inconsistent Systems]
+\
+\\
+A linear system is inconsistent if (and only if) the reduced row-echelon form of its augmented matrix contains the row $\left[\begin{array}{llll:l}0 & 0 & \cdots & 0 & 1\end{array}\right]$, representing the equation $0=1$.
+
+If a linear system is consistent, then it has either
+
+- infinitely many solutions (if there is at least one free variable), or
+
+- exactly one solution (if all the variables are leading).
+
+\end{thm}
 \begin{thm}[General Solution Form]
 \
 \\
@@ -1659,8 +1681,40 @@ Note that we are not required to find an orthonormal basis of $V$ here, unlike i
 \begin{defn}[Inner Product Space]
 \
 \\
-On a real vector space $V$, an inner product is a positive-definite symmetric bilinear form. It induces the norm $\|v\|=\sqrt{\langle v,v\rangle}$ and orthogonality.
+An inner product in a linear space $V$ is a rule that assigns a real scalar (denoted by $\langle f, g\rangle$) to any pair $f, g$ of elements of $V$, such that the following properties hold for all $f, g, h$ in $V$, and all $c$ in $\mathbb{R}$ :\\
+a. $\langle f, g\rangle=\langle g, f\rangle$ (symmetry).\\
+b. $\langle f+h, g\rangle=\langle f, g\rangle+\langle h, g\rangle$.\\
+c. $\langle c f, g\rangle=c\langle f, g\rangle$.\\
+d. $\langle f, f\rangle>0$, for all nonzero $f$ in $V$ (positive definiteness).
+
+A linear space endowed with an inner product is called an \textbf{inner product space}.
 \end{defn}
+
+
+\begin{defn}[Norm, orthogonality]
+\
+\\
+The \textbf{norm} (or magnitude) of an element $f$ of an inner product space is
+\[
+\|f\|=\sqrt{\langle f, f\rangle} .
+\]
+Two elements $f$ and $g$ of an inner product space are called \textbf{orthogonal} (or \textbf{perpendicular}) if
+\[
+\langle f, g\rangle=0 .
+\]
+\end{defn}
+
+
+\begin{thm}[Orthogonal projection]
+\
+\\
+Similarly to Theorem \ref{thm:proj}, if $g_1, \ldots, g_m$ is an orthonormal basis of a subspace $W$ of an inner product space $V$, then
+\[
+\operatorname{proj}_W f=\left\langle g_1, f\right\rangle g_1+\cdots+\left\langle g_m, f\right\rangle g_m,
+\]
+for all $f$ in $V$.
+\end{thm}
+
 
 \section{Determinants}
 \
@@ -1723,6 +1777,7 @@ $\det(A)= \left|
 \end{tikzpicture}
 \end{center}
 \end{thm}
+
 
 
 \begin{defn}[Determinant]
@@ -2797,4 +2852,181 @@ where $f_1, f_2, \ldots, f_n$ are the solutions from step 1 and $f_p$ is the sol
 \end{tech}
 
 
+
+\section{Fourier Analysis}
+
+
+\subsection{Pythagorean Theorem}
+\
+\\
+\begin{thm}[Pythagorean Theorem]
+\
+\\
+If $V$ is a linear space with an inner product $\langle \ ,\ \rangle$ and $f_1, \ldots, f_n$ are orthonormal elements of $V$, then $\left\|c_1 f_1+\cdots+c_n f_n\right\|^2=c_1^2+\cdots+c_n^2$.
+\end{thm}
+
+\subsection{Fourier Series}
+\
+\\
+
+
+\begin{thm}[An orthonormal basis of $T_n$]
+\
+\\
+Let $T_n$ be the space of all trigonometric polynomials of order $\leq n$, with the inner product
+\[
+\langle f, g\rangle=\frac{1}{\pi} \int_{-\pi}^\pi f(t) g(t) d t
+\]
+Then the functions
+\[
+\frac{1}{\sqrt{2}}, \sin (t), \cos (t), \sin (2 t), \cos (2 t), \ldots, \sin (n t), \cos (n t)
+\]
+form an orthonormal basis of $T_n$.
+\end{thm}
+
+
+\begin{defn}[Fourier coefficients]
+\
+\\
+If $f$ is a piecewise continuous function defined on the interval $[-\pi, \pi]$, then its best approximation $f_n$ in $T_n$ is
+\[
+\begin{aligned}
+f_n(t) & =\operatorname{proj}_{T_n} f(t) \\
+& =a_0 \frac{1}{\sqrt{2}}+b_1 \sin (t)+c_1 \cos (t)+\cdots+b_n \sin (n t)+c_n \cos (n t),
+\end{aligned}
+\]
+where
+\[
+\begin{aligned}
+& b_k=\langle f(t), \sin (k t)\rangle=\frac{1}{\pi} \int_{-\pi}^\pi f(t) \sin (k t) d t \\
+& c_k=\langle f(t), \cos (k t)\rangle=\frac{1}{\pi} \int_{-\pi}^\pi f(t) \cos (k t) d t \\
+& a_0=\left\langle f(t), \tfrac{1}{\sqrt{2}}\right\rangle=\frac{1}{\sqrt{2} \pi} \int_{-\pi}^\pi f(t) d t .
+\end{aligned}
+\]
+The $b_k$, the $c_k$, and $a_0$ are called the Fourier coefficients of the function $f$. The function
+\[
+f_n(t)=a_0 \frac{1}{\sqrt{2}}+b_1 \sin (t)+c_1 \cos (t)+\cdots+b_n \sin (n t)+c_n \cos (n t)
+\]
+is called the $n$th-order Fourier approximation of $f$.
+\end{defn}
+
+\begin{thm}[Fourier Series Convergence]
+\
+\\
+If $f$ is a \textbf{piecewise smooth} function on $[-\pi, \pi]$, then $f$ is equal to its Fourier series at all points $x$ in $(-\pi, \pi)$ where $f$ is continuous. 
+
+Moreover, if $f(-\pi)=f(\pi)$ and $f$ is continuous at $\pm \pi$, then $f$ is equal to its Fourier series at $\pm \pi$.
+\end{thm}
+
+
+
+\subsection{Parseval’s Theorem }
+\
+\\
+\begin{thm}[Parseval's Theorem] 
+\
+\\
+If $a_0, b_k, c_k$ are the Fourier coefficients of a piecewise smooth function $f$ on $[-\pi, \pi]$, then 
+\[
+a_0^2+\sum_{k=1}^{\infty}\left(b_k^2+c_k^2\right)=\|f\|^2=\langle f, f\rangle.
+\]
+\end{thm}
+
+\subsection{Fourier Sine Series on $[0,\pi]$}
+\
+\\
+\begin{defn}[Fourier Sine Series]
+\
+\\
+If $g(x)$ is a piecewise smooth function on $[0, \pi]$, the Fourier sine series of $g(x)$ is defined to be 
+\[
+\sum_{k=1}^{\infty} b_k \sin (k x) \text{ where } b_k=\frac{2}{\pi} \int_0^\pi g(x) \sin (k x) d x.
+\]
+\end{defn}
+
+
+\begin{thm}[Fourier Sine Series Convergence]
+\
+\\
+Suppose $g$ is a piecewise smooth function on $[0, \pi]$. Then, $g$ is equal to its Fourier sine series at all points in $(0, \pi)$ where $g$ is continuous. 
+
+If, moreover, $g$ is actually continuous on all of $[0, \pi]$ and $g(0)=g(\pi)=0$, then $g$ is equal to its Fourier sine series on all of $[0, \pi]$.
+\end{thm}
+
+
+\section{The Heat Equation and the Wave Equation}
+
+\subsection{The Heat Equation }
+\
+\\
+\begin{defn}[The Heat Equation]
+\
+\\ 
+The heat equation is 
+\[
+\frac{\partial f}{\partial t}=\mu \frac{\partial^2 f}{\partial x^2}
+\]
+ where, $\mu$ is a positive constant indicating how well the bar conducts heat (metal would have a much larger $\mu$ than plastic). 
+ 
+ Since this differential equation involves partial derivatives, we call it a \textbf{partial differential equation}.
+\end{defn}
+
+
+\subsection{Solving the Heat Equation}
+\
+\\
+
+\begin{thm}
+\
+\\
+The heat equation $\frac{\partial f}{\partial t}=\mu \frac{\partial^2 f}{\partial x^2}$ with boundary conditions $f(t, 0)=f(t, \pi)=0$ for all $t$ has general solution 
+\[
+f(t, x)=\sum_{k=1}^{\infty} P_k e^{-\mu k^2 t} \sin (k x).
+\]
+
+To find it we used the Fourier sine series theorem 
+\(
+f(t, x)=\sum_{k=1}^{\infty} b_k(t) \sin (k x)
+\)
+for some $b_k(t)$.  Then
+\[
+\begin{aligned} \frac{\partial f}{\partial t}(t, x) & =\sum_{k=1}^{\infty} b_k^{\prime}(t) \sin (k x) \\ \frac{\partial f}{\partial x}(t, x) & =\sum_{k=1}^{\infty} k b_k(t) \cos (k x) \\ \frac{\partial^2 f}{\partial x^2}(t, x) & =\sum_{k=1}^{\infty}-k^2 b_k(t) \sin (k x)\end{aligned}
+\]
+\end{thm}
+
+\begin{tech}[Analogy between solving continuous dynamical systems and solving the heat equation]
+\
+\\
+\begin{tabular}{|l|l|l|}
+\hline & continuous dynamical systems & heat equation \\
+\hline differential equation to solve & $\frac{d \vec{x}}{d t}=A \vec{x}$ & $\frac{\partial f}{\partial t}=\mu D^2 f$ \\
+\hline linear transformation (LT) & A & $\mu D^2$ \\
+\hline eigenvectors / eigenfunctions of the LT & $\vec{v}_k$ & $\sin (k x)$ \\
+\hline corresponding eigenvalues & $\lambda_k$ & $-\mu k^2$ \\
+\hline solutions of the differential equation & $\vec{x}(t)=\sum_{k=1}^n c_k e^{\lambda_k t} \vec{v}_k$ & $f(t, x)=\sum_{k=1}^{\infty} P_k e^{-\mu k^2 t} \sin (k x)$ \\
+\hline initial condition & $\vec{x}(0)=\sum_{k=1}^n c_k \vec{v}_k$ & $f(0, x)=\sum_{k=1}^{\infty} P_k \sin (k x)$ \\
+\hline
+\end{tabular}
+\end{tech}
+
+\subsection{The Wave Equation }
+\
+\\
+
+
+
+\begin{defn}[The Wave Equation]
+\
+\\
+Suppose we have a string of length $\pi$ whose ends are fixed but whose middle can move around (imagine a guitar string, for example). Let $f(t, x)$ be the height (relative to the fixed ends) of point $x$ of the string at time $t$. If the amplitude of motion is not too large, and if we ignore damping forces such as air resistance, then $f$ satisfies a differential equation $\frac{\partial^2 f}{\partial t^2}=c^2 \frac{\partial^2 f}{\partial x^2}$, called the wave equation. 
+\end{defn}
+
+\begin{thm}
+\
+\\
+The wave equation $\frac{\partial^2 f}{\partial t^2}=c^2 \frac{\partial^2 f}{\partial x^2}$ with boundary conditions $f(t, 0)=f(t, \pi)=0$ for all $t$ has general solution 
+\[
+f(t, x)=\sum_{k=1}^{\infty}\Big(P_k \cos (k c t)+Q_k \sin (k c t)\Big) \sin (k x).
+\]
+\end{thm}
 \end{document}

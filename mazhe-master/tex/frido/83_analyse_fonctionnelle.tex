@@ -1,0 +1,2134 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2011-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Approximation}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem}[\cite{HilbertLi}]       \label{ThoJsBKir}
+	Soit \( I\) un intervalle de \( \eR\). L'espace \( \swD(I)\)\nomenclature[Y]{\( C_c(I)\)}{fonctions continues à support compact dans \( I\)} des fonctions continues à support compact sur \( I\) est dense dans \( L^2(I)\).
+\end{theorem}
+Ce théorème sera généralisé à tous les \( L^p(\eR^d)\) par le théorème~\ref{ThoILGYXhX}. Cependant \( L^p\) n'étant pas un Hilbert, il faudra travailler sans produit scalaire.
+
+\begin{proof}
+	Soit \( g\in L^2(I)\) une fonction telle que \( g\perp f\) pour toute fonction \( f\in C_c(I)\). Nous avons donc
+	\begin{equation}
+		\langle f, g\rangle =\int_If\bar g=0.
+	\end{equation}
+	En passant éventuellement aux composantes réelles et imaginaires nous pouvons supposer que les fonctions sont toutes réelles. Nous décomposons \( g\) en parties positives et négatives : \( g=g^+-g^-\). Notre but est de montrer que \( g^+=g^-\), c'est-à-dire que \( g\) est nulle. La proposition~\ref{PropqiWonByiBmc} conclura que \( C_c(I)\) est dense dans \( L^2(I)\).
+
+	Soit un intervalle \( \mathopen[ a , b \mathclose]\subset I\) et une suite croissante de fonctions \( f_n\in C_c(I)\) qui converge vers \( \mtu_{\mathopen[ a , b \mathclose]}\). Par hypothèse pour chaque \( n\) nous avons
+	\begin{equation}
+		\int_If_ng^+=\int_I f_ng^-.
+	\end{equation}
+	La suite étant croissante, le théorème de la convergence monotone (théorème~\ref{ThoRRDooFUvEAN}) s'applique et nous avons
+	\begin{equation}
+		\lim_{n\to \infty} \int_I f_ng^+=\int_a^bg^+,
+	\end{equation}
+	de telle sorte que nous ayons, pour tout intervalle \( \mathopen[ a , b \mathclose]\subset I\) l'égalité
+	\begin{equation}        \label{EqYlErAM}
+		\int_a^bg^+=\int_a^bg^-.
+	\end{equation}
+	De plus ces intégrales sont finies parce que
+	\begin{equation}
+		\int_a^b g^+\leq\int_a^b| g |=\int_I| g |\mtu_{\mathopen[ a , b \mathclose]}=\langle | g |, \mtu_{\mathopen[ a , b \mathclose]}\rangle \leq \| g \|_{L^2}\sqrt{b-a}<\infty
+	\end{equation}
+	par l'inégalité de Cauchy-Schwarz.
+
+	Soit maintenant un ensemble mesurable \( A\subset I\). La fonction caractéristique \( \mtu_A\) est mesurable et il existe une suite croissante de fonctions étagées \( (\varphi_n)\) convergente vers \( \mtu_A\) par le théorème fondamental d'approximation \ref{THOooXHIVooKUddLi}. À multiples près, les fonctions \( \varphi_n\) sont des sommes de fonctions caractéristiques du type \( \mtu_{\mathopen[ a , b \mathclose]}\), par conséquent, en vertu de \eqref{EqYlErAM} nous avons
+	\begin{equation}
+		\int_I\varphi_ng^+=\int_I\varphi_ng^-.
+	\end{equation}
+	Une fois de plus nous pouvons utiliser le théorème de la convergence monotone et obtenir
+	\begin{equation}
+		\int_Ag^+=\int_A g^-
+	\end{equation}
+	pour tout ensemble mesurable \( A\subset I\). Si nous notons \( dx\) la mesure de Lebesgue, les mesures \( g^+dx\) et \( g^-dx\) sont par conséquent égales et dominées par \( dx\). Par le corolaire~\ref{CorZDkhwS} du théorème de Radon Nikodym, les fonctions \( g^+\) et \( g^-\) sont égales.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Partie uniformément intégrable}
+%----------------------------------------------------
+
+\begin{definition}  \label{DefOZlZnse}
+	Une partie \( H\subset L^1(\Omega,\mu)\) est \defe{uniformément intégrable}{uniformément intégrable} si
+	\begin{equation}
+		\lim_{a\to \infty}\left( \sup_{f\in H}\int_{  | f |>a   }| f(x) |d\mu(x) \right)=0.
+	\end{equation}
+\end{definition}
+Notons dans cette définition que vu que \( f\in L^1\) nous avons toujours
+\begin{equation}
+	\lim_{a\to \infty}\int_{| f |>a}| f(x) |d\mu(x)=0.
+\end{equation}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooUOQDooIkVyWm}
+	La partie \( H=\{ f_n \}_{n\in \eN}\) de \( L^1(\Omega,\mu)\) est uniformément intégrable\footnote{Définition \ref{DefOZlZnse}.} si et seulement si
+	\begin{equation}
+		\lim_{a\to \infty}\left(   \limsup_n\int_{| f_n |>a}| f_n |  \right)=0.
+	\end{equation}
+	Cette formule est prise comme définition de l'uniforme intégrabilité par \cite{BIBvitali2}.
+\end{lemma}
+
+\begin{proof}
+	Quand on a une suite \( (x_n)\) de réels positifs, nous avons toujours \( \limsup_nx_n\leq \sup_nx_n \).
+\end{proof}
+
+\begin{probleme}
+	Je n'ai pas vérifié l'énoncé de \ref{PROPooPZRAooSiqgKT}. Si vous pensez que c'est faux, écrivez-moi. Écrivez-moi également si vous avez une démonstration.
+\end{probleme}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooPZRAooSiqgKT}
+	Soit une partie uniformément intégrable \( \{ f_n \}_{n\in \eN}\). Soit une fonction intégrable \( g\).
+	\begin{enumerate}
+		\item
+		      La partie \( \{ f_n+g \}\) est uniformément intégrable.
+		\item
+		      Pour tout \( \lambda\in \eR\), la partie \( \{ \lambda f_n \}\) est uniformément intégrable.
+		\item
+		      Si pour tout \( n\) nous avons \( g_n\leq f_n\), alors la partie \( \{ g_n \}\) est uniformément intégrable.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooPFZJooLySrgp}
+	Soit \( 0<r<\infty\). Si \( f\in L^r(\Omega,\tribA,\mu)\), alors
+	\begin{equation}
+		\int_{| f |^r\geq \lambda}| f |^rd\mu\stackrel{ \lambda\to \infty}{\longrightarrow} 0.
+	\end{equation}
+\end{proposition}
+
+
+\begin{theorem}[\cite{BIBooWLVCooItYnHl}]	\label{THOooGLYJooCbNysA}
+	Soient un espace mesuré fini \( (\Omega,\tribA,\mu)\) et une partie uniformément intégrable\footnote{Définition \ref{DefOZlZnse}.} \( H\subset L^1(\Omega)\). Nous avons
+	\begin{enumerate}
+		\item		\label{ITEMooCAIFooHXOKQb}
+		      \( \sup_{f\in H}\| f \|_{L^1(\Omega)}<\infty\).
+		\item
+		      Pour tout \( \epsilon>0\), il existe \( \delta_{\epsilon}>0\) tel que
+		      \begin{equation}
+			      \int_A| f |d\mu<\epsilon
+		      \end{equation}
+		      pour tout \( f\in H\) et pour tout \( A\in\tribA\) tel que \( \mu(A)<\epsilon\).
+	\end{enumerate}
+\end{theorem}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Autres résultats de convergence}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooGJBIooAYsZQL}
+	Soit \( 0<p<\infty\). Si \( | f_n |\stackrel{ L^p}{\longrightarrow} 0\), alors \( \liminf_n| f_n |=0\) presque partout.
+\end{proposition}
+
+\begin{proof}
+	Nous y allons par contradiction en supposant qu'il existe une partie mesurable \( A\) de mesure non nulle telle que \( \liminf_n| f_n(\omega) |>0\) pour tout \( \omega\in A\).
+
+	Pour chaque \( \omega\in A\), nous posons \( n_{\omega}\in \eN\) et \( v_{\omega}>0\) tels que pour tout \( n\geq n_{\omega}\), \( | f_n(\omega) |>v_{\omega}\). Ensuite nous posons
+	\begin{equation}
+		A_{n,k}=\{ \omega\in A\tq n_{\omega}\leq n \text{ et } v_{\omega}> 1/k \}.
+	\end{equation}
+	Nous avons l'union dénombrable \( A=\bigcup_{n,k\in \eN^2}A_{n,k}\). Vu qu'une union dénombrable d'ensembles de mesure nulle est de mesure nulle, il existe \( (n_0,k_0)\) tel que \( \mu(A_{n_0,k_0})>0\). Pour tout \( \omega\in A_{n_0,k_0}\) et pour tout \( n>n_0\), nous avons
+	\begin{equation}
+		| f_{\omega}(\omega) |>\frac{1}{ k_0}.
+	\end{equation}
+	Nous avons donc la minoration, pour tout \( n\geq n_0\),
+	\begin{subequations}
+		\begin{align}
+			\| f_n \|_p^p & =\int_{\Omega}| f_n(\omega) |^pd\mu(\omega)         \\       & \geq \int_{A_{n_0,k_0}}| f_n(\omega) |^pd\mu(\omega) \\
+			              & \geq \int_{A_{n_0,k_0}}\frac{1}{ k_0^p}d\mu(\omega) \\
+			              & =\frac{1}{ k_0^p}\mu(A_{n_0,k_0})>0.
+		\end{align}
+	\end{subequations}
+	Nous ne pouvons donc pas avoir \( | f_n |\stackrel{ L^p}{\longrightarrow} 0\).
+\end{proof}
+
+\begin{proposition}[\cite{BIBooEWRZooTsULbE}]	\label{PROPooUMBQooAhUgHA}
+	Si \( 0<p\leq 1\), alors la formule
+	\begin{equation}
+		d_r(f,g)=\int_{\Omega}| f-g |^rd\mu
+	\end{equation}
+	est une métrique invariante par translation.
+\end{proposition}
+
+
+
+Parfois il faut admettre que la théorie des probabilités a des notations pratiques. Par exemple si \( X_n\stackrel{ L^p}{\longrightarrow} X\) alors \( E(X_n)\to E(X)\). C'est la proposition suivante.
+
+\begin{proposition}[\cite{BIBooNFBCooDGXPYm}]	\label{PROPooXXOYooCUtDZf}
+	Soient un espace mesuré \( (\Omega,\tribA,\mu)\) ainsi que \( 0<r<\infty\). Nous supposons que \( f_n\stackrel{ L^r}{\longrightarrow} f\). Alors
+	\begin{equation}
+		\lim_{n\to\infty}\int_{\Omega}| f_n |^r = \int_{\Omega}| f |^r.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Si \( r\geq 1\), c'est facile. L'application \( f\mapsto\| f \|_r\) est une norme\footnote{Proposition \ref{PROPooTYCYooAKJWOX}\ref{ITEMooZNXPooGzFnIK}.} et la proposition \ref{PropNmNNm} s'applique. Donc
+	\begin{equation}
+		\big|  \| f_n \|_r-\| f \|_r \big|\leq \| f-f_n \|_r.
+	\end{equation}
+
+	Nous considérons \( 0<r\leq 1\). Nous considérons la métrique \( d_r\) donnée par la proposition \ref{PROPooUMBQooAhUgHA}. Notre hypothèse de convergence signifie que \( d_r(f_n,f)\to 0\). Nous utilisons l'inégalité triangulaire :
+	\begin{equation}
+		d_r(f_n,0)\leq \underbrace{d_r(f_n,f)}_{\to 0}+d_r(f,0)\to d(f,0).
+	\end{equation}
+	Nous avons donc\footnote{ Notons que \( x_n\leq y_n\to\lambda\) n'implique pas que \( x_n\) converge. Par contre ça implique que \( \limsup_n(x_n)\leq \lambda\). }
+	\begin{equation}		\label{EQooZATHooVuHffk}
+		\limsup_nd_r(f_n,0)\leq d_r(f,0).
+	\end{equation}
+
+	D'autre part la proposition \ref{PROPooGJBIooAYsZQL} nous dit que \( \liminf_n|f_n(\omega)-f(\omega)|=0\) pour tout \(\omega\in \Omega\setminus Z\) avec \( \mu(Z)=0\). Nous avons donc aussi \( \liminf| f_n |=| f |\) (hors de \( Z\)) et \( \liminf| f_n |^r=| f |^r\) (hors de \( Z\)). Vu que \( Z\) est de mesure nulle, nous pouvons l'oublier quand nous faisons des intégrales sur \( \Omega\) :
+	\begin{subequations}
+		\begin{align}
+			d_r(f,0) & =\int_{\Omega}| f |^r                                                               \\
+			         & =\int_{\Omega}\liminf_n| f_n |^r                                                    \\
+			         & =\liminf\int_{\Omega}| f_n |^r              & \text{lem Fatou \ref{LemFatouUOQqyk}} \\
+			         & = \liminf d_r(f_n,0)                                                                \\
+			         & \leq \liminf\Big( d_r(f_n,f)+d_r(f,0) \Big)                                         \\
+			         & =d_r(f,0).
+		\end{align}
+	\end{subequations}
+	Vu que les expressions tout à gauche et tout à droite sont égales, toutes les inégalités sont des égalités. En particulier
+	\begin{equation}
+		\liminf_n d_r(f_n,0)=d_r(f,0).
+	\end{equation}
+	En combinant avec \eqref{EQooZATHooVuHffk}, et en nous souvenant qu'une limite sup est toujours plus grande qu'une limite inf,
+	\begin{equation}
+		\limsup d_r(f_n,0)\leq d_r(f,0)\leq \liminf d_r(f_n,0)\leq \liminf d_r(f_n,0).
+	\end{equation}
+	Encore une fois toutes les inégalités sont des égalités et nous avons
+	\begin{equation}
+		\liminf d_r(f_n,0)=\limsup d_r(f_n,0)=d_r(f,0).
+	\end{equation}
+	Cela prouve que \( \lim_{n\to \infty}d_r(f_n,0)\) existe et vaut \( d_r(f,0)\) (lemme \ref{ooIQIKooXWwAmM}). Enfin nous pouvons faire le calcul
+	\begin{subequations}
+		\begin{align}
+			\int_{\Omega}| f |^r=d_r(f,0)=\lim_{n\to \infty}d_r(f_n,0)=\lim_{n\to\infty}\int_{\Omega}| f_n |^r.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Convolution}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\begin{definition}      \label{DEFooHHCMooHzfStu}
+	Pour toutes fonctions \( f,g\colon \eR^n\to \eC\) et pour tout \( x\in \eC\) tels que l'intégrale de droite ait un sens\footnote{Attention divulgâchis : ce sera le cas pour \( f,g\in L^1(\eR^n)\) par le théorème \ref{THOooMLNMooQfksn}.}, nous définissons
+	\begin{equation}
+		(f*g)(x)=\int_{\eR^n} f(y)g(x-y)dy.
+	\end{equation}
+	L'éventuelle fonction \( f*g\) ainsi définie est le \defe{produit de convolution}{produit!de convolution} de \( f\) et \( g\).
+\end{definition}
+
+Le théorème qui permet de dire que le produit de convolution n'est pas tout à fait ridicule est le suivant.
+
+\begin{theorem}[\cite{MesIntProbb,BIBooILUOooWJfTok}]     \label{THOooMLNMooQfksn}
+	Soient \( f,g\in L^1(\eR^d)\).
+	\begin{enumerate}
+		\item
+		      Pour presque tout \( x\in \eR^d\), la fonction
+		      \begin{equation}
+			      \begin{aligned}
+				      h_x\colon \eR^d & \to \eC            \\
+				      y               & \mapsto g(x-y)f(y)
+			      \end{aligned}
+		      \end{equation}
+		      est dans \( L^1(\eR^d)\).
+		\item
+		      \( f*g\in L^1(\eR^d)\).
+		\item
+		      \( \| f*g \|_1\leq \| f \|_1\| g \|_1\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Nous considérons l'application
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon \eR^d\times \eR^d & \to \eR^d\times \eR^d \\
+			(x,y)                        & \mapsto (x-y,y).
+		\end{aligned}
+	\end{equation}
+	Cela est un \( C^1\)-difféomorphisme dont le jacobien vaut
+	\begin{equation}
+		J_{\phi}(x,y)=\det\begin{pmatrix}
+			(\partial_1\phi_1)(x,y) & (\partial_2\phi_1)(x,y) \\
+			(\partial_1\phi_2)(x,y) & (\partial_2\phi_2)(x,y)
+		\end{pmatrix}=\det\begin{pmatrix}
+			1 & -1 \\
+			0 & 1
+		\end{pmatrix}=1.
+	\end{equation}
+	C'est une première bonne chose.
+
+	Ensuite nous considérons la fonction
+	\begin{equation}
+		\begin{aligned}
+			\alpha\colon \eR^d\times \eR^d & \to \eC           \\
+			(x,y)                          & \mapsto f(y)g(x).
+		\end{aligned}
+	\end{equation}
+	Par hypothèse, pour chaque \( y\), la fonction \( x\mapsto |\alpha(x,y)|\) est dans \( L^1(\eR^d)\). Bref, le calcul suivant a un sens :
+	\begin{subequations}
+		\begin{align}
+			\int_{\eR^d}\left[ \int_{\eR^d}| \alpha |dx \right]dy & =\int_{\eR^d}\left[ \int_{\eR^d}| f(y)g(x) |dx \right]dy               \\
+			                                                      & =\int_{\eR^d}\left[ | f(y) |\int_{\eR^d}| g(x) |dx \right]dy           \\
+			                                                      & =\| f \|_{L^1(\eR^d)}\| g \|_{L^1(\eR^d)}  \label{SUBEQooMYLWooPeNLlk} \\
+			                                                      & <\infty.
+		\end{align}
+	\end{subequations}
+	Le corolaire \ref{CorTKZKwP} nous dit alors que \( \alpha\in L^1(\eR^d\times \eR^d)\). Et notons au passage que
+	\begin{equation}        \label{EQooLCWNooHLLdRd}
+		\| \alpha \|_{L^1(\eR^d\times \eR^d)} =\int_{\eR^d\times \eR^d}| \alpha | =\| f \|_{L^1(\eR^d)}\| g \|_{L^1(\eR^d)}
+	\end{equation}
+	parce que le théorème de Fubini \ref{ThoFubinioYLtPI} permet de scinder l'intégrale et de retomber sur \eqref{SUBEQooMYLWooPeNLlk}.
+
+	Vu que \( \alpha\in L^1(\eR^d\times \eR^d)\), nous pouvons utiliser le changement de variable \ref{THOooUMIWooZUtUSg} avec l'application \( \phi\) ci-dessus. En notant \( \lambda\) la mesure de Lebesgue,
+	\begin{subequations}
+		\begin{align}
+			\infty>\int_{\eR^d\times \eR^d}| \alpha |d\lambda & =\int_{\eR^d\times \eR^d}\big( | \alpha |\circ\phi \big)| J_{\phi} |d\lambda \\
+			                                                  & =\int_{\eR^d\times \eR^d}| \alpha |(x-y,y)d\lambda(x,y)                      \\
+			                                                  & =\int_{\eR^d\times \eR^d}| f(y)g(x-y) |d\lambda(x,y)                         \\
+			                                                  & =\int_{\eR^d}\left[ \int_{\eR^d}| f(y)g(x-y) |dy \right]dx.
+		\end{align}
+	\end{subequations}
+	Nous avons scindé l'intégrale avec le théorème de Fubini pour la dernière étape.
+
+	Passons à l'intégrabilité de \( f*g\). Nous avons
+	\begin{equation}        \label{EQooXMFYooKPIGfU}
+		| (f*g)(x) |\leq \int_{\eR^d}| f(y)g(x-y) |dy.
+	\end{equation}
+	Or nous venons de voir que \eqref{EQooXMFYooKPIGfU} était, en tant que fonction de \( x\), intégrable sur \( \eR^d\) et que
+	\begin{equation}
+		\int_{\eR^d}| (f*g)(x) |dx\leq\int_{\eR^d}\left[ \int_{\eR^d}| f(y)g(x-y) |dy \right]dx=\int_{\eR^d\times \eR^d}| \alpha |d\lambda<\infty.
+	\end{equation}
+	Cela prouve que \( f*g\in L^1(\eR^d)\), mais en nous souvenant de \eqref{EQooLCWNooHLLdRd}, cela prouve aussi que
+	\begin{equation}
+		\int_{\eR^d}| (f*g)(x) |dx\leq\int_{\eR^d\times \eR^d}| \alpha |d\lambda=\| f \|_{L^1(\eR^d)}\| g \|_{L^1(\eR^d)},
+	\end{equation}
+	c'est-à-dire que \( \| f*g \|_{L^2(\eR^d)}\leq \| f \|_{L^1(\eR^d)}\| g \|_{L^1(\eR^d)}\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooMRWZooHjrnHD}
+	Le produit de convolution est commutatif : pour tout \( f,g\in L^1(\eR^d)\) nous avons \( f*g=g*f\).
+\end{lemma}
+
+\begin{proof}
+	Le théorème de Fubini (théorème~\ref{ThoFubinioYLtPI}) permet d'écrire
+	\begin{equation}
+		(f*g)(x)=\int_{\eR^n}f(y)g(x-y)dy=\int_{-\infty}^{\infty}dy_1\ldots \int_{-\infty}^{\infty}dy_nf(y)g(x-y).
+	\end{equation}
+	En effectuant le changement de variable \( z_i=x_i-y_i\) dans chacune des intégrales nous obtenons
+	\begin{equation}
+		(f*g)(x)=\int_{\eR^n}g(z)f(x-z)dz=(g*f)(x).
+	\end{equation}
+	Attention : on pourrait croire qu'un signe apparaît du fait que \( z=x-y\) donne \( dz=-dy\). Mais en réalité, l'intégrale \( \int_{-\infty}^{+\infty}\) devient par le même changement de variables \( \int_{+\infty}^{-\infty}\) qui redonne un nouveau signe au moment de remettre dans l'ordre.
+\end{proof}
+
+\begin{lemma}[\cite{BIBooHPBJooQKPdfj,MonCerveau}]      \label{LEMooTUMSooSmnlHc}
+	Le produit de convolution est associatif sur \( L^1(\eR^d)\).
+\end{lemma}
+
+\begin{proof}
+	Soient \( f,g,h\in L^1(\eR^d)\). L'existence de \( (f*g)*h\) ne fait pas de doute grâce au théorème \ref{THOooMLNMooQfksn}. Nous avons d'abord
+	\begin{subequations}
+		\begin{align}
+			\big( (f*g)*h \big)(u) & =\int_{\eR^d}(f*g)(x)h(u-x)dx                                                                  \\
+			                       & =\int_{\eR^d}\left[ \int_{\eR^d}f(y)g(x-y)dy \right]h(u-x)dx                                   \\
+			                       & =\int_{\eR^d}\left[ \int_{\eR^d}f(y)g(x-y)h(u-x)dy \right]dx.      \label{SUBEQooJKRHooDaScXV}
+		\end{align}
+	\end{subequations}
+	Nous permutons les intégrales en suivant la procédure \ref{NORMooKIRJooPvyPWQ}. Pour cela nous commençons par poser
+	\begin{equation}
+		\begin{aligned}
+			s\colon \eR^d\times \eR^d & \to \eC                   \\
+			(x,y)                     & \mapsto f(y)g(x-y)h(u-x),
+		\end{aligned}
+	\end{equation}
+	et nous vérifions que \( | s |\) peut être successivement intégrée par rapport à \( y\) puis \( x\). D'abord l'intégrale par rapport à \( y\) est
+	\begin{equation}
+		\int_{\eR^d}| f(y) | |g(x-y) |dy,
+	\end{equation}
+	qui existe et qui vaut \(   (| f |*| g |)(x)   \) parce que \( | f |\) et \( | g |\) sont dans \( L^1(\eR^d)\). D'après le théorème \ref{THOooMLNMooQfksn}, la fonction \( | f |*| g |\) est encore dans \( L^1(\eR^d)\). En ce qui concerne l'intégrale du résultat par rapport à \( x\), nous avons
+	\begin{equation}
+		\int_{\eR^d}(| f |*| g |)(x)| h(u-x) |dx,
+	\end{equation}
+	qui existe et qui vaut \( \big( (| f |*| g |)*| h |\big)(u)\). Le corolaire \ref{CorTKZKwP} nous assure donc que \( s\in L^1(\eR^d\times \eR^d)\).
+
+	Nous permutons donc les intégrales dans \eqref{SUBEQooJKRHooDaScXV} pour obtenir
+	\begin{equation}        \label{EQooHXTBooOpmXcB}
+		\big( (f*g)*h \big)(u)=\int_{\eR^d}f(y)\left[ \int_{\eR^d}g(x-y)h(u-x)dx \right]dy.
+	\end{equation}
+	Attardons-nous un instant sur l'intégrale interne, et utilisons l'invariance par translation de l'intégrale (lemme \ref{LEMooGKOGooPLYaUO}). Nous effectuons la translation \( x\to x+y\) :
+	\begin{subequations}
+		\begin{align}
+			\int_{\eR^d}g(x-y)h(u-x) & =\int_{\eR^d}g(x)h(u-x-y)dx\
+			                         & =\int_{\eR^d}g(x)h\big( (u-y)-x \big)dx \\
+			                         & =(g*h)(u-y).
+		\end{align}
+	\end{subequations}
+	Nous pouvons reprendre notre calcul en \eqref{EQooHXTBooOpmXcB} :
+	\begin{subequations}
+		\begin{align}
+			\big( (f*g)*h \big)(u) & =\int_{\eR^d}f(y)\left[ \int_{\eR^d}g(x-y)h(u-x)dx \right]dy \\
+			                       & =\int_{\eR^d}f(y)(g*h)(u-y)                                  \\
+			                       & =\big( f*(g*h) \big)(u).
+		\end{align}
+	\end{subequations}
+	C'est ce que nous voulions.
+\end{proof}
+
+\begin{proposition}     \label{PROPooNBHNooInwoar}
+	Le couple \( \big( L^1(\eR^d), * \big)\) est une algèbre de Banach\footnote{Algèbre de Banach, définition \ref{DefVKuyYpQ}.}.
+\end{proposition}
+
+\begin{proof}
+	Point par point.
+	\begin{subproof}
+		\spitem[Algèbre]
+		La définition d'une algèbre est \ref{DefAEbnJqI}. Les différents points sont dans la linéarité de l'intégrale.
+		\spitem[Commutative]
+		C'est la proposition \ref{LEMooMRWZooHjrnHD}.
+		\spitem[Associative]
+		C'est le lemme \ref{LEMooTUMSooSmnlHc}.
+		\spitem[Normé]
+		L'espace \( L^1\) a une norme; c'est la norme \( \|  \|_{L^1}\).
+		\spitem[Complet]
+		C'est le théorème de Riesz-Fischer \ref{ThoGVmqOro}.
+	\end{subproof}
+\end{proof}
+
+La proposition suivante est une conséquence de l'inégalité de Minkowski sous forme intégrale de la proposition \ref{PROPooINXBooTrTxwg}.
+\begin{proposition}     \label{PROPooDMMCooPTuQuS}
+	Si \( 1\leq p\leq \infty\) et si \( f\in L^p(\eR^d)\) et \( g\in L^1(\eR^d)\) alors
+	\begin{enumerate}
+		\item
+		      \( f*g\in L^p\)
+		\item
+		      \( \| f*g \|_p\leq \| f \|_p\| g \|_1\).
+	\end{enumerate}
+	%TODOooFAPCooVOgRbF. Prouver ça.
+\end{proposition}
+
+\begin{proposition}[\cite{CXCQJIt}] \label{PropHNbdMQe}
+	Si \( f\in L^1(\eR)\) et si \( g\) est dérivable avec \( g'\in L^{\infty}\), alors \( f*g\) est dérivable et \( (f*g)'=f*g'\).
+\end{proposition}
+
+\begin{proof}
+	La fonction qu'il faut intégrer pour obtenir \( f*g\) est \( f(t)g(x-t)\), dont la dérivée par rapport à \( x\) est \( f(t)g'(x-t)\). La norme de cette dernière est majorée (uniformément en \( x\)) par \( G(t)=| f(t) | \| g' \|_{\infty}\). La fonction \( f\) étant dans \( L^1(\eR)\), la fonction \( G\) est intégrable et le théorème de dérivation sous l'intégrale (théorème~\ref{ThoMWpRKYp}) nous dit que \( f*g\) est dérivable et
+	\begin{equation}
+		(f*g)'(x)=\frac{ d }{ dx }\int_{\eR}f(t)g(x-t)dt=\int_{\eR}f(t)g'(x-t)dt=(f*g')(x).
+	\end{equation}
+\end{proof}
+
+\begin{corollary}       \label{CORooBSPNooFwYQrc}
+	Si \( f\in L^1(\eR^d)\) et si \( g\) est de classe \(  C^{\infty}\), alors \( f*g\) est de classe \(  C^{\infty}\).
+\end{corollary}
+
+\begin{proof}
+	Il s'agit d'itérer la proposition~\ref{PropHNbdMQe}.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Fonction plateau, lemme d'Urysohn}
+%----------------------------------------------------
+
+
+
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooQWNNooHmHRbk}
+	Soient deux fonctions \( f\) et \( g\) sur \( \eR^n\) telles que le produit de convolution \( f*g\) ait un sens. Si le support de \( f\) est dans le compact \( K\) et le support de \( g\) est dans \( B(0,r)\), alors
+	\begin{equation}
+		\supp(f*g)\subset K+\overline{B(0,r)}
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Urysohn, Fonctions plateau\cite{BIBooPITOooZANjFn,BIBooZJSSooAigZot}]       \label{PROPooBOZIooAhKbPs}
+	Soit un ouvert \( \Omega\subset \eR^d\) ainsi qu'un compact \( K\) dans \( \Omega\). Il existe une fonction \( f\in C^{\infty}(\eR^d)\) telle que
+	\begin{enumerate}
+		\item
+		      \( \supp(f)\) est compact dans \( \Omega\),
+		\item
+		      \( 0\leq f\leq 1\)
+		\item
+		      \( f=1\) sur un voisinage de \( K\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous posons \( \delta=d(K,\Omega^c)/3\).
+	\begin{subproof}
+		\spitem[Les applications \( \phi\) et \( \phi_{\epsilon}\)]
+		%-----------------------------------------------------------
+		Nous nous souvenons de l'application \( \xi\) de la proposition \ref{PROPooAHLKooMFMgFq}. Elle est de classe \( C^{\infty}\) à support compact dans \( B(0,1)\). Nous considérons\footnote{L'intégrale de \( \xi\) ne pose pas de problèmes parce qu'elle est continue sur le compact de son support, de telle sorte qu'elle y soit bornée.}
+		\begin{equation}
+			\phi(x)=\frac{ \xi(x) }{ \int_{\eR^n}\xi(x)dx },
+		\end{equation}
+		de telle sorte que \( \int_{\eR^n}\phi=1\). Pour chaque \( \epsilon>0\) nous posons également
+		\begin{equation}
+			\begin{aligned}
+				\phi_{\epsilon}\colon \eR^n & \to \eR                                        \\
+				x                           & \mapsto \frac{1}{ \epsilon^n}\phi(x/\epsilon).
+			\end{aligned}
+		\end{equation}
+		Par le lemme \ref{LEMooGZXYooZqFzyc}, nous avons
+		\begin{equation}		\label{EQooDUOCooLKPmOZ}
+			\int_{B(0,\epsilon)}\phi_{\epsilon}  =\int_{\eR^n}\phi_{\epsilon} =1.
+		\end{equation}
+		\spitem[La partie \( K_1\)]
+		%-----------------------------------------------------------
+		Nous posons
+		\begin{equation}		\label{EQooLXRMooKxKHSF}
+			K_1=\{ x\in \eR^n\tq \phi(x,K)<\delta \}.
+		\end{equation}
+		La partie \( K_1\) est bornée parce que si \( K\subset B(0,r)\), alors \( K_1\subset B(0,r+\delta)\).
+
+		La partie \( K_1\) est fermée. Pour ce voir, nous prouvons que \( K_1^c\) est ouvert. Soit \( y\in K_1^c\), et prouvons qu'il existe une boule centrée en \( y\) et contenue dans \( K_1^c\). Soit \( k\in K_1\) réalisant \( d(z,K_1)=d(z,k)\) (\( d\) est une fonction continue sur le compact \( K_1\), elle atteint ses bornes). Soit \( z\in B(y,\alpha)\) où \( \alpha\) va être précisé de telle sorte à avoir \( B(y,\alpha)\subset K_1^c\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				d(z,k) & \geq | d(z,y)-d(y,k) | & \text{cf. justif}		\label{SUBEQooAKWEooGpnxaX} \\
+				       & =d(y,k)-d(z,y)         & \text{cf. justi.}	\label{SUBEQooGTKYooEPMjZR}  \\
+				       & > \delta+s-\alpha      & \text{cf. justif.}\label{SUBSETooGVBFooIUCcKE} \\
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooAKWEooGpnxaX}. Lemme \ref{LEMooXCXHooVtrkvl}.
+			\item Pour \eqref{SUBEQooGTKYooEPMjZR}. Nous choisissons \( \alpha<d(y,k)\).
+			\item Pour \ref{SUBSETooGVBFooIUCcKE}. Vu que \( d(y,k)>\delta\), nous posons \( s>0\) tel que \( d(y,k)=\delta+s\).
+		\end{itemize}
+		Nous avons prouvé qu'il existe \( s>0\) tel que pour tout \( \alpha>0\) suffisamment petit, nous ayons \( d(z,k)>\delta+s-\alpha\). Nous en déduisons que \( d(z,k)>\delta\) et donc que \( z\in K_1^c\).
+
+		Nous avons prouvé que \( K-1\) est borné et fermé. Il est donc compact (théorème de Borel-Lebesgue \ref{ThoXTEooxFmdI}).
+		\spitem[La fonction \( f\)]
+		%-----------------------------------------------------------
+		Nous posons \( f=\phi_{\epsilon}*\mtu_{K_1}\) où \( \mtu_{K_1}\) est la fonction indicatrice de \( K_1\) et \( *\) dénote le produit de convolution\footnote{Définition \ref{DEFooHHCMooHzfStu}.}. Vu que \( \phi_{\epsilon}\) est de classe \( C^{\infty}\), la fonction \( f\) est également de classe \( C^{\infty}\) par le corolaire \ref{CORooBSPNooFwYQrc}.
+
+		\spitem[À propos de support]
+		%-----------------------------------------------------------
+		La proposition \ref{PROPooQWNNooHmHRbk} dit que le support de \( f\) est
+		\begin{equation}
+			\supp(f)\subset K_1+\overline{B(0,\epsilon)}.
+		\end{equation}
+
+		Vue la définition \ref{EQooLXRMooKxKHSF}, nous avons \( d(K_1,\Omega^c)\geq \delta\), de telle sorte que, en prenant \( \epsilon<\delta\) nous avons
+		\begin{equation}
+			\supp(f)\subset \Omega.
+		\end{equation}
+		Le support de \( f\) est également borné parce que contenu dans le borné \( K_1+\overline{B(0,\epsilon)}\). Nous en déduisons que \( f\) est une application \( C^{\infty}\) à support compact dans \( \Omega\).
+
+		\spitem[\( f(x)\) si \( x\in K\)]
+		%-----------------------------------------------------------
+		Soit \( x\in K\). Nous avons, par définition,
+		\begin{subequations}
+			\begin{align}
+				f(x) & =\int_{\eR^n}\phi_{\epsilon}(y)\mtu_{K_1}(x-y)dy                                                                     \\
+				     & =\int_{\overline{B(0,\epsilon)}}\phi_{\epsilon}(y)\mtu_{K_1}(x-y)dy & \text{cf. justif.} \label{SUBEQooOKGFooDbOwrB} \\
+				     & =\int_{\overline{B(0,\epsilon)}}\phi_{\epsilon}(y)dy                & \text{cv. justif.}		\label{SUEQooBRHEooAwoQdR} \\
+				     & = 1                                                                 & \text{par \eqref{EQooDUOCooLKPmOZ}}.
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item
+			      Pour \ref{SUBEQooOKGFooDbOwrB}. Le support de \( \phi_{\epsilon}\) est dans \( \overline{B(0,\epsilon)}\).
+			\item
+			      Pour \ref{SUEQooBRHEooAwoQdR}. Vu que \( x\in K\) et que \( | y |<\epsilon<\delta\), nous avons
+			      \begin{equation}
+				      d(x-y,K)\leq d(x-y,x)\leq \delta,
+			      \end{equation}
+			      et donc \( x-y\in K_1\).
+		\end{itemize}
+		\spitem[\( 0\leq f\leq 1\)]
+		%-----------------------------------------------------------
+		Nous avons
+		\begin{subequations}
+			\begin{align}
+				| f(x) | & \leq \int_{\eR^n}\big| \phi_{\epsilon}(y)\mtu_{K_1}(x-y) \big|dy \\
+				         & \leq \int_{\eR^n}| \phi_{\epsilon}(y) |dy                        \\
+				         & =1.
+			\end{align}
+		\end{subequations}
+		Note : nous avons majoré \( \mtu_{K_1}(x-y)\) par \( 1\).
+	\end{subproof}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Partition de l'unité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem}[Partition de l'unité\cite{BIBooPITOooZANjFn}]       \label{THOooQFCQooSlgLpz}
+	Soient un compact \( K\subset \eR^d\) et des ouverts \( \{ \Omega_i \}_{i=1,\ldots, n}\) recouvrant \( K\). Alors il existe des fonctions \( \phi_i\in  C^{\infty}(\eR^d)\) (\( i=1,\ldots, n\)) telles que
+	\begin{enumerate}
+		\item
+		      \( 0\leq \phi_k\leq 1\)
+		\item
+		      \( \supp(\phi_k)\subset \Omega_k\),
+		\item
+		      \( \sum_{k=1}^n\phi_k=1\) sur un voisinage de \( K\).
+	\end{enumerate}
+	Ces fonctions \( \phi_i\) sont une \defe{partition de l'unité}{partition de l'unité} subordonnée aux ouverts \( \Omega_i\).
+\end{theorem}
+
+\begin{proof}
+	Nous considérons des compacts \( \{ K_i \}_{i=1,\ldots, n}\) comme dans le lemme \ref{LEMooWRIXooSBHavt}. Pour chaque \( i\) nous avons \( K_i\subset \Omega_i\), de telle sorte que nous pouvions utiliser la proposition \ref{PROPooBOZIooAhKbPs}. Nous avons donc des fonctions \( \psi_j\in  C^{\infty}(\eR^d)\) telles que \( \supp(\psi_j)\) est compact dans \( \Omega_j\), \( \psi_j\geq 0\) et \( \psi_j=1\) sur \( V_j\) qui est un voisinage ouvert de \( K_j\).
+
+	Nous posons \( V=V_1\cup\ldots \cup V_n\). C'est un ouvert qui contient \( K\) parce que
+	\begin{equation}
+		K\subset \bigcup_jK_j\subset\bigcup_j\Omega_j\subset \bigcup_jV_j.
+	\end{equation}
+
+	Nous faisons de même pour \( K\) lui-même. Il existe une fonction \( \theta\in  C^{\infty}(\eR^d)\) telle que
+	\begin{itemize}
+		\item \( \supp(\theta)\) est compact dans \( V\)n
+		\item
+		      \( \theta=1\) sur un voisinage de \( K\),
+		\item
+		      \( 0\leq \theta\leq 1\).
+	\end{itemize}
+	Vu que \( \psi_j=1\) sur \( V_j\), nous avons \( \sum_{j=1}^n\psi_j>0\) sur \( V\).
+
+	Nous prouvons à présent que
+	\begin{equation}        \label{EQooGABMooZZmlyQ}
+		1-\theta+\sum_{k=1}\psi_k>0
+	\end{equation}
+	sur \( \eR^d\).
+	\begin{subproof}
+		\spitem[Si \( x\in V\)]
+		Alors \( 1-\theta(x)\geq 0\) et donc
+		\begin{equation}
+			1-\theta(x)+\sum_{k=1}^n\psi_k(x)\geq \sum_{k=1}^n\psi_k(x)>0.
+		\end{equation}
+		\spitem[Si \( x\notin V\)]
+		Vu que le support de \( \theta\) est dans \( V\), nous avons \( \theta(x)=0\). Quant aux fonctions \( \psi_k\), elles font un peu ce qu'elles veulent, mais elles sont positives\footnote{Dans le Frido, «positif» signifie dans \( \mathopen[ 0 , \infty \mathclose]\).} et donc
+		\begin{equation}
+			1-\theta(x)+\sum_{k=1}^n\psi_k(x)\geq 1-\theta(x)=1.
+		\end{equation}
+	\end{subproof}
+	Vu que \eqref{EQooGABMooZZmlyQ} est prouvé, nous pouvons poser
+	\begin{equation}
+		\phi_j=\frac{ \psi_j }{ 1-\theta+\sum_{k=1}^n\psi_k }
+	\end{equation}
+	sans peur pour le dénominateur. Nous avons \( \phi_j\in  C^{\infty}(\eR^d)\). Nous savons que \( \theta=1\) sur un voisinage de \( K\). Su ce voisinage nous avons
+	\begin{equation}
+		\sum_{j=1}^n\phi_j(x)=\frac{ \sum_{j}\psi_j(x) }{ 1-\theta(x)+\sum_k\psi_k(x) }=1.
+	\end{equation}
+	De plus \( \phi_j\geq 0\) parce que chacun des \( \psi_j\) l'est et parce que nous avons montré que le dénominateur était toujours strictement positif.
+
+	En enfin,
+	\begin{equation}
+		\supp(\phi_j)=\supp(\psi_j)\subset\Omega_j.
+	\end{equation}
+	Donc les fonctions \( \phi_j\) sont celles que dont nous avions besoin.
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Approximation de l'unité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{lemma}       \label{LemDQEKNNf}
+	Soit \( f\in L^2(I)\) telle que
+	\begin{equation}
+		\int_If\varphi=0
+	\end{equation}
+	pour toute fonction \( \varphi\in C^{\infty}_c(I)\). Alors \( f=0\) presque partout sur \( I\).
+\end{lemma}
+
+\begin{proof}
+	Nous considérons la forme linéaire
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon L^2(I) & \to \eC                                     \\
+			g                 & \mapsto \langle f, g\rangle=\int_If\bar g .
+		\end{aligned}
+	\end{equation}
+	Par densité\footnote{Théorème~\ref{ThoILGYXhX}\ref{ItemYVFVrOIv}.} nous pouvons aussi considérer une suite \( (\varphi_n)\) dans \(  C^{\infty}_c(I)\) convergeant dans \( L^2\) vers \( f\). Alors nous avons pour tout \( n\) :
+	\begin{equation}
+		\langle f, \varphi_n\rangle =0.
+	\end{equation}
+	En passant à la limite, \( \langle f, f\rangle =0\), ce qui implique \( f=0\) dans \( L^2\) et donc \( f=0\) presque partout en tant que bonne fonction.
+\end{proof}
+Ce résultat est encore valable dans les espaces \( L^p\) (proposition~\ref{PropUKLZZZh}), mais il demande le théorème de représentation de Riesz\footnote{Théorème~\ref{ThoLPQPooPWBXuv}.}.
+
+\begin{definition}[\cite{MonCerveau,TUEWwUN}]       \label{DEFooEFGNooOREmBb}
+	Nous considérons \( \Omega=\eR^d\) ou \( (S^1)^d\). Une \defe{approximation de l'unité}{approximation!de l'unité} sur \( \Omega\) autour de \( a\in \Omega\) est une suite \( (\varphi_n)\) de fonctions à valeurs réelles dans \( L^1(\Omega)\) telle que
+	\begin{enumerate}
+		\item
+		      \( \sup_k \| \varphi_k \|_1 <\infty\),
+		\item   \label{ITEMooGVRQooHDbrcf}
+		      pour chaque \( n\) nous avons \( \int_{\Omega}\varphi_n=1\),
+		\item
+		      si \( V\) est un voisinage de \( a\), alors
+		      \begin{equation}
+			      \lim_{k\to \infty} \int_{\Omega\setminus V}| \varphi_k |=0.
+		      \end{equation}
+	\end{enumerate}
+	En pratique, nous allons, sur \( \eR^d\) toujours considérer des approximations de l'unité autour de \( 0\), même si nous ne le préciserons pas. Vous noterez que dans le cas de \( S^1\), le choix du «point de base» est plus arbitraire.
+\end{definition}
+%TODOooPFSTooOrAtkL : voir si ça n'approxime pas un delta de Dirac d'une façon ou d'une autre.
+Ce sont des fonctions dont la masse vient s'accumuler autour de zéro. En effet quel que soit le voisinage \( B(0,\alpha)\), si \( k\) est assez grand, il n'y a presque plus rien en dehors.
+
+Pour le point \eqref{ITEMooTFFQooOUajFw}, si \( \Omega\) est \( S^1\), la mesure que nous considérons est \( \frac{ dx }{ 2\pi }\).
+
+\begin{example}
+	Une façon de construire une approximation de l'unité sur \( \eR\) est de considérer une fonction \( \varphi\in L^1(\Omega)\) telle que \( \int\varphi=1\) puis de poser
+	\begin{equation}
+		\varphi_k(x)=k^d\varphi(kx).
+	\end{equation}
+	Ici, \( \Omega\) peut être \( \eR\) ou \( S^1\).
+\end{example}
+
+Le lemme suivant permet de construire des approximations de l'unité intéressantes. Nous aurons une version pour \( S^1\) dans le lemme \ref{LEMooUNFBooRCzwIn}.
+\begin{lemma}[\cite{TUEWwUN}]   \label{LemCNjIYhv}
+	Soit une fonction \( \varphi\) continue et positive à support compact sur \( \eR^d\) telle que \( \varphi(x)>\varphi(0)\) pour tout \( x\neq 0\). Si nous posons
+	\begin{equation}
+		\varphi_n(x)=\left( \int\varphi(y)^n \right)^{-1}\varphi(x)^n,
+	\end{equation}
+	alors la suite \( (\varphi_n)\) est une approximation de l'unité.
+\end{lemma}
+
+Voici un théorème qui donne les propriétés à propos du produit de convolution avec une approximation de l'unité dans \( \eR^d\). Une version pour \( S^1\) sera le théorème \ref{THOooIAOPooELSNxq}.
+\begin{theorem}[\cite{TUEWwUN}] \label{ThoYQbqEez}
+	Soit \( (\varphi_k)\) une approximation de l'unité sur \( \eR^d\).
+	\begin{enumerate}
+		\item
+		      Si \( g\) est mesurable et bornée sur \( \eR^d\) et si \( g\) est continue en \( x_0\) alors
+		      \begin{equation}
+			      (\varphi_k*g)(x_0)\to g(x_0).
+		      \end{equation}
+		\item
+		      Si \( g\in L^p(\eR^d)\) (\( 1\leq p<\infty\)) alors
+		      \begin{equation}
+			      \varphi_k*g\stackrel{L^p}{\to}g.
+		      \end{equation}
+		\item
+		      Si \( g\) est uniformément continue et bornée, alors
+		      \begin{equation}
+			      \varphi_k*g\stackrel{L^{\infty}}{\to}g
+		      \end{equation}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En plusieurs points.
+	\begin{enumerate}
+		\item
+		      Nous notons \( d_k=(\varphi_k*g)(x_0)-g(x_0)\) et nous devons prouver que \( d_k\to 0\). Vu que \( \varphi_k\) est d'intégrale \( 1\) sur \( \eR^d\) nous pouvons écrire
+		      \begin{equation}
+			      d_k=\int_{\eR^d}\varphi_k(y)g(x_0-y)dy-\int_{\eR^d}g(x_0)\varphi_k(y)dy,
+		      \end{equation}
+		      et donc
+		      \begin{equation}
+			      |d_k|=\big| \int_{\eR^d}\big( g(x_0-y)-g(x_0) \big)\varphi_k(y)dy\big|\leq\int_{\eR^d}\big| g(x_0-y)-g(x_0) \big| |\varphi_k(y) |dy.
+		      \end{equation}
+		      Nous notons \( M=\sup_k\| \varphi_k \|_1\), et nous considérons \( \alpha>0\) tel que
+		      \begin{equation}
+			      \big| g(x_0-y)-g(x_0) \big|\leq \epsilon
+		      \end{equation}
+		      pour tout \( y\in B(0,\alpha)\). Nous nous restreignons maintenant aux \( k\) suffisamment grands pour que \( \int_{\complement B(0,\alpha)}| \varphi_k(y) |dy\leq \epsilon\). Alors en découpant l'intégrale en \( B(0,\alpha)\) et son complémentaire dans \( \eR^d\),
+		      \begin{equation}
+			      | d_k |\leq \epsilon M+\int_{\complement B(0,\alpha)} 2\| g \|_{\infty}| \varphi_k(y) |dy  \leq \epsilon M+2\| g \|_{\infty}\epsilon\leq \epsilon C.
+		      \end{equation}
+		      Donc oui, nous avons \( | d_k |\to 0\), et donc le premier point du théorème.
+
+		\item
+
+		      Cette fois \( g\in L^p(\eR^d)\) et nous cherchons à montrer que \( \| d_k \|_p\to 0\). Encore qu'ici \( d_k\) soit défini à partir d'un représentant dans la classe de \( g\) et que d'ailleurs, nous allons travailler avec ce représentant.
+
+		      D'abord nous développons un peu ce \( d_k\) :
+		      \begin{subequations}
+			      \begin{align}
+				      \| d_k \|_p & =\left[ \int_{\eR^d}\left|     \int_{\eR^d}\big( g(x-y)-g(x) \big)\varphi_k(y)dy  \right|^pdx \right]^{1/p} \\
+				                  & \leq\left[    \int_{\eR^d}\Big( \int_{\eR^d}| g(x-y)-g(x) |\cdot |\varphi_k(y) |dy \Big)^pdx \right]^{1/p}.
+			      \end{align}
+		      \end{subequations}
+		      À cette dernière expression nous appliquons l'inégalité de Minkowski (théorème~\ref{PropInegMinkKUpRHg}) sous la forme \eqref{EQooAEXWooYJtGGR} pour la mesure \( d\nu(y)=| \varphi_k(y) |dy\) et \( f(x,y)=g(x-y)-g(x)\) :
+		      \begin{equation}
+			      \| d_k \|_p\leq \int_{\eR^d}\Big( \int_{\eR^d}\big| g(x-y)-g(x) \big|^pdx \Big)^{1/p}| \varphi_k(y) |dy=\int_{\eR^d}\| \tau_yg-g \|_p| \varphi_k(y) |dy.
+		      \end{equation}
+		      Par le lemme~\ref{LemCUlJzkA} nous pouvons trouver \( \alpha>0\) tel que \( \| \tau_yg-g \|_p\leq \epsilon\) pour tout \( y\in B(0,\alpha)\). Avec cela nous découpons encore le domaine d'intégration :
+		      \begin{equation}
+			      \| d_k \|_p\leq \int_{B(0,\alpha)}\underbrace{\| \tau_yg-g \|_p}_{\leq \epsilon}| \varphi_k(y) |dy+\int_{\complement B(0,\alpha)}  \underbrace{\| \tau_yg-g \|_p}_{\leq 2\| g \|_p}| \varphi_k(y) |dy\leq \epsilon M+2\epsilon\| g \|_p.
+		      \end{equation}
+
+		\item
+
+		      Nous posons \( d_k(x)=(\varphi_k*g)(x)-g(x)\) et nous voulons prouver que \( \| d_k \|_{\infty}\to 0\), c'est-à-dire que \( d_k(x)\) converge vers zéro uniformément en \( x\). Nous posons aussi
+		      \begin{equation}
+			      \tau_y(g)\colon x\mapsto g(x-y).
+		      \end{equation}
+		      En récrivant le produit de convolution, une petite majoration donne
+		      \begin{equation}
+			      | d_k(x) |\leq \int_{\eR^d}\| \tau_y(g)-g \|_{\infty}| \varphi_k(y) |dy.
+		      \end{equation}
+		      L'uniforme continuité de \( g\) signifie que pour tout \( \epsilon\), il existe un \( \alpha\) tel que pour tout \( y\in B(0,\alpha)\),
+		      \begin{equation}
+			      \| \tau_y(g)-g \|_{\infty}\leq \epsilon.
+		      \end{equation}
+		      Encore une fois nous découpons le domaine d'intégration en \( B=B(0,\alpha)\) et son complémentaire :
+		      \begin{subequations}
+			      \begin{align}
+				      \| d_k \|_{\infty} & \leq\int_B\underbrace{\| \tau_y(g)-g \|_{\infty}}_{\leq \epsilon}| \varphi_k(y) |dy+\int_{\complement B}\underbrace{\| \tau_y(g)-g \|_{\infty}}_{\leq 2\| g \|_{\infty}}| \varphi_k(y) | \\
+				                         & \leq \epsilon M+2\| g \|_{\infty}\epsilon
+			      \end{align}
+		      \end{subequations}
+		      où la seconde ligne est justifiée par le choix d'un \( k\) assez grand pour que \( \int_{\complement B}| \varphi_k(y) |dy\leq \epsilon\).
+
+		      Nous avons donc bien \( \| d_k \|_{\infty}\to 0\).
+	\end{enumerate}
+\end{proof}
+
+\begin{example}
+	Une petite remarque en passant : aussi triste que cela en ait l'air, la convergence uniforme n'implique pas la convergence \( L^p(\Omega)\) si \( \Omega\) n'est pas borné. En effet si \( f\in L^p\), la suite donnée par
+	\begin{equation}
+		f_n(x)=f(x)+\frac{1}{ n }
+	\end{equation}
+	converge uniformément vers \( f\), mais
+	\begin{equation}
+		\| f_n-f \|_p=\int_{\Omega}\frac{1}{ n }
+	\end{equation}
+	n'existe même pas si le domaine \( \Omega\) n'est pas borné.
+\end{example}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Intégrale sur des variétés}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Formes différentielles}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous allons donner une toute petite introduction aux formes différentielles sur des variétés compactes.
+
+\begin{lemma}[\cite{SpindelGeomDoff}]       \label{LemdwLGFG}
+	Soit \( \omega\) une \( k\)-forme sur \( \eR^n\) et \( f\), une fonction \( C^{\infty}\) sur \( \eR^n\). Alors \( d(f^*\omega)=f^*d\omega\).
+\end{lemma}
+
+\begin{proof}
+	Nous effectuons la preuve par récurrence sur le degré de la forme. Soit d'abord une \( 0\)-forme, c'est-à-dire une fonction \( g\colon \eR^n\to \eR\). Nous avons
+	\begin{equation}
+		d(d^*g)X=d(g\circ f)X=(dg\circ df)X=dg\big( df X \big)=(f^*dg)(X).
+	\end{equation}
+
+	Supposons maintenant que le résultat soit exact pour toutes les \( p-1\)-formes et montrons qu'il reste valable pour les \( p\)-formes. Par linéarité de la différentielle nous pouvons nous contenter de considérer la forme différentielle
+	\begin{equation}
+		\omega=g\,dx^1\wedge\ldots\wedge dx^p
+	\end{equation}
+	où \( g\) est une fonction \(  C^{\infty}\). Pour soulager les notations nous allons noter \( dx^I=dx^1\wedge\ldots\wedge dx^{p-1}\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			d(f^*\omega) & =d\big( f^*(gdx^I\wedge dx^p) \big)                                                       \\
+			             & =d\big( f^*(gdx^I)\wedge f^*dx^p \big)                                                    \\
+			             & =d\big( f^*(gdx^I)\big)\wedge f^*dx^p+(-1)^{p-1}f^*(gdx^I)\wedge(f^*dx^p)  \label{gnAnSt} \\
+			             & =f^*\big( d(gdx^I) \big)\wedge f^*dx^p      \label{xZrfjZ}                                \\
+			             & =f^*\big( d(gdx^I)\wedge dx^p \big)                                                       \\
+			             & =f^*d\omega        \label{loWUji}
+		\end{align}
+	\end{subequations}
+	Justifications : \eqref{gnAnSt} est la formule de Leibniz. \eqref{xZrfjZ} est parce que le second terme est nul : \( d(f^*dx^p)=f^*(d^2x^p)=0\). Nous avons utilisé l'hypothèse de récurrence et le fait que \( d^2=0\). L'étape \eqref{loWUji} est une utilisation à l'envers de la règle de Leibniz en tenant compte que \( d^2x^p=0\).
+\end{proof}
+
+
+Soit \( M\) une variété de dimension \( n\) et \( \omega\) une \( n\)-forme différentielle
+\begin{equation}
+	\omega_p=f(p)dx_1\wedge\ldots\wedge dx_n.
+\end{equation}
+Si \( (U,\varphi)\) est une carte (\( U\subset\eR^n\) et \( \varphi\colon U\to M\)) alors nous définissons
+\begin{equation}
+	\int_{\varphi(U)}\omega=\int_{U}f\big( \varphi(x) \big)dx_1\ldots dx_n.
+\end{equation}
+Lorsque nous voulons intégrer sur une partie plus grande qu'une carte nous utilisons une partition de l'unité du théorème \ref{THOooQFCQooSlgLpz}.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Intégrale d'une fonction sur une sous-variété}
+%---------------------------------------------------------------------------------------------------------------------------
+
+L'exemple typique est l'intégrale sur une surface dans \( \eR^3\), ou de volumes.
+
+Nous supposons à présent que \( M\) est une variété compacte de dimension \( 2\) dans \( \eR^3\). La compacité fait que \( M\) possède un atlas contenant un nombre fini de cartes \( F_i\colon W_i\to F_i(W_i)\).
+
+Si \( A\subset M\) est tel que pour chaque \( i\), \( A\cap F_i(W_i)=F_i(V_i)\) pour un ensemble \( V_i\) mesurable dans \( \eR^2\), alors nous considérons
+\begin{equation}
+	A_1=A\cap F_1(W_1)=F_1(V_1).
+\end{equation}
+Ensuite, nous construisons \( A_2\) en considérant \( F_2(W_2)\) et en lui retranchant \( A_1\) :
+\begin{equation}
+	A_2=\big( A\cap F_2(W_2) \big)\setminus F_1(V_1).
+\end{equation}
+En continuant de la sorte, nous construisons la décomposition
+\begin{equation}
+	A=A_1\cup\ldots\cup A_p
+\end{equation}
+de \( A\) en ouverts disjoints, chacun de ouverts \( A_p\) étant compris dans une carte.
+
+Il est possible de prouver que dans ce cas, la définition suivante a un sens et ne dépend pas du choix de l'atlas effectué.
+\begin{definition}
+	Si \( f\colon A\to \eR\) est une fonction continue, alors l'\defe{intégrale}{intégrale!d'une fonction sur une variété} est le nombre
+	\begin{equation}
+		\int_Af=\sum_{i=1}^p\int_{A_i}fd\sigma_{F_i}.
+	\end{equation}
+\end{definition}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Densité des polynômes trigonométriques}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}      \label{DEFooGCZAooFecAHB}
+	Le \defe{système trigonométrique}{système!trigonométrique} donné par \( \{ e_n \}_{n\in \eZ}\) est
+	\begin{equation}
+		e_n(t)= \frac{1}{ \sqrt{ 2\pi } } e^{int}.
+	\end{equation}
+\end{definition}
+
+Une bonne partie de la douleur qu'évoque mot « densité » consiste à montrer que ce système est total dans \( L^2(S^1)=L^2(\mathopen[ 0 , 2\pi \mathclose])\), et donc en est une base hilbertienne.
+
+\begin{definition}
+	Un \defe{polynôme trigonométrique}{polynôme!trigonométrique} est une fonction de la forme
+	\begin{equation}
+		P(t)=\sum_{n=-N}^Nc_n e_n(t).
+	\end{equation}
+\end{definition}
+
+\begin{definition}[Coefficients de Fourier]     \label{DEFooZDUKooRnYhhF}
+	Pour toute fonction pour laquelle ça a un sens (que ce soit des fonctions \( L^2\) ou non), nous posons
+	\begin{equation}\label{EqhIPoPH}
+		c_k(f)=\frac{1}{ 2\pi }\int_{0}^{2\pi}f(t) e^{-ikt}dt.
+	\end{equation}
+	Ces nombres sont les \defe{coefficients de Fourier}{coefficients!de Fourier} de \( f\).
+\end{definition}
+
+Ces trois définitions n'ont à priori aucun rapport entre elles, et rien en particulier ne devrait vous faire penser à une égalité du type
+\begin{equation}
+	f(x)=\sum_{n=-\infty}^{\infty}c_n(f)e_n(x).
+\end{equation}
+Nous avons toutefois quelques liens.
+
+\begin{lemma}   \label{LemZVfZlms}
+	Deux petits résultats simples mais utiles à propos des polynômes trigonométriques.
+	\begin{enumerate}
+		\item
+		      Si \( f\in L^1(S^1)\), alors nous avons la formule
+		      \begin{equation}
+			      f*e_n=c_n(f)e_n.
+		      \end{equation}
+		\item
+
+		      Si \( P\) est un polynôme trigonométrique et si \( f\in L^1(S^1)\) alors \( f*P\) est encore un polynôme trigonométrique.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Le premier point est un simple calcul :
+	\begin{subequations}
+		\begin{align}
+			(f*e_n)(x)=\int_0^{2\pi}f(x-t)e_n(t)
+		\end{align}
+	\end{subequations}
+
+	En ce qui concerne le second point, nous notons \( P=\sum_{k=-N}^NP_ke_k\), et par linéarité de la convolution,
+	\begin{equation}
+		f*P=\sum_{k=-N}^NP_kf*e_k=\sum_{k=-N}^nP_kc_k(f)e_k,
+	\end{equation}
+	qui est encore un polynôme trigonométrique.
+\end{proof}
+
+\begin{example} \label{ExDMnVSWF}
+	Sur \( S^1\) nous construisons alors l'approximation de l'unité basée sur la fonction \( 1+\cos(x)\) et le lemme~\ref{LemCNjIYhv}. Cette fonction est évidemment un polynôme trigonométrique parce que
+	\begin{equation}
+		\cos(x)=\frac{  e^{ix}+ e^{-ix} }{2}.
+	\end{equation}
+	Ensuite les puissances le sont aussi à cause de la formule du binôme :
+	\begin{equation}
+		\big( 1+\cos(x) \big)^n=\sum_{k=0}^n\binom{ n }{ k }\cos^n(x),
+	\end{equation}
+	dans laquelle nous pouvons remettre \( \cos(x)\) comme un polynôme trigonométrique et développer à nouveau la puissance avec (encore) la formule du binôme. La chose importante est qu'il existe une approximation de l'unité \( (\varphi_n)\) formée de polynômes trigonométrique.
+
+	Ce qui fait la spécificité des polynômes trigonométriques est qu'ils sont à la fois stables par convolution (lemme~\ref{LemZVfZlms}) et qu'ils permettent de créer une approximation de l'unité sur \( \mathopen[ 0 , 2\pi \mathclose]\). Ce sont ces deux choses qui permettent de prouver l'important théorème suivant.
+\end{example}
+
+\begin{theorem} \label{ThoQGPSSJq}
+	Les polynômes trigonométriques sont dense dans \( L^p(S^1)\) pour \( 1\leq p<\infty\).
+\end{theorem}
+
+\begin{proof}
+
+	\begin{equation}
+		\varphi_k*f\stackrel{L^p}{\to}f
+	\end{equation}
+	par le théorème~\ref{ThoYQbqEez}. Nous avons donc convergence \( L^p\) d'une suite de polynômes trigonométrique, ce qui prouve que l'espace de polynômes trigonométriques est dense dans \( L^p(S^1)\).
+\end{proof}
+
+\begin{remark}
+	Deux remarques.
+	\begin{itemize}
+		\item
+		      Il n'est pas possible que les polynômes trigonométriques soient dense dans \( L^{\infty}\) parce qu'une limite uniforme de fonctions continues est continue (c'est le théorème~\ref{ThoUnigCvCont}). Donc les polynômes trigonométriques ne peuvent engendrer que des fonctions continues.
+		\item
+		      Nous donnerons au théorème~\ref{ThoDPTwimI} une démonstration indépendante de la densité des polynômes trigonométriques dans \( L^p(S^1)\).
+	\end{itemize}
+\end{remark}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Espaces \texorpdfstring{\( L^2\)}{\( L^2\)}, généralités}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SECooEVZSooLtLhUm}
+
+L'espace \( L^2\) est l'espace \( L^p\) défini en \ref{DEFooKMJQooXeaUtp} avec \( p=2\). Cependant il possède une propriété extraordinaire par rapport aux autres \( L^p\), c'est que la norme \( | . |_2\) dérive d'un produit scalaire. Il sera donc un espace de Hilbert.
+
+\begin{normaltext}  \label{NORMooUEIEooYtlFse}
+	Nous en rappelons la construction. Soit \( (\Omega,\tribA,\mu)\) un espace mesuré. Nous considérons l'opération
+	\begin{equation}    \label{DefProdScalLubrgTj}
+		\langle f, g\rangle =\int_{\Omega}f(\omega)\overline{ g(\omega)}d\mu(\omega)
+	\end{equation}
+	et la norme associée
+	\begin{equation}
+		\| f \|_2=\sqrt{\langle f, f\rangle }.
+	\end{equation}
+	Nous considérons l'ensemble
+	\begin{equation}
+		\mL^2(\Omega,\mu)=\{ f\colon \Omega\to \eC\tq \| f \|_2<\infty \}
+	\end{equation}
+	et la relation d'équivalence \( f\sim g\) si et seulement si \( f(x)=g(x)\) pour \( \mu\)-presque tout \( x\).
+
+	Et enfin, nous considérons le quotient
+	\begin{equation}
+		L^2(\Omega,\mu)=\mL^2(\Omega,\mu)/\sim.
+	\end{equation}
+\end{normaltext}
+
+
+\begin{lemma}   \label{LemIVWooZyWodb}
+	Soit un espace mesuré\quext{Est-ce qu'il ne faudrait pas un peu plus d'hypothèses, comme \( \sigma\)-fini par exemple ? Vérifiez et écrivez-moi quand vous avez la réponse.} \( (\Omega,\tribA,\mu)\).
+	\begin{enumerate}
+		\item
+		      Pour tout \( f,g\in L^2(\Omega,\tribA,\mu)\), le produit
+		      \begin{equation}        \label{EQooGLVUooObPmaX}
+			      \langle f, g\rangle =\int_{\Omega}f\bar g\,d\mu
+		      \end{equation}
+		      est bien défini et est un nombre complexe\footnote{Par opposition au fait que ce serait l'infini.}.
+		\item
+		      L'opération \( (f,g)\mapsto \langle f, g\rangle \) est un produit hermitien\footnote{Définition \ref{DefMZQxmQ}. Pour rappel, nous considérons des fonctions à valeurs complexes. Si au contraire nous avions considéré seulement des fonctions à valeurs réelles, nous aurions eu un produit scalaire.}.
+		\item
+		      Le couple \( \big( L^2(\Omega,\tribA,\mu),\langle ., .\rangle  \big)\) est un espace de Hilbert\footnote{Définition \ref{DefORuBdBN}.}.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Que \( L^2(\Omega)\) soit un espace vectoriel est un cas particulier de la proposition \ref{PROPooTYCYooAKJWOX}. Voyons cette histoire de produit scalaire.
+
+	\begin{subproof}
+		\spitem[Pour de vraies fonctions]
+		Nous commençons par analyser l'intégrale \eqref{EQooGLVUooObPmaX} dans le cas où \( f\) et \( g\) sont des fonctions, c'est-à-dire des représentants d'éléments de \( L^2\).
+
+		Dans ce cas, l'inégalité de Hölder (proposition~\ref{ProptYqspT}) avec \( p=q=2\) nous indique que le produit \( f\bar g\) est un élément de \( L^1\). Par conséquent la formule a un sens.
+
+		\spitem[Passage aux classes]
+
+		Ensuite nous montrons que la formule passe au quotient. Pour cela, nous considérons des fonctions \( \alpha\) et \( \beta\) nulles presque partout et nous regardons le produit de \( f_1=f+\alpha\) par \( g_1=g+\beta\) :
+		\begin{equation}
+			\langle f_1, g_1\rangle =\int f\bar g+\bar\beta f+\alpha \bar g+ \alpha\bar\beta.
+		\end{equation}
+		Les fonctions \( \bar\beta f\), \( \alpha \bar g\) et \( \alpha\bar\beta\) étant nulles presque partout, leur intégrale est nulle et nous avons bien \( \langle f_1, g_1\rangle =\langle f,g \rangle \). Nous pouvons donc considérer le produit sur l'ensemble des classes.
+
+		\spitem[Produit hermitien]
+		Pour vérifier que la formule est un produit hermitien, le seul point non évident est de prouver que \( \langle f, f\rangle =0\) implique \( f=0\). Cela découle du fait que
+		\begin{equation}
+			\langle f, f\rangle =\int_{\Omega}| f |^2.
+		\end{equation}
+		La fonction \( x\mapsto | f(x) |^2\) vérifie les hypothèses du lemme~\ref{Lemfobnwt}. Par conséquent \( | f(x) |^2\) est presque partout nulle.
+
+		\spitem[Espace de Hilbert]
+		En ce qui concerne le fait que \( L^2(\Omega)\) soit un espace de Hilbert, il s'agit simplement de se remémorer que c'est un espace complet (théorème ~\ref{ThoUYBDWQX}) et dont la norme dérive d'un produit scalaire ou hermitien. Nous sommes donc bien dans la définition~\ref{DefORuBdBN}.
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	Ces espaces seront utilisés pour de nombreuses applications. Nous en aurons besoin pour plusieurs combinaisons d'ensembles \( \Omega\) et de mesures \( \mu\).
+	\begin{itemize}
+		\item Pour \( \eR^d\)
+		\item Pour \( S^1\)
+		\item Pour \( \mathopen[ a , b \mathclose]\)
+		\item Pour \( \mathopen[ 0 , 2\pi \mathclose[\)
+		\item Pour \( \mathopen[ -T , T \mathclose[\)
+	\end{itemize}
+	Le premier est non compact et il est raisonnable de penser qu'il sera fondamentalement différent des autres. À isomorphismes assez triviaux près, les espaces des fonctions sur les trois autres sont identiques. Nous nous attendons donc à ce qu'ils aient les mêmes propriétés. Notons que du point de vue de \( L^2\), étant donné qu'il y a un quotient par les parties de mesures nulles, prendre \( \mathopen] 0 , 2\pi \mathclose[\) ou \( \mathopen[ 0 , 2\pi \mathclose]\) ou n'importe quelle autre possibilité de ce genre revient au même.
+
+	Afin de pouvoir utiliser ces espaces de façon optimale, et entre autres y définir les séries de Fourier, nous avons besoin, pour chacun d'entre eux de définir les éléments suivants :
+	\begin{itemize}
+		\item mesure
+		\item produit de convolution
+		\item le système trigonométrique (que nous allons montrer être une base hilbertienne)
+		\item coefficients de Fourier
+	\end{itemize}
+	Ça fait pas mal de choses à définir. Il n'est pas besoin de définir un produit scalaire parce que le lemme \ref{LemIVWooZyWodb} nous en donne un générique.
+
+	Les définitions qui viennent sont à prendre «tant que les formules ont un sens». Nous parlons donc de fonctions dans \( \Fun(\Omega,\eC)\), l'ensemble de toutes les fonctions sur \( \Omega\) à valeurs dans \( \eC\). Nous verrons plus tard les espaces de fonctions sur lesquels tout a un sens.
+\end{normaltext}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{L'espace \( L^2(\eR^d)\)}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+La mesure est celle de Lebesgue. Le produit de convolution est donné, pour \( f,g\in\Fun(\eR^d,\eC)\), par
+\begin{equation}
+	(f*g)(x)=\int_{\eR^d}f(y)g(x-y)dy
+\end{equation}
+Certaines de ses propriétés ont déjà été vues dans le théorème \ref{THOooMLNMooQfksn}.
+
+En ce qui concerne le système trigonométrique, pour tout \( \xi\in \eR^d\) nous définirions bien
+\begin{equation}
+	e_{\xi}(x)= e^{i\xi\cdot x},
+\end{equation}
+genre pour faire que les transformations de Fourier sont des séries continues \ldots{} mais bon. Nous n'allons pas tenter le diable plus que ça, et nous ne définissons
+\begin{itemize}
+	\item pas de système trigonométrique,
+	\item pas de coefficients de Fourier non plus,
+	\item pas de théorie des séries de Fourier sur \( \eR^d\).
+\end{itemize}
+Quand je disais que la non-compacité de \( \eR^d\) allait un peu changer les choses par rapport aux autres, je ne rigolais pas.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{L'espace \( L^2(S^1)\)}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+L'espace \( S^1\) sera fait avec forces détails, parce qu'il va servir de base pour les espaces \( L^2(\mathopen[ 0 , 2\pi \mathclose[)\), \( L^2(\mathopen[ -T , T \mathclose[)\) ainsi que pour l'étude des fonctions périodiques sur \( \eR\).
+
+En tant qu'ensemble,
+\begin{equation}
+	S^1=\{  e^{it} \}_{t\in \eR},
+\end{equation}
+sans garanties que ce paramétrage soit une bijection.
+
+Il y a essentiellement deux façons de définir une intégrale sur \( S^1\).
+\begin{enumerate}
+	\item Voir \( S^1\) comme une sous-variété de \( \eR^2\) et utiliser la définition \ref{PROPooOAHWooAfxvyv}. Cette façon a cependant deux inconvénients :
+	      \begin{itemize}
+		      \item Elle ne donne pas la tribu des mesurables sur \( S^1\), c'est-à-dire que cette méthode ne donne pas de façon évidente une théorie de la mesure sur \( S^1\).
+		      \item Il faut au moins deux cartes pour paramétrer le cercle. La fainéantise nous prévient que ça va être technique.
+	      \end{itemize}
+	\item
+	      Rapporter la structure d'espace mesuré de \( \mathopen[ 0 , 2\pi \mathclose[\) vers \( S^1\), de force via le premier difféomorphisme qui nous passe par la tête, à savoir \( t\mapsto  e^{it}\).
+\end{enumerate}
+Nous allons choisir la seconde possibilité, en gardant en tête qu'elle fonctionne de façon très simple un peu par coup de chance, voir la remarque \ref{REMooOMYYooNFiKOs}\ref{ITEMooJTKCooYQknqo}.
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Espace mesuré}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Plusieurs choses sont déjà faites.
+\begin{itemize}
+	\item Les boréliens de \( S^1\) sont décrits dans la proposition \ref{PROPooHMSCooRIjcJq},
+	\item la tribu de Lebesgue de \( S^1\) est décrite dans la proposition \ref{PROPooDLBCooUfQZOa}. Non, ce n'est pas la tribu induite de la tribu de Lebesgue de \( \eC\).
+\end{itemize}
+
+\begin{proposition}[Espaces de fonctions sur \( S^1\)\cite{MonCerveau}]     \label{PROPooDJERooYirMru}
+	Soit l'espace mesuré \( \big( S^1,\Lebesgue(S^1), \mu \big)\).
+	\begin{enumerate}
+		\item
+		      La formule
+		      \begin{equation}        \label{EQooHPFQooEaujfZ}
+			      \langle f, g\rangle =\int_{S^1}f\bar gd\mu
+		      \end{equation}
+		      est un produit hermitien\footnote{Définition \ref{DefMZQxmQ}.} sur \( L^2(S^1,\Lebesgue(S^1),\mu)\).
+		\item
+		      L'espace \( L^2(S^1)\) est un espace de Hilbert.
+		\item       \label{ITEMooQZAPooKEeQBW}
+		      L'application\footnote{Ici \(\varphi \colon \mathopen[ 0,2\pi\mathclose[\to S^1  \) est la bijection usuelle de la proposition \ref{PROPooXELTooYKjDav}\ref{ITEMooOHRHooRXvxrL}.}
+		      \begin{equation}
+			      \begin{aligned}
+				      \phi\colon L^2(S^1) & \to L^2\big( \mathopen[ 0 , 2\pi \mathclose[ \big) \\
+				      f                   & \mapsto \frac{1}{ \sqrt{ 2\pi } }f\circ \varphi.
+			      \end{aligned}
+		      \end{equation}
+		      est une bijection isométrique (isomorphisme d'espaces de Hilbert)
+	\end{enumerate}
+	Tout cela se résume par l'égalité
+	\begin{equation}
+		L^2(S^1,\Lebesgue(S^1),\mu)=L^2\big( \mathopen] 0  , 2\pi \mathclose[,\Lebesgue(\eR),\lambda \big)
+	\end{equation}
+	où nous avons fait un minuscule abus de notations : ici \( \Lebesgue(\eR)\) est en réalité la tribu induite sur \( \mathopen] 0 , 2\pi \mathclose[\).
+\end{proposition}
+
+\begin{proof}
+	Le fait que la formule \eqref{EQooHPFQooEaujfZ} donne bien un produit hermitien est le lemme \ref{LemIVWooZyWodb}. Ce même lemme assure que le tout donne un espace de Hilbert.
+
+	Il nous reste à prouver le point \ref{ITEMooQZAPooKEeQBW}. En ce qui concerne l'isométrie, nous posons\footnote{Notez que cette définition passe aux classes. Nous le répéterons pas.}
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon L^2(S^1) & \to L^2\big( \mathopen[ 0 , 2\pi \mathclose[ \big) \\
+			f                   & \mapsto \frac{1}{ \sqrt{ 2\pi } }f\circ \varphi
+		\end{aligned}
+	\end{equation}
+	\begin{subproof}
+		\spitem[Injection]
+		Si \( \phi(f)=\phi(g)\), alors pour tout \( x\in\mathopen[ 0 , 2\pi \mathclose[\) nous avons \( f\big( \varphi(x) \big)=g\big( \varphi(x) \big)\). Vu que \( \varphi\colon \mathopen[ 0 , 2\pi \mathclose[\to S^1\) est une bijection nous avons alors \( f(s)=g(s)\) pour tout \( s\in S^1\).
+		\spitem[Surjection]
+		Si \( f\in L^2\big( \mathopen] 0 , 2\pi \mathclose] \big)\), nous posons \( g\colon S^1\to \eC\) par
+		\begin{equation}
+			g(s)=\sqrt{ 2\pi }f\big( \varphi^{-1}(s) \big).
+		\end{equation}
+		Nous avons alors bien \( \phi(g)(x)=f(x)\).
+		\spitem[Isométrie]
+		Nous montrons que \( \phi\) préserve le produit scalaire :
+		\begin{subequations}        \label{SUBEQSooRYYHooPcLXHN}
+			\begin{align}
+				\langle \phi(f), \phi(g)\rangle & =\int_0^{2\pi}\phi(f)(x)\overline{ \phi(g)(x) }d\lambda(x)                                   \\
+				                                & =\frac{1}{ 2\pi }\int_0^{2\pi}(f\circ\varphi)(x)\overline{ (g\circ\varphi)(x) }\,d\lambda(x) \\
+				                                & =\frac{1}{ 2\pi }\int_0^{2\pi}(f\bar g)\circ\varphi\, d\lambda
+			\end{align}
+		\end{subequations}
+		Pour la suite nous devons invoquer la proposition \ref{PROPooILOEooBiumKD} qui nous permet de changer une intégrale sur \( \big( \mathopen[ 0 , 2\pi \mathclose[,\Lebesgue\big( \mathopen[ 0 , 2\pi \mathclose[ \big),\lambda \big)\) en une intégrale sur \( \big( S^1,\Lebesgue(S^1), \mu \big)\). La première condition de cette proposition est que \( \Lebesgue(S^1)=\varphi\big( \Lebesgue(\mathopen[ 0 , 2\pi \mathclose[) \big)\). Cela est la proposition \ref{PROPooDLBCooUfQZOa}\ref{ITEMooNIRNooKSeyCa}. La condition sur la mesure dans la proposition \ref{PROPooILOEooBiumKD} n'est vraie ici qu'à un facteur \( 2\pi\) près. Nous avons :
+		\begin{equation}
+			\int_{\mathopen[ 0 , 2\pi \mathclose[}fd\lambda=2\pi\int_{S^1}(f\circ \varphi^{-1})d\mu.
+		\end{equation}
+		Nous continuons le calcul \eqref{SUBEQSooRYYHooPcLXHN} :
+		\begin{equation}
+			\langle \phi(f), \phi(g)\rangle =\frac{1}{ 2\pi }\int_0^{2\pi}(f\bar g)\circ\varphi\, d\lambda=\int_{S^1}f\bar gd\mu=\langle f, g\rangle .
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Topologie}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous considérons sur \( S^1\) la topologie induite de \( \eC\). Vu que \( S^1\) est fermé et borné dans \( \eC\), il en est une partie compacte. Par le lemme \ref{LEMooVYTRooKTIYdn}, l'espace \( S^1\) muni de sa topologie est un espace topologique compact.
+
+Nous pouvons donc sans crainte affirmer que toute fonction continue \( f\colon S^1\to \eK\) est bornée et atteint ses bornes.
+
+\begin{propositionDef}      \label{PROPooEQDBooDfOrTZ}
+	Soit la formule
+	\begin{equation}
+		d( e^{ix},  e^{iy})=\inf_{k\in \eZ}| x-y+2k\pi |.
+	\end{equation}
+	\begin{enumerate}
+		\item
+		      Elle est bien définie (ne dépend pas des choix de \( x\) et \( y\) donnant les mêmes points dans \( S^1\))
+		\item
+		      L'infimum est en réalité un minimum : il est atteint par un certain \( k\in \eZ\) (qui, lui, dépend des choix).
+		\item
+		      La formule définit une distance\footnote{Définition \ref{DefMVNVFsX}.} sur \( S^1\).
+	\end{enumerate}
+	Nous considérons sur \( S^1\) la topologie \( \tau_d\) découlant de cette distance.
+\end{propositionDef}
+
+
+\begin{proof}
+	Point par point.
+	\begin{enumerate}
+		\item
+		      Soient \( x',y'\in \eR\) tels que \(  e^{ix'}= e^{ix}\) et \(  e^{iy'}= e^{iy}\). Alors \( x'=x+2l\pi\) et \( y'=y+2l'\pi\) pour certains entiers \( l,l'\in \eZ\) (corolaire \ref{CORooTFMAooHDRrqi}). Nous avons alors \( | x'-y'+2k\pi |=| x-y+2\pi(k+l-l') |\) et
+		      \begin{equation}
+			      \inf_{k\in \eZ}| x'-y'+2k\pi |=\inf_{k\in \eZ}| x-y+2k\pi |.
+		      \end{equation}
+		\item
+		      Quels que soient \( x\) et \( y\) fixés, nous avons
+		      \begin{equation}
+			      \lim_{k\to \pm\infty} | x-y+2k\pi |=\infty.
+		      \end{equation}
+		      Donc l'infimum est forcément atteint par un \( k\in \eZ\).
+		\item
+		      Pour la distance, il y a plusieurs points à prouver.
+		      \begin{itemize}
+			      \item
+			            Pour tout \( z,z'\in S^1\) nous avons \( d(z,z')\geq 0\) parce que la distance est donnée par une valeur absolue.
+			      \item
+			            Si \( d(z,z')=0\), alors il existe \( k\) tel que \( x=y+2k\pi\). Alors \(  e^{ix}= e^{i(y+2k\pi)}= e^{iy} e^{2ki\pi}= e^{iy}\). C'est-à-dire \( z=z'\).
+			      \item
+			            Pour la symétrie, nous avons
+			            \begin{equation}
+				            | x-y+2k\pi |=| y-x-2k\pi |=| y-x+2k'\pi |
+			            \end{equation}
+			            en posant \( k'=-k\). L'infimum étant pris sur \( k\in \eZ\), nous avons al symétrique \( d( e^{ix},  e^{iy})=d( e^{iy}, e^{ix})\).
+			      \item
+			            Pour attaquer l'inégalité triangulaire, nous considérons \( z_1= e^{ix_1}\), \( z_2= e^{ix_2}\) et \( z_3= e^{ix_3}\). Nous posons également \( k_1,k_2, k_3\in \eZ\) tels que \( d(z_1,z_3)=| x_1-x_3+2k_1\pi | \), \( d(z_1,z_2)=| x_1-x_2+2k_2\pi |\) et \( d(z_2,z_3)=| x_2-x_3+2k_3\pi |\). Nous avons alors
+			            \begin{subequations}
+				            \begin{align}
+					            d(z_1,z_3) & =\inf_{k\in \eZ}| x_1-x_3+2k\pi |                                                                \\
+					                       & =\inf_{k\in \eZ}| x_1-x_2+x_2-x_3+2k\pi |                                                        \\
+					                       & =\inf_{k\in \eZ}\big|  (x_1-x_2+2k_2\pi)+(x_2-x_3+2k_3\pi) +2k\pi \big|                          \\
+					                       & \leq	\big|  (x_1-x_2+2k_2\pi)+(x_2-x_3+2k_3\pi) \big|                \label{SUBEQooXOGCooCZxCsf} \\
+					                       & \leq | x_1-x_2+2k_2\pi |+| x_2-x_3+2k_3\pi |.
+				            \end{align}
+			            \end{subequations}
+			            Notez que pour \eqref{SUBEQooXOGCooCZxCsf}, en posant \( k=0\) nous avons bien une inégalité. En y pensant, \( k=0\) réalise effectivement l'infimum, mais ce n'est pas indispensable.
+		      \end{itemize}
+	\end{enumerate}
+\end{proof}
+
+Le cercle est bien connu pour être symétrique et en particulier avoir une symétrie sous les rotations. Nous allons voir quelques résultats qui vont dans le sens de dire que la distance définie sur \( S^1\) respecte cette symétrie.
+
+\begin{lemma}       \label{LEMooCQCAooAEctbe}
+	Plusieurs points à propos de l'invariance de la topologie sous les rotations.
+	\begin{enumerate}
+		\item
+		      La distance est invariante sous les rotations, c'est-à-dire que si \( a,b\in S^1\) et si \( s\in \eR\), alors
+		      \begin{equation}
+			      d( e^{is}a, e^{is}b)=d(a,b).
+		      \end{equation}
+		\item       \label{ITEMooCIPYooTyPQLj}
+		      Les boules sont préservées sous les rotations\footnote{Pas chaque boule séparément, mais l'ensemble des boules}, c'est-à-dire que
+		      \begin{equation}
+			      e^{is}B_d(a,r)=B_d( e^{is}a,r).
+		      \end{equation}
+		\item
+		      La topologie est invariante sous les rotations : \(  e^{is}\tau_d=\tau_d\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Point par point.
+	\begin{enumerate}
+		\item
+		      Si \( a= e^{ix}\) et \( b= e^{iy}\), nous avons
+		      \begin{equation}
+			      d(a,b)=\inf_{k\in \eZ}| x-y+2k\pi |=\inf_{k\in \eZ}| (x-s)-(y-s)+2k\pi |=d( e^{is}a, e^{is}b).
+		      \end{equation}
+		      Et de un.
+		\item
+		      Il faut une inclusion dans chaque sens.
+		      \begin{subproof}
+			      \spitem[\(  e^{is}B_d(a,r)\subset B_d( e^{is}a,r)\)]
+			      Soit \( b\in  e^{is}B_d(a,r)\). Alors \( b= e^{is}b'\) pour un certain \( b'\in B_d(a,r)\). Nous avons alors, en utilisant le premier point,
+			      \begin{equation}
+				      d(b, ae^{is})=d( e^{-is}b,a)=d(b',a)<r.
+			      \end{equation}
+			      Donc \( b\in B_d( e^{is}a,r)\).
+			      \spitem[\(  B_d( e^{is}a,r)\subset e^{is} B_d( a,r)\)]
+			      Soit \( b\in B_d( e^{is}a,r)\). Nous devons prouver que \( b\in  e^{is}B_d(a,r)\), c'est-à-dire que \( b= e^{is}b'\) pour un certain \( b'\in B_d(a,r)\) ou encore que \(  e^{-is}b\in B_d(a,r)\). En utilisant encore le premier point,
+			      \begin{equation}
+				      d( e^{-is}b,a)=d(b, e^{is}a)<r.
+			      \end{equation}
+			      Donc oui, \(  e^{-is}b\in B(a,r)\).
+		      \end{subproof}
+		\item
+		      Soit \( A\in\tau_d\). Si \( a\in  e^{is}A\), alors \( a= e^{is}a'\) pour un certain \( a'\in A\). Notre but est de prouver que \(  e^{is}A\) contient un voisinage de \( a\).
+
+		      Vu que \( a'\in A\), il existe \( r>0\) tel que \( B_d(a',r)\subset A\). Nous avons alors
+		      \begin{equation}
+			      e^{is}aB_d(a',r)\subset  e^{is}A,
+		      \end{equation}
+		      et comme \(  e^{is}B_d(a',r)=B_d( e^{is}a',r)=B_d(a,r)\) nous avons bien
+		      \begin{equation}
+			      B_d(a,r)\subset  e^{is}A.
+		      \end{equation}
+	\end{enumerate}
+\end{proof}
+
+Nous allons voir maintenant quelques résultats à propos de \(B_d(1,r)\) qui a la bonne figure d'être un ouvert qui s'étale symétriquement en partant de \( 1\) (le point le plus à droite du cercle). Par rapport à la figure \ref{LabelFigJOQVoolPTsYPZK}, il s'agit ni plus ni moins que de voir qu'une boule de rayon \( r\) autour de \( 1\) est bien la partie indiquée (symétrique par rapport à \( 1\) et de longueur d'arc \( r\) des deux côtés). De plus, ce voisinage n'est autre que la partie du cercle située à droite de la ligne en pointillés.
+\newcommand{\CaptionFigJOQVoolPTsYPZK}{Un voisinage de \( 1\) dans \( S^1\).}
+\input{auto/pictures_tex/Fig_JOQVoolPTsYPZK.pstricks}
+
+Ce lemme-ci montre que \( B_d(1,r)\) est une partie de \( S^1\) qui s'étale symétriquement autour de \( 1\).
+\begin{lemma}       \label{LEMooMYNVooIWWsiV}
+	Soit l'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \eR & \to S^1          \\
+			x                 & \mapsto  e^{ix}.
+		\end{aligned}
+	\end{equation}
+	Nous avons \( B_d(1,r)=\varphi\big( \mathopen] -r , r \mathclose[ \big)\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( b\in B_d(1,r)\) de la forme \( b= e^{iy}\) avec \( y\) choisi de telle sorte que \( d(1,b)=| y |\). Vu que \( d(1,b)<r\), nous avons \( | y |<r\) et donc \( b\in \varphi\big( \mathopen] -r , r \mathclose[ \big)\).
+
+	Dans l'autre sens, si \( y\in\mathopen] -r , r \mathclose[\), alors
+	\begin{equation}        \label{EQooRWASooVZnQCJ}
+		d(1, e^{iy})=\inf_{k\in \eZ}| y+2k\pi |\leq | y |<r.
+	\end{equation}
+	Nous avons utilisé le fait que l'infimum sur \( k\in \eZ\) est plus petit ou égal à la valeur pour \( k=0\). Les inégalités \eqref{EQooRWASooVZnQCJ} montrent que \(  e^{iy}\in B_d(1,r)\).
+\end{proof}
+
+Le lemme suivant montre que que les boules autour de \( 1\) sont délimitées par la droite en pointillé de la figure \ref{LabelFigJOQVoolPTsYPZK}.
+\begin{lemma}       \label{LEMooLINCooHJmJWx}
+	Soit \( r\in \mathopen[ 0 , \pi \mathclose]\). Nous avons
+	\begin{equation}
+		B_d(1,r)=S^1\cap\{x+iy\tq x>\cos(r)\}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	En deux inclusions.
+
+	\begin{subproof}
+		\spitem[Inclusion \( \subset\)]
+		%-----------------------------------------------------------
+
+
+		Si \( r=\pi\), alors \( B(1,r)=S^1\setminus\{ -1 \}\), alors que \( \cos(\pi)=-1\).
+
+		Si \( r<\pi\), alors nous partons de la formule \eqref{EQooRVPJooTMwNTU} qui dit que \(  e^{ir}=\cos(r)+i\sin(r)\). D'après le lemme \ref{LEMooMYNVooIWWsiV}, un élément de \( B_d(1,r)\) est de la forme \(  e^{iy}\) avec \( y\in \mathopen] -r , r \mathclose[\). Nous voudrions donc prouver que \( \cos(y)>\cos(r)\) dès que \( y\in\mathopen] -r , r \mathclose[\) et \( r<\pi\).
+
+			Sur \( \mathopen] -r , 0 \mathclose[\), la fonction \( \cos\) est croissante\footnote{Lemme \ref{LEMooBIPFooQNiTqZ}.}, donc si \( y<0\) alors
+			\begin{equation}
+				\cos(y)>\cos(-r)=\cos(r).
+			\end{equation}
+			De la même façon, sur \( \mathopen] 0,r \mathclose[\), la fonction \( \cos\) est décroissante, de telle sorte que si \( y>0\), alors \( \cos(y)>\cos(r)\).
+
+		Nous avons prouvé que \( B_d(1,r)\subset S^1\cap  \{ x+iy\tq x>\cos(r) \}\).
+
+		\spitem[Inclusion inverse]
+		%-----------------------------------------------------------
+
+		Soit \( z=e^{is}\) avec \( s\in\mathopen[ -\pi,\pi\mathclose[\), et vérifiant \( \cos(s)>\cos(r)\). Nous avons
+		\begin{equation}
+			d(1,z)=\inf_{k\in \eZ}| s+2k\pi |=| s |
+		\end{equation}
+		parce que l'infimum est réalisé par \( k=0\). Nous avons donc
+		\begin{subequations}
+			\begin{numcases}{}
+				\cos(s)>\cos(r)\\
+				| s |\in\mathopen[ 0,\pi\mathclose]\\
+				r\in\mathopen[ 0,\pi\mathclose],
+			\end{numcases}
+		\end{subequations}
+		et nous devons en déduire que \( | s |<r\). Si \( s>0\), alors la décroissance de cosinus (proposition \ref{PROPooZOZHooSMoYQD}\ref{ITEMooMJWZooNHgQox}) dit que \( s<r\).
+
+		Si \( s<0\), alors nous savons que \( \cos(s)=\cos(-s)\) et donc, en posant \( s'=-s\), le cas "\( s>0\)" nous dit que \( s'<r\), et donc que \( | s |<r\).
+
+		Dans les deux cas nous avons \( d(1,z)=| s |<r\).
+
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}
+	La topologie \( \tau_d\) sur \( S^1\)\footnote{Définition \ref{PROPooEQDBooDfOrTZ}.} est la topologique induite depuis \( \eC\).
+\end{proposition}
+
+\begin{proof}
+	Nous notons \( \tau_i\) la topologie induite (c'est-à-dire l'ensemble des ouverts) et \( \tau_d\) la topologie de la distance fraichement définie. Nous allons également noter \( B_{\eC}(a,r)\) la boule dans \( \eC\) de centre \( a\) et de rayon \( r\), et \( B_d(z,r)\) celle dans \( S^1\), de centre \( z\in S^1\) et de rayon \( r\) pour notre distance \( d\).
+	\begin{subproof}
+
+		\spitem[\( \tau_i\subset\tau_d\)]
+		Un élément général de \( \tau_i\) est de la forme \( \mO\cap S^1\) où \( \mO\) est un ouvert de \( \eC\). Soit \( a\in \mO\cap S^1\) et prouvons qu'il existe un ouvert de \( \tau_d\) contenant \( a\) et contenu dans \( \mO\cap S^1\); cela prouvera que \( \mO\cap S^1\) est ouvert de \( \tau_d\) par le théorème \ref{ThoPartieOUvpartouv}.
+
+		Soient \( a= e^{ix}\) et \( r\) tel que \( B_{\eC}(a,r)\subset \mO\). Nous allons montrer que \( B_{d}(a,r)\subset B_{\eC}(a,r)\). Un élément général de \( B_d(a,r)\) est \( b= e^{iy}\) tel que
+		\begin{equation}
+			d(a,b)=\inf_{k\in \eZ}| x-y+2k\pi |\leq r.
+		\end{equation}
+		Quitte à redéfinir \( x\) ou \( y\) nous pouvons supposer que l'infimum est atteint en \( k=0\). En utilisant la proposition \ref{PROPooYMMKooSUBtoo} nous majorons :
+		\begin{equation}
+			| a-b |=|  e^{ix}- e^{iy} |\leq | x-y |=d(a,b)\leq r.
+		\end{equation}
+		Donc nous avons bien \( b\in B_{\eC}(a,r)\) dès que \( b\in B_d(a,r)\).
+
+		\spitem[\( \tau_d\subset \tau_i\)]
+
+		Ce sens est plus délicat parce que, si nous voulons suivre les mêmes pas que le premier sens, nous devrons nous appuyer sur la continuité de l'application \( \ln\colon \eC^*\to \eC\), laquelle n'est pas vraie en \( -1\) (voir par exemple le lemme \ref{LEMooMUOIooCnoWwq}).
+
+		Soient \( A\in \tau_d\) et \( a\in A\). Nous devons prouver l'existence d'un ouvert \( \mO\) de \( \eC\) tel que \( S^1\cap\mO\) soit inclus dans \( A\) et contienne \( a\). Nous allons prouver cela dans le cas \( a=1\) et ensuite propager le résultat en utilisant la symétrie de \( S^1\).
+
+		\begin{subproof}
+			\spitem[Si \( a=1\)]
+			Vu que \( A\) est ouvert pour la topologie de la distance \( d\), et vu que \( 1\in A\), il existe \( r>0\) tel que \( B_d(1,r)\subset A\). Pour ce \( r\) le lemme \ref{LEMooLINCooHJmJWx} donne
+			\begin{equation}
+				B_d(1,r)=S^1\cap\{ x+iy\tq x>\cos(r) \}.
+			\end{equation}
+			Nous montrons que \( \mO=B_{\eC}(1,\delta)\) avec \( \delta<1-\cos(r)\) fait l'affaire. Si \( x+iy\in B_{\eC}(1,\delta)\), alors \( x>1-\delta\) et donc
+			\begin{equation}
+				1-\delta>1-(1-\cos(r))=\cos(r),
+			\end{equation}
+			ce qui prouve que la partie de \( \mO\) qui est dans \( S^1\) est bien dans \( B_d(1,r)\).
+			\spitem[Si \( a\neq 1\)]
+
+			Soient un ouvert quelconque \( A\in\tau_d\) ainsi que \( a= e^{ix}\in A\). Nous considérons \( r>0\) tel que \( B_d(a,r)\subset A\); nous avons \(  e^{-ix}B_d(a,r)\subset  e^{-ix}A\) et donc, en tenant compte du lemme \ref{LEMooCQCAooAEctbe}\ref{ITEMooCIPYooTyPQLj} :
+			\begin{equation}
+				B_d(1,r)\subset  e^{-ix}A.
+			\end{equation}
+			Par le premier point, il existe un ouvert \( \mO\) de \( \eC\) tel que \( 1\in \mO\) et
+			\begin{equation}
+				\mO\cap S^1\subset B_d(1,r)\subset  e^{-ix}A.
+			\end{equation}
+			Nous avons évidemment que \( a\in e^{ix}\mO\) et
+			\begin{equation}
+				e^{ix}(\mO\cap S^1)\subset  e^{ix}B_d(1,r)\subset A.
+			\end{equation}
+			Donc \(  e^{ix}\mO\cap S^1\subset A\). Vu que \(  e^{ix}\mO\) est un ouvert de \( \eC\), l'ensemble \(  e^{ix}\mO\cap S^1\) est un ouvert de \( \tau_i\).
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooTKFHooJaeMyc}
+	Deux résultats de limites dans \( S^1\).
+	\begin{enumerate}
+		\item       \label{ITEMooEUDIooDuynRg}
+		      Pour tout \( a_0\in S^1\), nous avons
+		      \begin{equation}
+			      \lim_{s\to 1} d(a,as)=0.
+		      \end{equation}
+		\item       \label{ITEMooXCBUooUxQldB}
+		      Si \( f\colon S^1\to \eC\) est continue en \( a\in S^1\), alors
+		      \begin{equation}
+			      \lim_{s\to 1} f(as)=f(a).
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Point par point.
+	\begin{enumerate}
+		\item
+		      Soient \( a,s\in S^1\). Donnons une formule pour \( d(a,as)\). Si \( a= e^{ix}\) et \( s= e^{iy}\) nous avons \( as= e^{i(x+y)}\) et donc
+		      \begin{equation}
+			      d(a,as)=\inf_{k\in \eZ}| x-(x+y)+2k\pi |=\inf_{k\in \eZ}| y+2k\pi |.
+		      \end{equation}
+		      Voilà pour la formule. Maintenant la preuve de notre point.
+
+		      Soit \( \epsilon>0\). Si \( \delta<\epsilon\) et si \( s\in B(1,\delta)\), alors il existe \( y\in \mathopen] -\delta , \delta \mathclose[\) tel que \( s= e^{iy}\) par le lemme \ref{LEMooMYNVooIWWsiV}. Pour un tel \( s\) nous avons
+		      \begin{equation}
+			      d(a,sa)=\inf_{k\in \eZ}| y+2k\pi |\leq | y |<\delta<\epsilon.
+		      \end{equation}
+		      Nous avons trouvé \( \delta>0\) tel que \( s\in B(1,\delta)\) implique \( d(a,as)<\epsilon\). Cela est la limite que nous devions prouver.
+		\item
+		      Soit \( \epsilon>0\). Soit \( r>0\) tel que si \( b\in B(a,r)\), alors \( | g(b)-g(a) |<\epsilon\); l'existence d'un tel \( r\) est la continuité de \( g\) en \( a\). Nous considérons \( \delta>0\) tel que \( s\in B(1,\delta)\) implique \( sa\in B(a,r)\); l'existence d'un tel \( \delta\) est le point \ref{ITEMooEUDIooDuynRg} de ce lemme.
+
+		      Avec tout cela nous avons \( | g(as)-g(a) |<\epsilon\) dès que \( s\in B(1,\delta)\). Nous avons donc, comme nous le voulions, la limite \( \lim_{s\to 1} g(as)=g(a)\).
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}
+	Pour \( s\in S^1\), nous considérons l'application
+	\begin{equation}
+		\begin{aligned}
+			\alpha_s\colon \Fun(S^1) & \to \Fun(S^1)     \\
+			\alpha_s(g)(u)           & =g(u\bar s)-g(u).
+		\end{aligned}
+	\end{equation}
+	Quelques propriétés avec \( 1\leq p<\infty\) :
+	\begin{enumerate}
+		\item
+		      Si \( f\in L^p(S^1)\), alors \( \alpha_s(f)\in L^p(S^1)\).
+		\item
+		      Si \( f\) est continue dans \( L^p(S^1)\) nous avons la limite
+		      \begin{equation}
+			      \lim_{s\to 1} \alpha_s(f)=0
+		      \end{equation}
+		      dans \( L^p(S^1)\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	D'abord un calcul de norme :
+	\begin{equation}
+		\| \alpha_s(f) \|_p^p=\int_{S^1}| f(u\bar s)-f(u) |^pdu\leq\int_{S^1}| f(u\bar s) |^pdu+\int_{S^1}| f(u) |^pdu=2\| f \|_p^p.
+	\end{equation}
+	Donc oui pour que \( \alpha_s(f)\in L^p(S^1)\).
+
+	La fonction \( f\) étant supposée continue sur le compact \( S^1\), elle est majorée. Nous savons qu'en posant \( M=\| f \|_{\infty}\) nous avons \( | \alpha_s(f) |\leq 2M\). Donc la fonction constante
+	\begin{equation}
+		\begin{aligned}
+			g\colon S^1 & \to \eC    \\
+			u           & \mapsto 2M
+		\end{aligned}
+	\end{equation}
+	est une fonction intégrable sur \( S^1\) qui majore \( | \alpha_s(f) |\) uniformément en \( s\). Soit une suite \( s_i\to 1\) dans \( S^1\), et posons \( f_i=\alpha_{s_i}(f)\). Alors nous avons
+	\begin{equation}
+		\| f_i \|^p_p=\int_{S^1}| f_i(u) |^pdu
+	\end{equation}
+	et aussi \( | f_i |^p\leq (2M)^p\). Le théorème de la convergence dominée de Lebesgue \ref{ThoConvDomLebVdhsTf} nous permet de permuter limite et intégrale :
+	\begin{equation}
+		\lim_{i\to \infty} \| f_i \|_p^p=\int_{S^1}\lim_{i\to \infty} | f_i(u) |^pdu.
+	\end{equation}
+	Mais
+	\begin{equation}
+		\lim_{i\to \infty} f_i(u)=\lim_{i\to \infty} \alpha_{s_i}(f)(u)=\lim_{i\to \infty} \big( f(u\bar s_i)-f(u) \big)=0.
+	\end{equation}
+	La dernière limite est due au fait que \(  \lim_{s\to 1} g(us)=g(u) \) (lemme \ref{LEMooTKFHooJaeMyc}\ref{ITEMooXCBUooUxQldB}).
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Système trigonométrique}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}
+	La \defe{famille trigonométrique}{famille trigonométrique!sur \( S^1\)} sur \( S^1\) est l'ensemble de fonctions \( \{ e_n \}_{n\in \eZ}\) données par
+	\begin{equation}
+		\begin{aligned}
+			e_n\colon S^1 & \to \eC     \\
+			z             & \mapsto z^n
+		\end{aligned}
+	\end{equation}
+	avec \( n\in \eZ\). Un \defe{polynôme trigonométrique}{polynôme trigonométrique} est une application \( S^1\to \eC\) de la forme
+	\begin{equation}
+		\sum_{k=-n}^na_ke_k
+	\end{equation}
+	pour des nombres \( a_k\in \eC\), peut-être pas tous non-nuls (autrement dit, il n'est pas forcé d'avoir autant de termes négatifs que positifs).
+\end{definition}
+Le but de \( z\mapsto z^n\) dans cette définition est d'être lu \(  t\mapsto e^{in t}\) lorsqu'on considère les fonctions sur \( \mathopen[ 0 , 2\pi \mathclose[\).
+
+\begin{proposition}     \label{PROPooOMGFooROFFFr}
+	La famille trigonométrique est une famille orthonormale pour le produit scalaire \( L^2(S^1,\tribA,\mu)\).
+\end{proposition}
+
+\begin{proof}
+	En utilisant la proposition \ref{PROPooDJERooYirMru}\ref{ITEMooQZAPooKEeQBW} nous avons :
+	\begin{subequations}
+		\begin{align}
+			\langle e_n, e_n\rangle =\int_{S^1}e_n\overline{ e_n } & =\frac{1}{ 2\pi }\int_{\mathopen\lbrack 0 , 2\pi \mathclose\lbrack}e_n\big( \varphi(x) \big)\overline{ e_n\big( \varphi(x) \big) } \\
+			                                                       & =\frac{1}{ 2\pi }\int_{\mathopen\lbrack 0 , 2\pi \mathclose\lbrack} e^{inx} e^{-inx}dx                                             \\
+			                                                       & =\frac{1}{ 2\pi }\int_{0}^{2\pi}1dx                                                                                                \\
+			                                                       & =1.
+		\end{align}
+	\end{subequations}
+
+	Et nous avons également, pour \( m\neq n\) :
+	\begin{equation}
+		\langle e_n, e_m\rangle =\frac{1}{ 2\pi }\int_{\mathopen[ 0 , 2\pi \mathclose[} e^{i(n-m)x}dx=\frac{1}{ 2\pi }\left[ \frac{1}{ i(n-m) e^{i(n-m)x} } \right]_0^{2\pi}=0.
+	\end{equation}
+\end{proof}
+
+\begin{remark}
+	Vous aurez noté que le facteur \( \frac{1}{ 2\pi }\) qui permet d'avoir \( \langle e_n, e_n\rangle=1 \) ne provient ni de la définition du produit scalaire ni de celle de la famille trigonométrique, mais bien de la mesure, voir la définition \ref{EQooKHZRooSrFMdo}.
+\end{remark}
+
+\begin{remark}      \label{REMooUCANooVyXPxj}
+	Notez aussi que nous avons bien \( \langle e_n, e_{-n}\rangle =0\). Il faut donc bien prendre tous les \( e_n\) avec \( n\in \eZ\) et non seulement \( n\in \eN\).
+\end{remark}
+
+\begin{proposition}     \label{PROPooTGBHooXGhdPR}
+	Les polynômes trigonométriques forment une partie dense dans \( \big( C(S^1,\eC),\| . \|_{\infty} \big)\).
+\end{proposition}
+
+\begin{proof}
+	Pour préciser les notations, \( C(S^1,\eC)\) est l'ensemble des fonctions continues de \( S^1\) vers \( \eC\), et l'espace topologique que nous considérons est cet ensemble sur lequel nous considérons la distance supremum.
+
+	Nous utilisons le théorème de Stone-Weierstrass \ref{ThoWmAzSMF}.
+
+	Le système contient une fonction constante non nulle, à savoir \( e_0\).
+
+	Il sépare les points grâce à la fonction \( e_1\) qui n'est autre que la fonction identité \( z\mapsto z\). De plus l'ensemble des polynômes trigonométriques est stable par conjugaison parce que si
+	\begin{equation}
+		P=\sum_{k=-n}^na_ke_k,
+	\end{equation}
+	alors \( \bar P=\sum_{k=-n}^n\overline{ a_k e_k}=\sum_{k=-n}^n\overline{ a_k }e_{-k}\) qui est encore un polynôme trigonométrique.
+\end{proof}
+
+\begin{definition}
+	Si nous avons une fonction \( f\colon S^1\to \eC\), nous définissons ses \defe{coefficients de Fourier}{coefficients de Fourier} par
+	\begin{equation}
+		c_n(f)=\langle f, e_n\rangle
+	\end{equation}
+	pourvu que l'intégrale existe.
+\end{definition}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Convolution}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La convolution sur \( \eR^n\) est donnée par la définition \ref{DEFooHHCMooHzfStu}. Nous voyons maintenant comment cela s'adapte à \( S^1\).
+\begin{definition}      \label{DEFooSKWOooEdIHoH}
+	Si \( f\) et \( g\) sont des fonctions sur \( S^1\) à valeurs dans \( \eC\), nous définissons la \defe{convolution}{convolution sur \( S^1\)} de \( f\) et \( g\) comme étant la fonction sur \( S^1\) définie par
+	\begin{equation}        \label{EQooILQNooBKtSBj}
+		(f*g)(z)=\int_{S^1}f(s)g(z\bar s)d\mu(s).
+	\end{equation}
+\end{definition}
+
+Cette définition appelle plusieurs remarques.
+\begin{itemize}
+	\item
+	      Dès que \( z,s\in S^1\), nous avons \( z\bar s\in S^1\), de telle sorte qu'au moins l'intégrande ait un sens.
+	\item Nous ne prétendons pas que l'intégrale \eqref{EQooILQNooBKtSBj} converge pour toutes les fonctions \( f\) et \( g\). Cela est une définition «pour tous les couples \( f,g\) pour lesquels l'intégrale fonctionne».
+	\item
+	      Le lemme \ref{LEMooTYSSooItOiYE} nous dira que \( L^1(S^1)\) est stable par convolution : si \( f\) et \( g\) sont dans \( L^1\), alors \( f*g\) y est aussi.
+	\item
+	      Dans la formule \eqref{EQooILQNooBKtSBj}, la variable \( s\) est vraiment une variable muette. Cette formule aurait également pu être écrite
+	      \begin{equation}
+		      (f*g)(z)=\int_{S^1} \big[ s\mapsto f(s)g(z\bar s) \big]d\mu.
+	      \end{equation}
+\end{itemize}
+
+\begin{lemma}[\cite{ooPIYUooRQCQRz}]        \label{LEMooTYSSooItOiYE}
+	Si \( f,g\in L^1(S^1)\), alors pour presque tout \( z\in S^1\), la fonction \( s\mapsto \int f(s)g(z\bar s)\) est dans \( L^1(S^1)\).
+\end{lemma}
+
+\begin{proof}
+	Nous considérons la fonction
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon S^1\times S^1 & \to \eC                 \\
+			(z,s)                    & \mapsto f(s)g(z\bar s).
+		\end{aligned}
+	\end{equation}
+	\begin{subproof}
+		\spitem[\( \psi\in L^1(S^1\times S^1)\)]
+		Nous utilisons le corolaire \ref{CorTKZKwP}, et pour cela nous calculons les intégrales en chaine\footnote{Dans les expressions suivantes, les symboles «\( ds\)» et «\( dz\)» n'ont pas d'autres valeurs que purement de notation pour indiquer le nom de la variable d'intégration.} :
+		\begin{subequations}
+			\begin{align}
+				\int_{S^1}\left[ \int_{S^1}| f(s)g(z\bar s) |dz \right]ds & =\int_{S^1}| f(s) |\underbrace{\left[ \int_{S^1}| g(z\bar s) |dz \right]}_{=A<\infty}ds \\
+				                                                          & =A\int_{S^1}| f(s)ds |                                                                  \\
+				                                                          & <\infty.
+			\end{align}
+		\end{subequations}
+		Le fait que \( A<\infty\) provient directement de l'hypothèse \( g\in L^1(S^1)\)\footnote{Avec un changement de variables \( z\mapsto z\bar s\) que je vous conseille d'être capable de justifier.}.
+
+		Par le corolaire sus-cité nous avons bien \( \psi\in L^1(S^1\times S^1)\).
+		\spitem[Et par Fubini]
+		Le théorème de Fubini \ref{ThoFubinioYLtPI}\ref{ITEMooVFGWooZTePQS} nous renseigne que pour presque tout \( z\in S^1\), l'application
+		\begin{equation}
+			s\mapsto \psi(z,s)
+		\end{equation}
+		est dans \( L^1(S^1)\). Et la partie \ref{ThoFubinioYLtPI}\ref{ITEMooCYMKooUdizni} ajoute que l'application
+		\begin{equation}        \label{EQooPLLBooJZsZzu}
+			z\mapsto \int_{S^1}\psi(s,z)ds
+		\end{equation}
+		est également \( L^1(S^1)\).
+		\spitem[Conclusion]
+		L'application donnée en \eqref{EQooPLLBooJZsZzu} est précisément \( (f*g)\). Donc \( f*g\in L^1(S^1)\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]
+	Si \( f\in L^1(S^1)\) et si \( g\) est continue sur \( S^1\), alors \( f*g\) existe et est continue sur \( S^1\).
+\end{lemma}
+
+\begin{proof}
+	Vu que \( S^1\) est compact, la continuité de \( g\) implique que \( g\) est bornée et donc dans \( L^1(S^1)\). Le lemme \ref{LEMooTYSSooItOiYE} dit alors que \( f*g\) est bien définie sur \( S^1\).
+
+	Soit \( z_0\in S^1\). Nous montrons que \( f*g\) est continue en \( z_0\); pour cela nous considérons \( \epsilon>0\) et ensuite nous réfléchissons un peu.
+
+	Vu que \( g\) est continue sur \( S^1\) qui est compact, \( g\) y est uniformément continue par le théorème de Heine\ref{PROPooBWUFooYhMlDp}. Il existe donc un \( \delta>0\) tel que pour tout \( z_0\in S^1\), si \( z\in B(z_0,\delta)\), alors \( | g(z_0)-g(z) |<\epsilon\).
+
+	Soit \( s\in S^1\). Si \( z\in B(z_0,\delta)\), alors \( \bar sz\in B(\bar sz_0,\delta)\) par le lemme \ref{LEMooCQCAooAEctbe}\ref{ITEMooCIPYooTyPQLj}. Dans ce cas nous avons aussi
+	\begin{equation}
+		| g(\bar s z_0)-g(\bar sz) |<\epsilon.
+	\end{equation}
+	Un peu de calcul maintenant. D'une part
+	\begin{equation}
+		(f*g)(z_0)-(f*g)(z)=\int_{S^1}f(s)\big( g(z_0\bar s)-g(z\bar s) \big)ds,
+	\end{equation}
+	et donc
+	\begin{subequations}
+		\begin{align}
+			|(f*g)(z_0)-(f*g)(z)| & \leq\int_{S^1}|f(s)| \underbrace{\big|  g(z_0\bar s)-g(z\bar s) \big|}_{<\epsilon} ds \\
+			                      & \leq \epsilon\int_{S^1}| f |                                                          \\
+			                      & =A\epsilon
+		\end{align}
+	\end{subequations}
+	pour une certaine constante \( A\) ne dépendant pas de \( z_0\).
+
+	Nous avons prouvé que pour tout \( \epsilon>0\), il existe un \( \delta\) tel que \( z\in B(z_0,\alpha)\) implique
+	\begin{equation}
+		|(f*g)(z_0)-(f*g)(z)|\leq A\epsilon,
+	\end{equation}
+	ce qui signifie que \( f*g\) est continue en \( z_0\).
+\end{proof}
+
+Notez que dans cette démonstration, l'uniforme continuité de \( g\) a été utilisée pour effectuer d'un seul coup la majoration pour tout \( s\) dans l'intégrale.
+
+\begin{proposition}     \label{PROPooCSRNooDyClBY}
+	Si \( f\in L^1(S^1)\), nous avons
+	\begin{equation}
+		f*e_n=c_n(f)e_n.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Il s'agit d'un bon calcul. En considérant \( z= e^{i\theta}\) nous avons
+	\begin{subequations}
+		\begin{align}
+			(f*e_n)(z) & =\int_{S^1}f(s)e_n(z\bar s)ds                                                                                             \\
+			           & =\frac{1}{ 2\pi }\int_{\mathopen\lbrack 0 , 2\pi \mathclose\lbrack}f( e^{ix})e_n(  e^{i(\theta-x)}) dx                    \\
+			           & = e^{in\theta}\frac{1}{ 2\pi }\int_{\mathopen\lbrack 0 , 2\pi \mathclose\lbrack}f( e^{ix}) e^{-inx}dx                     \\
+			           & =e_n( e^{i\theta})\frac{1}{ 2\pi }\int_{\mathopen\lbrack 0 , 2\pi \mathclose\lbrack}f( e^{ix})\overline{ e_n( e^{ix}) }dx \\
+			           & =e_n(z)\int_{S^1}f(s)\overline{ e_n(s) }ds                                                                                \\
+			           & =e_n(z)\langle f, e_n\rangle.
+		\end{align}
+	\end{subequations}
+	Donc \( (f*e_n)(z)=\langle f, e_n\rangle e_n(z)\), c'est-à-dire que
+	\begin{equation}
+		f*e_n=c_n(f)e_n.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}       \label{LEMooDGHJooRAnwpy}
+	Si \( P\) est un polynôme trigonométrique et si \( f\in L^1(S^1)\), alors \( f*P\) est également un polynôme trigonométrique.
+\end{lemma}
+
+\begin{proof}
+	Soit \( P=\sum_{k=-n}^na_ke_k\). Par la linéarité du produit de convolution,
+	\begin{equation}
+		f*P=\sum_{k=-n}^na_kf*e_k=\sum_ka_kc_k(f)e_k
+	\end{equation}
+	où nous avons également utilisé la proposition \ref{PROPooCSRNooDyClBY}. Nous avons donc un polynôme trigonométrique dont les coefficients sont \( a_kc_k(f)\) au lieu de \( a_k\).
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Approximation de l'unité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}[\cite{TUEWwUN}]       \label{LEMooUNFBooRCzwIn}
+	Soient une fonction continue \( f\colon S^1\to \mathopen[ 0 , \infty \mathclose[\) et \( a\in S^1\) telle que \( f(z)<f(a)\) pour tout \( z\in S^1\setminus\{ a \}\). Alors la suite de fonctions \( f_n\colon S^1\to \eR\) donnée par
+	\begin{equation}        \label{EQooTQYPooLZprJj}
+		f_n(z)=\left( \int_{S^1}f^n \right)^{-1}f(z)^n
+	\end{equation}
+	est une approximation de l'unité\footnote{Définition \ref{DEFooEFGNooOREmBb}.} autour de \( a\).
+\end{lemma}
+
+\begin{proof}
+	En plusieurs points, dont d'abord une série de vérifications pour voir que la formule a un sens.
+	\begin{subproof}
+		\spitem[Strictement positive]
+		D'abord, vu que \( f\) prend ses valeurs dans \( \mathopen[ 0 , \infty \mathclose[\) et vu que \( f(z)<f(a)\), nous avons \( f(a)>0\) (strict). Peut-être que \( f\) s'annule à certains endroits de \( S^1\), mais pas \( a\).
+		\spitem[\( f^n\) est intégrable sur \( S^1\)]
+		La fonction \( f^n\) est dans les hypothèses de la proposition \ref{PROPooKFRSooANzglT} parce que \( S^1\) est compact, \( f^n\) y est continue et la mesure sur \( S^1\) est compatible avec la topologie (voir les hypothèses précises).
+		\spitem[L'intégrale n'est pas nulle]
+		Vu que \( f(a)>0\), il existe un ouvert \( A\) contenant \( a\) sur lequel \( f>0\). Nous avons alors
+		\begin{equation}
+			\int_Kf^n\geq \int_Af^n>0.
+		\end{equation}
+		Cela pour dire que l'inverse dans \eqref{EQooTQYPooLZprJj} ne pose pas de problèmes.
+		\spitem[Norme]
+		Vu que toutes les fonctions tant \( f\) que \( f_n\) sont positives, les valeurs absolues ne jouent aucun rôle et nous avons
+		\begin{equation}
+			\| f_n \|_1=\int_{S^1}f_nd\mu=\left( \int_{S^1}f^n \right)^{-1}\int_{S^1}| f(z) |^nd\mu=1.
+		\end{equation}
+		Ce calcul donne d'un seul coup les deux conditions
+		\begin{itemize}
+			\item \( \sup_k\| f_k \|=1\)
+			\item \( \int_{S^1}f_n=1\) pour tout \( n\).
+		\end{itemize}
+	\end{subproof}
+	Nous passons maintenant au vrai travail.
+	Soit un voisinage \( V\) de \( a\) dans \( S^1\). Soit une suite croissante \( (t_k)\) qui converge vers \( f(a)\), c'est-à-dire \( 0<t_k<f(a)\). Nous posons
+	\begin{equation}
+		A_k=\{ x\in S^1\setminus V\tq f(x)\geq t_k \}.
+	\end{equation}
+	Cet ensemble est contenu dans \( S^1\) et est donc borné (pour la métrique de \( S^1\)).
+	\begin{subproof}
+		\spitem[\( A_k\) est fermé]
+		Attention : ici nous démontrons que \( A_k\) est fermé dans \( S^1\), et les complémentaires sont pris dans \( S^1\).
+
+		Nous montrons que le complémentaire est ouvert en prenant \( y\in A^c\) et en montrant que \( y\) admet un voisinage contenu dans \( A^c\) (le fameux théorème \ref{ThoPartieOUvpartouv} que nous ne nous lasserons jamais de citer). Si \( y\in A^c\), il y a deux possibilités (non exclusives) : soit \( y\in V\) soit \( f(y)<t_k\). Si \( y\in V\), alors le voisinage \( V\) lui-même est encore dans \( A^c\). Si par contre \( f(y)<t_k\), alors par continuité, il existe un voisinage de \( y\) sur lequel \( f<t_k\).
+		\spitem[\( A_k\) est compact]
+		L'espace \( S^1\) est compact, par exemple grâce au lemme \ref{LEMooVYTRooKTIYdn}. La partie \( A_k\) est fermée dans le compact \( S^1\), donc elle est compacte par le lemme \ref{LemnAeACf}.
+		\spitem[\( A_{k+1}\subset A_k\)]
+		Si \( x\in A_{k+1}\), alors \( f(x)\geq t_{k+1}>t_k\). Donc \( f(x)>t_k\) et \( x\in A_k\).
+		\spitem[Intersection vide]
+		Si \( x\in\bigcap_{k\in \eN}A_k\), alors \( f(x)\geq t_k\) pour tout \( k\). En passant à la limite et en sachant que \( \lim_{k\to \infty} t_k=f(a)\), nous avons \( f(x)\geq f(a)\). Par hypothèse, cela n'est pas. Donc
+		\begin{equation}
+			\bigcap_{k\in \eN}A_k=\emptyset.
+		\end{equation}
+		Nous avons, dans un compact, des fermés emboîtés dont l'intersection est vide. Le corolaire \ref{CORooQABLooMPSUBf} nous dit qu'il existe un indice à partir duquel tous les \( A_k\) sont vides.
+	\end{subproof}
+
+	Soit \( \delta=t_k\) pour un \( k\) tel que \( A_k\) est vide. Nous avons
+	\begin{equation}
+		\{ x\in S^1\setminus V\tq f(x)\geq \delta \}=\emptyset,
+	\end{equation}
+	c'est-à-dire que sur \( S^1\setminus V\), nous avons \( f<\delta\) et donc
+	\begin{equation}
+		\int_{S^1\setminus V}f(s)^n<\int_{S^1\setminus V}\delta^n=\vol(S^1\setminus V)\delta^n
+	\end{equation}
+	où \( \vol(S^1\setminus V)=\int_{S^1\setminus V}1=\mu'(S^1\setminus V)\) est une constante réelle strictement positive.
+
+	Nous avons aussi \( \delta<f(a)\) parce que \( \delta\) est un des \( t_k\) (et que cette suite croissante converge vers \( f(a)\) sans l'atteindre par hypothèse). Soit \( \delta_1\) tel que \( \delta<\delta_1<f(a)\)\quext{Dans \cite{TUEWwUN}, il prend \( \delta<\delta_1<1\) et je crois qu'il aurait dû écrire \( \varphi(0)\) au lieu de \( 1\).}.
+
+	Nous posons
+	\begin{equation}
+		W=\{ x\in S^1\tq f(x)>\delta_1 \}.
+	\end{equation}
+	Cet ensemble n'est pas vide parce qu'il contient \( a\) et est ouvert parce que \( f\) est continue. Nous avons
+	\begin{equation}
+		\int_{S^1}f(s)^nds\geq \int_{W}f(s)^nds\geq \delta_1^n\vol(W).
+	\end{equation}
+
+	Nous avons donc déjà ces deux inégalités :
+	\begin{equation}
+		\int_{S^1\setminus V}f(s)^n\leq \vol(S^1\setminus V)\delta^n
+	\end{equation}
+	et
+	\begin{equation}
+		\int_{S^1}f(s)^nds\geq \delta_1^n\vol(W).
+	\end{equation}
+
+	En ce qui concerne les fonctions \( f_n\) que nous voulions étudier,
+	\begin{equation}
+		f_n(z)=\left( \int_{S^1}f(s)^nds \right)^{-1}f(z)^n\leq \big( \vol(W)\delta_1^n \big)^{-1}f(z)^n,
+	\end{equation}
+	et donc
+	\begin{equation}
+		\int_{S^1\setminus V}f_n\leq\big( \vol(W)\delta_1^n \big)^{-1}\vol(S^1\setminus V)\sigma^n=\frac{ \vol(S^1\setminus V) }{ \vol(W) }\left( \frac{ \delta }{ \delta_1 } \right)^n.
+	\end{equation}
+	Étant donné que \( \delta<\delta_1\), nous avons \( (\delta/\delta_1)^n\to 0\). Donc aussi
+	\begin{equation}
+		\lim_{n\to \infty} \int_{S^1\setminus V}f_n(z)dz=0.
+	\end{equation}
+\end{proof}
+
+Le théorème suivant est une version pour \( S^1\) du théorème \ref{ThoYQbqEez}. Le produit de convolution dans \( S^1\) est la définition \ref{DEFooSKWOooEdIHoH}.
+\begin{theorem}[\cite{TUEWwUN,MonCerveau}]         \label{THOooIAOPooELSNxq}
+	Soient \( (\varphi_k)\) une approximation de l'unité sur \( \Omega=S^1\) ainsi qu'une fonction \( g\colon S^1\to \eC\). Si \( g\) est mesurable et bornée sur \( \Omega\) et si \( g\) est continue en \( a_0\) alors
+	\begin{equation}
+		(\varphi_k*g)(a_0)\to g(a_0).
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Pour chaque \( k\in \eN\) nous posons
+	\begin{equation}
+		d_k=\varphi_k*g-g.
+	\end{equation}
+	Le but de ce théorème est de montrer que \( d_k\to 0\) pour diverses notions de convergence.
+
+	Soit \( a_0\in S^1\). Par définition de l'approximation de l'unité, \( \int_{S^1}\varphi_k=1\) et donc on peut écrire \( g(a_0)=\int_{S^1}g(a_0)\varphi_k(s)ds\). En ce qui concerne \( d_k(a_0)\) nous avons alors
+	\begin{subequations}
+		\begin{align}
+			d_k(a_0) & =\int_{S^1}\varphi_k(s)g(a_0\bar s)ds-\int_{S^1}g(a_0)\varphi_k(s)ds \\
+			         & =\int_{S^1}\varphi_k(s)\big( g(a_0\bar s)-g(a_0) \big).
+		\end{align}
+	\end{subequations}
+	Nous pouvons passer à la norme (et non la valeur absolue parce que \( d_k\) prend ses valeurs dans \( \eC\)) :
+	\begin{equation}
+		| d_k(a_0) |\leq \int_{S^1}| \varphi_k(s) |\big| g(a_0\bar s)-g(a_0) \big|ds.
+	\end{equation}
+	La définition d'une approximation de l'unité nous permet de considérer \( M=\sup_k\| \varphi_k \|_1<\infty\). Le lemme \ref{LEMooTKFHooJaeMyc}\ref{ITEMooXCBUooUxQldB} nous permet, lui, de considérer \( \alpha>0\) tel que
+	\begin{equation}
+		| g(a_0\bar s)-g(a_0) |<\epsilon
+	\end{equation}
+	dès que \( s\in B(1,\alpha)\)\footnote{Notez que \( s\in B(1,\alpha)\) si et seulement si \( \bar s\in B(1,\alpha)\). Il n'y a donc pas d'incohérence entre l'hypothèse sur \( s\) et notre condition sur \( g(a_0\bar s)\)}. Vu que la suite \( (\varphi_k)\) est une approximation de l'unité, nous avons
+	\begin{equation}
+		\lim_{k\to \infty}\int_{S^1\setminus B(1,\alpha)}| \varphi_k |=0.
+	\end{equation}
+	Soit \( k\) suffisamment grand pour avoir \( \int_{S^1\setminus B(1,\alpha)}| \varphi_k |<\epsilon\). Avec tout cela nous avons les majorations
+	\begin{subequations}
+		\begin{align}
+			| d_k(a_0) | & \leq \int_{S^1}| \varphi_k(s) |\big| g(a_0\bar s)-g(a_0) \big|ds                                                                                                                                                     \\
+			             & =\int_{S^1\setminus B(1,\alpha)}| \varphi_k(s) |\underbrace{\big| g(a_0\bar s)-g(a_0) \big|}_{\leq 2\| g \|_{\infty}}ds+\int_{B(1,\alpha)}| \varphi_k(s) |\underbrace{\big| g(a_0\bar s)-g(a_0) \big|}_{<\epsilon}ds \\
+			             & \leq 2\| g \|_{\infty}\int_{S^1\setminus B(1,\alpha)}| \varphi_k(s) |ds+\epsilon\int_{S^1}| \varphi_k(s) |ds                                                                                                         \\
+			             & \leq \epsilon\big( 1+2\| g \|_{\infty} \big).
+		\end{align}
+	\end{subequations}
+	Nous avons donc bien \( \lim_{k\to \infty} | d_k(a_0) |=0\) et donc la continuité de \( \varphi_k*g\) en \( a_0\).
+
+\end{proof}
+
+Voici une version un peu forte sous l'hypothèse de continuité. Vu que \( S^1\) est compact, la continuité est en réalité une hypothèse assez forte : ça implique l'uniforme continuité et l'existence d'un maximum et d'un minimum.
+\begin{proposition}
+	Soient \( (\varphi_k)\) une approximation de l'unité sur \( \Omega=S^1\) ainsi qu'une fonction continue \( g\colon S^1\to \eC\).
+	\begin{enumerate}
+		\item       \label{ITEMooPHBJooOHDVoW}
+		      Si \( g\in L^p(\Omega)\) (\( 0\leq p<\infty\)) et si \( g\) est continue, alors\footnote{Vous noterez les \( p\in \mathopen] 0 , 1 \mathclose[\) en bonus par rapport au cas de \( \eR^n\).}
+		      \begin{equation}
+			      \varphi_k*g\stackrel{L^p}{\to}g.
+		      \end{equation}
+		\item       \label{ITEMooLOSVooDtaugF}
+		      Si \( g\) est continue sur \( S^1\), alors
+		      \begin{equation}
+			      \varphi_k*g\stackrel{L^{\infty}}{\to}g
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+
+	En plusieurs points
+	\begin{subproof}
+
+		\spitem[\( \lim_{u\to 1} \| \tau_u(g)-g \|=0\)]
+		Ceci est un petit point intermédiaire. Pour des besoins de notations, nous posons
+		\begin{equation}
+			\begin{aligned}
+				\tau_u(g)\colon S^1 & \to \eC            \\
+				s                   & \mapsto g(s\bar u)
+			\end{aligned}
+		\end{equation}
+		pour \( u\in S^1\).
+
+		La fonction \( g\) est continue sur le compact \( S^1\), et y est donc uniformément continue\footnote{Théorème de Heine \ref{PROPooBWUFooYhMlDp}. C'est fondamentalement ce fait qui unifie les parties \ref{ITEMooPHBJooOHDVoW} et \ref{ITEMooLOSVooDtaugF} de cette preuve.}. Nous allons en déduire que \( \lim_{u\to 1} \| \tau_u(g)-g \|_{\infty}=0\).
+
+		Soit \( \epsilon>0\). L'uniforme continuité de \( g\) signifie qu'il existe \( \delta>0\) tel que pour tout \( a\in S^1\) si \( s\in B(a,\delta)\), alors \( \big| g(s)-g(a) \big|<\epsilon\). Si \( u\in B(1,\delta)\) nous avons aussi \( \bar u\in B(1,\delta)\) et donc \( s\bar u\in B(s,\delta)\); ça c'est le lemme \ref{LEMooCQCAooAEctbe}\ref{ITEMooCIPYooTyPQLj}.
+
+		Pour tout \( a\in S^1\) nous avons la chaine
+		\begin{equation}
+			u\in B(1,\delta)\Rightarrow a\bar u\in B(a,\delta)\Rightarrow \big| g(a\bar u)-g(a) \big|<\epsilon.
+		\end{equation}
+		Cela étant valable pour tout \( a\), c'est encore valable en passant au supremum\footnote{Notez l'inégalité qui n'est plus stricte.} :
+		\begin{equation}
+			u\in B(1,\delta)\Rightarrow\sup_{a\in S^1}\big| g(a\bar u)-g(a) \big|\leq\epsilon
+		\end{equation}
+		et donc d'accord pour
+		\begin{equation}
+			\lim_{u\to 1} \| \tau_u(g)-g \|=0.
+		\end{equation}
+
+		\spitem[\( \| d_k \|_{\infty}\to 0\)]
+		Nous prouvons la convergence uniforme sur \( S^1\) de \( d_k\) vers zéro. Ensuite nous verrons que la compacité de \( S^1\) permet d'en déduire les points \ref{ITEMooPHBJooOHDVoW} et \ref{ITEMooLOSVooDtaugF}.
+
+		En utilisant la notation \( \tau_u\), nous pouvons écrire
+		\begin{equation}
+			d_k(s)=\int_{S^1}\varphi_k(u)g(s\bar u)du-g(s)=\int_{S^1}\varphi_k(u)\big( \underbrace{ g(s\bar u)}_{=\tau_u(g)(s)}-g(s) \big)du,
+		\end{equation}
+		et donc
+		\begin{equation}
+			| d_k(s) |\leq \int_{S^1}| \varphi_k(u) |\| \tau_u(g)-g \|_{\infty}du.
+		\end{equation}
+		Nous posons \( M=\sup_k\| \varphi_k \|_1\), et nous considérons \( \delta\) tel que \( \| \tau_u(g)-g \|_{\infty}<\epsilon\) pour tout \( u\in B(1,\delta)\). Ensuite nous subdivisons \( S^1\) en \( B(1,\delta)\) et \( B(1,\delta)^c\) :
+		\begin{subequations}
+			\begin{align}
+				\| d_k \|_{\infty} & \leq \int_{B(1,\delta)}| \varphi_k(u) |\underbrace{\| \tau_u(g)-g \|_{\infty}}_{\leq \epsilon}du+\int_{B(1,\delta)^c}| \varphi_k(u) |\| \tau_u(g)-g \|_{\infty}du \\
+				                   & \leq\epsilon M+2\| g \|_{\infty}\int_{B(1,\delta)^c}| \varphi_k(u) |du                                                                                            \\
+				                   & \leq \epsilon\big( M+2\| g \|_{\infty} \big)
+			\end{align}
+		\end{subequations}
+		parce que pour chaque \( s\in S^1\) nous avons \( \tau_u(g)(s)-g(s)\) et donc \( \| \tau_u(g)-g \|_{\infty}\leq 2\| g \|_{\infty}\).
+
+		Tout cela montre que \( d_k\stackrel{\| . \|_{\infty}}{\longrightarrow}0\).
+
+		\spitem[Convergence \( L^p\), \( 0<p<\infty\)]
+
+		Soit \( \epsilon>0\). Nous avons
+		\begin{equation}
+			\| d_k \|_p^p\leq \int_{S^1}\big| (\varphi_k*g)(s)-g(s) \big|^pds.
+		\end{equation}
+		Il existe un \( k\) à partir duquel \( \| \varphi_k*g-g \|_{\infty}<\epsilon\). Pour de tels \( k\) nous avons
+		\begin{equation}
+			\| d_k \|_p^p<\epsilon^p.
+		\end{equation}
+		Ce passage est très possible dans le cas de \( S^1\) parce que \( \int_{S^1}1=1\). Dans le cas de \( \eR^d\), c'est pas du tout bon; c'est pour cela que nous avons un résultat un peu plus fort dans \( S^1\). La croissance de la fonction puissance (proposition \ref{PROPooUOFKooYyGwIr}) nous permet de conclure que \( \| d_k \|_p<\epsilon\).
+
+		Nous avons donc la convergence \( L^p\) pour \( 0<p<\infty\).
+		\spitem[Convergence \( L^{\infty}\)]
+
+		Non, la convergence \( L^{\infty}\) n'est pas la convergence pour la norme \( \| . \|_{\infty}\). Voir la sous-section \ref{SUBSECooYFJTooBqrLXv}. Il n'en reste pas moins que si \( \epsilon>0\) et si \( k\) est assez grand pour que \( \| f_k-f \|_{\infty}<\epsilon\), nous aurons
+		\begin{equation}
+			N_{\infty}(f_k-f)\leq \| f_k-f \|<\epsilon.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Base hilbertienne (suite des polynômes trigonométriques)}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Voici le plan pour la suite :
+\begin{itemize}
+	\item Construire un polynôme trigonométrique qui vérifie les hypothèse du lemme \ref{LEMooUNFBooRCzwIn}.
+	\item En déduire une approximation de l'unité constituée de polynômes trigonométriques.
+	\item Dire que si \( f\in L^2(S^1)\), alors \( f*\varphi_k\) est un polynôme trigonométrique dès que \( \varphi_k\) en est un.
+	\item Invoquer le théorème \ref{THOooIAOPooELSNxq}\ref{ITEMooPHBJooOHDVoW} pour déduire que \( \varphi_k*f\) est une suite de polynômes trigonométriques dans \( L^2(S^1)\) qui converge \( \varphi_k*f\stackrel{L^2}{\longrightarrow}f\).
+\end{itemize}
+
+\begin{lemma}       \label{LEMooQQILooWlhntZ}
+	La fonction \( P=e_1+e_{-1}\) est continue à valeurs réelles sur \( S^1\).
+\end{lemma}
+
+\begin{proof}
+	Nous avons \( e_1(z)=z\) et \( e_{-1}(z)=z^{-1}\), c'est-à-dire que pour \( z= e^{ix}\) (\( x\in \eR\)), nous avons \( e_{-1}( e^{ix})= e^{-ix}\), de telle sorte que, en utilisant le lemme \ref{LEMooHOYZooKQTsXW} qui donne \(  e^{ix}\) en termes des fonctions trigonométriques usuelles :
+	\begin{equation}
+		(e_1+e_{-1})( e^{ix})= e^{ix}+ e^{-ix}=\cos(x)+i\sin(x)+\cos(x)-i\sin(x)=2\cos(x).
+	\end{equation}
+	Nous avons donc la continuité et les valeurs réelles.
+\end{proof}
+
+\begin{lemma}       \label{LEMooIDTVooYTpfEm}
+	Il existe un polynôme trigonométrique à valeurs dans \( \mathopen[ 0 , \infty \mathclose[\) et tel que \( f(a)<f(1)\) pour tout \( a\neq 1\) dans \( S^1\).
+\end{lemma}
+
+\begin{proof}
+	Le lemme \ref{LEMooQQILooWlhntZ} nous dit déjà que \( P=e_1+e_{-1}\) est continue à valeurs réelles. Or qui est continue sur un compact (ici \( S^1\)), atteint donc ses bornes. Il est donc facile de considérer\footnote{Par exemple, \( M\) est le maximum de \( | P |\).} \( M>0\) tel que \( Q=M+e_1+e_{-1}\) est à valeurs dans \( \mathopen[ 0 , \infty \mathclose[\).
+
+	Une forme explicite de \( Q\) est que
+	\begin{equation}
+		Q( e^{ix})=M+2\cos(x).
+	\end{equation}
+	Le maximum de \( \cos(x)\) est obtenu en \( x=0\) et vaut \( 1\). Le maximum de \( Q\) est alors \( Q(1)=2+M\). Il n'est atteint qu'une seule fois sur \( S^1\) parce que pour avoir \( Q( e^{ix})=2+M\), il faut avoir \( 2\cos(x)=2\), c'est-à-dire \( x=2k\pi\). Mais \(  e^{i2k\pi}=1\).
+
+	Donc \( Q(a)<M+2=Q(1)\) pour tout \( a\neq 1\) dans \( S^1\).
+\end{proof}
+
+\begin{proposition}
+	Les polynômes trigonométriques \( \{ e_n \}_{n\in \eZ}\) forment une base hilbertienne de \( L^2(S^1)\).
+\end{proposition}
+
+\begin{proof}
+	Le fait que les \( e_n\) soient orthonormée est la proposition \ref{PROPooOMGFooROFFFr}. Il reste à prouver que ce soit un système total.
+
+	Soit \( f\in L^2(S^1)\). Soit un polynôme \( Q\) vérifiant le lemme \ref{LEMooIDTVooYTpfEm}; nous posons
+	\begin{equation}
+		\varphi_k(z)=\left( \int_{S^1}Q^n \right)^{-1}Q(z)^n.
+	\end{equation}
+	Cela est une approximation de l'unité par la proposition \ref{LEMooUNFBooRCzwIn}. Les \( \varphi_k\) sont des polynômes trigonométriques parce que les \( Q^n\) le sont et que que \( \int_{S^1}Q^n\) est seulement un nombre.
+
+	Le lemme \ref{LEMooDGHJooRAnwpy} nous dit alors que pour tout \( k\), la fonction
+	\begin{equation}
+		\varphi_k*f
+	\end{equation}
+	est un polynôme trigonométrique.
+\end{proof}
+
+Nous nous permettons de confirmer la remarque \ref{REMooUCANooVyXPxj} comme quoi il faut bien tous les \( e_n\) avec \( n\in \eZ\), parce que le polynôme trigonométrique \( Q\) est bien construit à partir de \( e_1+e_{-1}\).
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Convolution, bis}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}       \label{LEMooLUBQooWLMFrN}
+	Nous considérons l'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \eR & \to S^1         \\
+			t                 & \mapsto e^{it}.
+		\end{aligned}
+	\end{equation}
+	Soient \( t,u\in \eR\) tels que \( \varphi(t)=\varphi(u)\). Alors pour toutes fonctions pour lesquelles les intégrales convergent,
+	\begin{equation}
+		\int_0^{2\pi}(f\circ \varphi)(\theta)(g\circ\varphi)(t-\theta)\frac{ d\theta }{ 2\pi }=\int_0^{2\pi}(f\circ \varphi)(\theta)(g\circ\varphi)(u-\theta)\frac{ d\theta }{ 2\pi }.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Si \( \varphi(u)=\varphi(t)\), alors \( u=t+2k\pi\) pour un certain \( k\in \eZ\). Cette condition implique que \( \varphi(t-\theta)=\varphi(u-\theta)\), et donc l'égalité
+	\begin{equation}
+		\int_0^{2\pi}(f\circ \varphi)(\theta)(g\circ\varphi)(t-\theta)\frac{ d\theta }{ 2\pi }=\int_0^{2\pi}(f\circ \varphi)(\theta)(g\circ\varphi)(u-\theta)\frac{ d\theta }{ 2\pi }.
+	\end{equation}
+\end{proof}
+
+\begin{definition}[Convolution sur \( S^1\)]
+	Le lemme \ref{LEMooLUBQooWLMFrN} permet de définir
+	\begin{equation}
+		(f*g)\big( \varphi(t) \big)=\int_0^{2\pi}(f\circ \varphi)(\theta)(g\circ\varphi)(t-\theta)\frac{ d\theta }{ 2\pi }
+	\end{equation}
+	pour toutes les paires de fonctions \( f,g\in \Fun(S^1,\eC)\) pour lesquelles l'intégrale converge.
+\end{definition}
+
+L'espace de Lebesgues \( L^2\big( \mathopen[ a , b \mathclose] \big)\) sera traité dans \ref{SECooUMEPooPMemJz}.
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Sur \( \mathopen[ 0 , 2\pi \mathclose[\)}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Le produit de convolution est un peu subtil parce que \( f(t-x)\) n'est pas défini à priori pour tout \( t,x\in \mathopen[ 0 , 2\pi \mathclose[\), vu que \( f\) n'est définie que sur \( \mathopen[ 0 , 2\pi \mathclose[\). Au moins trois solutions s'offrent à nous :
+\begin{itemize}
+	\item
+	      considérer implicitement la fonction prolongée par périodicité.
+	\item
+	      considérer les fonctions sur \( \eR/2\pi\), et définir un peu toutes les opérations modulo \( 2\pi\) (fastidieux)
+	\item
+	      utiliser une bijection ayant les bonnes propriétés avec \( S^1\) sur lequel tout est déjà fait.
+\end{itemize}
+Nous sélectionnons la troisième voie. Pour cela nous considérons la fonction (attention, elle n'est pas tout à fait la même que celle plus haut)
+\begin{equation}
+	\begin{aligned}
+		\varphi\colon \mathopen[ 0 , 2\pi \mathclose[ & \to S^1         \\
+		t                                             & \mapsto  e^{it}
+	\end{aligned}
+\end{equation}
+qui est une bijection par la proposition \ref{PROPooXELTooYKjDav}\ref{ITEMooOHRHooRXvxrL}. Pour le produit de convolution,
+\begin{equation}
+	(f * g)(x)=(f\circ \varphi^{-1})*(g\circ\varphi^{-1})\big( \varphi(x) \big)
+\end{equation}
+pour toutes les fonctions \( f,g\colon \mathopen[ 0 , 2\pi \mathclose[\to \eC\) pour lesquelles les intégrales en jeu ont un sens.

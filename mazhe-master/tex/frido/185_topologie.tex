@@ -1,0 +1,418 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2008-2025
+%   Laurent Claessens, Carlotta Donadello
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Produit fini d'espaces vectoriels normés}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{sec_prod}
+
+Dans cette section nous parlons de produits finis d'espaces. Cela ne signifie pas que chacun des espaces soient séparément de dimension finie.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Distance et norme produit}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{propositionDef}[Distance produit]    \label{DefZTHxrHA}
+	Si \( (E_1,d_1)\),\ldots, \( (E_n,d_n)\) sont des espaces métriques alors la formule
+	\begin{equation}
+		d(x,y)=\max_{i=1,\ldots, n}d_i(x_i,y_i)
+	\end{equation}
+	définit une distance sur le produit cartésien \( E=E_1\times\ldots\times E_n\). Elle est la \defe{distance produit}{distance produit}.
+\end{propositionDef}
+
+La définition de la norme sur un produit d'espaces vectoriels normés découle immédiatement de la définition de la distance~\ref{DefZTHxrHA} :
+\begin{lemmaDef}[\cite{ooALKGooMAzKpz}]  \label{DefFAJgTCE}
+	Soient \( V\) et \( W\) deux espaces vectoriels sur \( \eK\). Si \( (v_1,w_1)\) et \( (v_2,w_2)\) sont des éléments de \( V\times W\) et si \( \lambda\) est un élément de \( \eK\), alors les opérations suivantes donnent une structure d'espace vectoriel au produit \( V\times W\):
+	\begin{itemize}
+		\item \( (v_1,w_1)+(v_2,w_2)=(v_1+v_2,w_1+w_2)\)
+		\item \( \lambda(v_1,w_1)=(\lambda v_1,\lambda w_1)\).
+	\end{itemize}
+\end{lemmaDef}
+
+\begin{proof}
+	Il faut seulement faire les vérifications d'usage.
+\end{proof}
+
+\begin{lemmaDef}[Norme produit]        \label{LEMooFQMSooLmdIvD}
+	Soient deux espaces vectoriels normés \( V\) et \( W\).
+	\begin{enumerate}
+		\item
+		      L'opération
+		      \begin{equation}	\label{EqNormeVxWmax}
+			      \|(v,w) \|_{V\times W}=\max\{\|v\|_{V},\|w\|_W\}.
+		      \end{equation}
+		      est une norme\footnote{Définition \ref{DefNorme}.} sur \( V\times W\).
+		\item
+		      La topologie de cette norme\footnote{Topologie associée à une norme : c'est la topologie associée à la distance correspondante, définition \ref{DEFooPMVFooPSYVNQ}.} est la même que la topologie produit\footnote{Topologie produit, définition \ref{DefIINHooAAjTdY}.} sur \( V\times W\).
+	\end{enumerate}
+	%TODOooZZLLooVyKcLR. Généraliser ceci à un produit à n termes. C'est utilisé entre autre dans PROPooDQBOooByBvmj.
+\end{lemmaDef}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Norme]
+		On doit vérifier les trois conditions de la définition~\ref{DefNorme}.
+		\begin{itemize}
+			\item Soit \( (v,w)\) dans \( V\times W\) tel que \( \|(v,w)\|_{V\times W}=\max\{\|v\|_{V},\|w\|_W\}=0\). Alors \( \|v\|_V=0\) et \( \|w\|_W=0\), donc \( v=0_V\) et \( w=0_W\). Cela implique \( (v,w)=(0_v,0_w)=0_{V\times W}\).
+			\item Pour tout \( a\) dans \( \eR\) et \( (v,w)\) dans \( V\times W\), la norme \( \|a (v,w)\|_{V\times W}\) se calcule de la façon suivante :
+			      \begin{equation}
+				      \|a (v,w)\|_{V\times W}= \max\{ \| av \|_V,\| aw \|_W \} =|a|\max\{\|v\|_{V},\|w\|_W\}=|a|\|(v,w)\|_{V\times W}.
+			      \end{equation}
+			\item Soient \( (v_1,w_1)\) et \( (v_2,w_2)\) dans \( V\times W\).
+			      \begin{equation}
+				      \begin{aligned}
+					      \|(v_1,w_1)+(v_2,w_2)\|_{V\times W} & =\max\{\|v_1+v_2\|_{V},\|w_1+w_2\|_W\}                         \\
+					                                          & \leq \max\{\|v_1\|_V+\|v_2\|_{V},\|w_1\|_W+\|w_2\|_W\}         \\
+					                                          & \leq\max\{\|v_1\|_V,\|w_1\|_W\}+ \max\{\|v_2\|_{V},\|w_2\|_W\} \\
+					                                          & =\|(v_1,w_1)\|_{V\times W}+\|(v_2,w_2)\|_{V\times W}.
+				      \end{aligned}
+			      \end{equation}
+		\end{itemize}
+
+		\spitem[Équivalence]
+		%--------------------------------------------------------------------
+
+		Dans cette preuve, nous considérons la «topologie de \( V\times W\)» comme étant la topologie produit et «la topologie métrique de \( V\times W\)» la topologie de la norme produit.
+
+		\begin{subproof}
+			\spitem[Dans un sens]
+			%--------------------------------------------------------------------
+			La définition \ref{DefIINHooAAjTdY} de la topologie produit dit qu'une prébase de \( V\times W\) est donnée par
+			\begin{equation}
+				\big\{   B(v,r)\times B(w,s)\tq v\in V;w\in W;r,s>0   \big\}.
+			\end{equation}
+			Nous prouvons maintenant que la partie \( S= B(v_0,r)\times B(w_0,s)\) est un ouvert de l'espace \( \big( V\times W,\| . \|_{V\times W} \big)\). Pour cela nous prouvons que tout élément de \( S\) contient un voisinage métrique contenu dans \( S\).
+
+			Soit \( (v_1,w_1)\in S\). Nous posons
+			\begin{equation}
+				d\big( (v_1,w_1), (v_0,w_0) \big)=\delta<\max\{ r,s \}.
+			\end{equation}
+			Nous considérons \( \epsilon>0\) et nous montrons que si \( \epsilon\) est assez petit, \( B\big( (v_1,w_1),\epsilon \big)\subset S\). Pour cela nous considérons \( (v,w)\in B\big( (v_1,w_1),\epsilon \big)\) et nous calculons un tout petit peu :
+			\begin{subequations}
+				\begin{align}
+					d\big( (v,w),(v_0,w_0) \big) & \leq d\big( (v,w),(v_1,w_1) \big)+d\big( (v_1,w_1),(v_0,w_0) \big) \\
+					                             & <\epsilon+\delta.
+				\end{align}
+			\end{subequations}
+			Si \( \epsilon\) est assez petit, le tout reste plus petit que \( \max\{ r,s \}\).
+
+			Donc \( S\) est bien un ouvert métrique par le théorème \ref{ThoPartieOUvpartouv}. Vu que la topologie métrique contient une prébase de la topologie produit, tout ouvert de la topologie produit est un ouvert de la topologie métrique.
+			\spitem[Dans l'autre sens]
+			Soient un ouvert métrique \( \mO\) ainsi que \( (v_0,w_0)\in \mO\); il existe \( r>0\) tel que
+			\begin{equation}
+				B\big( (v_0,w_0),r \big)\subset \mO.
+			\end{equation}
+			Nous affirmons que \( B(v_0,r)\times B(w_0,r)\) est contenu dans \( \mO\), de telle sorte que \( \mO\) soit un ouvert de la topologie produit. Pour \( (v_1,w_1)\in B(v_0,r)\times B(w_0,r)\) nous avons
+			\begin{equation}
+				d\big( (v_1,w_1),(v_0,w_0) \big)=\max\{ \| v_1-v_0 \|,\| w_1-w_0 \| \}<r
+			\end{equation}
+			parce que \( v_1\in B(v_0,r)\) et \( w_1\in B(w_0,r)\).
+
+			Donc tout élément de \( \mO\) admet un voisinage «produit» contenu dans \( \mO\); donc \( \mO\) est ouvert pour le topologie produit.
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	En particulier, pour la topologie de la norme maximum, la convergence d'une suite implique la convergence «composante par composante» par la proposition~\ref{PROPooNRRIooCPesgO}.
+\end{normaltext}
+
+On remarque tout de suite que la norme \( \|.\|_\infty\) sur \( \eR^2\) est la norme de l'espace produit \( \eR\times\eR\). En outre cette définition nous permet de trouver plusieurs nouvelles normes dans les espaces \( \eR^p\). Par exemple, si nous écrivons \( \eR^4\) comme \( \eR^2\times \eR^2\) on peut munir \( \eR^4\) de la norme produit
+\[
+	\|(x_1,x_2,x_3,x_4)\|_{\infty, 2}=\max\{\|(x_1,x_2)\|_\infty, \|(x_3,x_4)\|_2\}.
+\]
+Les applications de projection de l'espace produit \( V\times W\) vers les espaces <<facteurs>>, \( V\) \( W\) sont notées \( \pr_V\) et \( \pr_W\) et sont définies par
+\begin{equation}
+	\begin{aligned}
+		\pr_V\colon V\times W & \to V     \\
+		(v,w)                 & \mapsto v
+	\end{aligned}
+\end{equation}
+et
+\begin{equation}
+	\begin{aligned}
+		\pr_W\colon V\times W & \to W      \\
+		(v,w)                 & \mapsto w.
+	\end{aligned}
+\end{equation}
+Les inégalités suivantes sont évidentes
+\begin{equation}
+	\begin{aligned}[]
+		\|\pr_V(v,w)\|_V & \leq \|(v,w)\|_{V\times W}  \\
+		\|\pr_W(v,w)\|_W & \leq \|(v,w)\|_{V\times W}.
+	\end{aligned}
+\end{equation}
+La topologie de l'espace produit est induite par les topologies des espaces <<facteurs>>. La construction est faite en deux passages : d'abord nous disons que une partie \( A\times B\) de \( V\times W\) est ouverte si \( A\) et \( B\) sont des parties ouvertes de \( V\) et de \( W\) respectivement.  Ensuite nous définissons que une partie quelconque de \( V\times W\) est ouverte si elle est une intersection finie ou une réunion de parties ouvertes de \( V\times W\) de la forme \( A\times B\).
+
+Ce choix de topologie donne deux propriétés utiles de l'espace produit
+\begin{enumerate}
+	\item
+	      Les projections sont des \defe{applications ouvertes}{application!ouverte}. Cela veut dire que l'image par \( \pr_V\) (respectivement \( \pr_W\)) de toute partie ouverte de \( V\times W\) est une partie ouverte de \( V\) (respectivement \( W\)).
+	\item
+	      Pour toute partie \( A\) de \( V\) et \( B\) de \( W\), nous avons \( \Int (A\times B)=\Int A\times \Int B\).\label{PgovlABeqbAbB}
+\end{enumerate}
+Une propriété moins facile à prouver est que pour toute partie \( A\) de \( V\) et \( B\) de \( W\) nous avons  \( \overline{A\times B}=\bar{A}\times \bar{B}\). Voir la proposition \ref{PROPooPESUooGAmqCW}.
+
+
+Ce que nous avons dit jusqu'ici est valable pour tout produit d'un nombre fini d'espaces vectoriels normés. En particulier, pour tout \( m>0\)  l'espace  \( \eR^m\) peut être considéré comme le produit de \( m\) copies de \( \eR\).
+
+\begin{example}
+	Si \( V\) et \( W\) sont deux espaces vectoriels, nous pouvons considérer le produit \( E=V\times W\). Les projections \( \pr_V\) et \( \pr_W\)\nomenclature{\( \pr_V\)}{projection de \( V\times W\) sur \( V\)}, définies dans la section~\ref{sec_prod}, sont des applications linéaires.
+
+	En effet, la projection \( \pr_V\colon V\times W\to V\) est donnée par \( \pr_V(v,w)=v\). Alors,
+	\begin{equation}
+		\begin{aligned}[]
+			\pr_V\big( (v,w)+(v',w') \big) & =\pr_V\big( (v+v'),(w+w') \big) \\
+			                               & =v+v'                           \\
+			                               & =\pr_V(v,w)+\pr_V(v',w'),
+		\end{aligned}
+	\end{equation}
+	et
+	\begin{equation}
+		\pr_V\big( \lambda(v,w) \big)=\pr_V\big( (\lambda v,\lambda w) \big)=\lambda v=\lambda\pr_V(v,w).
+	\end{equation}
+	Nous laissons \randomGender{au lecteur}{à la lectrice} le soin d'adapter ces calculs pour montrer que \( \pr_W\) est également une projection\footnote{Écrivez-moi si ça pose un problème.}.
+\end{example}
+
+\begin{proposition} \label{PropDXR_KbaLC}
+	Si \( \mO\) est un voisinage de \( (a,b)\) dans \( V\times W\) alors \( \mO\) contient un ouvert de la forme \( B(a,r)\times B(b,r)\).
+\end{proposition}
+
+\begin{proof}
+	Puisque \( \mO\) est un voisinage, il contient un ouvert et donc une boule
+	\begin{equation}
+		B\big( (a,b),r \big)=\{ (v,w)\in V\times W\tq \max\{ \| v-a \|,\| w-b \| \}< r \}.
+	\end{equation}
+	Évidemment l'ensemble \( B(a,r)\times B(b,r)\) est dedans.
+\end{proof}
+
+
+
+\begin{corollary}       \label{CORooMWCUooKyoyZV}
+	Un espace vectoriel normé\footnote{Rappel que la définition \ref{DefNorme} ne définit les espaces vectoriels normés que dans le cas où le corps de base est \( \eR\) ou \( \eC\).} est un espace vectoriel topologique : en d'autres mots, l'addition et la multiplication par un élément du corps sont continues.
+\end{corollary}
+
+\begin{proof}
+	Nous nommons \( \eK\) le corps de base, qui est \( \eR\) ou \( \eC\). Pour rappel, la topologie produit et la topologie de la norme produit sont identiques par le lemme \ref{LEMooFQMSooLmdIvD}. Nous allons donc considérer cette topologie sur \( E\times E\) et sur \( \eK\times E\).
+
+	\begin{subproof}
+		\spitem[Pour l'addition]
+		%-----------------------------------------------------------
+
+
+		Soit
+		\begin{equation}
+			\begin{aligned}
+				s\colon E\times E & \to E        \\
+				(x,y)             & \mapsto x+y,
+			\end{aligned}
+		\end{equation}
+		et prouvons que \( s\) est continue. Soit un ouvert \( A\) de \( E\); nous montrons que \( s^{-1}(A)\) est ouvert dans \( E\times E\). Pour cela nous considérons \( (a,b)\in s^{-1}(A)\). Vu que \( A\) est ouvert et que \( a+b\in A\), il existe \( r>0\) tel que \( B(a+b,r)\subset A\). Nous allons trouver \( \epsilon>0\) tel que
+		\begin{equation}
+			s\big( B(a,\epsilon)\times B(b,\epsilon) \big)\subset A.
+		\end{equation}
+		Notez que le produit de boules est ouvert pour la définition \ref{DefIINHooAAjTdY} de la topologie produit. Si \( x\in B(a,\epsilon)\), il existe \( \delta\in E\) tel que \( x=a+\delta\) avec \( \| \delta \|<\epsilon\) et si \( y\in B(b,\epsilon)\), nous avons \( y=b+\mu\) avec \( \| \mu \|<\epsilon\). Nous avons
+		\begin{equation}
+			s(x,y)=x+y=a+b+\delta+\mu
+		\end{equation}
+		et donc\footnote{En utilisant \ref{DefNorme}\ref{ItemDefNormeiii}.}
+		\begin{equation}
+			\| (a+b)-s(x,y) \|=\| \delta+\mu \|\leq \| \sigma \|+\| \mu \|<2\epsilon.
+		\end{equation}
+		Il suffit donc de prendre \( \epsilon<r/2\).
+
+		\spitem[Pour la multiplication]
+		%-----------------------------------------------------------
+		Nous prouvons à présent que
+		\begin{equation}
+			\begin{aligned}
+				m\colon \eK\times E & \to E             \\
+				(\lambda,x)         & \mapsto \lambda x
+			\end{aligned}
+		\end{equation}
+		est continue. Soit \( A\) ouvert dans \( E\), soit \( (\lambda, a)\in m^{-1}(A)\). Nous cherchons comme avant un \( \epsilon>0\) tel que
+		\begin{equation}
+			m\big( B(\lambda,\epsilon)\times B(a,\epsilon) \big)\subset A.
+		\end{equation}
+		Soient \( \lambda+\mu\in B(\lambda,\epsilon)\) et \( a+x\in B(x,\epsilon)\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				\| m(\lambda+\mu,a+x)- m(\lambda,a) \| & =\| \lambda x+\mu a+\mu x \|                                   \\
+				                                       & \leq | \epsilon |\big( | \lambda |+\| a \|+| \epsilon | \big).
+			\end{align}
+		\end{subequations}
+		Nous considérons donc \( r>0\) tel que \( B(\lambda a, r)\subset A\), puis \( \epsilon>0\) assez petit pour que
+		\begin{equation}
+			\epsilon |\big( | \lambda |+\| a \|+| \epsilon | \big)<r.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PROPooYMCUooERvDpk}
+	La norme est une application continue sur un espace vectoriel normé.
+
+	Plus précisément, si \( (E,\| . \|)\) est un espace vectoriel normé\footnote{Dont la topologie métrique est donnée par \ref{ThoORdLYUu}.}, alors l'application
+	\begin{equation}
+		\begin{aligned}
+			f\colon E & \to \eR         \\
+			x         & \mapsto \| x \|
+		\end{aligned}
+	\end{equation}
+	est continue.
+\end{proposition}
+
+\begin{proof}
+	Soit la boule \( B(a,r)\) dans \( \eR\). Nous montrons que \( f^{-1}(B(a,r))\) est un ouvert de \( E\) pour la topologie métrique. Soit \( x_0\in f^{-1}\big( B(a,r) \big)\). Nous prenons \( \alpha\in \eR\) tel que \( \big| \| x_0 \|-a \big|<\alpha<r\). Et nous considérons la boule \( B_E(x_0,\epsilon)\) avec \( \epsilon\) que nous allons fixer plus tard.
+
+	Pour tout \( x\in B_E(x_0,\epsilon)\), nous avons
+	\begin{subequations}
+		\begin{align}
+			\big| \| x \|-a \big| & \leq\big| \| x \|-\| x_0 \| \big|+\big| \| x_0 \|-a \big| \\
+			                      & <\alpha+\epsilon.
+		\end{align}
+	\end{subequations}
+	En prenant \( \epsilon\) tel que \( \alpha+\epsilon<r\) nous avons \( f(x)\in B(a,r)\).
+\end{proof}
+
+\begin{proposition}     \label{PROPooQUAZooGXskwF}
+	La norme sur un espace vectoriel normé est une fonction de classe \(  C^{\infty}\).
+	%TODOooJGFRooJawIBN. Prouver ça.
+\end{proposition}
+
+
+\begin{lemma}       \label{LEMooSCIIooRyRrHA}
+	Soient un espace vectoriel normé \( (V,\| . \|)\) ainsi qu'une isométrie \( f\colon V\to V\). Si \( A\) est une partie de \( V\) telle que \( f(A)\subset A\), alors
+	\begin{equation}
+		\bar A=f(\bar A).
+	\end{equation}
+	%TODOooMGIFooFRFaCL. Prouver ça.
+\end{lemma}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooMHAVooRgJjMB}
+	Soient des espaces vectoriels normés \( v\) et \( w\). Nous considérons des suites convergentes \( v_k\stackrel{ V}{\longrightarrow} v\) et \( w_k\stackrel{ W}{\longrightarrow} w\). Alors nous avons
+	\begin{equation}
+		(v_k,w_k)\stackrel{ V\times W}{\longrightarrow} (v,w).
+	\end{equation}
+	L'espace \( V\times W\) est l'espace vectoriel normé muni de la topologie de la norme produit.
+	%TODOooNUHJooEzvimI. Prouver ça.
+\end{proposition}
+
+
+Nous étudierons plus en détail les espaces vectoriels topologiques à partir de la définition~\ref{DefEVTopologique}.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Topologie réelle en dimension \( n\)}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Nous considérons sur \( \eR\) la topologie donnée par la valeur absolue, et sur \( \eR^n\) celle de la topologie produit ou du maximum, qui sont identiques par le lemme \ref{LEMooFQMSooLmdIvD}.
+
+En particulier, nous n'avons pas encore la norme donnée par \( \| x \|=\sqrt{ \sum_ix_i^2 }\), parce qu'elle demande la racine carré, définie en \ref{DEFooGQTYooORuvQb}.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Ouverts et fermés}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La proposition suivante est évidemment à mettre en rapport avec le théorème~\ref{ThoPartieOUvpartouv}.
+\begin{proposition}\label{PROPooEQYJooBbPiAj}
+	Une partie \( A\) de \( \eR^n\) est ouverte si et seulement si pour tout \( a\in A\) il existe \( r>0\) tel que \( B(a,r)\subset A\).
+\end{proposition}
+
+\begin{proof}
+	C'est la définition \ref{EqGDVVooDZfwSf} de la topologie métrique.
+\end{proof}
+
+\begin{lemma}   \label{LemMESSExh}
+	Pour tout \( x \in \eR^n\) et tout \( r >0\) la boule\footnote{Définition \ref{ThoORdLYUu}.} \( B(x,r)\) est ouverte.
+\end{lemma}
+
+\begin{proof}
+	Afin de prouver que la boule est ouverte, nous prenons un point \( p\in B(x,r)\), et nous allons montrer qu'il existe une boule autour de \( p\) qui est contenue dans \( B(x,r)\).
+
+	Étant donné que \( p\in B(x,r)\), nous avons \( d(p,x)<r\). Prouvons que la boule \( B\big(p,r-d(p,x)\big)\) est contenue dans \( B(x,r)\). Pour cela, nous prenons \( p'\in B\big(p,r-d(p,x)\big)\), et nous essayons de prouver que \( p'\in B(x,r)\). En effet, en utilisant l'inégalité triangulaire,
+	\begin{equation}
+		d(x,p')\leq d(x,p)+d(p,p')\leq d(x,p)+r-d(p,x)=r.
+	\end{equation}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Point d'accumulation, point isolé}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Les définitions de point d'accumulation et de point isolé sont \ref{DEFooGHUUooZKTJRi} et \ref{DEFooXIOWooWUKJhN}. Nous voyons maintenant ce que ces définitions donnent dans le cas de l'espace topologique \( \eR\).
+
+\begin{lemma}
+	Soit \( D\subset\eR\). Un point \( a\in D\) est isolé dans \( D\) si et seulement si il existe \( \varepsilon>0\) tel que
+	\begin{equation}
+		\mathopen[ a-\varepsilon , a+\varepsilon \mathclose]\cap D=\{ a \}.
+	\end{equation}
+	Autrement dit, il existe un intervalle autour de \( a\) dans lequel \( a\) est le seul élément de \( D\).
+\end{lemma}
+
+\begin{lemma}
+	Un point \( a\in \eR\) est un point d'accumulation de \( D\) si pour tout \( \varepsilon>0\),
+	\begin{equation}
+		\Big( \mathopen[ a-\varepsilon , a+\varepsilon \mathclose]\setminus\{ a \} \Big)\cap D\neq\emptyset.
+	\end{equation}
+	Autrement dit, quel que soit l'intervalle autour de  \( a\) que l'on considère, le point \( a\) n'est pas tout seul dans \( D\).
+\end{lemma}
+
+\begin{example}
+	Prenons \( D=\mathopen[ 0 , 1 [\cup\mathopen] 2 , 3 \mathclose]\). Cet ensemble n'a pas de point isolé, et l'ensemble de ses points d'accumulation est \( \mathopen[ 0 , 1 \mathclose]\cup\mathopen[ 2,3  \mathclose]\).
+
+	Notez que les points \( 1\) et \( 2\) sont des points d'accumulation de \( D\) qui ne font pas partie de \( D\). Il est possible d'être un point d'accumulation de \( D\) sans être dans \( D\), mais pour être un point isolé dans \( D\), il faut être dans \( D\).
+\end{example}
+
+\begin{example}
+	Soit \( D=\{ \frac{1}{ n }\}_{n\in\eN}\). Tous les points de cet ensemble sont des points isolés (vérifier !).  Aucun point de \( D\) n'est point d'accumulation. Cependant \( 0\) est un point d'accumulation.
+\end{example}
+
+\begin{example}     \label{EXooWOYQooJolaTV}
+	Soit \( D=\mathopen] 1 , 2 \mathclose[\cup\{ 12 \}\). Le point \( 12\) est adhérence, mais pas d'accumulation parce que le voisinage \( \mathopen] 9 , 14 \mathclose[\) n'intersectionne pas \( D\setminus \{ 12 \}\).
+\end{example}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Limite de suite}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[Limite d'une suite dans \( \eR^m\)]
+	Une suite de points \( (x_n)\) dans \( \eR^m\) est dite \defe{convergente}{convergence!suite dans \( \eR^m\)} si il existe un élément \( \ell\in\eR^m\) tel que
+	\begin{equation}	\label{EqCondLimSuite}
+		\forall\varepsilon>0,\,\exists N\in \eN\tq\,\forall n\geq N,\,\| x_n-\ell \|<\varepsilon.
+	\end{equation}
+	Dans ce cas, nous disons que \( \ell\) est la \defe{limite}{limite!suite dans \( \eR^m\)} de la suite \( (x_n)\) et nous écrivons \( \lim x_n=\ell\) ou plus simplement \( x_n\to \ell\).
+\end{definition}
+
+\begin{remark}
+	Nous n'écrivons pas «\( \lim_{n\to\infty}x_n\)» parce que, lorsqu'on parle de suites, la limite est \emph{toujours} lorsque \( n\) tend vers l'infini. Il n'y a aucun intérêt à chercher par exemple \( \lim_{n\to 4}x_n\) parce que cela vaudrait \( x_4\) et rien d'autre.
+
+	Ceci est une différence importante avec les limites de fonctions.
+\end{remark}
+
+\begin{lemma}[Unicité de la limite]
+	Il ne peut pas y avoir deux nombres différents qui satisfont à la condition \eqref{EqCondLimSuite}. En d'autres termes, si \( \ell\) et \( \ell'\) sont deux limites de la suite \( (x_n)\), alors \( \ell=\ell'\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( \varepsilon>0\). Nous considérons \( N\) tel que
+	\begin{equation}
+		\| x_n-\ell \|<\varepsilon
+	\end{equation}
+	pour tout \( n\geq N\), et \( N'>0\) tel que
+	\begin{equation}
+		\| x_n-\ell' \|<\epsilon
+	\end{equation}
+	pour tout \( n>N'\). Maintenant, nous prenons \( n\) plus grand que \( N\) et \( N'\) de telle façon que les deux équations pour \( x_n\) soient vérifiées en même temps. Alors
+	\begin{equation}
+		\| \ell-\ell' \|=\| \ell-x_n+x_n-\ell' \|\leq\| \ell-x_n \|+\| x_n-\ell' \|<2\varepsilon.
+	\end{equation}
+	Cela prouve que \( \| \ell-\ell' \|=0\).
+\end{proof}
+Le théorème de Bolzano-Weierstrass~\ref{ThoBWFTXAZNH} dit que dans le cas métrique, la compacité séquentielle est équivalente à la compacité.
+
+%TODO : le théorème sur l'équivalence des normes sur les espaces vectoriels normés devrait être énoncé comme le fait que si N1 et N2 sont deux normes sur V, alors
+%       nous avons un isomorphisme d'espace topologique (V,N1) ~ (V,N2). L'isomorphisme étant donné par l'identité.

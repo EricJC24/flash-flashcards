@@ -1,0 +1,2113 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2011-2018, 2020-2025
+%   Laurent Claessens, Carlotta Donadello
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Espaces métriques}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Espaces métrisables}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}
+	Un espace topologique est \defe{métrisable}{espace!topologique!métrisable} si il est homéomorphe à un espace métrique.
+\end{definition}
+
+
+\begin{proposition} \label{PROPooKNVUooMbLZoy}
+	Une fonction séquentiellement continue sur un espace métrisable et à valeurs dans un espace métrique est continue.
+\end{proposition}
+
+\begin{proof}
+	Soient \( E\) un espace métrique et \( \phi\colon X\to (E,d)\) un homéomorphisme. Nous supposons que \( f\colon X\to Y\) est séquentiellement continue. Nous considérons l'application \( \tilde f=f\circ\phi^{-1}\), c'est-à-dire
+	\begin{equation}
+		\begin{aligned}
+			\tilde f\colon E & \to Y                              \\
+			a                & \mapsto f\big( \phi^{-1}(a) \big).
+		\end{aligned}
+	\end{equation}
+	L'application \( \phi^{-1}\) est continue et donc séquentiellement continue. De plus \( \tilde f\) est séquentiellement continue. En effet si \( a_k\stackrel{E}{\longrightarrow}a\), alors
+	\begin{equation}
+		\tilde f(a_k)=f\big( \phi^{-1}(a_k) \big),
+	\end{equation}
+	mais \( \phi^{-1}\) est séquentiellement continue, donc \( \phi^{-1}(a_k)\stackrel{X}{\longrightarrow}\phi^{-1}(a)\), ce qui signifie que \( \phi^{-1}(a_k)\) est une suite convergente dans \( X\) et donc
+	\begin{equation}
+		\lim_{k\to \infty} \tilde f(a_k)=\lim_{k\to \infty} f\big( \phi^{-1}(a_k) \big)=f\big( \phi^{-1}(a) \big)=\tilde f(a).
+	\end{equation}
+	L'application \( \tilde f\) est donc séquentiellement continue. Mais étant donné que \( \tilde f\) est définie sur un espace métrique (\( E\)) et à valeurs dans un métrique, elle est continue par la proposition~\ref{PropXIAQSXr}. L'application \( f=\tilde f\circ\phi\) est donc continue en tant que composée d'applications continues.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Fonctions continues}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La propriété suivante donne des caractérisations importantes de la continuité dans le cas des espaces métriques.
+\begin{proposition}[Continuité, ouverts et voisinages et limite\cite{DHpsZoY}] \label{PropQZRNpMn}
+	Soient \( f\colon E\to F\) une application entre espaces métriques et \( a\in E\). Alors nous avons équivalence entre les choses suivantes :
+	\begin{enumerate}
+		\item\label{ItemCBUoRWJi}
+		\( f\) est continue en \( a\),
+		\item\label{ItemCBUoRWJii}
+		Pour tout voisinage ouvert \( W\) de \( f(a)\), il existe un voisinage ouvert \( V\) de \( a\) tel que \( f(V)\subset W\).
+		\item\label{ItemCBUoRWJiii}
+		Pour toute boule \( W'=B\big( f(a),\epsilon \big)\), il existe une boule \( V'=B(a,\delta)\) telle que \( f(V)\subset W'\).
+		\item\label{ItemCBUoRWJiv}
+		\( \forall \epsilon>0,\,\exists \delta>0\,\tq f\big( B(a,\delta) \big)\subset B\big( f(a),\epsilon \big)\).
+		\item\label{ItemYNQpikrii}
+		\( \lim_{x\to a}f(x)=f(a)\) où la limite est donnée par la définition~\ref{DefYNVoWBx},
+		\item\label{ItemYNQpikriii}
+		Pour tout \( \epsilon>0\), il existe \( \delta>0\) tel que \( \| x-a \|<\delta\) implique \( \| f(x)-f(a) \|<\epsilon\).
+	\end{enumerate}
+\end{proposition}
+\index{continue!fonction entre espaces métriques}
+La proposition~\ref{PropNGjQnqF} nous montrera que ces équivalences tiennent encore lorsque l'espace a une topologie de seminormes.
+
+\begin{proof}
+	L'équivalence~\ref{ItemCBUoRWJi} \( \Leftrightarrow\)~\ref{ItemCBUoRWJii} est la définition~\ref{DefOLNtrxB}. L'équivalence~\ref{ItemCBUoRWJiii} \( \Leftrightarrow\)~\ref{ItemCBUoRWJiv} est une simple paraphrase.
+
+	Montrons~\ref{ItemCBUoRWJii} \( \Rightarrow\)~\ref{ItemCBUoRWJiii}. Si \( W'=B\big( f(a),\delta \big)\), nous avons un voisinage \( V\) de \( a\) tel que \( f(V)\subset W'\). L'ensemble \( V\) contenant une boule autour de chacun de ses points\footnote{Cela est le théorème-définition~\ref{ThoORdLYUu} des ouverts dans un espace métrique, à ne pas confondre avec le théorème~\ref{ThoPartieOUvpartouv}.}, il en contient un autour de \( a\) : \( V'=B(a,\delta)\subset V\). A fortiori nous avons \( f(V')\subset W\).
+
+	Montrons~\ref{ItemCBUoRWJiii} \( \Rightarrow\)~\ref{ItemCBUoRWJii}. Si \( W\) est un ouvert autour de \( f(a)\), il contient une boule autour de \( f(a)\) : \( B\big( f(a),\epsilon \big)\subset W\). Il existe donc une boule \( V'=B(a,\delta)\) telle que \( f(V')\subset B\big( f(a),\epsilon \big)\subset W\).
+
+	L'équivalence~\ref{ItemCBUoRWJi} \( \Leftrightarrow\)~\ref{ItemYNQpikrii} est la définition~\ref{DefOLNtrxB} de la continuité en un point couplée à l'unicité de la limite due à la proposition~\ref{PropFObayrf} parce qu'un espace métrique est séparé.
+
+	Prouvons~\ref{ItemYNQpikrii} \( \Rightarrow\)~\ref{ItemYNQpikriii}. Soient \( \epsilon>0\) et \( V=B\big( f(a),\epsilon \big)\). Étant donné que \( f(a)\) est une limite de \( f\) pour \( x\to a\), il existe un voisinage \( W\) de \( a\) tel que \( f(W)\subset V\). Soit \( \delta>0\) tel que \( B(a,\delta)\subset W\); alors si \( \| x-a \|<\delta\) nous avons \( x\in B(x,\delta)\subset W\) et donc \( f(x)\in B\big( f(a),\epsilon \big)\), c'est-à-dire \( \| f(a)-f(x) \|<\epsilon\).
+
+	Enfin l'implication~\ref{ItemCBUoRWJii} \( \Rightarrow\)~\ref{ItemYNQpikrii} est une réécriture de la définition de la limite en un point.
+\end{proof}
+
+Voici un théorème qui parle de fermés emboîtés dans un espace métrique. Le corolaire \ref{CORooQABLooMPSUBf} parle du cas \( \cap_iA_i=\emptyset\) dans un compact.
+\begin{theorem}[Théorème \cite{OIywOjl}]   \label{ThoCQAcZxX}
+	Soit \( (E,d)\) un espace métrique. Il est complet si et seulement si toute suite décroissante de fermés non vides dont le diamètre tend vers zéro a une intersection qui se réduit à un seul point.
+\end{theorem}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Condition suffisante]
+
+		Soit \( \{ F_n \}_{n\in \eN}\) une telle suite de fermés emboités. Si nous choisissons des points \( x_n\in F_n\), nous obtenons une suite \( (x_n)\) de Cauchy et qui est par conséquent convergente vu que l'espace est par hypothèse complet. De plus, pour chaque \( N\geq n\), la queue de suite \( (x_n)_{n\geq N}\) est contenue dans \( F_N\) et donc converge vers un élément de \( F_N\) (parce que ce dernier est fermé). Donc la limite de \( (x_n)\) est dans \( \bigcap_{n\in \eN}F_n\).
+
+		De plus cette intersection a diamètre nul parce que le diamètre de \( \bigcap_{n\in \eN}F_n\) est majoré par tous les diamètres des \( F_n\), lesquels sont arbitrairement petits par hypothèse. Donc l'intersection est réduite a un point.
+
+		\spitem[Condition nécessaire]
+
+		Soit \( (x_n)\) un suite de Cauchy. Nous considérons les ensembles
+		\begin{equation}
+			F_n=\overline{ \{ x_i\tq i\geq n \} }.
+		\end{equation}
+		Le fait que la suite soit de Cauchy implique que \( \diam(F_n)\to 0\). Par hypothèse, nous avons alors
+		\begin{equation}
+			\bigcap_{n\in \eN}F_n=\{ a \}.
+		\end{equation}
+		Pour s'assurer que \( a\) est bien la limite de \( (x_n)\), il suffit de remarquer que
+		\begin{equation}
+			d(x_n,a)\leq \diam F_n\to 0.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}     \label{PropGULUooNzqZKj}
+	Soient \( (X,d) \) un espace topologique métrique et \( F\) un fermé de \( X\). Nous avons \( d(x,F)=0\) si et seulement si \( x\in F\).
+\end{proposition}
+
+\begin{proof}
+	Si \( x\in F\) alors \( d(x,F)=0\) parce que \( d(x,x)\) fait partie de l'ensemble sur lequel nous prenons l'infimum.
+
+	Si réciproquement \( d(x,F)=0\), cela signifie que pour tout \( \epsilon\), il existe \( x_{\epsilon}\in F\) tel que \( d(x_{\epsilon},x)\leq \epsilon\). En prenant \(\epsilon=1/k\) nous construisons une suite \( (x_k)\) d'éléments dans \( F\) vérifiant \( d(x_k,x)=\frac{1}{ k }\). Cela signifie que \( \lim_{k\to \infty} x_k=x\) par la proposition~\ref{PropooUEEOooLeIImr}\ref{ItemooROYMooAQCXnj}.
+
+	Par la caractérisation séquentielle des fermés (un fermé contient les limites de toutes ses suites, proposition~\ref{PropLFBXIjt}), la suite \( (x_k)\) étant dans \( F\), la limite est dans \( F\). Donc \( x\in F\).
+\end{proof}
+
+
+\begin{lemma}       \label{LemooynkH}
+	Soit \( A_n\) une suite décroissante de fermés non vides dans un espace métrique\footnote{L'hypothèse métrique provient de l'utilisation de Bolzano-Weierstrass, lequel est vrai pour les espaces séquentiellement compacts, dont les espaces métriques.} compact \( K\). Alors
+	\begin{equation}
+		C=\bigcap_{n\in \eN}A_n
+	\end{equation}
+	est non vide.
+\end{lemma}
+
+\begin{proof}
+	Soit \( (x_n)\) une suite dans \( K\) telle que \( x_n\in A_n\). La suite étant contenue dans \( A_1\), et \( A_1\) étant compact (lemme~\ref{LemnAeACf}), elle possède une sous-suite \( (y_n=x_{\sigma_1(n)})\) convergente dont la limite est dans \( A_1\) par le théorème de Bolzano-Weierstrass~\ref{ThoBWFTXAZNH}. Une queue de la suite \( y_n\) est dans \( A_2\) et nous considérons donc une sous-suite convergente dans \( A_2\) donnée par
+	\begin{equation}
+		z_n=y_{\sigma_2(n)}=x_{\sigma_1\sigma_2(n)}.
+	\end{equation}
+	En continuant ainsi nous construisons une suite convergente dans \( A_k\). Nous considérons enfin la suite
+	\begin{equation}
+		y_n=x_{\sigma_1\ldots \sigma_n(n)}.
+	\end{equation}
+	Pour tout \( k\), une queue de cette suite est une sous-suite de \( x_{\sigma_1\ldots \sigma_k(n)}\) et par conséquent cette suite converge dans \( A_k\). La limite de cette suite est donc dans l'intersection demandée.
+\end{proof}
+
+\begin{remark}
+	Cette propriété est fausse pour les ouverts. Par exemple
+	\begin{equation}
+		\bigcap_{n>1}\mathopen] 0 , \frac{1}{ n } \mathclose[=\emptyset.
+	\end{equation}
+\end{remark}
+
+\begin{lemma}   \label{LemKIcAbic}
+	Si \( K\) est un compact dans un espace métrique et \( F\) un fermé disjoint de \( K\), alors \( d(K,F)>0\).
+\end{lemma}
+
+\begin{proof}
+	La fonction
+	\begin{equation}
+		\begin{aligned}
+			K & \to \eR        \\
+			x & \mapsto d(x,F)
+		\end{aligned}
+	\end{equation}
+	est une fonction continue sur \( K\), et donc atteint son minimum par le théorème de Weierstrass~\ref{ThoWeirstrassRn}. Soit \( x_0\in K\) un point de \( K\) qui réalise ce minimum. Si \( d(x_0,F)=0\), alors on aurait une suite \( (x_n)\) dans \( F\) qui convergerait vers \( x_0\), mais \( F\) étant fermé cela signifierait que \( x_0\) serait dans \( F\), ce qui contredirait l'hypothèse que \( F\) et \( K\) sont disjoints.
+\end{proof}
+
+\begin{proposition} \label{PropLHWACDU}
+	Soient \( (X,d)\) un espace métrique compact et \( (u_n)\) une suite de \( X\) telle que
+	\begin{equation}
+		\lim_{n\to \infty} d(u_n,u_{n+1})=0.
+	\end{equation}
+	Alors l'ensemble des points d'accumulation\footnote{Définition \ref{DEFooGHUUooZKTJRi}.} de \( (u_n)\) est connexe.
+\end{proposition}
+\index{connexité!points d'accumulation}
+\index{compacité}
+
+\begin{proof}
+	Nous notons \( \Gamma\) l'ensemble des points d'accumulation de la suite.
+	\begin{subproof}
+		\spitem[\( \Gamma\) est compact]
+		Nous notons \( A_p=\{ u_n\tq n\geq p \}\) et nous avons
+		\begin{equation}
+			\Gamma=\bigcap_{p\in \eN}\overline{ A_p }
+		\end{equation}
+		parce que si \( x\in\Gamma\), alors pour tout \( n\), il existe \( m>n\) tel que \( x_m\in B(x,\epsilon)\), et donc tel que \( x\in B(x_m,\epsilon)\). Donc pour tout \( \epsilon\) et pour tout \( p\), l'intersection \( B(x,\epsilon)\cap A_p\) est non vide.
+
+		En tant qu'intersection de fermés, \( \Gamma\) est fermé (lemme~\ref{LemQYUJwPC}). En tant que fermé dans un compact, \( \Gamma\) est compact (lemme~\ref{LemnAeACf}).
+
+		\spitem[Recouvrement par deux compacts]
+
+		Supposons que \( \Gamma\) ne soit\quext{est-ce qu'il faut vraiment un subjonctif ici ?} pas connexe. Nous pouvons alors considérer \( S\) et \( O\), deux ouverts disjoints recouvrant \( \Gamma\) et intersectant tous deux \( \Gamma\). Nous posons alors
+		\begin{subequations}
+			\begin{align}
+				A & =S\cap\Gamma  \\
+				B & =O\cap\Gamma,
+			\end{align}
+		\end{subequations}
+		et nous avons évidemment \( \Gamma=A\cup B\). Montrons que \( A\) est fermé (\( B\) le sera aussi par le même raisonnement). Soit une suite d'éléments de \( S\cap \Gamma\) convergent dans \( X\). Alors la limite est dans \( \bar\Gamma=\Gamma\) et donc elle est donc \( O\) ou \( S\), mais elle est certainement dans \( \bar S\). Cependant \( \bar S\) n'intersecte pas \( O\). En effet si \( x\in \bar S\cap O\), alors tout voisinage de \( x\) intersecterait \( S\), mais il y a des voisinages de \( x\) étant inclus dans \( O\) parce que \( O\) est ouvert; cela donnerait une intersection entre \( O\) et \( S\), ce qui est impossible. Donc la limite n'est pas dans \( O\) et donc elle est dans \( S\). Au final la limite est dans \( S\cap \Gamma\), ce qui prouve son caractère fermé.
+
+		Comme d'habitude, \( \Gamma\cap S\) est compact parce que fermé dans un compact\footnote{Lemme \ref{LemnAeACf}.}.
+
+		\spitem[Décomposition en trois morceaux]
+
+		Vu que \( A\) et \( B\) sont des compacts disjoints, nous avons \( d(A,B)=\alpha>0\) pour un certain \( \alpha\) par le lemme~\ref{LemKIcAbic}. Nous notons
+		\begin{subequations}
+			\begin{align}
+				A' & =\{x\in X\tq d(x,A)<\frac{ \alpha }{ 3 }\} \\
+				B' & =\{x\in X\tq d(x,B)<\frac{ \alpha }{ 3 }\}
+			\end{align}
+		\end{subequations}
+		Nous avons \( A'=\bigcup_{x\in A}B(x,\frac{ \alpha }{ 3 })\) et donc en tant qu'union d'ouverts, \( A'\) est ouvert (définition de la topologie). Même chose pour \( B'\).
+
+		Enfin nous notons
+		\begin{equation}
+			K=X\setminus(A'\cup B')
+		\end{equation}
+		qui est fermé en tant que complémentaire d'ouvert, et donc compact. Étant donné que \( A\subset A'\) et \( B\subset B' \), nous avons \( K\cap \Gamma=\emptyset\).
+
+		L'idée est maintenant de montrer que \( K\) contient un point d'accumulation de \( (u_n)\).
+
+		\spitem[Sous-suites de \( (u_n)\)]
+
+		L'hypothèse sur la suite \( (u_n)\) nous indique qu'il existe un \( N_0\) tel que \( \forall n\geq N_0\),
+		\begin{equation}    \label{EqIHioHjW}
+			d(u_{n},u_{n+1})<\frac{ \alpha }{ 3 }.
+		\end{equation}
+		Soient \( N>N_0 \) et \( x_0\in A\). Étant donné que \( x_0\) est point d'accumulation de la suite, il existe \( n_1>N\) tel que \( d(x_0,u_{n_1})<\frac{ \alpha }{ 3 }\). Même chose dans \( B\) : nous prenons \( y_0\in B\) et un naturel \( n_2>n_1\) tel que \( d(y_0,u_{n_2})<\frac{ \alpha }{ 3 }\). Nous avons \( u_{n_1}\in A'\) et \( u_{n_2}\in B'\).
+
+		Soit \( n_0\) le plus petit naturel supérieur à \( n_1\) tel que \( u_{n_0}\notin A'\). Cela existe parce que \( u_{n_2}\in B'\) et \( B'\cap A'=\emptyset\), mais \( n_0\) n'est pas \( n_2\) lui-même parce que \( d(A',B')\geq \frac{ \alpha }{ 3 }\) alors que nous considérons \( n_0,n_1,n_2>N_0\) et donc pour tous les \( i\) entre \( n_1\) et \( n_2\) (compris), \( d(u_i,u_{i+1})<\frac{ \alpha }{ 3 }\). Notons qu'ici le strict dans la condition \eqref{EqIHioHjW} est important. Nous avons donc \(N_0<n_1<n_0<n_2\).
+
+		Nous allons maintenant montrer que \( u_{n_0}\) est dans \( K\). C'est fait pour : il est loin en même temps de \( A'\) et de \( B'\). En utilisant l'inégalité triangulaire à l'envers, nous avons
+		\begin{equation}
+			\begin{aligned}[]
+				d(u_{n_0},B) & \geq d(u_{n_0-1},B)-d(u_{n_0-1},u_{n0})               \\
+				             & \geq d(A,B)-d(u_{n_0-1},A)-d(u_{n_0-1},u_{n_0})       \\
+				             & \geq \alpha-\frac{ \alpha }{ 3 }-\frac{ \alpha }{ 3 } \\
+				             & =\frac{ \alpha }{ 3 }.
+			\end{aligned}
+		\end{equation}
+		Pour la dernière inégalité nous avons utilisé le fait que \( u_{n_0-1}\) n'est pas dans \( A'\). Bref, nous avons montré que \( u_{n_0}\) n'est pas dans \( B'\) (dans la définition de ce dernier nous avons bien une inégalité stricte). Vu que par définition \( u_{n_0}\) n'est pas non plus dans \( A'\), nous avons \( u_{n_0}\in K\).
+
+		Nous avons montré jusqu'à présent que pour tout \( N\geq N_0\), il existe un \( n_0\geq N\) tel que \( u_{n_0}\in K\). Cela nous construit donc une sous-suite \( (v_n)\) de \( (u_n)\) contenue dans \( K\). En tant que suite dans le compact \( K\), la suite \( (v_n)\) admet un point d'accumulation dans \( K\). Ce point est également point d'accumulation de la suite \( (u_n)\) complète, ce qui donne un point d'accumulation de \( (u_n)\) dans \( K\) et donc une contradiction.
+
+	\end{subproof}
+	Nous concluons que \( \Gamma\) est connexe.
+\end{proof}
+
+Encore une petite conséquence sans ambition du théorème de Bolzano-Weierstrass.
+\begin{proposition}\label{PropHNylIAW}
+	Si \( (x_n)\) est une suite dans un compact telle que toute sous-suite convergente ait le même point \( x\) comme limite. Alors la suite entière converge vers \( x\).
+\end{proposition}
+
+\begin{proof}
+	Supposons que ce ne soit pas le cas. Alors il existe un \( \epsilon\) tel que pour tout \( N>0\), il existe \( n>N\) avec \( d(x_n,x)>\epsilon\). Cela nous donne une sous-suite de \( (x_n)\) composée d'éléments tous à une distance de \( x\) supérieure à \( \epsilon\). Nous la nommons \( (y_n)\); c'est une suite dans un compact qui admet donc une sous-suite convergente (et une telle sous-suite est une sous-suite de \( (x_n)\)) dont la limite devrait être \( x\), mais c'est impossible par construction.
+\end{proof}
+
+\begin{lemmaDef}[\cite{BIBooMMZKooMZJJuN}]       \label{LemGDeZlOo}
+	Soit \( \Omega\) un ouvert dans un espace métrique \( E\). Il existe une suite \( (K_n)\) de compacts tels que
+	\begin{enumerate}
+		\item
+		      \( K_n\subset \Omega\)
+		\item
+		      \( \bigcup_{n=0}^{\infty}K_n=\Omega\)
+		\item
+		      \( K_n\subset\Int(K_{n+1})\).
+	\end{enumerate}
+	Une telle suite de compacts vérifie alors
+	\begin{enumerate}
+		\item
+		      Il existe \( \delta_n\) tel que pour tout \( z\in K_n\), \( B(z,\delta_n)\subset K_{n+1}\).
+		\item		\label{ITEMooBPYPooEMhSmY}
+		      Tout compact de \( \Omega\) est inclus dans \( \Int(K_n)\) pour un certain \( n\).
+	\end{enumerate}
+	Une telle suite de compacts est une \defe{suite exhaustive}{compact!suite exhaustive}\index{exhaustive (suite de compacts)!} de compacts pour \( \Omega\).
+\end{lemmaDef}
+
+\begin{proof}
+	Nous considérons les ensembles
+	\begin{equation}
+		V_n=\{ z\in E\tq | z | \}\cup\bigcup_{a\notin\Omega}B(a,\frac{1}{ n }),
+	\end{equation}
+	et nous définissons \( K_n=V_n^c\). Vérifions que ces ensembles vérifient tout ce qu'il faut.
+	\begin{subproof}
+		\spitem[\( K_n\subset \Omega\)]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( a\notin\Omega\) alors \( a\) est dans tous les \( V_n\) et donc dans aucun des \( K_n\); nous avons donc bien \( K_n\subset\Omega\).
+		\spitem[\( \bigcup_{n=0}^{\infty}K_n=\Omega\)]
+		% -------------------------------------------------------------------------------------------- 
+		Nous avons déjà prouvé que \( \bigcup_{n=0}^{\infty}K_n\subset \Omega\). Pour avoir l'inclusion dans l'autre sens, soit \( z\in \Omega\). Nous prenons \( n_1>| z |\) puis \( n_2\) tel que \( B(z,\frac{1}{ n_2 })\subset \Omega\). Alors \( z\in K_n\) avec \( n>\max(n_1,n_2)\). Pour ce choix de \( n\), nous avons  \( z\in K_n\). Cela prouve que \( \Omega\subset \bigcup_{n=0}^{\infty}K_n\).
+
+		\spitem[\( K_n\subset \Int(K_{n+1})\)]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( z\in K_n\). L'élément \( z\) vérifie \( d(z,\Omega^c)\geq \frac{1}{ n }\). Du coup si nous prenons \( \delta\) tel que
+		\begin{equation}
+			\frac{1}{ n+1 }<\delta<\frac{1}{ n }
+		\end{equation}
+		alors \( B(z,\delta)\subset K_{n+1}\).
+		\spitem[Les \( K_n\) sont compacts]
+		% -------------------------------------------------------------------------------------------- 
+		Enfin, les \( K_n\) sont tous compacts. En effet ils sont bornés parce que \( K_n\subset B(0,n)\) et ensuite \( K_n\) est fermé en tant que complémentaire d'un ouvert (\( V_n\) est ouvert en tant qu'union d'ouverts).
+	\end{subproof}
+
+	Nous passons maintenant aux propriétés, qui sont indépendantes de la façon dont nous avons construit les \( K_n\) vérifiant les conditions.
+	\begin{enumerate}
+		\item
+
+		      Nous pouvons considérer la fonction \( K_n\to \eR\) donnée par \( z\mapsto d(z, K_{n+1}^c)\). Vu que \( K_n\subset\Int(K_{n+1})\), c'est une fonction (continue sur le compact \( K_n\)) prenant des valeurs strictement positives. Elle a donc un minimum strictement positif. Si \( \delta_n\) est plus petit que ce minimum nous avons \( B(z,\delta_n)\subset K_{n+1}\) pour tout \( z\in K_n\).
+
+		\item
+
+		      D'abord nous avons \( \Omega=\bigcup_{n=0}^{\infty}\Int(K_n)\). En effet nous avons
+		      \begin{equation}
+			      \Omega=\bigcup_{n=0}^{\infty}K_n\subset\bigcup_{n=0}^{\infty}\Int(K_{n+1})\subset\bigcup_{n=0}^{\infty}\Int(K_n).
+		      \end{equation}
+		      L'inclusion dans l'autre sens est facile.
+
+		      Soit \( K\) compact dans \( \Omega\). Vu que \( \Omega\) est l'union des \( \Int(K_n)\), nous avons
+		      \begin{equation}
+			      K\subset\bigcup_{n=0}^{\infty}\Int(K_n).
+		      \end{equation}
+		      Cela donne à \( K\) un recouvrement par des ouverts dont nous pouvons extraire un sous-recouvrement fini par compacité. Les \( K_n\) étant croissants, du recouvrement fini, il suffit de prendre le plus grand (disons \( K_m\)) et nous avons \( K\subset\Int(K_m)\).
+	\end{enumerate}
+\end{proof}
+Notons qu'avec la suite de \( K_n\) telle que construite, le dernier point est réglé en prenant
+\begin{equation}
+	\frac{1}{ n+1 }<\delta_n<\frac{1}{ n }.
+\end{equation}
+
+
+\begin{lemma}[\cite{BIBooPITOooZANjFn}]     \label{LEMooWRIXooSBHavt}
+	Soient un compact \( K\subset \eR^d\) ainsi que des ouverts \( \{\Omega_i\}_{i=1,\ldots, n}\) tels que \( K\subset\bigcup_{i=1}^n\Omega_i\).
+
+	Il existe des compacts \( \{ K_i \}_{i=1,\ldots, n}\) tels que
+	\begin{itemize}
+		\item
+		      \( K_i\subset \Omega_i\),
+		\item
+		      \( K\subset\bigcup_{i=1}^nK_i\).
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	Soit \( x\in K\). Vu que les \( \Omega_i\) recouvrent \( K\), il existe un \( k(x)\in \{ 1,\ldots, n \}\) tel que \( x\in \Omega_{k(x)}\). De plus, vu que \( \Omega_{k(x)}\) est ouvert, il existe un voisinage de \( x\) contenu dans \( \Omega_{k(x)}\) (théorème \ref{ThoPartieOUvpartouv}). Autrement dit, il existe \( r(x)>0\) tel que
+	\begin{equation}
+		\overline{ B\big( x,r(x) \big) }\subset  \Omega_{k(x)}.
+	\end{equation}
+	Vu que l'ensemble \( \{   B\big( x,r(x) \big)    \}_{x\in k}\) est un recouvrement de \( K\) par des ouverts, nous pouvons en extraire un sous-recouvrent fini\footnote{C'est la définition \ref{DefJJVsEqs} d'un compact.}. Soient donc \( x_1,\ldots, x_m\in K\) tels que
+	\begin{equation}        \label{EQooETROooCMlJsx}
+		K\subset\bigcup_{i=1}^mB\big( x_i, r(x_i) \big).
+	\end{equation}
+	Pour chaque \( j=1,\ldots, n\), nous posons
+	\begin{equation}
+		A_j=\big\{ l\in \{ 1,\ldots, m \}\tq k(x_l)=j \big\}.
+	\end{equation}
+	Et enfin nous définisssons, pour \( j=1,\ldots, n\) les parties
+	\begin{equation}
+		K_j=\bigcup_{l\in A_j} \overline{ B\big(x_l, r(x_l)\big) }
+	\end{equation}
+	et il nous reste à prouver que ces ensembles répondent bien à la question.
+	\begin{subproof}
+		\spitem[\(  \bigcup_{j=1}^n A_j=\{ 1,\ldots, m \}\) est une union disjointe]
+		Un élément \( l\) de \( A_i\cap A_j\) devrait vérifier \( i=k(x_l)=j\). Si \( s\in \{ 1,\ldots, m \}\), alors \( s\in A_{k(x_s)}\). Donc oui, l'union des \( A_j\) est tout \( \{ 1,\ldots, m \}\).
+		\spitem[\(  K_{j}\subset \Omega_j\)]
+		Nous avons
+		\begin{equation}
+			K_j=\bigcup_{l\in A_j}\overline{ B\big( x_l,r(x_l) \big) }\subset  \bigcup_{l\in A_j}\Omega_{k(x_l)}=\bigcup_{l\in A_j}\Omega_{j}=\Omega_j.
+		\end{equation}
+		\spitem[\( K\subset\bigcup_{i=1}^nK_i\).]
+		Par \eqref{EQooETROooCMlJsx}, et vu que \( \{ 1,\ldots, m \}=\bigcup_{j=1}^nA_j\),
+		\begin{subequations}
+			\begin{align}
+				K & \subset\bigcup_{i=1}^mB\big( x_i, r(x_i) \big)                                            \\
+				  & =\bigcup_{j=1}^n\bigcup_{l\in A_j}B\big( x_l,r(x_l) \big)                                 \\
+				  & =\bigcup_{j=1}^n\underbrace{\bigcup_{l\in A_j}\overline{  B\big( x_l,r(x_l) \big)}}_{K_j} \\
+				  & =\bigcup_{j=1}^nK_j.
+			\end{align}
+		\end{subequations}
+	\end{subproof}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Théorème de Tykhonov}
+%----------------------------------------------------
+
+Pour des versions plus simples du théorème de Tykhonov, voir le thème \ref{THEMEooQQBHooLcqoKB}.
+\begin{theorem}[Tykhonov]\index{théorème de Tykhonov}\label{ThoFWXsQOZ}
+	Un produit quelconque d'espaces métriques non vides est compact si et seulement si chacun de ses facteurs est compact.
+	%TODOooYRVFooCTCJYI. Prouver ça.
+	% Note qu'il faudra sans doute passer par le théorème d'Alexander sur les sousbases
+	% https://en.wikipedia.org/wiki/Subbase#Alexander_subbase_theorem
+	% Ils disent que Tykhonov en est un corollaire : https://en.wikipedia.org/wiki/Tychonoff%27s_theorem
+\end{theorem}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooDXUIooUUmgYN}
+	Soient des espaces topologiques \( \{ X_i \}_{i\in I}\) et des parties compactes \( K_i\subset X_i\). Alors \( \prod_{i\in I}K_i\) est compact dans \( \prod_{i\in I}X_i\).
+	%TODOooJYIBooCXjdNa. Prouver ça.
+\end{proposition}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Ensembles enchainés}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Soit \( (X,d)\) un espace métrique.
+\begin{definition}
+	Une \defe{\( \epsilon\)-chaine}{chaine} joignant les points \( a\) et \( b\) de \( X\) est une suite finie \( (u_0,\ldots, u_n)\) dans \( X\) telle que \( u_0=a\), \( u_n=b\) et pour tout \( 0\leq i\leq n-1\) nous avons \( d(u_n,u_{n+1})\leq \epsilon\).
+
+	Une partie \( A\) de \( X\) est \defe{bien enchainée}{bien!enchainé} si pour tout \( \epsilon>0\) et pour tout \( a,b\in A\), il existe une \( \epsilon\)-chaine joignant \( a\) et \( b\) dans \( A\).
+\end{definition}
+
+
+\begin{lemma}
+	Les rationnels dans \( \eR\) sont bien enchainés.
+\end{lemma}
+
+\begin{proof}
+	Soient \( p\) et \( q\) des rationnels avec \( p<q\), ainsi que \( \epsilon>0\). Le lemme \ref{LemooHLHTooTyCZYL} nous permet de considérer un rationnel \( \delta\) vérifiant \( 0<\delta<\epsilon\). Et nous définissons les rationnels
+	\begin{equation}
+		r_k=p+k\delta.
+	\end{equation}
+
+	Vu que \( \eQ\) est archimédien\footnote{Proposition \ref{PROPooMXGPooDUkOuv}.}, il existe \( K\) tel que \( r_{K}>q\). D'autre part, \( r_0=p<q\). Donc il existe \( N=\max\{ k\in \eN\tq r_k<q \}\).
+
+	Nous considérons la chaine \( (r_0,\ldots, r_N, q)\). Elle débute à \( r_0=p\) et termine à \( q\); pas de problèmes avec ça. À part pour le dernier pas, nous avons
+	\begin{equation}
+		| r_n-r_{n-1} |=\delta<\epsilon,
+	\end{equation}
+	donc c'est bien une \( \epsilon\)-chaine. Il reste à voir \( | q-r_N |\). Nous avons \( r_N\leq q\leq r_{N+1}\), et donc
+	\begin{equation}
+		0\leq q-r_N\leq r_{N+1}-r_N=\delta\leq \epsilon.
+	\end{equation}
+	Donc ok aussi pour ce dernier pas.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooKBZDooIBOnLN, MonCerveau}]       \label{PROPooBUNOooIvfugn}
+	Un espace métrique connexe\footnote{Définition \ref{DefIRKNooJJlmiD}.} est bien enchainé.
+\end{proposition}
+
+\begin{proof}
+	Soit un espace métrique \( X\) et \( \epsilon>0\). La relation \( x\sim y\) si et seulement si \( x\) et \( y\) peuvent être reliés par une \( \epsilon\)-chaine est une relation d'équivalence.
+
+	Soit \( x\in X\). Nous prouvons que la classe \( [x]\) est ouverte. En effet soit \( y\in [x]\), si \( z\in B(y,\epsilon)\) nous avons \( z\in [y]\), et donc \( z\in [x]\). Nous en déduisons que \( B(y,\epsilon)\subset [x]\), et donc que \( [x]\) est ouvert par le théorème \ref{ThoPartieOUvpartouv}.
+
+	Donc les classes sont des ouverts.
+
+	Supposons que \( X\) n'est pas bien enchainé. Alors il existe \( \epsilon\) pour lequel \( X\) possède plus qu'une classe d'équivalence. Soit \( \{ [x_k] \}_{k\in I}\) l'ensemble des classes d'équivalences.
+
+	Nous considérons un \( i_0\in I\) quelconque, et nous définissons les ouverts \( A=[x_{i_0}]\) et
+	\begin{equation}
+		B=\bigcup_{k\in I\setminus\{ i_0 \}}[x_k].
+	\end{equation}
+	Ce sont deux ouverts disjoints qui recouvrent \( X\) qui n'est donc pas connexe.
+\end{proof}
+
+\begin{proposition}     \label{PROPooXHTWooZibddZ}
+	La fermeture d'un ensemble bien enchainé dans un espace métrique compact \( (X,d)\) est connexe.
+\end{proposition}
+\index{connexité}
+\index{compacité}
+
+\begin{proof}
+	Soit \( A\subset X\) un ensemble bien enchainé, et soient \( a,b\in \bar A\). Nous construisons une suite \( (u_k)\) dans \( A\) de la façon suivante. Pour chaque \( n>0\) nous prenons \( a'\in B(a,\frac{1}{ n })\cap A\) et \( b'\in B(b,\frac{1}{ n })\cap A\). Ensuite nous considérons une \( \frac{1}{ n }\)-chaine \( \{ v_i^{(n)} \}_{i\in I_n}\) dans \( A\) entre \( a'\) et \( b'\). Ici l'ensemble \( I_n\) est fini. La suite \( (u_k)\) est simplement construite en mettant bout à bout les éléments \( v_i^{(n)}\).
+
+	La suite ainsi construite est une suite dans \( A\) admettant \( a\) et \( b\) comme points d'accumulation (les autres points d'accumulation sont également dans \( \bar A\)) et telle que \( \lim_{k\to \infty} d(u_k,u_{k+1})=0\). Par conséquent la proposition~\ref{PropLHWACDU} nous dit que l'ensemble des points d'accumulation de \( (u_k)\) est connexe dans \( X\). Nous le notons \( C_{a,b}\).
+
+	Si nous fixons \( a\in \bar A\), alors nous avons
+	\begin{equation}
+		\bigcup_{x\in \bar A}C_{a,x}=\bar A.
+	\end{equation}
+	Vu que le membre de gauche est une union de connexes, c'est un connexe par la proposition~\ref{PropIWIDzzH}.
+\end{proof}
+
+\begin{corollary}       \label{CORooSIKCooTncoQm}
+	Un espace métrique compact est connexe si et seulement si il est bien enchainé.
+\end{corollary}
+
+\begin{proof}
+	Dans le sens direct, c'est la proposition \ref{PROPooBUNOooIvfugn}. Dans l'autre sens, si \( X\) est compact, alors \( X\) est fermé par le lemme \ref{LemnAeACf}\ref{ITEMooAZWVooLyPDeY}. Et vu qu'il est fermé et bien enchainé, la proposition \ref{PROPooXHTWooZibddZ} implique qu'il est connexe.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Produit fini d'espaces métriques}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Pour rappel, la distance sur un espace produit est donnée par la définition \ref{DefZTHxrHA}.
+\begin{theorem}[\cite{MonCerveau}]\label{THOIYmxXuu}
+	Un produit fini d'espaces métriques non vides est compact si et seulement si chacun de ses facteurs est compact.
+\end{theorem}
+\index{compact!produit fini}
+\index{théorème!Tykhonov!fini}
+
+\begin{proof}
+	Soient \( K_1\),\ldots, \( K_n\) des compacts et \( K=K_1\times \ldots\times K_n\) le produit muni de sa métrique usuelle de la définition \eqref{DefZTHxrHA} (attention : chacun des \( K_i\) peut être de dimension infinie) :
+	\begin{equation}
+		d(\alpha,\beta)=\max\{ d_i(\alpha_i,\beta_i) \}
+	\end{equation}
+	où \( d_i\) est la distance sur \( K_i\). Si \( (\alpha_n)\) est une suite dans \( K\) alors la suite \( (\alpha_n)_1\) est une suite dans le compact \( K_1\) dont nous pouvons extraire une sous-suite convergente (Bolzano-Weierstrass~\ref{ThoBWFTXAZNH}). De la sous-suite de \( \alpha\) correspondante nous extrayons la sous-suite pour la seconde composante, etc.
+
+	En fin de compte nous avons une sous-suite (que nous nommons \( \alpha\) également) donc chacune des composantes est convergente. Notez que nous utilisons ici de façon cruciale le fait que nous ayons qu'un nombre fini de facteurs.
+
+	Autrement dit, pour chaque \( i=1,\ldots, n\), l'application \( p\mapsto (\alpha_p)_i\) est une suite dans \( K_i\), et cette suite converge vers \( \ell_i\).
+
+	Soit \( \epsilon>0\) pour chaque \( i=1,\ldots, n\), il existe \( N_i>0\) tel que si \( p>N_i\) alors
+	\begin{equation}
+		d_i\big( (\alpha_p)_i,\ell_i \big)\leq \epsilon.
+	\end{equation}
+	En prenant \( N=\max_kN_k\) et \( n>N\) nous avons
+	\begin{equation}
+		d\big( \alpha_n,(\ell_1,\ldots, \ell_n) \big)\leq\epsilon.
+	\end{equation}
+	Par conséquent de la suite \( (\alpha)\) nous avons extrait une sous-suite convergente et la partie «réciproque» de Bolzano-Weierstrass nous assure alors que \( K\) est compact.
+
+	À l'inverse si un des facteurs n'est pas compact (mettons \( K_1\)) alors nous prenons un recouvrement \( \{ \mO_i \}_{i\in I}\) de \( K_1\) par des ouverts duquel il est impossible d'extraire un sous-recouvrement fini. Ensuite nous posons
+	\begin{equation}
+		\mP_i=\mO_i\times K_2\times\ldots\times K_n,
+	\end{equation}
+	qui est un recouvrement de \( K\) par des ouverts (de \( K\)) d'où aucun sous-recouvrement fini ne peut être extrait.
+\end{proof}
+
+Pour la culture générale, il y a bien entendu moyen de faire des produits dénombrables et pire d'espaces métriques.
+\begin{definition}[\cite{AntoniniAndAl-TheoremeTykhonov}]
+	Soient \( (E_n,d_n)\) des espaces métriques. Sur l'ensemble produit \( E=\prod_{i=1}^{\infty}E_i\) nous définissons la métrique
+	\begin{equation}
+		d(x,y)=\sum_{k=1}^{\infty}\frac{1}{ 2^k }d'_k(x_i,y_i)
+	\end{equation}
+	où \( d'_i=\min(d_i,1)\).
+\end{definition}
+On peut montrer que ce \( d\) est bien une distance et que \( (E,d)\) devient un espace métrique.
+
+\begin{theorem}[Tykhonov dénombrable\cite{AntoniniAndAl-TheoremeTykhonov}] \label{ThoKKBooNaZgoO}  % Ce résultat n'est pas censé être utilisé dans l'agrégation.
+	Un produit dénombrable d'espaces métriques non vides est compact si et seulement si chacun de ses facteurs est compact.
+\end{theorem}
+\index{compact!produit dénombrable}
+\index{théorème!Tykhonov!dénombrable}
+Note : ce résultat est encore valable pour un produit quelconque, c'est le théorème de Tykhonov~\ref{ThoFWXsQOZ}.
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Équicontinuité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[\cite{MonCerveau, BIBooCPBMooLVUNRi, ooYDVWooPWLUGW}]        \label{DEFooDHQDooFfIvsX}
+	Soient un espace topologique \( X\) et un espace vectoriel topologique \( Y\). Une famille \( H\) d'applications \( X\to Y\) est \defe{équicontinue}{équicontinu} en \( a\in X\) si pour tout voisinage \( V\) de \( 0\) dans \( Y\), il existe un voisinage \( U\) de \( a\) dans \( X\) tel que
+	\begin{equation}
+		h(U)\subset h(a)+V
+	\end{equation}
+	pour tout \( h\in H\).
+
+	Nous disons que \( H\) est équicontinue si elle est équicontinue en tout point.
+\end{definition}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooMIHJooUhvPgM}
+	Soient un espace métrique \( X\), un espace vectoriel normé \( Y\) ainsi qu'une famille \( H\) d'isométries linéaires \( X\to Y\). Alors \( H\) est équicontinue.
+\end{lemma}
+
+\begin{proof}
+	Nous suivons la définition \ref{DEFooDHQDooFfIvsX} de l'équicontinuité. Soient \( a\in X\) et un voisinage \( V\) de \( 0\) dans \( Y\). Nous considérons \( r>0\) tel que \( B(0,r)\subset V\), et nous posons \( U=B(a,r)\).
+
+	Si \( x\in U\) et \( h\in H\), nous avons
+	\begin{equation}
+		\| h(x)-h(a) \|=\| h(x-a) \|=d(x,a)<r,
+	\end{equation}
+	de telle sorte que \( h(x)\in h(a)+B(0,r)\).
+
+	Donc \( H\) est équicontinue en \( a\). Vu que \( a\) est arbitraire, \( H\) est équicontinue en tout point et donc équicontinue sur \( X\).
+\end{proof}
+
+\begin{lemma}[\cite{ooYDVWooPWLUGW}]           \label{LEMooKEMRooYyqsBl}
+	Soit une famille de fonctions \( f_i\colon X\to E\) indexée par un ensemble \( I\) où \( X\) est un espace topologique et \( E\) un espace métrique. Cette famille est équicontinue\footnote{Définition \ref{DEFooDHQDooFfIvsX}.} en \( x\in X\) si pour tout \( \epsilon>0\), il existe un voisinage \( V\) de \( x\) tel que
+	\begin{equation}
+		\| f_i(x)-f_i(y) \|<\epsilon
+	\end{equation}
+	pour tout \( i\) dès que \( y\in V\).
+	%TODOooJVDGooZgdrLm. Prouver ça.
+\end{lemma}
+
+La proposition suivante permet de montrer que certaines fonctions définies par une limite sont continues. Ce sera par exemple le cas de la fonction puissance, proposition \ref{PROPooUQNZooSSHLqr}.
+\begin{proposition}[\cite{MonCerveau,ooYDVWooPWLUGW}]     \label{PROPooICNNooAMjcut}
+	Soit une suite équicontinue \( (f_i)\) de fonctions qui converge simplement vers \( f\), alors \( f\) est continue.
+\end{proposition}
+
+\begin{proof}
+	Soit une suite équicontinue \( f_i\colon X\to E\) convergeant simplement vers \( f\). Soit \( a\in X\). Nous prouvons que \( f\) est continue en \( a\). Pour cela nous considérons \( \epsilon>0\) et, conformément à l'hypothèse équicontinuité un voisinage \( V\) de \( a\) tel que \( | f_i(a)-f_i(x) |<\epsilon\) pour tout \( x\in V\).
+
+	Nous avons la majoration
+	\begin{subequations}
+		\begin{align}
+			| f(x)-f(a) |\leq | f(x)-f_i(x) |+| f_i(x)-f_i(a) |+| f_i(a)-f(a) |.
+		\end{align}
+	\end{subequations}
+	Plusieurs majorations.
+	\begin{itemize}
+		\item
+		      Vu que \( f_i\to f\), il existe \( N_1\) tel que \( | f(x)-f_i(x) |<\epsilon\) pour tout \( i>N_1\).
+		\item
+		      De plus, par définition de \( V\), nous avons aussi \( | f_i(x)-f_i(a) |\leq \epsilon\).
+		\item
+		      Vu que \( f_i\to f\), il existe \( N_2\) tel que \( | f_i(a)-f(a) |<\epsilon\) pour tout \( i>N_2\).
+	\end{itemize}
+	Donc en prenant \( x\in V\) et \( i>\max\{ N_1,N_2 \}\) nous avons
+	\begin{equation}
+		| f(x)-f(a) |\leq 3\epsilon.
+	\end{equation}
+\end{proof}
+
+
+\begin{probleme}
+	Je n'ai pas du tout vérifié si le lemme \ref{LEMooSXWKooAmqeic} est correct. Sinon, il faudra trouver autre chose dans la preuve de la proposition \ref{PROPDEFooCWESooVbDven}.
+\end{probleme}
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooSXWKooAmqeic}
+	Si \( A\) est une partie fermée de \( \eR^3\), alors \( \proj_{\eR^+}(A)\) est fermé dans \( \eR\).
+\end{lemma}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Continuité uniforme}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[\cite{ooDMOSooBYWrkwgTc}]\label{DEFooYIPXooQTscbG}
+	Soient deux espaces métriques \( (E,d)\) et \( (E',d')\). Une application \( f\colon E\to E'\) est \defe{uniformément continue}{uniformément continue} si pour tout \( \epsilon>0\), il existe \( \delta>0\) tel que \( d(x,y)\leq \delta\) implique \( d'\big( f(x),f(y) \big)\leq \epsilon\).
+\end{definition}
+Dans l'uniforme continuité, le \( \alpha\) qui fait fonctionner \( \epsilon\) doit le faire fonctionner pour tous les \( x,y\in E\). C'est la différence avec la continuité simple dans laquelle nous pouvons choisir, pour un même \( \epsilon\), un \( \delta\) différent en chaque point.
+
+Nous parlons plus d'uniforme continuité dans la section \ref{SECooZSZMooBYSDFO}.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Partie maigre et nulle part dense}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+Une des caractérisations \ref{DEFooYEMNooLSXLYa} des espaces de Baire parle de parties maigres.
+
+
+\begin{definition}[nulle part dense\cite{BIBooMRHGooIoOGzx}]		\label{DEFooTYNBooIaQINO}
+	Soit un espace topologique \( X\) et une partie \( A\subset X\). Les propriétés suivantes sont équivalentes :
+	\begin{enumerate}
+		\item	\label{ITEMooFFSAooUdcUuV}
+		      \( \Int(\bar A)=\emptyset\)
+		\item		\label{ITEMooYKDEooYwNblV}
+		      Tout ouvert de \( X\) inclus dans \( \bar A\) est vide.
+		\item		\label{ITEMooOYOCooLkyrFx}
+		      \( A\) n'est dense dans aucun ouvert non vide de \( X\).
+		\item		\label{ITEMooGYICooSAelba}
+		      Pour tout ouvert non vide \( U\) de \( X\), il existe un ouvert \( V\) non vide tel que \( V\subset U\) et \( V\cap A=\emptyset\).
+	\end{enumerate}
+	Une telle partie est \defe{nulle part dense}{nulle part dense}.
+	%TODOooSFUNooFurVYj. Prouver ça.
+\end{definition}
+
+\begin{definition}[\cite{BIBooQLYTooVDMBQk}]	\label{DEFooYKHUooPGZvLz}
+	Soient un espace topologique \( X\) et une partie \( A\) de \( X\). Les propriétés suivantes sont équivalentes :
+	\begin{enumerate}
+		\item
+		      \( A\) est une réunion dénombrable de fermés d'intérieur vide.
+		\item
+		      \( A\) est réunion dénombrable de parties nulle part denses\footnote{Définition \ref{DEFooTYNBooIaQINO}.}
+	\end{enumerate}
+	Une telle partie est dite \defe{maigre}{partie maigre}.
+	%TODOooQLNRooYqjJzU. Prouver ça.
+\end{definition}
+
+
+\begin{theorem}[Baire\cite{BaireZied}]      \label{ThoQGalIO}
+	Une réunion dénombrable d'ensembles nulle part denses est d'intérieur vide.
+\end{theorem}
+\index{théorème de Baire}
+
+\begin{proof}
+	Soient \( a\in S\) et \( \epsilon>0\). Nous allons trouver un élément dans \( B(a,\epsilon)\) qui n'est pas dans \( S\). Nous commençons par choisir \( x_1\in B(a,\epsilon)\) et \( r_1<\frac{ \epsilon }{2}\) tel que
+	\begin{equation}
+		B(x_1,r_1)\cap A_1=\emptyset.
+	\end{equation}
+	Ensuite nous choisissons \( x_2\in B(x_1,r_1)\) et \( r_2<\epsilon/4\) tel que \( B(x_2,r_2)\subset B(x_1,r_1)\) et \( B(x_2,r_2)\cap A_2=\emptyset\). Notons que \( B(x_2,r_2)\cap A_1=\emptyset\) aussi, par construction.
+
+	Par récurrence nous construisons une suite d'éléments \( x_n\) et de rayons \( r_n<\epsilon/2^n\) tels que
+	\begin{enumerate}
+		\item
+		      \( B(x_n,r_n)\cap A_j=\emptyset\) pour tout \( j\leq n\),
+		\item
+		      \( \overline{ B(x_n,r_n) }\subset B(x_{n-1},r_{n-1})\).
+	\end{enumerate}
+	Cette suite étant de Cauchy (parce que contenue dans des intervalles emboîtés de rayon décroissant vers zéro), elle converge\footnote{Par la proposition~\ref{PROPooTFVOooFoSHPg}} donc vers un point qui en particulier appartient à \( B(a,\epsilon)\). Mais la limite n'est dans aucun des \( A_n\) et donc pas dans \( S\).
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Seminormes}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Les principaux espaces topologiques construit avec des seminormes seront les espaces de fonctions de la définition~\ref{DefFGGCooTYgmYf}. Nous verrons également la topologie \( *\)-faible sur \( \swD'(\Omega)\) en la définition~\ref{DefASmjVaT}.
+
+%-------------------------------------------------------
+\subsection{Seminorme}
+%----------------------------------------------------
+
+\begin{definition}  \label{DefPNXlwmi}
+	Si \( E\) est un espace vectoriel sur le corps \( \eK\) (\( \eR\) ou \( \eC\)), une \defe{seminorme}{seminorme} sur \( E\) est une application \( p\colon E\to \eR\) telle que
+	\begin{enumerate}
+		\item   \label{ItemSHnimhDii}
+		      \( p(\lambda x)=| \lambda |p(x)\)
+		\item   \label{ItemSHnimhDiii}
+		      \( p(x+y)\leq p(x)+p(y)\)
+	\end{enumerate}
+	pour tout \( x,y\in E\) et pour tout \( \lambda\in \eK\).
+\end{definition}
+
+\begin{remark}
+	Deux remarques.
+	\begin{enumerate}
+		\item
+		      La seule différence avec une norme est qu'une seminorme peut s'annuler en des éléments non-nuls de l'espace.
+		\item
+		      Une seminorme prend ses valeurs dans \( \eR\). En particulier pour que \( p\) soit une seminorme, il faut que \( p(x)<\infty\) pour tout \( x\).
+	\end{enumerate}
+\end{remark}
+
+
+\begin{lemma}[\cite{DRcmzcB,BIBooTDEOooFNoMUV}]		\label{LEMooHTOAooGmRGZL}
+	Soit une seminorme\footnote{Définition \ref{DefPNXlwmi}.} \( p\). Nous avons
+	\begin{enumerate}
+		\item		\label{ITEMooFRCRooZBWTxH}
+		      \( p(0)=0\),
+		\item		\label{ITEMooHVWHooAVZsTf}
+		      \( | p(x)-p(y) |\leq p(x-y)\).
+		\item		\label{ITEMooXCHBooDoBvpL}
+		      \( p(x)\geq 0\) pour tout \( x\in X\).
+		\item	\label{ITEMooQIGMooVNDakF}
+		      \( \ker(p)\) est un sous-espace vectoriel.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooFRCRooZBWTxH}]
+		%-----------------------------------------------------------
+		Pour la première affirmation, il suffit de poser \( \lambda=0\) dans l'inégalité de définition \( p(\lambda x)=| \lambda |p(x)\).
+
+		\spitem[Pour \ref{ITEMooHVWHooAVZsTf}]
+		%-----------------------------------------------------------
+		Nous avons d'une part \( p(x+h)\leq p(x)+p(h)\) et d'autre part \( p(x)\leq p(x+h)+p(-h)=p(x+h)+p(h)\). En isolant \( p(x+h)-p(x)\) dans chacune ce des deux inégalités,
+		\begin{equation}
+			-p(h)\leq p(x+h)-p(x)\leq p(h)
+		\end{equation}
+		ou encore
+		\begin{equation}
+			|p(x+h)-p(x)|\leq p(h)
+		\end{equation}
+		qui donne le résultat demandé en posant \( h=y-x\).
+		\spitem[Pour \ref{ITEMooXCHBooDoBvpL}]
+		%-----------------------------------------------------------
+		Soit \( x\in X\). Nous appliquons le point \ref{ITEMooHVWHooAVZsTf} avec \( y=0\), en nous souvenant que \( p(0)=0\) : \( | p(x)-p(0) |\leq p(x-0)\), c'est-à-dire \( 0\leq | p(x) |\leq p(x)\).
+		\spitem[Pour \ref{ITEMooQIGMooVNDakF}]
+		%-----------------------------------------------------------
+		Soient \( x,y\in \ker(p)\) ainsi que \( \alpha,\beta\in \eK\). En utilisant les points précédents,
+		\begin{equation}
+			0\leq p(\alpha x+\beta y)\leq | \alpha |p(x)+| \beta |p(y)=0.
+		\end{equation}
+		Vu que les inégalités commencent par \( 0\) et finissent par zéro, ce sont toutes les égalités, et en particulier \( p(\alpha x+\beta y)=0\).
+	\end{subproof}
+\end{proof}
+
+\begin{definition}[\cite{BIBooMGFTooLkfVxy}]		\label{DEFooNFOAooRAUuOk}
+	Soit un espace vectoriel complexe \( X\). Une application \(f \colon X\to \eC  \) est \defe{dominée}{dominée par une seminorme} par la seminorme \( p\) si pour tout \( x\) dans \( X\) nous avons \( | f(x) |\leq p(x)\).
+
+	Si \( M\) est un sous-espace vectoriel de \( X\), nous disons qu'une application \(f \colon M\to \eR  \) est \defe{dominée par le dessus}{dominée par le dessus} par la seminorme \( p\) si \( f(m)\leq p(m)\) pour tout \( m\in M\).
+\end{definition}
+
+\begin{lemma}[\cite{BIBooMGFTooLkfVxy}]		\label{LEMooKTSKooIteFGq}
+	Une application linéaire est dominée par une seminorme si et seulement si sa partie réelle est dominée par le dessus\footnote{Définition \ref{DEFooNFOAooRAUuOk}.}.
+\end{lemma}
+
+\begin{proof}
+	Soit une application linéaire \(f \colon X\to \eC  \). Nous la décomposons en parties réelles et imaginaires par
+	\begin{equation}
+		f(x)=u(x)+iv(x)
+	\end{equation}
+	où \( u\) et \( v\) sont des applications à valeurs réelles.
+
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( | f(x) |\leq p(x)\) pour tout \( x\in X\). Nous avons les majorations
+		\begin{equation}
+			u(x)\leq | u(x) |\leq | f(x) |\leq p(x).
+		\end{equation}
+
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( u(x)\leq p(x)\), et nous devons prouver que \( | f(x) |\leq p(x)\). Nous notons \( z=f(x)\). Si \( z=0\) nous avons évidemment \( | z |\leq p(x)\). Nous supposons que \( z\neq 0\). Nous avons\footnote{Notez que si on écrit \( z\) en coordonnées polaires \( z=re^{i\theta}\), le nombre \( z/| z |\) est \( e^{i\theta}\). Passez par les polaires pour simplifier les notations si cela vous chante, mais remarquez que le théorème \ref{PROPooRFMKooURhAQJ} n'arrive que dans longtemps.}
+		\begin{equation}
+			f(\frac{ | z | }{ z }x)=\frac{ | z | }{ z }f(x)=| z |.
+		\end{equation}
+		En particulier \( f(\frac{ | z | }{ z }x)\) est réel et est donc donné par \( u\) :
+		\begin{equation}
+			f(\frac{ | z | }{ z }x)=u(\frac{ | z | }{ z }x).
+		\end{equation}
+		Nous avons alors le calcul
+		\begin{equation}
+			r=f(\frac{ | z | }{ z }x)=u(\frac{ | z | }{ z }x)\leq p(\frac{ | z | }{ z }x)=\big| \frac{ | z | }{ z }\big|p(x) =p(x).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Fonctionnelle de Minkowski}
+%----------------------------------------------------
+
+\begin{definition}[\cite{BIBooTDEOooFNoMUV}]		\label{DEFooJQXHooGDaJtW}
+	Soient un espace vectoriel \( X\) et une seminorme \( p\) sur \( X\). Nous posons
+	\begin{subequations}
+		\begin{align}
+			\mathring{U}_p & =\{ x\in X\tq p(x)<1 \}      \\
+			U_p            & =\{ x\in X\tq p(x)\leq 1 \}.
+		\end{align}
+	\end{subequations}
+\end{definition}
+
+Notez qu'il n'y a aucune raison particulière de croie que \( U_p\) serait la fermeture de \( \mathring{U}_p\) parce que pour l'instant nous n'avons aucune topologie sur \( X\).
+
+\begin{definition}[Fonctionnelle de Minkowski\cite{BIBooTDEOooFNoMUV}]		\label{DEFooYQYBooRkAfjG}
+	Soient un espace vectoriel \( X\) ainsi qu'une partie \( A\subset X\). La \defe{fonctionnelle de Minkowski}{fonctionnelle de Minkowski} de \( A\) est l'application
+	\begin{equation}
+		\begin{aligned}
+			p_A\colon X & \to \eR                                         \\
+			x           & \mapsto \inf\{ \lambda >0\tq x\in \lambda A \}.
+		\end{aligned}
+	\end{equation}
+	Nous posons aussi \( p_A(x)=\infty\) si l'ensemble est vide.
+\end{definition}
+
+\begin{lemma}[\cite{BIBooTDEOooFNoMUV}]		\label{LEMooEIWEooPgoskd}
+	Soient un espace vectoriel \( X\) sur le corps \( \eK\) (\( \eR\) ou \( \eC\)) ainsi qu'une partie \( A\subset X\) qui est non vide, absorbante\footnote{Définition \ref{DEFooMNZJooSIAVGZ}.} et absolument convexe\footnote{Définition \ref{DEFooYSWJooPkcrJe}.}. Alors
+	\begin{enumerate}
+		\item
+		      La fonctionnelle de Minkowski \( p_A\) est une seminorme.
+		\item
+		      Nous avons\footnote{Avec les notations de \ref{DEFooJQXHooGDaJtW}.}
+		      \begin{equation}
+			      \mathring{U}_{p_A}\subset A\subset U_{p_A}.
+		      \end{equation}
+	\end{enumerate}
+	Note : le lemme \ref{LEMooFUXVooJumScW} donnera la même inclusion en mieux parce qu'il n'y aura pas besoin de l'\emph{absolue} convexité.
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{proofpart}
+		C'est une seminorme.
+	\end{proofpart}
+	\begin{subproof}
+		\spitem[\( p_A(x)<\infty\) pour tout \( x\)]
+		%-----------------------------------------------------------
+		Nous avons supposé que \( A\) est absorbant. Soit \( x\in X\). Il existe \( \rho>0\) tel que \( \lambda x\in A\) pour tout \( | \lambda |<\rho\). En particulier \( \rho x\in A\), et donc \( x\in \frac{1}{ \rho}A\). L'ensemble \( \{ \lambda >0\tq x\in \lambda A \}\) est donc non vide parce qu'il contient \( 1/\rho\). Nous en déduisons que \( p_A(x)\leq 1/\rho<\infty\).
+		\spitem[\( p_A(0)=0\)]
+		%-----------------------------------------------------------
+		Le lemme \ref{LEMooXKOTooLWDXhp} nous dit que \( 0\in A\), de telle sorte que \( 0 \in \lambda A\) pour tout \( \lambda>0\). Donc
+		\begin{equation}
+			p_A(0)=\inf\{ \lambda >0\tq 0\in \lambda A \}=0.
+		\end{equation}
+		\spitem[Condition pour \( \xi x\in \lambda A\)]		\label{SPITEMooGDCDooMBDsPB}
+		%-----------------------------------------------------------
+		Soit \( x\in X\). Nous prouvons que \( \xi x\in \lambda A\) si et seulement si \( x\in \frac{ \lambda }{ | \xi | }A\). En utilisant le lemme \ref{LEMooKBRIooUAAPXV}, nous avons
+		\begin{equation}
+			\lambda A=\frac{ \lambda }{ | \xi | }| \xi |A=\frac{ \lambda }{ | \xi | }\xi A.
+		\end{equation}
+		Donc \( \xi x\in \lambda A\) si et seulement si \( \xi x\in \frac{ \lambda }{ | \xi | }\xi A\) si et seulement si \( x\in \frac{ \lambda }{ | \xi | }A\).
+		\spitem[\( p_A(\xi x)=| \xi |p_A(x)\)]
+		%-----------------------------------------------------------
+		Soient \( x\in X\) et \( \xi\in \eK\) avec \( \xi\neq 0\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				p_A(\xi x) & =\inf\{ \lambda>0\tq \xi x\in \lambda A \}                                                                                          \\
+				           & =\inf\{ \lambda>0\tq x\in \frac{ \lambda }{ | \xi | }A \}                           & \text{par \ref{SPITEMooGDCDooMBDsPB}}         \\
+				           & =\inf\{ | \xi |\frac{ \lambda }{ | \xi | }>0\tq x\i \frac{ \lambda }{ | x | }A \}                                                   \\
+				           & =| \xi |\inf\{ \frac{ \lambda }{ | \xi | }>0\tq x\in\frac{ \lambda }{ | \xi | }A \}                                                 \\
+				           & =| \xi |\inf\{ \mu>0\tq x\in \mu A \}                                               & \text{cf. justif.}		\label{SUBEQooIHJHooWkXRtA} \\
+				           & =| \xi |p_A(x).
+			\end{align}
+		\end{subequations}
+		Pour \eqref{SUBEQooIHJHooWkXRtA}. Si \( \lambda\) prend toutes les valeurs strictement positives, alors \( \lambda/| \xi |\) aussi.
+		\spitem[\( p_A(x+y)\leq p_A(x)+p_A(y)\)]
+		%-----------------------------------------------------------
+		Soit \( \epsilon>0\). Nous notons \( S_A(x)=\{ \lambda>0 \tq x\in \lambda A \}\).
+
+		Vu que \( p_A(x)\) et \( p_A(y)\) sont définis comme des infimums, il existe \( \lambda,\mu>0\) tels que
+		\begin{subequations}
+			\begin{align}
+				\lambda & \leq p_A(x)+\epsilon \\
+				\mu     & \leq p_A(y)+\epsilon
+			\end{align}
+		\end{subequations}
+		avec \( x\in \lambda A\) et \( y\in \mu A\).
+
+		Vu que \( A\) est convexe, et vu que
+		\begin{equation}
+			\frac{ \lambda }{\lambda+\mu }+\frac{ \mu }{ \lambda+\mu }=1,
+		\end{equation}
+		pour tout \( z,z'\in A\) nous avons
+		\begin{equation}
+			\frac{ \lambda }{ \lambda+\mu }z+\frac{ \mu }{ \lambda+\mu }z'\in A,
+		\end{equation}
+		ou encore : \( \lambda z+\mu z'\in(\lambda+\mu)A\). En particulier pour \( z\) et \( z'\) choisis tels que \( \lambda z=x\) et \( \mu z'=y\) nous avons \( x+y\in (\lambda+\mu)A\). Nous avons alors
+		\begin{equation}
+			p_A(x+y)=\inf\{ \delta>0\tq x+y\in \delta A \}\leq \lambda+\mu\leq p_A(x)+p_A(y)+2\epsilon.
+		\end{equation}
+		Étant donné que \( \epsilon\) est arbitraire, nous avons prouvé que \( p_A(x+y)\leq p_A(x)+p_A(y)\).
+		\spitem[\( p_A\) est une seminorme]
+		%-----------------------------------------------------------
+		Nous avons prouvé toutes les conditions de la définition \ref{DefPNXlwmi}.
+	\end{subproof}
+	\begin{proofpart}
+		$\mathring{U}_{p_A}\subset A\subset U_{p_A}$
+	\end{proofpart}
+	\begin{subproof}
+		\spitem[Première inclusion]
+		%-----------------------------------------------------------
+		Soit \( x\in \mathring{U}_{p_A}\), c'est-à-dire \( p_A(x)<1\), ou encore
+		\begin{equation}
+			\inf\{ \lambda>0\tq x\in \lambda A \}<1.
+		\end{equation}
+		Donc il existe \( \lambda\in \mathopen[ 0,1\mathclose[\) tel que \( x\in \lambda A\). Vu que \( A\) est équilibré (ça fait partie d'être absolument convexe) et que \( \lambda<1\), nous avons \( \lambda A\subset A\). Bref,
+		\begin{equation}
+			x\in \lambda A\subset A.
+		\end{equation}
+		Cela prouver que \( x\in A\).
+		\spitem[Seconde inclusion]
+		%-----------------------------------------------------------
+		Soit \( x\in A\). Nous avons \( 1\in\{ \lambda >0\tq x\in \lambda A \}\), et donc
+		\begin{equation}
+			p_A(x)=\inf\{ \lambda >0\tq x\in \lambda A \}\leq 1,
+		\end{equation}
+		ce qui signifie que \( x\in U_{p_A}\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{BIBooBWHVooZEZECO}]			\label{LEMooFUXVooJumScW}
+	Soit un espace vectoriel topologique \( X\) ainsi qu'une partie convexe et absorbante \( A\). Alors
+	\begin{equation}
+		\{ x\in X\tq p_A(x)<1 \}\subset A\subset\{ x\in X\tq p_A(x)\leq 1 \}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous prouvons les deux inclusions séparément.
+	\begin{subproof}
+		\spitem[Première inclusion]
+		%-----------------------------------------------------------
+		Soit \( x\in X\) vérifiant \( p_A(x)<1\). Nous avons
+		\begin{equation}
+			\inf\{ \lambda>0\tq x\in \lambda A \}<1.
+		\end{equation}
+		Soit \( \lambda\in \mathopen] 0,1\mathclose[\) tel que \( x\in \lambda A\). En particulier \( x/\lambda\in A\). Étant donné que \( A\) est convexe et que \( 0\in A\) (toute partie absorbante contient \( 0\)), le segment joignant \( 0\) à \( x/\lambda\) est contenu dans \( A\). En particulier, nous avons
+		\begin{equation}
+			x=\lambda\left( \frac{ 1 }{ \lambda }x  \right)+(1-\lambda)0\in A
+		\end{equation}
+
+		\spitem[Seconde inclusion]
+		%-----------------------------------------------------------
+		Soit \( x\in A\). Nous avons évidemment
+		\begin{equation}
+			1\in\{ \lambda >0\tq x\in \lambda A \}.
+		\end{equation}
+		Donc \( p_A(x)=\inf\{ \lambda >0\tq x\in \lambda A \}\leq 1\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{BIBooTDEOooFNoMUV}]		\label{LEMooFWCIooVwGutp}
+	Soit une seminorme \( q\) sur l'espace vectoriel \( X\). Alors
+	\begin{enumerate}
+		\item
+		      \( \mathring{U}_q\) est absorbant.
+		\item
+		      \( \mathring{U}_q\) est absolument convexe.
+		\item
+		      \( q=p_{\mathring{U}_q}\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs points.
+	\begin{subproof}
+		\spitem[\( \mathring{U}_q\) est absorbant]
+		%-----------------------------------------------------------
+		Soit \( x\in X\). Nous devons montrer l'existence de \( \rho_x>0\) tel que pour tout \( | \lambda |<\rho_x\), nous ayons \( \lambda x\in \mathring{U}_q\).
+
+		Si \( q(x)=0\), alors \( q(\lambda x)=| \lambda |q(x)=0<1\) et donc n'importe quel \( \rho_x>0\) fait l'affaire.
+
+		Si \( q(x)>0\), alors il suffit de prendre \( \rho_x\in \mathopen] 0,1/q(x)\mathclose[\). En effet si \( | \lambda |<\rho_x\), nous avons
+		\begin{equation}
+			q(\lambda x)=| \lambda |q(x)\leq \frac{1}{ q(x)}q(x)=1,
+		\end{equation}
+		et donc \( \lambda x\in \mathring{U}_q\).
+		\spitem[\( \mathring{U}_q\) est équilibré]
+		%-----------------------------------------------------------
+		Soient \( | \alpha |\leq 1\), et \( x\in \mathring{U}_q\). Nous avons
+		\begin{equation}
+			q(\alpha x)=| \alpha |q(x)\leq q(x)<1.
+		\end{equation}
+		Donc \( \alpha x\in \mathring{U}_q\).
+		\spitem[\( \mathring{U}_q\) est convexe]
+		%-----------------------------------------------------------
+		Soient \( x,y\in \mathring{U}_q\) ainsi que \( t\in\mathopen[ 0,1\mathclose]\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				q\big( tx+(1-t)y \big) & \leq q(tx)+q\big( (1-t)y \big) \\
+				                       & =| t |q(x)+| 1-t |q(y)         \\
+				                       & \leq | t |+| 1-t |             \\
+				                       & =t+(1-t)                       \\
+				                       & =1.
+			\end{align}
+		\end{subequations}
+		Donc \( tx+(1-t)y\in \mathring{U}_q\).
+		\spitem[\( q=p_{\mathring{U}_q}\)]
+		%-----------------------------------------------------------
+		Soit \( x\in X\). Nous avons
+		\begin{equation}
+			p_{\mathring{U}_q}(x)=\inf\{ \lambda>0\tq x\in \lambda \mathring{U}_q \}=\inf\{ \lambda >0\tq q(x)<\lambda \}=q(x).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{BIBooMXJCooRrhgWM}]		\label{LEMooQSAJooCgPNnD}
+	Soit un espace vectoriel \( X\), ainsi qu'une seminorme \( p\) sur \( X\). Nous posons\footnote{Nous ne supposons pas de compatibilité particulière entre la topologie de \( X\) et \( p\). Donc à priori \( \bar B_p(0,1)\) n'est pas la fermeture de \( B_p(0,1)\). Si ça avait été le cas, nous aurions écrit \( \overline{B_p(0,1)}\).}
+	\begin{equation}
+		\begin{aligned}[]
+			B_p(0,1)      & =\{ x\in X\tq p(x)< 1 \}     \\
+			\bar B_p(0,1) & =\{ x\in X\tq p(x)\leq 1 \}.
+		\end{aligned}
+	\end{equation}
+	Alors pour tout \( \epsilon>0\) nous avons
+	\begin{equation}
+		\begin{aligned}[]
+			\epsilon B_p(0,1)     & =\{ x\in X\tq p(x)< \epsilon \}     \\
+			\epsilon\bar B_p(0,1) & =\{ x\in X\tq p(x)\leq \epsilon \}.
+		\end{aligned}
+	\end{equation}
+\end{lemma}
+
+
+\begin{proposition}[\cite{BIBooMXJCooRrhgWM,BIBooQQSCooIvsKRY}]		\label{PROPooDDURooJHfHLw}
+	Soit un espace vectoriel topologique \( X\), ainsi qu'une seminorme \( p\). Les faits suivants sont équivalents.
+	\begin{enumerate}
+		\item		\label{ITEMooCAOXooGNBeSB}
+		      \( p\) est continue.
+		\item		\label{ITEMooWWUSooEPkoWU}
+		      \( p\) est continue en \( 0\).
+		\item		\label{ITEMooPKFLooTRlKwo}
+		      \( B_p(0,1)\) est un voisinage de \( 0\).
+		\item		\label{ITEMooRTFZooUXUVnA}
+		      \( \bar B_p(0,1)\) est un voisinage de \( 0\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous prouvons les implications dans l'ordre cyclique \ref{ITEMooCAOXooGNBeSB} \( \Rightarrow\) \ref{ITEMooPKFLooTRlKwo} \( \Rightarrow\) \ref{ITEMooRTFZooUXUVnA} \( \Rightarrow\) \ref{ITEMooWWUSooEPkoWU} \( \Rightarrow\) \ref{ITEMooCAOXooGNBeSB}. Courage, c'est parti.
+	\begin{subproof}
+		\spitem[\ref{ITEMooCAOXooGNBeSB} \( \Rightarrow\) \ref{ITEMooPKFLooTRlKwo}]
+		%-----------------------------------------------------------
+		Nous avons
+		\begin{equation}
+			B_p(0,1)=\{ x\in X\tq p(x)<1 \}=p^{-1}\big( \mathopen] -\infty,1\mathclose[ \big).
+		\end{equation}
+		Vu que \( p\) est continue et que \( \mathopen] -\infty,1\mathclose[\) est ouvert, la partie \( B_p(0,1)\) est un ouvert contenant \( 0\).
+		\spitem[\ref{ITEMooPKFLooTRlKwo} \( \Rightarrow\) \ref{ITEMooRTFZooUXUVnA}]
+		%-----------------------------------------------------------
+		La partie \( \bar B_p(0,1)\) contient \( B_p(0,1)\) qui est un ouvert contenant \( 0\).
+		\spitem[\ref{ITEMooRTFZooUXUVnA} \( \Rightarrow\) \ref{ITEMooWWUSooEPkoWU}]
+		%-----------------------------------------------------------
+		Nous vérifions la condition de la définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr}. D'abord \( p(0)=0\). Nous considérons donc un ouvert \( W\) de \( \eR\) contenant \( 0\), et nous allons chercher un voisinage \( V\) de \( 0\) dans \( X\) tel que \( p(V)\subset W\).
+
+		Soit \( r>0\) tel que \( B(0,r)\subset W\). Par hypothèse \( \bar B_p(0,1)\) est un voisinage de \( 0\). Comme la topologie de \( X\) est vectorielle, la partie \( \epsilon\bar B_p(0,1)\) est également un voisinage de \( 0\) pour tout \( \epsilon>0\). Montrons que
+		\begin{equation}
+			p\Big( \frac{ r }{ 2 }\bar B_p(0,1) \Big)\subset B(0,r)\subset W.
+		\end{equation}
+		Soit \( x\in \frac{ r }{ 2 }\bar B_p(0,1)\). Nous avons \( p(x)\leq r/2\) par le lemme \ref{LEMooQSAJooCgPNnD}, et donc \( p(x)\in B(0,r)\subset W\).
+
+		Bref, en posant \( V=\frac{ r }{ 2 }\bar B_p(0,1)\), nous avons bien \( p(V)\subset W\).
+		\spitem[\ref{ITEMooWWUSooEPkoWU} \( \Rightarrow\) \ref{ITEMooCAOXooGNBeSB}]
+		%-----------------------------------------------------------
+		Nous supposons que \( p\) est continue en \( 0\in X\) et nous devons prouver qu'elle est continue en \( a\in X\). Soient \( x\in X\), et \( r>0\). Pour prouver la continuité de \( p\) en \( x\) (définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr}), nous devons prouver l'existence d'un voisinage \( V\) de \( x\) tel que \( f(V)\subset B\big( p(x),r \big)\).
+
+		Pour \( \epsilon>0\) nous posons
+		\begin{equation}
+			U_{\epsilon}=p^{-1}\big( B(0,\epsilon) \big).
+		\end{equation}
+		Cette partie est ouverte parce que \( p\) est continue en \( 0\) et que \( p(0)=0\). Nous allons prouver que si \( \epsilon\) est assez petit, alors \( p(x+E_{\epsilon})\subset B\big( p(x),r \big)\).
+
+		Soit \( z\in U_{\epsilon}\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				| p(x)-p(x+z) | & \leq p\big( x-(x+y) \big) & \text{lem.\ref{LEMooHTOAooGmRGZL}} \\
+				                & =p(-z)                                                         \\
+				                & =p(z)                                                          \\
+				                & \subset B(0,\epsilon).
+			\end{align}
+		\end{subequations}
+		Donc \( p(x+z)\in B\big( p(x),\epsilon \big)\) et nous avons montré que \( p(x+U_{\epsilon})\subset B\big( p(x),\epsilon \big)\). Donc en prenant \( \epsilon\leq r\), c'est bon.
+	\end{subproof}
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Topologie des seminormes}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Soit \( (p_i)_{i\in I}\) une famille de seminormes sur \( E\). Il existe plusieurs façons de construire une topologie sur \( E\) à partir des seminormes.
+
+%-------------------------------------------------------
+\subsection{Topologie initiale des seminormes}
+%----------------------------------------------------
+
+
+La première topologie qui nous tombe sous la main est celle de la topologie initiale\footnote{La topologie minimale rendant les \( p_i\) continue, définition \ref{PROPooGOEVooZBAOQh}.} des \( p_i\).
+
+\begin{proposition}[\cite{MonCerveau,BIBooIFYVooBKjWAH}]		\label{PROPooVUYTooJXkRYW}
+	Soient un espace vectoriel \( X\) et une seminorme \(p \colon X\to \eR \). Soit \( x_0\in X\). En posant
+	\begin{equation}
+		B_{\epsilon}=\{ x\in X\tq | p(x)-p(x_0) |<\epsilon \},
+	\end{equation}
+	l'ensemble \( \mB= \{ B_{\epsilon} \}_{\epsilon>0}\) est une base de voisinages de \( x_0\) pour la topologie initiale de \( p\).
+\end{proposition}
+
+\begin{proof}
+	Nous nommons \( \tau\) la topologie initiale de \( p\) sur \( X\). Posons \( y_0=p(x_0)\). Une base de voisinages de \( y_0\) (dans \( \eR\)) est \( \{ B(y_0,\epsilon) \}_{\epsilon>0}\). Donc la proposition \ref{PROPooOPJCooAIUXCW} dit qu'une base de voisinages de \( x_0\) dans \( X\) est donnée par
+	\begin{equation}
+		\{ p^{-1}\Big( B\big( p(x_0),\epsilon \big) \Big) \}_{\epsilon>0}.
+	\end{equation}
+	Or nous avons
+	\begin{subequations}
+		\begin{align}
+			p^{-1}\Big( B\big( p(x_0),\epsilon \big) \Big) & =\{ x\in X\tq p(x)\in B\big( p(x_0),\epsilon \big) \} \\
+			                                               & =\{ x\in X\tq | p(x)-p(x_0) |<\epsilon \}.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+La topologie initiale des seminormes n'est pas une bonne idée, parce qu'elle ne donne en général pas lieu à une structure d'espace vectoriel topologique\footnote{Espace vectoriel topologique, définition \ref{DefEVTopologique}.}.
+
+\begin{example}[\cite{BIBooIFYVooBKjWAH}]
+	Nous considérons \( \eR\) avec la seminorme
+	\begin{equation}
+		\begin{aligned}
+			p\colon \eR & \to \eR        \\
+			x           & \mapsto | x |.
+		\end{aligned}
+	\end{equation}
+	Nous considérons sur \( \eR\) la topologie initiale de cette seminorme. En vertu de la proposition \ref{PROPooVUYTooJXkRYW}, une base de topologie en \( x_0\in \eR\) est donnée par les parties
+	\begin{equation}
+		B_{\epsilon}(x_0)=\{ x\in \eR\tq \big|  | x |-| x_0 |  \big|<\epsilon \}.
+	\end{equation}
+
+	Considérons la suite constante \( x_k=1\). Le nombre \( 1\) est évidemment une limite de \( (x_k)\). Mais en y regardant bien, le nombre \( -1\) est également une limite. En effet une base de voisinages autour de \( -1\) est donnée par
+	\begin{equation}
+		B_{\epsilon}(-1)=\{ x\in \eR\tq \big|   | x |-1 \big|<\epsilon \}.
+	\end{equation}
+	Et donc \( 1\in B_{\epsilon}(-1)\) pour tout \( \epsilon\).
+
+	Si \( \eR\) muni de cette topologie était un espace vectoriel topologique, la proposition \ref{PROPooJYLVooPpLWFX} dirait que \( -1+1=0\) serait une limite de \( (x_k+x_k)\). La suite \( (x_k+x_k)\) est la suite constante égale à \( 2\). Or un voisinage typique autour de \( 0\) est
+	\begin{equation}
+		B_{\epsilon}(0)=\{ x\in \eR\rq | x |<\epsilon \}.
+	\end{equation}
+	Autant dire que la suite \( (x_k+x_k)=2\) n'y rentre pas souvent.
+\end{example}
+
+%-------------------------------------------------------
+\subsection{Topologie avec des boules}
+%----------------------------------------------------
+
+\begin{definition}		\label{DEFooROXMooCpmTwa}
+	Soit un espace vectoriel \( E\) sur lequel nous avons des seminormes \( \{ p_i \}_{i\in I}\). Pour chaque \( i\in I\) nous posons
+	\begin{equation}
+		B_i(x,r)=\{ y\in E\tq p_i(y-x)<r \}.
+	\end{equation}
+	Si \( J\) est une partie finie de \( I\), nous considérons les parties
+	\begin{equation}
+		B_J(x,r)=\{ y\in E\tq p_j(y-x)<r\,\forall j\in J \}.
+	\end{equation}
+\end{definition}
+
+\begin{lemma}		\label{LEMooCNRNooWCejjZ}
+	Soit un espace vectoriel \( E\) sur lequel nous avons des seminormes \( \{ p_i \}_{i\in I}\). Pour chaque \( a\in E\), nous considérons la translation
+	\begin{equation}
+		\begin{aligned}
+			t_a\colon E & \to E        \\
+			x           & \mapsto x+a.
+		\end{aligned}
+	\end{equation}
+	Pour toute partie finie \( J\subset I\) nous avons
+	\begin{equation}
+		t_a\big( B_J(x,r) \big)=B_J(x+a,r)
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	D'une part si \( y\in B_J(x+a,r)\), nous avons \( p_j(y-x-a)<r\) pour tout \( j\in J\). Dans ce cas, \( y-a\in B_j(x,r)\), et nous avons donc bien \( y=t_a(y-a)\in t_a\big( B_J(x,r) \big)\).
+
+	Pour l'inclusion dans l'autre sens, c'est le même raisonnement.
+\end{proof}
+
+\begin{propositionDef}[Topologie et seminormes\cite{SOdaAdx,MUbDonp,BIBooTDEOooFNoMUV}]      \label{DEFooZTKAooWYUyDa}
+	Soient des seminormes \( \{ p_i \}_{i\in I}\) sur l'espace vectoriel \( E\). Nous posons\footnote{Nous ajoutons explicitement l'ensemble vide parce que nous n'avons pas envie de vérifier des propriétés du genre \( \forall x\in\emptyset\), blah blah\ldots Mais bon. En principe c'est pas obligatoire parce que l'ensemble vide est obtenu avec \( r=0\).}
+	\begin{equation}		\label{EQooNHMNooGJSeOr}
+		\tau_B=\{ \mO\subset E\tq \forall x\in\mO, \exists J,r\tq B_J(x,r)\subset \mO \}\cup\{ \emptyset \}.
+	\end{equation}
+	Dans cette formule, les \( J\) sont des parties finies de \( I\).
+
+	Pour chaque \( i\in I\) et \( x\in E\) nous posons
+	\begin{equation}
+		\begin{aligned}
+			p_{i,x}\colon E & \to \eR           \\
+			y               & \mapsto p_i(y-x).
+		\end{aligned}
+	\end{equation}
+
+	Alors
+	\begin{enumerate}
+		\item		\label{ITEMooQPVRooKyOBPi}
+		      Les parties \( \tau_B\) forment une topologie sur \( E\).
+		\item \label{ITEMooQIYWooAmPCdI}
+		      Les applications \(p_i \colon E\to \eR  \) sont continues pour \( (E,\tau_B)\).
+		\item		\label{ITEMooYGNWooYhBzSa}
+		      Les applications \( p_{i,x} \colon E\to \eR  \) sont continues pour \( \tau_B\).
+		\item		\label{ITEMooMUUZooBKBhsH}
+		      Si \( \tau\) est une topologie sur \( E\) dans laquelle tous les \( p_{i,x}\) sont continus, alors \( \tau_B\subset\tau\).
+		\item		\label{ITEMooEGVFooNqDkdN}
+		      L'espace topologique \( (E,\tau_B)\) est un espace vectoriel topologique localement convexe\footnote{Définition \ref{DefPJokvAa}.}.
+	\end{enumerate}
+
+	Cette topologie est la \defe{topologie des seminormes}{topologie des seminormes} sur \( E\).
+\end{propositionDef}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooQPVRooKyOBPi}]
+		%-----------------------------------------------------------
+		Vérifier les trois conditions de la définition \ref{DefTopologieGene}. D'abord \( E\) et \( \emptyset\) sont dans \( \tau_B\). Ensuite si \( \{ \mO_s \}_{s\in T}\) sont des éléments de \( \tau_B\), nous considérons \( x\in \bigcup_{s\in T}\mO_s\), et nous montrons que \( x\) est contenu dans une boule contenue dans \( \bigcup_{s\in T}\mO_s\). Nous considérons \( s\in T\) tel que \( x\in \mO_s\). Vu que \( \mO_s\in\tau_B\), il existe \( J,r\) tels que
+		\begin{equation}
+			x\in B_J(x,r)\subset\mO_s\subset\bigcup_{s\in T}\mO_s.
+		\end{equation}
+		Enfin pour l'intersection finie, l'intersection \( B_J(x,r)\cap B_{J'}(x,r')\) contient la boule \( B_{J\cup J'}(x,\delta)\) avec \( \delta=\min\{ r,r' \}\).
+		\spitem[Pour \ref{ITEMooQIYWooAmPCdI}]
+		%-----------------------------------------------------------
+		Pour montrer que \( p_i\) est continue, nous montrons que l'image inverse d'un ouvert est ouverte. Soit \( a\in \eR\) ainsi que \( r>0\). Nous considérons l'ouvert \( B(a,r)\) et nous montrons que \( p_i^{-1}\big( B(a,r) \big)\in \tau_B\). Soit \( x\in p_i^{-1}\big( B(a,r) \big)\). Nous allons montrer que si \( \delta\) est assez petit, alors \( B_i(x,\delta)\subset p_i^{-1}\big( B(a,r) \big)\).
+
+		Soit \( y\in B_i(x,\delta)\). Par définition nous avons \( p_i(y-x)<\delta\), et par le lemme \ref{LEMooHTOAooGmRGZL},
+		\begin{equation}
+			| p_i(y)-p_i(x) |\leq p_i(x-y)<\delta.
+		\end{equation}
+
+		D'autre part, vu que \( x\in p_i^{-1}\big( B(a,r) \big)\), nous avons \( | p_i(x)-a |<r\). Nous considérons \( s>0\) tel que \( | p_i(x)-a |<r-s\). Avec tout ça,
+		\begin{subequations}
+			\begin{align}
+				| p_i(y)-a | & \leq | p_i(y)-p_i(x) |+| p_i(x)-a | \\
+				             & <\delta+r-s                         \\
+				             & <r
+			\end{align}
+		\end{subequations}
+		dès que nous choisissons \( \delta<s\).
+
+		Nous avons donc montré que \( p_i(y)\in B(a,r)\), et donc que \( p_i\big( x,\delta \big)\subset B(a,r)\). Donc \( p_i\) est continue.
+		\spitem[Les translations sont continues]
+		%-----------------------------------------------------------
+		Nous considérons les translations \(t_a \colon E\to E  \) données par \( t_a(x)=x+a\). Soit un ouvert \( \mO\) dans \( E\). Nous prouvons que \( t^{-1}_a(\mO)=t_{-a}(\mO)\) est ouvert. Pour cela nous considérons un élément \( x\in t_{-a}(\mO)\) et nous prouvons qu'il existe une boule autour de \( x\) contenue dans \( t_{-a}(\mO)\). Soit \( y\in \mO\) tel que \( x=y-a\); vu que \( \mO\) est ouvert, il existe \( r,J\) tels que \( B_J(y,r)\subset \mO\). Nous avons alors
+		\begin{equation}
+			t_{-a}\big( B_J(y,r) \big)\subset t_{-a}(\mO),
+		\end{equation}
+		et donc
+		\begin{equation}
+			B_J(y-a,r)=t_{-a}\big( B_J(y,r) \big)\subset t_{-a}(\mO).
+		\end{equation}
+		\spitem[Pour \ref{ITEMooYGNWooYhBzSa}]
+		%-----------------------------------------------------------
+		Nous avons \( p_{i,x}=p_i\circ t_{-x}\). Nous avons déjà prouvé que \( p_i\) et \( t_{-x}\) sont continues.
+		\spitem[Pour \ref{ITEMooMUUZooBKBhsH}]
+		%-----------------------------------------------------------
+		Soit une topologie \( \tau\) telle que toutes les applications \( p_{i,a}\) sont continues. Nous avons
+		\begin{equation}
+			B_i(a,r)=\{ y\in E\tq p_i(y-a)<r \}=\{ y\in E\tq p_{i,a}(y)<r \}=p_{i,a}^{-1}\big( B(0,r) \big).
+		\end{equation}
+		Étant donné que \( B(0,r)\) est ouverte et que \( p_{i,a}\) est continue, la partie \( p_{i,a}^{-1}\big( B(0,r) \big)\) est ouverte. Donc \( \tau\) contient toutes les boules de la forme \( B_i(a,r)\).
+
+		Vu que \( \tau\) est une topologie, elle contient toutes les intersections finies d'ouvert. En particulier si \( J\) est une partie finie de \( I\), \( \tau\) doit contenir toutes les boules de la forme \( B_J(a,r)\).
+
+		\spitem[Pour \ref{ITEMooEGVFooNqDkdN}]
+		%-----------------------------------------------------------
+		Le point \ref{ITEMooEGVFooNqDkdN}, ce sont les points suivants.
+
+		\spitem[L'addition est continue]
+		%-----------------------------------------------------------
+		Nous prouvons que l'application
+		\begin{equation}
+			\begin{aligned}
+				a\colon E\times E & \to E       \\
+				(x,y)             & \mapsto x+y
+			\end{aligned}
+		\end{equation}
+		est continue pour la topologie \( \tau_B\). Soit \( \mO\in \tau_B\); nous devons prouver que la partie
+		\begin{equation}
+			a^{-1}(\mO)=\{ (x,y)\in E\times E\tq x+y\in \mO \}
+		\end{equation}
+		est ouvert dans \( E\times E\) (topologie produit). Soit \( (x_0,y_0)\in a^{-1}(\mO)\). Vu que \( x_0+y_0\in\mO\), il existe un \( r\) et un \( i\in I\) tels que \( B_i(x_0+y_0,r)\subset\mO\).
+
+		Nous prouvons que si \( \epsilon\) est assez petit,
+		\begin{equation}
+			B_i(x_0,\epsilon)\times B_i(y_0,\epsilon)\subset a^{-1}\Big( B_i(x_0,y_0,r) \Big)\subset a^{-1}(\mO).
+		\end{equation}
+		Nous avons
+		\begin{subequations}
+			\begin{align}
+				p_i\big( (x+y)-(x_0+y_0) \big) & = p_i\big( (x-x_0)+(y-y_0) \big)                                                    \\
+				                               & \leq p_i(x-x_0)+p_i(y-y_0)       & \text{def. \ref{DefPNXlwmi}\ref{ItemSHnimhDiii}} \\
+				                               & \leq 2\epsilon.
+			\end{align}
+		\end{subequations}
+		En prenant \( \epsilon<r/2\) nous avons donc \( a(x,y)\in B_i\big( x_0+y_0,r \big)\subset \mO\).
+
+		\spitem[La multiplication est continue]
+		%-----------------------------------------------------------
+		Nous considérons la multiplication
+		\begin{equation}
+			\begin{aligned}
+				m\colon \eK\times E & \to E              \\
+				(\lambda,x)         & \mapsto \lambda x,
+			\end{aligned}
+		\end{equation}
+		et nous montrons que c'est une application continue. Soit un ouvert \( \mO\subset E\), nous considérons \( (\lambda_0,x_0)\in m^{-1}(\mO)\), et nous allons prouver que \( \eK\times E\) contient un ouvert contenant \( (\lambda_0,x_0)\) et contenu dans \( m^{-1}(\mO)\).
+
+		Il existe \( r>0\) et \( i\in I\) tels que \( B_i(\lambda_0x_0,r)\subset \mO\). Nous allons trouver une valeur de \( \epsilon>0\) telle que l'ouvert \(  B(\lambda_0,\epsilon)\times B_i(x_0,\epsilon)\) vérifie
+		\begin{equation}
+			(\lambda_0,x_0)\in B(\lambda_0,\epsilon)\times B_i(x_0,\epsilon)\subset m^{-1} \big(  B_i(\lambda_0x_0,r) \big)\subset m^{-1}(\mO).
+		\end{equation}
+		Soit \( (\lambda,x)\in B(\lambda_0,\epsilon)\times B_i(x_0,\epsilon)\). Nous avons \( | \lambda |<| \lambda_0 |+\epsilon\) et le calcul suivant :
+		\begin{subequations}
+			\begin{align}
+				p_i(\lambda x-\lambda_0x_0) & =p_i(\lambda x-\lambda x_0+\lambda x_0-\lambda_0x_0)                                                                              \\
+				                            & =p_i\big( \lambda(x-x_0)+(\lambda-\lambda_0)x_0 \big)                                                                             \\
+				                            & \leq | \lambda |p_i(x-x_0)+| \lambda-\lambda_0 |p_i(x_0)                                                                          \\
+				                            & \leq \big( | \lambda_0 |+\epsilon \big)\underbrace{p_i(x-x_0)}_{<\epsilon}+\underbrace{| \lambda-\lambda_0 |}_{<\epsilon}p_i(x_0) \\
+				                            & <\epsilon\big( | \lambda_0 |+\epsilon \big)+\epsilon p_i(x_0)                                                                     \\
+				                            & =\epsilon^2+\epsilon\big( | \lambda_0 |+p_i(x_0) \big).
+			\end{align}
+		\end{subequations}
+		Il n'y a pas de problèmes pour trouver un \( \epsilon>0\) pour que le tout soit plus petit que \( r\).
+		\spitem[Espace vectoriel topologique]
+		%-----------------------------------------------------------
+		Nous avons prouvé que \( (E,\tau_B)\) était un espace vectoriel topologique.
+		\spitem[Localement convexe en \( 0\)]
+		%-----------------------------------------------------------
+		Nous montrons que \( B_i(0,r)\) est convexe. Soient \( x,y\in B_i(0,r)\) ainsi que \( t\in\mathopen[ 0,1\mathclose]\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				p_i\big( tx+(1-t)y \big) & \leq | t |p_i(x)+| 1-t |p_i(y) \\
+				                         & \leq tr+(1-t)r                 \\
+				                         & =r.
+			\end{align}
+		\end{subequations}
+		Donc \( tx+(1-t)y\in B_i(0,r)\).
+		\spitem[Localement convexe]
+		%-----------------------------------------------------------
+		Soit \( a\in E\), et montrons que \( B_i(a,r)\) est convexe. Si \( t_a\) est la translation de vecteur \( a\), le lemme \ref{LEMooCNRNooWCejjZ} donne \( B_i(a,r)=t_a\big( B_i(0,r) \big)\). Soient \( x,y\in B_i(a,r)\). Nous avons \( x-a,y-a\in B_i(0,r)\), et vu que la boule \( B_i(0,r)\) est convexe,
+		\begin{equation}
+			t(x-a)+(1-t)(y-a)\in B_i(0,r).
+		\end{equation}
+		Un tout petit peu de calcul :
+		\begin{subequations}
+			\begin{align}
+				t(x-a)+(1-t)(y-a) & =tx+(1-t)y-ta-(1-t)a \\
+				                  & =tx+(1-t)y-a.
+			\end{align}
+		\end{subequations}
+		Cela prouve que \( tx+(1-t)y-a\in B_i(0,r)\), et donc que \( tx+(1-t)y\in B_i(a,r)\), ce qu'il fallait.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooTDEOooFNoMUV,MonCerveau}]		\label{PROPooNAFAooShzixo}
+	Soit un espace vectoriel \( X\) ainsi qu'un ensemble de seminormes \( \{ p_i \}_{i\in I}\). Il existe une unique topologie \( \tau\) sur \( X\) telle que
+	\begin{enumerate}
+		\item
+		      \( (X,\tau)\) est un espace vectoriel topologique localement convexe.
+		\item
+		      Une base de topologie de \( \tau\) en \( 0\) est donnée par
+		      \begin{equation}
+			      \mB_0=\{   B_J(0,\epsilon)\tq \text{\( J\) est fini dans \( I\)}, \epsilon>0   \}.
+		      \end{equation}
+	\end{enumerate}
+	Cette topologie est la topologie \( \tau_B\) donnée en \eqref{EQooNHMNooGJSeOr}.
+\end{proposition}
+
+\begin{proof}
+	En ce qui concerne l'existence, la topologie \( \tau_B\) donnée dans la proposition \ref{DEFooZTKAooWYUyDa} fait l'affaire. Nous démontrons l'unicité. Soit une topologie \( \tau\) sur \( X\) vérifiant les conditions. Nous allons prouver que \( \tau=\tau_B\).
+
+	En deux inclusions.
+	\begin{subproof}
+		\spitem[\( \tau_B\subset \tau\)]
+		%-----------------------------------------------------------
+		La topologie \( \tau_B\) a une base formée de parties de la forme \( B_J(x,r)\). Nous montrons que ces parties sont dans \( \tau\). En utilisant le lemme \ref{LEMooCNRNooWCejjZ} et la proposition \ref{PROPooJYLVooPpLWFX}, nous avons
+		\begin{equation}
+			B_J(x,r)=B_J(0,r)+x\subset \mB_0+x\subset \tau.
+		\end{equation}
+		Vu que \( \tau \) contient une base de la topologie \( \tau_B\), nous avons \( \tau_B\subset \tau\).
+
+		\spitem[\( \tau\subset\tau_B\)]
+		%-----------------------------------------------------------
+		Les \( B_J(0,r)\) qui forment une base de topologie de \( \tau\) en \( 0\) sont des éléments de \( \tau_B\). Les \( B_J(x,r)=B_J(0,r)+x\) forment une base de topologie de \( \tau\) en \( x\), et font aussi partie de \( \tau_B\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition} \label{PropQPzGKVk}
+	Soit un ensemble \( E\) muni de la topologie des seminormes \( \{ p_i \}_{i\in I}\). Une suite \( (x_n)\) dans \( E\) converge vers \( x\) si et seulement si pour tout \( i\in I\),
+	\begin{equation}
+		p_i(x-x_n)\to 0.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Si la suite \( (x_n)\) converge\footnote{Définition~\ref{DefXSnbhZX}.} vers \( x\), alors pour tout ouvert \( \mO\) autour de \( x\), il existe un \( N\) tel que si \( n\geq N\), alors \( x_n\in\mO\). En particulier pour tout \( j\) et pour tout \( \epsilon>0\), il doit exister un \( n\geq N_j\) tel que \( x_n\in B_j(x,\epsilon)\).
+
+	Voyons l'implication inverse. Soit \( \epsilon>0\). Pour tout \( i\in I\), il existe un \( N_i\) tel que \( n\geq N_i\) implique \( p_i(x-x_n)\leq \epsilon\). Si \( \mO\) est un ouvert, il doit contenir une boule du type \( B_J(x,r)\) pour un certain ensemble fini \( J\subset I\).
+
+	En prenant \( N=\max\{ N_j\tq j\in J \}\), nous avons \( p_j(x-x_n)\leq \epsilon\) pour tout \( j\) et donc \( x_n\in B_J(x,r)\).
+\end{proof}
+
+\begin{proposition}[\cite{BIBooYNCOooWCsUzj, MonCerveau}]       \label{PROPooGXGQooLRTwvH}
+	Un espace vectoriel muni de seminormes sur un corps valué est un espace vectoriel topologique\footnote{Définition \ref{DefEVTopologique}.}.
+\end{proposition}
+
+\begin{proof}
+	Soit un espace vectoriel \( E\) muni des seminormes \( \{ p_i \}_{i\in I}\). Sa topologie est donnée par la définition \ref{DEFooZTKAooWYUyDa}. Sur le corps \( \eK\), nous avons la topologie métrique \ref{PROPooAWAKooKRmbGT}.
+	\begin{subproof}
+		\spitem[Somme]
+
+		Nous commençons par prouver que
+		\begin{equation}
+			\begin{aligned}
+				f\colon E\times E & \to E       \\
+				(x,y)             & \mapsto x+y
+			\end{aligned}
+		\end{equation}
+		est continue. Soit un ouvert \( A\) de \( E\); nous allons prouver que \( f^{-1}(A)\) est ouvert dans \( E\times E\) en prouvant qu'il contient un ouvert autour de chacun de ses points (théorème \ref{ThoPartieOUvpartouv}).
+
+		Soit \( (a,b)\in f^{-1}(A)\). Vu que \( A\) est ouvert dans \( (E,\{ p_i \}_{i\in I})\), par définition de la topologie, il existe \( i\in I\) et \( r>0\) tels que \( B_i\big( f(a,b),r \big)\subset A\). Il nous faut un ouvert \(U\in \tau_E\) autour de \( a\) et un ouvert \( V\in\tau_E\) autour de \( b\) tels que \( f(U\times V)\subset A\). Posons \( U=B_i(a,\epsilon)\) et \( V=B_i(b,\epsilon)\), considérons \( x\in U\), \( y\in V\) et montrons que \( f(x,y)\in B_i\big( f(a,b),r \big)\). Nous avons
+
+		\begin{subequations}
+			\begin{align}
+				p_i\big( f(x,y)-f(a,b) \big) & =p_i\big( (x-a)+(y-b) \big)                                                    \\
+				                             & \leq p_i(x-a)+p_i(y-b)      & \text{def. \ref{DefPNXlwmi}\ref{ItemSHnimhDiii}} \\
+				                             & <2\epsilon.
+			\end{align}
+		\end{subequations}
+		En choisissant \( \epsilon<r/2\) c'est bon.
+
+		\spitem[Produit]
+		Nous nommons \( \eK\) le corps de l'espace vectoriel \( E\). Nous devons voir que l'application
+		\begin{equation}
+			\begin{aligned}
+				f\colon \eK\times E & \to E             \\
+				(\lambda,x)         & \mapsto \lambda x
+			\end{aligned}
+		\end{equation}
+		est continue.
+
+		La topologie sur \( \eK\) est sa topologie métrique, c'est-à-dire la topologie de son unique seminorme \( \lambda\mapsto | \lambda |\). La topologie sur \( \eK\times E\) est donc celle des seminormes
+		\begin{equation}        \label{EQooFSBEooWDsHot}
+			\begin{aligned}
+				q_i\colon \eK\times E & \to \eR                                \\
+				(\lambda,x)           & \mapsto \max\{ | \lambda |, p_i(x) \}.
+			\end{aligned}
+		\end{equation}
+		Nous pouvons donc reprendre le même cheminement que celui que nous avons pris pour la somme. Soit un ouvert \( \mO\) dans \( E\); nous considérons \( (\lambda, a)\in f^{-1}(\mO)\). Vu que \( f(\lambda, a)\in \mO\), et que \( \mO\) est ouvert pour la topologie des \( \{ p_i \}_{i\in I}\), il existe\footnote{Voir la définition \ref{DEFooZTKAooWYUyDa}.} \( i\in I\) et \( r>0\) tel que \( B_i\big( f(\lambda,a), r \big)\subset\mO\).
+
+
+
+
+		Nous allons prouver qu'il existe \( s>0\) tel que
+		\begin{equation}
+			f\Big( B_i\big( (\lambda,a),s \big) \Big)\subset B_i(\lambda a, r).
+		\end{equation}
+		Ici encore, à gauche \( B_i\) est la boule pour la seminorme \( q_i\) donnée en \eqref{EQooFSBEooWDsHot}. Soit \( (\mu,x)\in B_i\big( (\lambda,a),s \big)\), c'est-à-dire
+		\begin{equation}
+			q_i\big( (\mu,x)-(\lambda,a) \big)=\max\{ | \lambda-\mu |,p_i(a-x) \}<s.
+		\end{equation}
+		En particulier nous avons les deux inégalités
+		\begin{subequations}
+			\begin{numcases}{}
+				| \lambda-\mu |<s,\\
+				p_i(a-x)<s.
+			\end{numcases}
+		\end{subequations}
+		Nous avons le calcul suivant :
+		\begin{subequations}        \label{SUBEQSooHWMSooBJsRgy}
+			\begin{align}
+				p_i\big( f(\mu,x),\lambda a \big) & =p_i(\mu x-\lambda a)                                  \\
+				                                  & =p_i(\mu x-\lambda x+\lambda x-\lambda a)              \\
+				                                  & \leq p_i\big( (\mu-\lambda)x \big)+| \lambda |p_i(x-a) \\
+				                                  & =| \mu-\lambda |p_i(x)+| \lambda |p_i(x-a)             \\
+				                                  & \leq sp_i(x)+| \lambda |s.
+			\end{align}
+		\end{subequations}
+		C'est le moment de chercher une majoration pour \( p_i(x)\) :
+		\begin{equation}
+			p_i(x)=p_i\big( a+(x-a) \big)\leq p_i(a)+p_i(x-a)\leq p_i(a)+s.
+		\end{equation}
+		Nous pouvons continuer la majoration \eqref{SUBEQSooHWMSooBJsRgy} tout en ne nous posant pas de questions sur le sens de l'inégalité parce que nous cherchons \( s>0\) :
+		\begin{subequations}
+			\begin{align}
+				p_i\big( f(\mu,x),\lambda a \big) & \leq sp_i(x)+| \lambda |s               \\
+				                                  & \leq s\big( p_i(a)+s \big)+| \lambda |s \\
+				                                  & =s^2+\big( | \lambda |+p_i(a) \big)s.
+			\end{align}
+		\end{subequations}
+
+		Nous devons prouver l'existence d'un \( s>0\) tel que \( s^2+\big( | \lambda |+p_i(a) \big)s < r\); autrement dit nous devons résoudre l'inéquation
+		\begin{equation}
+			s^2+\big( | \lambda |+p_i(a) \big)s-r< 0.
+		\end{equation}
+		Nous sommes en présence d'un polynôme du second degré en \( s\) qui vaut \( -r<0\) en \( s=0\). Par continuité, il existe un voisinage de \( s=0\) dans \( \eR\) sur lequel le polynôme reste strictement négatif. Il suffit de prendre un \( s\) positif dans ce voisinage.
+	\end{subproof}
+\end{proof}
+
+
+La proposition suivante est pratiquement une copie de la proposition~\ref{PropQZRNpMn}.
+\begin{proposition} \label{PropNGjQnqF}
+	Soit \( f\colon \eR\to (E,p_i)_{i\in I}\) une application. Nous avons équivalence entre
+	\begin{enumerate}
+		\item   \label{ItemHNxGMpCi}
+		      la fonction \( f\) est continue en \( t_0\in \eR\),
+		      \item\label{ItemHNxGMpCii}
+		      si \( W\) est un voisinage ouvert de \( f(t_0)\) il existe un voisinage ouvert \( V\) de \( t_0\) (dans \( \eR\)) tel que \( f(V)\subset W\),
+		      \item\label{ItemHNxGMpCiii}
+		      pour tout \( i\in I\) et \( \epsilon>0\) il existe \( \delta>0\) tel que
+		      \begin{equation}
+			      f\big( B(t_0,\delta) \big)\subset B_i\big( f(t_0),\epsilon \big).
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	L'équivalence~\ref{ItemHNxGMpCi} \( \Leftrightarrow\)~\ref{ItemHNxGMpCii} est la définition~\ref{DefOLNtrxB}.
+
+	Prouvons~\ref{ItemHNxGMpCii} \( \Rightarrow\)~\ref{ItemHNxGMpCiii}. Soient \( i\in I\) et \( \epsilon>0\). Considérons la boule \( B_i\big( f(t_0),\epsilon \big)\), qui est un ouvert de \( E\) contenant \( f(t_0)\). Il existe donc un ouvert \( V\) autour de \( t_0\) tel que \( f(V)\subset B_i\big( f(t_0),\epsilon \big)\). En particulier \( V\) contient une boule \( B(t_0,\delta)\) et nous avons
+	\begin{equation}
+		f\big( B(t_0,\delta) \big)\subset f(V)\subset B_i\big( f(t_0),\epsilon \big).
+	\end{equation}
+
+	Prouvons~\ref{ItemHNxGMpCiii} \( \Rightarrow\)~\ref{ItemHNxGMpCii}. Soit \( W\) un ouvert autour de \( f(t_0)\). Il existe un \( i\in I\) et \( \epsilon>0\) tel que \( B_i\big( f(t_0),\epsilon \big)\subset W\). Nous avons alors un \( \delta>0\) tel que
+	\begin{equation}
+		f\big( B(t_0,\delta) \big)\subset B_i\big( f(t_0),\epsilon \big)\subset W.
+	\end{equation}
+\end{proof}
+
+Lorsqu'on a un espace \( E\) muni d'une quantité dénombrable de seminormes \( \{ p_k \}_{k\in I}\) nous définissons l'écart\footnote{Dans le cas de \( E=\swD(K)\), la première seminorme est numérotée à zéro, donc il faudra poser \( d(\varphi_1,\varphi_2)\) avec \( p_{k-1}\) au lieu de \( p_k\).}
+\begin{equation}        \label{EqAAghiUR}
+	d(x,y)=\sup_{k\geq 1}\min\big\{  \frac{1}{ k },p_k(x-y) \big\}.
+\end{equation}
+Notons que cet écart est invariant par translation au sens où pour tout \( x,y,h\) dans \( E\) nous avons
+\begin{equation}
+	d(x+h,y+h)=\sup_{k\geq 1}\min\big\{ \frac{1}{ k },p_k(x-y) \big\}=d(x,y).
+\end{equation}
+
+%-------------------------------------------------------
+\subsection{Seminorme et métrisable}
+%----------------------------------------------------
+
+\begin{definition}[\cite{BIBooTDEOooFNoMUV}]
+	Soit un espace vectoriel topologique \( X\). Une famille \( \{ p_i \}_{i\in I}\) de seminormes est \defe{séparante}{seminormes séparantes} si pour tout \( x\in X\setminus\{ 0 \}\), il existe \( i\in I\) tel que \( p_i(x)\neq 0\).
+\end{definition}
+
+\begin{proposition}     \label{PROPooMJEQooHtIyeX}
+	Si \( X\) est un espace topologique dont la topologie est donnée par une famille dénombrable et séparante de seminormes\footnote{Topologie des seminormes, proposition \ref{DEFooZTKAooWYUyDa}.}, alors il est métrisable\footnote{Métrisable, définition \ref{DEFooGLTUooJjaSmI}.}.
+\end{proposition}
+
+\begin{proof}
+	Nous utilisons le théorème \ref{THOooAGBXooZnvQLK}. Nous considérons les seminormes \( \{ p_i \}_{i\in I}\) où \( I\) est dénombrable.
+	\begin{subproof}
+		\spitem[Base dénombrable]
+		%-----------------------------------------------------------
+		Vu que \( I\) est dénombrable, l'ensemble des parties finies de \( I\) est dénombrable\footnote{Lemme \ref{LEMooKFBAooHxgOsg}.}. Pour \( a\in X\), l'ensemble des boules de la forme \( B_J(a,1/n)\) avec \( n\in \eN\) et \( J\) fini dans \( I\) est donc dénombrable et forme une base de topologie en \( a\).
+		\spitem[Singleton fermé]
+		%-----------------------------------------------------------
+		Prouvons que \( \{ 0 \}\) est fermé. Pour cela nous prouvons que le complémentaire est ouvert. Soit \( a\neq 0\). Vu que \( \{ p_i \}_{i\in I}\) est séparante, il existe \( i\in I\) tel que \( p_i(a)\neq 0\). L'application \( p_i\) est continue par \ref{DEFooZTKAooWYUyDa}\ref{ITEMooQIYWooAmPCdI}. Donc pour tout \( \epsilon>0\), la partie \( p_i^{-1}\Big(  B\big( p_i(a),\epsilon \big)  \Big)\) est un ouvert contenant \( a\).
+
+		En prenant \( 0<\epsilon<p_i(a)\) et en tenant compte du fait que \( p_i(0)=0 \),
+		\begin{equation}
+			| p_i(0)-p_i(a) |=| p_i(a) |>\epsilon,
+		\end{equation}
+		et donc \( p_i(0)\not\in B\big( p_i(a),\epsilon \big)\) ou encore
+		\begin{equation}
+			0\not\in p_i^{-1}\Big( B\big( p_i(a),\epsilon \big) \Big).
+		\end{equation}
+		Bref, l'ouvert \( p_i^{-1}\Big(  B\big( p_i(a),\epsilon \big)  \Big)\) contient \( a\) mais pas \( 0\).
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Boules et topologie}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{DRcmzcB}] \label{PropLOwUvCO}
+	La topologie donnée par les boules
+	\begin{equation}    \label{EqGHfYIlQ}
+		B_k(a,r)=\{ x\in E\tq \forall\,k\leq \frac{1}{ r },p_k(x-a)<r\}
+	\end{equation}
+	est la même que celle «usuelle» donnée par les seminormes. En disant «la même» nous entendons le fait que les ouverts sont les mêmes : \( A\) est ouvert pour une des deux topologies si et seulement si il est ouvert pour l'autre.
+\end{proposition}
+
+\begin{proof}
+	Pour cette démonstration nous allons préfixer par \( d\) les notions topologiques issues des boules \eqref{EqGHfYIlQ} et par \( P\) celle des seminormes : \( P\)-continue, \( d\)-ouvert, etc.
+
+	D'abord nous avons
+	\begin{equation}    \label{EqRIURpQo}
+		B(a,r)=\bigcap_{k\leq \frac{1}{ k }}B_k(a,r).
+	\end{equation}
+	Si \( \mO\) est un \( d\)-ouvert, il contient une \( d\)-boule autour de chacun de ses points. Or d'après la formule \eqref{EqRIURpQo}, une \( d\)-boule est une intersection \emph{finie} de \( P\)-ouverts et donc est un \( P\)-ouvert par définition. Donc \( \mO\) contient un \( P\)-ouvert autour de tous ses points et est donc \( P\)-ouvert.
+
+	Inversement nous supposons que \( \mO\) est un \( P\)-ouvert. Commençons par prouver que les seminormes \( p_k\) sont \( d\)-continues. En effet soient \( k\in \eN\), \( \epsilon\leq \frac{1}{ k }\) et \( x,y\in E\) tels que \( d(x,y)\leq \epsilon\); nous avons
+	\begin{subequations}
+		\begin{align}
+			| p_k(y)-p_k(x) | & \leq p_k(x-y)                     \\
+			                  & =\min\{ \frac{1}{ k },p_k(x-y) \} \\
+			                  & \leq d(x,y)                       \\
+			                  & \leq \epsilon.
+		\end{align}
+	\end{subequations}
+	Montrons à présent que \( \mO\) est \( d\)-ouverte. Si \( a\in\mO\), il existe \( k\) et \( r\) tels que \( B_k(a,r)\subset\mO\). Soit \( x\in B_k(a,r)\). Montrons que si \( \epsilon\) est suffisamment petit, la \( d\)-boule \( B(x,\epsilon)\) est incluse à \( B_k(a,r)\). Pour cela prenons \( y\in B(x,\epsilon)\); nous avons
+	\begin{equation}
+		\big| p_k(a-x)-p_k(a-y) \big|\leq d(x,y)\leq \epsilon.
+	\end{equation}
+	Par conséquent le nombre \( p_k(a-y)\) est dans l'intervalle
+	\begin{equation}
+		p_k(a-x)\pm\epsilon
+	\end{equation}
+	et il suffit de prendre \( \epsilon<\frac{ r-p_k(a-x) }{2}\).
+\end{proof}
+
+\begin{theorem}[\cite{BIBooAUHXooAmMGig}]		\label{THOooTKWYooYYiBNa}
+	Soit une famille de seminormes \( \{ p_i \}_{i\in I}\) sur \( E\). Pour une seminorme \( q\) sur \( E\), les conditions suivantes sont équivalentes.
+	\begin{enumerate}
+		\item		\label{ITEMooHKNYooARXiXs}
+		      L'application \(q \colon E\to \eR  \) est continue.
+		\item		\label{ITEMooBBNCooGwHrUI}
+		      Il existe une partie finie \( J\) de \( I\) et un nombre \( M\in \eR\) tels que
+		      \begin{equation}
+			      q(x)\leq M\max_{j\in J}p_j(x)
+		      \end{equation}
+		      pour tout \( x\in E\).
+		\item		\label{ITEMooWXSWooVfvSUy}
+		      L'application \( q\) est bornée dans un voisinage de \( 0\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En trois parties.
+	\begin{subproof}
+		\spitem[\ref{ITEMooHKNYooARXiXs} \( \Rightarrow\) \ref{ITEMooWXSWooVfvSUy}]
+		%-----------------------------------------------------------
+
+		C'est la proposition \ref{PROPooNOHQooTqBQLk}.
+
+		\spitem[\ref{ITEMooWXSWooVfvSUy} \( \Rightarrow\) \ref{ITEMooBBNCooGwHrUI}]
+		%-----------------------------------------------------------
+
+		Soit un voisinage \( V\) de \( 0\) sur lequel \( q\) est borné par \( \mu\). Ce voisinage contient une boule centrée en \( 0\). Par la définition \ref{DEFooZTKAooWYUyDa}, nous avons une partie finie \( J\subset I\) et \( r>0\) tels que \( q\) est bornée par \( \mu\) sur \( B_J(0,r)\).
+
+		Soit \( x\in E\). Nous posons
+		\begin{equation}
+			t\in\mathopen] 0,\min_{j\in J}\frac{ r }{ p_j(x) }\mathclose[.
+		\end{equation}
+		Pour \( l\in J\) nous avons alors
+		\begin{subequations}
+			\begin{align}
+				p_l(tx) & =tp_l(x)                                 \\
+				        & <\min_{j\in J}\frac{ r }{ p_j(x) }p_l(x) \\
+				        & <\frac{ r }{ p_l(x) }p_l(x)              \\
+				        & =r.
+			\end{align}
+		\end{subequations}
+		Donc \( tx\in B_J(0,r)\). En ce qui concerne \( q\) nous avons alors \( tq(x)=q(tx)<\mu\) et donc
+		\begin{equation}
+			q(x)<\frac{ \mu }{ t }.
+		\end{equation}
+		En utilisant la proposition \ref{PROPooVIDJooSzXPLP},
+		\begin{subequations}
+			\begin{align}
+				q(x) & <\mu\frac{1}{  t}                                \\
+				     & =\mu\frac{1}{ \min_{j\in J}\frac{ r }{ p_j(x) }} \\
+				     & =\mu\max_{j\in J}\frac{ p_j(x) }{ r }            \\
+				     & =\frac{ \mu }{ r }\max_{j\in J}p_j(x).
+			\end{align}
+		\end{subequations}
+		En posant \( M=\mu/r\) nous avons
+		\begin{equation}
+			q(x)\leq M\max_{j\in J}p_j(x),
+		\end{equation}
+		comme demandé.
+
+		\spitem[\ref{ITEMooBBNCooGwHrUI} \( \Rightarrow\) \ref{ITEMooHKNYooARXiXs}]
+		%-----------------------------------------------------------
+
+		Nous avons une partie finie \( J\subset I\) et \( M\in \eR\) tels que \( q(x)\leq M\max_{j\in J}p_j(x)\) pour tout \( x\in E\).
+
+		Soit \( x\in E\). Nous prouvons que \( q\) est continue en \( x\). Pour tout \( y\) nous avons
+		\begin{equation}
+			| q(y)-q(x) |\leq q(x-y)\leq M\max_{j\in J}p_j(x-y).
+		\end{equation}
+		Soit \( \epsilon>0\). Si nous prenons \( y\in B_J(x,\epsilon)\), alors nous avons
+		\begin{equation}
+			| q(y)-q(x) |\leq M\epsilon.
+		\end{equation}
+		Cela prouve que \( q\) est continue en \( x\), et donc continue sur \( E\) par la proposition \ref{PROPooOVKEooCkJmmO}.
+	\end{subproof}
+\end{proof}
+
+\begin{corollary}[\cite{BIBooAUHXooAmMGig}]		\label{CORooSLUCooRaZyYK}
+	Soient une famille de seminormes \( P\) sur \( E\), ainsi qu'une famille \( Q\) de seminormes sur \( F\). Une application linéaire \(f \colon E\to F  \) est continue si et seulement si \( q\circ f\) est une seminorme continue sur \( E\) pour tout \( q\in Q\).
+\end{corollary}
+
+\begin{corollary}[\cite{BIBooAUHXooAmMGig}]	\label{CORooGMVHooNgYOaY}
+	Soient des seminormes \( P=\{ p_i \}_{i\in I}\) sur \( E\). Soit une application linéaire \(f \colon E\to \eK  \). Elle est continue si et seulement si il existe une partie finie \( J\subset I\) et \( M\in \eR\) tels que
+	\begin{equation}
+		| f(x) |<M\max_{j\in J}p_j(x)
+	\end{equation}
+	pour tout \( x\in E\).
+\end{corollary}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Norme induite sur la topologie quotient}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+\begin{propositionDef}[Norme quotient\cite{BIBooFOQNooHXrkip}]       \label{PROPooDUAVooEfrEGI}
+	Soient un espace vectoriel topologique normé \( E\), et un sous-espace \( M\). Pour \( \alpha\in E/M\) nous posons
+	\begin{equation}
+		\| \alpha \|_{E/M}=d(\alpha,M)
+	\end{equation}
+	où \( d(\alpha,M)\) est la distance entre la partie \( \alpha\) et la partie \( M\).
+
+	Nous avons :
+	\begin{enumerate}
+		\item       \label{ITEMooQOZXooZiZdTn}
+		      La formule \( \| \alpha \|=\inf_{u\in \alpha}\| u \|_E\).
+		\item       \label{ITEMooFEOGooTTDgCj}
+		      L'opération \( \| . \|\) est une seminorme\footnote{Définition \ref{DefPNXlwmi}.} sur l'espace vectoriel \( E/M\).
+		\item       \label{ITEMooWCCSooMeqQHL}
+		      C'est une norme si et seulement si \( M\) est fermé.
+	\end{enumerate}
+	Nous parlons de \defe{(semi)norme quotient}{norme quotient}\index{seminorme quotient}.
+\end{propositionDef}
+
+\begin{proof}
+	Point par point.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooQOZXooZiZdTn}]
+		% -------------------------------------------------------------------------------------------- 
+		La définition de \( \| \alpha \|\) est \( \| \alpha \|=d(\alpha,M)=\inf_{_{\substack{u\in \alpha\\v\in M}}}\| u-v \|\). Mais
+		\begin{equation}
+			\{ u-v\tq u\in \alpha,v\in M \}=\alpha,
+		\end{equation}
+		donc
+		\begin{equation}
+			d(\alpha,M)=\inf_{u\in \alpha}\| u \|.
+		\end{equation}
+		\spitem[Pour \ref{ITEMooFEOGooTTDgCj}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous devons vérifier les propriétés de la définition \ref{DefPNXlwmi}. D'abord en tant que distance, nous avons \( \| \alpha \|\geq 0\) pour tout \( \alpha\).
+
+		Si \( \lambda\in \eR\) nous avons aussi
+		\begin{equation}
+			\| \lambda\alpha \|=\inf_{u\in \lambda \alpha}\| u \|=\inf_{u\in \alpha}\| \lambda u \|=| \lambda |\inf_{u\in \alpha}\| u \|=| \lambda |\| \alpha \|.
+		\end{equation}
+		Enfin si \( \alpha,\beta\in E/M\), nous avons
+		\begin{equation}
+			\inf_{u\in \alpha+\beta}\| u \|\leq \inf_{_{\substack{u\in \alpha\\v\in \beta}}}\| u+v \|\leq \inf_{_{\substack{u\in \alpha\\v\in \beta}}}\big( \| u \|+\| v \| \big)=\inf_{u\in \alpha}\| u \|+\inf_{v\in \beta}\| v \|=\| \alpha \|+\| b \|.
+		\end{equation}
+		\spitem[Pour \ref{ITEMooWCCSooMeqQHL} en supposant que \( M\) est fermé]
+		% -------------------------------------------------------------------------------------------- 
+		Nous supposons que \( M\) est fermé et nous montrons que \( \| . \|\) est une norme. Nous supposons donc que \( d(\alpha,M)=0\) et nous prouvons que \( \alpha=0\). Soit \( x\in E\) tel que \( \alpha=[x]\). Nous avons donc
+		\begin{equation}
+			\alpha=\{ x-v\tq v\in M \}
+		\end{equation}
+		Notez qu'on a écrit \( -v\) et non \( +v\). De toutes façons \( M\) est vectoriel; ça ne change rien et ça tombera mieux plus bas.
+
+		Nous avons donc
+		\begin{equation}
+			0=\| \alpha \|=d(\alpha,M)=\inf_{u\in \alpha}\| u \|=\inf_{v\in M}\| x-v \|.
+		\end{equation}
+		Il existe donc une suite \( (v_n)\) dans \( M\) telle que \( \| x-v_n \|\to 0\). La suite est donc convergente : \( v_n\to x\). Comme \( M\) est fermé, la proposition \ref{PropLFBXIjt} nous indique que la limite doit être dans \( M\). Autrement dit : \( x\in M\). Par définition des classes nous avons alors \( \alpha=[x]=0\).
+		\spitem[Pour \ref{ITEMooWCCSooMeqQHL} en supposant que \( \| . \|\) est une norme]
+		% -------------------------------------------------------------------------------------------- 
+
+		Supposons que \( M\) n'est pas fermé. Il ne contient donc pas son adhérence. Soit \( a\in \Adh(M)\setminus M\). Vu que \( M\) est vectoriel, nous supposons que \( a\neq 0\).
+
+		Étant donné que \( a\) est dans l'adhérence de \( M\) nous avons \( d(a,M)=0\) et donc \( \| [a] \|=0\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{probleme}    %PROBooFFVXooFekobt
+	Je ne suis pas certain de la proposition \ref{PROPooKLXSooSOUZkc}. Peut-être qu'il faut ajouter l'hypothèse que \( M\) est fermé.
+\end{probleme}
+
+\begin{proposition}     \label{PROPooKLXSooSOUZkc}
+	Soient un espace vectoriel topologique normé \( E\), et un sous-espace \( M\). La topologie quotient\footnote{Topologie quotient, définition \ref{DEFooHWSYooZZLXQU}.} sur \( E/M\) est la même que celle de la seminorme induite\footnote{Voir la définition \ref{PROPooDUAVooEfrEGI}.}.
+	%TODOooHGMIooWkeHQK. Prouver ça. J'en mets plusieurs
+	% Quand c'est démontré, on peut supprimer PROBooFFVXooFekobt
+\end{proposition}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Espace dual}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous parlerons plus en détail d'espace dual d'un espace normé en la section~\ref{SECooKOJNooQVawFY}.
+
+\begin{lemmaDef}  \label{DefHUelCDD}
+	Soient \( F\) un espace métrique et \( E\) un espace topologique vectoriel. Pour chaque \( v\in E\), l'application
+	\begin{equation}
+		\begin{aligned}
+			p_v\colon \aL(E,F) & \to \eR              \\
+			T                  & \mapsto \| T(v) \|_F
+		\end{aligned}
+	\end{equation}
+	est une seminorme.
+
+	La \defe{topologie \( *\)-faible}{topologie!\( *\)-faible} sur \( \aL(E,F)\) est la topologie des ces seminormes.
+\end{lemmaDef}
+
+\begin{normaltext}
+	C'est une famille de seminormes indicées par les éléments de \( E\). Si \( E\) est un espace métrique, c'est cette topologie qui sera considérée sur son dual topologique\index{topologie!sur dual topologique} \( E'\) des applications continues \( E\to \eR\).
+
+	La topologie ainsi définie est,  dans l'idée, celle qui sera choisie pour les espaces de distributions, voir la définition~\ref{DefASmjVaT}.
+\end{normaltext}
+
+La proposition suivante indique qu'elle est un peu la topologie de la convergence ponctuelle.
+\begin{proposition}     \label{PROPooQWOOooUBhBiG}
+	Soient \( E\) un espace muni de la topologie des seminormes \( \{ p_i \}_{i\in I}\) et \( F\) un espace métrique. Soient une suite \( (T_n)\) dans \( \aL(E,F)\) et \( T\in \aL(E,F)\). Nous avons \( T_n\stackrel{*}{\longrightarrow}T\) si et seulement si \( T_n(v)\stackrel{F}{\longrightarrow}T(v)\) pour tout \( v\in E\).
+\end{proposition}
+
+\begin{proof}
+	Nous avons équivalence entre les lignes suivantes :
+	\begin{subequations}
+		\begin{align}
+			T_n\stackrel{*}{\longrightarrow}T                                         \\
+			p_v(T_n-T)\to 0\,\forall v\in E &  & \text{proposition~\ref{PropQPzGKVk}} \\
+			\| T_n(v)-T(v) \|_F\to 0\,\forall v\in E                                  \\
+			T_n(v)\stackrel{E}{\longrightarrow}T(v).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Espace \texorpdfstring{\(  C^k(\eR,E')\)}{C(R,E')}}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous revenons à nos histoires de limites de la définition~\ref{DefXSnbhZX}.
+\begin{proposition}[Unicité de la limite dans un dual topologique] \label{PropRBCiHbz}
+	Soient \( E\) un espace métrique et \( E'\) son dual topologique muni de sa topologie de la définition~\ref{DefHUelCDD}. Il y a unicité de l'élément de \( E'\) vers lequel une fonction \( u\colon \eR\to E' \) peut converger.
+\end{proposition}
+
+\begin{proof}
+	Soit \( T\) un élément vers lequel \( u_t\) converge lorsque \( t\to t_0\). Soient \( \epsilon>0\) et \( x\in E\). La boule \( B_x(T,\epsilon)\) de \( E'\) subordonnée à la norme \( p_x\) et centrée en \( T\) est un ouvert de \( E'\). Étant donné que \( u\) converge vers \( T\) il existe \( \delta>0\) tel que \( u_t\in B_x(T,\epsilon)\) dès que \( | t-t_0 |\leq \delta\). Nous avons donc, pour tout \( x\in E\), la limite (dans \( \eR\)) :
+	\begin{equation}
+		\lim_{t\to t_0} u_t(x)=T(x).
+	\end{equation}
+	Cela prouve que la convergence de \( u\) vers \( T\) implique l'existence pour tout \( x\) de la limite de \( u_t(x)\) dans \( \eR\). Si \( T'\) est un autre élément vers lequel \( u_t\) converge, nous avons par le même raisonnement que
+	\begin{equation}
+		\lim_{t\to t_0} u_t(x)=T'(x).
+	\end{equation}
+	Par unicité de la limite dans \( \eR\)
+	%TODOooMBQCooBRmDMM : prouver ça et mettre une référence.
+	nous devons alors avoir \( T(x)=T'(x)\) pour tout \( x\), c'est-à-dire \( T=T'\).
+\end{proof}
+
+\begin{proposition} \label{PropVKSNflB}
+	Soit \( u\colon \eR\to E'\) une fonction continue. Alors
+	\begin{enumerate}
+		\item   \label{ItemLSJjfZdi}
+		      pour tout \( x\in E\) la fonction \( t\mapsto u_t(x)\) est continue,
+		      \item\label{ItemLSJjfZdii}
+		      pour tout \( x\in E\) nous avons la limite dans \( \eR\)
+		      \begin{equation}    \label{EqWKdFPVO}
+			      \lim_{t\to t_0} u_t(x)=u_{t_0}(x),
+		      \end{equation}
+		      \item\label{ItemLSJjfZdiii}
+		      nous avons la limite dans \( E'\)
+		      \begin{equation}
+			      \lim_{t\to t_0} u_t=u_{t_0}.
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Soient \( x\in E\) et \( \epsilon> 0\). Par la proposition~\ref{PropNGjQnqF} la continuité de \( u\) donne un \( \delta>0\) tel que
+	\begin{equation}
+		u_{B(t_0,\delta)}\subset B_x(u_{t_0},\epsilon).
+	\end{equation}
+	C'est-à-dire que si \( | t-t_0 |\leq \delta\) nous avons
+	\begin{equation}
+		\big| u_{t_0}(x)-u_t(x) \big|<\epsilon,
+	\end{equation}
+	ce qui signifie bien que la fonction \( t\mapsto u_t(x)\) est continue en tant que fonction \( \eR\to \eR\). Cela est le point~\ref{ItemLSJjfZdi}. Le théorème de limite et continuité dans \( \eR\) nous donne immédiatement la limite \eqref{EqWKdFPVO}.
+
+	Nous passons à la preuve du point~\ref{ItemLSJjfZdiii}. Soit \( \mO\) un ouvert de \( E'\) contenant \( u_{t_0}\). Il existe donc un \( i\in I\) et \( \epsilon>0\) tel que \( B_i(u_{t_0},\epsilon)\subset \mO\). Étant donné que \( u\) est continue, il existe \( \delta>0\) tel que
+	\begin{equation}
+		u_{B(t_0,\delta)}\subset B_i(u_{t_0},\epsilon)\subset \mO.
+	\end{equation}
+	Cela signifie bien que
+	\begin{equation}
+		| t-t_0 |\leq \delta\Rightarrow u_t\in\mO,
+	\end{equation}
+	c'est-à-dire que nous avons la limite \( \lim_{t\to t_0} u_t=u_{t_0}\) dans \( E'\). Pour dire cela nous avons utilisé la définition~\ref{DefYNVoWBx} de la limite et le résultat d'unicité~\ref{PropRBCiHbz}.
+\end{proof}
+
+\begin{definition}  \label{DefDZsypWu}
+	Si nous avons une application \( u\colon \eR\to E'\) nous considérons sa \defe{dérivée}{dérivée!fonction à valeurs dans \( E'\)} donnée par la limite
+	\begin{equation}
+		u'_{t_0}=\lim_{t\to t_0} \frac{ u_t-u_{t_0} }{ t-t_0 }.
+	\end{equation}
+	Cela est un nouvel élément de \( E'\) (pour peu que la limite existe). La fonction \( u'\colon \eR\to E'\) ainsi définie peut être continue ou non. Cela nous permet de définir les espaces \( C^k(\eR,E')\) et \( C^{\infty}(\eR,E')\).
+\end{definition}
+Une des principales utilisations que nous ferons de ces espaces seront les espaces de fonctions à valeurs dans les distributions tempérées dont nous parlerons dans la section~\ref{SecTEgDVWO}.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Espaces de Baire}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooRTXFooCMCaHC}
+	Soit un espace topologique \( X\). Une partie \( A\) est un ouvert dense si et seulement si \( X\setminus A\) est un fermé d'intérieur vide.
+\end{lemma}
+
+\begin{proof}
+	Nous savons, par définition que le complémentaire d'un ouvert est fermé et inversement. Soient une partie \( A\subset X\) ainsi que son complémentaire \( F=X\setminus A\). Nous avons équivalence entre :
+	\begin{itemize}
+		\item
+		      \( F\) est d'intérieur vide,
+		\item
+		      aucun ouvert non vide n'est contenu dans \( F\)
+		\item
+		      tout ouvert non vide intersecte \( X\setminus F\)
+		\item
+		      tout ouvert non vide intersecte \( A\)
+		\item
+		      \( A\) est dense dans \( X\).
+	\end{itemize}
+\end{proof}
+
+\begin{propositionDef}[Espace de Baire\cite{MonCerveau,BIBooDMFTooNXLOZr,SIdTHwW}]	 \label{DEFooYEMNooLSXLYa}
+	Soit un espace topologique \( X\). Les propriétés suivantes sont équivalentes.
+	\begin{enumerate}
+		\item		\label{ITEMooBHOOooKyToBw}
+		      Toute intersection dénombrable d'ouverts denses est dense.
+		\item		\label{ITEMooFMDAooUPaULP}
+		      Toute union dénombrable de fermés d'intérieurs vides est d'intérieur vide.
+		\item		\label{ITEMooKSNYooIgzLey}
+		      Le seul ouvert maigre\footnote{Définition \ref{DEFooYKHUooPGZvLz}} de \( X\) est le vide.
+	\end{enumerate}
+	Quand \( X\) vérifie ces propriétés, nous disons que \( X\) est une \defe{espace de Baire}{espace de Baire}.
+\end{propositionDef}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+
+		\spitem[\ref{ITEMooBHOOooKyToBw} implique \ref{ITEMooFMDAooUPaULP}]
+		%-----------------------------------------------------------
+		Soient des fermés d'intérieur vide \( (F_i)_{i\in \eN}\). Nous posons \( A_i=X\setminus F_i\) et nous utilisons le lemme \ref{LEMooMDTPooAhmYqv} pour dire que
+		\begin{equation}
+			\bigcup_iF_i=\bigcup_i(X\setminus A_i)=X\setminus\big( \bigcap_iA_i \big).
+		\end{equation}
+		Par hypothèse, \( \bigcap_iA_i\) est un ouvert dense. Par le lemme \ref{LEMooRTXFooCMCaHC} son complémentaire est un fermé d'intérieur vide.
+
+		\spitem[\ref{ITEMooFMDAooUPaULP} implique \ref{ITEMooBHOOooKyToBw}]
+		%-----------------------------------------------------------
+		Soient des ouverts denses \( (A_i)_{i\in \eN}\). En notant \( F_i=X\setminus A_i\), nous avons
+		\begin{equation}
+			\bigcap_{i\in \eN} A_i=\bigcap_{i\in \eN}(X\setminus F_i)=X\setminus\big( \bigcup_{i\in \eN}F_i \big).
+		\end{equation}
+		Par hypothèse \( \bigcup_iF_i\) est un fermé d'intérieur vide. Donc son complémentaire est un ouvert dense.
+
+		\spitem[\ref{ITEMooBHOOooKyToBw} implique \ref{ITEMooKSNYooIgzLey}]
+		%-----------------------------------------------------------
+		Soient un espace de Baire \( X\) et un ouvert maigre \( A\subset X\). Nous avons \( A=\bigcup_{i\in \eN}A_i\) où les \( A_i\) sont des parties nulle part denses\footnote{Définition \ref{DEFooTYNBooIaQINO}.}. Nous devons montrer que \( A=\emptyset\).
+
+		Vu que \( A_i\) est nulle part dense, \( \Int(\bar A_i)=\emptyset\) pour tout \( i\). Nous avons :
+		\begin{equation}
+			\Int(A)\subset\Int\big( \bigcup_iA_i \big)\subset\Int\big( \bigcup_{i}\bar A_i \big)=\emptyset
+		\end{equation}
+		parce que \( X\) étant de Baire, l'union de fermés d'intérieur vide est d'intérieur vide. Nous avons prouvé que \( \Int(A)=\emptyset\). Mais \( A\) étant ouvert nous avons \( \Int(A)=A\).
+
+		\spitem[\ref{ITEMooKSNYooIgzLey} implique \ref{ITEMooBHOOooKyToBw}]
+		%-----------------------------------------------------------
+		Nous supposons que tout ouvert maigre de \( X\) est vide. Soient des fermés \( (F_i)_{i\in \eN}\) d'intérieurs vides. Nous considérons la partie \( A= \Int\big( \bigcup_{i\in \eN}F_i \big)\).
+		\begin{subproof}
+			\spitem[\( A\) est ouvert]
+			%-----------------------------------------------------------
+			Parce que c'est l'intérieur d'une partie.
+
+			\spitem[\( F_i\) est nulle part dense]
+			%-----------------------------------------------------------
+			Vu que \( F_i\) est fermé nous avons \( \bar F_i=F_i\) et donc \( \Int(\bar F_i)=\Int(F_i)=\emptyset\).
+		\end{subproof}
+		Donc l'ouvert \( A\) est une réunion dénombrable de parties nulle part denses. C'est donc un ouvert maigre, et nous en déduisons que \( A=\emptyset\).
+
+		Par \ref{DEFooYEMNooLSXLYa} nous savons que \( X\) est de Baire.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooEFASooXGJiBG,BIBooUZAMooXuhUBs}]	\label{PROPooGVTDooRMaEUK}
+	Plusieurs choses à propos d'espaces de Baire.
+	\begin{enumerate}
+		\item		\label{ITEMooYZKYooEvcLTx}
+		      Tout espace de Baire Hausdorff\footnote{Définition \ref{DefYFmfjjm}.} sans point isolé est non dénombrable.
+		\item		\label{ITEMooBZCAooIYQpvO}
+		      Si \( U\) est une partie ouverte d'un espace de Baire \( X\), alors toute partie maigre dans \( U\) (topologie induite) est maigre dans \( X\).
+		\item		\label{ITEMooGHMTooDYUicn}
+		      Si \( U\) est ouvert dans l'espace de Baire \( X\), alors \( U\) est un espace de Baire pour la topologie induite.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Plusieurs points.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooYZKYooEvcLTx}]
+		%-----------------------------------------------------------
+		Soit un espace de Baire Hausdorff. Un singleton est fermé par le lemme \ref{LEMooXNSCooQYkmAN} et d'intérieur vide. En effet si \( U\) est un ouvert contenant \( a\), il contient forcément autre chose que \( a\) parce que \( X\) n'a pas de points isolés. Donc il n'y a pas d'ouverts contenus dans \( \{ a \}\).
+
+		Une réunion dénombrable de fermés d'intérieurs vides est d'intérieur vide parce que \( X\) est de Baire (définition \ref{DEFooYEMNooLSXLYa}). Donc \( X\) n'est pas une union dénombrable de singletons.
+
+		\spitem[Pour \ref{ITEMooBZCAooIYQpvO}]
+		%-----------------------------------------------------------
+		Soit une partie maigre \( M\) de \( X\). Nous avons \( M=\bigcup_{i\in \eN}F_i\) où \( F_i\) est fermé d'intérieur vide dans \( U\). Le lemme \ref{LEMooXCNDooDkbaip} nous dit que
+		\begin{equation}
+			\Int_X\big( \Adh_X(F_i) \big)=\emptyset.
+		\end{equation}
+		En particulier \( \Adh_X(F_i)\cap U\) est nulle part dense dans \( X\) (définition \ref{DEFooTYNBooIaQINO}\ref{ITEMooFFSAooUdcUuV}).
+
+		La formule \eqref{EQooMZOOooKHfZTk} dit que \( F_i=\Adh_X(F_i)\cap U\), et donc
+		\begin{equation}
+			M=\bigcup_{i\in \eN}\big( \Adh_X(F_i)\cap U \big)
+		\end{equation}
+		est une union dénombrable de parties nulle part denses. Donc \( M\) est maigre dans \( X\).
+
+
+		\spitem[Pour \ref{ITEMooGHMTooDYUicn}]
+		%-----------------------------------------------------------
+		Soit un ouvert maigre \( A\) de \( U\). Par le point \ref{ITEMooBZCAooIYQpvO}, \( A\) est maigre dans \( X\) et donc vide parce que \( X\) est de Baire. Cela prouve que tout ouvert maigre de \( U\) est vide et donc que \( U\) est de Baire (définition \ref{DEFooYEMNooLSXLYa}).
+	\end{subproof}
+\end{proof}
+
+
+\begin{theorem}[Théorème de Baire\cite{SIdTHwW,BIBooEFASooXGJiBG,BIBooUZAMooXuhUBs}]    \label{ThoBBIljNM}
+	Les espaces suivants sont de Baire :
+	\begin{enumerate}
+		\item
+		      les espaces topologiques localement compacts\footnote{Définition \ref{DefEIBYooAWoESf}.},
+		\item
+		      les espaces métriques complets (donc ceux de Banach en particulier),
+		\item
+		      tout ouvert d'un espace de Baire.
+	\end{enumerate}
+\end{theorem}
+\index{théorème de Baire}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Espaces topologiques localement compacts]
+		%-----------------------------------------------------------
+		Nous allons utiliser les propriétés de \ref{DEFooYEMNooLSXLYa}. Soient un espace topologique localement compact \( X\) ainsi que des fermés \( F_i\) d'intérieurs vides. Nous posons \( F=\bigcap_{i=0}^{\infty}F_i\), et nous prouvons que \( F\) est d'intérieur vide. Pour cela nous considérons un ouvert \( U\subset X\) et nous prouvons que \( U\) n'est pas entièrement inclus dans \( F\).
+
+		Par \ref{PROPooVLOZooLlYNNa}, il existe un ouvert à fermeture compacte \( U_0\subset U\). Vu que \( F_1\) est fermé, \( U_0\setminus F_1\) est ouvert et comme \( F_1\) est d'intérieur vide, il ne contient aucun ouvert, donc l'ouvert \( U_0\setminus F_1\) est non vide.
+
+		Si \( x\in U_0\setminus F_1\), alors \( \{ x \}\) est compact et le lemme \ref{LEMooKYMKooPxZjWN} dit qu'il existe un ouvert \( V_1\) tel que \( \bar V_1\) est compact et tel que
+		\begin{equation}
+			x\in V_1\subset\bar V_1\subset U_0\setminus F_1.
+		\end{equation}
+
+		Maintenant \( V_1\) étant ouvert, il n'est pas contenu dans \( V_1\setminus F_2\) qui est un ouvert non vide..
+
+		Bref, je vous laisse écrire la récurrence proprement, mais nous avons des ouverts \( V_n\) tels que \( \bar V_n\) est compact et \( \bar V_n\subset V_{n-1}\setminus F_n\).
+
+		Les parties \( \bar V_n\) sont des compacts emboîtés non vides. La proposition \ref{PROPooFXCXooXNeXWl} dit que \( \bigcap_n\bar V_n\) est non vide. Soit \( a\in\bigcap_n\bar V_n\). Pour tout \( k\neq 1\) nous avons
+		\begin{equation}
+			a\in\bigcap_n\bar V_n\subset\bar V_k\subset V_{k-1}\setminus F_k.
+		\end{equation}
+		Donc \( a\) n'est pas dans \( F_k\). De plus \( a\in\bar V_1\subset U_0\setminus F_1\). Donc \( a\) n'est pas non plus dans \( F_1\). Bref, \( a\) n'est pas dans \( F\).
+
+		Nous devons encore voir que \( a\in U_0\). Cela est facile :
+		\begin{equation}
+			a\in \bigcup_n\bar V_n\subset \bar V_1\subset U_0\setminus F_1\subset U_0.
+		\end{equation}
+
+		\spitem[Espaces métriques complets]
+		%-----------------------------------------------------------
+		Soit \( (E,d)\) un espace métrique complet. Soient \( V\) un ouvert quelconque de \( E\) et \( U_n\) une suite d'ouverts denses. Le but est de prouver que l'ensemble \( \bigcap_{n\in \eN}U_n\) intersecte \( V\). Vu que \( V\) est ouvert dans un espace métrique, il contient une boule ouverte et donc une boule fermée \( B_0\) de rayon strictement positif. L'ensemble \( U_1\) est dense et intersecte donc un ouvert contenu dans \( B_0\). L'intersection est un ouvert qui contient alors une boule fermée \( B_1\) de rayon strictement positif. Continuant ainsi nous construisons une suite de fermés emboités \( B_n\) telle que
+		\begin{equation}
+			\bigcap_{n\in \eN}U_n\cap V
+		\end{equation}
+		contient l'intersection des \( B_n\). Par le théorème~\ref{ThoCQAcZxX} des fermés emboîtés (que nous utilisons parce que \( E\) est métrique et complet), cette intersection est non vide.
+		\spitem[Ouvert d'un espace de Baire]
+		%-----------------------------------------------------------
+		C'est la proposition \ref{PROPooGVTDooRMaEUK}\ref{ITEMooGHMTooDYUicn}.
+	\end{subproof}
+\end{proof}
+
+% J'ai besoin de rendre les lignes uniques parce que leur hash va déterminer des textes qui sont ok pour les références vers le futur.
+Parmi les applications du théorème de Baire, nous avons
+\begin{itemize}
+	\item
+	      Le théorème de Banach-Steinhaus~\ref{ThoPFBMHBN}.                   % Juste pour rendre cette ligne unique : ooRSOFooXaGGXp
+	\item
+	      Le théorème de l'application ouverte \ref{THOooATZKooXHWCRD}.       % Juste pour rendre cette ligne unique : ooCRJJooDouRqI
+\end{itemize}

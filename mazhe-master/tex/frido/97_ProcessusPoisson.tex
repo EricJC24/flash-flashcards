@@ -1,0 +1,1304 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2012-2013, 2019, 2022-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Processus de Poisson}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SecHxbtzQ}
+
+On trouve différentes définitions de processus de Poisson dans la littérature. Nous allons définir des processus de a-Poisson, de c-Poisson et de n-Poisson et de o-Poisson. Ensuite nous démontrerons les équivalences.
+
+\begin{definition}[processus de comptage]		\label{DEFooEVRIooZQJRSZ}
+	Un \defe{processus de comptage}{processus de comptage} est une famille de variables aléatoires \( \{ N_t\colon \Omega\to \eR \}_{t\in \eR^+}\) telles que
+	\begin{enumerate}
+		\item
+		      \( N_0(\omega)=0\) pour tout \( \omega\in \Omega\).
+		\item
+		      Pour tout \( t\in \eR^+\) et pour tout \( \omega\in \Omega\), \( N_t(\omega)\in \eN\).
+		\item
+		      Pour chaque \( \omega\in \Omega\), la fonction \( t\mapsto N_t(\omega)\) est croissante.
+		\item		\label{ITEMooXOEPooGewUBL}
+		      si \( N_t=n>0\), alors il existe \( 0<u<t\) tel que \( N_u=n-1\).
+	\end{enumerate}
+\end{definition}
+
+
+%-------------------------------------------------------
+\subsection{Processus a-Poisson}
+%----------------------------------------------------
+
+\begin{definition}
+	Une famille de variables aléatoires \( (N_t)_{t\geq 0}\) forment un \defe{processus de a-Poisson}{processus de Poisson} d'intensité \( \lambda\) si
+	\begin{enumerate}
+		\item Pour tout choix \( 0<t_0<t_1<\ldots< t_n\), les variables aléatoires \( N_{t_{i+1}}-N_{t_i}\) sont indépendantes.
+		\item Si \( 0<s<t\) et \( h>0\) alors
+		      \begin{equation}
+			      N_{t+h}-N_{s+h}\stackrel{\mL}{=}N_t-N_s,
+		      \end{equation}
+		      c'est-à-dire que les accroissements décalés suivent les mêmes lois.
+		\item Pour tout \( t\) nous avons \( N_t\) suit une loi de Poisson\footnote{Définition \ref{DEFooUWKHooUFKlcr}.} : \( N_t\sim\dP(\lambda t)\).
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooSOUNooJDMQpM}
+	Si \( \{ N_t \}\) est un processus de a-Poisson, alors
+	\begin{enumerate}
+		\item
+		      \( N_0=0\)
+		\item
+		      \( N_t-N_s\stackrel{\mL}{=}N_{t-s}-N_0=N_{t-s}\).
+	\end{enumerate}
+\end{lemma}
+
+%-------------------------------------------------------
+\subsection{Processus c-Poisson}
+%----------------------------------------------------
+
+\begin{definition}[processus de Poisson\cite{BIBooMECWooHQJweh}]        \label{DEFooWDXDooRGCtXL}
+	Un \defe{processus de c-Poisson}{processus de Poisson} d'intensité \( \lambda\) est un processus de comptage \( (N_t)_{t\in \eR^+}\) tel que
+	\begin{enumerate}
+		\item
+		      Pour tout choix de \( 0\leq t_1<\ldots < t_m\), les variables aléatoires \( N_{t_i}-N_{t_{i-1}}\) sont indépendantes\footnote{Ceci demande en particulier que l'ensemble \( \Omega\) soit assez grand pour contenir une infinité non dénombrable de variables aléatoires indépendantes.}.
+		\item
+		      Pour tout \( (s,t)\in \eR^2\), la variable aléatoire \( N_{s+t}-N_s\) suit une loi de Poisson\footnote{Définition \ref{DEFooUWKHooUFKlcr}.} de paramètre \( \lambda t\).
+	\end{enumerate}
+\end{definition}
+
+
+%-------------------------------------------------------
+\subsection{Processus n-Poisson}
+%----------------------------------------------------
+
+\begin{definition}      \label{DEFooWXHEooEHQUJU}
+	Une famille de variables aléatoires \( (N_t)_{t\geq 0}\) est un \defe{processus de n-Poisson}{processus!Poisson}\index{Poisson!processus} d'intensité \( \lambda\) si il existe une suite de variables aléatoires indépendantes et identiquement distribuées \( (T_k)_{k\in \eN}\) de loi exponentielle\footnote{Définition \ref{DEFooTSFNooULWNHY}.} \( \dE(\lambda)\) telles que
+	\begin{equation}
+		N_t=\sup\{ n\geq 0\tq \sum_{k=1}^nT_k\leq t \}.
+	\end{equation}
+	Plus explicitement, un processus de Poisson sur espace probabilisé \( (\Omega,\tribA,P)\) est une famille de variables aléatoires \( N_t\colon \Omega\to \eN\) telles que qu'il existe des variables aléatoires \( T_k\colon \Omega\to \eR\) vérifiant
+	\begin{equation}
+		N_t(\omega)=\sup\{ n\geq 0\tq \sum_{k=1}^nT_k(\omega)\leq t \}
+	\end{equation}
+	pour tout \( \omega\in\Omega\).
+
+	Dans le cas d'un processus de n-Poisson, nous posons
+	\begin{equation}
+		S_n=\sum_{k=1}^nT_k.
+	\end{equation}
+\end{definition}
+
+\begin{lemma}	\label{LEMooZTPGooYsFfNX}
+	Soit un processus \( N_t\) de n-Poisson. Alors
+	\begin{enumerate}
+
+		\item
+		      \( N_t=\sum_{n=1}^{\infty}\mtu_{\{ S_n\leq t \}}\).
+		\item
+		      \( N_t\sim\dP(\lambda t)\).
+		\item
+		      \( \{ s<S_n\leq t \}=\{ N_t\geq n>N_s \}\).
+		\item
+		      \( \{ N_t=n \}=\{ S_n\leq t\leq S_{n+1} \}\)
+	\end{enumerate}
+	Note pour moi : le second point est probablement \ref{PropGMntiy}.
+	%TODOooEGSLooFZYekk. Prouver ça.
+\end{lemma}
+
+%-------------------------------------------------------
+\subsection{Processus o-Poisson}
+%----------------------------------------------------
+
+
+\begin{definition}[\cite{BIBooORZFooWKgLCH}]	\label{DEFooVJDDooHdFJJS}
+	Un processus de comptage\footnote{Définition \ref{DEFooEVRIooZQJRSZ}.} \(N_t \colon \Omega\to \eN  \) est un processus de o-Poisson si
+	\begin{enumerate}
+		\item
+		      Pour tout \( 0\leq t_1\leq \ldots \leq t_n\), les variables aléatoires \( N_{t_i}-N_{t_{i+1}}\) sont indépenantes.
+		\item
+		      Pour tout \( t,h\), la loi de \( N_{t+h}-N_t\) ne dépend que de \( h\).
+		\item
+		      Il existe des fonctions \(\alpha_i \colon  \eR\to \eR  \) telles que \( \lim_{h\to 0}\alpha_i(h)/h=0\) et
+		      \begin{enumerate}
+			      \item
+			            \( P\big( N_{t+h}-N_t\geq 1 \big)=\lambda h+\alpha_1(h)\)
+			      \item
+			            \( P\big( N_{t+h}-N_t\geq 2 \big)=\alpha_2(h)\).
+		      \end{enumerate}
+		\item
+		      Pour chaque \( \omega\in \Omega\), l'application \( t\mapsto N_t(\omega)\)
+		      \begin{enumerate}
+			      \item
+			            est continue à droite.
+			      \item
+			            a une limite à gauche.
+		      \end{enumerate}
+	\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}[\cite{BIBooORZFooWKgLCH}]	\label{PROPooGXCPooHsJKMH}
+	Soit un processus \( (N_t)\) de o-Poisson\footnote{Définition \ref{DEFooVJDDooHdFJJS}.} de paramètre \( \lambda\). Pour tout \( t>0\), nous avons
+	\begin{equation}
+		P(N_t=n)=e^{-\lambda t}\frac{ (\lambda t)^n }{ n! }.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	La stratégie est de poser
+	\begin{equation}
+		\begin{aligned}
+			p_n\colon \eR^+ & \to \eR           \\
+			t               & \mapsto P(N_t=n),
+		\end{aligned}
+	\end{equation}
+	et de chercher à écrire une équation différentielle pour \( p_n\). Nous y allons par récurrence sur \( n\) en commençant par \( n=0\). Prouvons l'égalité d'ensembles
+	\begin{equation}		\label{EQooRIVUooPLTaoP}
+		\{ N_{t+h}=0 \}=\{ N_t-N_0=0 \}\cap \{ N_{t+h}-N_t=0 \}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[Inclusion dans un sens]
+		%-----------------------------------------------------------
+		Si \( N_{t+h}(\omega)=0\), alors \( N_s(\omega)=0\) pour tout \(  s\leq t+h\). En particulier \( N_t(\omega)=N_0(\omega)=0\).
+		\spitem[Inclusion dans l'autre sens]
+		%-----------------------------------------------------------
+		Nous savons que \( N_0(\omega)=0\). Donc si \(\omega\in \{ N_t-N_0=0 \}\cap\{ N_{t+h}(\omega)-N_t(\omega) \} \), nous avons \( N_t(\omega)=0\) et \( (N_{t+h}-N_t)(\omega)=0\). Cela donne \( N_{t+h}(\omega)=0\).
+	\end{subproof}
+	Les variables aléatoires \( N_t-N_0\) et \( N_{t+h}-N_t\) sont indépendantes\footnote{Définition \ref{DefNJUkotc}.} :  leurs tribus sont indépendantes. Vu que \( \{ N_t-N_0=0 \}\) est dans la tribu engendrée par \( N_t-N_0\), les événements \( \{ N_t-N_0=0 \}\) et \( \{ N_{t+h}-N_t=0 \}\) sont indépendants\footnote{Définition \ref{DEFooVYCUooKWvReO}.}. Cela pour dire que, en prenant la probabilité des deux côtés de \eqref{EQooRIVUooPLTaoP},
+	\begin{subequations}	\label{EQooHXOHooYSgikS}
+		\begin{align}
+			P(N_{t+h}=0) & = P\big( N_t-N_0=0 \cap N_{t+h}-N_t=0\big) \\
+			             & =P(N_t-N_0=0)P(N_{t+h}-N_t=0)
+		\end{align}
+	\end{subequations}
+	Pour faire apparaître une dérivée, nous calculons \( P(N_{t+h}=0)-P(N_t=0)\). En utilisant \eqref{EQooHXOHooYSgikS} et en tenant compte du fait que \( N_0=0\), nous avons
+	\begin{subequations}		\label{SUBEQSooBYPTooUkROAX}
+		\begin{align}
+			P(N_{t+h}=0)-P(N_t=0) & =P(N_t=0)P(N_{t+h}-N_t=0)-P(N_t=0)       \\
+			                      & =P(N_t=0)\big( P(N_{t+h}-N_t=0)-1 \big).
+		\end{align}
+	\end{subequations}
+	De la définition de o-Poisson, nous avons
+	\begin{equation}
+		P(N_{t+h}-N_t=0)=1-P(N_{t+h}-N_t\geq 1)=1-\lambda h+\alpha(t)
+	\end{equation}
+	avec \( \lim_{t\to 0}\alpha(t)/t=0\). En substituant cela dans \eqref{SUBEQSooBYPTooUkROAX}, nous trouvons
+	\begin{equation}
+		P(N_{t+h}=0)-P(N_t=0)=-P(N_t=0)\big(\lambda t+\alpha(h)\big).
+	\end{equation}
+	En ce qui concerne la fonction \( p_0\) nous avons
+	\begin{equation}
+		\frac{ p_0(t+h)-p_0(t) }{ h }=-\frac{ p_0(t) }{ h }(\lambda h+\alpha(h))=-\lambda p_0(t)+\frac{ \alpha(h) }{ h },
+	\end{equation}
+	et donc l'équation différentielle
+	\begin{subequations}
+		\begin{numcases}{}
+			p'_0(t)=-\lambda p_0(t)\\
+			p_0(0)=1.
+		\end{numcases}
+	\end{subequations}
+	La solution est unique et connue\footnote{Proposition \ref{PROPooIKJBooLOipUM}.} :
+	\begin{equation}		\label{EQooICAVooCAMKgM}
+		P(N_t=0)=p_0(t)=e^{-\lambda t}.
+	\end{equation}
+	Voilà qui prouve le cas \( n=0\).
+
+	Nous travaillons sur \( p_n\) avec une récurrence. Nous commençons par l'union disjointe
+	\begin{equation}
+		\{ \omega\in \Omega\tq N_{t+h}(\omega)=n \}=\bigcup_{k=0}^n\{ \omega\in \Omega\tq N_t(\omega)=n-k,N_{t+h}(\omega)-N_t(\omega)=k \}.
+	\end{equation}
+	en tenant compte de \( N_0(\omega)=0\) et en prenant la probabilité des deux côtés,
+	\begin{subequations}
+		\begin{align}
+			P(N_{t+h}=n) & =\sum_kP\big( N_t-N_0=n-k \cap N_{t+h}-N_t=k \big) \\
+			             & =\sum_{k=0}^nP(N_t-N_0=n-k)P(N_{t+h}-N_t=k)        \\
+			             & =\sum_{k=0}^nP(N_t=n-k)P(N_{t+h}-N_t=k).
+		\end{align}
+	\end{subequations}
+	Nous séparons les termes \( k=0\), \( k=1\) et les autres :
+	\begin{equation}		\label{EQooDZNTooHOQAjX}
+		\begin{aligned}[]
+			P(N_{t+h}=n) & =P(N_t=n)P(N_{t+h}-N_t=0)                      \\
+			             & \quad +P(N_t=n-1)P(N_{t+h}-N_t=1)              \\
+			             & \quad +\sum_{k=2}^nP(N_t=n-k)P(N_{t+h}-N_t=k).
+		\end{aligned}
+	\end{equation}
+	En utilisant la définition de o-Poisson, et \eqref{EQooICAVooCAMKgM},
+	\begin{equation}		\label{EQooZFSYooCUPQBS}
+		P(N_{t+h}-N_t=0)=P(N_h-N_0=0)=P(N_h=0)=e^{-\lambda h}
+	\end{equation}
+	et
+	\begin{subequations}		\label{EQooQFMGooRkdytQ}
+		\begin{align}
+			P(N_{t+h}-N_t=1) & =P(N_{t+h}-N_t\geq 1)-P(N_{t+h}-N_t\geq 2)             \\
+			                 & =\lambda h+\alpha_1(h)-\alpha_2(h)=\lambda h+\alpha(h)
+		\end{align}
+	\end{subequations}
+	De plus, si \( k\geq 2\) nous avons
+	\begin{subequations}
+		\begin{align}
+			\lim_{h\to 0}\left| \frac{ P(N_{t+h}-N_t)=k }{ h } \right| & = \lim_{h\to 0}\frac{ P(N_{t+h}-N_t=k) }{ | h | }       \\
+			                                                           & \leq\lim_{h\to 0}\frac{ P(N_{t+h}-N_t\geq 2) }{ | h | } \\
+			                                                           & \leq \lim_{h\to 0}\frac{ \alpha(h) }{ | h | }           \\
+			                                                           & =0.
+		\end{align}
+	\end{subequations}
+	Donc nous avons
+	\begin{equation}		\label{EQooJVQJooASfvjG}
+		P(N_{t+h}-N_t=k)=\beta(h)
+	\end{equation}
+	avec \( \lim_{h\to 0}\beta(h)=0\). En remplaçant \eqref{EQooZFSYooCUPQBS}, \eqref{EQooQFMGooRkdytQ} et \eqref{EQooJVQJooASfvjG} dans \eqref{EQooDZNTooHOQAjX}, nous avons
+	\begin{equation}
+		p_n(t+h)  =p_n(t)e^{-\lambda h}                   + p_{n-1}(t)(\lambda h+\alpha(h)) + \sum_{k=2}^np_{n-k}(t)\beta(h).
+	\end{equation}
+	En soustrayant \( p_n(t) \), et en divisant par \( h\) nous avons :
+	\begin{equation}
+		\begin{aligned}[]
+			\frac{ p_n(t+h)-p_n(t) }{ h } & =p_n(t)\frac{ e^{-\lambda h}-1 }{ h }                        \\
+			                              & \quad + \lambda p_{n-1}(t)+p_{n-1}(t)\frac{ \alpha(h) }{ h } \\
+			                              & \quad + \sum_{k=2}^np_{n-k}(t)\frac{ \beta(h) }{ h }.
+		\end{aligned}
+	\end{equation}
+	C'est le moment de prendre la limite \( h\to 0\). En utilisant la règle de L'Hôpital,
+	\begin{equation}
+		\lim_{h\to 0}\frac{ e^{-\lambda h}-1 }{ h }=\lim_{h\to 0}(-\lambda e^{-\lambda h})=-\lambda.
+	\end{equation}
+	et nous trouvons
+	\begin{subequations}
+		\begin{numcases}{}
+			p'_n(t)=\lambda\big( p_{n-1}(t)-p_n(t) \big)\\
+			p_n(0)=0\\
+			p_0(t)=e^{-\lambda t}.
+		\end{numcases}
+	\end{subequations}
+	Nous devons prouver que ce système possède une unique solution donnée par
+	\begin{equation}
+		p_n(t)=e^{-\lambda t}\frac{ (\lambda t)^n }{ n! }.
+	\end{equation}
+	Nous avons déjà prouvé pour \( n=0\). Supposons que \( p_k(t)=e^{-\lambda t}(\lambda t)^k/k!\) est l'unique solution pour tout \( k\) jusqu'à \( n\) et prouvons que nous avons existence et unicité pour \( n+1\). En ce qui concerne \( p_{n+1}\) nous devons prouver l'existence et l'unicité d'une solution à
+	\begin{subequations}
+		\begin{numcases}{}
+			y'(t)=\lambda\big( p_n(t)-y(t) \big)\\
+			y(0)=0.
+		\end{numcases}
+	\end{subequations}
+	En remplaçant \( p_n(t)\) par l'hypothèse de récurrence, nous avons l'équation
+	\begin{equation}
+		y'(t)=\lambda e^{-\lambda t}\frac{ (\lambda t)^n }{ n! }-\lambda y(t).
+	\end{equation}
+	Si une telle fonction existe, elle est forcément dérivable. Mais sa dérivée est dérivable parce qu'elle est égale à la somme entre une partie \( C^{\infty}\) est \( \lambda y\) qui est dérivable. Bref, si une telle fonction existe, elle est de classe \( C^{\infty}\).
+
+	En posant
+	\begin{equation}
+		\begin{aligned}
+			f\colon \eR^2 & \to \eR                                                             \\
+			(u,v)         & \mapsto \lambda e^{-\lambda u}\frac{(\lambda u)^n}{  n!}-\lambda v,
+		\end{aligned}
+	\end{equation}
+	nous avons l'équation différentielle \( y'(t)=f\big( t,y(t) \big)\). Le théorème de Cauchy-Lipschitz \ref{ThokUUlgU}\quext{Qui n'est pas cité dans \cite{BIBooORZFooWKgLCH}. Est-ce que j'en fais trop ?} dit qu'il existe une unique solution. Il n'est pas compliqué de vérifier que la fonction
+	\begin{equation}
+		y(t)=e^{-\lambda t}\frac{ (\lambda t)^{n+1} }{ (n+1)! }
+	\end{equation}
+	vérifie toutes les conditions.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooORZFooWKgLCH}]	\label{PROPooGFBEooKgPfaB}
+	Soit un processus o-Poisson \( (N_t)\). Nous posons
+	\begin{equation}
+		T_n(\omega)=\inf\{ t\in \eR\tq N_t(\omega)\geq n \}.
+	\end{equation}
+	Alors nous avons l'égalité d'ensembles
+	\begin{equation}
+		\{ N_t<n \}=\{ T_n>t \}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \{ N_t<n \}\subset\{ T_n>t \}\)]
+		%-----------------------------------------------------------
+		Soient \( t>0\) et \( \omega\in \Omega\) tels que \( N_t(\omega)<n\). Vu que l'application \( u\mapsto N_u(\omega)\) est croissante, si \( N_u(\omega)\geq n\), alors \( u> t\). Donc \( T_n(\omega)\) est l'infimum d'un ensemble contenant uniquement des nombres plus grands que \( t\). Nous en déduisons que
+		\begin{equation}		\label{EQooIHSZooGkhSKz}
+			T_n(\omega)=\inf\{ u\in \eR\tq N_u(\omega)\geq n \}\geq t.
+		\end{equation}
+		Nous devons encore prouver qu'il est impossible d'avoir \( T_n(\omega)=t\). Supposons que \( T_n(\omega)=t\). Alors pour tout \( \epsilon>0\) nous avons \( N_{t+\epsilon}(\omega)\geq n\). Par la continuité à droite, nous avons
+		\begin{equation}
+			N_t(\omega)=\lim_{\epsilon\to 0}N_{t+\epsilon}(\omega)\geq n.
+		\end{equation}
+		Vu que nous avons supposé que \( N_t(\omega)<n\), nous avons une contradiction et nous concluons que \( T_n(\omega)\neq t\). Ça, avec \eqref{EQooIHSZooGkhSKz}, dit que \( T_n(\omega)>t\).
+
+		\spitem[\( \{ T_n>t \}\subset\{ N_t<n \}\)]
+		%-----------------------------------------------------------
+		Soit \( \omega\in \Omega\) tel que \( T_n(\omega)>t\) :
+		\begin{equation}
+			\inf\{ u\geq 0\tq N_u(\omega)\geq n \}>t.
+		\end{equation}
+		Si \( N_t(\omega)\geq n\), alors \( t\in\{ u>0\tq  N_u(\omega)\geq n\}\) et donc \( T_n(\omega)\leq t\), ce qui est contraire à l'hypothèse.
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooYKOIooAUuivH}
+	Soit une application croissante et continue à droite \(f \colon \mathopen[ 0,\infty\mathclose[\to \eN  \). Nous supposons que si \( f(x_1)=n>0\), alors il existe \( x_2<x_1\) tel que \( f(x_2)=n-1\).
+
+	Nous posons
+	\begin{equation}
+		x_n=\inf\{ x\in \eR\tq f(x)\geq n \},
+	\end{equation}
+	et nous supposons que \( x_n\) existe au sens où il existe \( x\) tel que \( f(x)\geq n\). Alors
+	\begin{enumerate}
+		\item		\label{ITEMooHSCEooKVtXYn}
+		      \( f(x_n)=n\)
+		\item
+		      nous avons \( x_n-x_{n-1}>\delta\) si et seulement si \( f(x_{n-1}+\delta)-f(x_{n-1})=0\).
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[\( f(x_n)=n\)]
+		%-----------------------------------------------------------
+		Vu que \( f\) est croissante, qu'il existe \( x\) tel que \( f(x)\geq n\) et que \( f\) passe par les valeurs intermédiaires (entières), il existe \( t\) tel que \( f(t)=n\). Donc nous avons
+		\begin{equation}
+			x_n=\inf\{ u\in \eR\tq f(u)\geq n \}=\inf\{ u\in \eR\tq f(u)=n \}.
+		\end{equation}
+		Nous posons \( A=\{ u\in \eR\tq f(u)=n \}\), et nous savons que \( A\) n'est pas vide. Si \( A\) contient un seul élément, alors cet élément est l'infimum et nous avons \( A=\{ x_n \}\), de telle sorte que \( f(x_n)=n\).
+
+		Nous supposons que \( A\) contienne au moins deux éléments. Il existe donc \( \delta>0\) tel que \( x_n+\delta\in A\). Du coup \( f(x_n+\delta)=n\) et par croissance, \( f(x_n+\epsilon)=n\) pour tout \( \epsilon\in \mathopen] 0,\delta\mathclose]\). En prenant la limite \( \epsilon\to 0^+\) et en utilisant la continuité à droite, \( f(x_n)=n\).
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( x_n-x_{n-1}>\delta\) et que \( f(x_{n-1}+\delta)\neq f(x_{n-1})\). Par \ref{ITEMooHSCEooKVtXYn}, nous savons que \( f(x_{n-1}=n-1)\), et par croissance, nous savons alors que \( f(x_{n-1}+\delta)\geq n\). Donc
+		\begin{equation}
+			x_n=\inf\{ x\tq f(x)\geq n \}\leq x_{n-1}+\delta.
+		\end{equation}
+		Cela signifie que \( x_n-x_{n-1}\leq \delta\), ce qui est contraire à l'hypothèse. Contradiction.
+
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Nous y allons encore par l'absurde en supposant \( f(x_{n-1}+\delta)=f(x_{n-1})\) et \( x_n-x_{n-1}\leq \delta\). Vu que \( f\) est croissante et que \( x_{n-1}+\delta\geq x_n\), nous avons
+		\begin{equation}
+			f(x_{n-1}+\delta)\geq f(x_n)=n>n-1=f(x_{n-1}).
+		\end{equation}
+		Nous avons prouvé que \( f(x_{n-1}+\delta)>f(x_{n-1})\), qui est contraire à l'hypothèse.
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}[\cite{BIBooORZFooWKgLCH}]	\label{PROPooVLEEooLvCknn}
+	Soit un processus o-Poisson \( (N_t)\). Nous posons
+	\begin{equation}
+		T_n(\omega)=\inf\{ t\in \eR\tq N_t(\omega)\geq n \}.
+	\end{equation}
+	Alors
+	\begin{equation}
+		N_{T_n(\omega)}(\omega)=n
+	\end{equation}
+	pour tout \( \omega\in \Omega\).
+\end{proposition}
+
+\begin{proof}
+	En fixant \( \omega\in \Omega\), et en posant \( f(t)=N_t(\omega)\), la fonction \( f\) vérifie les hypothèses du lemme \ref{LEMooYKOIooAUuivH}. Nous concluons avec \ref{LEMooYKOIooAUuivH}\ref{ITEMooHSCEooKVtXYn}.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooORZFooWKgLCH}]	\label{PROPooIQPSooHtbFBt}
+	Soit un processus o-Poisson \( (N_t)\). Nous posons
+	\begin{equation}
+		T_n(\omega)=\inf\{ t\in \eR\tq N_t(\omega)\geq n \}.
+	\end{equation}
+	Alors
+	\begin{enumerate}
+		\item
+		      Pour chaque \( n\), la variable aléatoire \( T_n-T_{n-1}\) suit une loi exponentielle de paramètre \( \lambda\).
+		\item
+		      Les variables aléatoires \( T_n-T_{n-1}\) sont indépendantes.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous considérons la proposition \ref{PROPooGFBEooKgPfaB} avec \( n=1\) : \( P(N_t=1)=P(T_1>t)\). Vu que \( N_t(\omega)\in \eN\) pour tout \( \omega\), nous avons \( \{ N_t<1 \}=\{ N_t=0 \}\) et donc, en utilisant la proposition \ref{PROPooGXCPooHsJKMH},
+	\begin{equation}
+		P(T_1>t)=P(N_t=0)=e^{-\lambda t}.
+	\end{equation}
+
+	En fixant \( \omega\in\Omega\), et en posant \( f(t)=N_t(\omega)\), la fonction \( f\) vérifie les hypothèses du lemme \ref{LEMooYKOIooAUuivH}. Pour \( t>0\) fixé, nous avons \( T_n(\omega)-T_{n-1}(\omega)>t\) si et seulement si \( N_{T_{n-1}(\omega)+t}(\omega)-N_{T_{n-1}(\omega)}(\omega)=0\). Autrement dit,
+	\begin{equation}	\label{EQooVHJOooTVvnzw}
+		\{ \omega\in \Omega\tq T_n(\omega)-T_{n-1}(\omega)>t \}=\{ \omega\in\Omega\tq N_{T_{n-1}(\omega)+t}(\omega)-N_{T_{n-1}(\omega)}(\omega)=0 \}.
+	\end{equation}
+	Et donc, en ce qui concerne les probabilités,
+	\begin{equation}
+		P(T_n-T_{n-1}>t)=P(N_{T_{n-1}+t}-N_{T_{n-1}}=0).
+	\end{equation}
+	En utilisant les accroissements indépendants,
+	\begin{subequations}
+		\begin{align}
+			P(T_n-T_{n-1}>t) & = P(N_{T_{n-1}+t}-N_{T_{n-1}}=0) \\
+			                 & =P(N_t-N_0=0)                    \\
+			                 & =P(N_t=0)                        \\
+			                 & =e^{-\lambda t}.
+		\end{align}
+	\end{subequations}
+	Cela prouve que \( T_n-T_{n-1}\) suit une loi exponentielle par la proposition \ref{PROPooKLJIooUFfGwa}.
+
+	Nous prouvons à présent que les \( T_n-T_{n-1}\) sont indépendants. Nous repartons de \eqref{EQooVHJOooTVvnzw} que nous recopions de façon plus compacte :
+	\begin{equation}
+		\{ T_n-T_{n-1}>t \}=\{ N_{T_{n-1}+t}-N_{T_{n-1}}=0 \}.
+	\end{equation}
+	Nous avons donc
+	\begin{equation}
+		\{ T_{n}-T_{n-1}>t \}\cap\{ T_k-T_{k-1}>u \}=\{ N_{T_{n-1}+t}-N_{_{n-1}}=0 \}\cap \{ N_{T_{k-1}+u}-N_{T_{k-1}}=0 \}.
+	\end{equation}
+	À droite, les événements sont indépendants, donc
+	\begin{subequations}
+		\begin{align}
+			P(T_n-T_{n-1}>t, T_k-T_{k-1}>u) & =P(N_{T_{n_1}+t}-N_{T_{n-1}}=0)P(N_{T_{k-1}+u}-N_{T_{k-1}}=0) \\
+			                                & =P(T_n-T_{n-1}>t)P(T_k-T_{k-1}>u).
+		\end{align}
+	\end{subequations}
+	La proposition \ref{PROPooXRMWooYjPMWN} conclut que \( T_{n}-T_{n-1}\) et \( T_k-T_{k-1}\) sont indépendants.
+\end{proof}
+
+\begin{probleme}		\label{PROBooNZCUooMteOpL}
+	Je ne suis pas sûr du tout de l'énoncé de la proposition \ref{PROPooEUVXooERgwIe}. D'abord la source \cite{BIBooORZFooWKgLCH} ne donne pas le facteur \( e^{t-t_n}\) (mais je ne suis pas convaincu de la preuve donnée). Ensuite, j'aurais été nettement plus convaincu avec un changement de signe dans l'exponentielle : \( e^{-(t-t_n)}\).
+
+	Essayez de répondre à cette question :
+
+	{
+	\tiny
+	\url{https://math.stackexchange.com/questions/4957480/density-of-the-vector-of-jump-times-in-a-poisson-process}
+	}
+\end{probleme}
+
+\begin{proposition}[\cite{BIBooORZFooWKgLCH,MonCerveau}]	\label{PROPooEUVXooERgwIe}
+	La densité conditionnelle de \( (T_1,\ldots,T_n)\) sachant \( \{ N_t=n \}\) est donnée par
+	\begin{equation}
+		f_n(t_1,\ldots,t_n)=\mtu_{\{ 0\leq t_1\leq\ldots\leq t_n \}}\frac{ n! }{ t^n }e^{t-t_n}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par prouver cette égalité d'ensembles :
+	\begin{equation}		\label{EQooOKVVooTZSpGq}
+		\bigcap_{i=1}^n\{ T_i=t_i \}\cap\{ N_t=n \}=\bigcap_{i=1}^n\{ T_i-T_{i-1}=t_i-t_{i-1} \}\cap\{ T_{n-1}-T_n=t-t_n \}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[Dans un sens]
+		%-----------------------------------------------------------
+		Nous considérons \( \omega\in \Omega\) tel que
+		\begin{subequations}
+			\begin{numcases}{}
+				T_i(\omega)=t_i&\quad \( i=1,\ldots,n\)		\label{SUBEQooIZXNooNxrpnC}\\
+				N_t(\omega)=n.		\label{SUBEQooYSCVooMGOMqZ}
+			\end{numcases}
+		\end{subequations}
+		et nous voulons prouver que
+		\begin{subequations}
+			\begin{numcases}{}
+				T_i(\omega)-T_{i-1}(\omega)=t_i-t_{i-1}&\quad \( i=1,\ldots,n\)		\label{SUBEQooDBKLooSixBrh}\\
+				T_{n-1}(\omega)-T_{n}(\omega)>t-t_n.		\label{SUBEQooEHYAooCSFDXS}
+			\end{numcases}
+		\end{subequations}
+		Les égalités \eqref{SUBEQooDBKLooSixBrh} sont immédiates à partir des égalités \eqref{SUBEQooIZXNooNxrpnC}. En ce qui concerne \eqref{SUBEQooEHYAooCSFDXS}, nous avons \( T_{n+1}(\omega)-T_n(\omega)=T_{n+1}(\omega)-t_n\). Nous devons donc prouver que \( T_{n+1}(\omega)>t\).
+
+		En utilisant la proposition \ref{PROPooVLEEooLvCknn} et \eqref{SUBEQooYSCVooMGOMqZ}, nous avons \( N_{T_{n+1}(\omega)}(\omega)=n+1\) et \( N_t(\omega)=n\). Par croissance de \( u\mapsto N_u(\omega)\), nous avons \( T_{n+1}(\omega)>t\).
+
+		\spitem[Dans l'autre sens]
+		%-----------------------------------------------------------
+		Nous supposons maintenant que
+		\begin{subequations}
+			\begin{numcases}{}
+				T_i(\omega)-T_{i-1}(\omega)=t_i-t_{i-1}&\quad \( i=1,\ldots,n\)	\label{SUBEQooXKXPooWHrXhb}\\
+				T_{n-1}(\omega)-T_{n}(\omega)>t-t_n,
+			\end{numcases}
+		\end{subequations}
+		et nous prouvons que
+		\begin{subequations}
+			\begin{numcases}{}
+				T_i(\omega)=t_i&\quad \( i=1,\ldots,n\)\\
+				N_t(\omega)=n.
+			\end{numcases}
+		\end{subequations}
+		Nous savons que \( T_0(\omega)=0\). Donc \eqref{SUBEQooXKXPooWHrXhb} avec \( i=1\) donne \( T_1(\omega)-0=t_1-t_0\), c'est-à-dire \( T_1(\omega)=t_1\). Nous continuons de proche en proche pour obtenir \( T_i(\omega)=t_i\). Le dernier est
+		\begin{equation}
+			T_n(\omega)-T_{n-1}(\omega)=t_n-t_{n-1},
+		\end{equation}
+		et donc encore \( T_n(\omega)=t_n\).
+
+		Nous avons aussi
+		\begin{equation}
+			T_{n+1}(\omega)-T_n(\omega)>t-t_n,
+		\end{equation}
+		et donc \( T_{n+1}(\omega)-t_n>t-t_n\), ce qui signifie \( T_{n+1}(\omega)>t\), et donc \( N_t(\omega)<n+1\). Mais comme \( t\geq t_n\) et \( N_{t_n}(\omega)=n\), nous avons bien \( N_t(\omega)\geq n\) et donc \( N_t(\omega)=n\).
+	\end{subproof}
+	Cela prouve l'égalité \eqref{EQooOKVVooTZSpGq}.
+
+	En notant \( X_i=T_i-T_{i-1}\), nous avons
+	\begin{equation}
+		T_k=\sum_{l=1}^kX_l.
+	\end{equation}
+	Donc la loi de \( T_k\) est celle d'une somme de variables aléatoires exponentielles indépendantes.
+
+	Oh zut! cette démonstration n'est pas terminée ! Si tu sais comment la terminer, écris-moi.
+	%TODOooPUKUooQzMzci. Terminer la preuve.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooMECWooHQJweh}]   \label{PROPooGMBBooCIkVCB}
+	Soit un processus de o-Poisson \( (N_t)\). Pour tout \( t\geq 0\) nous avons
+	\begin{equation}
+		\lim_{h\to 0^+} P\big( N_{t+h}-N_t\geq 1 \big)=0.
+	\end{equation}
+\end{proposition}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooXTVNooSBnnAd}
+	Soit un processus de o-Poisson \(  \{ N_t\colon \Omega\to \eN \}_{t\in \eR^+}  \) d'intensité \( \lambda\). Pour chaque \( n\in \eN\) nous posons
+	\begin{equation}
+		\begin{aligned}
+			T_n\colon \Omega & \to \eR                                         \\
+			\omega           & \mapsto \inf\{ t\geq 0\tq N_t(\omega)\geq n \}.
+		\end{aligned}
+	\end{equation}
+	Soit \( h>0\).
+	\begin{enumerate}
+		\item   \label{ITEMooXVSQooSQmIUv}
+		      Il existe une partie de mesure nulle\quext{Cette subtilité est manquante dans \cite{BIBooPSSIooEliTXx,BIBooORZFooWKgLCH,BIBooGKIYooYLIyyf}. Plus généralement, je ne l'ai vue nulle part. Si vous savez démontrer que les événements \( T_n\leq h\) et \( N_h\geq n\) sont égaux, dites-le moi.} \( Z\in \Omega\) telle que \( \{ T_n\leq h \}\subset \{ N_h\geq n \}\cup Z\).
+		\item       \label{ITEMooIPKCooIfjUzS}
+		      Nous avons \( \{ N_h\geq n \}\subset \{ T_n\leq h \}\).
+		\item
+		      Au final,
+		      \begin{equation}
+			      P(T_n\leq h)=P(N_h\geq n).
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties
+	\begin{subproof}
+		\spitem[\( \{ T_n\leq h \}\subset \{ N_n\geq n \}\cup Z\)]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( \omega\in\{ T_n\leq h \}\). Cela signifie que
+		\begin{equation}
+			\inf\{ t\geq 0\tq N_t(\omega)\geq n \}\leq h.
+		\end{equation}
+		Si \( T_n(\omega)<h\), alors \( N_h(\omega)\geq n\), et le point est démontré.
+
+		Nous prouvons maintenant que \(  Z=\{ T_n=h \}\cap \{ N_h\leq n \}\) est de mesure nulle. Soient \( \omega\in Z\) ainsi que \( \epsilon>0\). Vu que \( T_n(\omega)=h\), nous avons \( N_{h+\epsilon}(\omega)\geq n\). Donc, pour \( \omega\in Z\) nous avons
+		\begin{equation}
+			N_{h+\epsilon}(\omega)-N_h(\omega)\geq 1.
+		\end{equation}
+		En posant \( Z_{\epsilon}=\{ N_{h+\epsilon}-N_h\geq 1 \}\), nous avons donc \( Z\subset Z_{\epsilon}\) pour tout \( \epsilon\). Nous avons alors, pour tout \( \epsilon\), que \( P(Z)\leq P(Z_{\epsilon})\). Mais la proposition \ref{PROPooGMBBooCIkVCB} nous indique que \( \lim_{\epsilon\to 0}P(Z_{\epsilon})=0\). Donc \( P(Z)=0\).
+		\spitem[\( \{ N_h\geq n \}\subset \{ T_n\leq h \}   \)]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( \omega\in \Omega\) satisfaisant \( N_h(\omega)\geq n\). C'est direct parce que si \( N_h(\omega)\geq n\), alors
+		\begin{equation}
+			T_n(\omega)=\inf\{ y\geq 0\tq N_t(\omega)\geq n \}\leq h.
+		\end{equation}
+		\spitem[Les probabilités]
+		% -------------------------------------------------------------------------------------------- 
+		Le point \ref{ITEMooXVSQooSQmIUv} donne
+		\begin{equation}
+			P(T_n\leq h)\leq P(N_h\geq n)+P(Z)=P(N_h\geq n),
+		\end{equation}
+		le point \ref{ITEMooIPKCooIfjUzS} donne \( P(N_h\leq n)\leq P(T_n\leq h)\). Au final, nous avons l'égalité des probabilités.
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{BIBooGKIYooYLIyyf}]     \label{LEMooJHMTooQWvOaI}
+	Soient \( \lambda>0\) et \( t>0\). Nous posons
+	\begin{equation}
+		I_n=\int_0^t\lambda e^{-\lambda x}\frac{ (\lambda x)^{n-1} }{ (n-1)! }dx.
+	\end{equation}
+	Alors
+	\begin{equation}
+		I_{n+1}=I_n- e^{-\lambda t}\frac{ (\lambda t)^n }{ n! }.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous intégrons \( I_{n+1}\) par partie en posant \( u(x)=x^n\) et \( v'(x)=\lambda e^{-\lambda x}\); \( u'(x)=nx^{n-1}\), \( v(x)=- e^{-\lambda x}\). Cela donne
+	\begin{subequations}
+		\begin{align}
+			I_{n+1} & =\frac{ \lambda^n }{ n! }\int_0^tv'(x)u(x)dx                                                                              \\
+			        & =\frac{ \lambda^n }{ n! }\left[ -x^n e^{-\lambda x} \right]_0^t+\frac{ \lambda^n }{ n! }\int_0^tnx^{n-1} e^{-\lambda x}dx \\
+			        & =-\frac{ (\lambda t)^n }{ n! } e^{-\lambda t}+I_n
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]
+	Soit un processus de o-Poisson \(  \{ N_t\colon \Omega\to \eN \}_{t\in \eR^+}  \) d'intensité \( \lambda\). Pour chaque \( n\in \eN\) nous posons
+	\begin{equation}
+		\begin{aligned}
+			T_n\colon \Omega & \to \eR                                         \\
+			\omega           & \mapsto \inf\{ t\geq 0\tq N_t(\omega)\geq n \}.
+		\end{aligned}
+	\end{equation}
+	Soit \( t\geq 0\). Pour tout \( n\) nous avons
+	\begin{equation}    \label{EQooRHQLooVxFfjV}
+		P(T_n\leq t)=\int_0^t\lambda  e^{-\lambda x}\frac{ (\lambda x)^{n-1} }{ (n-1)! }dx.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous y allons par récurrence sur \( n\). D'abord pour \( n=0\) nous savons que \( T_0=0\), donc
+	\begin{equation}        \label{EQooNCMMooHnvIpQ}
+		P(N_n=0)=P(T_0\leq t)-P(T_1\leq t).
+	\end{equation}
+	Nous savons que \( N_{s+t}-N_s\) suit une loi de Poisson de paramètre \( \lambda t\). En particulier avec \( s=0\), nous voyons que \( N_t\) suit une loi de Poisson de paramètre \( \lambda t\). Donc \( P(N_t=0)= e^{-\lambda t}\) (définition \ref{DEFooUWKHooUFKlcr}).
+
+	L'équation \ref{EQooNCMMooHnvIpQ} donne donc \(  e^{-\lambda t}=1-P(T_1\leq t)\). Par ailleurs, pour \( n=1\), l'intégrale \eqref{EQooRHQLooVxFfjV} est facile à calculer et donne bien \( 1- e^{-\lambda t}\).
+
+	Pour la récurrence, en reprenant la notation du lemme \ref{LEMooJHMTooQWvOaI}, nous supposons que \( P(T_n\leq t)=I_n\), et nous prouvons que \( P(T_{n+1}\leq t)=I_{n+1}\). Pour cela nous repartons de
+	\begin{equation}
+		P(N_t=n)=P(T_n\leq t)-P(T_{n+1}\leq t),
+	\end{equation}
+	et nous substituons \( P(N_t=n)= e^{-\lambda t}(\lambda t)^n/n!\) ainsi que \( P(T_n\leq t)=I_n\). Il reste
+	\begin{equation}
+		P(T_{n+1}\leq t)=I_n- e^{-\lambda t}\frac{ (\lambda t)^n }{ n! }.
+	\end{equation}
+	Et le lemme \ref{LEMooJHMTooQWvOaI} nous indique que le tout est égal à \( I_{n+1}\).
+\end{proof}
+
+Voici un théorème donnant des propriétés d'un processus de o-Poisson. Une réciproque partielle est donnée dans la proposition \ref{PropGMntiy}.
+\begin{theorem}[\cite{BIBooRYROooNrCDGy,BIBooMECWooHQJweh, MonCerveau}]     \label{THOooYRIMooSREVEO}
+	Soit un processus de o-Poisson \(  \{ N_t\colon \Omega\to \eN \}_{t\in \eR^+}  \) d'intensité \( \lambda\). Pour chaque \( n\in \eN\) nous posons
+	\begin{equation}
+		\begin{aligned}
+			T_n\colon \Omega & \to \eR                                         \\
+			\omega           & \mapsto \inf\{ t\geq 0\tq N_t(\omega)\geq n \}.
+		\end{aligned}
+	\end{equation}
+	et \( S_k=T_k-T_{k-1}\).
+
+	%TODOooINVAooKSCVwr Il faut encore prouver les points ITEMooSLWOooRjYhBA, ITEMooGBIXooSjXpsx, ITEMooUTTWooOUhkZh, ITEMooDXZFooXkklhG
+
+	Alors
+	\begin{enumerate}
+		\item       \label{ITEMooSLWOooRjYhBA}
+		      \( T_n\) est une variable aléatoire.
+		\item   \label{ITEMooHGXTooOdonXa}
+		      Pour tout \( n\), la variable aléatoire \( (T_1,\ldots, T_n)\) a pour densité\footnote{Définition \ref{DEFooRNKZooRczFwB}.} la fonction
+		      \begin{equation}
+			      \begin{aligned}
+				      g\colon \eR^n     & \to \eR                                                                \\
+				      (x_1,\ldots, x_n) & \mapsto \mtu_{0\leq x_1\leq \ldots\leq x_n}\lambda^n e^{-\lambda x_n}.
+			      \end{aligned}
+		      \end{equation}
+		\item       \label{ITEMooGBIXooSjXpsx}
+		      Les variables aléatoires \( S_i\) sont à densité.
+		\item       \label{ITEMooUTTWooOUhkZh}
+		      La variable aléatoire \( (S_1,\ldots, S_n)\) est à densité.
+		\item       \label{ITEMooUZGFooAbCvvG}
+		      \( (S_n)\) est une suite de variables aléatoires indépendantes et identiquement distribuées de loi exponentielle\footnote{Définition \ref{DEFooTSFNooULWNHY}.} \( \dE(\lambda)\).
+		\item   \label{ITEMooDXZFooXkklhG}
+		      La variable aléatoire \( T_n\) suit la loi de densité
+		      \begin{equation}
+			      \begin{aligned}
+				      f_n\colon \eR & \to \eR                                                                                 \\
+				      s             & \mapsto \begin{cases}
+					                              \frac{ \lambda }{ (n-1)! } e^{-\lambda s}(\lambda s)^{n-1} & \text{si } s\geq 0 \\
+					                              0                                                          & \text{sinon. }
+				                              \end{cases} \\
+			      \end{aligned}
+		      \end{equation}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{proofpart}
+		Pour \ref{ITEMooSLWOooRjYhBA}
+		%TODOooHMIJooYPguVw : faire cette partie, et vérifier les autres
+	\end{proofpart}
+	% -------------------------------------------------------------------
+	\begin{proofpart}
+		Pour \ref{ITEMooHGXTooOdonXa}
+	\end{proofpart}
+	Soient des nombres \( a_i\) et \( b_i\) tels que
+	\begin{equation}
+		0<a_1<b_1<a_2<\ldots<a_n<b_n.
+	\end{equation}
+	Pour éviter les petits effets de bord, nous supposons que \( n>2\). Nous considérons les événements
+	\begin{equation}
+		A_n=\bigcap_{i=1}^n\{ T_i\in\mathopen] a_i , b_i \mathclose] \}
+	\end{equation}
+	et
+	\begin{equation}
+		B_n=\bigcap_{i=1}^{n-1}\{ N_{b_i}-N_{a_i}=1 \}\cap\bigcap_{i=1}^{n-1}\{ N_{a_{i+1}}-N_{b_i}=0 \}\cap\{ N_{b_n}-N_{a_n}\geq 1 \}\cap\{ N_{a_1}=0 \},
+	\end{equation}
+	et nous allons prouver qu'il existe des parties \( Y\) et \( Z\) de \( \Omega\) telles que\quext{Je suis impressionné à quel point cette subtilité est absente de \cite{BIBooMECWooHQJweh}. Soit il y a un truc macroscopique qui m'échappe, soit il y a un gros trou dans les livres sur lesquels est basé \cite{BIBooMECWooHQJweh}, soit il y a quelque chose que je ne comprends pas.}
+	\begin{subequations}
+		\begin{numcases}{}
+			A_n\subset B_n\cup Y\\
+			B_n\subset A_n\cup Z\\
+			P(Y)=P(Z)=0.
+		\end{numcases}
+	\end{subequations}
+	Courage.
+
+	\begin{subproof}
+		\spitem[Quelques valeurs au bord dans \( A_n\)]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( \omega\in A_n\).
+		\begin{subproof}
+			\spitem[Si \( i<n\)]
+			Nous montrons que si \( i<n\), alors
+			\begin{subequations}        \label{SYSooCWKCooLtrVhn}
+				\begin{numcases}{}
+					N_{a_i}(\omega)=i-1\\
+					N_{b_i}(\omega)\in\{ i-1, i \}.
+				\end{numcases}
+			\end{subequations}
+			Pour cela, rien de tel qu'une récurrence. D'abord
+			\begin{equation}
+				T_1(\omega)=\inf\{ t\geq 0\tq N_t(\omega)\geq 1 \}\in \mathopen] a_1 , b_1 \mathclose].
+			\end{equation}
+			Donc \( T_1(\omega)>a_1\) et nous déduisons que \( N_{a_1}(\omega)=0\). De la même manière\footnote{Nous utilisons le fait que \( n>2\) pour être sûr; mais je crois que ce n'est pas nécessaire.},
+			\begin{equation}
+				T_2(\omega)=\inf\{ t\geq 0\tq N_t(\omega)\geq 2 \}\in \mathopen] a_2 , b_2 \mathclose].
+			\end{equation}
+			En particulier \( T_2(\omega)>a_2>b_1\) et nous avons \( N_{b_1}(\omega)<2\). Donc \( N_{b_1}\in\{ 0,1 \}\).
+
+			Soit \( i<n-1\), et supposons que \eqref{SYSooCWKCooLtrVhn} soit valide. Nous avons \( T_i(\omega)\leq b_i\), et donc \( N_{b_i+h}(\omega)\geq i\) pour tout \( h>0\). En particulier \( N_{a_{i+1}}(\omega)\geq i\). Mais \( T_{i+1}(\omega)>a_{i+1}\). Donc \( N_{a_{i+1}}(\omega)<i+1\). Nous en déduisons que \( N_{a_{i+1}}(\omega)=i\).
+
+
+			Comme \( i+1<n\) nous pouvons encore écrire
+			\begin{equation}
+				T_{i+2}(\omega)>a_{i+2}>b_{i+1},
+			\end{equation}
+			donc \( N_{b_{i+1}}(\omega)<i+2\). Vu que \( N_{b_{i+1}}(\omega)\geq N_{a_{i+1}}(\omega)=i\), nous avons \( N_{b_{i+1}}(\omega)\in \{ i,i+1 \}\).
+			\spitem[Pour \( i=n\)]
+			% -------------------------------------------------------------------------------------------- 
+			De la même manière, nous avons \( N_{a_n}<n\), et \( T_{n-1}(\omega)<a_n\). Nous en déduisons \( N_{a_n}(\omega)\geq n-1\) et donc \( N_{a_n}=n-1\).
+
+			Nous avons aussi \( N_{b_n}(\omega)\geq n-1\) et, vu que \( T_n(\omega)\in \mathopen] a_n , b_n \mathclose]\), nous avons \( N_{b_n+h}(\omega)\geq n\) pour tout \( h>0\).
+		\end{subproof}
+		\spitem[Une partie de mesure nulle]
+		% -------------------------------------------------------------------------------------------- 
+		Pour \( i=1,\ldots, n\), nous posons \( Z_i=\{ N_{b_i}=i-1 \}\). Ensuite nous définissons \( Z=\bigcup_{i=1}^nZ_i\). Nous démontrons que \( P(Z\cap A_n)=0\). Si \( \omega\in Z\cap A_n\), alors \( N_{b_i}(\omega)=i-1\) et \( N_{b_i+h}(\omega)\geq i\) pour tout \( h>0\). Donc
+		\begin{equation}
+			Z_i\cap A_n\subset\{ N_{b_i+h}-N_{b_i}\geq 1 \}.
+		\end{equation}
+		Donc
+		\begin{equation}
+			P(Z_i\cap A_n)\leq P\big( \{ N_{b_i+h}-N_{b_i}\geq 1 \} \big).
+		\end{equation}
+		En prenant la limite \( h\to 0^+\), la proposition \ref{PROPooGMBBooCIkVCB} fait que
+		\begin{equation}
+			P(Z_i\cap A_n)=0.
+		\end{equation}
+		Nous en déduisons que \( P(Z\cap A_n)=0\).
+
+		\spitem[\( A_n\subset B_n\cup Z\)]
+		% --------------------------------------------------------------------------------------------
+		Soit \( \omega\in A_n\). Nous devons montrer que si \( \omega\notin Z\), alors \( \omega\in B_n\), c'est-à-dire
+		\begin{enumerate}
+			\item
+			      $ N_{b_i}(\omega)-N_{a_i}(\omega)=1 $ pour \( i=1,\ldots, n-1\),
+			\item
+			      $N_{a_{i+1}}(\omega)-N_{b_i}(\omega)=0$ pour \( i=1,\ldots, n-1\),
+			\item
+
+			      $N_{b_n}(\omega)-N_{a_n}(\omega)\geq 1$
+			\item
+			      $N_{a_1}(\omega)=0$
+		\end{enumerate}
+
+		Si \( i\leq n-1\), alors \( N_{a_i}(\omega)=i-1\) et \( N_{b_i}(\omega)\in \{ i-1,i \}\). Mais si \( \omega\) n'est pas dans \( Z\), alors \( N_{b_i}(\omega)=i\). Dans ce cas, nous avons bien \( \omega\in\{ N_{b_i}-N_{a_i}=1 \}\).
+
+		De même si \( \omega\) est dans \( A_n\) mais pas dans \( Z\), il vérifie \( N_{a_{i+1}}(\omega)=i= N_{b_i}(\omega)=i\).
+
+		Pour \( i=n\), nous avons \( N_{a_n}(\omega)=n-1\) et \( N_{b_n}(\omega)\geq n-1\). Et encore une fois, si \( \omega\) n'est pas dans \( Z\), alors \( N_{a_n}(\omega)-N_{b_n}(\omega)\geq 1\).
+
+		Enfin pour \( \omega\in A_n\), nous avons \( T_1(\omega)=\inf\{ t\geq 0\tq N_t(\omega)\geq 1 \}>a_1\). Donc \( N_{a_1}(\omega)=0\).
+
+		Nous avons fini de prouver que \( A_n\subset B_n\cup Z\).
+		\spitem[\( P(A_n)\leq P(B_n)\)]
+		% -------------------------------------------------------------------------------------------- 
+		En utilisant le lemme \ref{LemPMprYuC}\ref{ITEMooLEGKooWnYmlf}, et \ref{ITEMooABPYooFQEzqE}, nous avons
+		\begin{equation}        \label{EQooGLVAooGGSZYn}
+			P(A_n)\leq P(B_n\cup Z)\leq P(B_n)+P(Z)=P(B_n).
+		\end{equation}
+		\spitem[Quelques valeurs au bord pour \( B_n\)]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( \omega\in B_n\). Nous avons \( N_{a_1}(\omega)=0\). Donc
+		\begin{equation}
+			T_1(\omega)=\inf\{  t\geq 0\tq N_t(\omega)\geq 1 \}\geq a_1.
+		\end{equation}
+		De même nous prouvons les valeurs suivantes. Pour \( i<n\) nous avons :
+		\begin{subequations}
+			\begin{numcases}{}
+				N_{a_i}(\omega)=i-1\\
+				N_{b_i}(\omega)=i
+			\end{numcases}
+		\end{subequations}
+		et pour \( i=n\) nous avons
+		\begin{subequations}
+			\begin{numcases}{}
+				N_{a_n}(\omega)=n-1\\
+				N_{b_n}(\omega)\geq n.
+			\end{numcases}
+		\end{subequations}
+		Nous avons donc l'appartenance
+		\begin{equation}        \label{EQooVYVJooHEshGE}
+			T_i(\omega)\in\mathopen[ a_i , b_i \mathclose]
+		\end{equation}
+		pour tout \( i\leq n\).
+
+		Cela n'est pas suffisant pour dire que \( \omega\in A_n\) parce que la possibilité \( T_i(\omega)=a_i\) n'est pas exclue.
+		\spitem[Une partie de mesure nulle]
+		% -------------------------------------------------------------------------------------------- 
+		Nous posons \( Y_i=\{ \omega\in \Omega\tq T_i(\omega)=a_i \}\), et nous prouvons que \( P(Y_i\cap B_n)=0\). Pour \( \omega\in Y_i\cap B_n\) nous avons \( N_{a_i}(\omega)=i-1\) et \( N_{a_i+h}(\omega)=i\) pour tout \( h>0\). Donc pour tout \( h>0\) nous avons
+		\begin{equation}
+			Y_i\cap B_n\subset\{ N_{a_i+h}-N_{a_i}\geq 1 \},
+		\end{equation}
+		et donc
+		\begin{equation}
+			P(Y_i\cap B_n)\leq P\big( N_{a_{i+h}}-N_{a_i}\geq 1 \big).
+		\end{equation}
+		En utilisant à nouveau le lemme \ref{PROPooGMBBooCIkVCB}, nous trouvons \( P(Y_i\cap B_n)=0\).
+
+		Nous posons \( Y=\bigcup_{i=1}^nY_i\).
+		\spitem[\( P(B_n)\leq P(A_n)\)]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( \omega\in B_n\), nous avons \eqref{EQooVYVJooHEshGE} : \( T_i(\omega)\in \mathopen[ a_i , b_i \mathclose]\). Par définition de \( Y\), si \( \omega\in B_n\setminus Y\) nous avons
+		\begin{equation}
+			T_i(\omega)\in \mathopen] a_i , b_i \mathclose].
+		\end{equation}
+		Autrement dit, \( B_n\setminus Y\subset A_n\) et donc \( B_n\subset A_n\cup Y\). Nous en déduisons que
+		\begin{equation}    \label{EQooWQZPooPBjPsG}
+			P(B_n)\leq P(A_n\cup Y)\leq P(A_n)+P(Y)=P(A_n).
+		\end{equation}
+		\spitem[\( P(A_n)=P(B_n)\)]
+		% -------------------------------------------------------------------------------------------- 
+		En mettant ensemble \eqref{EQooGLVAooGGSZYn} et \eqref{EQooWQZPooPBjPsG} nous avons
+		\begin{equation}
+			P(A_n)=P(B_n).
+		\end{equation}
+	\end{subproof}
+	Calculons la probabilité de \( B_n\). Vu que \( N_0=0\), l'événement \( N_{a_i}=0\) peut être écrit \( N_{a_i}-N_0=0\). Donc \( B_n\) peut être écrit comme intersection d'incréments indépendants. Nous pouvons donc écrire \( P(A_n)\) comme un produit :
+	\begin{equation}
+		P(A_n)=\prod_{i=1}^{n-1}P(N_{b_i}-N_{a_i}=1)\times\prod_{i=1}^{n-1}P(N_{a_{i+1}}-N_{b_i}=0)\times P(N_{b_n}-N_{a_n}\geq 1)\times P(N_{a_1}=0).
+	\end{equation}
+	En posant \( l_i=b_i-a_i\) et \( \delta_i=a_{i+1}-b_i\) et en utilisant la formule \eqref{EQooLGLUooLXohWe} pour
+	\begin{equation}
+		P(N_{s+t}-N_s=k)= e^{-\lambda t}\frac{ (\lambda t)^k }{ k! },
+	\end{equation}
+	nous trouvons
+	\begin{equation}
+		P(A_n)=\prod_{i=1}^{n-1}(\lambda l_i) e^{-\lambda l_i}\times \prod_{i=1}^{n-1} e^{-\lambda \delta_i}\times  e^{-\lambda a_1}(1- e^{-\lambda l_n}).
+	\end{equation}
+	Note : pour le dernier nous avons posé \( X=N_{b_n}-N_{a_n}\) qui suit une loi exponentielle de paramètre \( \lambda l_n\) et nous avons dit $P(X\geq 1)=1-P(X=0)=1- e^{\lambda l_n}$. Remarquez que \( l_i+\delta_i=a_{i+1}-a_i\); en regroupant les exponentielles, nous avons une somme téléscopique; au final
+	\begin{equation}
+		P(A_n)=\lambda^{n-1} e^{-\lambda a_n}(1- e^{-\lambda l_n})\prod_{i=1}^{n-1}(l_i).
+	\end{equation}
+
+	Pour le plaisir d'ajouter des notations, nous posons \( I_n=\mathopen] a_1 , b_1 \mathclose]\times \ldots\times\mathopen] a_n , b_n \mathclose]\). Cela permet d'écrire
+	\begin{equation}
+		A_n=\{ (T_1,\ldots,T_n)\in I_n \}
+	\end{equation}
+	et nous incite à calculer \( \int_{I_n}g\). Pour alléger le calcul suivant, notez que
+	\begin{equation}	\label{EQooFXPWooRDBkUE}
+		\int_a^be^{-\lambda t}dt=\left[  -\frac{1}{ \lambda}e^{-\lambda t}  \right]_a^b=\frac{1}{ \lambda}e^{-\lambda a}\big( 1-e^{-\lambda(b-a)} \big).
+	\end{equation}
+	Ensuite nous calculons pour de vrai :
+	\begin{subequations}
+		\begin{align}
+			\int_{I_n}g(x_1,\ldots, x_n) & =\int_{a_1}^{b_1}\ldots\int_{a_n}^{b_n}\mtu_{x_1\leq \ldots\leq x_n}\lambda^n e^{-\lambda x_n}\,dx_1\ldots dx_n                                                 \\
+			                             & =\int_{a_1}^{b_1}\ldots\int_{a_n}^{b_n}\lambda^n e^{-\lambda x_n}\,dx_1\ldots dx_n                              & \text{cf. justif.}\label{SUBEQooPMLZooJhEjds} \\
+			                             & =\big( \prod_{i=1}^{n-1}l_i \big)\int_{a_n}^{b_n}\lambda^ne^{-\lambda x_n}dx_n                                                                                  \\
+			                             & =\big( \prod_{i=1}^{n-1}l_i \big)\lambda^n\frac{1}{ \lambda}e^{-\lambda a_n}\big(1- e^{-\lambda(b_a-a_n)} \big) & \text{eq. \eqref{EQooFXPWooRDBkUE}}           \\
+			                             & =\big( \prod_{i=1}^{n-1}l_i \big)\lambda^{n-1}e^{-\lambda a_n}\big(1- e^{-\lambda l_n} \big)                                                                    \\
+			                             & =P(A_n)                                                                                                                                                         \\
+			                             & =P\big( (T_1,\ldots, T_n)\in I_n \big).
+		\end{align}
+	\end{subequations}
+	Justifications:
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooPMLZooJhEjds}. Vu que nous avons choisi \( a_1<b_1<\ldots<a_n<b_n\), nous avons toujours \( \mtu_{0\leq x_1\leq\ldots\leq x_n}=1\). La fonction à intégrer ne dépend pas de \( x_1,\ldots,x_{n-1}\).
+		      Les intégrales sur \( x_1,\ldots, x_{n-1}\) sont immédiates, et nous avons
+	\end{itemize}
+	Nous savons que les \( T_i\) sont à valeurs dans \( \eR^+\). Donc sur les pavés \( N\) contenant des coordonnées négatives, nous avons \( P\big( (T_1,\ldots, T_n)\in N \big)=0 \). Heureusement nous avons aussi \( \int_Ng(x)dx=0\).
+
+	En prenant tous les pavés \( I_n\) ainsi que tous ceux avec des coordonnées négatives, nous engendrons les boréliens. Le lemme \ref{LEMooIVIWooUUVStW} conclut que la fonction \( g\) proposée est une densité pour \( (T_1,\ldots, T_n)\).
+
+	% -----------------------------------------------------------------------------------
+
+	\begin{center}
+		Pour \ref{ITEMooGBIXooSjXpsx}
+	\end{center}
+	% -----------------------------------------------------------------------------------
+
+	\begin{center}
+		Pour \ref{ITEMooUTTWooOUhkZh}
+	\end{center}
+
+	% -----------------------------------------------------------------------------------
+
+
+	\begin{center}
+		Pour \ref{ITEMooUZGFooAbCvvG}
+	\end{center}
+	\begin{subproof}
+		\spitem[Densité pour \( (S_1,\ldots, S_n)\)]
+		% -------------------------------------------------------------------------------------------- 
+
+
+		Le point \ref{ITEMooUTTWooOUhkZh} nous indique que \( (S_1,\ldots, S_n)\) est à densité. Nous notons \( h\colon \eR^n\to \eR\) sa densité. Soit une application borélienne \( f\colon \eR^n\to \eR\). En posant
+		\begin{equation}
+			\begin{aligned}
+				m\colon \eR^n     & \to \eR^n                                   \\
+				(t_1,\ldots, t_n) & \mapsto (t_1, t_2-t_1,\ldots, t_n-t_{n-1}),
+			\end{aligned}
+		\end{equation}
+		nous avons
+		\begin{subequations}
+			\begin{align}
+				E\big( f(S_1,\ldots, S_n) \big) & =E\big( f(T_1,T_2-T_1,\ldots, T_n-T_{n-1}) \big)                                       \\
+				                                & =E\big( (f\circ m)(T_1,\ldots, T_n) \big)                                              \\
+				                                & =\int_{\eR^n}(f\circ m)(x)g(x)dx       \label{SUBEQooGLXSooMcZeSr}                     \\
+				                                & =\int_{\eR^n}(f\circ m\circ \phi)(x)(g\circ \phi)(x)dx     \label{SUBEQooFRNHooGtSNph} \\
+				                                & =\int_{\eR^n}f(x)(g\circ \phi)(x)dx        \label{SUBEQooETUFooIYIOOO}                 \\
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooGLXSooMcZeSr}, c'est le lemme \ref{LEMooYVJAooXUkRTh}\ref{ITEMooKZHAooKQQmno}.
+			\item Pour \eqref{SUBEQooFRNHooGtSNph}, nous effectuons le changement de variables\footnote{Formule \eqref{EQooLYAWooTArAZR}.} pour la bijection linéaire
+			      \begin{equation}
+				      \begin{aligned}
+					      \phi\colon \eR^n  & \to \eR^n              \\
+					      (t_1,\ldots, t_n) & \mapsto \begin{pmatrix}
+						                                  t_1     \\
+						                                  t_1+t_2 \\
+						                                  \vdots  \\
+						                                  t_1+\ldots +t_n
+					                                  \end{pmatrix}.
+				      \end{aligned}
+			      \end{equation}
+			      Notons que \( \phi\) est de déterminant \( 1\) : c'est une matrice triangulaire avec des \( 1\) sur la diagonale.
+			\item Pour \eqref{SUBEQooETUFooIYIOOO}. Parce que \( (m\circ \phi)(x)=x\) dans \( \eR^n\).
+		\end{itemize}
+		Bref, pour toute application borélienne \( f\colon \eR^n\to \eR\), nous avons
+		\begin{equation}
+			E\big( f(S_1,\ldots, S_n) \big)=\int_{\eR^n}f(x)(g\circ \phi)(x)dx.
+		\end{equation}
+		Le lemme \ref{LEMooAVTFooIQRvop} nous indique que \( g\circ \phi\) est une densité pour \( (S_1,\ldots, S_n)\). Plus explicitement, la densité de \( (S_1,\ldots, S_n)\) est
+		\begin{equation}
+			\begin{aligned}
+				h\colon \eR^n & \to \eR                                                           \\
+				x             & \mapsto \mtu_{\eR^n_+}(x)\lambda^n e^{-\lambda(x_1+\ldots +x_n)}.
+			\end{aligned}
+		\end{equation}
+		\spitem[Densités marginales]
+		% -------------------------------------------------------------------------------------------- 
+		La proposition \ref{PROPooNYNUooTCJgpl} nous assure que les variables aléatoires \( S_i\) sont à densité et que pour trouver les densités, il suffit d'intégrer. La densité de \( S_i\) est
+		\begin{equation}
+			h_i(t)=\int_{\eR^{n-1}}\mtu_{\eR^n_+}(x_1,\ldots, t,\ldots, x_n) e^{-\lambda x_1-\ldots -\lambda t-\ldots -\lambda x_n}
+		\end{equation}
+		Les différentes intégrales sont indépendantes et valent
+		\begin{subequations}
+			\begin{align}
+				\int_{\eR}\mtu_{\mathopen[ 0 , \infty \mathclose[}(u) e^{-\lambda u}du & =\left[ -\frac{1}{ \lambda } e^{-\lambda u} \right]_{0}^{\infty} \\
+				                                                                       & =-\frac{1}{ \lambda }(0-1)                                       \\
+				                                                                       & =\frac{1}{ \lambda }.
+			\end{align}
+		\end{subequations}
+		Au final, nous avons
+		\begin{equation}        \label{EQooBZNBooHGeaQx}
+			h_i(u)=\mtu_{\mathopen[ 0 , \infty \mathclose[}(u)\lambda  e^{-\lambda u}.
+		\end{equation}
+		\spitem[Conclusions]
+		% -------------------------------------------------------------------------------------------- 
+		Nous voyons que \eqref{EQooBZNBooHGeaQx} est la densité d'une loi exponentielle (définition \ref{DEFooTSFNooULWNHY}). La proposition \ref{PROPooVUTLooDPdhxK}\ref{ITEMooUQEFooAAFXJY} nous dit que les \( S_i\) sont indépendantes.
+	\end{subproof}
+
+	% -----------------------------------------------------------------------------------
+
+	\begin{center}
+		Pour \ref{ITEMooDXZFooXkklhG}
+	\end{center}
+	C'est la proposition \ref{PROPooBZREooUTvonZ}.
+
+\end{proof}
+
+
+\begin{proposition}[Loi des grands nombres]
+	Si \( (N_t)\) est un processus de o-Poisson d'intensité \( \lambda\), alors
+	\begin{equation}
+		\lim_{t\to \infty} N_t=+\infty
+	\end{equation}
+	presque surement. De plus
+	\begin{equation}        \label{EqvaVYAs}
+		\lim_{t\to \infty} \frac{ N_t }{ t }=\lambda
+	\end{equation}
+	presque surement.
+\end{proposition}
+\index{loi!des grands nombres!processus de Poisson}.
+
+\begin{proof}
+	Par définition nous savons que
+	\begin{equation}
+		N_t=\sup\{ n\geq 0\tq S_n\leq t \}.
+	\end{equation}
+	Évidemment la fonction \( t\mapsto N_t\) est croissante, donc la limite
+	\begin{equation}
+		\lim_{t\to \infty} N_t(\omega)
+	\end{equation}
+	existe dans \( \mathopen[ 0 , \infty \mathclose]\). Nous pouvons nous restreindre à \( t\in \eN\) et considérer \( L(\omega)=\lim_{n\to \infty} N_n(\omega)\). Par somme télescopique avec \( N_0=0\),
+	\begin{equation}    \label{EqfRpnfF}
+		\frac{ N_n }{ n }=\frac{ \sum_{k=1}^n(N_k-N_{k-1}) }{ n }.
+	\end{equation}
+	Étant donné que le processus est de Poisson, les variables aléatoires \( (N_k-N_{k-1})_{k=1,\ldots, n}\) sont indépendantes et suivent toutes la loi de \( N_1-N_0\), c'est-à-dire la loi de \( N_1\). Encore par le fait que \( N_t\) soit de Poisson nous savons que \( N_1\sim\dP(\lambda)\). La loi des grands nombres (\ref{ThoefQyKZ}) appliquée aux variables aléatoires \( N_k-N_{k-1}\) nous dit que
+	\begin{equation}
+		\frac{ N_n }{ n }\stackrel{p.s.}{\longrightarrow}E(N_1)=\lambda>0.
+	\end{equation}
+	Du coup \( N_n\to \infty\) et \( L(\omega)=\infty\).
+
+	Nous démontrons maintenant la loi des grands nombres pour les processus de Poisson. Étant donné que pour les entiers \( N_n/n\to \lambda\), pour les réels, si la limite existe, ça ne peut pas être autre chose. Si nous notons \( \bar t\) la partie entière de \( t\in \eR^+\),
+	\begin{equation}
+		\frac{ N_t }{ t }=\frac{ N_t-N_{\bar t} }{ t }+\frac{ N_{\bar t} }{ t }.
+	\end{equation}
+	Le second terme est relativement simple à traiter :
+	\begin{equation}
+		\frac{ N_{\bar t} }{ t }=\underbrace{\frac{ N_{\bar t} }{ \bar t }}_{\to \lambda}\cdot\underbrace{\frac{ \bar t }{ t }}_{\to 1}.
+	\end{equation}
+	où nous avons utilisé le premier point, \( \bar t\) étant entier. Pour le premier terme nous savons que \( t\mapsto N_t\) est croissante et donc que
+	\begin{equation}
+		\frac{ N_t-N_{\bar t} }{ t }\leq \frac{ N_{\bar t+1}-N_{\bar t}}{ t }=\frac{ N_{\bar t+1}-N_{\bar t} }{ \bar t+1 }\frac{ \bar t+1 }{ t }.
+	\end{equation}
+	Le second facteur tend vers \( 1\) lorsque \( t\to \infty\). Le premier s'écrit
+	\begin{equation}    \label{eqtPgPpJ}
+		\frac{ N_n-N_{n-1} }{ n }
+	\end{equation}
+	et tend vers zéro en tant que terme général de la série \eqref{EqfRpnfF} qui converge.
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Équivalence de définitions}
+%----------------------------------------------------
+
+%-------------------------------------------------------
+\subsection{Estimateurs}
+%----------------------------------------------------
+
+\begin{proposition}
+	La variable aléatoire \( N_t/t\) est un estimateur sans biais de \( \lambda\). De plus il converge vers \( \lambda\) en moyenne quadratique.
+\end{proposition}
+
+\begin{proof}
+	Vu que \( N_t/t\to\lambda\) presque surement, la variable aléatoire \( N_t/t\) est un estimateur de \( \lambda\). Le fait qu'il soit sans biais a été fait dans l'exemple~\ref{ExytNlTq}.
+
+	D'autre part nous avons (voir théorème~\ref{ThojDZjuj})
+	\begin{equation}
+		\Var\left( \frac{ N_t }{ t } \right)=\frac{1}{ t^2 }\Var(N_t)=\frac{ \lambda }{ t }.
+	\end{equation}
+	En appliquant la formule \( \Var(X)=E(X^2)-E(X)^2\) à \( X=N_t/t\) nous trouvons
+	\begin{equation}
+		E\left( \frac{ N_t^2 }{ t^2 } \right)=\frac{ \lambda }{ t }+\lambda^2.
+	\end{equation}
+	Cela montre que \( \frac{ N_t }{ t }\stackrel{L^2}{\longrightarrow}\lambda\).
+\end{proof}
+
+Pour le théorème central limite d'un processus de Poisson, nous visons un résultat du style de
+\begin{equation}
+	\frac{ \frac{1}{ n }\sum_iX_i-mn }{ \sigma\sqrt{n} }\stackrel{\hL}{\longrightarrow}\dN(0,1).
+\end{equation}
+Nous écrivons le théorème central limite pour le nombre de sauts que le processus de Poisson a connu en un temps \( t\). Le rôle de la moyenne empirique est joué par \( N_t\). Nous considérons avoir fait \emph{une seule expérience} qui a duré un temps \( t\). Donc le rôle de \( n\) est joué par \( 1\) (et non \( t\) comme on pourrait le croire). Pour le reste, le nombre de succès en un temps \( t\) d'une variable aléatoire exponentielle de paramètre \( \lambda\) est une variable aléatoire de Poisson de paramètre \( \lambda t\), en vertu de ce qui est raconté au point~\ref{subsecPoissonetexpo}. C'est cela qui motive l'énoncé suivant.
+
+\begin{theorem}[Théorème central limite pour les processus de Poisson]\index{théorème!central limite!processus de Poisson}  \label{ThoCSuLLo}
+	Si \( (N_t)_{t>0}\) est un processus de Poisson de paramètre \( \lambda\), alors nous avons
+	\begin{equation}
+		\frac{ N_t-\lambda t }{ \sqrt{\lambda t} }\stackrel{\hL}{\longrightarrow}\dN(0,1).
+	\end{equation}
+\end{theorem}
+
+\begin{remark}
+	Avant de nous lancer dans la démonstration, remarquons que si nous nous limitons à \( t\in \eN\), alors nous avons
+	\begin{equation}
+		\frac{ N_n-\lambda n }{ \sqrt{\lambda n} }=\frac{ \sum_{k=1}^n(N_k-N_{k-1})-\lambda n }{ \sqrt{\lambda n} }
+	\end{equation}
+	or par définition nous avons les égalités de lois
+	\begin{equation}
+		N_k-N_{k-1}\sim N_1\sim \dP(\lambda),
+	\end{equation}
+	donc
+	\begin{equation}
+		\frac{ S_n-\lambda n }{ \sqrt{\lambda n} }=\frac{ \frac{1}{ n }S_n-\lambda }{ \frac{ \sqrt{\lambda n} }{ n } }=\frac{ \frac{1}{ n }S_n-\lambda }{ \sqrt{\lambda}/\sqrt{n} },
+	\end{equation}
+	ce qui est exactement le théorème central limite pour une suite de lois de Poisson\footnote{Au fait près que nous devrions encore montrer que \( S_n\) est de carré intégrable.}.
+\end{remark}
+
+\begin{proof}
+	Nous écrivons \( \bar t\) la partie entière de \( \bar t\) et nous décomposons :
+	\begin{equation}
+		\frac{ N_t-\lambda t }{ \sqrt{\lambda t} }=\underbrace{\frac{ N_t-N_{\bar t} }{ \sqrt{\lambda t} }}_A+\underbrace{\frac{ N_{\bar t}-\lambda \bar t }{ \sqrt{\lambda t} }}_B+\underbrace{\frac{ \lambda \bar t-\lambda t }{ \sqrt{\lambda t} }}_C.
+	\end{equation}
+	En ce qui concerne le terme \( B\), nous avons
+	\begin{equation}
+		B=\sqrt{\frac{ \bar t }{ t }}\frac{ N_{\bar t}-\lambda \bar t }{ \sqrt{\lambda \bar t} }\to\dN(0,1).
+	\end{equation}
+	Notons que nous utilisons le fait que si \( a_n\to 1\) (en tant que suite de nombres) et si \( X_n\to\dN(0,1)\) (limite en loi), alors \( a_nX_n\to \dN(0,1)\) en loi.
+
+	Le terme \( C\) est également facile parce que \( \lambda \bar t-\lambda t\) est majoré en norme par \( \lambda\). Du coup
+	\begin{equation}
+		-\frac{ \lambda }{ \sqrt{\lambda t} }\leq C\leq \frac{ \lambda }{ \sqrt{\lambda t} }.
+	\end{equation}
+	Donc \( \lim_{t\to \infty} C=0\).
+
+	Reste à travailler sur \( A\). Vu que \( t\mapsto N_t\) est croissante, la différence \( N_t-N_{\bar t}\) est positive. Soit \( \eta>0\), nous avons
+	\begin{equation}
+		P(| A |>\eta)=P(N_t-N_{\bar t}>\sqrt{\lambda t}\eta)\leq P\big( N_{\bar t+1}-N_{\bar t}\geq \sqrt{\lambda t}\eta \big)=P(N_1\geq \eta\sqrt{\lambda t})
+	\end{equation}
+	parce que nous savons que \( N_{\bar t+1}-N_{\bar t}\sim N_1\sim\dP(\lambda)\). En vertu des propriétés de la loi de Poisson,
+	\begin{equation}
+		\lim_{t\to \infty}P(N_1\geq \eta\sqrt{\lambda t})=0.
+	\end{equation}
+	En effet si \( Z\) est une variable aléatoire de Poisson de paramètre \( \lambda\) nous avons
+	\begin{equation}
+		P(Z>l)=\sum_{k=l}^{\infty}P(Z=k)= e^{-\lambda}\sum_{k=l}^{\infty}\frac{ \lambda^k }{ k! }.
+	\end{equation}
+	Nous reconnaissons la queue de série de \(  e^{\lambda}\), qui tend donc vers zéro lorsque \( l\to \infty\). Nous avons donc prouvé que
+	\begin{equation}
+		\lim_{t\to \infty} P\big( | A |>\eta \big)=0,
+	\end{equation}
+	c'est-à-dire la convergence en probabilité de \( A\) vers zéro.
+
+	Nous avons montré que
+	\begin{subequations}
+		\begin{align}
+			B+C & \stackrel{\hL}{\longrightarrow} U\sim\dN(0,1) \\
+			A\stackrel{P}{\longrightarrow}0.
+		\end{align}
+	\end{subequations}
+	Le lemme de Slutsky (\ref{LemgXDlhs}) nous avons une convergence du couple
+	\begin{equation}
+		(A,B+C)\stackrel{\hL}{\longrightarrow}(0,U).
+	\end{equation}
+	Utilisant le corolaire~\ref{CorINgTPH}, nous trouvons la convergence en loi
+	\begin{equation}
+		A+(B+C)\stackrel{\hL}{\longrightarrow}0+U,
+	\end{equation}
+	ce qu'il fallait.
+\end{proof}
+
+\begin{proposition}     \label{PROPooWAVPooHDVsER}
+	Si \( N_t\) est un processus de Poisson\footnote{Définition \ref{DEFooWXHEooEHQUJU}.}, alors les variables aléatoires \( X_n=N_n\) avec \( n\in \eN\) forment une chaine de Markov\footnote{Définition \ref{DEFooGDPFooWsvfRv}.}.
+\end{proposition}
+J'espère qu'un jour une preuve arrivera ici : \url{https://math.stackexchange.com/q/4563414}
+
+\section{Quelques trucs sur la simulation}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Le théorème ergodique dit que
+\begin{equation}
+	\pi(x)=\lim_{N\to \infty} \frac{1}{ N }\sum_{k=1}^N\mtu_{X_k=x}.
+\end{equation}
+C'est avec cela qu'on calcule \( \pi(x)\) à partir d'une simulation de chaine de Markov.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Le théorème central limite pour Markov}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem}[Version allégée]        \label{THOooBCKQooCkoUEV}
+	Si \( (X_n)\) est irréductible et positive récurrente, alors pour toute fonction \( f\),
+	\begin{equation}
+		\frac{1}{ \sqrt{N} }\left[ \sum_{k=1}^N-N\int fd\pi \right]\stackrel{\hL}{\longrightarrow}\dN(0,\sigma^2)
+	\end{equation}
+	où \( \sigma^2\) dépend de la fonction \( f\) et de la chaine de Markov.
+
+	Ici, \( \int fd\pi=\sum_{x\in E}f(x)\pi(x)\).
+\end{theorem}
+
+Nous allons simuler la variable aléatoire
+\begin{equation}
+	Z=\frac{1}{ \sqrt{N} }\left[ \sum f(X_k)-N\sum_{x\in E} f(x)\pi(x) \right]
+\end{equation}
+et puis on va mettre sa réalisation dans un histogramme. Dans le cas où on prend \( f(i)=\mtu_{i=i_0}\), il y a de la simplification dans l'intégrale qui devient
+\begin{equation}
+	Z=\frac{1}{ \sqrt{N} }\left[ \sum_{i=1}^N\mtu_{X_k=i_0}-N\pi(i_0) \right].
+\end{equation}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Feuille 5}
+%---------------------------------------------------------------------------------------------------------------------------
+
+On pose
+\begin{equation}
+	D_n=\sqrt{n}\sup_{x\in\eR}| F_n(x)-F(x) |.
+\end{equation}
+On en génère un millier de fois \( D_n\), on note \( D_n^{(k)}\) ces réalisations, et on regarde ce que vaut
+\begin{equation}
+	\frac{1}{ 1000 }\sum_{k=1}^{1000}\mtu_{D_n^{(k)\geq c}}.
+\end{equation}
+Cela nous donne une approximation de
+\begin{equation}
+	P\big( \sqrt{n}\sup_{x\in\eR}| F_n(x)-F(x) |\geq c \big).
+\end{equation}
+
+Note que chacun des \( D_n^{(k)}\) demande de créer un nouveau vecteur \( Y_i\) de lois qu'on veut regarder. Par exemple de loi exponentielle.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Feuille 6}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Pour créer une fonction qui renvoie \( i\) avec probabilité \( p_i\) pour \( i=1,2,3\), on peut faire
+\begin{equation}
+	U\sim\dU[0,1]
+\end{equation}
+et puis on a
+\begin{subequations}
+	\begin{align}
+		P(U<p_0)         & =p_0  \\
+		P(p_0<U<p_0+p_1) & =p_1  \\
+		P(p_0+p_1<U<p_2) & =p_2.
+	\end{align}
+\end{subequations}
+Une façon de faire une loi uniforme \( [0,1]\) est de faire \info{rand}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Feuille 7}
+%---------------------------------------------------------------------------------------------------------------------------
+
+L'échantillon est \( (Y_1,\ldots, Y_n) \) et nous écrivons le vecteur
+\begin{equation}
+	Y=X\beta+\epsilon
+\end{equation}
+où \( Y\sim\dN(X\beta,\sigma^2\id)\) et \( \epsilon\sim\dN(0,\sigma^2\id)\). Nous utilisons le principe de maximum de vraisemblance. Soit \( (y_1,\ldots, y_n)\) un échantillon et
+\begin{equation}
+	P_{\theta}(y_1,\ldots, y_n)=\prod_i\frac{1}{ \sigma\sqrt{2\pi }}\exp\left[ -\frac{ 1 }{2}\left( \frac{ y_i-X_i^t\beta }{ \sigma } \right)^2 \right].
+\end{equation}
+L'astuce est de faire que \( y_i-X_i^t\beta\) est la \( i\)ième composante du vecteur \( Y-X\beta\) et donc la somme qui est dans l'exponentielle devient la norme de \( Y-X\beta\) :
+\begin{equation}
+	f_{\theta}(y_1,\ldots, y_n)=\left( \frac{1}{ \sigma\sqrt{2\pi} } \right)^n\exp\left[ -\frac{ 1 }{2}\| Y-X\beta \|^2 \right].
+\end{equation}
+On passe au logarithme et on dérive par rapport à \( \sigma^2\). Attention : la variable est \( \sigma^2\), donc la dérivée de \( \sigma^2\) est \( 1\) et non \( 2\sigma\). Bref, on trouve
+\begin{equation}
+	\sigma^2=\frac{1}{ 2n }\| U+X\beta \|.
+\end{equation}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Simuler des lois conditionnelles}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous voulons générer des couples \( (X,Y)\) tels que \( Y\) prend les valeurs \( 0\) ou \( 1\) et tels que
+\begin{subequations}
+	\begin{numcases}{}
+		P(X|Y=0)\sim\dE(\lambda_0)\\
+		P(X|Y=1)\sim\dE(\lambda_1).
+	\end{numcases}
+\end{subequations}
+Le plus simple est de générer une liste
+\begin{subequations}
+	\begin{align}
+		(X_1,0) &  & (X_4,1) \\
+		(X_2,0) &  & (X_5,1) \\
+		(X_3,0) &  & (X_6,1)
+	\end{align}
+\end{subequations}
+avec \( X_1,X_2,X_3\sim\dE(\lambda_0)\) et \( X_4,X_5,X_6\sim\dE(\lambda_1)\).
+
+Avec cette méthode cependant la liste est triée et en plus on a autant de \( 1\) que de \( 0\). On peut faire un peu plus technologique pour corriger cela. Pour créer un couple, on commence par \( Y\sim\dB(p)\) et puis suivant que \( Y=0\) ou \( y=1\), on génère \( X\sim\dE(\lambda_0)\) ou \( X\sim\dE(\lambda_1)\).

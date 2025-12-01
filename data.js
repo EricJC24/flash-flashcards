@@ -18,6 +18,15 @@ window.flashcardsData = [
     "category": "Definition"
   },
   {
+    "front": "Define: Number of solutions of a linear system",
+    "back": "A system of equations is said to be \\textbf{consistent} if there is at least one solution; it is \\textbf{inconsistent} if there are no solutions.",
+    "type": "Definition",
+    "title": "Number of solutions of a linear system",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Definition"
+  },
+  {
     "front": "State the Theorem: Gauss's Method a.k.a Gauss-Jordan or Row Reduction",
     "back": "If a linear system is changed to another by one of these operations\n\\begin{enumerate}\n  \\item an equation is swapped with another\n  \\item an equation has both sides multiplied by a nonzero constant\n  \\item an equation is replaced by the sum of itself and a multiple of another\n\\end{enumerate}\nthen the two systems have the same set of solutions.",
     "type": "Theorem",
@@ -67,6 +76,15 @@ window.flashcardsData = [
     "back": "Solution sets of linear systems are either \n\\begin{itemize}\n\\item \nempty, \n\\item\nhave one element, or \n\\item\nhave infinitely many elements.\n\\end{itemize}",
     "type": "Corollary",
     "title": "Solution Set Types",
+    "chapter_id": 1,
+    "chapter_title": "Linear Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Inconsistent Systems",
+    "back": "A linear system is inconsistent if (and only if) the reduced row-echelon form of its augmented matrix contains the row $\\left[\\begin{array}{llll:l}0 & 0 & \\cdots & 0 & 1\\end{array}\\right]$, representing the equation $0=1$.\n\nIf a linear system is consistent, then it has either\n\n- infinitely many solutions (if there is at least one free variable), or\n\n- exactly one solution (if all the variables are leading).",
+    "type": "Theorem",
+    "title": "Inconsistent Systems",
     "chapter_id": 1,
     "chapter_title": "Linear Equations",
     "category": "Theorem"
@@ -437,7 +455,7 @@ window.flashcardsData = [
     "type": "Definition",
     "title": "Span",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -446,7 +464,7 @@ window.flashcardsData = [
     "type": "Definition",
     "title": "Kernel and Image",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -455,7 +473,7 @@ window.flashcardsData = [
     "type": "Theorem",
     "title": "Image of a linear transformation",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Theorem"
   },
   {
@@ -464,7 +482,7 @@ window.flashcardsData = [
     "type": "Theorem",
     "title": "Rank--Nullity for Linear Maps",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Theorem"
   },
   {
@@ -473,7 +491,7 @@ window.flashcardsData = [
     "type": "Definition",
     "title": "Subspaces of $\\mathbb{R}^{{n}}$",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -482,16 +500,16 @@ window.flashcardsData = [
     "type": "Theorem",
     "title": "Image and kernel are subspaces",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Theorem"
   },
   {
     "front": "Define: Redundant vectors; linear independence; basis",
-    "back": "Consider vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in $\\mathbb{R}^n$.\n\\begin{itemize}\n\\item[a.] We say that a vector $\\vec{v}_i$ in the list $\\vec{v}_1, \\ldots, \\vec{v}_m$ is \\textbf{redundant} if $\\vec{v}_i$ is a linear combination of the preceding vectors $\\vec{v}_1, \\ldots, \\vec{v}_{i-1}$.\n\n\\item[b.] The vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ are called \\textbf{linearly independent} if none of them is redundant. Otherwise, the vectors are called \\textbf{linearly dependent} (meaning that at least one of them is redundant).\n\n\\item[c.] We say that the vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in a subspace $V$ of $\\mathbb{R}^n$ \\textbf{form a basis} of $V$ if they span $V$ and are linearly independent.\n\\end{itemize}",
+    "back": "Consider vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in $\\mathbb{R}^n$.\\n\\begin{itemize}\\n\\item We say that a vector $\\vec{v}_i$ in the list $\\vec{v}_1, \\ldots, \\vec{v}_m$ is \\textbf{redundant} if $\\vec{v}_i$ is a linear combination of the preceding vectors $\\vec{v}_1, \\ldots, \\vec{v}_{i-1}$.\\n\\n\\item The vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ are called \\textbf{linearly independent} if none of them is redundant. Otherwise, the vectors are called \\textbf{linearly dependent} (meaning that at least one of them is redundant).\\n\\n\\item We say that the vectors $\\vec{v}_1, \\ldots, \\vec{v}_m$ in a subspace $V$ of $\\mathbb{R}^n$ \\textbf{form a basis} of $V$ if they span $V$ and are linearly independent.\\n\\end{itemize}",
     "type": "Definition",
     "title": "Redundant vectors; linear independence; basis",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -500,7 +518,7 @@ window.flashcardsData = [
     "type": "Theorem",
     "title": "Dimension",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Theorem"
   },
   {
@@ -509,7 +527,7 @@ window.flashcardsData = [
     "type": "Definition",
     "title": "Row/Column/Null Spaces",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -518,7 +536,7 @@ window.flashcardsData = [
     "type": "Definition",
     "title": "Coordinates and Change of Basis",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -527,7 +545,7 @@ window.flashcardsData = [
     "type": "Definition",
     "title": "Similar matrices",
     "chapter_id": 3,
-    "chapter_title": "Subspaces of $\\mathbb{R",
+    "chapter_title": "Subspaces of \u211d\u207f and Their Dimensions",
     "category": "Definition"
   },
   {
@@ -793,12 +811,30 @@ window.flashcardsData = [
   },
   {
     "front": "Define: Inner Product Space",
-    "back": "On a real vector space $V$, an inner product is a positive-definite symmetric bilinear form. It induces the norm $\\|v\\|=\\sqrt{\\langle v,v\\rangle}$ and orthogonality.",
+    "back": "An inner product in a linear space $V$ is a rule that assigns a real scalar (denoted by $\\langle f, g\\rangle$) to any pair $f, g$ of elements of $V$, such that the following properties hold for all $f, g, h$ in $V$, and all $c$ in $\\mathbb{R}$ :\\\\\na. $\\langle f, g\\rangle=\\langle g, f\\rangle$ (symmetry).\\\\\nb. $\\langle f+h, g\\rangle=\\langle f, g\\rangle+\\langle h, g\\rangle$.\\\\\nc. $\\langle c f, g\\rangle=c\\langle f, g\\rangle$.\\\\\nd. $\\langle f, f\\rangle>0$, for all nonzero $f$ in $V$ (positive definiteness).\n\nA linear space endowed with an inner product is called an \\textbf{inner product space}.",
     "type": "Definition",
     "title": "Inner Product Space",
     "chapter_id": 5,
     "chapter_title": "Orthogonality and Least Squares",
     "category": "Definition"
+  },
+  {
+    "front": "Define: Norm, orthogonality",
+    "back": "The \\textbf{norm} (or magnitude) of an element $f$ of an inner product space is\n\\[\n\\|f\\|=\\sqrt{\\langle f, f\\rangle} .\n\\]\nTwo elements $f$ and $g$ of an inner product space are called \\textbf{orthogonal} (or \\textbf{perpendicular}) if\n\\[\n\\langle f, g\\rangle=0 .\n\\]",
+    "type": "Definition",
+    "title": "Norm, orthogonality",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Orthogonal projection",
+    "back": "Similarly to Theorem \\ref{thm:proj}, if $g_1, \\ldots, g_m$ is an orthonormal basis of a subspace $W$ of an inner product space $V$, then\n\\[\n\\operatorname{proj}_W f=\\left\\langle g_1, f\\right\\rangle g_1+\\cdots+\\left\\langle g_m, f\\right\\rangle g_m,\n\\]\nfor all $f$ in $V$.",
+    "type": "Theorem",
+    "title": "Orthogonal projection",
+    "chapter_id": 5,
+    "chapter_title": "Orthogonality and Least Squares",
+    "category": "Theorem"
   },
   {
     "front": "Define: Determinant of a $3 \\times 3$ matrix, in terms of the columns",
@@ -811,8 +847,7 @@ window.flashcardsData = [
   },
   {
     "front": "State the Theorem: Sarrus's rule",
-    "back": "To find the determinant of a $3 \\times 3$ matrix $A$, write the first two columns of $A$ to the right of $A$. Then multiply the entries along the six diagonals shown below.\\\\Add or subtract these diagonal products, as shown in the diagram:",
-    "image": "images/sarrus_rule.png",
+    "back": "To find the determinant of a $3 \\times 3$ matrix $A$, write the first two columns of $A$ to the right of $A$. Then multiply the entries along the six diagonals shown below.\\\\\nAdd or subtract these diagonal products, as shown in the diagram:\n\n\\tikzset{node style ge/.style={circle}}\n$\\det(A)= \\left|\n\\begin{matrix}\n    a_{11} & a_{12} & a_{13}  \\\\\n    a_{21} & a_{22} & a_{23}  \\\\\n    a_{31} & a_{32} & a_{33}  \\\\\n\\end{matrix}%\n\\right|$\n=$\\big(a_{11}a_{22}a_{33}+a_{21}a_{32}a_{13}+a_{31}a_{12}a_{33}\\big)-\\big(a_{13}a_{22}a_{31}+a_{23}a_{32}a_{11}+a_{33}a_{12}a_{31}\\big)$\n\n\\begin{center}\n\n\n\\begin{tikzpicture}[baseline=(A.center)]\n  \\tikzset{BarreStyle/.style =   {opacity=.4,line width=4 mm,line cap=round,color=#1}}\n    \\tikzset{SignePlus/.style =   {above left,inner sep=1.5pt,opacity=.4,circle,fill=#1}}\n    \\tikzset{SigneMoins/.style =   {below left,inner sep=-0.5pt,opacity=.4,circle,fill=#1}}\n    \\tikzset{PlusProduct/.style={anchor=north west,rectangle,rounded corners=5pt,inner sep=2pt,outer sep=2.5pt,opacity=.4,fill=#1}}\n    \\tikzset{MoinsProduct/.style={anchor=south west,rectangle,rounded corners=5pt,inner sep=2pt,outer sep=2.5pt,opacity=.4,fill=#1}}\n% the matrices\n\\matrix (A) [matrix of math nodes, nodes = {node style ge},,column sep=0 mm] \n{ a_{11} & a_{12} & a_{13}  \\\\\n  a_{21} & a_{22} & a_{23}  \\\\\n  a_{31} & a_{32} & a_{33}  \\\\\n  a_{11} & a_{12} & a_{13} \\\\\n  a_{21} & a_{22} & a_{23}\\\\\n};\n\n \\draw [BarreStyle=blue] (A-1-1.north west) node[SignePlus=blue] {$+$} to (A-3-3.south east) node[PlusProduct=blue]{$a_{11}\\times a_{22}\\times a_{33}$};\n \\draw [BarreStyle=blue] (A-2-1.north west) node[SignePlus=blue] {$+$} to (A-4-3.south east)  node[PlusProduct=blue]{$a_{21}\\times a_{32}\\times a_{13}$};\n \\draw [BarreStyle=blue] (A-3-1.north west) node[SignePlus=blue] {$+$} to (A-5-3.south east)  node[PlusProduct=blue]{$a_{31}\\times a_{12}\\times a_{23}$};\n \n \\draw [BarreStyle=red]  (A-3-1.south west) node[SigneMoins=red] {\\strut $-$} to (A-1-3.north east) node[MoinsProduct=red]{$a_{31}\\times a_{22}\\times a_{13}$};\n \\draw [BarreStyle=red]  (A-4-1.south west) node[SigneMoins=red] {\\strut $-$} to (A-2-3.north east) node[MoinsProduct=red]{$a_{11}\\times a_{32}\\times a_{23}$};\n \\draw [BarreStyle=red]  (A-5-1.south west) node[SigneMoins=red] {\\strut $-$} to (A-3-3.north east) node[MoinsProduct=red]{$a_{21}\\times a_{12}\\times a_{33}$};\n\\end{tikzpicture}\n\\end{center}",
     "type": "Theorem",
     "title": "Sarrus's rule",
     "chapter_id": 6,
@@ -974,7 +1009,7 @@ window.flashcardsData = [
   },
   {
     "front": "State the Theorem: Various characterizations of invertible matrices",
-    "back": "For an $n \\times n$ matrix $A$, the following statements are equivalent.\n\\begin{enumerate}[label=(\\roman*)]\n\\item\n$A$ is invertible.\n\\item\nThe linear system $A \\vec{x} = \\vec{b}$ has a unique solution $\\vec{x}$, for all $\\vec{b}$ in $\\mathbb{R}^n$.\n\\item\n $\\operatorname{rref} A=I_n$.\n\\item\n$\\operatorname{rank} A=n$.\n\\item\n$\\operatorname{im} A=\\mathbb{R}^n$.\n\\item\n$\\ker A=\\{\\overrightarrow{0}\\}$.\n\\item\nThe column vectors of $A$ form a basis of $\\mathbb{R}^n$.\n\\item\nThe column vectors of $A$ span $\\mathbb{R}^n$.\n\\item\nThe column vectors of $A$ are linearly independent.\n\\item\n$\\det  A \\neq 0$.\n\\item\n0 fails to be an eigenvalue of $A$.\n\\end{enumerate}",
+    "back": "For an $n \\times n$ matrix $A$, the following statements are equivalent.\n\\begin{enumerate}\n\\item\n$A$ is invertible.\n\\item\nThe linear system $A \\vec{x} = \\vec{b}$ has a unique solution $\\vec{x}$, for all $\\vec{b}$ in $\\mathbb{R}^n$.\n\\item\n $\\operatorname{rref} A=I_n$.\n\\item\n$\\operatorname{rank} A=n$.\n\\item\n$\\operatorname{im} A=\\mathbb{R}^n$.\n\\item\n$\\ker A=\\{\\overrightarrow{0}\\}$.\n\\item\nThe column vectors of $A$ form a basis of $\\mathbb{R}^n$.\n\\item\nThe column vectors of $A$ span $\\mathbb{R}^n$.\n\\item\nThe column vectors of $A$ are linearly independent.\n\\item\n$\\det  A \\neq 0$.\n\\item\n0 fails to be an eigenvalue of $A$.\n\\end{enumerate}",
     "type": "Theorem",
     "title": "Various characterizations of invertible matrices",
     "chapter_id": 7,
@@ -1144,7 +1179,7 @@ window.flashcardsData = [
     "category": "Theorem"
   },
   {
-    "front": "State the Theorem: For a $2\\times 2$ matrix $A$ with complex eigenvalues $\\lambda = \\alpha \\pm i\\beta$, the matrix expo...",
+    "front": "State the Theorem: For a $2\\times 2$ matrix $A$ with complex eigenvalues $\\lambda = \\alpha \\pm i\\beta$, the matrix exponential formula",
     "back": "For a $2\\times 2$ matrix $A$ with complex eigenvalues $\\lambda = \\alpha \\pm i\\beta$, the matrix exponential is given by the formula:\n\\[\n e^{At} = e^{\\alpha t} \\left( \\cos(\\beta t) I_2 + \\frac{\\sin(\\beta t)}{\\beta} (A - \\alpha I_2) \\right).\n \\]\nOne proof uses Cayley-Hamilton's theorem, \\ref{Cayley-Hamilton}.",
     "type": "Theorem",
     "title": "",
@@ -1180,8 +1215,8 @@ window.flashcardsData = [
     "category": "Theorem"
   },
   {
-    "front": "State the Theorem: ]",
-    "back": "]\n\\\n\\\\\nConsider a dynamical system\n\\[\n\\vec{x}(t+1)=A \\vec{x}(t),\n\\]\nwhere $A$ is a real $2 \\times 2$ matrix with eigenvalues $\\lambda_{1,2}=p \\pm i q$ (where $q \\neq 0$ ). Let\n\\[\nr=\\left|\\lambda_1\\right|=\\left|\\lambda_2\\right|=\\sqrt{p^2+q^2}\n\\]\nIf $r=1$, then the points $\\vec{x}(t)$ are located on an ellipse; if $r$ exceeds 1 , then the trajectory spirals outward; and if $r$ is less than 1 , then the trajectory spirals inward, approaching the origin.",
+    "front": "State the Theorem: Trajectories of a discrete dynamical system with complex eigenvalues",
+    "back": "Consider a dynamical system\n\\[\n\\vec{x}(t+1)=A \\vec{x}(t),\n\\]\nwhere $A$ is a real $2 \\times 2$ matrix with eigenvalues $\\lambda_{1,2}=p \\pm i q$ (where $q \\neq 0$ ). Let\n\\[\nr=\\left|\\lambda_1\\right|=\\left|\\lambda_2\\right|=\\sqrt{p^2+q^2}\n\\]\nIf $r=1$, then the points $\\vec{x}(t)$ are located on an ellipse; if $r$ exceeds 1 , then the trajectory spirals outward; and if $r$ is less than 1 , then the trajectory spirals inward, approaching the origin.",
     "type": "Theorem",
     "title": "",
     "chapter_id": 7,
@@ -1492,6 +1527,114 @@ window.flashcardsData = [
     "title": "Strategy for linear differential equations",
     "chapter_id": 9,
     "chapter_title": "Linear Differential Equations",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Pythagorean Theorem",
+    "back": "If $V$ is a linear space with an inner product $\\langle \\ ,\\ \\rangle$ and $f_1, \\ldots, f_n$ are orthonormal elements of $V$, then $\\left\\|c_1 f_1+\\cdots+c_n f_n\\right\\|^2=c_1^2+\\cdots+c_n^2$.",
+    "type": "Theorem",
+    "title": "Pythagorean Theorem",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: An orthonormal basis of $T_n$",
+    "back": "Let $T_n$ be the space of all trigonometric polynomials of order $\\leq n$, with the inner product\n\\[\n\\langle f, g\\rangle=\\frac{1}{\\pi} \\int_{-\\pi}^\\pi f(t) g(t) d t\n\\]\nThen the functions\n\\[\n\\frac{1}{\\sqrt{2}}, \\sin (t), \\cos (t), \\sin (2 t), \\cos (2 t), \\ldots, \\sin (n t), \\cos (n t)\n\\]\nform an orthonormal basis of $T_n$.",
+    "type": "Theorem",
+    "title": "An orthonormal basis of $T_n$",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Fourier coefficients",
+    "back": "If $f$ is a piecewise continuous function defined on the interval $[-\\pi, \\pi]$, then its best approximation $f_n$ in $T_n$ is\n\\[\n\\begin{aligned}\nf_n(t) & =\\operatorname{proj}_{T_n} f(t) \\\\\n& =a_0 \\frac{1}{\\sqrt{2}}+b_1 \\sin (t)+c_1 \\cos (t)+\\cdots+b_n \\sin (n t)+c_n \\cos (n t),\n\\end{aligned}\n\\]\nwhere\n\\[\n\\begin{aligned}\n& b_k=\\langle f(t), \\sin (k t)\\rangle=\\frac{1}{\\pi} \\int_{-\\pi}^\\pi f(t) \\sin (k t) d t \\\\\n& c_k=\\langle f(t), \\cos (k t)\\rangle=\\frac{1}{\\pi} \\int_{-\\pi}^\\pi f(t) \\cos (k t) d t \\\\\n& a_0=\\left\\langle f(t), \\tfrac{1}{\\sqrt{2}}\\right\\rangle=\\frac{1}{\\sqrt{2} \\pi} \\int_{-\\pi}^\\pi f(t) d t .\n\\end{aligned}\n\\]\nThe $b_k$, the $c_k$, and $a_0$ are called the Fourier coefficients of the function $f$. The function\n\\[\nf_n(t)=a_0 \\frac{1}{\\sqrt{2}}+b_1 \\sin (t)+c_1 \\cos (t)+\\cdots+b_n \\sin (n t)+c_n \\cos (n t)\n\\]\nis called the $n$th-order Fourier approximation of $f$.",
+    "type": "Definition",
+    "title": "Fourier coefficients",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Fourier Series Convergence",
+    "back": "If $f$ is a \\textbf{piecewise smooth} function on $[-\\pi, \\pi]$, then $f$ is equal to its Fourier series at all points $x$ in $(-\\pi, \\pi)$ where $f$ is continuous. \n\nMoreover, if $f(-\\pi)=f(\\pi)$ and $f$ is continuous at $\\pm \\pi$, then $f$ is equal to its Fourier series at $\\pm \\pi$.",
+    "type": "Theorem",
+    "title": "Fourier Series Convergence",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Theorem"
+  },
+  {
+    "front": "State the Theorem: Parseval's Theorem",
+    "back": "If $a_0, b_k, c_k$ are the Fourier coefficients of a piecewise smooth function $f$ on $[-\\pi, \\pi]$, then \n\\[\na_0^2+\\sum_{k=1}^{\\infty}\\left(b_k^2+c_k^2\\right)=\\|f\\|^2=\\langle f, f\\rangle.\n\\]",
+    "type": "Theorem",
+    "title": "Parseval's Theorem",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: Fourier Sine Series",
+    "back": "If $g(x)$ is a piecewise smooth function on $[0, \\pi]$, the Fourier sine series of $g(x)$ is defined to be \n\\[\n\\sum_{k=1}^{\\infty} b_k \\sin (k x) \\text{ where } b_k=\\frac{2}{\\pi} \\int_0^\\pi g(x) \\sin (k x) d x.\n\\]",
+    "type": "Definition",
+    "title": "Fourier Sine Series",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: Fourier Sine Series Convergence",
+    "back": "Suppose $g$ is a piecewise smooth function on $[0, \\pi]$. Then, $g$ is equal to its Fourier sine series at all points in $(0, \\pi)$ where $g$ is continuous. \n\nIf, moreover, $g$ is actually continuous on all of $[0, \\pi]$ and $g(0)=g(\\pi)=0$, then $g$ is equal to its Fourier sine series on all of $[0, \\pi]$.",
+    "type": "Theorem",
+    "title": "Fourier Sine Series Convergence",
+    "chapter_id": 10,
+    "chapter_title": "Fourier Analysis",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: The Heat Equation",
+    "back": "The heat equation is \n\\[\n\\frac{\\partial f}{\\partial t}=\\mu \\frac{\\partial^2 f}{\\partial x^2}\n\\]\n where, $\\mu$ is a positive constant indicating how well the bar conducts heat (metal would have a much larger $\\mu$ than plastic). \n \n Since this differential equation involves partial derivatives, we call it a \\textbf{partial differential equation}.",
+    "type": "Definition",
+    "title": "The Heat Equation",
+    "chapter_id": 11,
+    "chapter_title": "The Heat Equation and the Wave Equation",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: The heat equation $\\frac{\\partial f}{\\partial t}=\\mu \\frac{\\partial^2 f}{\\partial x^2}$ with boundar...",
+    "back": "The heat equation $\\frac{\\partial f}{\\partial t}=\\mu \\frac{\\partial^2 f}{\\partial x^2}$ with boundary conditions $f(t, 0)=f(t, \\pi)=0$ for all $t$ has general solution \n\\[\nf(t, x)=\\sum_{k=1}^{\\infty} P_k e^{-\\mu k^2 t} \\sin (k x).\n\\]\n\nTo find it we used the Fourier sine series theorem \n\\(\nf(t, x)=\\sum_{k=1}^{\\infty} b_k(t) \\sin (k x)\n\\)\nfor some $b_k(t)$.  Then\n\\[\n\\begin{aligned} \\frac{\\partial f}{\\partial t}(t, x) & =\\sum_{k=1}^{\\infty} b_k^{\\prime}(t) \\sin (k x) \\\\ \\frac{\\partial f}{\\partial x}(t, x) & =\\sum_{k=1}^{\\infty} k b_k(t) \\cos (k x) \\\\ \\frac{\\partial^2 f}{\\partial x^2}(t, x) & =\\sum_{k=1}^{\\infty}-k^2 b_k(t) \\sin (k x)\\end{aligned}\n\\]",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 11,
+    "chapter_title": "The Heat Equation and the Wave Equation",
+    "category": "Theorem"
+  },
+  {
+    "front": "Explain the Technique: Analogy between solving continuous dynamical systems and solving the heat equation",
+    "back": "\\begin{tabular}{|l|l|l|}\n\\hline & continuous dynamical systems & heat equation \\\\\n\\hline differential equation to solve & $\\frac{d \\vec{x}}{d t}=A \\vec{x}$ & $\\frac{\\partial f}{\\partial t}=\\mu D^2 f$ \\\\\n\\hline linear transformation (LT) & A & $\\mu D^2$ \\\\\n\\hline eigenvectors / eigenfunctions of the LT & $\\vec{v}_k$ & $\\sin (k x)$ \\\\\n\\hline corresponding eigenvalues & $\\lambda_k$ & $-\\mu k^2$ \\\\\n\\hline solutions of the differential equation & $\\vec{x}(t)=\\sum_{k=1}^n c_k e^{\\lambda_k t} \\vec{v}_k$ & $f(t, x)=\\sum_{k=1}^{\\infty} P_k e^{-\\mu k^2 t} \\sin (k x)$ \\\\\n\\hline initial condition & $\\vec{x}(0)=\\sum_{k=1}^n c_k \\vec{v}_k$ & $f(0, x)=\\sum_{k=1}^{\\infty} P_k \\sin (k x)$ \\\\\n\\hline\n\\end{tabular}",
+    "type": "Technique",
+    "title": "Analogy between solving continuous dynamical systems and solving the heat equation",
+    "chapter_id": 11,
+    "chapter_title": "The Heat Equation and the Wave Equation",
+    "category": "Theorem"
+  },
+  {
+    "front": "Define: The Wave Equation",
+    "back": "Suppose we have a string of length $\\pi$ whose ends are fixed but whose middle can move around (imagine a guitar string, for example). Let $f(t, x)$ be the height (relative to the fixed ends) of point $x$ of the string at time $t$. If the amplitude of motion is not too large, and if we ignore damping forces such as air resistance, then $f$ satisfies a differential equation $\\frac{\\partial^2 f}{\\partial t^2}=c^2 \\frac{\\partial^2 f}{\\partial x^2}$, called the wave equation.",
+    "type": "Definition",
+    "title": "The Wave Equation",
+    "chapter_id": 11,
+    "chapter_title": "The Heat Equation and the Wave Equation",
+    "category": "Definition"
+  },
+  {
+    "front": "State the Theorem: The wave equation $\\frac{\\partial^2 f}{\\partial t^2}=c^2 \\frac{\\partial^2 f}{\\partial x^2}$ with bou...",
+    "back": "The wave equation $\\frac{\\partial^2 f}{\\partial t^2}=c^2 \\frac{\\partial^2 f}{\\partial x^2}$ with boundary conditions $f(t, 0)=f(t, \\pi)=0$ for all $t$ has general solution \n\\[\nf(t, x)=\\sum_{k=1}^{\\infty}\\Big(P_k \\cos (k c t)+Q_k \\sin (k c t)\\Big) \\sin (k x).\n\\]",
+    "type": "Theorem",
+    "title": "",
+    "chapter_id": 11,
+    "chapter_title": "The Heat Equation and the Wave Equation",
     "category": "Theorem"
   }
 ];

@@ -1,0 +1,1713 @@
+% This is part of Giulietta
+% Copyright (c) 2013-2015, 2019-2022, 2024-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Exponential chart}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooVMLTooFpXoeh}
+	Let \( G\) be a Lie group. We denote by \( \lG\) its Lie algebra. There exists a neighbourhood \( U\) of \( 0\) in \( \lG\) such that the maps
+	\begin{equation}
+		\begin{aligned}
+			\phi_g\colon U & \to G            \\
+			X              & \mapsto g\exp(X)
+		\end{aligned}
+	\end{equation}
+	form an atlas\footnote{Definition \ref{DEFooKKDSooYjgZqa}.} of \( G\).
+\end{proposition}
+
+\begin{proof}
+	We consider the neighbourhoods \( U\) and \( V\) given by proposition \ref{PROPooYFZZooLUOuOj}. The map \(\exp \colon U\to V  \) is a \( C^{\infty}\)-diffeomorphism. Since \( L_g\) is a \( C^{\infty}\)-diffeomorphism as well, the composition \( \phi_g=L_g\circ\exp\) is a \( C^{\infty}\)-diffeomorphism.
+
+	So every map \(\phi_g \colon U\to gV  \) is a \( C^{\infty}\)-diffeomorphism and each \( g\in G\) belongs to the image of one of these maps. The whole is thus an atlas.
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Closed subgroup}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%-------------------------------------------------------
+\subsection{Technical lemmas}
+%----------------------------------------------------
+
+
+\begin{lemma}[\cite{BIBooTKQTooGjFxwB}]     \label{LEMooFXKBooRnzZKQ}
+	Let \( G\) be an analytic Lie group and \( H\) be a closed subgroup of \( G\). The set
+	\begin{equation}
+		\lH=\{ X\in \lG\tq  e^{tX}\in H\forall t\in \eR \}
+	\end{equation}
+	is a vector subspace of \( \lG\).
+\end{lemma}
+
+\begin{proof}
+	Let \( X,Y\in \lH\), \( \lambda\in \eR\) and \( t\in \eR\). The element \( \lambda X\) belongs to \( \lH\). We have to prove that \( X+Y\in \lH\).
+
+	For every \( n\in \eN\), we have \(  e^{tX/n} e^{tY/n}\in H\) because \( H\) is a subgroup. For every \( n\) we also have
+	\begin{equation}
+		\big(  e^{tX/n} e^{tY/n} \big)^n\in H.
+	\end{equation}
+	we have to following computation :
+	\begin{subequations}        \label{SUBEQSooMDRVooQXBwiS}
+		\begin{align}
+			\big(  e^{tX/n} e^{tY/n} \big)^n & =\left[ \exp\left( \frac{ t(X+Y) }{ n }+\frac{ t^2 }{ n^2 }\alpha(t/n) \right)  \right]^n \label{SUBEQooUYNCooJVIWMi} \\
+			                                 & =\exp\left( t(X+Y)+\frac{ t^2 }{n  }\alpha(t/n) \right)    \label{SUBEQooUYKKooXtGaxL}
+		\end{align}
+	\end{subequations}
+	Justifications.
+	\begin{itemize}
+		\item For \eqref{SUBEQooUYNCooJVIWMi}. This is lemma \ref{LEMooMJBRooMOuJpa}\ref{ITEMooWIQIooHphJcP}.
+		\item For \eqref{SUBEQooUYKKooXtGaxL}. The \( n\) enters the exponential from lemma \ref{LEMooRPHVooAtZJnz}.
+	\end{itemize}
+	We have the limit
+	\begin{equation}        \label{EQooTJWDooVJsDJt}
+		\lim_{n\to \infty} \exp\left( t(X+Y)+\frac{ t^2 }{n  }\alpha(t/n) \right) =  e^{t(X+Y)}
+	\end{equation}
+	because the exponential is continuous\footnote{See \ref{PROPooYFZZooLUOuOj}.} and the properties of \( \alpha\). Since the limit exists on the right hand side of \eqref{SUBEQSooMDRVooQXBwiS}, the limit exists on the left hand side too.
+
+	The limit
+	\begin{equation}
+		\lim_{n\to \infty} \big(  e^{tX/n} e^{tY/n} \big)^n
+	\end{equation}
+	is a limit of elements in \( H\). Since \( H\) is closed, this is an element of \( H\). We deduce that \eqref{EQooTJWDooVJsDJt} is an element of \( H\).
+\end{proof}
+
+\begin{lemma}[\cite{BIBooTKQTooGjFxwB}]     \label{LEMooFDIIooCkSJpY}
+	Let \( G\) be an analytic Lie group and \( H\) be a closed subgroup of \( G\). We consider the set
+	\begin{equation}
+		\lH=\{ X\in \lG\tq  e^{tX}\in H\forall t\in \eR \}.
+	\end{equation}
+
+	Let \( (X_i)\) be a sequence in \( \lG\) such that\footnote{The topology and the norm on \( \lH\) are given in definition \ref{PROPooHJOXooMGANfd}.}
+	\begin{enumerate}
+		\item       \label{ITEMooWQZAooTTnenM}
+		      \( X_i\to 0\)
+		\item
+		      \(  e^{X_i}\in H\) for every \( i\).
+		\item       \label{ITEMooFLLRooCUXnHb}
+		      The limit \( \lim_{i\to \infty} \frac{ X_i }{ \| X_i \| }\) exists. We name it \( X\).
+	\end{enumerate}
+	Then \( X\in \lH\).
+\end{lemma}
+
+\begin{proof}
+	We consider \( n_i=\integer(t/\| X_i \|)\) where \( \integer\) is the «integer part» defined in \ref{LEMooLEXTooGAQxGB}, and we write
+	\begin{equation}
+		n_iX_i=\integer\big( \frac{ t }{ \| X_i \| } \big)X_i=\| X_i \|\integer\big( \frac{ t }{ \| X_i \| } \big)\frac{ X_i }{ \| X_i \| }.
+	\end{equation}
+	Using the hypothesis \ref{ITEMooWQZAooTTnenM} and \ref{ITEMooFLLRooCUXnHb} and the limit of lemme \ref{LEMooLSJZooDauTkc} we have
+	\begin{equation}
+		\lim_{i\to \infty} n_iX_i=\lim_{i\to \infty} \| X_i \|\integer\big( \frac{ t }{ \| X_i \| } \big)\frac{ X_i }{ \| X_i \| }=tX.
+	\end{equation}
+
+	Using the continuity of the exponential (it commutes with the limit), we have
+	\begin{subequations}
+		\begin{align}
+			e^{tX} & =\exp\big( \lim_{i\to \infty} n_iX_i \big) \\
+			       & =\lim_{i\to \infty}  e^{n_iX_i}            \\
+			       & =\lim_{i\to \infty} \exp(X_i)^{n_i}.
+		\end{align}
+	\end{subequations}
+	Since \( X_i\in \lH\), we have \( \exp(X_i)\in H\), and \( \exp(X_i)^{n_i}\in H\) because \( H\) is a group.
+
+	Thus the sequence \( \exp(X_i)^{n_i}\) is a sequence contained in the closed space \( H\) and which has a limit (\( \exp(tX)\)). Thus the limit is contained in \( H\) by proposition \ref{PROPooBBNSooCjrtRb}. We conclude that \(  e^{tX}\in H\).
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Exponential chart}
+%----------------------------------------------------
+
+
+\begin{lemma}[\cite{BIBooJOSEooGOmqoQ, MonCerveau}]     \label{LEMooNPLBooBrwNWY}
+	Let \( G\) be a Lie group, \( \lG\) its Lie algebra and \( H\), a closed subgroup of \( G\). We consider
+	\begin{equation}
+		\lH=\{ X\in \lG\tq \exp(tX)\in H\forall t\in \eR \}
+	\end{equation}
+	with the induced topology from \( \lG\).
+
+	There exists
+	\begin{enumerate}
+		\item
+		      Open parts \( U\subset \lG\) and \( V\subset G\) such that \( 0\in U\) and \( e\in V\) and \(\exp \colon U\to V  \) is a smooth bijection.
+		\item
+		      Open parts \( S\subset\lH\cap U\) and \( W\subset H\cap V\) such that \( 0\in S\) and \( e\in W\) and \(\exp \colon S\to W  \) is homeomorphic\footnote{Homeomorphism : bijective, continuous with continuous inverse. We cannot state that \( \exp\) is smooth because we have no differential structure on \( H\).}.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	The open parts \( U\) and \( V\) such that \(\exp \colon U\to V  \) is a smooth diffeomorphism are given by proposition \ref{PROPooYFZZooLUOuOj}. Here we prove the statement for the pars \( S\) and \( W\).
+	\begin{subproof}
+		\spitem[The map \( \phi\)]
+		Let \( \lH'\subset \lG\) be a complementary of \( \lH\). In other words for each \( X\in \lG\), there exists one and only one choice of \( X_1\in \lH\) and \( X_2\in \lH'\) such that \( X=X_1+X_2\). We consider the map
+		\begin{equation}
+			\begin{aligned}
+				\phi\colon \lG & \to G                       \\
+				X              & \mapsto \exp(X_1)\exp(X_2).
+			\end{aligned}
+		\end{equation}
+		This is a smooth map as it can be written as \( \phi=m\circ(\exp\times \exp)\) where \( m\) is the multiplication in \( G\) and \( \exp\times\exp\) is smooth by proposition \ref{PROPooXFUTooCNzDHf}.
+		\spitem[\( \phi\colon \lG\to G \) is a local bijection]
+		% -------------------------------------------------------------------------------------------- 
+
+		Let \( X\in\lG\). Since \( \lG\) is a vector space, a path for \( X\) is simply \( t\mapsto tX=tX_1+tX_2\). Thus we have
+		\begin{subequations}
+			\begin{align}
+				d\phi_0(X) & =\frac{d}{dt} \left[ \phi(tX)  \right]_{t=0}                                                                                           \\
+				           & =\frac{d}{dt} \left[ \exp(tX_1)\exp(tX_2)  \right]_{t=0}                                                                               \\
+				           & =\frac{d}{dt} \left[ \exp(tX_2)  \right]_{t=0}+\frac{d}{dt} \left[ \exp(tX_1)  \right]_{t=0} & \text{Leibniz \ref{PROPooAXYRooWVhXRa}} \\
+				           & =X_1+X_2                                                                                                                               \\
+				           & =X.
+			\end{align}
+		\end{subequations}
+		In other words, \( d\phi_0=\id\). Since the exponential is continuous\footnote{Proposition \ref{PROPooMIMZooAwxvkB}.}, the local inversion theorem \ref{THOooDWEXooMClWVi} says that \( \phi\) is a local bijection.
+
+		\spitem[Image]
+		%-----------------------------------------------------------
+		We have \( \exp(\lH)=\phi(\lH)\) because if \( X\in \lH\), then \( X_1=X\) and \( X_2=0\).
+
+		\spitem[\( \phi\) is a local bijection between \( \lH\) and \( H\)]
+		% -------------------------------------------------------------------------------------------- 
+
+		Now we show that \( \phi(\lH)=\exp(\lH)\) contains a neighbourhood of \( e\) in \( H\). We recall that the topology on \( \lG\) is any norm topology.
+
+		Suppose that \( \phi(\lH)\) does not contain a neighbourhood of \( e\) in \( H\). For every neighbourhood\footnote{We take the neighbourhood \( \mO_i\) small enough so that \(\phi \colon \phi^{-1}(\mO_i)\to \mO_i  \) is a bijection.} \( \mO_i\) of \( e\) in \( H\), there is \( h_i\in\mO_i\) such that \( h_i\not\in\phi(\lH)\). But since \( \phi\) is a bijection with \( \mO_i\), there are \( (u_i,v_i)\in\lH\times \lH'\) such that \( h_i=\phi(u_i+v_i)\).
+
+		If we consider the neighbourhood \( \mO_i=B(0,1/i)\) we have \( h_i\to e\) and then \( \phi(u_i+v_i)\to e\). Notice that
+		\begin{equation}
+			h_i=\phi(u_i+v_i)=\exp(u_i)\exp(v_i).
+		\end{equation}
+		We have \( h_i\in H\) and \( \exp(u_i)\in H\). Since \( H\) is a group, we deduce \( \exp(v_i)\in H\).
+
+		The sequence \( v_i/\| v_i \|\) is a sequence in the unit ball which is compact. Thus there is a converging subsequence. From now on we only consider this subsequence and we set
+		\begin{equation}
+			v=\lim_{i\to \infty}\frac{ v_i }{ \| v_i \| }.
+		\end{equation}
+		Since \( v_i/\| v_i \|\in \lH'\) for every \( i\), we have a limit in a vector subspace (which is closed because every finite dimensional vector space are closed). Thus \( v\in \lH'\).
+
+		However from lemma \ref{LEMooFDIIooCkSJpY} we know that \( v\in\lH\). Thus we have \( v\in\lH\cap\lH'=\{ 0 \}\), which is impossible because \( \| v \|=1\).
+
+		\spitem[The neighbourhood]
+		% -------------------------------------------------------------------------------------------- 
+
+		The part \( \phi(\lH)=\exp(\lH)\) contains a neighbourhood of \( e\) in \( H\). We denote by \( W_1\) this neighbourhood. And then \( S_1=\exp^{-1}(W_1)\).
+
+		\spitem[Some facts]
+		%-----------------------------------------------------------
+
+		We collect some facts.
+		\begin{enumerate}
+			\item
+			      The map \(\exp \colon U\to V  \) is a continuous bijection.
+			\item
+			      The part \( H\cap V\) is closed in \( V\) because \( V\) is open in \( G\) and \( H\) is closed in \( V\).
+			\item
+			      The part \( \lH\) is closed in \( \mG\) because it is a vector subspace (corollary \ref{CORooJHSGooUkGepQ})
+			\item
+			      Since \( U\) is open, the part \( \lH\cap U\) is closed in \( U\).
+			\item
+			      We have \( \exp(\lH\cap U)\subset H\cap V\) because \( \exp(\lH)\subset H\) by definition of \( \lH\).
+		\end{enumerate}
+		Over all that, we just proved that we have a part \( S_1\subset \lH\) such that \( \exp(S_1)\) is open in \( H\) and contains \( e\). In order to use lemma \ref{LEMooGANPooUJZmnM} we need to get \( S_2\subset \lH\cap U\) and \( W_2\subset H\cap V\) such that \( W_2=\exp(S_2)\).
+
+		\spitem[Construction of \( S_2\) and \( W_2\)]
+		%-----------------------------------------------------------
+		Since \( W_1\) is open in \( H\), there exists an open \( W_1'\) in \( G\) such that \( W_1=W_1'\cap H\). We define \( W_2'=W_1'\cap V\) which is open in \( G\) and still contains \( e\). We also have
+		\begin{equation}
+			W_2=W'_2\cap H\subset W_1'\cap H=W_1=\exp(S_1).
+		\end{equation}
+		Thus we have \( S_2\subset S_1\) such that \( \exp(S_2)=W_2\). It remain to prove that \( W_2\subset H\cap V\) and \( S_2\subset \lH\cap U\). For the first one we have
+		\begin{equation}
+			W_2=W_2'\cap H=W_1'\cap V\cap H.
+		\end{equation}
+		For the second one we have \( S_2\subset S_1\subset \lH\) and \( \exp(S_2)=W_2\subset V\). Since \(\exp \colon U\to V   \) is  a bijection, this implies that \( S_2\subset U\).
+
+		\spitem[First Conclusion]
+		%-----------------------------------------------------------
+		Lemma \ref{LEMooGANPooUJZmnM} concludes that \( S_2\) is open in \( \lH\) and that the restriction \(\exp \colon S\to W  \) is homeomorphic. Finally, the restriction \(\exp \colon S_2\to W_2  \) maps an open part of \( \lH\) containing \( 0\) to an open part of \( H\) containing \( e\).
+
+		\spitem[Homeomorphism]
+		%-----------------------------------------------------------
+		We have to prove that \(\exp \colon S\to W  \) is a bijective, continuous with continuous inverse.
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}  \label{LEMooEBQUooKXkCda}
+	Let $\lG$ admit a direct sum decomposition (as vector space) $\lG=\lM\oplus\lN$. Then there exists open and bounded neighbourhoods $\mU_m$ and $\mU_n$ of $0$ in $\lM$ and $\lN$ such that the map
+	\begin{equation}
+		\begin{aligned}
+			\phi \colon \mU_m\times\mU_n & \to G          \\
+			(A,B)                        & \mapsto e^Ae^B
+		\end{aligned}
+	\end{equation}
+	is a diffeomorphism between $\mU_m\times\mU_n$ and an open neighbourhood of $e$ in $G$.
+\end{lemma}
+
+
+\begin{corollary}
+	Let $G$ be a Lie group, and $K$, $H$ two differentiable subgroups of $G$. We suppose $K\subset H$. Then $K$ is a differentiable subgroup of the Lie group $H$.
+\end{corollary}
+
+\begin{proof}
+	The Lie algebras of $K$ and $H$ are respectively denoted by $\lK$ and $\lH$. We denote by $K^*$ the differentiable subgroup of $H$ which has $\lK$ as Lie algebra. The differentiable subgroups $K$ and $K^*$ have same Lie algebra, and then coincide as Lie groups.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Cartan theorem}
+%----------------------------------------------------
+
+\begin{propositionDef}[Standard closed subgroup structure \( H\)\cite{BIBooFLEXooPgvAlz,MonCerveau}]	\label{PROPooZIKNooEdCqRB}
+	Let \( G\) be a Lie group with Lie algebra \( \lG\) and \( H\) be a closed subgroup of \( G\). We consider :
+	\begin{enumerate}
+
+		\item
+		      The part
+		      \begin{equation}		\label{EQooBROMooIQArCm}
+			      \lH=\{ X\in\lG\tq \exp(tX)\in H\,\forall t \}.
+		      \end{equation}
+		\item
+		      The setting of lemma \ref{LEMooNPLBooBrwNWY} :
+		      \begin{enumerate}
+			      \item
+			            An open neighbourhood \( U\) of \( 0\) in \( \lG\) and an open neighbourhood \( V\) of \( e\) in \( G\) such that \(\exp \colon U\to V  \) is a smooth diffeomorphism.
+			      \item
+			            An open neighbourhood \( S\) of \( 0\) in \( \lH\) and an open neighbourhood \( W\) of \( e\) in \( H\) such that \(\exp \colon S\to W  \) is a continuous bijection and \( S\subset U\) and \( W\subset V\).
+		      \end{enumerate}
+		\item
+		      For each \( g\in G\) we define
+		      \begin{equation}
+			      \begin{aligned}
+				      \varphi_g\colon U & \to L_g(V)        \\
+				      X                 & \mapsto g\exp(X),
+			      \end{aligned}
+		      \end{equation}
+		      and, when \( h\in H\) we consider the restriction
+		      \begin{equation}
+			      \begin{aligned}
+				      \sigma_h\colon S & \to L_h(W)        \\
+				      X                & \mapsto h\exp(X).
+			      \end{aligned}
+		      \end{equation}
+	\end{enumerate}
+	Then :
+	\begin{enumerate}
+		\item		\label{ITEMooLNBGooFoqGxF}
+		      The couple \( (H,\{ \sigma_h \}_{h\in H})\) is a topological manifold.
+		\item		\label{ITEMooZRGGooDeLHeg}
+		      The couple \( (H,\{ \sigma_h \}_{h\in H})\) is a smooth manifold.
+		\item	\label{ITEMooEZRLooHEsGkB}
+		      The smooth manifold \( H\) is a Lie group.
+		\item	\label{ITEMooUYJSooNjfsLQ}
+		      For every \( h\in H\) we have \( \varphi_h(X)\in H\) if and only if \( X\in \lH\cap U\).
+	\end{enumerate}
+
+	The manifolds \( (G,\{ \varphi_g \}_{g\in G})\) and \( (H,\{ \sigma_h \}_{h\in H})\) are the \defe{standard closed subgroup structure}{standard closed subgroup structure}.
+\end{propositionDef}
+
+\begin{proof}
+	Several points.
+	\begin{subproof}
+		\spitem[For \ref{ITEMooLNBGooFoqGxF}]
+		%-----------------------------------------------------------
+		We have to check the definition \ref{DEFooJOMAooZscKwn}. By proposition \ref{PROPooAHIMooYhOwUf}, \( H\) is Hausdorff and second countable. For \( h\in H\), the map \(\sigma_h \colon S\to L_h(V)  \) makes the job.
+
+		\spitem[For \ref{ITEMooZRGGooDeLHeg}]
+		%-----------------------------------------------------------
+		For each \( k,h\in H\), the map \( \sigma_h^{-1}\circ \sigma_k\) is smooth as restriction of the smooth map \( \varphi_h^{-1}\circ\varphi_k\). See proposition \ref{PROPooORVKooIfIqVL}.
+
+		\spitem[For \ref{ITEMooEZRLooHEsGkB}]
+		%-----------------------------------------------------------
+		Proposition \ref{PROPooORVKooIfIqVL} again. The inverse and product are restriction to the closed part \( H\) of the inverse and the product on \( G\).
+
+		\spitem[For \ref{ITEMooUYJSooNjfsLQ}]
+		%-----------------------------------------------------------
+		If \( X\in \lH\cap U\), then \( \varphi_h(X)=h\exp(X)\) with \( \exp(X)\in H\) because of the definition \eqref{EQooBROMooIQArCm} of \( \lH\). On the other hand, if \( \varphi_h(X)\in H\), then \( h\exp(X)\in H\) and \( \exp(X)\in H\). From the definition of \( \lH\) we conclude \( X\in \lH\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	From now on we will always consider the Lie group structure of proposition \ref{PROPooZIKNooEdCqRB} when we have a closed subgroup if a Lie group.
+\end{normaltext}
+
+
+\begin{theorem}[Cartan\cite{BIBooGZHEooBPsXQy,BIBooFLEXooPgvAlz}]     \label{THOooDEJHooVKJYBL}
+	Let \( G\) be a smooth Lie group. If \( H\) is a closed subgroup of \( G\).
+	\begin{enumerate}
+		\item
+		      There exists a unique structure of smooth manifold on \( H\) such that the inclusion map \( \tau\colon H\to G\) is a smooth embedding\footnote{Definition \ref{DEFooQLGLooNyXaOV}.}.
+		\item		\label{ITEMooZYPUooLxuCbj}
+		      This unique structure is the standard closed subgroup structure (definition \ref{PROPooZIKNooEdCqRB}).
+		\item	\label{ITEMooZCFHooJJTLeg}
+		      With that structure, \( H\) is a smooth Lie subgroup\footnote{Definition \ref{DEFooGCHDooHUMSju}.} of \( G\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	We have to check that we are in the setting of proposition \ref{PROPooMNSUooSsnRkM}. We consider a basis \( \{ v_1,\ldots,v_n \}\) of \( \lG\) such that \( \{ v_1,\ldots,v_l \}\) is a basis of \( \lH\) (theorem \ref{ThonmnWKs}\ref{ITEMooJIJSooGuJMdt}). We also consider the linear map
+	\begin{equation}
+		\begin{aligned}
+			\alpha\colon \eR^n & \to \lG      \\
+			e_i                & \mapsto v_i.
+		\end{aligned}
+	\end{equation}
+	We define \( U'=\alpha^{-1}(U)\) and, and for each \( h\in H\), we consider the map
+	\begin{equation}
+		\begin{aligned}
+			\phi_h\colon \eR^n & \to G                             \\
+			x                  & \mapsto (\varphi_g\circ\alpha)(x)
+		\end{aligned}
+	\end{equation}
+	We prove that \( H\cap \phi_h(U')=\phi_h\big( \{ x_1,\ldots,x_l,0,\ldots,0 \}\cap U' \big)\).
+	\begin{subproof}
+		\spitem[First inclusion]
+		%-----------------------------------------------------------
+		An element of \( H\cap \phi_h(U')\) is an element of \( H\) that can be written under the form \( \phi_h(x)\) with \( x\in U'\). It means \( \varphi_h\big( \alpha(x) \big)\in H\). By proposition \ref{PROPooZIKNooEdCqRB}\ref{ITEMooUYJSooNjfsLQ}, it implies \( \alpha(x)\in \lH\) and then \( x=(x_1,\ldots,x_l,0,\ldots,0)\).
+
+		\spitem[Other inclusion]
+		%-----------------------------------------------------------
+		We have \( \phi_h(x_1,\ldots,x_l,0,\ldots,0)=\varphi_h\big( \sum_{i=1}^lx_iv_i \big)\in\varphi_h(\lH)\subset H\).
+	\end{subproof}
+	The proposition \ref{PROPooMNSUooSsnRkM} concludes that \( (H,\{ \phi_j \}_{h\in H})\) is a submanifold of \( G\) and that this is the unique manifold structure such that the inclusion \(\tau \colon H\to G  \) is an embedding.
+
+	The maps \( \{ \sigma_h \}_{h\in H}\) of the standard closed subgroup structure are just an other atlas for \( H\). This proves the point \ref{ITEMooZYPUooLxuCbj}.
+
+	For point \ref{ITEMooZCFHooJJTLeg}, the inclusion \(\tau \colon H\to G  \) is an immersion because it is an embedding (see definition \ref{DEFooQLGLooNyXaOV}).
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Campbell-Baker-Hausdorff formula}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+\begin{proposition}[\cite{BIBooFLEXooPgvAlz}]	\label{PROPooNEIHooWQctei}
+	Let \( G\) be a smooth Lie group and \( X\in\lG\). Let \(f \colon G\to \eR  \) be a smooth function. Then we have
+	\begin{equation}
+		(X^Lf)\big( a\exp(sX) \big)=g'(s)
+	\end{equation}
+	where \( X^L\) is the associated left invariant vector field, and
+	\begin{equation}
+		\begin{aligned}
+			g\colon \eR & \to \eR                         \\
+			t           & \mapsto f\big( a\exp(tX) \big).
+		\end{aligned}
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	We use the formula of proposition \ref{PROPooCGWUooHehCXm} knowing that \( X=\gamma'(0)\) with \( \gamma(t)=\exp(tX)\). We have
+	\begin{subequations}
+		\begin{align}
+			(X^Lf)\big( a\exp(sX) \big) & =X^L_{a\exp(sX)}(f)                                                       \\
+			                            & =\big( dL_{a\exp(sX)} \big)_eX(f)                                         \\
+			                            & =\frac{d}{dt} \left[ (f\circ L_{a\exp(sX)}\circ \gamma)(t)  \right]_{t=0} \\
+			                            & =\frac{d}{dt} \left[ f\big( a\exp(sX)\exp(tX) \big)  \right]_{t=0}        \\
+			                            & =\frac{d}{dt} \left[ f\Big( a\exp\big( (s+t)X \big) \Big)  \right]_{t=0}  \\
+			                            & =\frac{d}{dt} \left[ f(t+s)  \right]_{t=0}                                \\
+			                            & =g'(s).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooFLEXooPgvAlz,MonCerveau}]	\label{PROPooPEKNooUAeMjp}
+	Let \( X\) be a left-invariant smooth vector field on the smooth Lie group \( G\). Let \(f \colon G\to \eR  \) be a smooth function. We have
+	\begin{equation}
+		(X^kf)\big( a\exp(tX) \big)=g^{(k)}(t)
+	\end{equation}
+	where
+	\begin{equation}
+		\begin{aligned}
+			g\colon \eR & \to \eR                              \\
+			t           & \mapsto    f\big( a\exp(tX_e) \big).
+		\end{aligned}
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	The case \( k=1\) is already done in proposition \ref{PROPooNEIHooWQctei}. For a smooth function \( f\) we write
+	\begin{equation}
+		h_f(t)=f\big( a\exp(tX_e) \big),
+	\end{equation}
+	and we prove our proposition by induction over \( k\). Our induction hypothesis is
+	\begin{equation}
+		(X^kf)\big( a\exp(tX) \big)=g^{(k)}(t).
+	\end{equation}
+
+	Applying proposition \ref{PROPooNEIHooWQctei} to the function \( X^kf\) we have
+	\begin{equation}
+		\big[ X(X^kf) \big]\big( a\exp(sX_e) \big)=h'_{X^kf}(s).
+	\end{equation}
+	By definition and induction hypothesis,
+	\begin{equation}
+		h_{X^kf}(t)=(X^kf)\big( a\exp(tX_e) \big)=g^{(k)}(t).
+	\end{equation}
+	Thus
+	\begin{equation}
+		\big[ X(X^kf) \big]\big( a\exp(sX_e) \big)=h'_{X^kf}(s)=g^{(k+1)}(s)
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooFLEXooPgvAlz, MonCerveau}]	\label{PROPooXCMUooJqsTvB}
+	Let \( G\) be a smooth Lie group. Let \(f \colon G\to \eR  \) be a smooth function, and \( X_1\),\ldots, \( X_k\) be elements of the Lie algebra \( \lG\) of \( G\). We have
+	\begin{equation}
+		(X_1^L\ldots X_k^Lf)(a)=(\partial_1\ldots\partial_kg)(0,\ldots,0)
+	\end{equation}
+	where
+	\begin{equation}
+		\begin{aligned}
+			g\colon \eR^k    & \to \eR                                                \\
+			(t_1,\ldots,t_k) & \mapsto f\big( a\exp(t_1X_1)\ldots \exp(t_kX_k) \big).
+		\end{aligned}
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	For each \( X\in \lG\), \( a\in G\) and \( f\in C^{\infty}(M,\eR) \) we write
+	\begin{equation}
+		\begin{aligned}
+			g_{f,a,X}\colon \eR & \to \eR                         \\
+			t                   & \mapsto f\big( a\exp(tX) \big).
+		\end{aligned}
+	\end{equation}
+	From proposition \ref{PROPooNEIHooWQctei} we have
+	\begin{equation}
+		(X^Lf)(a)=g'_{f,a,X}(0).
+	\end{equation}
+	The vectors \( X_i\) being given we also define
+	\begin{equation}
+		\begin{aligned}
+			g_{f,a,k}\colon \eR^k & \to \eR                                                \\
+			(t_1,\ldots,t_k)      & \mapsto f\big( a\exp(t_1X_1)\ldots \exp(t_kX_k) \big).
+		\end{aligned}
+	\end{equation}
+	We prove by recursion over \( k\) that
+	\begin{equation}
+		(X_1^L\ldots X_k^Lf)(a)=(\partial_1\ldots \partial_kg_{f,a,k})(0,\ldots,0).
+	\end{equation}
+	The recursion hypothesis says that
+	\begin{equation}		\label{EQooQNFAooCyEVDM}
+		\Big( X_1^L\ldots X_k^L(X^L_{k+1}f) \Big)(a)=(\partial_1\ldots \partial_kg_{X_{k+1}f,a,k})(0,\ldots,0).
+	\end{equation}
+	And we compute \( f_{X_{k+1},a,k}\) :
+	\begin{subequations}
+		\begin{align}
+			g_{X_{k+1}f,a,k} & =(X_{k+1}^Lf)\big( a\exp(t_1X_1)\ldots \exp(t_kX_k) \big)  = g_{f,a\exp(t_1X_1)\ldots \exp(t_kX_k),X_{k+1}}'(0) \\
+			                 & = \frac{d}{ds} \left[ g_{g,a\exp(t_1X_1)\ldots \exp(t_kX_k),X_{k+1}}(s)  \right]_{s=0}                          \\
+			                 & =\frac{d}{ds} \left[ f\Big( a\exp(t_1X_1)\ldots \exp(t_kX_k)\exp(sX_{x+1}) \Big)  \right]_{s=0}                 \\
+			                 & =\frac{d}{ds} \left[ g_{f,a,k+1}(t_1,\ldots,t_k,s)  \right]_{s=0}                                               \\
+			                 & =(\partial_{k+1}g_{f,a,k+1})(t_1,\ldots,t_k,0).
+		\end{align}
+	\end{subequations}
+	Injecting that value for \( g_{X_{k+1}f,a,k}\) in the right hand side of \eqref{EQooQNFAooCyEVDM} we get
+	\begin{equation}
+		(X_1^L,\ldots,X_{k+1}^Lf)(a)=\big( \partial_1\ldots\partial_k\partial_{k+1}g_{f,a,k+1} \big)(0,\ldots,0).
+	\end{equation}
+\end{proof}
+
+\begin{proposition}	\label{PROPooGTJLooSuAVGX}
+	Let \( G\) be a smooth Lie group. Let \( X_1\),\ldots,\( X_n\) be elements of \( \lG\).
+	\begin{enumerate}
+		\item
+		      If \(f \colon G\to \eR  \) is a smooth function, there exists a map \(\alpha \colon \eR\to \eR  \) satisfying
+		      \begin{equation}		\label{EQooFQVUooXOMqEK}
+			      \begin{aligned}[]
+				      f\big( \exp(tX_1)\ldots \exp(tX_n) \big) & =f(e)+t\sum_i(X_i^Lf)(e)                             \\
+				                                               & \quad+\frac{ t^2 }{ 2 } \sum_i\sum_j(X_i^LX_j^Lf)(e) \\
+				                                               & \quad+t^2\alpha(t).
+			      \end{aligned}
+		      \end{equation}
+		      and \( \lim_{t\to 0}\alpha(t)=0\).
+		\item		\label{ITEMooQQOGooBhgChO}
+		      The same formula is true for every functions \(f \colon G\to V  \) where \( V\) is a normed vector space.
+		      %TODOooVCQMooVSWBHB. Prouver ce point.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	We consider the map
+	\begin{equation}
+		\begin{aligned}
+			h\colon \eR & \to \eR                                           \\
+			t           & \mapsto f\big( \exp(tX_1)\ldots \exp(tX_n) \big),
+		\end{aligned}
+	\end{equation}
+	and we apply the Taylor theorem \ref{ThoTaylor}. There exists a map \(\alpha \colon \eR\to \eR  \) such that \( \lim_{t\to 0}\alpha(t)=0\) and
+	\begin{equation}
+		h(t)=\sum_{k=0}^2\frac{ h^{(k)}(0) }{ k! }t^k+\alpha(t)t^2.
+	\end{equation}
+
+	\begin{subproof}
+		\spitem[Term \( k=0\)]
+		%-----------------------------------------------------------
+		The term with \( k=0\) is easy : \( h(0)=f(e)\).
+
+		\spitem[Term \( k=1\)]
+		%-----------------------------------------------------------
+		We use the propositions \ref{PROPooYRBRooLFVoqf} and \ref{PROPooFJNEooKUhJUl} with \( \gamma(t)=\exp(tX_1)\ldots \exp(tX_n)\) :
+		\begin{equation}
+			h'(0)=df_e\big( \sum_iX_i \big)=\sum_i(X_if)(e).
+		\end{equation}
+
+		\spitem[Term \( k=2\)]
+		%-----------------------------------------------------------
+		Taking the map \(s \colon \eR\to \eR^k  \) given by \( t\mapsto (t,\ldots,t)\), we have
+		\begin{equation}
+			h(t)=f\big( \exp(tX_1)\ldots \exp(tX_n) \big)=(g\circ s)(t)
+		\end{equation}
+		where \( g\) is the function of proposition \ref{PROPooXCMUooJqsTvB}. Using proposition \ref{PROPooXAGQooRLMshw} we get
+		\begin{equation}
+			h^{(k)}(t)=\sum_{i_1}\ldots \sum_{i_k}(\partial_{i_1}\ldots\partial_{i_k}g)(t,\ldots,t)=(X_1^L\ldots X_k^Lf)(e).
+		\end{equation}
+		We are here only interested in \( k=2\):
+		\begin{equation}
+			\frac{ h^{(2)}(0) }{2!}t^2=\frac{ t^2 }{2}\sum_i\sum_j(X_iX_jf)(e)
+		\end{equation}
+		as required in formula \ref{EQooFQVUooXOMqEK}.
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooVWBIooTxzPIN}
+	Let \( G\) be a smooth Lie group and \( f=\exp^{-1}\).
+	\begin{enumerate}
+		\item
+		      If \( X\) be a vector field on \( G\), then \( (Xf)(e)=X_e \).
+		\item		\label{ITEMooZCKFooIKbIRx}
+		      If \( X\in\lG\), then \( (X^Lf)(e)=X\).
+	\end{enumerate}
+	%TODOooBTOEooDCsQyW. Prouver ça.
+\end{lemma}
+
+
+\begin{proposition}[\cite{BIBooTKQTooGjFxwB}]	\label{PROPooPTYCooCuHEbO}
+	Let \( G\) be a smooth Lie group and \( \lG \) be its Lie algebra. Let \( X_1,\ldots,X_n\in\lG\). There exists a map \(\alpha \colon \eR\to \lG  \) satisfying \( \lim_{t\to 0}\alpha(t)=0\) and
+	\begin{equation}
+		\exp(tX_1)\ldots \exp(tX_n)=\exp\Big(  t\sum_{1\leq i\leq n}X_i+\frac{ t^2 }{2}\sum_{1\leq i < j\leq n}[X_i,X_j]+t^2\alpha(t)   \Big).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	The theorem \ref{THOooFMFLooCnLJPr} says that \(\exp \colon U\to V  \) is an analytic diffeomorphism. We consider the map \(f=\exp^{-1} \colon V\to U  \) and we use the formula of proposition \ref{PROPooGTJLooSuAVGX}\ref{ITEMooQQOGooBhgChO} :
+	\begin{equation}
+		f\big( \exp(tX_1)\ldots \exp(tX_n) \big)=f(e)+t\sum_i(X_i^Lf)(e)+\frac{ t^2 }{2}\Big( \sum_{i,j}(X^L_iX^L_jf)(e) \Big) + t^2\alpha(t)
+		e\end{equation}
+	for some map \(\alpha \colon \eR\to \lG  \) satisfying \( \lim_{t\to 0}\alpha(t)=0\).
+
+	We have \( f(e)=0\) and
+	\begin{equation}
+		(X^Lf)(e)=\frac{d}{dt} \left[ f\big( \exp(tX) \big)  \right]_{t=0}=\frac{d}{dt} \left[ tX  \right]_{t=0}=X.
+	\end{equation}
+	For the second order term, first we use the proposition \ref{PROPooQMZMooBrQhhr}:
+	\begin{equation}
+		\sum_{ij}X_i^LX_j^L=(\sum_iX_i^L)^2+\sum_{i<j}[X_i^L,X_j^L],
+	\end{equation}
+	then we use the proposition \ref{PROPooPEKNooUAeMjp} to remove the squared terms:
+	\begin{equation}
+		\big( (X_i)^2f \big)(e)=\frac{d^2}{dt^2} \left[ f\big( \exp(tX) \big)  \right]_{t=0}=\frac{d^2}{dt^2} \left[   tX  \right]_{t=0}=0.
+	\end{equation}
+
+	Putting all together:
+	\begin{equation}
+		\begin{aligned}[]
+			f\big( \exp(tX_1)\ldots \exp(tX_n) \big) & =\underbrace{f(e)}_{=0}+t\sum_i\underbrace{(X_i^Lf)(e)}_{=X_i}                                        \\
+			                                         & \quad+\frac{ t^2 }{2}\Big( \underbrace{(\sum_iX_i^L)^2f(e)}_{=0} +\sum_{i<j}[X_i^L,X_j^L](f)(e) \Big)
+		\end{aligned}
+	\end{equation}
+	The last piece is
+	\begin{subequations}
+		\begin{align}
+			[X_i^L,X_j^L](f)(e) & =[X_i,X_j]^L(f)(e) & \text{prop. \ref{PROPooPYVRooFtRGaj}}                       \\
+			                    & =[X_i,X_j]^L_e     & \text{lem. \ref{LEMooVWBIooTxzPIN}\ref{ITEMooZCKFooIKbIRx}} \\
+			                    & =[X_i,X_j].
+		\end{align}
+	\end{subequations}
+	At the end of the day we get
+	\begin{equation}
+		f\big( \exp(tX_1)\ldots \exp(tX_n) \big)=t\sum_iX_i+\frac{ t^2 }{2}\sum_{i<j}[X_i,X_j],
+	\end{equation}
+	and we obtain the result by applying \( \exp\) on both sides.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooZBZTooYmHemH}]	\label{PROPooYCGFooYPJjfg}
+	Let \( G\) be a smooth Lie group and \( X,Y\in\lG\). For every \( k\in \eN\) and every \( X,Y\in \lG\) we have
+	\begin{equation}
+		\frac{d}{dt} \left[ \exp(X+tY)  \right]_{t=0}=\frac{d}{dt} \left[ \exp\big( \frac{ X }{ k }+t\frac{ Y }{ k } \big)^k  \right]_{t=0}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	This is lemma \ref{LEMooRPHVooAtZJnz}.
+\end{proof}
+
+\begin{lemma}[\cite{BIBooZBZTooYmHemH}]	\label{LEMooTXNVooYmZDOl}
+	Let \( G\) be a smooth Lie group and \( X,Y\in\lG\). We have
+	\begin{equation}
+		\frac{d}{dt} \left[ \exp(X+tY)  \right]_{t=0}=\Big( dL_{\exp(X)}\circ\phi(\ad(X)) \Big)(Y)
+	\end{equation}
+	where\footnote{See proposition \ref{PROPooCVIAooTovqVg}.}
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon A & \to A                                                   \\
+			a            & \mapsto \sum_{m=0}^{\infty}\frac{ (-1)^m }{ (m+1)! }a^m
+		\end{aligned}
+	\end{equation}
+	for every normed algebra \( A\) where it makes sense\footnote{Here we are interested in \( \phi\big(\ad(X)\big)\) in the normed ring of operators on \( \lG\).}.
+\end{lemma}
+
+\begin{proof}
+	Several steps.
+	\begin{subproof}
+		\spitem[Convergence for \( \ad\)]
+		%-----------------------------------------------------------
+		We prove that, for every \( X\in\lG\), the sum
+		\begin{equation}		\label{EQooIUBPooWsodZv}
+			\sum_{m=0}^{\infty}\frac{ (-1)^m }{ (m+1)! }\ad(X)^m
+		\end{equation}
+		converges in \( \End(\lG)\).
+
+		First remark that for every \( 0\leq r<\infty\), we have \( \lim_{m\to\infty}r^m/(m+1)!=0\). Thus the criterion of alternate series \ref{THOooOHANooHYfkII}\ref{ITEMooWNCXooWAYRdm} says that
+		\begin{equation}
+			\sum_{m=0}^{\infty}\frac{ (-1)^m }{ (m+1)! }r^m
+		\end{equation}
+		converges.
+
+		The normed vector space \( \lG\) is finite dimensional, so that \( \| \ad(X) \|\) is finite. The proposition \ref{LEMooFITMooBBBWGI} also says that
+		\begin{equation}
+			\| \ad(X)^m \|\leq \| \ad(X) \|^m
+		\end{equation}
+	\end{subproof}
+	Thus the series
+	\begin{equation}
+		\sum_{m=0}^{\infty}\frac{ (-1)^m }{ (m+1)! }\| \ad(X) \|^m
+	\end{equation}
+	converges and the series \eqref{EQooIUBPooWsodZv} converges absolutely\footnote{Definition \ref{DefVFUIXwU}.}.
+
+	%TODOooLIORooXTKKmQ. Prouver ça. C'est encore loin d'être terminé.
+\end{proof}
+
+
+\begin{normaltext}
+	We already mentioned that the Lie algebra \( \lG\) of a Lie group is given with a norm. Thus one can speak about analytic\footnote{Definition \ref{DEFooAIHMooKbWsBt}.} map on \( \lG\) without further structure on the Lie group \( G\). In particular \( G\) has not to be an analytic Lie group in order to be able to say that a map \( \lG\to \lG\) is analytic.
+\end{normaltext}
+
+\begin{theorem}[\cite{BIBooFLEXooPgvAlz}]     \label{THOooYJPEooSpKHnC}
+	Let \( G\) be a smooth Lie group with Lie algebra \( \lG\). There exists a neighbourhood \( U\) of \( 0\) in \( \lG\) and a unique analytic map \(Z \colon U\times U\to U \) such that
+	\begin{equation}
+		\exp(X)\exp(Y)=\exp\big( Z(X,Y) \big)
+	\end{equation}
+	for every \( X,Y\in U\).
+
+	%TODOooVIFLooKbKMRv. Prouver ça. C'est en cours dans mon cahier.
+	% we need an explicit formula, or at least prove analyticity, because it is used at ooPFNFooFvYtHr
+\end{theorem}
+
+\begin{lemma}[\cite{MonCerveau,BIBooARJKooLuqoxW}]	\label{LEMooFUXAooKZfHMl}
+	Let \( G\) be a smooth Lie group with Lie algebra \( \lG\). We consider the Campbell-Baker-Hausdorff function \(Z \colon U\times U\to U  \) of theorem \ref{THOooYJPEooSpKHnC}. If \( X_1\in U\) is given we consider the partial function
+	\begin{equation}
+		\begin{aligned}
+			Z_1\colon U & \to U'            \\
+			X           & \mapsto Z(X_1,X).
+		\end{aligned}
+	\end{equation}
+	where \( U'\subset U\) is the image of \( Z_1\). Then:
+	\begin{enumerate}
+		\item
+		      The map \( Z_1\) is a bijection.
+		\item
+		      The map \( Z_1\) is analytic
+		\item
+		      \( Z_1^{-1}\) is analytic.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Several points.
+	\begin{subproof}
+		\spitem[\( Z_1\) is injective]
+		%-----------------------------------------------------------
+		Let \( X,Y\in U\) such that \( Z_1(X)=Z_1(Y)\). Taking the exponential on both sides :
+		\begin{equation}
+			\begin{aligned}[]
+				\exp\big( Z(X_1,X) \big) & =\exp\big( Z(X_1,Y) \big) \\
+				\exp(X_1)\exp(X)         & =\exp(X_1)\exp(Y)         \\
+				\exp(X)                  & =\exp(Y)
+			\end{aligned}
+		\end{equation}
+		Since \( \exp\) is a bijection on \( U\) this implies \( X=Y\).
+
+		We know that \( Z_1\) is injective from \( U\), thus \(Z_1 \colon U\to Z_1(U)  \) is a bijection.
+		\spitem[\( Z_1\) is analytic]
+		%-----------------------------------------------------------
+		This is proposition \ref{PROPooKHAYooCxMgep}.
+
+		\spitem[Computation of \( (dZ_1)_0\)]
+		%-----------------------------------------------------------
+		We consider a map \(\alpha \colon \eR\to \lG  \) as in proposition \ref{PROPooPTYCooCuHEbO}. It provides the following computation :
+		\begin{subequations}
+			\begin{align}
+				Z(X_1,tX) & = Z\big( t\frac{ X_1 }{ t },tX \big)                        \\
+				          & =X_1+tX+\frac{ t^2 }{2}[\frac{ X_1 }{ t },tX] +t^2\alpha(t) \\
+				          & =X_1+tX+\frac{ t^2 }{2}[X_1,X]+t^2\alpha(t).
+			\end{align}
+		\end{subequations}
+		Thus we have
+		\begin{equation}
+			(dZ_1)_0(X)=\frac{d}{dt} \left[ X_1+tX+t^2(..)  \right]_{t=0}=X.
+		\end{equation}
+		\spitem[Use the analytic local inversion theorem]
+		%-----------------------------------------------------------
+		Theorem \ref{THOooSZHVooKSEmuI} works. The map \( Z_1\) is locally invertible and its inverse is analytic.
+	\end{subproof}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Smooth and analytic Lie group}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+We recall that a manifold is a set with its charts. Usually we write ``Let \( M\) be a manifold'' where we should write ``Let \( (M,\{ \varphi_{\alpha} \}_{\alpha\in I})\) be a manifold''. Changing the set of charts can completely change the properties of a manifold. That subtlety is crucial in the following theorem which basically says ``every smooth Lie group is analytic''.
+\begin{theorem}[\cite{BIBooSYWXooYSgEgW, MonCerveau}]       \label{THOooSQVCooCyEPOS}
+	Let \( (G,\{ \varphi_{\alpha} \}_{\alpha\in A})\) be a smooth Lie group\footnote{Definition \ref{DEFooGDWTooTvINuw}.}.
+	\begin{enumerate}
+		\item
+		      There exists an atlas \( \{ \phi_i \}_{i\in I}\) of \( G\) for which the transition functions are analytic.
+		\item
+		      The multiplication and the inverse of \( G\) are analytic on the manifold \( \big( G,\{ \phi_i \}_{i\in I} \big)\).
+	\end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+	We consider the atlas \(\phi_g \colon U\to G  \) given by proposition \ref{PROPooVMLTooFpXoeh}, and the CBH map \(Z \colon U\times U\to U  \) of theorem \ref{THOooYJPEooSpKHnC}. If the \( U\) if the atlas and the \( U\) of Campbell-Baker-Hausdorff are not the same, we consider the intersection.
+	We also consider the partial map \( Z_0\) and \( Z_1\)
+
+	\begin{subproof}
+		\spitem[Transition functions]
+		%-----------------------------------------------------------
+		We have to prove that \( \phi^{-1}_h\circ \phi_g\) is analytic when \( \phi_h(U)\cap \phi_g(U)\neq \emptyset\). Let \( a\in h \exp(U)\cap g\exp(U)\). We define \( X_0,X_1\in U\) by \( g=a\exp(X_0)\) and \( h=a\exp(X_1)\). We consider the partial maps \( Z_0\) and \( Z_1\) of lemma \ref{LEMooFUXAooKZfHMl}.
+
+		We have
+		\begin{equation}
+			\phi_g(X)=a\exp(X_0)\exp(X)=a\exp\big( Z(X_0,X) \big)=a\exp\big( Z_0(X) \big),
+		\end{equation}
+		so that
+		\begin{equation}
+			\begin{aligned}[]
+				\phi_g & =L_a\circ Z_0\circ \exp  \\
+				\phi_h & =L_a\circ Z_1\circ \exp,
+			\end{aligned}
+		\end{equation}
+		and \( \phi_h^{-1}\circ\phi_g=Z_1^{-1}\circ Z_0\). The \( Z_0\) and \( Z_1^{-1}\) are analytic because of lemma \ref{LEMooFUXAooKZfHMl}. The composition is analytic by proposition \ref{PROPooXKHBooQvvNmN}.
+
+		\spitem[Multiplication]
+		%-----------------------------------------------------------
+		We have to check that \(m \colon G\times G\to G  \) is analytic. We consider the chart \( \phi_g\times \phi_l\) on \( G\times G\) and the chart \( \phi_h\) on \( G\), and we look at \( \phi_h^{-1}\circ m\circ(\phi_g\times \phi_h)\). In order to make sense we need a point
+		\begin{equation}
+			s\in \phi_h(U)\cap m\circ(\phi_g\times \phi_l)(U).
+		\end{equation}
+		We consider the points \( X_0,X_1,X_2\in\lG\) such that \( -X_0,-X_1,-X_2\) are in \( U\) and
+		\begin{subequations}
+			\begin{numcases}{}
+				s=h\exp(-X_0)\\
+				s=m\big( \phi_g(-X_1),\phi_l(-X_2) \big)=g\exp(-X_1)l\exp(-X_2).
+			\end{numcases}
+		\end{subequations}
+		As in the previous case, \( \phi_h=L_s\circ\exp \circ Z_0\). For the other part, we write \( g\) as function of \( s\) and \( l\) as
+		\begin{equation}
+			g=s\exp(X_2)l^{-1}\exp(X_1),
+		\end{equation}
+		so that
+		\begin{subequations}
+			\begin{align}
+				m\circ(\phi_g\times \phi_l)(X,Y) & =g\exp(X)l\exp(Y)                                                  \\
+				                                 & =s\exp(x_2)\exp(X)l^{-1}\exp(X_1)l\exp(Y)                          \\
+				                                 & =s\exp\big( Z_2(X) \big)\underbrace{l^{-1}\exp(X_1)l}_{=x}\exp(Y).
+			\end{align}
+		\end{subequations}
+		Let \( G_e\) be the connected component of \( G\) containing the identity \( e\). The element \( \exp(X_1)\) belongs to \( G_e\). From equation \eqref{EQooKCPVooBBOcgT} we deduce that \(x= l^{-1}\exp(X_1)l\) also belongs to \( G_e\). The proposition \ref{PropUssGpGenere} says that \( x\) is a finite product of elements of \( \exp(U)\). Using nested Campbell-Baker-Hausdorff functions, we can write \( x=\exp(X_x)\) for some \( X_x\in \lG\). Thus we have
+		\begin{equation}
+			m\circ(\phi_g\times \phi_l)(X,Y)=s\exp\big( Z_2(X) \big)\exp(X_x)\exp(Y)=s\exp\big( Z_2(X) \big)\exp\big( Z_1(Y) \big)
+		\end{equation}
+		where
+		\begin{equation}
+			\begin{aligned}
+				Z_1\colon U & \to \lG                     \\
+				Y           & \mapsto Z\big( X_x,Y \big).
+			\end{aligned}
+		\end{equation}
+		And finally we write
+		\begin{equation}
+			m\circ(\phi_g\times \phi_l)=L_s\circ m\circ(\exp\circ Z_2\times \exp\circ Z_1).
+		\end{equation}
+		We have to compute
+		\begin{equation}
+			\phi_h^{-1}\circ m(\phi_g\times \phi_l)=Z_0^{-1}\circ\exp^{-1}\circ L_s^{-1}\circ L_s\circ m(\exp\circ Z_2\times \exp\circ Z_1).
+		\end{equation}
+		Small computation:
+		\begin{subequations}
+			\begin{align}
+				\exp^{-1}\Big( \exp\big( Z_2(X) \big)\exp\big( Z_1(Y) \big) \Big) & =\exp^{-1}\Big[ \exp\Big( Z\big( Z_2(X),Z_1(Y) \big)  \Big) \Big] \\
+				                                                                  & = Z\circ(Z_2\times Z_1)(X,Y),
+			\end{align}
+		\end{subequations}
+		and finally
+		\begin{equation}
+			\phi_h^{-1}\circ m\circ(\phi_g\times \phi_l)=Z_0^{-1}\circ Z\circ(Z_2\times Z_1),
+		\end{equation}
+		which is analytic as combination of analytic maps.
+
+		\spitem[Exponential]
+		%-----------------------------------------------------------
+		We prove that the exponential \(\exp \colon U\to G  \) is analytic. The chart on \( \lG\) is the identity while the charts on \( G\) are the \( \phi_g\).
+
+		Let \( X_0\in U\); the chart \( \phi_g\) is only to be checked if \( \exp(X_0)\) belongs to the image of \( \phi_g\), i.e. id there exists \( x_1\in U\) such that \( \phi_g(X_1)=\exp(X_0)\) or\footnote{We use lemma \ref{LEMooEQFHooRjUAin}\ref{ITEMooTQHIooFLaOnX}.}
+		\begin{equation}
+			g=\exp(X_0)\exp(-X_1)=\exp\big( Z(X_0,-X_1) \big)=\exp(A)
+		\end{equation}
+		where \( A=Z(X_0,-X_1)\). Now we have to study the map \( \phi_g^{-1}\circ\exp\). Let \( X\) be fixed and solve \( (\phi_g^{-1}\circ \exp)(X)=Y\) for \( Y\) as function of \( X\). We have
+		\begin{subequations}
+			\begin{align}
+				\quad       & (\phi_g^{-1}\circ \exp)(X)=Y \\
+				\Rightarrow & \exp(X)=\phi_g(Y)            \\
+				\Rightarrow & \exp(X)=g\exp(Y)
+			\end{align}
+		\end{subequations}
+		And \( g\exp(Y)\) can be computed as
+		\begin{subequations}
+			\begin{align}
+				g\exp(Y)= & \exp(A)\exp(Y)         \\
+				          & \exp\big( Z(A,Y) \big)
+			\end{align}
+		\end{subequations}
+		Thus \( X=Z(A,Y)=Z_A(Y)\) where \( Z_A\) denotes the usual partial map. This proves
+		\begin{equation}
+			\phi_g\circ \exp=Z_A^{-1},
+		\end{equation}
+		which is analytic.
+
+		\spitem[Inverse]
+		%-----------------------------------------------------------
+
+		We have to study \( \phi_h\circ i\circ\phi_g\) where \( i\) stands for the inverse map. This map only makes sens if the exists \( s\in\phi_h(U)\cap (i\circ\phi_g)(U)\). It means that there exists \( X_0,X_1\in \lG\) such that \( -X_0,-X_1\in U\) and
+		\begin{subequations}
+			\begin{numcases}{}
+				s=\big( g\exp(-X_0) \big)^{-1}\\
+				s=h\exp(-X_1).
+			\end{numcases}
+		\end{subequations}
+		We express \( g\) and \( h\) in terms of \( s\) :  \( h=s\exp(X_1)\) and \( g=\exp(X_0)s^{-1}\). As usual,
+		\begin{equation}
+			\phi_h=L_s\circ\exp\circ Z_1
+		\end{equation}
+		where \( Z_1(X)=Z(X_1,X)\). For \( \phi_g\), there is an extra bit of computations. There exists a \( X_s\in\lG\) such that \( \phi_g(X)  =\exp(X_0)s^{-1}\exp(X)                                 \) . Thus
+		\begin{equation}
+			\phi_g=L_{\exp(X_0)}\circ L_s^{-1}\circ\exp,
+		\end{equation}
+		and
+		\begin{subequations}
+			\begin{align}
+				(i\circ\phi_g)(X) & =\exp(-X)s\exp(X_0)              \\
+				                  & =R_{s\exp(-X_0)}\circ\exp\circ q
+			\end{align}
+		\end{subequations}
+		where
+		\begin{equation}
+			\begin{aligned}
+				q\colon \lG & \to \lG    \\
+				X           & \mapsto -X
+			\end{aligned}
+		\end{equation}
+		At the end,
+		\begin{equation}
+			\phi_h^{-1}\circ i\circ\phi_g=Z_1^{-1}\circ\exp^{-1}\circ L_s^{-1}\circ R_{s\exp(-X_0)}\circ\exp\circ q,
+		\end{equation}
+		which is a composition of analytic maps.
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}      \label{NORMooKCBMooGWQZJY}
+	From now on, we will always consider analytic Lie groups. The interesting point is that, if we show that some charts are smooth, theorem \ref{THOooSQVCooCyEPOS} allows us to say that the group is analytic by choosing the correct atlas.
+\end{normaltext}
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Topological Lie subgroup}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{remark}
+	A \textit{topological} Lie subgroup\index{topological!Lie subgroup} is stronger that a common Lie subgroup because it needs to be a topological subgroup: it must carry \emph{exactly} the induced topology. In our definition of a Lie group, this feature doesn't appears.
+\end{remark}
+
+\begin{theorem} \label{THOooXVXBooZDJzQo}
+	Let $G$ be a Lie group whose Lie algebra is $\lG$ and $H$, a closed subgroup (not specially a \emph{Lie} subgroup) of $G$. Then there exists one and only one analytic structure on $H$ for which $H$ is a topological Lie subgroup of $G$.
+\end{theorem}
+
+
+\begin{proof}
+	The unicity part comes from the corollary~\ref{CORooMCWWooXkpkNO}.
+
+	We will work with
+	\begin{equation}\label{eq:lH_de_G}
+		\lH=\{X\in\lG\tq \forall t\in\eR,\, e^{tX}\in H\}.
+		%TODOooVKBWooYUnOkA:  finir la preuve.
+	\end{equation}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Action from Lie algebra to Lie group}
+%---------------------------------------------------------------------------------------------------------------------------
+
+A very important point\cite{ooOLNIooDLmxkR} is that when \( G\) is acting on $M$, one can reconstruct the action of \( G\) only knowing the action of \( \lG\). Let \( X\in \lG\) and \( x\in M\). We consider the path
+\begin{equation}
+	\begin{aligned}
+		\gamma\colon \eR & \to M                \\
+		t                & \mapsto \exp(tX)(x).
+	\end{aligned}
+\end{equation}
+This map satisfies \( \gamma(0)=x\). We also have, using proposition~\ref{PROPooWEYCooCvyHNr},
+\begin{equation}
+	\gamma(t_0+u)=\big( \exp(uX)\circ\exp(t_0X)\big)(x)=\exp(uX)\gamma(t_0).
+\end{equation}
+In that, we used the fact that \( G\) acts on \( M\), so that we have transformed the product inside the group \( \exp\big( (u+t_0)X \big)= \exp(uX)\exp(t_0x) \) into a composition of map.  Then
+\begin{equation}
+	\Dsdd{ \gamma(t_0+u) }{u}{0}=X\big( \gamma(t_0) \big)
+\end{equation}
+We conclude that \( \gamma\) satisfies the differential equation
+\begin{equation}        \label{EQooFGSIooUplbmN}
+	\gamma'(t)=-X\big( \gamma(t) \big).
+\end{equation}
+When \( M=\eR^n\), the Cauchy-Lipschitz theorem~\ref{ThokUUlgU} provides unicity of the solution on a maximal domain providing the map \( X\colon \eR^n\to \eR^n\) has nice properties.
+
+\begin{normaltext}      \label{NORMooMGAUooIoLtjW}
+	If we have to determine the transformations of \( \eR^n\) that satisfies some properties, the strategy is then the following:
+	\begin{itemize}
+		\item Suppose the searched group to be a connected Lie group.
+		\item Write the condition with the groupe element \( \exp(tX)\) and differentiate with respect to \( t\). This point is what physicist call ``consider an infinitesimal transformation and neglect the higher order terms''.
+		\item This provides an equation for \( X\). Typically a differential equation for the map \( X\colon \eR^n\to \eR^n\). Solve it.
+		\item The group action is then retrieved solving the differential equation \eqref{EQooFGSIooUplbmN}.
+	\end{itemize}
+	Using that technique we will determine the isometries of \( \eR^n\) in proposition~\ref{PROPooDVIWooAFDNPy} and determine the conformal group around definition~\ref{DEFooVKNBooFBWQQM}.  % position 10906-29466: provides a more precise reference to the result instead of the definition.
+\end{normaltext}
+
+\begin{remark}
+	When the Lie algebra is made of linear transformations, the last differential equation to solve is actually exponentiating a matrix.
+\end{remark}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Example: determining the smooth isometries of the flat vector space}
+%---------------------------------------------------------------------------------------------------------------------------
+
+We know from theorem~\ref{ThoDsFErq} that the isometries of \( \eR^n\) are affine functions. We give now an alternative proof of that result.
+
+\begin{proposition}     \label{PROPooDVIWooAFDNPy}
+	The smooth\footnote{In fact we only need \( C^2\).} isometries of \( (\eR^n,\| . \|)  \)  are affine maps.
+\end{proposition}
+
+\begin{proof}
+	The condition for a diffeomorphism \( \phi\colon \eR^n\to \eR^n\) to be an isometry is
+	\begin{equation}        \label{EQooRKYWooFIKfYZ}
+		\| \phi(x)- \phi(y) \|^2=\| x-y \|^2.
+	\end{equation}
+	We write \( \phi_t(x)= e^{-tX}x\) and take the derivative of \eqref{EQooRKYWooFIKfYZ} with respect to \( t\) at \( t=0\) taking into account that \( \phi_0(x)=x\):
+	\begin{equation}        \label{EQooXEKMooGOktOj}
+		\big( X(y)-X(x) \big)\cdot (x-y)=0.
+	\end{equation}
+	We used the fact that \( \Dsdd{ \phi_t(x) }{t}{0}=-X(x)\).
+
+	We write the condition \eqref{EQooXEKMooGOktOj} with \( tx\) and take the derivative with respect to \( t\): \( dX_0(x)\cdot y+X(y)\cdot x=0\). The same with \( y\) gives
+	\begin{equation}
+		dX_0(x)\cdot y+dX_0(y)\cdot x=0.
+	\end{equation}
+	Taking \( x=e_i\) and \( y=e_j\) this equation reads
+	\begin{equation}
+		\frac{ \partial X_j }{ \partial x_i }+\frac{ \partial X_i }{ \partial x_j }=0.
+	\end{equation}
+	With \( i=j\) we get \( \frac{ \partial X_i }{ \partial x_i }=0\). The we compute
+	\begin{equation}
+		\frac{ \partial  }{ \partial x_j }\frac{ \partial X_i }{ \partial x_j }=-\frac{ \partial  }{ \partial x_j }\left( \frac{ \partial X_j }{ \partial x_i } \right)=-\frac{ \partial  }{ \partial x_i }\frac{ \partial X_j }{ \partial x_j }=0.
+	\end{equation}
+	We used the fact that \( X_j\) is of class \( C^2\) in order to permute the derivatives (lemma~\ref{LemPermDerrxyz}). We proved that
+	\begin{equation}
+		\frac{ \partial^2 X_i  }{ \partial x_j }=0
+	\end{equation}
+	for all \( i,j\). Thus \( X\) is linear.
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Other stuff}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+
+\begin{lemma}
+	Let $\lG$ be a Lie algebra and $A$, a linear operator on $\lG$ (see as a common vector space) such that $\forall t\in\eR$, the map $e^{tA}$ is an automorphism of $\lG$. Then $A$ is a derivation of $\lG$.
+	\label{lem:autom_derr}
+\end{lemma}
+
+\begin{proof}
+	Let us consider $X$, $Y\in\lG$;  the assumption is
+	\[
+		e^{tA}[X,Y]=[e^{tA}X,e^{tA}Y].
+	\]
+	Since $e^{tA}$ is a linear map, it has a ``good behavior''\ with the derivations:
+	\[
+		\Dsddc{e^{tA}[X,Y]}{t}{0}=\Dsddc{e^{tA}}{t}{0}[X,Y]=A[X,Y].
+	\]
+	Using on the other hand the linearity of $\ad$, we can see
+	\[
+		(\ad(e^{tA}X))(e^{tA}Y)
+	\]
+	as a product ``matrix times vector''. Then
+	\begin{equation}
+		\begin{split}
+			\Dsddc{[e^{tA}X,e^{tA}Y]}{t}{0}&=\Dsddc{(\ad e^{tA}X)Y}{t}{0}+\Dsddc{(\ad X)(e^{tA}Y)}{t}{0}\\
+			&=(\ad AX)Y+(\ad X)(AY).
+		\end{split}
+	\end{equation}
+	Finally, $A[X,Y]=[AX,Y]+[X,AY]$.
+
+\end{proof}
+
+As notational convention, if $G$ and $H$ are Lie groups, their Lie algebra are denoted by $\lG$ and $\lH$.
+
+\begin{lemma}		\label{LemAlgEtGroupesGenere}
+	Let $\lG$ be a Lie algebra ans $\lS$ be a subset of $\lG$. The algebra of the group generated by $ e^{\lS}$ is the algebra generated by $\lS$.
+\end{lemma}
+
+Invariant vector fields are also often used in order to transport a structure from the identity of a Lie group to the whole group by $A_g(X_g)=A_e(dL_{g^{-1}}X_g)$ where $A_e$ is some structure and $X_g$, a vector at $g$.
+
+
+\begin{corollary}\label{Ad_e}
+	An useful formula:
+	\[
+		\Ad(e^X)=e^{\ad X}.
+	\]
+\end{corollary}
+
+\begin{corollary}
+	Another useful corollary of proposition \ref{PROPooKYNDooVAEzFw} is the particular case $\phi=\AD(e^X)$:
+	\[
+		e^Xe^Ye^{-X}=e^{Ad(e^Y)X}.
+	\]
+	\label{cor:eXeYe-X}
+\end{corollary}
+
+\begin{proposition}
+	Let $G$ be a connected Lie group.
+	\begin{enumerate}
+
+		\item
+		      All the left invariant vector fields are complete. That means that the map $X\mapsto  e^{X}$ is defined for every $X\in \mG$.
+		\item
+		      The map $\exp\colon \mG\to G$ is a local diffeomorphism in a neighbourhood of $0$ in $\mG$.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+
+		\item
+		      The flow is a one parameter subgroup. Thus if $ e^{tX}$ is defined for $t\in[0,a]$, by composition, $ e^{2a}$ is defined. So $ e^{tX}$ is defined for every value of $t$ in $\eR$.
+		\item
+		      Let us consider the manifold $G\times \mG$ and the vector field $\Xi$ defined by
+		      \begin{equation}
+			      \Xi_{(g,X)}=\tilde X_g\oplus 0\in T_g(G)\oplus T_X\mG\simeq T_{(g,X)}(G\times \mG).
+		      \end{equation}
+		      The flow of that vector field is given by
+		      \begin{equation}
+			      \Phi_t(g,X)=\big( g\exp(tX),X \big).
+		      \end{equation}
+		      In particular, $\Xi$ is a complete vector field, and we consider the global diffeomorphism
+		      \begin{equation}
+			      \begin{aligned}
+				      \Phi_1\colon G\times \mG & \to G\times \mG                 \\
+				      (g,X)                    & \mapsto \big( g\exp(X),X \big).
+			      \end{aligned}
+		      \end{equation}
+		      On the point $(e,X)$ we have $\Phi_1(e,X)=(\exp(X),X)$. Thus the exponential is the projection on the first component of $\Phi_1(e,X)$ and we can write
+		      \begin{equation}
+			      \exp(X)=\pr_1\circ\Phi_1(e,X).
+		      \end{equation}
+		      It is a smooth function since both the projection and $\Phi_1$ are smooth.
+
+		      Now, the differential $(d\exp)_0$ is the identity on $\mG$, so that the theorem of inverse function\footnote{Theorem \ref{ThoXWpzqCn}.} makes $\exp$ a local diffeomorphism.
+	\end{enumerate}
+\end{proof}
+
+
+\begin{lemma}
+	In a Lie group, $e$ is an isolated fixed point for the inversion.
+\end{lemma}
+
+\begin{proof}
+	One can use an exponential map in a neighbourhood of $e$. In this neighbourhood, an element $g$ can be written as $g=e^X$ for a certain $X\in\lG$. The equality $g=g^{-1}$ gives (because the exponential is a diffeomorphism) $X=-X$, so that $X=0$ and $g=e$.
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Lie algebra of a Lie subgroup}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{proposition}[\cite{BIBooDUPSooZjcTHL}]     \label{PROPooCRKMooIIbKUM}
+	Let $G$ be a Lie group and $H$, a Lie subgroup of $G$ ($\lG$ and $\lH$ are the corresponding Lie algebras). We suppose that $H$ has at most a countable number of connected components. Then
+	\begin{equation}
+		\lH=\{ X\in\lG:\forall t\in\eR,e^{tX}\in H \}
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	We will once again use the lemma ~\ref{LEMooEBQUooKXkCda} with $\lN=\lH$ and $\lM$, a complementary vector space of $\lH$ in $\lG$. We define
+	\[
+		V=\exp\mU_m\exp\mU_h
+	\]
+	where $\mU_m$ and $\mU_h$ are the sets given by the lemma. We consider on $V$ the induced topology from $G$. If we define
+	\[
+		\mA=\{A\in\mU_m:e^{A}\in H\},
+	\]
+	we have
+	\begin{equation}\label{eq:union_A}
+		H\cap V=\bigcup_{A\in\mA}e^{A}e^{\mU_h}.
+	\end{equation}
+	First, the definition of $V$ makes clear that the elements of the form $\exp A\exp\mU_h$ are in $V$. They are also in $H$ because $\exp A\in H$ (definition of $\mA$) and $\exp\mU_h$ still by definition. In order to see the inverse inclusion, let us consider a $h\in H\cap V$. We know that
+	\begin{equation}\label{eq:AB_to_exp}
+		(A,B)\to\exp A\exp B
+	\end{equation}
+	is a diffeomorphism between $\mU_m\times\mU_h$ and a neighbourhood of $e$ in $G$ which we called $V$. Thus any element of $V$ (\emph{a fortiori} in $V\cap H$) can be written as $\exp A\exp B$ with $A\in\mU_m$ and $B\in\mU_h$. Then $h=e^Ae^B$ for some $A\in\mU_m$, $B\in\mU_h$. Since $H$ is a group and $e^B\in H$, in order the product to belongs to $H$, $e^A$ must lies in $H$: $A\in\mA$.
+
+	\begin{remark}\label{rem:union_disj}
+		Note that since \eqref{eq:AB_to_exp} is diffeomorphic, the union in right hand side of \eqref{eq:union_A} is disjoint. Each member of this union is a neighbourhood in $H$ because it is a set $h\exp\mU_h$ where $\exp\mU_h$ is a neighbourhood of $e$ in $H$.
+	\end{remark}
+
+	Now we consider the map $\dpt{\pi}{V}{\mU_m}$,
+	\[
+		\pi(e^{X}e^Y)=X
+	\]
+	if $X\in\mU_m$ and $Y\in\mU_h$. This is a continuous map which sends $H\cap V$ into $\mA$. The identity component of $H\cap V$ (in the sense of topology of $V$) is sent to a countable subset of $\mU_m$. Indeed by remark~\ref{rem:union_disj}, identity component of $H\cap V$ is only one of the terms in the union \eqref{eq:union_A}, namely $A=0$. But we know that $\pi^{-1}(o)=\exp\mU_h$, thus $\exp\mU_h$ is the identity component of $H\cap V$ for the topology of $V$.
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Lifting a Lie subalgebra}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{theorem}[Chevalley\cite{BIBooFLEXooPgvAlz}]       \label{THOooXALIooGiPVdD}
+	We consider a class \( \mA\) (smooth, analytic) of functions. Let \( G\) be a \( \mA\)-Lie group and \( \lH\) be a Lie subalgebra of \( \lG\). There exists an unique connected \( \mA\)-Lie subgroup \( H\) whose Lie algebra is \( \lH\).
+\end{theorem}
+
+\begin{proof}
+	Let \( X_1,\ldots, X_k\) be a basis of \( \lH\) in \( \lG\). We consider the corresponding left invariant vector fields \( X_i^L(g)=(dL_g)_e(X_i)\).
+	\begin{subproof}
+		\spitem[A distribution]
+		By lemma \ref{LEMooWTNRooCjlYMJ}, the vectors \( X_i^L(g)\) are linearly independents in \( T_gG\). Thus by setting
+		\begin{equation}
+			\mD_g=\Span\{ X_i^L(g) \}
+		\end{equation}
+		we define a \( k\) dimensional distribution\footnote{Definition \ref{DEFooYOMHooZJvsSt}.} on \( G\).
+		\spitem[Involutive]
+		Since \( (dL_g)_e\) is linear we have
+		\begin{equation}
+			[X_i^L,X_j^L]=[X_i,X_j]^L,
+		\end{equation}
+		and since \( \lH\) is a Lie algebra, we have \( [X_i,X_j]\in \lH\), so that \( [X_i,X_j]^L\in\mD\).
+		\spitem[Frobenius]
+		The Frobenius theorem \ref{THOooVRDYooIusxwW} says that \( \mD\) is integrable: there exists an unique maximal integral connected manifold \( H\) through \( e\). There exists in particular an immersion \( i\colon H\to G\).
+		\spitem[\( H\) is a group]
+		Note that, if \( g\in G\), then \( L_g(H)\) is still an integral manifold of \( \mD\). Let \( h_1,h_2\in H\). We have
+		\begin{equation}
+			h_1=L_{h_1}(e)\in H\cap L_{h_1}(H)
+		\end{equation}
+		because \( h_1\in H\) and \( L_{h_1}(e)\in L_{h_1}(H)\). We have:
+		\begin{itemize}
+			\item
+			      The integral manifold \( H\) is maximal,
+			\item
+			      \( L_{h_1}(\mD)\) is still an integral manifold
+			\item
+			      The intersection \( L_{h_1}(\mD)\cap H\) is not empty.
+		\end{itemize}
+		From these properties we deduce \( L_{h_1}(H)\subset H\). Since \( h_2\in H\), we have in particular \( L_{h_1}(h_2)\in H\), so that \( h_1h_2\in H\).
+
+		For the inverse, let \( h\in H\). We have \( L_{h^{-1}}(h)=e\in H\). So \( L_{h^{-1}}(H)\) is an integral manifold with an intersection with \( H\). Thus \( L_{h^{-1}}(H)\subset H\). In particular \( h^{-1}=L_{h^{-1}}(e)\in H\).
+
+		We conclude that \( H\) is a subgroup of \( G\).
+		\spitem[\( G\) is a Lie group]
+		The manifold structure on \( H\) is the one of submanifold of \( G\). The fact that the multiplication and the inverse are in the class \( \mA\) as maps on the manifold \( G\) implies that they are in the same class \( \mA\) for the manifold \( H\).
+
+		Thus \( H\) is a \( \mA\)-Lie group.
+		\spitem[The inclusion is injective]
+		This is always true for an inclusion map.
+		\spitem[\( H\) is a Lie group]
+		The manifold structure on \( H\) is given by the charts \( \psi_i\) of proposition \ref{PROPooMKLBooTkqrph} that e denote by \( \psi_i\). These charts are composition of charts of \( G\) with the inclusion. The product and the inverse of \( H\) are the restrictions of the product and the inverse on \( G\); just check that their composition with the charts \( \psi_i\) are smooth.
+		\spitem[The inclusion is an immersion]
+		The inclusion of a submanifold is an immersion from proposition \ref{PROPooEWUCooTStAvb}.
+		\spitem[\( H\) is a Lie subgroup of \( G\)]
+		The conditions of the definition \ref{DEFooGCHDooHUMSju} are satisfied.
+	\end{subproof}
+	The existence part is proven. Now we prove the unicity.
+
+	Let \( K\) be a Lie subgroup of \( G\) whose algebra is \( \lH\).
+	\begin{subproof}
+		\spitem[\( T_kK=\mD_k\)]
+		The map \( (dL_g)_e\colon T_eG\to T_gG\) is an isomorphism of vector spaces. Thus we have
+		\begin{equation}
+			T_kK=(dL_k)_e(\lH)=\Span\{ (dL_k)_e(X_i) \}=\Span\{ X_i^L(k) \}=\mD_k.
+		\end{equation}
+		\spitem[Maximality]
+		Thus \( K\) is an integral manifold of \( \mD\) through \( e\). Thanks to the maximality of \( H\), we have \( K\subset H\). Since \( T_eK=T_eH\), the inclusion \( \iota\colon K\to H\) is a local isomorphism. There exists a neighbourhood \( V\) of \( e\) in \( G\) such that \( K\cap V=H\cap V\).
+
+		Since a connected Lie group is generated by any neighbourhood of \( e\), we have \( K=H\).
+	\end{subproof}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Covering}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{lemma}[\cite{BIBooFLEXooPgvAlz}]     \label{LEMooSYVQooTjkgBL}
+	Let \( G\) and \( H\) be connected Lie groups. We consider map \( \Phi\colon G\to H\) such that
+	\begin{enumerate}
+		\item
+		      \( \Phi\) is a smooth Lie group diffeomorphism\footnote{See definition \ref{DefAQIQooYqZdya}. Everywhere ``smooth'' means \(  C^{\infty}\).}.
+		\item
+		      The map \( d\Phi_e\colon \lG\to \lH\) is bijective.
+	\end{enumerate}
+	Then \( \Phi\) is a covering\footnote{Definition \ref{DEFooQBDWooVVrkkh}.}.
+\end{lemma}
+
+\begin{proof}
+	Several points.
+	\begin{subproof}
+		\spitem[\( \Phi\) is surjective]
+		Let \( h\in H\). From proposition \ref{PROPooYFZZooLUOuOj}, there exists a neighbourhood \( V\) of \( e\) in \( H\) on which the exponential is surjective. From proposition \ref{PropUssGpGenere}, there exist \( h_1,\ldots, h_n\) in \( V\) such that \( h=\prod_{i=1}^nh_i\).
+
+		Since \( \exp\colon \lH\to V\) is surjective, there exist \( Y_i\in \lH\) such that \( h_i=\exp(Y_i)\). We know that \( d\Phi\colon \lG\to \lH\) is surjective, so there exist \( X_i\in\lG\) such that \( Y_i=d\Phi_e(X_i)\). Thus we have
+		\begin{equation}
+			h_i=\exp\big( d\Phi(X_i) \big)=\Phi\big( \exp(X_i) \big)
+		\end{equation}
+		from proposition \ref{PROPooKYNDooVAEzFw}.
+
+		As far as a product is concerned,
+		\begin{subequations}
+			\begin{align}
+				h_ih_j & =\Phi\big( \exp(X_i) \big)\Phi\big( \exp(X_j) \big)                \\
+				       & =\Phi\big( \exp(X_i)\exp(X_j) \big)    \label{SUBEQooRTXGooZNrvUY} \\
+				       & =\Phi\big( \exp(Z) \big).      \label{SUBEQooFHKGooGHUITs}
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item For \eqref{SUBEQooRTXGooZNrvUY}. The map \( \Phi\) is a group morphism.
+			\item For \eqref{SUBEQooFHKGooGHUITs}. The element \( Z\) is given by the Campbell-Baker-Hausdorff formula, theorem \ref{THOooYJPEooSpKHnC}.
+		\end{itemize}
+		\spitem[Continuous]
+		The map \( \Phi\) is continuous as part of the definition of smooth diffeomorphism.
+		\spitem[The third condition]
+		Since the differential \( d\Phi_e\colon \lG\to \lH\) is bijective, the inversion theorem \ref{THOooDWEXooMClWVi} says that there exist open neighbourhood \( U_0\) of \( e\) and \( V_0\) of \( \Phi(e)\) such that  the restriction \( \Phi\colon U_0\to V_0\) is bijective.
+
+		Since \( U_0\) and \( U_0^{-1}\) are open sets, the intersection is still open and still contain \( e\). We consider \( U=U_0\cap U_0^{-1}\), and \( V=\Phi(U)\). Now the restriction \( \Phi\colon U\to V\) is still a bijection.
+
+		Let \( \Gamma=\Phi^{-1}(e)\). Since \( \Phi\) is not injective, this \( \Gamma\) can be a set.
+		\begin{subproof}
+			\spitem[\( \Gamma\) is a subgroup]
+			Let \( g_1,g_2\in \Gamma\). Since \( \Phi\) is a group morphism, we have \( \Phi(g_1g_2)=\Phi(g_1)\Phi(g_2)=ee=e\), so that \( g_1g_2\in \Gamma\).
+			\spitem[As an union]
+			Let \( g\in\Phi^{-1}(V)\). There exists a \( g_0\in U\) such that \( \Phi(g_0)=\Phi(g)\). Recall that \( \Phi\) is not injective; \( g_0\) and \( g\) are element of \( G\) that are mapped on the same point in \( V\). Since \( \Phi\) is a morphism,
+			\begin{equation}
+				\Phi(gg_0^{-1})=\Phi(g)\Phi(g_0^{-1})=\Phi(g)\Phi(g_0)^{-1}=e.
+			\end{equation}
+			Thus \( gg_0^{-1}\in \Gamma\). Since \( U^{-1}=U\) we have proved that if \( g\in \Phi^{-1}(V)\), there exists \( a\in \Gamma\) and \( s\in U\) such that \( as=g\). In other words,
+			\begin{equation}        \label{EQooEZBDooBIfRJx}
+				\Phi^{-1}(V)=\bigcup_{a\in \Gamma}L_a(U).
+			\end{equation}
+			\spitem[Disjoint]
+			It remain to be proven that the union \eqref{EQooEZBDooBIfRJx} is disjoint. Let \( a,b\in \Gamma\) such that \( L_a(U)\cap L_b(U)\neq \emptyset\). We'll prove the \( a=b\). Let \( x\in L_a(U)\cap L\b(U)\); we have
+			\begin{equation}
+				L_{b^{-1}}(x)\in L_{b^{-1} a}(U)\cap U.
+			\end{equation}
+			So, with \( c=b^{-1} a\), we have \( c\in\Gamma\) and
+			\begin{equation}        \label{EQooVNIFooBtjxRi}
+				L_c(U)\cap U\neq\emptyset.
+			\end{equation}
+			Thus there exist \( p_1,p_2\in U\) such that \( cp_1=p_2\) (these are two ways to write an element of \eqref{EQooVNIFooBtjxRi}). In particular we have \( \Phi(cp_1)=\Phi(p_2)\). Since \( c\in \Gamma\) we also have
+			\begin{equation}
+				\Phi(p_2)= \Phi(cp_1)=\Phi(c)\Phi(p_1)=\Phi(p_1).
+			\end{equation}
+			But \( \Phi\colon U\to V\) is injective. We deduce that \( p_1=p_2\), so that \( c=e\) and \( b^{-1}a=e\). Thus \( a=b\).
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooFSPWooQoosA}]        \label{PROPooIORNooLeuXPW}
+	Let \( G,H\) be smooth Lie groups. If \( f\colon G\to H\) is a smooth morphism\footnote{The map is smooth with respect to the manifold structure while being a morphism of groups.}, then it has constant rank.
+\end{proposition}
+
+\begin{proof}
+	Let \( G\) and \( H\) be Lie groups, let \( f\colon G\to H\) be a smooth morphism and \( g_0\in G\). We will prove that \( df_{g_0}\) has the same rank as \( df_e\).
+
+	Since \( f\) is a morphism we have
+	\begin{equation}
+		(f\circ L_{g_0})(g)=f(g_0g)=f(g_0)f(g)=L_{f(g_0)}\big( f(g) \big)=\big( L_{f(g_0)}\circ f \big)(g).
+	\end{equation}
+	Thus we have \( f\circ L_{g_0}=L_{f(g_0)}\circ f\). We take the differential on both sides. On the left hand side:
+	\begin{equation}
+		d(f\circ L_{g_0})_e=df_{L_{g_0}(e)}\circ(dL_{g_0})_e,
+	\end{equation}
+	and on the right hand side:
+	\begin{equation}
+		d\big( L_{f(g_0)}\circ f \big)=(dL_{f(g_0)})_{f(g_0)}\circ df_e
+	\end{equation}
+	We know from lemma \ref{LEMooPIUFooHjyXln} that for every \( g,h\in G\), the differential \( (dL_h)_g\) is a vector space isomorphism. The composition of a linear map with a vector space isomorphism does not change the rank. Thus
+	\begin{equation}
+		\rank\Big[ (dL_{f(g_0)})_{f(g_0)}\circ df_e \Big]=\rank(df_e),
+	\end{equation}
+	and
+	\begin{equation}
+		\rank\big[ df_g\circ(dL_{g_0})_e \big]=\rank(df_g),
+	\end{equation}
+	so that \( \rank(df_g)=\rank(df_e)\).
+\end{proof}
+
+\begin{proposition}[\cite{BIBooFLEXooPgvAlz}]
+	Let \( f\colon G\to H\) be a smooth morphism of Lie groups\footnote{This is a morphism of groups which is smooth.}. Then
+	\begin{enumerate}
+		\item
+		      The set \( \ker(f)\) is a closed subgroup of \( G\).
+		\item
+		      The group \( \ker(f)\) is a Lie group.
+		\item
+		      The Lie algebra of \( \ker(f)\) is \( \ker(df)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	In several parts.
+	\begin{subproof}
+		\spitem[\( \ker(f)\) is a subgroup]
+		If \( g_1,g_2\in \ker(f)\), then
+		\begin{equation}
+			f(g_1g_2)=f(g_1)f(g_2)=ee=e,
+		\end{equation}
+		so that \( g_1g_2\in\ker(f)\). Moreover \( f(e)=e\), so that \( e\in \ker(f)\). This proves that \( \ker(f)\) is a subgroup of \( G\).
+		\spitem[\( \ker(f)\) is closed]
+		We are going to prove that \( G\setminus\ker(f)\) is open. For that we consider \( g\in G\setminus\ker(f)\) and we prove that there exists a neighbourhood of \( g\) contained in \( G\setminus\ker(f)\).
+
+		Let \( g\in G\setminus\ker(f)\). We know that \( f(g)\neq e\) in \( H\), so that we can consider an open neighbourhood \( V\) of \( f(g)\) in \( H\) such that \( e\notin V\).
+
+		Since \( f\) is continuous, \( f^{-1}(V)\) is an open set which contains \( g\). We have \( f^{-1}(V)\cap \ker(f)=\emptyset\) because if \( x\in f^{-1}(V)\cap\ker(f)\), we would have \( f(x)\in V\) and \( f(x)=e\) which is impossible. We deduce that \( f^{-1}(V)\cap\ker(f)=\emptyset\). Thus \( G\setminus\ker(f)\) contains \( f^{-1}(V)\) which is a neighbourhood of \( g\). We conclude that \( G\setminus \ker(f)\) is open, so that \( \ker(f)\) is closed.
+		\spitem[\( \ker(f)\) is a Lie group]
+		From the Cartan theorem \ref{THOooDEJHooVKJYBL}, we know that \( \ker(f)\) is a Lie subgroup of \( G\).
+		\spitem[Lie algebra]
+		Proposition \ref{PROPooCRKMooIIbKUM} says that the Lie algebra of \( \ker(f)\) is
+		\begin{equation}
+			\lK=\{ X\in \lG\tq \exp(tX)\in \ker(f)\,\forall t\in \eR \}.
+		\end{equation}
+		We have to prove that \( \lK=\ker(df)\). Let \( X\in \lG\). We have:
+		\begin{subequations}
+			\begin{align}
+				X\in\ker(df) & \Leftrightarrow df(X)=0                                                                      \\
+				             & \Leftrightarrow df(tX)=0\,\forall t\in \eR                                                   \\
+				             & \Leftrightarrow \exp\big( df(tX) \big)=e\,\forall t\in \eR       \label{SUBEQooVVVKooVHdrfC} \\
+				             & \Leftrightarrow f\big( \exp(tX) \big)=e\,\forall t\in \eR  \label{SUBEQooCUSGooKTlkJn}       \\
+				             & \Leftrightarrow tX\in\ker(f)\,\forall t\in \eR                                               \\
+				             & \Leftrightarrow X\in\lK.
+			\end{align}
+		\end{subequations}
+		Justifications.
+		\begin{itemize}
+			\item For \eqref{SUBEQooVVVKooVHdrfC}. The exponential is a bijection between a neighbourhood of \( 0\) in \( \lG\) and a neighbourhood of \( e\) in \( G\) (proposition \ref{PROPooYFZZooLUOuOj}). Thus if \( X\neq 0\) we can choose \( t_1,t_2\in \eR\) such that \( \exp(t_1X)\neq \exp(t_2X)\).
+			\item For \eqref{SUBEQooCUSGooKTlkJn}. Proposition \ref{PROPooKYNDooVAEzFw}.
+		\end{itemize}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooFLEXooPgvAlz}]
+	A continuous morphism between Lie groups is smooth.
+\end{proposition}
+
+\begin{proof}
+	Let \( \phi\colon G\to H\) be a continuous morphism. We consider
+	\begin{equation}
+		\Gamma=\{ (g,h)\in G\times H\tq \phi(g)h^{-1}=e \}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[\( \Gamma\) is a subgroup of \( G\times H\)]
+		Let \( (g_1,h_1)\) and \( (g_2,h_2)\) be in \( \Gamma\). We have \( (g_1,h_1)(g_2,h_2)=(g_1g_2,h_1h_2)\) while
+		\begin{equation}
+			\phi(g_1g_2)(h_1h_2)^{-1}=\phi(g_1)\underbrace{\phi(g_2)h_2^{-1}}_{=e}h_1^{-1}=e
+		\end{equation}
+		\spitem[\( \Gamma\) is closed]
+		We consider
+		\begin{equation}
+			\begin{aligned}
+				f\colon G\times H & \to H                  \\
+				(g,h)             & \mapsto \phi(g)h^{-1}.
+			\end{aligned}
+		\end{equation}
+		This is a continuous map because \( \phi\) is continuous (as well as the product and the inverse in \( H\)) and \( \Gamma=\ker(f)\). Thus \( \Gamma\) is closed.
+		\spitem[\( \Gamma\) is a Lie subgroup]
+		The Cartan theorem \ref{THOooDEJHooVKJYBL} says that \( \Gamma\) being a closed subgroup, it is a smooth Lie subgroup.
+		\spitem[The projection]
+		We introduce the projection
+		\begin{equation}
+			\begin{aligned}
+				p\colon \Gamma & \to G     \\
+				(g,h)          & \mapsto g
+			\end{aligned}
+		\end{equation}
+		and we given some properties.
+		\begin{subproof}
+			\spitem[Smooth]
+			By proposition \ref{PROPooCHVLooVFScOl}, the projection is smooth.
+			\spitem[Bijective]
+			Let \( (g_1,h_1),(g_2,h_2)\in \Gamma\) such that \( p(g_1,h_1)=p(g_2,h_2)\). Then \( g_1=g_2\). But for each \( i\) we have \( \phi(g_i)=h_i\), so \( h_1=\phi(g_1)=\phi(g_2)=h_2\).
+			\spitem[Morphism]
+			Because
+			\begin{equation}
+				p\big( (g_1,h_1)(g_2,h_2) \big)=p(g_1g_2,h_1h_2)=g_1g_2=p(g_1,h_1)p(g_2,h_2).
+			\end{equation}
+			For the inverse, \( (g,h)^{-1}=(g^{-1},h^{-1})\), so that
+			\begin{equation}
+				p\big( (g,h)^{-1}\big)=p(g^{-1},h^{-1})=g^{-1}=p(g,h)^{-1}.
+			\end{equation}
+			So \( p\) is a group morphism.
+		\end{subproof}
+		\spitem[Smooth diffeomorphism]
+		The differential of \( p\) at \( (e,e)\) is the map\footnote{Proposition \ref{PROPooKITOooTcsIiu}.} \( dp_{(e,e)}\colon \lG\times \lH\to \lG\) given by
+		\begin{equation}
+			dp_{(e,e)}(X,Y)=\Dsdd{ p( e^{tX},  e^{tX}) }{t}{0}=\Dsdd{  e^{tX} }{t}{0}=X,
+		\end{equation}
+		so that \( dp_{(e,e)}\) is surjective on \( \lG\). Its rank is the dimension of \( \lG\).
+
+		Proposition \ref{PROPooIORNooLeuXPW} shows that \( p\) has constant rank. We know that this rank is maximal, so that the theorem \ref{THOooDWEXooMClWVi} thus says that \( p\) is a local smooth diffeomorphism everywhere.
+
+		Since \( p\) is invertible, it is a global smooth diffeomorphism.
+		\spitem[Conclusion]
+		We have
+		\begin{equation}
+			\phi=\pr_2\circ p^{-1}.
+		\end{equation}
+		Since \( p^{-1}\) and \( \pr_2\) are smooth, the map \( \phi\) is smooth.
+	\end{subproof}
+\end{proof}
+
+\begin{theorem}[\cite{BIBooFLEXooPgvAlz}]       \label{THOooZAEYooXCdxKI}
+	Let \( G\) and \( H\) be Lie groups. We suppose that \( G\) is connected and simply connected. Let \( \rho\colon \lG\to \lH\) be a morphism of Lie algebra.
+
+	There exists an unique smooth morphism \( f\colon G\to H\) such that \( df_e=\rho\).
+\end{theorem}
+
+\begin{proof}
+	Let \( \lS\) be the graph of \( \rho\):
+	\begin{equation}
+		\lS=\{ (X,Y)\in \lG\oplus\lH\tq Y=\rho(X) \}.
+	\end{equation}
+	Since \( \rho\) is linear, the set \( \lS\) is a vector subspace of \( \lG \oplus\lH\). Moreover \( \lS\) is a Lie subalgebra. Indeed, if \( Y_i=\rho(X_i)\) we have
+	\begin{equation}
+		[Y_1,Y_2]=\big[ \rho(X_1),\rho(X_2) \big]=\rho\big( [X_1,X_2] \big)
+	\end{equation}
+	and then
+	\begin{equation}
+		\big[ (X_1,Y_1),(X_2,Y_2) \big]=\big( [X_1,X_2],[Y_1,Y_2] \big)=\Big( [X_1,X_2],\rho\big( [X_1,X_2] \big) \Big)\in\lS.
+	\end{equation}
+	The Chevalley theorem \ref{THOooXALIooGiPVdD} says that there exists a unique connected Lie subgroup \( S\) of \( G\times H\) whose Lie algebra is \( \lS\).
+
+	We consider the inclusion \( \iota\colon S\to G\times H\) and the map
+	\begin{equation}
+		\begin{aligned}
+			\varphi=\pr_1\circ\iota\colon S & \to G      \\
+			(g,h)                           & \mapsto g.
+		\end{aligned}
+	\end{equation}
+	This is a smooth morphism, so that its differential is a morphism of Lie algebra.
+	\begin{subproof}
+		\spitem[\( d\varphi_{(e,e)}\) is bijective]
+		We study the map
+		\begin{equation}
+			d\varphi_{(e,e)}=(d\pr_1)_{(e,e)}\circ d\iota_{(e,e)}\colon \lS\to \lG.
+		\end{equation}
+		\begin{subproof}
+			\spitem[Injection]
+			Let \( (X_1,Y_1)\) and \( (X_2,Y_2)\) be elements of \( \lS\) such that \( d\varphi_{(e,e)}(X_1,Y_1)=d\varphi_{(e,e)}(X_2,Y_2)\). Since \( d\iota_{(e,e)}\) is the identity, we have
+			\begin{equation}
+				(d\pr_1)_{(e,e)}(X_1,Y_2)=(d\pr_1)_{(e,e)}(X_2,Y_2).
+			\end{equation}
+			We deduce \( X_1=X_2\). By definition of \( \lS\) we also have \( Y_i=\rho(X_i)\) and then
+			\begin{equation}
+				Y_1=\rho(X_1)=\rho(X_2)=Y_2.
+			\end{equation}
+			\spitem[Surjection]
+			Let \( X\in\lG\). We consider \( Y=\rho(X)\), so that \( (X,Y)\in \lS\) and
+			\begin{equation}
+				d\varphi_{(e,e)}(X,Y)=X.
+			\end{equation}
+		\end{subproof}
+		\spitem[Diffeomorphism]
+		We know that \( \varphi\colon S\to G\) is a smooth morphism and that \( d\varphi_{(e,e)}\) is bijective. Theorem \ref{THOooDWEXooMClWVi} concludes that \( \varphi\) is a local smooth diffeomorphism. So there exists a neighbourhood \( V_1\) of \( (e,e)\) in \( S\) and a neighbourhood \( V_2\) of \( e\) in \( G\) such that \( V_2=\varphi(V_1)\). By proposition \ref{PropUssGpGenere}, the map \( \varphi\) is surjective on the connected component of \( e\) in \( G\). Since \( G\) is connected, \( \varphi\) is a global smooth diffeomorphism.
+		\spitem[The map \( \Phi\)]
+		We define
+		\begin{equation}
+			\begin{aligned}
+				\Phi\colon G & \to H                     \\
+				\Phi         & =\pr_2\circ \varphi^{-1}.
+			\end{aligned}
+		\end{equation}
+		As composition of smooth morphisms, the map \( \Phi\) is a smooth morphism. We have to prove that \( d\Phi_e=\rho\).
+		\spitem[The map \( d\varphi^{-1}_e\)]
+		Let \( X\in\lG\). We have
+		\begin{subequations}
+			\begin{align}
+				d\varphi_{(e,e)}\big( X,\rho(X) \big) & =(d\pr_1)_e\circ d\iota_{(e,e)}\big( X,\rho(X) \big) \\
+				                                      & =(d\pr_1)_e\big( X,\rho(X) \big)                     \\
+				                                      & =X.
+			\end{align}
+		\end{subequations}
+		The proposition \ref{PROPooPEMLooPQcywG} concludes that
+		\begin{equation}
+			(d\varphi^{-1})_e(X)=\big( X,\rho(X) \big).
+		\end{equation}
+		\spitem[Conclusion]
+		Now we conclude with the differential of \( \Phi\); if \( X\in\lG\) we have
+		\begin{subequations}
+			\begin{align}
+				d\Phi_e(X) & =(d\pr_2)_{\varphi^{-1}(e)}\circ (d\varphi^{-1})_e(X) \\
+				           & =(d\pr_2)_{\varphi^{-1}(e)}\big( X,\rho(X) \big)      \\
+				           & =\rho(X)
+			\end{align}
+		\end{subequations}
+		and \( \Phi\) is the map we were searching for.
+	\end{subproof}
+\end{proof}
+
+
+
+
+Now we take back our example with $G=S^1\times S^1$, $H=\gamma(\eR)$. In this case, the theorem doesn't works. Let us see why as deep as possible. We have $\lG=\eR\oplus\eR=\eR^2$ and $\lH=\eR$, a one-dimensional vector subspace of $\lG$. ($\lH$ is a ``direction ''\ in $\lG$) First, we build the neighbourhood $V$ of $0$ in $\lG$. It is standard to require that $\exp$ is diffeomorphic between $V$ and an open around $(1,1)\in S^1\times S^1$. It also must satisfy $e^{V\cap\lH}=e^V\cap H$. This second requirement is impossible.
+
+Intuitively. We can see $V\subset\lG$ as a little disk tangent to  the torus. The exponential map deposits it on the torus, as well that $e^V$ covers a little area on $G$. Then $e^V\cap H$ is one of these amazing open subset of $\Gamma$ which are dense in a certain domain of $G$.
+
+On the other hand, $V\cap\lH$ is just a little vector in $\lH$; the exponential deposits it on a small line in $G$. This is not the same at all.
+
+Let $W_0\subset\lG$  be a neighbourhood of $0$ which is in bijection with an open around $e$ in $G$. We consider $N_0$, an open subset of $H$ such that $N_0\subset W_0$ and $N_0$ is in bijection with $N_e$, a neighbourhood of $e$ in $G$. Until here, no problems. But now the proof says that there exists an open $U_e$ in $G$ such that $N_e=U_e\cap H$. This is false in our case. Indeed, $N_e=e^{N_0}$ is just a segment in $G$ while any subset of $G$ of the form $U_e\cap H$ is an ``amazing''\ open.
+
+So we see that deeply, the obstruction for a Lie subgroup to be a topological Lie subgroup resides in the fact that the topology of a submanifold is \emph{more} than the induced topology, so that we can't automatically find the open $U_e$ in $G$.
+
+
+Note that two groups which have the same Lie algebra are not necessarily isomorphic. For example the sphere $S^2$ and $\eR^2$ both have $\eR^2$ as Lie algebra. But two groups with same Lie algebra are locally the same. More precisely, we have the following lemma.
+
+\begin{lemma}
+	If $G$ is a Lie group and $H$, a topological subgroup of $G$ with the same Lie algebra ($\lH=\lG$), then there exists a common neighbourhood $A$ of $e$ of $G$ and $G$ on which the products in $G$ and $H$ are the same.
+\end{lemma}
+
+\begin{proof}
+	The exponential is a diffeomorphism between $U\subset\lG$ and $V\subset G$ and between $U'\subset\lH$ and $W\subset H$ (obvious notations). We consider an open $\mO\subset\lH$ such that $\mO\subset U\subset U'$. The exponential is diffeomorphic from $\mO$ to a certain open $A$ in $G$ and $H$. Since $H$ is a subgroup of $G$, the product $e^Xe^Y$ of elements in $A$ is the same for $H$ and $G$. (cf error~\ref{err:gp_meme_alg})
+\end{proof}
+
+Under the same assumptions, we can say that $H$ contains at least the whole $G_0$ because it is generated by any neighbourhood of the identity. Since $H$ is a subgroup, the products keep in $H$.
+
+For a semisimple Lie group, the Lie algebras $\partial(\lG)$ and $\ad(\lG)$ are the same. Then $\Int(\lG)$ contains at least the identity component of $\Aut(\lG)$. Since $\Int(\lG)$ is connected, for a semisimple group, it is the identity component of $\Aut(\lG)$.
+
+\begin{proposition}     \label{ProplGcompactKillNeg}\label{prop:compact_Killing}
+	Let $\lG$ be a real Lie algebra.
+	\begin{enumerate}
+		\item If $\lG$ is semisimple, then $\lG$ is compact if and only if  the Killing form is strictly negative definite.
+		\item If it is compact then it is a direct sum
+		      \begin{equation}
+			      \lG=\mZ\oplus [\lG,\lG]
+		      \end{equation}
+		      where $\mZ$ is the center of $\lG$ and the ideal $[\lG,\lG]$ is compact and semisimple.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\subdem{If the Killing form is nondegenerate}
+	We consider $\lG$, a Lie algebra whose Killing form is strictly negative definite. Up to some dilatations (and a sign), this is the euclidian metric. Then $O(B)$, the group of linear transformations which leave $B$ unchanged is compact in the topology of $\GL(\lG)$: this is almost the rotations. From equation \eqref{eq:Aut_Iso}, $\Aut(\lG)\subset O(B)$. With this, $\Aut(\lG)$ is closed in a compact, then it is compact. Then $\Int(\lG)$ is closed in $\Aut(\lG)$ --here is the assumption of semi-simplicity-- and $\Int(\lG)$ is compact.
+	\subdem{If $\lG$ is compact}
+	Since $\lG$ is compact, $\Int(\lG)$ is compact in the topology of $\Aut(\lG)$; then there exists an $\Int(\lG)$-invariant quadratic form $Q$. In a suitable basis $\{X_1,\ldots,X_n\}$ of $\lG$, we can write this form as
+	\[
+		Q(X)=\sum x_i^2
+	\]
+	for $X=\sum x_iX_i$. In this basis the elements of $\Int(\lG)$ are orthogonal matrices and the matrices of $\ad(\lG)$ are skew-symmetric matrices (the Lie algebra of orthogonal matrices). Let us consider a $X\in\lG$ and denote by $a_{ij}(X)$ the matrix of $\ad(X)$. We have
+	\begin{equation}
+		\begin{split}
+			B(X,X)=\tr(\ad X\circ\ad X)
+			=\sum_i\sum_ja_{ij}(X)a_{ji}(X)
+			=-\sum_{ij}a_{ij}(X)^2\leq 0.
+		\end{split}
+	\end{equation}
+	Then the Killing form is negative definite\footnote{Here we use ``negative definite''\ and ``\emph{strictly} negative definite''; in some literature, the terminology is slightly different and one says ``\emph{semi} negative definite''\ and ``negative definite''.}. On the other hand, $B(X,X)=0$ implies $\ad(X)=0$ and $X\in\mZ(\lG)$. Thus $\lG^{\perp}\subset\mZ$. If $\lG$ is semisimple, this center is zero; this conclude the first item of the proposition.
+
+	Now $\mZ$ is an ideal and corollary~\ref{cor:decomp_ideal} decomposes $\lG$ as
+	\begin{equation}
+		\lG=\mZ\oplus\lG'.
+	\end{equation}
+	Let us suppose that the restriction of $B$ to $\lG'\times\lG'$ is actually the Killing form on $\lG'$ (we will prove it below). Then the Killing form on $\lG'$ is strictly negative definite; then $\lG'$ is compact.
+
+	Now we prove that the Killing form on $\lG$ descent to the Killing form on~$\lG'$. Remark that $\mZ$ is invariant under all the automorphism. Indeed consider $Z\in\mZ$, i.e.  $[X,Z]=0$. If $\sigma$ is an automorphism,
+	\[
+		[X,\sigma Z]=\sigma[\sigma^{-1} X,Z]=0.
+	\]
+	Here the difference between $\Int(\lG)$ and $\Aut(\lG)$ is the fact that $\Int(\lG)$ is compact; then we can construct a $\Int(\lG)$-invariant quadratic form $Q$, but not a $\Aut(\lG)$-invariant one. We consider an orthogonal complement (with respect to $Q$) $\lG'$ of $\mZ$:
+	\begin{equation}
+		\lG=\lG'\oplus_{\perp}\mZ.
+	\end{equation}
+	The algebra $\lG'$ is also invariant because for any $Z\in\mZ$,
+	\[
+		Q(Z,\sigma X)=Q(\sigma^{-1}(Z),X)=0.
+	\]
+	It is also clear that $\mZ$ is invariant under $\ad\lG$ because $(\ad X)Z=0$. Finally $\lG'$ is invariant as well under $\ad(\lG)$. Indeed $a\in\ad(\lG)$ can be written as $a=a'(0)$ for a path $a(t)\in\Int(\lG)$. We identify $\lG$ and his tangent space (as vector spaces),
+	\[
+		aX=\Dsdd{ a(t)X }{t}{0}.
+	\]
+	If $X\in\lG'$, $a(t)X\in\lG'$ for any $t$ because $\lG'$ is invariant under $\Int(\lG)$\footnote{As physical interpretation, if something is invariant under a group of transformations, it is invariant under the infinitesimal transformations as well.}. Thus $a(t)X$ is a path in $\lG'$ and his derivative is a vector in $\lG'$.
+
+	All this make $\lG'$ an ideal in $\lG$; then the Killing form descent by lemma~\ref{lem:Killing_descent_ideal}. Now if $X\in\lG$, we have
+	\begin{equation}
+		B(X,X)=\tr(\ad X\circ\ad X)
+		=\sum_{ij}a_{ij}(X)a_{ji}(X)
+		=-\sum_{ij}a_{ij}(X)^2;
+	\end{equation}
+	then $B(X,X)\leq 0$ and the equality holds if and only if $\ad X=0$ i.e. if and only if $X\in\mZ$. Thus $B$ is strictly negative definite on $\lG'$.
+
+	Up to now we have proved that $\lG'$ is semisimple (because $B$ is nondegenerate) and compact (because $B$ is strictly negative definite).
+
+	It remains to be proved that $\lG'=[\lG,\lG]=\dD(\lG)$. From corollary~\ref{cor:decomp_ideal}, $\dD\lG$ has a complementary $\lA$ which is also an ideal: $\lG=\dD\lG+\lA$. Then $[\lG,\lA]\subset\dD\lG$ and $[\lG,\lA]\subset\lA\cap\dD\lG:\{0\}$. Then $\lA\subset\mZ$, so that
+	\begin{align}\label{eq:G_Z_B}
+		\lG=\mZ+\dD\lG &  & \text{(non direct sum)}.
+	\end{align}
+	Now we have to prove that the sum is actually direct. The ideal $\mZ$ has a complementary ideal $\lB$: $\lG=\mZ\oplus\lB$ and
+	\[
+		\dD\lG=[\lG,\lG]\subset\underbrace{[\lG,\mZ]}_{=0}+[\lG,\lB]\subset\lB.
+	\]
+	Then $\dD\lG\subset\lB$ which implies that $\dD\lG\cap\mZ=\{0\}$ because the sum $\lG=\mZ\oplus\lB$ is direct. Then the sum \eqref{eq:G_Z_B} is direct.
+
+\end{proof}
+
+\begin{proposition}
+	A real Lie algebra $\lG$ is compact if and only if one can find a compact Lie group $G$ which Lie algebra is isomorphic to $\lG$.
+	\label{prop:alg_grp_compact}
+\end{proposition}
+
+\begin{proof}
+	\subdem{Direct sense} Since $\lG$ is compact, $\lG=\mZ\oplus\dD\lG$ with $\dD\lG=\lG'$ compact and semisimple; in particular, the center of $\lG'$ is $\{0\}$. Since $\mZ$ is compact and abelian, it is isomorphic to the torus $S^1\times\ldots\times S^1$. Since $\lG'$ is compact, $\Int(\lG')$ is compact, but the Lie algebra if $\Int(\lG')$ is --by definition--  $\ad(\lG')$. The center of a semisimple Lie algebra is zero; then $\ad X'=0$ implies $X=0$ (for $X\in\lG'$). Then $\ad$ is an isomorphism between $\lG'$ and $\ad\lG'$.
+
+	All this shows that --up to isomorphism-- $\mZ$ and $[\lG,\lG]$ are Lie algebras of compact groups. We know from lemma~\ref{lemLeibniz} that the Lie algebra of $G\times H$ is $\lG\oplus\lH$. Thus, here, $\lG$ is the Lie algebra of the compact group $S^1\times\ldots\times S^1\times\Int(\lG)$.
+	\subdem{Reverse sense}
+	We consider a compact group $G$ and we have to see the its Lie algebra $\lG$ is compact. If $G$ is connected, $\Ad_G$ is an analytic homomorphism from $G$ to $\Int(\lG)$. If $G$ is not connected, the Lie algebra of $G$ is $T_eG_0$ ($G_0$ is the identity component of $G$) where $G_0$ is connected and compact because closed in a compact.
+\end{proof}
+
+\begin{proposition}
+	Let $\lG$ be a real Lie algebra and $\mZ$, the center of $\lG$. We consider $\lK$, a compactly embedded in $\lG$. If $\lK\cap\mZ=\{0\}$ then the Killing form of $\lG$ is strictly negative definite on $\lK$.
+	\label{prop:K_Z_Killing}
+\end{proposition}
+
+\begin{proof}
+	Let $B$ be the Killing form on $\lG$ and $K$ the analytic subgroup of $\Int(\lG)$ whose Lie algebra is $\ad_{\lG}(\lK)$. By assumption, $K$ is a compact Lie subgroup of $\GL(\lG)$. Then there exists a quadratic form on $\lG$ invariant under $K$, and a basis in which the endomorphisms $\ad_{\lG}(T)$ for $T\in\lK$ are skew-symmetric because the matrices of $K$ are orthogonal. If the matrix of $\ad T$ is $(a_{ij})$, then
+	\begin{equation}
+		B(T,T)=\sum_{ij}a_{ij}(T)a_{ji}(T)
+		=-\sum_{ij}a_{ij}^2(T)\leq 0,
+	\end{equation}
+	and the equality hold only if $\ad T=0$ i.e. if $T\in\mZ$. From the assumptions, $\lK\cap\mZ=\{0\}$; then $B(T,T)=0$ if and only if $T=0$.
+\end{proof}

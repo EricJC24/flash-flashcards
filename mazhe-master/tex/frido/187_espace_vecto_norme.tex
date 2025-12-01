@@ -1,0 +1,3190 @@
+% This is part of Le Frido
+% Copyright (c) 2008-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+\section{Produit tensoriel d'espaces vectoriels}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Si vous êtes pressés, vous pouvez aller lire la définition \ref{DEFooKTVDooSPzAhH} de produit tensoriel d'espaces vectoriels. Mais si vous étiez vraiment pressés, vous ne seriez pas en train de lire des choses sur le produit tensoriel (il vous suffit de croire que \( x\otimes y\) n'est finalement que la concaténation de \( x\) et \( y\)).
+
+\begin{propositionDef}      \label{PROPooYONEooWvwPZT}
+	Soient un espace vectoriel \( V\) et un sous-espace \( N\). Le \defe{quotient}{quotient d'un espace vectoriel} de \( V\) par \( N\), noté \( V/N\) est l'ensemble des classes d'équivalence\footnote{Définition \ref{DEFooRHPSooHKBZXl}.} pour la relation \( x\sim y\) si et seulement si \( x-y\in N\).
+
+	Les définitions
+	\begin{enumerate}
+		\item
+		      \( [v]+[w]=[v+w]\)
+		\item
+		      \( \lambda[v]=[\lambda v]\)
+	\end{enumerate}
+	ont un sens et définissent une structure d'espace vectoriel sur \( V/N\).
+
+	En ce qui concerne la topologie, ce sera la définition \ref{DEFooHWSYooZZLXQU}.
+\end{propositionDef}
+
+\begin{proof}
+	Un élément général de la classe \( [v]\) est de la forme \( v+n\) avec \( n\in N\). Le calcul suivant montre que la somme fonctionne :
+	\begin{equation}
+		[v+n_1]+[w+n_2]=[v+w+n_1+n_2]=[v+w]
+	\end{equation}
+	parce que \( n_1+n_2\in N\). De même,
+	\begin{equation}
+		\lambda[v+n]=[\lambda v+\lambda n]=[\lambda v]
+	\end{equation}
+	toujours parce que \( \lambda n\in N\).
+
+	Notons que nous avons utilisé de façon on ne peut plus cruciale le fait que \( N\) soit un sous-espace vectoriel.
+\end{proof}
+
+\begin{proposition}
+	Si \( \{ e_i \}\) est une base de \( V\) et si \( N\) est un sous-espace de \( V\), alors \( \{ [e_i] \}\) est une partie génératrice de \( V/N\).
+\end{proposition}
+
+\begin{proof}
+	Si \( x=\sum_kx_ke_k\), alors \( [x]=\sum_kx_k[e_k]\), donc oui.
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++
+\section{Produit tensoriel}
+%+++++++++++++++++++++++++++++++++++
+
+Nous allons faire les choses suivantes:
+\begin{itemize}
+	\item
+	      Définir ce qu'est \emph{un} produit tensoriel de \( V\) et \( W\), définition \ref{DEFooXKKQooAvWRNp}.
+	\item
+	      Prouver que tous les produits tensoriels sont isomorphes, définition \ref{DEFooPLHTooRiHjlE} et proposition \ref{PROPooROPHooQXqNzZ}.
+	\item
+	      Construire un produit tensoriel relativement abstrait à base d'espace librement engendré par \( V\times W\), définition \ref{DEFooKTVDooSPzAhH} et proposition \ref{PROPooIWZDooRRZNCf}.
+	\item
+	      Construire un produit tensoriel assez concret en tant qu'espace de formes bilinéaires sur \( V\times W\), proposition \ref{PROPooIFVBooGiMskq}.
+\end{itemize}
+
+\begin{normaltext}
+	Dans le Frido, la notation \( V\otimes W\) pourra désigner (au moins) trois choses différentes.
+	\begin{itemize}
+		\item
+		      Un produit tensoriel quelconque, c'est-à-dire un espace quelconque vérifiant les conditions de la définition \ref{DEFooXKKQooAvWRNp}.
+		\item
+		      L'espace $F_{\eK}(V\times W)/N$ défini en \ref{DEFooKTVDooSPzAhH}.
+		\item
+		      L'espace \( \aL_2(V\times W,\eK)\) des formes bilinéaires.
+	\end{itemize}
+	Dans tous les cas l'espace \( T\) qui veut prétendre être le produit tensoriel \( V\otimes W\) doit venir avec une application \( h\). Lorsque \( (T,h)\) est un produit tensoriel de \( V\) et \( W\), nous notons \( v\otimes w\) l'élément \( h(v,z)\in T\).
+\end{normaltext}
+
+%-----------------------------------
+\subsection{Définition générale}
+%-----------------------------------
+
+\begin{definition}[\cite{ooWHNKooYVCiYc}]       \label{DEFooXKKQooAvWRNp}
+	Soient deux espaces vectoriels \( V\) et \( W\). Un \defe{produit tensoriel}{produit tensoriel} de \( V\) et \( W\) est un couple \( (T,h)\) où \( T\) est un espace vectoriel et \( h\colon V\times W\to T\) est une application
+	\begin{enumerate}
+		\item
+		      bilinéaire\footnote{Définition \ref{DEFooEEQGooNiPjHz}.}
+		\item       \label{ITEMooJCNYooGvjjtL}
+		      telle que pour tout espace vectoriel \( Z\) et toute application bilinéaire \( f\colon V\times W\to Z\), il existe une unique application linéaire \( \tilde f\colon T\to Z\) telle que \( f=\tilde f\circ h\).
+	\end{enumerate}
+	La propriété \ref{ITEMooJCNYooGvjjtL} est appelée \defe{propriété universelle}{propriété universelle} du produit tensoriel.
+
+	L'élément \( h(v,w)\) est souvent noté \( v\otimes w\).
+\end{definition}
+
+\begin{definition}  \label{DEFooPLHTooRiHjlE}
+	Un \defe{morphisme}{morphisme de produits tensoriels} entre \( (T,h)\) et \( (T',h')\) est une application linéaire \( \psi\colon T\to T'\) telle que \( h'=\psi\circ h\).
+
+	Nous parlons d'\defe{isomorphisme}{isomorphisme} si \( \psi\) a un inverse qui est également un morphisme.
+\end{definition}
+
+\begin{proposition}[\cite{ooWHNKooYVCiYc}]      \label{PROPooROPHooQXqNzZ}
+	Si \( V\) et \( W\) sont des espaces vectoriels, tous les produits tensoriels entre \( V\) et \( W\) sont isomorphes entre eux au sens de la définition \ref{DEFooPLHTooRiHjlE}.
+
+	Plus précisément, si \( (T,h)\) et \( (T',h')\) sont deux produits tensoriels de \( V\) et \( W\), alors
+	\begin{enumerate}
+		\item
+		      il existe une unique application linéaire \( g\colon T\to T'\) telle que \( h'=g\circ h\),
+		\item
+		      cette application \( g\) est inversible.
+	\end{enumerate}
+	En particulier, l'application \( g\) est un isomorphisme d'espaces vectoriels.
+\end{proposition}
+
+\begin{proof}
+	Soient deux produits tensoriels \( (T,h)\) et \( (T',h')\).
+
+	\begin{subproof}
+		\spitem[Existence]
+
+		L'application \( h'\colon V\oplus W\to T'\) est bilinéaire, et \( (T,h)\) est un produit tensoriel. Donc il existe \( g\colon T\to T'\) tel que \( h'=g\circ h\). De même, il existe une application \( g'\colon T'\to T\) telle que \( h=g'\circ h\).
+
+		\spitem[Unicité]
+
+		En ce qui concerne l'unicité, vu que \( h\colon V\oplus W\to T\) est surjective, la relation \( h'=g\circ h\) prescrit les valeurs de \( g\) sur tous les éléments de \( T\).
+
+		\spitem[Inversible]
+
+		Ces deux applications \( g\) et \( g'\) vérifient \( h'=gg'h\) et \( h=g'gh\), et de plus \( h\colon V\oplus W\to T\) est surjective. Soient \( t\in T\) et \( x\in V\oplus W\) tel que \( t=h(x)\). Nous avons \( h(x)=g'gh(x)\). C'est-à-dire \( t=(g'\circ g)(t)\). De même dans l'autre sens, il existe \( x'\in V\oplus W\) tel que \( t=h'(x')\). En appliquant l'égalité \( h'=gg'h'\) à \( x'\), nous trouvons \( t=(g\circ g')(t)\).
+
+		Tout cela pour dire que \( g'=g^{-1}\). Cette application \( g\) est donc un isomorphisme de produits tensoriels entre \( (T,h)\) et \( (T',h')\).
+	\end{subproof}
+	Au final, l'application \( g\colon T\to T'\) étant linéaire et inversible, elle est un isomorphisme d'espaces vectoriels.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooEPHXooSyhiuf}]
+	Soient deux espaces vectoriels \( V\) et \( W\) sur le corps \( \eK\) ainsi que \( u,a\in V\) et \( v,b\in W\) tous non nuls. Si
+	\begin{equation}
+		u\otimes v=a\otimes b,
+	\end{equation}
+	alors il existe \( \lambda\) et \( \mu\) tels que \( a=\lambda u\) et \( b=\mu v\).
+\end{proposition}
+
+\begin{proof}
+	Pour toute applications linéaires \(f \colon V\to \eK  \) et \(g \colon W\to \eK  \) nous posons
+	\begin{equation}
+		\begin{aligned}
+			f*g\colon V\times W & \to \eK           \\
+			(v,w)               & \mapsto f(v)g(w).
+		\end{aligned}
+	\end{equation}
+	Cette application \( f*g\) étant bilinéaire, il existe une application \(s_{fg} \colon V\otimes W\to \eK  \) telle que \( s_{fg}\circ h=f*g\).
+
+	Nous considérons maintenant des bases \( \{ e_i \}\) de \( V\) et \( \{ e'_j \}\) de \( W\), et nous considérons l'application linéaire \(f_i \colon V\to \eK  \) donnant la \( i\)\ieme\ composante dans la base \( \{ e_i \}\); autrement dit
+	\begin{equation}
+		f_i(e_k)=\delta{ik}.
+	\end{equation}
+	De même nous considérons l'application \(g_j \colon W\to \eK  \). Comme dit plus haut, l'application \(f_i*g_j \colon V\times W\to \eK  \) se relève en une application \(s_{ij} \colon V\otimes W\to \eK  \) vérifiant
+	\begin{equation}
+		s_{ij}(u\otimes v)=(f_i*g_j)(u,v)=f_i(u)g_j(v).
+	\end{equation}
+	Par hypothèse, \( s_{ij}(u\otimes v)=s_{ij}(a\otimes b)\), donc
+	\begin{equation}		\label{EQooBEXAooDMSFnG}
+		f_i(u)g_j(v)=f_i(a)g_j(b).
+	\end{equation}
+	Étant donné que \( u\neq 0\), il existe \( i_0\) tel que \( f_{i_0}(u)\neq 0\). De même nous considérons \( j_0\) tel que \( g_{j_0}(v)\neq 0\). Dans l'égalité
+	\begin{equation}
+		f_{i_0}(u)g_{j_0}(v)=f_{i_0}(a)g_{j_0}(b),
+	\end{equation}
+	le membre de gauche est non nul. Donc les deux facteurs du membre de droite sont non nuls. Donc en posant
+	\begin{equation}
+		\mu=\frac{ f_{i_0}(a) }{ f_{i_0}(u) },
+	\end{equation}
+	nous définissons bien un élément non nul \( \mu\in \eK\).
+
+	En repartant de \eqref{EQooBEXAooDMSFnG} avec \( i=i_0\) nous trouvons
+	\begin{equation}
+		g_i(v)=\mu g_j(b)
+	\end{equation}
+	pour tout \( i\). Donc \( v=\mu b\), ce qu'il fallait démontrer. Un raisonnement similaire montre que \( u=\lambda a\) pour un certain \( \lambda\) non nul dans  \(\eK\).
+\end{proof}
+
+\begin{proposition}			\label{PROPooMMOPooEkqkpk}
+	Tous les espaces vectoriels sont sur le corps \( \eK\). Si \(h \colon V\times W\to T  \) est un produit tensoriel et si \(f \colon T\to Z  \) est un isomorphisme d'espaces vectoriels, alors
+	\begin{equation}
+		f\circ h \colon V\times W\to Z
+	\end{equation}
+	est un produit tensoriel.
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[$ f\circ h$ est bilinéaire]
+		%-----------------------------------------------------------
+		Soient \( v_1, v_2\in V\) et \( w\in W\) ainsi que \( \lambda\in \eK\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				(f\circ h)(\lambda v_1+v_2,w) & = f(\lambda v_1\otimes w+v_2\otimes w)       & \text{\( h\) est bilin.} \\
+				                              & =\lambda f(v_1\otimes w)+f(v_2\otimes w)     & \text{\( f\) est lin.}   \\
+				                              & =\lambda(f\circ h)(v_1,w)+(f\circ h)(v_2,w),
+			\end{align}
+		\end{subequations}
+		ce qui montre que \( f\circ h\) est linéaire en sa première variable. La vérification de la linéarité en la seconde variable est le même type de vérification.
+
+		\spitem[Propriété universelle]
+		%-----------------------------------------------------------
+		Soient un espace vectoriel \( Y\) et une application bilinéaire \(b \colon V\times W\to Y  \). Nous devons trouver une application linéaire \(b' \colon Z\to Y  \) telle que \( b'\circ(f\circ h)=b\).
+
+		Vu que \( (T,h)\) est un produit tensoriel, il existe une application bilinéaire \(\tilde b \colon T\to Y  \) telle que \( \tilde b\circ h=b\). Vu que \( f\) est linéaire et inversible, l'application \( b'=\tilde b\circ f^{-1}\) est linéaire et fait l'affaire :
+		\begin{equation}
+			b'\circ f\circ h=\tilde b\circ f^{-1}\circ f\circ h=\tilde b\circ h=b.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Constructions du produit tensoriel}
+%----------------------------------------------------
+
+Tout cela est fort bien : nous avons unicité à isomorphisme près du produit tensoriel d'espaces vectoriels. Mais nous n'avons pas encore de certitudes à propos de l'existence d'un couple \( (T,h)\) vérifiant les propriétés demandées pour être un produit tensoriel.
+
+Nous allons maintenant construire un produit tensoriel.
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Construction abstraite}
+%---------------------------------------------------------------------------------------------------------------------------
+
+C'est le moment pour vous de relire la définition \ref{DEFooCPNIooNxsYMY} d'espace vectoriel librement engendré, et surtout le lemme \ref{LEMooLOPAooUNQVku} qui en donne une base.
+
+\begin{definition}[\cite{ooWHNKooYVCiYc}]       \label{DEFooKTVDooSPzAhH}
+	Soient deux espaces vectoriels \( V\) et \( W\) sur le corps commutatif\footnote{À part mention du contraire, tous les corps du Frido sont commutatifs.} \( \eK\). Dans \( F_{\eK}(V\times W)\)\footnote{Espace vectoriel librement engendré, voir la définition \ref{LEMooLOPAooUNQVku} et le lemme \ref{LEMooLOPAooUNQVku}.} nous considérons les sous-espaces suivants:
+	\begin{subequations}
+		\begin{align}
+			A_1 & =\{ \delta_{(v_1,w)}+\delta_{(v_2,w)}-\delta_{(v_1+v_2,w)}\tq v_1,v_2\in V,w\in W  \}                             \\
+			A_2 & =\{ \delta_{(v,w_1)}+\delta_{(v,w_2)}-\delta_{(v,w_1+w_2)}\tq v\in V,w_1,w_2\in W  \} \label{SUBEQooSHBJooJLPVbK} \\
+			A_3 & =\{ \lambda\delta_{v,w}-\delta_{(\lambda v, w)}\tq v\in V,w\in W,\lambda\in \eK \}                                \\
+			A_4 & =\{ \lambda\delta_{v,w}-\delta_{(v,\lambda w)}\tq v\in V,w\in W,\lambda\in \eK \}.
+		\end{align}
+	\end{subequations}
+	Nous considérons alors \( N=\Span(A_1,A_2,A_3,A_4)\) et le quotient
+	\begin{equation}
+		V\otimes_{\eK}W=F_{\eK}(V\times W)/N.
+	\end{equation}
+	Ce dernier espace vectoriel est le \defe{produit tensoriel}{produit tensoriel} de \( V\) par \( W\).
+\end{definition}
+
+\begin{remark}      \label{REMooSLEGooWEiutz}
+	Quelques remarques.
+	\begin{enumerate}
+		\item
+		      Les éléments de \( V\otimes W\) ne s'écrivent pas tous sous la forme \( v\otimes w\). Certains ont vraiment besoin d'être écrits avec des sommes. En cela, la situation de \( V\otimes W\) est réellement différente de celle de \( V\times W\). Dans ce dernier, tous les éléments sont des couples.
+		\item
+		      La classe de l'élément \( \delta_{(v,w)}\in F(V\times W)\) sera d'habitude noté \( v\otimes w\).
+		\item
+		      Pour insister sur la notion de classe, nous allons aussi noter \( [x]\) la classe de \( x\in F(V\times W)\).
+		\item       \label{ITEMooPVWHooMkgQoT}
+		      L'arithmétique dans \( V\otimes W\) est relativement simple. En ajoutant et soustrayant le même élément de \( A_3\) nous avons par exemple
+		      \begin{equation}
+			      (\lambda v)\otimes w=(\lambda v)\otimes w+\lambda (v\otimes w)-(\lambda v)\otimes w.
+		      \end{equation}
+		      Nous obtenons de cette façon
+		      \begin{equation}
+			      \lambda(v\otimes w)=(\lambda v)\otimes w=v\otimes (\lambda w),
+		      \end{equation}
+		      que nous noterons \( \lambda v\otimes w\) sans plus de précision.
+	\end{enumerate}
+\end{remark}
+
+\begin{proposition}[\cite{ooWHNKooYVCiYc}]     \label{PROPooIWZDooRRZNCf}
+	L'espace vectoriel \( V\times W\) muni de
+	\begin{equation}
+		\begin{aligned}
+			h\colon V\oplus W & \to V\otimes W     \\
+			(v,w)             & \mapsto v\otimes w
+		\end{aligned}
+	\end{equation}
+	est un produit tensoriel entre \( V\) et \( W\).
+\end{proposition}
+
+\begin{proof}
+	Nous devons prouver les conditions de la définition \ref{DEFooXKKQooAvWRNp}.
+
+	\begin{subproof}
+		\spitem[\( h\) est bilinéaire]
+
+		Ce sont des calculs tels que faits dans la remarque \ref{REMooSLEGooWEiutz}\ref{ITEMooPVWHooMkgQoT} qui font le travail.
+
+		\spitem[\(h \) est surjective]
+
+		Un élément de \( V\otimes W\) est la classe d'un élément de \( F(V\times W)\), c'est-à-dire de la forme
+		\begin{equation}
+			\big[ \sum_{i\alpha}\delta_{(v_i,w_{\alpha})} \big]=\sum_{i\alpha}v_i\otimes w_{\alpha}.
+		\end{equation}
+		Cet élément est dans l'image de \( h\) comme le montre le calcul suivant\footnote{Faites bien la distinction entre \( \delta_{v,w}\), \( (v,w)\) et \( v\otimes w\). Sachez dans quel ensemble se trouvent chacun de ces trois objets.} :
+		\begin{equation}
+			h\big( \sum_{i\alpha}(v_i,w_{\alpha}) \big)=\sum_{i\alpha}h(v_i,w_{\alpha})=\sum_{i\alpha}v_i\otimes w_{\alpha}.
+		\end{equation}
+
+		\spitem[Propriété universelle]
+
+		Soient un espace vectoriel \( U\) et une application linéaire \( f\colon V\oplus W\to U \). Nous devons trouver une application linéaire \( g\colon V\otimes W\to U\) telle que \( f=g\circ h\). Pour cela nous commençons par considérer l'application
+		\begin{equation}
+			\begin{aligned}
+				g\colon F(V\times W) & \to U          \\
+				\delta_{(v,w)}       & \mapsto f(v,w)
+			\end{aligned}
+		\end{equation}
+		définie sur tout \( F(V\times W)\) par linéarité sans encombres parce que les \( \delta_{v,w}\) forment une base par le lemme \ref{LEMooLOPAooUNQVku}.
+
+		Nous démontrons que \( g(N)=0\) pour avoir le droit de passer \( g\) aux classes et le considérer comme application partant de \( V\otimes W\) au lieu de \( F(V\times W)\). Prenons par exemple
+		\begin{subequations}
+			\begin{align}
+				g\big( \delta_{(v_1,w)}+\delta_{(v_2,w)}-\delta_{(v_1+v_2,w)} \big) & =g( \delta_{(v_1,w)} )+g(\delta_{(v_2,w)})-g(\delta_{v_1+v_2,w}) \\
+				                                                                    & =f(v_1,w)+f(v_2,w)-f(v_1+v_2,w)                                  \\
+				                                                                    & =0
+			\end{align}
+		\end{subequations}
+		par la bilinéarité de \( f\). Cela montre que \( g(A_1)=0\). Nous montrons de même que \( g(A_2)=g(A_3)=g(A_4)=0\), et enfin toujours par linéarité que \( g(N)=0\). Pour rappel, les éléments de \( N\) sont les combinaisons linéaires finies d'éléments de \( A_1\), \( A_2\), \( A_3\) et \( A_4\).
+
+		Par passage aux classes, nous avons une application (que nous notons également \( g\))
+		\begin{equation}
+			g\colon F(V\times W)/N\to U
+		\end{equation}
+		vérifiant \( g(v\otimes w)=f(v,w)\). Mais comme \( h(v,w)=v\otimes w\), nous avons \( g\circ h\colon V\oplus W\to U\) vérifiant \( g\circ h=f\).
+	\end{subproof}
+	L'espace vectoriel \( V\otimes W\) est donc un produit tensoriel.
+\end{proof}
+
+\begin{normaltext}
+	Vu que \( V\otimes W\) est un produit tensoriel de \( V\) et \( W\), et vu qu'il y a unicité par la proposition \ref{PROPooROPHooQXqNzZ}, nous avons bien le droit de dire que \( V\otimes W\) est \emph{le} produit tensoriel. Cela justifie le titre.
+\end{normaltext}
+
+\begin{normaltext}
+	Les prochains lemmes et propositions vont nous dire que l'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon V^*\otimes W & \to \aL(V,W)                            \\
+			\alpha\otimes w            & \mapsto \big( v\mapsto \alpha(v)w \big)
+		\end{aligned}
+	\end{equation}
+	est un isomorphisme d'espaces vectoriels lorsque \( V\) est de dimension finie. Vu que nous aimons les énoncés très explicites, ça va être découpé en plusieurs morceaux, l'énoncé va devenir un peu long; mais c'est pour la bonne cause.
+\end{normaltext}
+
+\begin{lemma}       \label{LEMooOJEBooQruWEp}
+	Soient deux espaces vectoriels \( V\) et \( W\) dont \( W\) est de dimension finie. Alors l'application définie par
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon F(V^*\times W) & \to \aL(V,W)                            \\
+			\delta_{(\alpha,w)}          & \mapsto \big( v\mapsto \alpha(v)w \big)
+		\end{aligned}
+	\end{equation}
+	sur la base «canonique» de \( F(V^*\times W)\) passe aux classes.
+\end{lemma}
+
+\begin{proof}
+	Avec les notations de la définition \ref{DEFooKTVDooSPzAhH} nous devons prouver que \( \varphi(N)=0\). Nous montrons que \( \varphi(A_4)=0\), et nous vous laissons faire les autres. Pour \( \lambda\in \eK\), \( \alpha\in V^*\) et \( w\in W\) en utilisant la linéarité de \( \varphi\) nous avons :
+	\begin{subequations}
+		\begin{align}
+			\varphi\big( \lambda\delta_{(\alpha,w)}-\delta_{(\alpha,\lambda w)} \big)v & =\lambda\varphi(\delta_{(\alpha,w)})(v)-\varphi(\delta_{(\alpha,\lambda w)})(v) \\
+			                                                                           & =\lambda\alpha(v)w-\alpha(v)(\lambda w)                                         \\
+			                                                                           & =0
+		\end{align}
+	\end{subequations}
+	parce que \( \alpha(v)(\lambda w)=\lambda \alpha(v)w\) du fait que \( \eK\) est commutatif. La commutativité de \( \eK\) est ce qui permet de permuter le produit \( \lambda \alpha(v)\).
+
+	Nous laissons à la lectrice le soin de prouver que \( \varphi(A_1)=\varphi(A_2)=\varphi(A_3)=0\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooUQZHooWjIGsy}
+	Si \( W\) est de dimension finie, alors \( \aL(V,W)\) muni de
+	\begin{equation}
+		\begin{aligned}
+			h\colon V^*\oplus W & \to \aL(V,W)                            \\
+			(\alpha,w)          & \mapsto \big( v\mapsto \alpha(v)w \big)
+		\end{aligned}
+	\end{equation}
+	est un produit tensoriel\footnote{Définition \ref{DEFooXKKQooAvWRNp}.} de \( V^*\) par \( W\).
+\end{lemma}
+
+\begin{proof}
+	Nous devons prouver que
+	\begin{itemize}
+		\item \( h\) est bilinéaire,
+		\item \( h\) est surjective
+		\item pour tout espace vectoriel \( U\), et pour toute application bilinéaire \( f\colon V^*\oplus W\to U\), il existe une application linéaire \( g\colon \aL(V,W)\to U\) tel que \( f=g\circ h\).
+	\end{itemize}
+
+	\begin{subproof}
+		\spitem[Bilinéaire]
+		Le fait que \( h\) soit bilinéaire est une simple vérification.
+		\spitem[Surjective]
+		L'espace \( W\) étant de dimension finie, nous pouvons en considérer une base \( \{ z_i \}_{i\in I}\). Soit \( \alpha\in \aL(V,W)\). Si \( v\in V\), l'élément \( \alpha(v)\) peut être décomposé dans la base \( \{ z_i \}\), ce qui définit des applications linéaires \( \alpha_i\colon V\to \eK\) par
+		\begin{equation}
+			\alpha(v)=\sum_{i\in I}\alpha_i(v)z_i.
+		\end{equation}
+		Notons que \( \alpha_i\in V^*\). En comparant avec la définition de \( h\), nous voyons que
+		\begin{equation}
+			\alpha(v)=\sum_i h(\alpha_i,z_i)(v),
+		\end{equation}
+		c'est-à-dire \( \alpha=\sum_ih(\alpha_i,w_i)=h\big( \sum_i(\alpha_i,z_i) \big)\). Nous avons donc bien \( \alpha\in h(V^*\oplus W)\).
+		\spitem[Propriété universelle]
+
+		Soient un espace vectoriel \( U\) et une application bilinéaire \( f\colon V^*\oplus W\to U\). Pour \( \alpha\in\aL(V,W)\) nous définissons \( g(\alpha)\) comme suit. D'abord nous écrivons \( \alpha\) sous la forme
+		\begin{equation}
+			\alpha(v)=\sum_i\alpha_i(v)z_i,
+		\end{equation}
+		et nous posons
+		\begin{equation}
+			g(\alpha)=\sum_if(\alpha_i,z_i).
+		\end{equation}
+		Avec cette définition, en posant \( w=\sum_iw_iz_i\), nous avons
+		\begin{subequations}
+			\begin{align}
+				(g\circ h)(\alpha,w) & =g\big( v\mapsto \alpha(v)w \big)            \\
+				                     & =g\big( v\mapsto \sum_i\alpha(v)w_iz_i \big) \\
+				                     & =\sum_if(w_i\alpha,z_i)                      \\
+				                     & =\sum_if(\alpha,w_iz_i)                      \\
+				                     & =f(\alpha,\sum_iw_iz_i)                      \\
+				                     & =f(\alpha,w).
+			\end{align}
+		\end{subequations}
+		Cela prouve que \( g\circ h=f\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{ooNHIGooYlXxMf}]      \label{PROPooKJTCooVTXWAQ}
+	Soient deux espaces vectoriels \( V\) et \( W\) dont \( V\) est de dimension finie. Alors l'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon V^*\otimes W & \to \aL(V,W)                            \\
+			\alpha\otimes w            & \mapsto \big( v\mapsto \alpha(v)w \big)
+		\end{aligned}
+	\end{equation}
+	est bien définie\footnote{Au sens où il existe une fonction \( \varphi\) définie sur tout \( V^*\otimes W\) qui se réduit à cela pour les éléments de la forme \( \alpha\otimes w\).} et est un isomorphisme d'espaces vectoriels.
+\end{proposition}
+
+\begin{proof}
+	Le lemme \ref{LEMooUQZHooWjIGsy} donne une structure de produit tensoriel de \( V^*\) par \( W\) sur \( \aL(V,W)\). Rappelons les structures :
+	\begin{equation}
+		\begin{aligned}
+			h\colon V^*\oplus W & \to V^*\otimes W        \\
+			(\alpha,w)          & \mapsto \alpha\otimes w
+		\end{aligned}
+	\end{equation}
+	et
+	\begin{equation}
+		\begin{aligned}
+			h'\colon V^*\oplus W & \to \aL(V,W)                             \\
+			(\alpha,w)           & \mapsto \big[ v\mapsto \alpha(v)w \big].
+		\end{aligned}
+	\end{equation}
+
+	La proposition \ref{PROPooROPHooQXqNzZ} a déjà fait tout le boulot. La seule chose à faire est de vérifier qu'il existe une application \( \varphi\colon V^*\otimes W\to \aL(V,W)\) vérifiant simultanément les deux conditions suivantes :
+	\begin{enumerate}
+		\item       \label{ITEMooVNNSooNIXRoG}
+		      \( \varphi(\alpha\otimes w)=\big[ v\mapsto \alpha(v)w \big]\)
+		\item
+		      \( h'=\varphi\circ h\).
+	\end{enumerate}
+	La seconde condition assure que \( \varphi\) sera un isomorphisme d'espaces vectoriels.
+
+	L'existence de \( \varphi\) vérifiant la condition \ref{ITEMooVNNSooNIXRoG} est un effet du lemme \ref{LEMooOJEBooQruWEp} qui donne une fonction sur \( F(V^*\times W)\) dont le \( \varphi\) qui nous concerne est un quotient. Il reste à voir que cette application vérifie \( h'=\varphi\circ h\).
+
+	En nous rappelant que \( \alpha\otimes w=[\delta_{(\alpha,w)}]\) et en écrivant \( \varphi\) à la fois l'application et son passage au quotient,
+	\begin{equation}
+		(\varphi\circ h)(\alpha,w)=\varphi(\alpha\otimes w)=\varphi\big( [\delta_{(\alpha,w)}] \big)=\varphi(\delta_{(\alpha,w)}).
+	\end{equation}
+	En appliquant à \( v\in V\) nous avons:
+	\begin{equation}
+		(\varphi\circ h)(\alpha,w)v=\varphi(\delta_{(\alpha,w)})v=\alpha(v)w=h'(\alpha,w)v.
+	\end{equation}
+	Et voilà. Nous avons \( \varphi\circ h=h'\).
+\end{proof}
+
+Une conséquence de la proposition \ref{PROPooKJTCooVTXWAQ} est que
+\begin{equation}
+	\dim(V\otimes W)=\dim(V)\dim(W)
+\end{equation}
+via le lemme \ref{LEMooJXFIooKDzRWR}\ref{ITEMooPMLWooNbTyJI}.
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Bases}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooXFIMooDkTSrq}
+	Si \( \tau\colon V_1\to V_2\) est un isomorphisme d'espaces vectoriels, alors il existe un isomorphisme d'espaces vectoriels \( \varphi\colon V_1\otimes W\to V_2\otimes W\) tel que \( \varphi(v\otimes w)=\tau(v)\otimes w \)\footnote{La proposition \ref{PROPooTHDPooWgjUwk} dira que cette condition fixe complètement \( \varphi\), mais c'est une autre histoire qui vous sera contée une autre fois.}.
+\end{lemma}
+
+\begin{proof}
+	L'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi_0\colon F(V_1\times W) & \to F(V_2\times W)                     \\
+			\delta_{(v,w)}                 & \mapsto \delta_{\big( \tau(v),w \big)}
+		\end{aligned}
+	\end{equation}
+	est un isomorphisme.
+
+	Cette application passe aux classes, mais pas au sens où \( x\in [y]\) impliquerait \( \varphi_0(x)=\varphi_0(y)\); au sens où si \( x\in [y]\), alors \( \varphi_0(x)\in[\varphi_0(y)]\). Par exemple
+	\begin{equation}
+		\varphi_0\big( \lambda\delta_{(v,w)}-\delta_{(v,\lambda w)} \big)=\lambda\delta_{\big( \tau(v),w \big)}-\delta_{\big( \tau(v),\lambda w \big)}\in [0].
+	\end{equation}
+	Nous vous laissons le soin de vérifier les égalités correspondantes pour les autres parties de \( N\).
+
+	Le passage au classes de \( \varphi_0\) signifie que l'on considère l'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon V_1\otimes W & \to V_2\otimes W       \\
+			[x]                        & \mapsto [\varphi_0(x)]
+		\end{aligned}
+	\end{equation}
+	où vous aurez noté que la prise de classe à gauche n'est pas la même que celle à droite.
+
+	Il faut prouver que ce \( \varphi\) est un isomorphisme. En ce qui concerne la linéarité,
+	\begin{subequations}
+		\begin{align}
+			\varphi\big( [x]+[y] \big) & =\varphi\big( [x+y] \big)      \\
+			                           & =[\varphi_0(x+y)]              \\
+			                           & =[\varphi_0(x)+\varphi_0(y)]   \\
+			                           & =[\varphi_0(x)]+[\varphi_0(y)] \\
+			                           & =\varphi([x])+\varphi([y]).
+		\end{align}
+	\end{subequations}
+	Je vous laisse le reste de la linéarité. Et en ce qui concerne le fait que ce soit une bijection, allez-y.
+\end{proof}
+
+\begin{proposition}[\cite{ooNHIGooYlXxMf}]      \label{PROPooTHDPooWgjUwk}
+	Soient des espaces vectoriels de dimension finie \( V\) et \( W\). Soient une base \( \{e_i\}\) de \( V\) et une base \( \{f_{\alpha}\}\) de \( W\).
+
+	Alors :
+	\begin{enumerate}
+		\item       \label{ITEMooQCILooUncdGl}
+		      La partie \( \{e_i\otimes f_{\alpha}\}\) est une base de \( V\otimes W\).
+		\item			\label{ITEMooGCRHooJjAYPr}
+		      Au niveau des dimensions, \( \dim(V\otimes W)=\dim(V)\dim(W)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Vu que \( V\) est de dimension finie, nous avons un isomorphisme d'espaces vectoriels \( V^*=V\), et même un isomorphisme d'espaces vectoriels
+	\begin{equation}
+		\begin{aligned}
+			\tau\colon V & \to (V^*)^* \\
+			\tau(v)\mu   & =\mu(v).
+		\end{aligned}
+	\end{equation}
+	Recopions l'isomorphisme de la proposition \ref{PROPooKJTCooVTXWAQ} en utilisant \( V^*\) au lieu de \( V\) :
+	\begin{equation}
+		\begin{aligned}
+			\psi_0\colon (V^*)^*\otimes W & \to \aL(V^*,W)                                         \\
+			\tau(v)\otimes w              & \mapsto \big( \mu\mapsto \tau(v)(\mu)w =\mu(v)w \big).
+		\end{aligned}
+	\end{equation}
+	En écrivant cela, nous avons tenu compte du fait que tout élément de \( (V^*)^*\) peut être écrit de façon univoque sous la forme \( \tau(v)\) pour un certain \( v\in V\).
+
+	Vu que \( \tau\) est un isomorphisme, l'application suivante est encore un isomorphisme\footnote{Lemme \ref{LEMooXFIMooDkTSrq}.} :
+	\begin{equation}        \label{EQooAEFRooPfmAnj}
+		\begin{aligned}
+			\psi\colon V\otimes W & \to \aL(V^*,W)                          \\
+			v\otimes w            & \mapsto \big( \mu\mapsto \mu(v)w \big).
+		\end{aligned}
+	\end{equation}
+	Nous avançons. Vu que nous avons un isomorphisme, nous pouvons faire passer des bases. Le lemme \ref{LEMooJXFIooKDzRWR} nous donne une base de \( \aL(V^*,W)\) en les éléments \( \beta_{i\alpha}\colon V^*\to W\) définies par
+	\begin{equation}
+		\beta_{ij}(\mu)=\mu(e_i)f_{\alpha}.
+	\end{equation}
+	Donc \( \{ \psi^{-1}(\beta_{i\alpha}) \}\) est une base de \( V\otimes W\).
+
+	Pour \( a=\sum_ia_ie_i^*\) (base duale, définition \ref{DEFooTMSEooZFtsqa}) nous avons :
+	\begin{equation}
+		\psi(e_i\otimes f_{\alpha})a=a(e_i)f_{\alpha}=\beta_{i\alpha}(a).
+	\end{equation}
+	Cela prouve que \( \psi^{-1}(\beta_{i\alpha})=e_i\otimes f_{\alpha}\), et donc que ces \( e_i\otimes f_{\alpha}\) est une base de \( V\otimes W\).
+
+	La formule concernant les dimensions est simplement la définition \ref{DEFooWRLKooArTpgh} de la dimension : le nombre d'éléments dans une base.
+\end{proof}
+
+\begin{lemma}       \label{LEMooYJIQooRCkHMq}
+	Dans le produit tensoriel \( \eR\otimes \eR\), nous avons
+	\begin{enumerate}
+		\item
+		      \( x\otimes 1=1\otimes x=x(1\otimes 1)\) pour tout \( x\in \eR\).
+		\item
+		      Si \( x\geq 0\) nous avons aussi \( x\otimes 1=\sqrt{ x }\otimes \sqrt{ x }\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{lemma}		\label{LEMooKPWNooNjkAru}
+	Le produit tensoriel est associatif.
+
+	Plus précisément, si \( U,V,W\) sont des espaces vectoriels, nous avons des isomorphismes d'espaces vectoriels
+	\begin{equation}
+		U\otimes(V\otimes W)=(U\otimes V)\otimes W.
+	\end{equation}
+	Dans la suite, nous écrirons \( U\otimes V\otimes W\) sans plus de précisions et même \( \otimes^kV\) pour le produit de \( k\) copies de \( V\).
+\end{lemma}
+
+\begin{definition}
+	Un \( k\)-\defe{tenseur}{tenseur} sur \( V\) est un élément de \( \otimes^kV^*\).
+\end{definition}
+
+\begin{proposition}		\label{PROPooIODGooYajpiy}
+	Il y a un isomorphisme d'espaces vectoriels \( \otimes^kV^*\to \aL_k(V,\eR)\).
+\end{proposition}
+
+\begin{example}
+	Pour \( k=2\), l'isomorphisme de la proposition \ref{PROPooIODGooYajpiy} est
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon \aL(V,V^*) & \to \aL_2(V,\eR) \\
+			\psi(\alpha)(u,v)     & =\alpha(u)v.
+		\end{aligned}
+	\end{equation}
+	Il faut se rappeler que le proposition \ref{PROPooKJTCooVTXWAQ} donne déjà un isomorphisme entre \( V^*\otimes V^*\) et \( \aL(V,V^*)\).
+\end{example}
+
+
+%-----------------------------------
+\subsection{Construction par les formes multilinéaires}
+%-----------------------------------
+
+\begin{lemma}		\label{LEMooCXPRooGfJMMV}
+	Soient des espaces vectoriels de dimension finie \( V\), \( W\) et \( Z\). Soient une application bilinéaire \(f \colon V\times W\to Z  \) ainsi que des bases \( \{ e_i \}\) de \( V\) et \( \{ d_j \}\) de \( W\).
+
+	Il existe des éléments \( f_{ij}\) dans \( Z\) tels que
+	\begin{equation}
+		f(v,w)=\sum_{ij}v_iw_jf_{ij}
+	\end{equation}
+	pour tout \( v\in V\) et \( w\in W\).
+\end{lemma}
+
+
+\begin{normaltext}
+	Ce que nous allons noter \( h(T,S)\) est souvent noté \( T\otimes S\), parce que la proposition \ref{PROPooIFVBooGiMskq} montrera qu'il s'agit bien d'un produit tensoriel. Cependant nous avons besoin de pas mal de propriétés de \( h\) avant de pouvoir l'affirmer.
+\end{normaltext}
+
+\begin{propositionDef}		\label{DEFooUUMYooOUCzWk}
+	Si \( T\in\mL_k(V,\eR)\) et \( S\in\mL_l(V,\eR)\), nous définissons
+	\begin{equation}
+		\begin{aligned}
+			h(T,S)\colon V^{k+l} & \to \eR                                             \\
+			(v_1,\ldots,v_{k+l}) & \mapsto T(v_1,\ldots,v_k)S(v_{k+1},\ldots,v_{k+l}).
+		\end{aligned}
+	\end{equation}
+	\begin{enumerate}
+		\item
+		      L'application \( h(T,S)\) est multilinéaire\footnote{Application multilinéaire, définition \ref{DefFRHooKnPCT}.}: \( h(T,S)\in\mL_{k+l}(V,\eR)\).
+		\item
+		      L'application \( h\) est associative : \( h\big( h(T,S),R \big)=h\big( T,h(S,R) \big)\).
+		\item
+		      L'application \(h \colon \mL_k(V,\eR)\times \mL_l(V,\eR)\to \mL_{k+l}(V,\eR)  \) est bilinéaire.
+	\end{enumerate}
+\end{propositionDef}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[multilinéaire]
+		%-----------------------------------------------------------
+		Nous fixons des \( v_i\in V\), nous considérons \( h(T,S)_i\) et nous calculons (en supposant \( i\leq k\), sinon on adapte)
+		\begin{subequations}
+			\begin{align}
+				h(T,S)_i(v)a & =h(T,S)(v_1,\ldots,v,\ldots,v_{k+l})                  \\
+				             & = T(v_1,\ldots,v,\ldots,v_k)S(v_{k+1},\ldots,v_{k+l}) \\
+				             & =T_i(v)S(\ldots).
+			\end{align}
+		\end{subequations}
+		Vu que \( T_i\) est linéaire, nous en déduisons que \( h(T,S)_i\) est linéaire et donc que \( h(T,S)\) est multilinéaire.
+		\item[Associativité]
+		Facile de vérifier que
+		\begin{equation}
+			h\big( h(T,S),R \big)(v_1,\ldots,v_{k+l+m})=T(v_1,\ldots,v_k)S(v_{k+1},\ldots,v_{k+l})R(v_{k+l+1},\ldots,v_{k+l+m}).
+		\end{equation}
+		\item[Bilinéaire]
+		En utilisant directement la définition, on vérifie que \( h(T,\lambda S)=\lambda h(T,S)\) et \( h(T,S_1+S_2)=h(T,S_1)+h(T,S_2)\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}[Quelques notations]
+	Si \( V_i\) sont des espaces vectoriels, si \( v_i\in V_i\), et si \( \xi_i\in V_i^*\), nous notons
+	\begin{equation}
+		h(\xi_1,\ldots,\xi_n)(v_1,\ldots,v_n)=\prod_{i=1}^n\xi_i(v_i).
+	\end{equation}
+
+	Si \( I\) est un multiindice (\( I=(i_1,\ldots,i_n)\)), et si \( v\) est quelque chose qui peut avoir des indices, alors nous écrivons \( v_I=(v_{i_1},\ldots, v_{i_n})\).
+
+	Nous écrivons en particulier \( \delta_{IJ}=\prod_{k=1}^n\delta_{i_kj_k}\).
+\end{normaltext}
+
+
+\begin{lemma}[égalité sur une base\cite{MonCerveau}]	\label{LEMooPUNAooUnQTpJ}
+	Soient des espaces vectoriels \( (V_i)_{i=1,\ldots,N}\) de dimensions \( n_i\). Soient deux formes \( N\)-linéaires \(S,T \colon V_1\times \ldots \times V_N \to \eR  \). Si pour tout multiindice \( I\) nous avons \( S(e_I)=T(e_I)\), alors \( S=T\).
+
+	Si les \( \xi_i\) sont des formes linéaires, nous notons \( \xi_I\) la forme multilinéaire \( h(\xi_1,\ldots,\xi_n)\).
+\end{lemma}
+
+\begin{proof}
+	Nous considérons les bases \( \{ e^{(k)}_i \}_{i=1,\ldots,n_i}\) de \( V_k\). Un élément générique de \( V_1\times \ldots\times V_N\) est de la forme
+	\begin{equation}
+		\Big(  \sum_{j_1}^{n_1}x_{j_1}^{(1)}e^{(1)}_{j_1},\ldots, \sum_{j_N=1}^{n_N}x_{j_N}^{(N)}e_{j_N}^{(N)} \Big).
+	\end{equation}
+	Nous appliquons \( S\) à cela en tenant compte de la multilinéarité :
+	\begin{subequations}
+		\begin{align}
+			S\Big(  \sum_{j_1}^{n_1}x_{j_1}^{(1)}e^{(1)}_{j_1},\ldots, \sum_{j_N=1}^{n_N}x_{j_N}^{(N)}e_{j_N}^{(N)} \Big) & =\sum_{j_1=1}^{n_1}\ldots \sum_{j_N=1}^{n_N}\prod_{i=1}^Nx_{j_i}^{(i)}S(e^{(1)}_{j_1},\ldots,e_{j_N}^{(N)}) \\
+			                                                                                                              & =\sum_J\prod_{i=1}^Nx_{j_i}^{(i)}S(e_J).
+		\end{align}
+	\end{subequations}
+	Le même calcul avec \( T\) donne la même chose, compte tenu de l'hypothèse \( S(e_J)=T(e_J)\).
+\end{proof}
+
+\begin{theorem}[\cite{BIBooDEEYooRGFyDD}]		\label{THOooTAGKooDscwFG}
+	Soient des espaces vectoriels \( (V_i)_{i=1,\ldots,N}\) de dimensions \( n_i\). Nous notons, pour chaque \( i\) une base \( \{ e_j^{(i)}\}_{j=1,\ldots,n_i} \) de \( V_i\). Nous notons \( \{ \alpha_j^{(i)} \}\) les bases duales.
+
+	Alors \( \{ \alpha_I \}_I\) est une base de \( \aL_N(V_1\times \ldots\times V_N,\eR)\).
+\end{theorem}
+
+\begin{proof}
+	Nous commençons par prouver que \( \{ \alpha_I \}\) est libre. Supposons que \( \sum_Ia_I\alpha_I=0\). En l'appliquant à \( e_J\), nous avons
+	\begin{equation}
+		0=\sum_Ia_I\alpha_I(e_J)=\sum_{I}a_I\delta_{IJ}=a_J.
+	\end{equation}
+	Cela prouve que tous les \( a_I\) sont nuls, et donc que la partie est libre.
+
+	Pour prouver que la partie est génératrice nous considérons \( T\in \aL_N(V_1\times\ldots\times V_N,\eR)\) et nous posons \( T_I=T(e_I)\) pour tout multiindice \( I\). En posant \( S=\sum_IT_I\alpha_I\), nous
+	\begin{equation}
+		S(e_J)=\sum_{I}T_I\alpha_I(e_J)=\sum_IT_I\delta_{IJ}=T_J.
+	\end{equation}
+	Donc \( S(e_J)=T(e_J)\). Le lemme \ref{LEMooPUNAooUnQTpJ} conclu.
+\end{proof}
+
+\begin{lemma}		\label{LEMooPBLRooJePqlk}
+	Soient deux espaces vectoriels de dimension finie \( V\) et \( W\). Nous notons \( \{ \alpha_i \}\) une base de \( V^*\) et \( \{ \beta_j \}\) une base de \( W^*\). Pour chaque \( \xi\in V^*\) et \( \sigma\in W^*\) nous considérons l'application bilinéaire
+	\begin{equation}
+		\begin{aligned}
+			h(\xi,\sigma)\colon V\times W & \to \eR                  \\
+			(v,w)                         & \mapsto \xi(v)\sigma(w).
+		\end{aligned}
+	\end{equation}
+	La partie \( \{ h(\alpha_i,\beta_j) \}\) forment une base de l'espace des applications bilinéaires sur \( V\times W\).
+\end{lemma}
+%TODOooEJKIooSFisRM En principe, un résultat plus général pour les application multininéaires est prouvé quelque part. Il faut la trouver.
+
+\begin{proposition}[\cite{MonCerveau,BIBooJKAIooIoDPjK}]		\label{PROPooIFVBooGiMskq}
+	Nous considérons l'application \(h \colon V^*\times W^*\to \aL_2(V\times W,\eR)  \) donnée par
+	\begin{equation}
+		h(\xi,\sigma)(v,w)=\xi(v)\sigma(w).
+	\end{equation}
+	Le couple \( \big( \aL_2(V\times W,\eR),h \big)\) est un produit tensoriel de \( V^*\) et \( W^*\).
+\end{proposition}
+
+\begin{proof}
+	Nous devons prouver que l'application \( h\) satisfait à la propriété universelle \ref{DEFooXKKQooAvWRNp}\ref{ITEMooJCNYooGvjjtL}. Nous considérons une base \( \{ \alpha_i \}\) de \( V^*\) et \( \{ \beta_j \}\) de \( W^*\). Si \(f \colon V^*\times W^*\to Z  \) est bilinéaire, le lemme \ref{LEMooCXPRooGfJMMV} nous dit que \( f\) est déterminée par les éléments \(f_{ij}= f(\alpha_i,\beta_j)\).
+
+	\begin{subproof}
+		\spitem[Existence]
+		%-----------------------------------------------------------
+		Nous posons
+		\begin{equation}
+			\begin{aligned}
+				\tilde f\colon \aL_2(V\times W,\eR) & \to Z                          \\
+				\sum_{ij}a_{ij}h(\alpha_i,\beta_j)  & \mapsto \sum_{ij}a_{ij}f_{ij}.
+			\end{aligned}
+		\end{equation}
+		Notez deux choses.
+		\begin{enumerate}
+			\item
+			      C'est une bonne définition parce que les \( h(\alpha_i,\beta_j)\) forment une base de \( \aL_2(V\times W,\eR)\) (lemme \ref{LEMooPBLRooJePqlk}).
+			\item
+			      L'application \( \tilde  f\) est linéaire.
+		\end{enumerate}
+
+		Nous devons prouver que \( \tilde f\circ h=f\). Soient \( \xi=\sum_i\xi_i\alpha_i\) et \( \sigma=\sum_j\sigma_j\beta_j\). Par bilinéarité nous avons
+		\begin{equation}
+			h(\xi,\sigma)=\sum_{ij}\xi_i\sigma_jh(\alpha_i,\beta_j).
+		\end{equation}
+		Nous avons donc
+		\begin{equation}
+			(\tilde f\circ h)(\xi,\sigma)=\sum_{ij}\xi_i\sigma_jf_{ij}=\sum_{ij}\xi_i\sigma_j(\alpha_i,\beta_j)=f(\xi,\sigma),
+		\end{equation}
+		et donc bien \( \tilde f\circ h=f\).
+		\spitem[Unicité]
+		%-----------------------------------------------------------
+		Nous savons que les éléments \( h(\alpha_i,\beta_j)\) forment une base de \( \aL_2(V\times W,\eR)\). Si \(\tilde f \colon \aL_2(V\times W,\eR)\to Z  \) est une application linéaire vérifiant \( \tilde f\circ h=f\), alors nous avons
+		\begin{equation}
+			\tilde f\big( h(\alpha_i,\beta_j) \big)=(\tilde f\circ h)(\alpha_i,\beta_j)=f(\alpha_i,\beta_j)=f_{ij}.
+		\end{equation}
+		Donc l'application \( \tilde f \) est entièrement déterminée sur une base par les éléments \( f_{ij}\in Z\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	Lorsque \( V\) et \( W\) sont des espaces vectoriels, si rien n'est précisé, le produit tensoriel
+	\begin{equation}
+		V\otimes W
+	\end{equation}
+	sera celui de la proposition \ref{PROPooIFVBooGiMskq}, et lorsque \( \xi_1\in V^*\) et \( \xi_2\in W^*\) nous notons
+	\begin{equation}
+		\xi_1\otimes \xi_2
+	\end{equation}
+	l'élément \( h(\xi_1,\xi_2)\).
+
+	Ce serait mieux de garder la notation \( V\otimes W\) pour un produit tensoriel abstrait (définition \ref{DEFooXKKQooAvWRNp}), mais bon \ldots{} Nous n'allons pas non plus nous tuer sur les notations.
+\end{normaltext}
+
+%-------------------------------------------------------
+\subsection{Décomposabilité}
+%----------------------------------------------------
+
+\begin{definition}[\cite{BIBooDEEYooRGFyDD}]		\label{DEFooTSSVooUGybzL}
+	Une application \( T\in\aL_k(V,\eR)\) est \defe{décomposable}{application multilinéaire!décomposable} si il existe des formes \( \xi_1,\ldots,\xi_k\in V^*\) telles que
+	\begin{equation}
+		T(v_1,\ldots,v_k)=\prod_{i=1}^k\xi_i(v_i)
+	\end{equation}
+	autrement dit \( T=h(\xi_1,\ldots,\xi_k)\), ou encore \( T=\xi_1\otimes \ldots \otimes \xi_k\).
+\end{definition}
+
+\begin{lemma}[\cite{BIBooDEEYooRGFyDD, MonCerveau}]		\label{LEMooLEIBooROVcim}
+	Une forme \( 2\)-multilinéaire \( T=\sum_{ij}a_{ij}h(\alpha_i,\alpha_j)\) est décomposable\footnote{Définition \ref{DEFooTSSVooUGybzL}.} si et seulement si la matrice \( a\) est de rang \( 1\).
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Soient \( f_1, f_2\in V^*\) tels que \( T(v_1,v_2)=f_1(v_1)f_2(v_2)\) pour tout \( v_1,v_2\in V\). Nous appliquons \( T\) à \( (e_1), e_2\) :
+		\begin{equation}
+			T(e_k, e_l)=\sum_{ij}a_{ij}(\alpha_i\otimes \alpha_j)(e_k,e_l)=\sum_{ij}a_{ij}\alpha_i(e_i)\alpha_j(e_l)=a_{kl},
+		\end{equation}
+		mais aussi
+		\begin{equation}
+			T(e_k,e_l)=f_1(e_k)f_2(e_l).
+		\end{equation}
+		Donc \( a_{kl}=f_1(e_k)f_2(e_l)\). Notons \( A\) la matrice (et l'application linéaire) formée par ces nombres. Nous avons :
+		\begin{equation}
+			A(e_i)=\sum_ka_{ki}e_k=\sum_kf_1(e_k)f_2(e_i)e_k=f_2(e_i)\sum_kf_1(e_k)e_k.
+		\end{equation}
+		En notons \( v\) le vecteur \( \sum_kf_1(e_k)e_k\), nous avons
+		\begin{equation}
+			A(\eR^n)=\Span(v).
+		\end{equation}
+		Cela montre que la dimension de l'image de \( A\) est \( 1\), et donc que \( A\) est de rang \( 1\).
+
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( a\) est de rang \( 1\), et nous posons
+		\begin{equation}
+			\begin{aligned}
+				T\colon V^2 & \to \eR                        \\
+				(v,w)       & \mapsto \sum_{kl}a_{kl}v_kw_l.
+			\end{aligned}
+		\end{equation}
+		Vu que \( \rank(a)=1\), il existe \( u\in V\) tel que \( a(\eR^n)=\Span(u)\). En particulier pour chaque \( i\), il existe \( \lambda_i\) tel que \( a(e_i)=\lambda_i u\). Donc
+		\begin{equation}
+			a(v)=\sum_iv_ia(e_i)=\sum_iv_i\lambda_iu=(v\cdot \lambda)u,
+		\end{equation}
+		et
+		\begin{equation}
+			a_{kl}=a(e_k)_l=\lambda_ku_l.
+		\end{equation}
+		Avec tout ça,
+		\begin{equation}
+			T(v,w)=\sum_{kl}a_{kl}v_kw_l=(\lambda\cdot v)(u\cdot w).
+		\end{equation}
+		Donc nous avons \( T=f_1\otimes f_2\) avec
+		\begin{equation}
+			\begin{aligned}
+				f_1\colon \eR^n & \to \eR                \\
+				x               & \mapsto \lambda\cdot x
+			\end{aligned}
+		\end{equation}
+		et \( f_2(x)=u\cdot x\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	Il est dit dans \cite{BIBooDEEYooRGFyDD} que l'étude de la décomposabilité devient très compliquée à partir des \( 3\)-tenseurs, et que c'est lié à l'intrication quantique. Personnellement je ne suis pas sûr de ce que ça veut dire, mais si ça vous parle, c'est sans doute intéressant.
+\end{normaltext}
+
+
+%-------------------------------------------------------
+\subsection{Produit tensoriel d'applications linéaires}
+%----------------------------------------------------
+
+
+\begin{proposition}[\cite{BIBooNUWDooNJXokF,BIBooTLLUooKnedTx}]		\label{PROPooKNNJooLSqzlD}
+	Soit une application bilinéaire \(f \colon V\times W\to Z  \) avec \( \dim(Z)=\dim(V)\dim(W)<\infty\). Nous supposons que \( Z\) est engendré par l'image de \( f\) :
+	\begin{equation}
+		Z=\Span\big( \Image(f) \big).
+	\end{equation}
+	Alors \( f\) est un produit tensoriel de \( V\) et \( W\).
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Un autre produit tensoriel]
+		%-----------------------------------------------------------
+		Nous considérons un produit tensoriel \(h \colon V\times W\to T  \) (existence : proposition \ref{PROPooIWZDooRRZNCf}). Étant donné que \( f\) est bilinéaire, il existe une application linéaire \(\tilde f \colon T\to Z  \) telle que \(f= \tilde f\circ h\).
+		\begin{equation}
+			\xymatrix{ V\times W  \ar[d]_{\displaystyle f} \ar[r]^-{\displaystyle h} & T\ar[ld]^{\displaystyle \tilde f}\\
+			Z & }
+		\end{equation}
+		\spitem[\( \tilde f\) est surjective]
+		%-----------------------------------------------------------
+		Nous prouvons que \( \tilde f\) est surjective. Soit \( z\in Z\). Étant donné que \( Z\) est engendré par \( f(V\times W)\), il existe \( a_{ij}\in \eR\), \( v_i\in V\) et \( w_j\in W\) tels que \( z=\sum_{ij}a_{ij}f(v_i,w_j)\). En utilisant la linéarité de \( \tilde f\) et le fait que \( f=\tilde f\circ h\) nous avons :
+		\begin{subequations}
+			\begin{align}
+				z & = \sum_{ij}a_{ij}f(v_i,w_j)                         \\
+				  & =\sum_{ij}a_{ij}(\tilde f\circ h)(v_i,w_j)          \\
+				  & =\sum_{ij}a_{ij}\tilde f(v_i\otimes w_j)            \\
+				  & =\tilde f\big( \sum_{ij}a_{ij}v_i\otimes w_j \big).
+			\end{align}
+		\end{subequations}
+		Nous voyons donc que \( z\) est dans l'image de \( \tilde f\), et donc que \( \tilde f\) est surjective.
+
+		\spitem[Questions de dimensions]
+		%-----------------------------------------------------------
+		L'espace vectoriel \( T\) est de dimension \( \dim(V)\dim(W)\) (proposition \ref{PROPooTHDPooWgjUwk}\ref{ITEMooGCRHooJjAYPr}). Vu que \( Z\) est également, par hypothèse, de dimension \( \dim(V)\dim(W)\), nous avons une application linéaire surjective entre espaces de même dimensions. Elle est donc une bijection par le corolaire \ref{CORooCCXHooALmxKk}.
+
+		\spitem[Conclusion]
+		%-----------------------------------------------------------
+		La proposition \ref{PROPooMMOPooEkqkpk} dit que \( \tilde f\circ h=f\) est un produit tensoriel.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooNUWDooNJXokF,MonCerveau}]   \label{PROPooLFHFooRmTAjY}
+	Soient des espaces vectoriels de dimension finie \( V_1, V_2, W_1\) et \( W_2\). L'application
+	\begin{equation}
+		\begin{aligned}
+			s\colon \aL(V_1,W_1)\times \aL(V_2,W_2) & \to \aL(V_1\otimes V_2,W_1\otimes W_2) \\
+			s(A,B)(e_i\otimes e_j)                  & = Ae_i\otimes Be_j
+		\end{aligned}
+	\end{equation}
+	est un produit tensoriel.
+
+	C'est toujours cette structure que nous considérons lorsque nous parlerons du produit tensoriel d'applications linéaires.
+\end{proposition}
+
+\begin{proof}
+	Notre objectif est d'utiliser la proposition \ref{PROPooKNNJooLSqzlD}, c'est-à-dire de montrer que l'image de \( s\) engendre \( \aL(V_1\otimes V_2,W_1\otimes W_2)\). Nous considérons des bases pour tous les espaces vectoriels en présence : \( \{ e_i \}\) pour \( V_1\), \( \{ e'_j \}\) pour \( V_2\), \( \{ \epsilon_k \}\) pour \( W_1\) et \( \{ \epsilon'_l \}\) pour \( W_2\).
+
+	La proposition \ref{PROPooTHDPooWgjUwk}\ref{ITEMooQCILooUncdGl} dit que \( \{ e_i\otimes e'_j \}\) est une base de \( V_1\otimes V_2\) et que \( \{ \epsilon_k\otimes \epsilon'_l \}\) est une base de \( W_1\otimes W_2\), de sorte qu'une base de \( \aL(V_1\otimes V_2,W_1\otimes W_2)\) est donnée par les applications\footnote{Proposition \ref{PROPooRIFBooGOvsfb}\ref{ITEMooSEMLooXuxrpk}.}
+	\begin{equation}
+		\begin{aligned}
+			f_{ij,kl}\colon V_1\otimes V_2 & \to W_1\otimes W_2                             \\
+			\sum_{st}a_{st}e_s\otimes e'_t & \mapsto a_{ij}  \epsilon_k\otimes \epsilon'_l.
+		\end{aligned}
+	\end{equation}
+	Notre objectif est de montrer que ces applications sont dans l'image de \( s\). Pour cela nous considérons les applications \(A \colon V_1\to W_1  \) donnée par \( A(e_s)=\delta_{si}\epsilon_k\) et \(B \colon V_2\to W_2  \) donnée par \( B(e'_t)=\delta_{tj}\epsilon'_l\). Nous avons alors
+	\begin{subequations}
+		\begin{align}
+			s(A,B)\big( \sum_{st}a_{st}e_s\otimes e'_t \big) & =\sum_{st}a_{st}A(e_s)\otimes B(e'_t)                         \\
+			                                                 & =\sum_{st}\delta_{si}\epsilon_k\otimes \delta_{tj}\epsilon'_l \\
+			                                                 & =a_{ij} \epsilon_k\otimes \epsilon'_l.
+		\end{align}
+	\end{subequations}
+	Cela prouve que \( s(A,B)=f_{ij,kl}\).
+
+	Donc l'image de \( s\) engendre \( \aL(V_1\otimes V_2,W_2\otimes W_2)\) et la proposition \ref{PROPooKNNJooLSqzlD} conclut que \( s\) est un produit tensoriel pour \(\aL(V_1,W_1)\) et \( \aL(V_2,W_2)\).
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Contraction}
+%----------------------------------------------------
+
+\begin{definition}		\label{DEFooMQDHooBsyVpr}
+	Un \( (l,k)\)-tenseur sur \( V\) est une application \( k+l\)-multilinéaire sur \( (V^*)^l\times V^k\).
+\end{definition}
+
+\begin{propositionDef}[\cite{MonCerveau}]		\label{DEFooIOJMooFtSTtK}
+	Soit un \( (l,k)\)-tenseur\footnote{Définition \ref{DEFooMQDHooBsyVpr}.} \( T\) sur \( V\). Soient une base \( \{ e_i \}\), et sa base duale \( \{ \alpha_i \}\). Nous considérons une bijection linéaire \(A \colon V\to V  \), la base \( \{ Ae_i \}\) et la duale \( \{ \beta_i \}\).
+
+	Nous considérons l'application d'insertion \(\iota \colon V^n\to V^{n+1}  \) donnée par
+	\begin{equation}
+		\iota_k(v)(v_1,\ldots,v_n)=(v_1,\ldots,v_{k-1},v,v_k,\ldots,v_n).
+	\end{equation}
+
+	Alors :
+	\begin{enumerate}
+		\item		\label{ITEMooSROIooGtTXCL}
+		      Pour tout \( r\leq l\), pour tout \( s\leq k\), pour tout \( \xi_i\in V^*\) et \( v_j\in V\) nous avons
+		      \begin{equation}
+			      \sum_i T(   \iota_r(\alpha_i)(\xi_1,\ldots,\xi_{l-1}), \iota_s(e_i)(v_1,\ldots,v_{k-1})   )=
+			      \sum_i T(   \iota_r(\beta_i)(\xi_1,\ldots,\xi_{l-1}), \iota_s(Ae_i)(v_1,\ldots,v_{k-1})   ).
+		      \end{equation}
+		\item		\label{ITEMooPWLBooOYrluK}
+		      En posant
+		      \begin{equation}
+			      \begin{aligned}
+				      C_s^r\colon (V^*)^{l-1}\times V^{k-1}       & \to \eR \\
+				      (\xi_1,\ldots,\xi_{l-1},v_1,\ldots,v_{k-1}) & \mapsto
+				      \sum_i T(   \iota_r(\alpha_i)(\xi_1,\ldots,\xi_{l-1}), \iota_s(e_i)(v_1,\ldots,v_{k-1})   ),
+			      \end{aligned}
+		      \end{equation}
+		      l'application \( C_s^r(T)\) est un \( (l-1, k-1)\)-tenseur.
+	\end{enumerate}
+	Ce \( C_s^r(T)\) est la \( (r,s)\)-\defe{contraction}{contraction} de \( T\).
+\end{propositionDef}
+
+\begin{proof}
+	Le point \ref{ITEMooPWLBooOYrluK} est facile parce que c'est juste la multilinéarité. Nous faisons le point \ref{ITEMooPWLBooOYrluK}.
+	Nous partons du lemme \ref{LEMooSVRIooFbxfue} qui dit que \( \beta_i=\sum_jA^{-1}_{ij}\alpha_j\). Remarquez que
+	\begin{equation}
+		T\big( \iota_r(\sigma)(\xi_1,\ldots,\xi_{l-1}), \ldots \big)
+	\end{equation}
+	est linéaire en \( \sigma\). Cela nous permet de sortir plein de sommes de \( T\) dans le calcul suivant :
+	\begin{subequations}
+		\begin{align}
+			 & \qquad\sum_iT\Big(  \iota_r(\beta_i)(\xi_1,\ldots,\xi_{l-1}),\iota_s(Ae_i)(v_1,\ldots,v_{k-1})  \Big)                       \\
+			 & =\sum_iT\Big( \iota_r(\sum_jA^{-1}_{ij}\alpha_j)(\xi_1,\ldots,\xi_{l-1}),\iota_s(\sum_lA_{li}e_l)(v_1,\ldots,v_{k-1}) \Big) \\
+			 & =\sum_{ijl}A^{-1}_{ij}A_{li}T\big( \iota_r(\alpha_j)(\ldots), \iota_s(e_l)(\ldots) \big)                                    \\
+			 & =\sum_{i}T\big( \iota_r(\alpha_i)(\ldots), \iota_s(e_l)(\ldots) \big)
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooDEEYooRGFyDD}]
+	Soient \( v,w\in V\) ainsi que \( \beta,\gamma,\sigma\in V^*\). Nous avons
+	\begin{equation}
+		C_2^1(v\otimes w\otimes w\otimes \beta\otimes \gamma\otimes \sigma)=\gamma(v)w\otimes\beta\otimes\sigma.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous choisissons une base \( \{ e_i \}\) de \( V\) et sa base duale \( \{ \alpha_i \}\). Ensuite allons appliquer \( C_2^1(v\otimes w\otimes \beta\otimes \gamma\otimes \sigma)\) à \( (\xi,v_1,v_2)\) avec \( \xi\in V^*\), \( v_1,v_2\in V\). Remarquons d'abord que si nous adoptons la décomposition \( v=\sum_kv_ke_k\) et \( \gamma=\sum_l\gamma_l\alpha_l\), nous avons \( \alpha_i(v)=v_i\) et \( \gamma(e_i)=\gamma_i\). Voici le calcul :
+	\begin{subequations}
+		\begin{align}
+			C_1^1(v\otimes w\otimes \beta\otimes \gamma\otimes \sigma)(\xi,v_1,v_2) & = \sum_i(v\otimes w\otimes \beta\otimes \gamma\otimes \sigma)(\alpha_i,\xi,v_1,e_i,v_2) \\
+			                                                                        & =\sum_i \alpha_i(v)\xi(w)\beta(v_1)\gamma(e_i)\sigma(v_2)                               \\
+			                                                                        & =\sum_iv_i\gamma_i\xi(w)\beta(v_1)\sigma(v_2)                                           \\
+			                                                                        & =\gamma(v)(w\times \beta\otimes \sigma)(\xi,v_1,v_2).
+		\end{align}
+	\end{subequations}
+	Pour la dernière ligne, \( \sum_iv_i\gamma_i=\gamma(v)\) parce que
+	\begin{equation}
+		\gamma(v)=\sum_{kl}\gamma_l\alpha_l(v_ke_k)=\sum_{kl}\gamma_lv_k\delta_{lk}=\sum_k\gamma_kv_k.
+	\end{equation}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Tenseurs symétriques et alternés}
+%----------------------------------------------------
+
+Si \( T\) est une application \( k\)-multilinéaire sur \( V\), et si \(\sigma \colon \{ 1,\ldots,k \}\to \{ 1,\ldots,k \}  \) est une permutation, nous notons \( T^{\sigma} \) l'application \( k\)-multilinéaire donnée par
+\begin{equation}
+	\begin{aligned}
+		T^{\sigma}\colon V^k & \to \eR                                         \\
+		(v_1,\ldots,v_k)     & \mapsto T(v_{\sigma(1)},\ldots, v_{\sigma(k)}).
+	\end{aligned}
+\end{equation}
+
+\begin{definition}[\cite{BIBooDEEYooRGFyDD}]
+	Un \( k\)-tenseur\footnote{C'est-à-dire une application \( k\)-multilinéaire \(T \colon V^k\to \eR  \).} \( T\) sur \( V\) est \defe{symétrique}{tenseur symétrique} si pour toute permutation \(\sigma \colon \{ 1,\ldots,k \}\to \{ 1,\ldots,k \}  \), nous avons
+	\begin{equation}
+		T(v_1,\ldots,v_k)=T(v_{\sigma(1)},\ldots,v_{\sigma(k)}),
+	\end{equation}
+	c'est-à-dire \( T^{\sigma}=T\).
+\end{definition}
+
+\begin{definition}[\cite{BIBooDEEYooRGFyDD}]
+	Un \( k\)-tenseur \( T\) est \defe{alterné}{tenseur alterné} si \( T^{\sigma}=(-1)^{\sigma}T\). L'espace vectoriel des \( k\)-tenseurs alternés est noté \( \Lambda^kV^*\). Nous notons aussi \( \Lambda^0V^*=\eR\).
+\end{definition}
+
+\begin{lemma}		\label{LEMooJEZYooMmrtgu}
+	Si \( T\) est un \( k\)-tenseur, et si \( \sigma\) et \( \pi\) sont des permutations, alors
+	\begin{enumerate}
+		\item
+		      L'application \( T\mapsto T^{\sigma}\) est linéaire en \( T\).
+		\item
+		      \( (T^{\pi})^{\sigma}=T^{\pi\circ \sigma}\).
+		\item
+		      \( (-1)^{\pi}(-1)^{\sigma}=(-1)^{\pi\circ \sigma}\).
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{lemma}		\label{LEMooZMTPooKnqSuz}
+	Si \( V\) est un espace vectoriel réel de dimension \( n\), et si \( B\) est une base de \( V\), alors le déterminant\footnote{Définition \ref{DEFooODDFooSNahPb}.} \(\det_B \colon V^n\to \eR  \) est un \( n\)-tenseur alterné.
+\end{lemma}
+
+\begin{definition}		\label{DEFooHAKAooIfbsEy}
+	Si \( T\) est un \( k\)-tenseur, nous définissons
+	\begin{equation}
+		\Alt(T)=\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}T^{\pi}
+	\end{equation}
+	où la somme porte sur le groupe symétrique\footnote{Groupe symétrique, définition \ref{DEFooJNPIooMuzIXd}.}.
+\end{definition}
+
+\begin{lemma}[\cite{BIBooDEEYooRGFyDD}]		\label{LEMooWYCAooKoFpRu}
+	L'application \(\Alt \colon \aL_k(V)\to \Lambda^kV^*  \) est une projection linéaire, c'est-à-dire
+	\begin{enumerate}
+		\item\label{ITEMooLADTooNfbVlO} \( \Alt\big( \aL_k(V) \big)\subset \Lambda^kV^*  \)
+		\item\label{ITEMooQPJKooTvriBv} \( \Alt|_{\Lambda^kV^*}=\id\).
+		\item		\label{ITEMooYOXTooTmzziO}
+		      L'application \( \Alt\) est linéaire
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Pour \ref{ITEMooLADTooNfbVlO}, nous prouvons que \( \big( \Alt(T) \big)^{\sigma}=(-1)^{\sigma}\Alt(T)\). Pour cela nous utilisons les formules du lemme \ref{LEMooJEZYooMmrtgu}. Nous avons
+	\begin{subequations}
+		\begin{align}
+			\Alt(T)^{\sigma} & = \left( \frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}T^{\pi} \right)^{\sigma}                   \\
+			                 & = \frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}T^{\pi\circ\sigma}                                \\
+			                 & = (-1)^{\sigma}\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\sigma}(-1)^{\pi}T^{\pi\circ\sigma}      \\
+			                 & = (-1)^{\sigma}\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi\circ \sigma}T^{\pi\circ\sigma}       \\
+			                 & = (-1)^{\sigma}\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}T^{\pi}		\label{SUBEQooTWZPooNpAjjd} \\
+			                 & =(-1)^{\sigma}\Alt(T).
+		\end{align}
+	\end{subequations}
+	Pour \eqref{SUBEQooTWZPooNpAjjd}, nous avons utilisé le fait que \( \pi\mapsto\pi\circ\sigma\) est une bijection de \( S_k\) et la proposition \ref{PROPooJBQVooNqWErk}.
+
+	Pour le point \ref{ITEMooQPJKooTvriBv}, nous considérons un tenseur alterné \( T\). Il vérifie donc \( T^{\pi}=(-1)^{\pi}T\). Nous avons alors le calcul suivant :
+	\begin{subequations}
+		\begin{align}
+			\Alt(T) & =\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}T^{\pi}     \\
+			        & =\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}(-1)^{\pi}T \\
+			        & =\frac{1}{ k!}\sum_{\pi\in S_k}T                     \\
+			        & =T
+		\end{align}
+	\end{subequations}
+	parce que \( S_k\) contient exactement \( k!\) éléments par le lemme \ref{LEMooSGWKooKFIDyT}.
+
+	Pour le point \ref{ITEMooYOXTooTmzziO}, il s'agit de la linéarité de \( T\mapsto T^{\pi}\) donnée par le lemme \ref{LEMooJEZYooMmrtgu}.
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooIMYIooZIxYRp}
+	Si \( T\in\aL_k(V)\) et \( S\in \aL_l(V)\), nous avons
+	\begin{equation}
+		\Alt(T\otimes S)=(-1)^{kl}\Alt(S\otimes T).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous introduisons la permutation \( \sigma\in S_{k+l}\) qui permute \( \{ 1,\ldots,k \}\) avec \( \{ k+1,\ldots,k+l \}\); par exemple pour \( k=3\) et \( l=1\), ce serait \( 12345\to 45123\).
+
+	Nous avons
+	\begin{subequations}
+		\begin{align}
+			(T\otimes S)(v_1,\ldots,v_k,u_1,\ldots,u_l) & =T(v_1,\ldots,v_k)S(u_1,\ldots, u_l)                            \\
+			                                            & =(S\otimes T)\big( \sigma(v_1,\ldots,v_k,u_1,\ldots,u_l) \big).
+		\end{align}
+	\end{subequations}
+	Donc \( T\otimes S=(S\otimes T)\circ \sigma\).
+
+	Passons au calcul de \( \Alt(T\otimes S)\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			\Alt(T\otimes S) & =\frac{1}{ k!}\sum_{\pi\in S_{k+l}}(-1)^{\pi}(T\otimes S)\circ\pi                                          \\
+			                 & = \frac{1}{ k!}\sum_{\pi\in S_{k+l}}(-1)^{\pi}(S\otimes T)\circ\sigma\circ\pi                              \\
+			                 & =\frac{1}{ k!}\sum_{s\in S_{k+l}}(-1)^{\sigma^{-1}\circ s}(S\otimes T)\circ s		\label{SUBEQooLJCJooLboUjv} \\
+			                 & =\frac{1}{ k!}(-1)^{kl}\sum_s(-1)^{s}(S\otimes T)\circ s			\label{SUBEQooJLNGooEEnzci}                     \\
+			                 & =(-1)^{kl}\Alt(S\otimes T).
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item
+		      Pour \eqref{SUBEQooLJCJooLboUjv}, nous avons changé de variables dans la somme : \( s=\sigma\circ \pi\).
+		\item
+		      Pour \eqref{SUBEQooJLNGooEEnzci}, nous avons utilisé le fait que \( (-1)^{\sigma}=(-1)^{kl}\) parce que qu'il faut \( kl\) transpositions pour réaliser \( \sigma\).
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooERYDooAifUdG}
+	Soient \( T\in \Lambda^kV^*\) et \( S\in \Lambda^lV^*\). Nous avons
+	\begin{equation}
+		\sum_{\pi\in S_{k+l}}(-1)^{\pi}(T^{\sigma}\otimes S)^{\pi}=(-1)^{\sigma}\sum_{\pi\in S_{k+k}}(-1)^{\pi}(T\otimes S)^{\pi}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Dans un premier temps, nous fixons un \( \pi\), nous oublions le \( (-1)^{\pi}\), et nous ne faisons pas la somme. Nous appliquons à \( (v_1,\ldots,v_{k+l})\in V^{k+l}\) :
+	\begin{subequations}
+		\begin{align}
+			(T^{\sigma}\otimes S)^{\pi}(v_1,\ldots,v_{k+l}) & =(T^{\sigma}\otimes S)(v_{\pi(1)},\ldots, v_{\pi(k+l)})                                                  \\
+			                                                & =T^{\sigma}(v_{\pi(1),\ldots,v_{\pi(k)}})S(v_{\pi(k+1),\ldots,v_{\pi(k+l)}})                             \\
+			                                                & =T\big( v_{\pi(\sigma(1))},\ldots,v_{\pi(\sigma(k))} \big)S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big).
+		\end{align}
+	\end{subequations}
+	Arrêtez-vous un moment pour vous assurer d'avoir bien compris pourquoi ce qui arrive dans \( T\) sont bien des \( v_{\pi(\sigma(i))}\) et non des \( v_{\sigma(\pi(i))}\). Une fois que c'est fait, nous définissons \( \sigma'\in S_{k+l}\) par
+	\begin{equation}		\label{EQooGWUUooNiLifY}
+		\sigma'(x)=\begin{cases}
+			\sigma(x) & \text{si } 1\leq x\leq k     \\
+			x         & \text{si }k+1\leq x\leq k+l.
+		\end{cases}
+	\end{equation}
+	Avec ça nous pouvons continuer le calcul :
+	\begin{subequations}
+		\begin{align}
+			(T^{\sigma}\otimes S)^{\pi}(v_1,\ldots,v_{k+l}) & T\big( v_{(\pi\circ\sigma')(1)},\ldots,v_{(\pi\circ \sigma'(k))} \big)S\big( v_{(\pi\circ \sigma')(k+1)},\ldots,v_{(\pi\circ\sigma'(k+l))} \big) \\
+			                                                & =(T\otimes S)^{\pi\circ\sigma'}(v_1,\ldots,v_{k+l}).                                                                                             \\
+		\end{align}
+	\end{subequations}
+	En résumé, jusqu'ici nous avons prouvé que
+	\begin{equation}
+		(T^{\sigma}\otimes S)^{\pi}=(T\otimes S)^{\pi\circ \sigma'}
+	\end{equation}
+	où \( \sigma'\) est donné en fonction de \( \sigma\) par la formule \eqref{EQooGWUUooNiLifY}.
+
+	Nous faisons maintenant le calcul avec la somme et tout (en notant \( \epsilon\) la signature) :
+	\begin{subequations}
+		\begin{align}
+			\sum_{\pi}\epsilon(\pi)(T^{\sigma}\otimes S)^{\pi} & =\sum_{\pi}\epsilon(\pi)(T\otimes S)^{\pi\circ \sigma'}                                   \\
+			                                                   & =\epsilon(\sigma')\sum_{\pi}\epsilon(\sigma')\epsilon(\pi) (T\otimes S)^{\pi\circ\sigma'} \\
+			                                                   & =\epsilon(\sigma')\sum_{\pi}\epsilon(\pi\circ\sigma')(T\otimes S)^{\pi\circ \sigma'}      \\
+			                                                   & =\epsilon(\sigma')\sum_{\pi}\epsilon(\pi)(T\otimes S)^{\pi}.
+		\end{align}
+	\end{subequations}
+	La dernière ligne est la proposition \ref{PROPooJBQVooNqWErk} et le fait que \( \pi\mapsto\pi\circ\sigma'\) est une bijection de \( S_{k+l}\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooKINCooHUEtaT}
+	Soient \( T\in \Lambda^kV^*\), \( S\in \Lambda^lV^*\) et \( R\in \Lambda^mV^*\). Nous avons\footnote{Nous avons le droit d'écrire \( T\otimes S\otimes R\) parce que le produit tensoriel est associatif, lemme \ref{LEMooKPWNooNjkAru}.}
+	\begin{equation}
+		\Alt\big( \Alt(T\otimes S)\otimes R \big)=\Alt(T\otimes S\otimes R)=\Alt\big( T\otimes \Alt(S\otimes R) \big).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous prouvons la première égalité\footnote{Je vous conseille d'essayer de prouver la seconde; je ne l'ai pas vérifiée.}. Nous avons :
+	\begin{subequations}
+		\begin{align}
+			\Alt\big( \Alt(T\otimes S)\otimes R \big) & =\frac{1}{ (k+l+m)!}\sum_{\pi\in S_{k+l+m}}(-1)^{\pi}\big( \Alt(T\otimes S)\otimes R \big)^{\pi}                                                             \\
+			                                          & =\frac{1}{ (k+l+l)!}\sum_{\pi\in S_{k+l+m}}(-1)^{\pi}\Big( \frac{1}{ (k+l)!}\sum_{\sigma\in S_{k+k}}(-1)^{\sigma}(T\otimes S)^{\sigma}\otimes R \Big)^{\pi}  \\
+			                                          & =\frac{1}{ (k+l+m)!}\frac{1}{ (k+l)!}\sum_{\sigma\in S_{k+l}}(-1)^{\sigma}\sum_{\pi\in S_{k+l+m}}(-1)^{\pi}\big( (T\otimes S)^{\sigma}\otimes R \big)^{\pi}.
+		\end{align}
+	\end{subequations}
+	C'est le moment d'utiliser le lemme \ref{LEMooERYDooAifUdG}. Nous continuons :
+	\begin{subequations}
+		\begin{align}
+			\Alt\big( \Alt(T\otimes S)\otimes R \big) & = \frac{1}{ (k+l+l)!}\frac{1}{ (k+l)!}\sum_{\sigma\in S_{k+l}}(-1)^{\sigma}(-1)^{\pi}\big( (T\otimes S)\otimes R \big)^{\pi} \\
+			                                          & =\frac{1}{ (k+l+m)!}\frac{1}{ (k+l)!}\sum_{\sigma\in S_{k+l}}\sum_{\pi}\big( (T\otimes S)\otimes R \big)^{\pi}.
+		\end{align}
+	\end{subequations}
+	Notez que ce qui est dans la somme sur \( \sigma\) ne dépend pas de \( \sigma\). Nous avons donc \( | S_{k+l} |=(k+k)!\) termes identiques, et nous continuons
+	\begin{subequations}
+		\begin{align}
+			\Alt\big( \Alt(T\otimes S)\otimes R \big) & = \frac{1}{ (k+l+m)!}\sum_{\pi\in S_{k+l+m}}(T\otimes S\otimes R)^{\pi} \\
+			                                          & =\Alt(T\otimes S\otimes R).
+		\end{align}
+	\end{subequations}
+	Et voilà.
+\end{proof}
+
+\begin{definition}[Produit extérieur]		\label{DEFooCTSPooZRIufr}
+	Pour \( T\in \Lambda^kV^*\) et \( S\in\Lambda^lV^*\) nous définissons
+	\begin{equation}
+		T\wedge S=\frac{ (k+l)! }{ k!l! }\Alt(T\otimes S).
+	\end{equation}
+	Cette opération est le \defe{produit extérieur}{produit extérieur}.
+\end{definition}
+
+\begin{lemma}[\cite{BIBooDEEYooRGFyDD}]		\label{LEMooKEOWooNDXqgr}
+	Propriétés du produit extérieur.
+	\begin{enumerate}
+		\item		\label{ITEMooELVSooHlORJy}
+		      L'opération \( \wedge\) est une application \(\wedge \colon \Lambda^kV^*\times\Lambda^lV^*\to \Lambda^{k+l}V^*  \).
+		\item		\label{ITEMooRUBEooKVHFSz}
+		      L'application \(\wedge \colon \Lambda^kV^*\times\Lambda^lV^*\to \Lambda^{k+l}V^*  \) est linéaire en ses deux arguments.
+		\item		\label{ITEMooTCWPooIJYaRE}
+		      Nous avons \( T\wedge S=(-1)^{kl}S\wedge T\).
+		\item		\label{ITEMooKFPZooFenmCT}
+		      Le produit extérieur est associatif : \( (T\wedge S)\wedge R=T\wedge(S\wedge R)\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooELVSooHlORJy}]
+		%-----------------------------------------------------------
+		Nous savons que \( T\otimes S\in\aL_{k+l}(V)\). Le lemme \ref{LEMooWYCAooKoFpRu} conclut.
+		\spitem[Pour \ref{ITEMooRUBEooKVHFSz}]
+		%-----------------------------------------------------------
+		C'est la bilinéarité du produit tensoriel \( \otimes\) et celle de l'antisymétrisation \( \Alt\) donnée dans le lemme \ref{LEMooWYCAooKoFpRu}\ref{ITEMooYOXTooTmzziO}.
+
+		Notez que la bilinéarité du produit tensoriel \( \otimes\) remonte à la définition d'un produit tensoriel \( (T,h)\) \ref{DEFooXKKQooAvWRNp} qui demande à \( h\) d'être bilinéaire. La proposition \ref{DEFooUUMYooOUCzWk} prouve que le produit \( T\otimes S\) entre applications multilinéaires donne bien un produit tensoriel. Bref. Tout cela pour nous rappeler que ce que nous notons \( T\otimes S\) pourrait tout aussi bien se noter \( h(T,S)\).
+		\spitem[Pour \ref{ITEMooTCWPooIJYaRE}]
+		%-----------------------------------------------------------
+		Conséquence du lemme \ref{LEMooIMYIooZIxYRp}.
+		\spitem[Pour \ref{ITEMooKFPZooFenmCT}]
+		%-----------------------------------------------------------
+		Soient \( T\in \Lambda^kV^*\), \( S\in \Lambda^lV^*\) et \( R\in \Lambda^mV^*\). En déballant les définitions,
+		\begin{subequations}
+			\begin{align}
+				(T\wedge S)\wedge R & =\frac{ (k+l+m)! }{ (k+l)!m! }\Alt\big( (T\wedge S)\otimes R \big)                                                                     \\
+				                    & =\frac{ (k+l+m)! }{ (k+l)!m! }\Alt\left( \frac{ (k+l)! }{ k!l! }\Alt(T\times S)\otimes R \right)                                       \\
+				                    & =\frac{ (k+l+m)! }{ k!l!m! } \Alt\big( \Alt(T\otimes S)\otimes R \big)                                                                 \\
+				                    & =\frac{ (k+l+m)! }{ k!l!m! }\Alt\big( T\otimes(S\otimes R) \big)                                 & \text{lem. \ref{LEMooKINCooHUEtaT}} \\
+				                    & =T\wedge(S\wedge R).
+			\end{align}
+		\end{subequations}
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooZJJLooFGuguy}
+	Si \( \xi_i\in \Wedge^{n_i}V^*\), alors nous avons\footnote{L'alterné est donné dans la définition \ref{DEFooHAKAooIfbsEy}.}
+	\begin{equation}
+		\xi_1\wedge\ldots \wedge \xi_k=\frac{ (\sum_{i=1}^kn_i)! }{ \prod_{i=1}^k(n_i!) }\Alt(\xi_1\otimes \ldots \xi_k).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous y allons par récurrence. Pour \( k=1\), l'égalité à prouver se réduit à
+	\begin{equation}
+		\xi_1=\Alt(\xi_1),
+	\end{equation}
+	qui est vraie par le lemme \ref{LEMooWYCAooKoFpRu}\ref{ITEMooQPJKooTvriBv}.
+
+	Pour la récurrence nous faisons ceci :
+	\begin{subequations}
+		\begin{align}
+			(\xi_1\wedge\ldots \wedge \xi_k)\wedge \xi_{k+1} & =\frac{ (\sum_{i=1}^kn_i)! }{ \prod_{i=1}^k(n_i!) }\Alt(\xi_1\otimes \ldots \xi_k)\wedge \xi_{k+1}                                                        \\
+			                                                 & =\frac{ (\sum_{i=1}^kn_i)! }{ \prod_{i=1}^k(n_i!) }\frac{ (\sum_{i=1}^{k+1}n_i)! }{ (\sum_{i=1}^kn_i)!n_{k+1}! }\Alt(\xi_1\otimes\ldots\otimes \xi_{k+1}) \\
+			                                                 & =\frac{ (\sum_{i=1}^kn_i)! }{ \prod_{i=1}^k(n_i!) }\Alt(\xi_1\otimes \ldots \xi_k).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooDEEYooRGFyDD}]		\label{PROPooRRSZooJXOApq}
+	Soient \( \xi_1,\ldots,\xi_k\in V^*\) et \( v_1,\ldots,v_k\in V\). Nous avons
+	\begin{equation}
+		(\xi_1\wedge\ldots\wedge \xi_k)(v_1,\ldots,v_k)=\det\big( \xi_i(v_j) \big).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous pouvons utiliser le lemme \ref{LEMooZJJLooFGuguy} dans lequel \( n_i=1\) pour tout \( i\) : \( (\xi_1\wedge\ldots\wedge \xi_k)=k!\Alt(\xi_1\otimes\ldots\otimes \xi_k)\). Cela donne le calcul suivant :
+	\begin{subequations}
+		\begin{align}
+			(\xi_1\wedge\ldots\wedge \xi_k)(v_1,\ldots,v_k) & =k!\Alt(\xi_1\otimes\ldots\otimes\xi_k)(v_1,\ldots,v_k)                                                                                   \\
+			                                                & =k!\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}(\xi_1\otimes\ldots\otimes \xi_k)^{\pi}(v_1,\ldots,v_k)                                        \\
+			                                                & =\sum_{\pi\in S_k}(-1)^{\pi}\prod_{i=1}^n\xi_i(v_{\pi(i)})                                                                                \\
+			                                                & =\det\big( \xi_i(v_j) \big)                                                                        & \text{def. \ref{DEFooYCKRooTrajdP}.}
+		\end{align}
+	\end{subequations}
+	Et voilà.
+\end{proof}
+
+\begin{corollary}			\label{CORooDQSNooZtMuOJ}
+	Soient une \( 1\)-forme \( \alpha\), une \( k\)-forme \( \omega\) ainsi que des vecteurs \( \{ v_i \}_{i=1,\ldots,k+1}\). Alors nous avons
+	\begin{subequations}
+		\begin{align}
+			(\alpha\wedge \omega)(v_1,\ldots,v_{k+1}) & =\frac{1}{ k!}\sum_{\pi\in S_{k+1}}(-1)^{\pi}(\alpha\otimes \omega)(v_{\pi(1)},\ldots,v_{\pi(k+1)})     \label{SUBEQooTNYNooAeuhHJ}   \\
+			                                          & =\frac{1}{ k!}\sum_{\pi\in S_{k+1}}(-1)^{\pi}\alpha(v_{\pi(1)})\omega(v_{\pi(2)},\ldots,v_{\pi(k+1)}).    \label{SUBEQooSNOTooZzxesM}
+		\end{align}
+	\end{subequations}
+\end{corollary}
+
+\begin{proof}
+	Il s'agit simplement de déballer les définitions \ref{DEFooCTSPooZRIufr} et \ref{DEFooHAKAooIfbsEy} :
+	\begin{subequations}
+		\begin{align}
+			(\alpha\wedge\omega)(v_1,\ldots,v_{k+1}) & = \frac{ (k+1)! }{ k! }\Alt(\alpha\otimes \omega)(v_1,\ldots,v_{k+1})                                                  \\
+			                                         & =\frac{ (k+1)! }{ k! }\frac{1}{ (k+1)!}\sum_{\pi\in S_{k+1}}(-1)^{\pi}(\alpha\otimes \omega)^{\pi}(v_1,\ldots,v_{k+1}) \\
+			                                         & =\frac{1}{ k!}\sum_{\pi\in S_{k+1}}(-1)^{\pi}(\alpha\otimes \omega)(v_{\pi(1)},\ldots,v_{\pi(k+1)})                    \\
+			                                         & =\frac{1}{ k!}\sum_{\pi\in S_{k+1}}(-1)^{\pi}\alpha(v_{\pi(1)})\omega(v_{\pi(2)},\ldots,v_{\pi(k+1)}).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Décomposition}
+%----------------------------------------------------
+
+
+\begin{proposition}[\cite{BIBooDEEYooRGFyDD}]			\label{PROPooUGLOooTULnDK}
+	Si \( \{ \alpha_i \}_{i=1,\ldots,n}\) est une base de \( V^*\), alors
+	\begin{equation}
+		\{ \alpha_{i_1}\wedge\ldots\wedge \alpha_{i_k}\tq 1\leq i_1< \ldots <i_k\leq n \}
+	\end{equation}
+	est une base de \( \Wedge^kV^*\).
+
+	Nous avons
+	\begin{equation}
+		\dim(\Wedge^kV^*)=\binom{n}{k}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Partie libre]
+		%-----------------------------------------------------------
+		Nous notons \( \{ e_i \}_{i=1,\ldots,n}\) la base (pré-)duale de \( V\). Pour \( I=(i_1,\ldots,i_k)\) avec \( i_1<\ldots< i_k\), nous notons \( \Omega_I=\alpha_{i_1}\wedge\ldots\wedge \alpha_{i_k}\). Soit \( J=(j_1,\ldots,j_k)\) avec \( j_1<\ldots <j_k\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				\Omega_I(e_I) & =(\alpha_{i_1}\wedge\ldots\wedge \alpha_{i_k})(e_{j_1},\ldots, e_{j_k})                                                                       \\
+				              & = \Alt(\alpha_{i_1}\otimes\ldots\otimes \alpha_{i_k})(e_{j_1},\ldots, e_{j_k})                          & \text{lem. \ref{LEMooZJJLooFGuguy}} \\
+				              & = k!\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}\alpha_{i_1}(e_{\pi(j_1)})\ldots \alpha_{i_k}(e_{\pi(j_k)})                                       \\
+				              & =\sum_{\pi}(-1)^{\pi}\delta_{I\pi(J)}.
+			\end{align}
+		\end{subequations}
+		Vu que les indices \( I\) et \( J\) sont ordonnées, si \( \pi\neq \id\), nous aurons forcément un des \( \pi(j_l)\neq i_l\). Donc la somme sur \( \pi\) se réduit au terme \( \pi=\id\) :
+		\begin{equation}	\label{EQooFTUIooDDgxLK}
+			\Omega_I(e_J)=\delta_{IJ}.
+		\end{equation}
+		Cela prouve que les \( \Omega_I\) sont linéairement indépendants.
+
+		\spitem[Partie génératrice]
+		%-----------------------------------------------------------
+
+
+		Nous devons encore prouver qu'ils sont générateurs de \( \Wedge^kV^*\).
+
+		Soit \( T\in \Wedge^kV^*\); en particulier nous avons \( T\in\aL_k(V,\eR)\), et le théorème \ref{THOooTAGKooDscwFG} nous permet d'écrire \( T=\sum_IT_Ih(e_I)\) où la somme porte sur les \( I=(i_1,\ldots,i_k)\) avec \( 1\leq i_j\leq n\) pour tout \( j\), et \( h(e_I)=e_{i_1}\otimes\ldots\otimes e_{i_k}\).
+
+		En utilisant encore le lemme \ref{LEMooZJJLooFGuguy}, nous avons
+		\begin{equation}
+			\Omega_I=k!\Alt\big( h(e_I) \big),
+		\end{equation}
+		et donc
+		\begin{equation}
+			T=\Alt(T)=\sum_IT_I\Alt\big( h(e_I) \big)=\sum_IT_I\frac{1}{ k!}\Omega_I.
+		\end{equation}
+		Il est temps de noter que si \( I\) et \( I'\) sont les mêmes indices, mais ordonnés différemment, \( \Omega_{I}=\pm \Omega_{I'}\). Si \( I\) est un multiindice, nous notons \( r(I)\) le multiindice contenant les mêmes indices que \( I\), mais ordonné. Ensuite nous notons
+		\begin{equation}
+			s(I)=\begin{cases}
+				1  & \text{si } \Omega_{r(I)}=\Omega_I   \\
+				-1 & \text{si } \Omega_{r(I)}=-\Omega_I.
+			\end{cases}
+		\end{equation}
+		Avec ça nous avons toujours \( \Omega_I=s(I)\Omega_{r(I)}\), et donc
+		\begin{equation}
+			T=\frac{1}{ k!}\sum_IT_Is(I)\Omega_{r(I)}.
+		\end{equation}
+		Donc \( T\) est bien une combinaison linéaire des \( \Omega_{r(I)}\).
+
+
+		\spitem[Cardinal]
+		%-----------------------------------------------------------
+		Nous posons
+		\begin{subequations}
+			\begin{align}
+				A & =\{ I\tq 1\leq i_1<\ldots <i_k\leq n \}                                      \\
+				B & =\{ \Omega_I\tq I\in A \}                                                    \\
+				C & =\big\{ \text{parties de cardinal \( k\) dans \( \{ 1,\ldots,n \}\)} \big\}.
+			\end{align}
+		\end{subequations}
+		Nous devons prouver que \( \Card(B)=\binom{n}{k}\). Le lemme \ref{LEMooUTDTooXAmvdF} donne déjà \( \Card(C)=\Card(A)=\binom{ n }{ k }\). Nous prouvons à présent que
+		\begin{equation}
+			\begin{aligned}
+				\psi\colon A & \to B            \\
+				I            & \mapsto \Omega_I
+			\end{aligned}
+		\end{equation}
+		est une bijection. Cette application est surjective par définition de \( B\). En ce qui concerne l'injectivité, si \( \Omega_I=\Omega_J\), alors pour tout multiindice \( L\) nous avons \( \Omega_I(e_L)=\Omega_J(e_L)\). En vertu de \eqref{EQooFTUIooDDgxLK}, cela donne \( \delta_{IL}=\delta_{JL}\) pour tout multiindice \( L\). En prenant en particulier \( L=I\), nous trouvons \( 1=\delta_{IJ}\) et donc \( I=J\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	Si \( I=(i_1,\ldots,i_k)\) est un multiindice et si \( a=(a_1,\ldots,a_n)\), alors nous notons
+	\begin{equation}
+		a_{\wedge I}=a_{i_1}\wedge \ldots \wedge a_{i_k}
+	\end{equation}
+	dans tous les cas où la formule a un sens.
+\end{normaltext}
+
+\begin{proposition}		\label{PROPooSDVXooLvwPbg}
+	Soit \( k\in \eN\). Nous notons
+	\begin{equation}
+		C_k=\{ (i_1,\ldots,i_k)\in \eN^k\tq 1\leq i_1<\ldots <i_k\leq n \}.
+	\end{equation}
+	Si \( \{ e_i \}_{i=1,\ldots, n}\) est une base de \( V\), alors tout élément de \( \Wedge^kV\) peut être écrit sous la forme
+	\begin{equation}
+		\omega=\sum_{i\in C_k}\omega_Ie_{\wedge I}
+	\end{equation}
+	avec \( \omega_I\in \eR\).
+\end{proposition}
+\ssdem
+
+\begin{proposition}		\label{PROPooDXTOooKYDOiI}
+	Soit un ouvert \( U\) dans \( \eR^n\). Si l'application
+	\begin{equation}
+		\omega \colon U\to \Wedge^k(\eR^n)^*
+	\end{equation}
+	est de classe \( C^k\), alors il existe des applications \( \omega_I\in C^k(U)\) telles que
+	\begin{equation}
+		\omega(s)=\sum_{I\in C_k}\omega_I(s)e^*_{\wedge I}.
+	\end{equation}
+\end{proposition}
+
+\ssdem
+
+%-------------------------------------------------------
+\subsection{Règle de Leibniz pour le produit extérieur}
+%----------------------------------------------------
+
+Dans la suite nous allons intensément étudier la partie
+\begin{equation}
+	S_{(k,l)}=\{ \pi\in S_{k+l}\tq \pi(1)<\ldots <\pi(k),\,\pi(k+1)<\ldots <\pi(k+l) \}.
+\end{equation}
+
+Nous commençons avec \( k=1\). Dans ce cas, le lemme \ref{LEMooDBIEooYcjlDP} donnera la forme générale d'un élément de \( S_{(1,l)}\). En ce qui concerne l'intuition, si \( \tau(1)=m\), toutes les autres valeurs de \( \tau\) sont fixées à cause de la croissance de \( j\mapsto \tau(j)\). Nous avons forcément que, lorsque \( j\) va de \( 2\) à \( l+1\), le nombre \( \tau(j)\) prend dans l'ordre toutes les valeurs entre \( 1\) et \( l+1\), en sautant \( m\).
+
+Autrement dit, un élément de \( S_{(1,l)}\) doit prendre cette forme :
+\begin{equation}
+	\begin{array}{cc|cccc}
+		j       & 1 & 2 & 3 & 4 & 5  \\
+		\tau(j) & 3 & 1 & 2 & 4 & 5.
+	\end{array}
+\end{equation}
+La première colonne est séparée parce qu'elle joue un rôle spécial : les nombres sont ordonnés de chacun des deux côtés. À droite, nous avons simplement l'énumération \( 1,2,3,4,5\) en sautant \( 3\).
+
+En ce qui concerne la signature, pour tout remettre en ordre, il suffit de bouger le \( 3\) vers sa place. Pour cela il faut \( 2\) transpositions.
+
+
+\begin{lemma}[\cite{MonCerveau,BIBooCKBZooTegbQn}]		\label{LEMooDBIEooYcjlDP}
+	À propos de \( S_{(1,l)}\).
+	\begin{enumerate}
+		\item
+		      L'application \(\phi \colon \{ 1,\ldots,l+1 \}\to S_{(1,l)}  \) donnée par
+		      \begin{equation}		\label{EQooRALSooPWvZPd}
+			      \phi(m)j=\begin{cases}
+				      m   & \text{si } j=1    \\
+				      j-1 & \text{si }j\leq m \\
+				      j   & \text{si }j>m
+			      \end{cases}
+		      \end{equation}
+		      est une bijection.
+		\item		\label{ITEMooRIHAooItlkCh}
+		      En ce qui concerne la signature, nous avons \( \epsilon\big( \phi(m) \big)=(-1)^{m-1}\).
+		\item		\label{ITEMooCOPZooLiUPWE}
+		      Pour l'inverse de \( \phi\) nous avons \( \tau=\phi\big( \tau(1) \big)\) pour tout \( \tau\in S_{(1,l)}\).
+		\item  \label{ITEMooHMNFooENphGK}
+		      Pour tout \( \tau\in S_{(1,l)}\) nous avons
+		      \begin{equation}
+			      \epsilon(\tau)=-(-1)^{\tau(1)}
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Le fait que \( \phi\) prenne effectivement ses valeurs dans \( S_{(1,l)}\) est une simple vérification de la croissance.
+	\begin{subproof}
+		\spitem[Injective]
+		%-----------------------------------------------------------
+		Si \( \phi(m)=\phi(n)\), alors en particulier \( m=\phi(m)1=\phi(n)1=n\) et donc \( m=n\).
+
+		\spitem[Surjective]
+		%-----------------------------------------------------------
+		Soit \( \tau\in S_{(1,l)}\). Nous posons \( m=\tau(1)\) et nous prouvons que \( \tau=\phi(m)\).
+
+		Par croissance, si \( k\geq 2\), nous avons \( \tau(k)\leq k\). En effet nous avons \( \tau(l+1)\geq \tau(k)+(l+1-k)\). Au cas où nous aurions \( \tau(k)>k\), nous aurions \( \tau(l+1)\geq \tau(k)+l-1-k>l+1\), ce qui est impossible.
+
+		D'autre part, pour tout \( k\geq 2\) nous avons
+		\begin{equation}		\label{EQooZLUJooGgoFqx}
+			\tau(k)=\min\Big( \{ 1,\ldots,l+1 \}\setminus\tau\{ 1,\ldots,k-1 \}  \Big).
+		\end{equation}
+
+		Cela étant dit, commençons doucement en supposant \( m1=1\). Dans ce cas l'équation \eqref{EQooZLUJooGgoFqx} donne tout de suite \( \tau(2)=2\). Une récurrence montre qu'alors \( \tau(k)=k\) pour tout \( k\). Autrement dit, si \( \tau(1)=1\), nous avons \( \tau=\id\). Simple vérification que \( ph(1)=\id\) aussi.
+
+		Passons au cas général \( \tau(1)=m>1\). Nous avons
+		\begin{equation}
+			\tau(2)=\min\Big(    \{ 1,\ldots,l+1 \}\setminus\{ m \}  \Big)=1
+		\end{equation}
+		parce que \( m\neq 1\).
+		Nous faisons une récurrence en supposant \( \tau(j)=j-1\) pour un certain \( j<m\). Nous prouvons que \( \tau(j+1)=j\). Pour cela,
+		\begin{equation}
+			\tau(j+1)=\min\Big(   \{ 1,\ldots,l+1 \}\setminus\{ 1,\ldots,j-1,m \}   \Big).
+		\end{equation}
+		Étant donné que \( j<m\), nous avons \( j-1<m\) et donc le nombre \( j\) est encore dans la différence dont nous prenons le minimum. Donc \( \tau(j+1)=j\). Cela prouve que \( \tau(j)=\phi(m)j\) pour tout \( j<m\).
+
+		En ce qui concerne \( \tau(m)\), nous avons
+		\begin{equation}
+			\tau(m)=\min\Big( \{ 1,\ldots,l+1 \}\setminus\{ 1,\ldots,m-2,m \}  \Big)=m-1.
+		\end{equation}
+		De même nous voyons que \( \tau(m+1)=m+1\). De là, la croissance en tenant compte de \( \tau(k)\leq k\) fait le reste.
+
+		\spitem[Pour \ref{ITEMooRIHAooItlkCh}]
+		%-----------------------------------------------------------
+		Nous montrons que
+		\begin{equation}
+			\prod_{i=1}^{m-1}(m,i)\circ\phi(m)=\id.
+		\end{equation}
+		\begin{subproof}
+			\spitem[Pour \( j=1\)]
+			%-----------------------------------------------------------
+			Nous avons
+			\begin{subequations}
+				\begin{align}
+					\prod_{i=1}^{m-1}(m,i)\phi(m)1 & =\prod_{i=1}^{m-1}(m,i)m           \\
+					                               & =\prod_{i=2}^{m-1}(m,i)\circ(m,1)m \\
+					                               & =\prod_{i=2}^{m-1}(m,i)1           \\
+					                               & =1
+				\end{align}
+			\end{subequations}
+			\spitem[Si \( j\leq m-1\)]
+			%-----------------------------------------------------------
+			Dans ce cas nous avonns \( \phi(m)j=j-1\). Nous avons alors le calcul
+			\begin{subequations}
+				\begin{align}
+					\prod_{i=1}^{m-1}(m,i)\phi(m)j & =\prod_{i=1}^{m-1}(m,i)(j-1) =\prod_{i=j}^{m-1}(m,i)\circ(m,j-1)(j-1)                   \\
+					                               & =\prod_{i=j}^{m-1}(m,i)m =\prod_{i=j+1}^{m-1}(m,i)(m,j)m =\prod_{i=j+1}^{m-1}(m,i)j =j.
+				\end{align}
+			\end{subequations}
+			\spitem[Pour \( j=m\)]
+			%-----------------------------------------------------------
+			Même type de calculs :
+			\begin{equation}
+				\prod_{i=1}^{m-1}(m,i)\phi(m)m
+				=(m,m-1)(m-1)
+				=m.
+			\end{equation}
+			\spitem[Pour \( j>m\)]
+			%-----------------------------------------------------------
+			Nous avons
+			\begin{equation}
+				\prod_{i=1}^{m-1}(m,i)\phi(m)j=\prod_{i=1}^{m-1}(m,i)j=j
+			\end{equation}
+			parce que \( j>m\), de telle sorte qu'il n'est atteint par aucune des transpositions.
+		\end{subproof}
+		Nous avons donc prouvé que $\prod_{i=1}^{m-1}(m,i)\circ\phi(m)=\id$. Vu que \( \epsilon\) est un morphisme\footnote{Proposition \ref{ProphIuJrC}.} et que \( \epsilon(\id)=1\), nous déduisons que
+		\begin{equation}
+			\epsilon\big( \phi(m) \big)=\epsilon\Big( \prod_{i=1}^{m-1}(m,i) \Big)=(-1)^{m-1}.
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooCOPZooLiUPWE}]
+		%-----------------------------------------------------------
+		Soit \( \tau\in S_{(1,l)}\). Vu que \( \phi\) est une bijection, il existe un unique \( m\in \{ 1,\ldots,l+1 \}\) tel que \( \tau=\phi(m)\). En appliquant cette égalité à \( 1\) nous avons \( \tau(1)=\phi(m)1\). Mais la définition \eqref{EQooRALSooPWvZPd} de \( \phi\) donne \( \phi(m)1=m\). Nous avons donc prouvé que
+		\begin{equation}
+			\tau(1)=\phi(m)1=m,
+		\end{equation}
+		c'est-à-dire \( m=\tau(1)\) et donc \( \tau=\phi\big( \tau(1) \big)\).
+
+		\spitem[Pour \ref{ITEMooHMNFooENphGK}]
+		%-----------------------------------------------------------
+		Soit \( \tau\in S_{(1,l)}\). En utilisant les points \ref{ITEMooCOPZooLiUPWE} et \ref{ITEMooRIHAooItlkCh}, nous avons
+		\begin{equation}
+			\epsilon(\tau)=\epsilon\Big( \phi\big( \tau(1) \big) \Big)=(-1)^{\tau(1)-1}=-(-1)^{\tau(1)}.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooFHCHooQgrwHD}
+	L'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon B_{(1,l)} & \to S_{(1,l-1)}                  \\
+			\pi                     & \mapsto \phi\big( \pi(1)-1 \big)
+		\end{aligned}
+	\end{equation}
+	est une bijection et vérifie
+	\begin{equation}
+		\epsilon\big( \varphi(\pi) \big)=-\epsilon(\pi).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Surjectif]
+		%-----------------------------------------------------------
+		Lorsque \( \pi\) parcours \( B_{(1,l)}\), la valeur de \( \pi(1)\) parcours les valeurs de \( 2\) à \( l+1\), et donc \( \pi(1)-1\) va de \( 1\) à \( l\). Le lemme \ref{LEMooDBIEooYcjlDP} dit que \( \phi\big( \{ 1,\ldots,l \} \big)=S_{1,l-1}\).
+
+		\spitem[Injectif]
+		%-----------------------------------------------------------
+		Si \( \varphi(\pi)=\varphi(\sigma)\), alors par injectivité de \( \phi\) (le \( \phi\) de \( S_{(1,l-1)}\)) nous avons \( \pi(1)=\sigma(1)\). Or nous avons \( B_{(1,l)}\subset S_{(1,l)}\). L'injectivié du \( \phi\) de \( S_{(1,l)} \) dir que si \( \pi(1)=\sigma(1)\), alors \( \pi=\sigma\).
+
+		\spitem[Signature]
+		%-----------------------------------------------------------
+		Il s'agit d'abord le lemme \ref{LEMooDBIEooYcjlDP}\ref{ITEMooRIHAooItlkCh}. Soit \( \pi\in B_{(1,l)}\). En posant \( m=\pi(1)-1\) nous avons
+		\begin{equation}
+			\epsilon\big( \varphi(\pi) \big)=\epsilon\Big( \phi\big( \pi(1)-1 \big) \Big)=(-1)^{m-1}=(-1)^{\pi(1)}.
+		\end{equation}
+		Ensuite le lemme \ref{LEMooDBIEooYcjlDP}\ref{ITEMooHMNFooENphGK} nous donne \( \epsilon(\pi)=-(-1)^{\pi(1)}\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}
+	Si \( I\) est une partie de \( \{ 1,\ldots,n \}\), nous notons \( \mO(I)\) l'élément de \( \eN^k\) donné par l'ordonnement des éléments de \( I\). Si \( E\) est un ensemble, nous notons \( \partP_k(E)\) l'ensemble des parties de cardinal \( k\) de \( E\).
+\end{normaltext}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooKGETooKhomPn}
+	Nous notons \( E=\{ 1,\ldots,k+l \}\).
+
+	\begin{enumerate}
+		\item
+
+		      L'application \(\phi \colon \partP_k(E)\to S_{(k,l)}  \) donnée par
+		      \begin{equation}
+			      \phi(I)(1,\ldots,l+k)=\big( \mO(I),\mO(E\setminus I) \big)
+		      \end{equation}
+		      est une bijection.
+		\item
+		      Pour \( \tau\in S_{(k,l)}\) nous avons
+		      \begin{equation}		\label{EQooPWREooEeHcBv}
+			      \epsilon(\tau)=(-1)^{\sum_{n=1}^k\big( \tau(n)-n \big)}.
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Le fait que \( \phi(I)\) soit dans \( S_{(k,l)}\) est visible dans la définition : les \( k\) premiers éléments de \( \big( \phi(I)1,\ldots,\phi(I)(k+l) \big)\) et les \( l\) suivants sont ordonnés.
+
+	\begin{subproof}
+		\spitem[Injective]
+		%-----------------------------------------------------------
+		Soient \( I,J\in\partP_k(E)\) tels que \( \phi(I)=\phi(J)\). En particulier pour \( j=1,\ldots,k\) nous avons\( \phi(I)j=\phi(J)j\), et donc \( \mO(I)_j=\mO(J)_j\). Cela prouve que \( \mO(I)=\mO(J)\) et donc que \( I=J\).
+
+		\spitem[Surjective]
+		%-----------------------------------------------------------
+		Soit \( \tau\in S_{(k,l)}\). Nous notons \( I=\tau\{ 1,\ldots,k \}\), et nous prouvons que \( \tau=\phi(I)\). Vu que \( \tau\in S_{(k,l)}\), le vecteur \( \big( \tau(1),\ldots,\tau(k) \big)\). Étant donné que \( \tau\) est une bijection de \( E\), nous avons aussi
+		\begin{equation}
+			\tau\{ k+1,\ldots,k+l \}=E\setminus I,
+		\end{equation}
+		et comme \( \big( \tau(k+1),\ldots,\tau(k+l) \big)\) est ordonné, il est égal à \( \mO(E\setminus I)\).
+	\end{subproof}
+	Nous devons déterminer combien de transpositions sont nécessaires pour transformer \( \big( \tau(1),\ldots,\tau(k+l) \big) \) en \( (1,\ldots, k+l)\). Étant donné que \( \tau\in S_{(k,l)}\), le plus grand parmi \( \big( \tau(1),\ldots,\tau(k) \big)\) est \( \tau(k)\), il il faut \( \tau(k)-k)\) permutations pour l'amener en \( k\). Ce sont les transpositions
+	\begin{equation}
+		\prod_{j=k+1}^{\tau(k)}\big( \tau(k),\tau(j) \big).
+	\end{equation}
+	Il faut ensuite \( \tau(k-1)-(k-1)\) transpositions pour ramener \( \tau(k-1)\) en position \( k-1\), etc.
+
+	Il faut donc bien composer \( \tau \) avec \( \sum_{n=1}^k\big( \tau(n)-n \big)\) transpositions pour obtenir l'identité.
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooEHTLooUSBBKL}
+	Bijection entre \( B_{(k,l)}\) et \( S_{(k,l-1)}\).
+	\begin{enumerate}
+		\item
+		      L'application
+		      \begin{equation}
+			      \begin{aligned}
+				      \varphi\colon B_{(k,l)} & \to S_{(k,l-1)}                               \\
+				      \pi                     & \mapsto \phi\big( \pi\{ 1,\ldots,k \}-1 \big)
+			      \end{aligned}
+		      \end{equation}
+		      est une bijection.
+		\item
+		      Pour tout \( \pi\in B_{(k,l)}\), nous avons
+		      \begin{equation}
+			      \epsilon\big( \varphi(\pi) \big)=(-1)^k\epsilon(\pi).
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	D'abord notons que \( \varphi\) est bien définie. En vu que \( \pi(k+1)=1\), aucun élément de \( \pi\{ 1,\ldots,k \}\) n'est égal à \( 1\). Et comme \( \pi(j)\leq k+l\), les éléments de \( \pi\{ 1,\ldots,k \}-1\) sont entre \( 1\) et \( k+l-1\). L'ensemble \( \pi\{ 1,\ldots,k \}-1\) est donc un argument valable pour l'application \(\phi \colon \partP_k\{ 1,\ldots,k+l-1 \}\to S_{(k,l-1)}  \).
+
+	\begin{subproof}
+		\spitem[\( \varphi\) est injective]
+		%-----------------------------------------------------------
+		Soient \( \pi,\sigma\in B_{(k,l)}\) tels que \( \varphi(\pi)=\varphi(\sigma)\). Nous notons \( I_{\pi}=\pi\{ 1,\ldots,k \}\) et \( I_{\sigma}=\sigma\{ 1,\ldots,k \}\). Pour tout \( j=1,\ldots,k\) nous avons
+		\begin{equation}
+			\varphi(\pi)j=\mO(I_{\pi}-1)_j=\mO(I_{\pi})_j-1,
+		\end{equation}
+		et similairement pour \( \sigma\). Nous en déduisons que \( \mO(I_{\pi})=\mO(I_{\sigma})\), et donc que \( I_{\pi}=I_{\sigma}\).
+
+		Vu que \( \pi=\phi(I_{\pi})\), nous en déduisons que \( \pi=\sigma\).
+
+		\spitem[Surjectif]
+		%-----------------------------------------------------------
+		Soit \( \tau\in S_{(k,l-1)}\). Nous posons \( I_{\tau}=\tau\{ 1,\ldots,k \}\), et nous considérons l'élément \( \pi\in B_{(k,l)}\) donné par
+		\begin{equation}
+			\pi(j)=\begin{cases}
+				\tau(j)+1                                         & \text{si } j\leq k \\
+				1                                                 & \text{si } j=k+1   \\
+				\mO\big( E\setminus (I_{\tau}\cup\{ 1 \}) \big)_j & \text{si } j>k+1.
+			\end{cases}
+		\end{equation}
+		La dernière ligne signifie «pour les autres, vous prenez ce qui reste, dans l'ordre». Nous montrons à présent que \( \tau=\varphi(\pi)\). Nous avons
+		\begin{equation}
+			\varphi(\pi)=\phi\big( \pi\{ 1,\ldots,k \}-1 \big)=\phi\big( \tau\{ 1,\ldots,k \} \big).
+		\end{equation}
+		Cela prouve que \( \varphi(\pi)=\phi(I_{\tau})=\tau\).
+	\end{subproof}
+
+	En ce qui concerne la signature, il s'agit de manipuler la formule \eqref{EQooPWREooEeHcBv}. Vu que \( B_{(k,l)}\subset S_{(k,l)}\), elle peut être utilisée tant pour \( \pi\) que pour \( \tau(\pi)\). Pour \( \pi\) nous avons\footnote{Nous notons \( | \pi |\) le nombre de transpositions avec lequel il faut composer \( \pi\) pour obtenir l'identité. C'est-à-dire \( \epsilon(\pi)=(-1)^{| \pi |}\). Sinon l'expression est trop lourde.}
+	\begin{equation}
+		| \pi |=\sum_{n=1}^k\big( \tau(n)-n \big).
+	\end{equation}
+	En ce qui concerne \( \varphi(\pi)\) nous avons
+	\begin{equation}
+		| \varphi(\pi) |=\sum_{n=1}^k\big( \varphi(\pi)n-n \big)=\sum_{n=1}^k\big( \pi(n)-1-n \big)=\sum_{n=1}^k\big( \pi(n)-n \big)-\sum_{n=1}^k1=| \pi |-k.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooRKWHooBNxZBL}
+	Soient des vecteurs \( v_1,\ldots,v_{k+l}\). Si \(\pi \in S_{k+l} \), si \( T\in \aL_k(V)\) et si \( \sigma\in S_k\), alors nous avons
+	\begin{equation}		\label{EQooQJXHooTfvclD}
+		T^{\sigma}(v_{\pi(1)},\ldots,v_{\pi(k)})=T\big( v_{\pi\sigma(1)},\ldots,v_{\pi\sigma(k)} \big).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Poser \( w_j=v_{\pi(j)}\). Nous avons
+	\begin{equation}
+		T^{\sigma}(v_{\pi(1)}, v_{\pi(k)})=T^{\sigma}(w_1,\ldots,w_k)=T(w_{\sigma(1)},\ldots,w_{\sigma(k)})=T(v_{\pi\sigma(1)},\ldots,v_{\pi\sigma(k)}).
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{BIBooBVCRooAwDAqk, MonCerveau}]		\label{LEMooTGNUooZnxkrc}
+	Soient des tenseurs alternés \( T\in\Lambda^kV^*\) et \( S\in \Lambda^lV^*\). Alors nous avons
+	\begin{subequations}
+		\begin{align}
+			(T\wedge S)(v_1,\ldots, v_{k+l}) & =\sum_{\pi\in S_{(k,l)}}\epsilon(\pi)T\big( v_{\pi(1)},\ldots,v_{\pi(k)} \big)S\big( v_{\pi(k+1)},\ldots, v_{\pi(k+l)} \big) \\
+			                                 & =\sum_{\pi\in S_{(k,l)}}(T\otimes S)^{\pi}(v_1,\ldots,v_{k+l}).		\label{SUBEQooUDLIooWwGFoe}
+		\end{align}
+	\end{subequations}
+	où
+	\begin{equation}
+		S_{(k,l)}=\{ \pi\in S_{k+l}\tq \pi(1)<\ldots <\pi(k),\,\pi(k+1)<\ldots <\pi(k+l) \},
+	\end{equation}
+	et \( \epsilon(\pi)\) est la signature\footnote{Signature, définition \ref{DEFooYDUHooKIXGNW}.} de \( \pi\), c'est-à-dire ce que nous notons souvent \( (-1)^{\pi}\).
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Une relation d'équivalence]
+		%-----------------------------------------------------------
+		Nous considérons la relation d'équivalence suivante sur \( S_{k+l}\). Nous posons \( \pi_1\sim\pi_2\) si \( \{ \pi_1(1),\ldots,\pi_1(k) \}=\{ \pi_2(1),\ldots,\pi_2(k) \}\). Pour \( \pi_0\in S_{k+l}\) nous notons
+		\begin{equation}
+			A(\pi_0)=\{ \pi\in S_{k+l}\tq \{ \pi(1),\ldots,\pi(k) \}=\{ \pi_0(1),\ldots, \pi_0(k)\} \}
+		\end{equation}
+		la classe d'équivalence de \( \pi_0\).
+
+		\spitem[Permutations partielles]
+		%-----------------------------------------------------------
+
+		Lorsque \( \pi\sim\pi_0\) nous notons \( \sigma^{(\pi,\pi_0)}\) la permutation qui permet de «remettre dans l'ordre \( \pi_0\) les éléments mélangés par \( \pi\)». Plus précisément :
+		\begin{equation}		\label{EQooMKNVooNbbNwk}
+			\begin{aligned}
+				\sigma^{(\pi,\pi_0)}\colon \{ 1,\ldots,k+l \} & \to \{ 1,\ldots,k+l \}                                                           \\
+				i                                             & \mapsto \begin{cases}
+					                                                        (\pi_0\circ\pi^{-1})(i) & \text{si } i\in\pi\big( \{ 1,\ldots,k \} \big) \\
+					                                                        i                       & \text{sinon.}
+				                                                        \end{cases}
+			\end{aligned}
+		\end{equation}
+		Notez que \( \sigma^{(\pi,\pi_0)}\) est une bijection de \( \{ 1,\ldots,k+l \}\), c'est-à-dire que \( \sigma^{(\pi,\pi_0)}\in S_{k+l}\). De même nous considérons \( \tau^{(\pi,\pi_0)}\) donné par
+		\begin{equation}
+			\begin{aligned}
+				\tau^{(\pi,\pi_0)}\colon \{ 1,\ldots,k+l \} & \to \{ 1,\ldots,k+l \}                                                               \\
+				i                                           & \mapsto \begin{cases}
+					                                                      (\pi_0\circ\pi^{-1})(i) & \text{si } i\in\pi\big( \{ k+1,\ldots,k+l \} \big) \\
+					                                                      i                       & \text{sinon.}
+				                                                      \end{cases}
+			\end{aligned}
+		\end{equation}
+		Ces deux permutations vérifient
+		\begin{equation}		\label{EQooOAUVooFnRQqj}
+			\pi_0=\tau^{(\pi,\pi_0)}\circ\sigma^{(\pi,\pi_0)}\circ\pi.
+		\end{equation}
+		En effet, si \( i=1,\ldots,k\), nous avons \( \sigma^{(\pi,\pi_0)}\pi(i)=\pi_0(i)\) et donc
+		\begin{equation}
+			\tau^{(\pi,\pi_0)}\sigma^{(\pi,\pi_0)}\pi(i)=\pi_0(i)
+		\end{equation}
+		parce que \( \pi_0(i)\notin\pi\big( \{ k+1,\ldots,k+l \} \big)\). Même raisonnement pour prouver \eqref{EQooOAUVooFnRQqj} pour les \( i=k+1,\ldots,k+l\).
+
+		\spitem[\(   A(\pi_0)\simeq S_k\times S_l   \)]
+		%-----------------------------------------------------------
+		Soit \( \pi_0\in S_{k+l}\). Nous notons \( P=\pi_0\big( \{ 1,\ldots,k \} \big)\) et \( Q=\pi_0\big( \{ k+1,\ldots,k+l \} \big)\). Nous montrons que
+		\begin{equation}
+			\begin{aligned}
+				\psi\colon A(\pi_0) & \to S_P\times S_Q                                                 \\
+				\pi                 & \mapsto \big( \sigma^{(\pi,\pi_0)}|_P,\tau^{(\pi,\pi_0)}|_Q \big)
+			\end{aligned}
+		\end{equation}
+		est une bijection.
+
+		\begin{subproof}
+			\spitem[Injective]
+			%-----------------------------------------------------------
+			Soient \( \pi_1,\pi_2\in A(\pi_0)\). Nous supposons que \( \sigma^{(\pi_1,\pi_0)}|_P=\sigma^{(\pi_2,\pi_0)}|_P\). Vu que \( \sigma^{(\pi_1,\pi_0)}|_Q\) et \( \sigma^{(\pi_2,\pi_0)}|_Q\) sont l'identité, nous avons en réalité \( \sigma^{(\pi_1,\pi_0)}=\sigma^{(\pi_2,\pi_0)}\). Le même raisonnement est valable pour \( \tau^{(\pi_1,\pi_0)}=\tau^{(\pi_2,\pi_0)}\).
+
+			En utilisant \eqref{EQooOAUVooFnRQqj} pour \( \pi_1\) et pour \( \pi_2\), nous écrivons
+			\begin{equation}
+				\tau^{(\pi_1,\pi_0)}\circ\sigma^{(\pi_1,\pi_0)}\circ\pi_1=\pi_0,
+			\end{equation}
+			et
+			\begin{equation}
+				\tau^{(\pi_2,\pi_0)}\circ\sigma^{(\pi_2,\pi_0)}\circ\pi_2=\pi_0,
+			\end{equation}
+			et donc \( \pi_1=\pi_2\). L'injectivité est prouvée.
+			\spitem[Surjective]
+			%-----------------------------------------------------------
+			Soient \( \sigma'\in S_P\) et \( \tau'\in S_Q\). Nous les prolongeons par l'identité pour créer \( \sigma,\tau\in S_{k+l}\). Nous posons
+			\begin{equation}
+				\pi_1=\sigma^{-1}\circ\tau^{-1}\circ\pi_0.
+			\end{equation}
+			Nous voulons prouver que \( \psi(\pi_1)=(\sigma,\tau)\), mais d'abord nous devons rapidement vérifier que \( \pi_1\sim\pi_0\). Pour \( i=1,\ldots,k\) nous avons
+			\begin{equation}
+				(\sigma^{-1}\circ\tau^{-1}\circ\pi_0)(i)=\sigma^{-1}\big( \pi_0(i) \big)\in\pi_0\{ 1,\ldots,k \}.
+			\end{equation}
+			Même raisonnement pour \( i=k+1,\ldots,k+l\), et nous déduisons que \( \pi_1\sim\pi_0\).
+
+			En utilisant la définition \ref{EQooMKNVooNbbNwk}, pour \( i\in\pi_0\{ 1,\ldots,k \}\) nous avons
+			\begin{subequations}
+				\begin{align}
+					\sigma^{(\pi_1,\pi_0)}(i) & =(\pi_0\pi_1^{-1})(i)           \\
+					                          & =(\pi_0\pi_0^{-1}\tau\sigma)(i) \\
+					                          & =(\tau\sigma)(i)                \\
+					                          & =\sigma(i).
+				\end{align}
+			\end{subequations}
+			Pour la dernière ligne, nous savons que \( \sigma\in S_P\) et donc que \( \sigma(i)\in P\), ce qui permet de dire que \( \tau\big( \sigma(i) \big)=\sigma(i)\).
+		\end{subproof}
+		Nous avons donc une bijection \( A(\pi_0)\to S_P\times S_Q\). Vu que \( P\) contient \( k\) élément et que \( Q\) en contient \( l\), nous avons aussi une bijection \( A(\pi_0)\to S_k\times S_l\).
+		\spitem[Cardinal de \( A(\pi_0) \)]
+		%-----------------------------------------------------------
+		Par ce que nous venons de dire, nous pouvons écrire
+		\begin{equation}
+			\Card(\pi_0)=k!l!,
+		\end{equation}
+		et je vous prie de remarquer que cela ne dépend pas de \( \pi_0\). Toutes les classes d'équivalence ont même cardinal.
+
+		\spitem[Développer le produit extérieur]
+		%-----------------------------------------------------------
+		Développons le produit extérieur. Nous avons
+		\begin{equation}		\label{EQooEQNJooDYrITi}
+			(T\wedge S)=\frac{1}{ k!l!}\sum_{\pi\in S_{l+k}}\epsilon(\pi)(T\otimes S)^{\pi}=\frac{1}{ k!l!}\sum_{A\in S_{k+l}/\sim}\sum_{\pi\in A}\epsilon(\pi)(T\otimes S)^{\pi}.
+		\end{equation}
+		Nous sélectionnons \( \pi_0\in S_{k+l}\) et nous regardons plus en détail la somme sur \( A(\pi_0)\). Nous allons montrer que tous les éléments de la somme
+		\begin{equation}
+			\sum_{\pi\in A(\pi_0)}\epsilon(\pi)(T\otimes S)^{\pi}
+		\end{equation}
+		sont égaux, et qu'il y a \( k!l!\) tels éléments.
+
+		\spitem[Un élément de la somme]
+		%-----------------------------------------------------------
+		Soient \( \pi_0\in S_{k+l}\) et \( \pi\in A(\pi_0)\). Nous utilisons encore \eqref{EQooOAUVooFnRQqj} : \( \pi_0=\tau^{(\pi,\pi_0)}\circ\sigma^{(\pi,\pi_0)}\circ\pi\). Nous allons provisoirement arrêter d'écrire les exposant; nous écrivons \( \sigma\) pour \( \sigma^{(\pi,\pi_0)}\). Donc
+		\begin{subequations}
+			\begin{align}
+				(T\otimes S)^{\pi_0}(v_1,\ldots,v_{k+l}) & =T\big(v_{\tau\sigma\pi(1)},\ldots,v_{\tau\sigma\pi(k)}\big)S\big(v_{\tau\sigma\pi(k+1)},\ldots, v_{\tau\sigma\pi(k+l)}\big)               \\
+				                                         & = T\big( v_{\sigma\pi(1)},\ldots,v_{\sigma\pi(k)} \big)S\big( v_{\tau\pi(k+1)},\ldots,v_{\tau\pi(k+l)} \big).		\label{SUBEQooLEWCooTmElAn}
+			\end{align}
+		\end{subequations}
+		Pour le premier facteur \( i=1,\ldots,k\), nous avons \( (\tau\sigma\pi)(i)=(\sigma\pi)(i)\). Nous introduisons \( \sigma'=\pi^{-1}\circ\sigma\circ\pi|_{\{ 1,\ldots,k \}}\). Avec tout ce que nous avons fait, \( \sigma'\in S_k\), et il est donc légitime de regarder ce que fait \( T^{\sigma'}\). Notez qu'il n'est pas légitime de regarder \( T^{\sigma}\); bref. Nous avons, par la formule \eqref{EQooQJXHooTfvclD} :
+		\begin{equation}
+			T^{\sigma'}(v_{\pi(1)},\ldots,v_{\pi(k)})=T\big( v_{\pi\sigma'(1)},\ldots,v_{\pi\sigma'(k)} \big)=T\big( v_{\sigma\pi(1)},v_{\sigma\pi(k)} \big).
+		\end{equation}
+		Cela nous permet de réexprimer le premier facteur de \eqref{SUBEQooLEWCooTmElAn}. Pour le second nous faisons le même genre de choses en introduisant \( \tau'\) :
+		\begin{subequations}		\label{SUBEQSooEMHQooDgCgkp}
+			\begin{align}
+				(T\otimes S)^{\pi_0}(v_1,\ldots,v_{k+l}) & =T^{\sigma'}(v_{\pi(1),\ldots,v_{\pi(k)}})S^{\tau'}\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big)                          \\
+				                                         & = \epsilon(\sigma')\epsilon(\tau')T\big( v_{\pi(1)},\ldots,v_{\pi(k)} \big)S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big) \\
+				                                         & = \epsilon(\sigma')\epsilon(\tau')(T\otimes S)^{\pi}(v_1,\ldots,v_{k+l}).
+			\end{align}
+		\end{subequations}
+
+		\spitem[Signature]
+		%-----------------------------------------------------------
+		Vu que \( \sigma\) est l'identité sur \( \pi\{ k+1,\ldots,k+l \}\), et vu que \( \sigma'=\pi^{-1}\circ\sigma\circ\pi\), nous avons
+		\begin{equation}
+			\epsilon(\sigma')=\epsilon(\pi^{-1}\sigma\pi)=\epsilon(\sigma)
+		\end{equation}
+		parce que \( \epsilon\) est un morphisme.
+
+		Comme toujours, nous avons \( \epsilon(\tau')=\epsilon(\tau)\) pour la même raison.
+
+		Nous avons \( \pi_0=\tau\circ\sigma\circ\pi\), et donc
+		\begin{equation}
+			\epsilon(\pi_0)=\epsilon(\tau)\epsilon(\sigma)\epsilon(\pi),
+		\end{equation}
+		et en repartant de \eqref{SUBEQSooEMHQooDgCgkp},
+		\begin{subequations}
+			\begin{align}
+				\epsilon(\pi_0)(T\otimes S)^{\pi_0}=\epsilon(\pi_0)\epsilon(\sigma)\epsilon(\tau)(T\otimes S)^{\pi}=\epsilon(\pi)(T\otimes S)^{\pi}.
+			\end{align}
+		\end{subequations}
+
+		\spitem[Résumé]
+		%-----------------------------------------------------------
+		Jusqu'à présent nous avons prouvé que pour tout \( \pi\in A(\pi_0)\),
+		\begin{equation}
+			\epsilon(\pi)(T\otimes S)^{\pi}=\epsilon(\pi_0)(T\otimes S)^{\pi_0}.
+		\end{equation}
+
+		\spitem[Utilisation des classes]
+		%-----------------------------------------------------------
+		Nous repartons de \eqref{EQooEQNJooDYrITi}. Pour chaque classe \( A\in S_{k+l}/\sim\), nous choisissons un représentant \( \pi_A\in A\). Pour tout \( \pi\in A\) nous avons \( \epsilon(\pi)(T\otimes S)^{\pi}=\epsilon(\pi_A)(T\otimes S)^{\pi_A}\). Nous avons alors
+		\begin{subequations}
+			\begin{align}
+				(T\wedge S) & =\frac{1}{ k!l!}\sum_{A\in S_{k+l}/\sim}\sum_{\pi\in A}\epsilon(\pi)(T\otimes S)^{\pi}      \\
+				            & = \frac{1}{ k!l!}\sum_{A\in S_{k+l}/\sim}\sum_{\pi\in A}\epsilon(\pi_A)(T\otimes S)^{\pi_A} \\
+				            & =\frac{1}{ k!l!}\sum_{A\in S_{k+l}/\sim}k!l!\epsilon(\pi_A)(T\otimes S)^{\pi_A}             \\
+				            & =\sum_{A\in S_{k+l}/\sim}\epsilon(\pi_A)(T\otimes S)^{\pi_A}.
+			\end{align}
+		\end{subequations}
+
+		\spitem[Conclusion]
+		%-----------------------------------------------------------
+		Chaque classe \( A\in S_{k+l}/\sim\) contient un unique élément de \( S_{(k,l)}\). Il suffit de prendre celui-là comme choix de \( \pi_A\). Et nous avons finalement
+		\begin{equation}
+			T\wedge S=\sum_{\pi\in S_{(k,l)}}\epsilon(\pi)(T\otimes S)^{\pi},
+		\end{equation}
+		comme annoncé.
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Produit intérieur}
+%----------------------------------------------------
+
+\ifbool{isGiulietta}{Pour la définition de \( i_X(\omega)\) lorsque \( \omega\) est une forme différentielle, voir la définition \ref{DEFooZMQNooRNhWXk}.}{}
+\begin{definition}		\label{DEFooFWIHooJiTnwM}
+	Si \( v\in V\) et si \( T\in\Wedge^kV^*\), nous définissons le \defe{produit intérieur}{produit intérieur} \(i_v \colon \Wedge^kV^*\to \Wedge^{k-1}V^*  \) par
+	\begin{equation}
+		(i_vT)(X_1,\ldots,X_{k-1})=T(v,X_1,\ldots,X_{k-1}).
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[\cite{MonCerveau}]			\label{PROPooETGJooMjxAFp}
+	Soit \( \omega\in \Wedge^k V^*\). L'application
+	\begin{equation}
+		\begin{aligned}
+			f\colon V & \to \Wedge^{k-1}V^* \\
+			v         & \mapsto i_v(\omega)
+		\end{aligned}
+	\end{equation}
+	est linéaire.
+\end{proposition}
+
+\begin{proof}
+	Soit \( \lambda\in \eR\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			i_{\lambda v}(\omega)(v_1,\ldots,v_{k-1}) & = \omega(\lambda v, v_1,\ldots,v_{k-1})   \\
+			                                          & =\lambda\omega(v,v_1,\ldots,v_{k-1})      \\
+			                                          & =\lambda i_v(\omega)(v_1,\ldots,v_{k-1}).
+		\end{align}
+	\end{subequations}
+	Le même genre de vérifications montre que
+	\begin{equation}
+		i_{v+w}(\omega)(v_1,\ldots,v_{k-1})=i_v(\omega)(v_1,\ldots,v_{k-1})+i_w(\omega)(v_1,\ldots,v_{k-1}).
+	\end{equation}
+\end{proof}
+
+Le lemme suivant donne les coordonnées de \( i_v(\omega)\) en fonction de celles de \( \omega\).
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooOBUVooBHpDZX}
+	Soient \( v\in \eR^n\) et \( \omega\in \Wedge^k(\eR^n)^*\). Nous supposons que
+	\begin{equation}
+		\omega=\sum_{I=(i_1,\ldots,i_k)}\omega_Ie^*_{\otimes I}
+	\end{equation}
+	et
+	\begin{equation}
+		i_v(\omega)=\sum_{J=(j_1,\ldots,j_{k_1})}\omega'_Je^*_{\otimes J}.
+	\end{equation}
+	Alors
+	\begin{equation}
+		\omega'_J=\sum_{i=1}^n\omega_{iJ}v_i.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Soient des vecteurs \( v_2,\ldots,v_k\). En ce qui concerne la somme sur \( J\), nous notons le multiindice \( J=(j_2,\ldots,j_k)\) au lieu de \( J=(j_1,\ldots,j_{k-1})\) pour que ce soit plus simple plus bas :
+	\begin{equation}		\label{EQooOCFOooUQqclB}
+		\omega'(v_2,\ldots,v_k)=\sum_{J=(j_2,\ldots,j_{k})}\omega'_Je^*_{\otimes J}(v_2,\ldots,v_k)=\sum_{J=(j_2,\ldots,j_k)}\omega'_J(v_2)_{j_1}\ldots (v_k)_{j_{k-1}}.
+	\end{equation}
+	et
+	\begin{subequations}		\label{SUBEQSooKJHQooGrKPwB}
+		\begin{align}
+			i_v(\omega)(v_2,\ldots,v_k) & = \omega(v,v_2,\ldots,v_k)                                                                                                          \\
+			                            & = \sum_I\omega_Ie^*_{\otimes I}(v,v_2,\ldots,v_k)                                                                                   \\
+			                            & = \sum_Iv_{i_1}(v_2)_{i_2}\ldots (v_k)_{i_k}                                                                                        \\
+			                            & = \sum_{i=1}^n\sum_{J=(j_2,\ldots,j_k)}\omega_{iJ}v_i(v_2)_{j_2}\ldots (v_k)_{j_k} & \text{cf. justif.}	\label{SUBEQooRYSHooDoXrHQ} \\
+			                            & = \sum_J\big( \sum_{i}\omega_{iJ}v_i \big)(v_2)_{j_2}\ldots (v_k)_{j_{k-1}}        & \text{cf. justif} \label{SUBEQooLBXNooNMZggO}
+		\end{align}
+	\end{subequations}
+	Justifications.
+	\begin{itemize}
+		\item
+		      Pour \eqref{SUBEQooRYSHooDoXrHQ}. Nous décomposons la somme sur \( I=(i_1,\ldots,i_k)\) en une somme sur le premier élément (que nous nommons \( i\)) et une somme sur les autres (que nous nommons \( J=(j_2,\ldots,j_k)\)). Dans la notation \( \omega_{iJ}\), le \( iJ\) signifie le multiindice \( (i, j_2,\ldots,j_k)\).
+		\item
+		      Pour \eqref{SUBEQooLBXNooNMZggO}. Permuter les sommes.
+	\end{itemize}
+	Vu que \( i_v(\omega)=\omega'\), en comparant \eqref{EQooOCFOooUQqclB} avec \eqref{SUBEQSooKJHQooGrKPwB}, nous trouvons
+	\begin{equation}
+		\omega'_J=\sum_i\omega_{iJ}v_i
+	\end{equation}
+	comme il le fallait.
+\end{proof}
+
+\begin{proposition}[Règle de Leibniz pour le produit extérieur\cite{BIBooBVCRooAwDAqk,MonCerveau}]		\label{PROPooYCRXooSOsqCb}
+	Soient \( T\in \Lambda^kV^*\) et \( S\in \Lambda^lV^*\). Pour tout \( v\in V\) nous avons
+	\begin{equation}		\label{EQooGMHPooBjTtly}
+		i_v(T\wedge S)=(i_vT)\wedge S+(-1)^kT\wedge(i_vS).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Pour des soucis de lisibilité nous notons \( v_1\) pour \( v\) et nous calculons en utilisant l'expression du lemme \ref{LEMooTGNUooZnxkrc} pour le produit extérieur :
+	\begin{equation}		\label{EQooVYOYooUBeppQ}
+		i_{v_1}(T\wedge S)(v_2,\ldots,v_{k+l})  =\sum_{\pi\in S_{(k,l)}}\epsilon(\pi)T\big( v_{\pi(1)},\ldots,v_{\pi(k)} \big)S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big).
+	\end{equation}
+	Vu que les éléments de \( \pi\in S_{(k,l)}\) ordonnent séparément \( \{ \pi(1),\ldots,\pi(k) \}\) et \( \{ \pi(k+1),\ldots,\pi(k+l) \}\), la valeur de \( \pi^{-1}(1)\) est soit \( 1\) soit \( k+1\). Nous définissons donc deux parties :
+	\begin{subequations}
+		\begin{align}
+			A_{(k,l)} & =\{ \pi\in S_{(k,l)}\tq \pi(1)=1 \}    \\
+			B_{(k,l)} & =\{ \pi\in S_{(k,l)}\tq \pi(k+1)=1 \}.
+		\end{align}
+	\end{subequations}
+	Ces parties ont déjà été introduites et étudiées dans la définition \ref{DEFooDFBEooFElghU} et le lemme \ref{LEMooCKJAooBIAyVs}. Nous poursuivons \eqref{EQooVYOYooUBeppQ} :
+	\begin{equation}		\label{EQooHZYQooHxoAYB}
+		\begin{aligned}[]
+			i_{v_1}(T\wedge S)(v_2,\ldots,v_{k+l}) & =\sum_{\pi\in A}\epsilon(\pi)T\big( v_{\pi(1)},\ldots,v_{\pi(k)} \big)S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big)       \\
+			                                       & \quad +\sum_{\pi\in B}\epsilon(\pi)T\big( v_{\pi(1)},\ldots,v_{\pi(k)} \big)S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big)
+		\end{aligned}
+	\end{equation}
+	\begin{subproof}
+		\spitem[Première somme, sur \( A_{k,l}\)]
+		%-----------------------------------------------------------
+		Nous nous concentrons maintenant sur la première somme, c'est-à-dire les termes avec \( \pi(1)=1\).
+		\begin{equation}
+			\begin{aligned}[]
+				 & \sum_{\pi\in A}\epsilon(\pi)T(v_{\pi(1)},\ldots,v_{\pi(k)})S(v_{\pi(k+1)},\ldots,v_{\pi(k+l)})                           \\
+				 & \quad=\sum_{\pi\in A}\epsilon(\pi)(i_{v_1}T)(v_{\pi(2)},\ldots,v_{\pi(k)})S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big).
+			\end{aligned}
+		\end{equation}
+		C'est le moment de profiter des lemmes \ref{DEFooDFBEooFElghU} et \ref{LEMooGAMAooOAFhrc} pour changer la somme. Nous notons
+		\begin{equation}
+			f(\pi)=\epsilon(\pi)(i_{v_1}T)(v_{\pi(2),\ldots,v_{\pi(k)}})S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big),
+		\end{equation}
+		et nous considérons la bijection \(\varphi \colon A_{(k,l)}\to S_{(k-1,l)}  \). Nous avons aussi \( \varphi^{-1}(\tau)i=\tau(i-1)+1\). Et donc, en posant \( w_j=v_{j+1}\) pour y voir plus clair :
+		\begin{subequations}
+			\begin{align}
+				f\big( \varphi^{-1}(\tau) \big) & =\epsilon\big( \varphi^{-1}(\tau) \big)(i_{v_1}T)\big( v_{\tau(1)+1},\ldots,v_{\tau(k-1)+1} \big)S\big( v_{\tau(k)+1},\ldots,v_{\tau(k+l-1)+1} \big) \\
+				                                & =\epsilon(\tau)(i_{v_1}T)\big( w_{\tau(1)},\ldots,w_{\tau(k-1)} \big)S\big( w_{\tau(k)},\ldots,w_{\tau(k+l-1)} \big)                                 \\
+				                                & = \big( i_{v_1}T\otimes S \big)\big( w_{\tau(1)},\ldots,w_{\tau(k+l-1)} \big)                                                                        \\
+				                                & = \big( i_{v_1}T\otimes S \big)^{\tau}(w_1,\ldots,w_{k+l-1})                                                                                         \\
+				                                & = \big( i_{v_1}T\otimes S \big)^{\tau}(v_2,\ldots,v_{k+l})
+			\end{align}
+		\end{subequations}
+		En remettant dans la somme et en utilisant le lemme \ref{LEMooGAMAooOAFhrc},
+		\begin{subequations}		\label{SUBEQSooSDMCooHmPCZr}
+			\begin{align}
+				\sum_{\pi\in A}f(\pi) & =\sum_{\tau\in S_{(k-1,l)}}f\big( \varphi^{-1}(\tau) \big)                           \\
+				                      & =\sum_{\tau \in S_{(k-1,l)}}\big( i_{v_1}T\otimes S \big)^{\tau}(v_2,\ldots,v_{l+l}) \\
+				                      & =(i_{v_1}T\wedge S)(v_2,\ldots,v_{k+l})
+			\end{align}
+		\end{subequations}
+		Cela est déjà le premier terme de \eqref{EQooGMHPooBjTtly}.
+
+		\spitem[Seconde somme, sur \( B_{(k,l)}\)]
+		%-----------------------------------------------------------
+		Nous étudions maintenant la somme sur \( B_{(k,l)}\) dans \eqref{EQooHZYQooHxoAYB}. Nous posons encore
+		\begin{equation}
+			f(\pi)=\epsilon(\pi)T\big( v_{\pi(1)},\ldots, v_{\pi(k)} \big)S\big( v_{\pi(k+1)},\ldots,v_{\pi(k+l)} \big).
+		\end{equation}
+		Nous utilisons la bijection \(\varphi \colon B_{(k,l)}\to S_{(k,l-1)}  \) du lemme \ref{LEMooEHTLooUSBBKL}
+		\begin{equation}
+			\sum_{\pi\in B_{(k,l)}}f(\pi)=\sum_{\tau\in S_{(k,l-1)}}f\big( \varphi^{-1}(\tau) \big).
+		\end{equation}
+
+		Nous avons d'abord \( \epsilon\big( \varphi^{-1}(\tau) \big)=(-1)^k\epsilon(\tau)\). Ensuite, pour \( j=1,\ldots,k\) nous avons \( \varphi^{-1}(\tau)j=\tau(j)+1\). Donc
+		\begin{equation}		\label{EQooRVUBooGsYfNE}
+			T\big( v_{\varphi^{-1}(\tau)1},\ldots,v_{\varphi^{-1}(\tau)k} \big)=T\big( v_{\tau(1)+1},\ldots,v_{\tau(k)+1} \big).
+		\end{equation}
+		Ça, c'était la partie pas très subtile. Nous devons maintenant voir la partie avec \( S\), c'est-à-dire déterminer en termes de \( \tau\) les valeurs de \( \big( \varphi^{-1}(\tau)(k+1),\ldots,\varphi^{-1}(\tau)(k+l) \big)\).
+
+		Pour la suite, soyez attentifs à la distinction entre des égalités d'ensembles du type \( \{ a,b \}=\{ c,d \}\) qui signifie que \( a\) est \( c\) ou \( d\) et que \( b\) est l'autre et les égalités de vecteurs du type \( (a,b)=(c,d)\) qui signifie \( a=c\) et \( b=d\).
+
+		Vu que \( \varphi^{-1}(\tau)\) est une bijection, nous avons \( \varphi^{-1}(\tau)\{ 1,\ldots,k+l \}=\{ 1,\ldots,k+l \}\). Et nous avons déjà vu que
+		\begin{equation}
+			\varphi^{-1}(\tau)(1,\ldots,k)=\big( \tau(1)+1,\ldots,\tau(k)+1 \big).
+		\end{equation}
+		Mais par ailleurs, vu que \( \tau\) prend ses valeurs dans \( \{ 1,\ldots,k+l-1 \}\), nous avons
+		\begin{equation}
+			\{ 1,\ldots,k+1 \}=\{ 1,\tau(1)+1,\ldots,\tau(k+l-1)+1 \}.
+		\end{equation}
+		Nous avons donc
+		\begin{equation}
+			\varphi^{-1}(\tau)\{ k+1,\ldots,k+l \}=\{ 1,\tau(k+1)+1,\ldots,\tau(k+l-1)+1 \},
+		\end{equation}
+		et comme les valeurs de  \( \tau \) sont ordonnées, nous avons même l'égalité de vecteurs
+		\begin{equation}
+			\varphi^{-1}(\tau)(k+1,\ldots,k+l)=\big( 1,\tau(k+1)+1,\ldots,\tau(k+l-1)+1 \big).
+		\end{equation}
+
+		En utilisant cela,
+		\begin{subequations}
+			\begin{align}
+				S\big( v_{\varphi^{-1}(\tau)(k+1)},\ldots,v_{\varphi^{-1}(\tau)(k+l)} \big) & = S\big( v_1,v_{\tau(k+1)+1},\ldots,v_{\tau(k+l-1)+1} \big)  \\
+				                                                                            & = (i_{v_1}S)\big( w_{\tau(k+1)},\ldots,w_{\tau(k+l-1)} \big)
+			\end{align}
+		\end{subequations}
+		où nous avons posé \( w_j=v_{j+1}\).
+
+		En écrivant aussi \eqref{EQooRVUBooGsYfNE} en termes de \( w\), nous avons
+		\begin{subequations}
+			\begin{align}
+				f\big( \varphi^{-1}(\tau) \big) & =(-1)^k\epsilon(\tau)T\big( w_{\tau(1)},\ldots,w_{\tau(k)} \big)(i_{v_1}S)\big( w_{\tau(k+1)},\ldots,w_{\tau(k+l-1)} \big) \\
+				                                & =(-1)^k\epsilon(\tau)(T\otimes i_{v_1}S)\big( w_{\tau(1)},\ldots,w_{\tau(k+l-1)} \big)                                     \\
+				                                & = (-1)^k\epsilon(\tau)(T\otimes i_{v_1}S)^{\tau}(w_1,\ldots,w_{k+l-1})                                                     \\
+				                                & = (-1)^k\epsilon(\tau)(T\otimes i_{v_1}S)^{\tau}(v_2,\ldots,v_{k+l}).
+			\end{align}
+		\end{subequations}
+		Et au final, en utilisant l'expression \eqref{SUBEQooUDLIooWwGFoe} du produit extérieur,
+		\begin{subequations}		\label{EQooOCIZooXZrqiQ}
+			\begin{align}
+				\sum_{\pi\in B_{(k,l)}}f(\pi) & =(-1)^k\sum_{\tau\in S_{(k,l-1)}}\epsilon(\tau)(T\otimes i_{v_1}S)^{\tau}(v_2,\ldots,v_{k+l}) \\
+				                              & =(-1)^k(T\wedge i_{v_1}S)(v_2,\ldots,v_{k+l}).
+			\end{align}
+		\end{subequations}
+		\spitem[Conclusion]
+		%-----------------------------------------------------------
+		Les deux termes de \eqref{EQooHZYQooHxoAYB} sont \eqref{SUBEQSooSDMCooHmPCZr} et \eqref{EQooOCIZooXZrqiQ}. Nous avons donc finalement
+		\begin{equation}
+			i_{v_1}(T\wedge S)(v_2,\ldots,v_{k+l})=(i_{v_1}T\wedge S)(v_2,\ldots,v_{k+l})+(-1)^k(T\wedge i_{v_1}S)(v_2,\ldots,v_{k+l}),
+		\end{equation}
+		comme demandé.
+	\end{subproof}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Pull back}
+%----------------------------------------------------
+
+\begin{definition}
+	Si \(f \colon W\to V  \) est linéaire, nous définissons le \defe{pull back}{pull back} \(f^* \colon \Wedge^kV^*\to \Wedge^kW^*  \) par
+	\begin{equation}
+		(f^**T)(w_1,\ldots,w_k)=T\big( f(w_1),\ldots,f(w_k) \big).
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[\cite{BIBooBVCRooAwDAqk}]
+	Pour toute application linéaire \(f \colon W\to V  \) nous avons
+	\begin{equation}
+		f^*(T\wedge S)=(f^*T)\wedge (f^*S).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Soient \( T\in \Wedge^kV^*\) et \( S\in\Wedge^lV^*\). En déballant les définitions, nous avons
+	\begin{subequations}
+		\begin{align}
+			f^*(T\wedge S)(v_1,\ldots,v_k) & =(T\wedge S)\big( f(v_1),\ldots,f(v_{k+k}) \big)                                                                                                      \\
+			                               & =\frac{ (k+k)! }{ k!l! }\frac{1}{ k!}\sum_{\pi\in S_{k+k}}(-1)^{\pi}(T\otimes S)^{\pi}\big( f(v_1),\ldots,f(v_k+l) \big)                              \\
+			                               & =\frac{ (k+k)! }{ k!l! }\frac{1}{ k!}                                                                                                                 \\
+			                               & \qquad \nonumber\sum_{\pi\in S_{k+k}}   (-1)^{\pi}T\big( f(v_{\pi(1)}),\ldots,f(v_{\pi(k)}) \big)S\big( f(v_{\pi(k+1)}),\ldots, f(v_{\pi(k+l)}) \big) \\
+			                               & =\frac{ (k+k)! }{ k!l! }\frac{1}{ k!}\sum_{\pi\in S_{k+k}}  (f^*T)(v_{\pi(1)},\ldots,v_{\pi(k)})(f^*S)(v_{\pi(k+1)},\ldots,v_{\pi(k+l)})              \\
+			                               & =\frac{ (k+k)! }{ k!l! }\frac{1}{ k!}\sum_{\pi\in S_{k+k}}  (f^*T)\otimes (f^*S) (v_{\pi(1)},\ldots,v_{\pi(k+l)})                                     \\
+			                               & =   (f^*T)\wedge (f^*S)(v_1,\ldots,v_{k+l}).                                                                                                          \\
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Norme}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous considérons des espaces vectoriels \( V\) et \( W\) de dimension finie. L'application \eqref{EQooAEFRooPfmAnj} donne un isomorphisme d'espaces vectoriels
+\begin{equation}
+	\begin{aligned}
+		\psi\colon V\otimes W & \to \aL(V^*,W)                                \\
+		v\otimes w            & \mapsto \big( \alpha\mapsto \alpha(v)w \big).
+	\end{aligned}
+\end{equation}
+Et ça, c'est très bien, parce que nous connaissons une norme sur \( \aL(V^*,W)\) :  la norme opérateur \ref{DefNFYUooBZCPTr}.
+
+\begin{definition}[\cite{MonCerveau}]      \label{DEFooEXXNooMgIpSV}
+	Soient deux espaces vectoriels normés de dimension finie \( V\) et \( W\). Sur \( V\otimes W\) nous définissons, pour \( t\in V\otimes W\)
+	\begin{equation}
+		\| t \|=\| \psi(t) \|_{\aL(V^*,W)}.
+	\end{equation}
+\end{definition}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooQPXHooJWfpmk}
+	La norme sur \( V\otimes W\) vérifie
+	\begin{equation}
+		\| v\otimes w \|=\| v \|\| w \|
+	\end{equation}
+	pour tout \( v\in V\) et \( w\in W\).
+\end{lemma}
+
+\begin{proof}
+	C'est un simple(?) calcul :
+	\begin{equation}
+		\| v\otimes w \|=\| \psi(v\otimes w) \|=\| \alpha\mapsto \alpha(v)w \|=\sup_{\| \alpha \|=1}\| \alpha(v)w \|=\sup_{\| \alpha \|=1}| \alpha(v) |\| w \|.
+	\end{equation}
+	Étant donné que \( V\) est de dimension finie, \( \sup_{\| \alpha \|=1}| \alpha(v) |=\| v \|\)\quext{Cela est une des raisons pour lesquelles nous sommes en dimension finie : je ne sais pas si cette égalité est vraie en dimension inifinie.}. Nous avons donc
+	\begin{equation}
+		\| v\otimes w \|=\| v \|\| w \|.
+	\end{equation}
+\end{proof}
+
+Le lemme suivant montre que \( \eR\otimes \eR\) n'est pas du tout \( \eR\times \eR=\eR^2\). Au contraire, \( \eR\otimes \eR\) est isomorphe à \( \eR\).
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooVONEooQpPgcn}
+	L'application
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \eR\otimes \eR & \to \eR   \\
+			1\otimes 1                   & \mapsto 1
+		\end{aligned}
+	\end{equation}
+	prolongée par linéarité est un isomorphisme isométrique.
+\end{lemma}
+
+\begin{proof}
+	D'abord une base de \( \eR\) est \( \{ 1 \}\); donc une base de \( \eR\otimes \eR\) est \( \{ 1\otimes 1 \}\) par la proposition \ref{PROPooTHDPooWgjUwk}. Donc l'application proposée se prolonge par linéarité à tout \( \eR\otimes \eR\).
+
+	Le fait que \( \varphi\) soit une bijection provient du fait que \( \varphi\) transforme une base en une base; si vous n'y croyez pas, la vérification de l'injectivité et de la surjectivité est facile.
+
+	Pour que \( \varphi\) soit isométrique, nous faisons le calcul
+	\begin{equation}
+		\| \varphi(x\otimes y) \|=\| xy(1\otimes 1) \|=| xy |\| 1\otimes 1 \|=| xy |=\| x\otimes y \|.
+	\end{equation}
+	Nous avons utilisé la propriété \ref{DefNorme}\ref{ItemDefNormeii} d'une norme ainsi que le lemme \ref{LEMooQPXHooJWfpmk} pour la norme sur \( \eR\otimes \eR\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Applications bilinéaires, matrices et produit tensoriel}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{SECooUKRYooZjagcX}
+
+Soit \( E\), un espace vectoriel de dimension finie. Si \( \alpha\) et \( \beta\) sont deux formes linéaires sur un espace vectoriel \( E\), nous définissons \( \alpha\otimes \beta\) comme étant la \( 2\)-forme donnée par
+\begin{equation}        \label{EQooUNRYooKBrXyK}
+	(\alpha\otimes \beta)(u,v)=\alpha(u)\beta(v).
+\end{equation}
+Si \( a\) et \( b\) sont des vecteurs de \( E\), ils sont vus comme des formes sur \( E\) via le produit scalaire et nous avons
+\begin{equation}
+	(a\otimes b)(u,v)=(a\cdot u)(b\cdot v).
+\end{equation}
+Cette dernière équation nous incite à pousser un peu plus loin la définition de \( a\otimes b\) et de simplement voir cela comme la matrice de composantes
+\begin{equation}
+	(a\otimes b)_{ij}=a_ib_j.
+\end{equation}
+Cette façon d'écrire a l'avantage de ne pas demander de se souvenir qui est un vecteur ligne, qui est un vecteur colonne et où il faut mettre la transposée. Évidemment \( (a\otimes b)\) est soit \( ab^t\) soit \( a^tb\) suivant que \( a\) et \( b\) soient ligne ou colonne.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Application d'opérateurs}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}   \label{LemMyKPzY}
+	Soient \( x,y\in E\) et \( A,B\) deux opérateurs linéaires sur \( E\) vus comme matrices. Alors
+	\begin{equation}        \label{EqXdxvSu}
+		(Ax\otimes By)=A(x\otimes y)B^t.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Calculons la composante \( ij\) de la matrice \( (Ax\otimes By)\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			(Ax\otimes By)_{ij} & =(Ax)_i(By)_j                       \\
+			                    & =\sum_{kl}A_{ik}x_kB_{jl}y_l        \\
+			                    & =A_{ik}(x\otimes y)_{kl}B_{jl}      \\
+			                    & =\big( A(x\otimes y)B^t \big)_{ij}.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+
+Le fait que les applications linéaires soient continues\footnote{Proposition \ref{PROPooQZYVooYJVlBd}.} est valable dans une assez large gamme d'espaces vectoriels\cite{BIBooUWMLooWEPxcC}. Nous voyons ici dans le cas des espaces vectoriels normés de dimension finies.
+\begin{proposition}     \label{PROPooADPDooOtukQP}
+	Soient des espaces vectoriels normés \( E\) et \( F\). Si \( f\colon E\to F\) est une application linéaire et si \( E\) est de dimension finie, alors \( f\) est continue.
+\end{proposition}
+
+\begin{proof}
+	La proposition \ref{PROPooQMZLooOxBrmt} nous dit que \( \| f \|<\infty\), c'est-à-dire que \( f\) est borné. Donc la proposition \ref{PROPooQZYVooYJVlBd} conclut.
+\end{proof}
+
+
+\begin{lemma}   \label{LemWWXVSae}
+	Soit \( F\) un espace de Banach et deux suites \( A_k\to A\) et \( B_k\to B\) dans \( \aL(F,F)\). Alors \( A_k\circ B_k\to A\circ B\) dans \( \aL(F,F)\), c'est-à-dire
+	\begin{equation}
+		\lim_{k\to \infty} (A_kB_k)=\left( \lim_{k\to \infty} A_k \right)\left( \lim_{k\to \infty} B_k \right).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Il suffit d'écrire
+	\begin{equation}
+		\| A_kB_k-AB \|\leq \| A_kB_k-A_kB \|+\| A_kB-AB \|.
+	\end{equation}
+	Le premier terme tend vers zéro pour \( k\to\infty\) parce que
+	\begin{subequations}
+		\begin{align}
+			\| A_kB_k-A_kB \| & =\| A_k(B_k-B) \|                           \\
+			                  & \leq \| A_k \|\| B_k-B \|\to \| A \|\cdot 0 \\
+			                  & =0
+		\end{align}
+	\end{subequations}
+	où nous avons utilisé la propriété fondamentale de la norme opérateur : la proposition~\ref{PROPooQZYVooYJVlBd}. Le second terme tend également vers zéro pour la même raison.
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Convergence en norme et par composante}
+%---------------------------------------------------------------------------------------------------------------------------
+
+En dimension infinie, la convergence en norme et la convergence composante par composante ne s'impliquent ni dans un sens ni dans l'autre.
+
+L'exemple suivant devrait être formalisé dans l'espace \( \ell^2\) des suites de carré sommable, mais vous voyez l'idée.
+\begin{example}
+	Nous considérons l'ensemble des suites réelle munie de la norme \( \| x \|=\sqrt{ \sum_{k=0}^{\infty}| x_k |^2 } \). Dedans nous considérons les vecteurs de base \( e_i\) donnés par
+	\begin{equation}
+		(e_i)_n=\delta_{in}.
+	\end{equation}
+	Ensuite nous considérons la base
+	\begin{equation}
+		f_i=e_1+\frac{1}{ 2^i }e_i.
+	\end{equation}
+	La suite \( x_n=f_n-f_1\), dans cette base a toujours \( -1\) comme première composante\footnote{N'essayez pas de faire un dessin : ça ne fonctionne qu'en dimension infinie.}. Et pourtant elle converge en norme vers \( 0\).
+\end{example}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Calcul différentiel dans un espace vectoriel normé}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%-------------------------------------------------------
+\subsection{Limite de fonctions}
+%----------------------------------------------------
+
+La limite de fonctions est la définition \ref{DefYNVoWBx}.
+
+\begin{lemma}		\label{LEMooTFLVooMMNmQr}
+	Soient deux espaces vectoriels normés \( V\) et \( E\) sur le corps \( \eK\). Si \(f \colon V\to E  \) est constante, \( f(x)=u\) pour tout \( x\in V\), alors pour tout \( a\in V\), nous avons la limite \( \lim_{x\to a}f(x)=u\).
+\end{lemma}
+
+\begin{proposition}     \label{PROPooBHHCooPbRggh}
+	Soient deux espaces vectoriels normés \( V\) et \( E\). Soient deux fonctions \( f,g\colon V\to E\). Nous supposons que \( \lim_{x\to a} f(x)=\alpha\) et \( \lim_{x\to a} g(x)=\beta\). Alors
+	\begin{enumerate}
+		\item	\label{ITEMooDPBHooKRccPZ}
+		      Si \( \lambda\in \eK\), alors \( \lim_{x\to a}\big( f(x)+\lambda \big)=\alpha+\mu\).
+		\item   \label{ITEMooDKJPooMynOcG}
+		      La fonction \( f+g\) a une limite \( x\to a\) qui vaut \( \lim_{x\to a} (f+g)(x)=\alpha+\beta\),
+		\item
+		      La fonction \( fg\) a une limite en \( a\), qui vaut \( \lim_{x\to a} (fg)(x)=\alpha\beta\),
+	\end{enumerate}
+\end{proposition}
+
+\begin{lemma}       \label{LEMooYJGLooVBaglB}
+	Soient un espace vectoriel normé \( E\) ainsi qu'une fonction \( f\colon \eR\to E\) telle que \( \lim_{t\to 0} f(t)=v\). Alors pour tout \( \lambda\in \eR\) nous avons
+	\begin{equation}
+		\lim_{t\to 0} f(\lambda t)=v.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Petite clarification pour commencer : \( E\) est normé et donc séparé. La proposition \ref{PropFObayrf} nous dit que la limite est unique; nous voilà rassurés sur ce point. Ensuite nous utilisons la définition \ref{DefYNVoWBx} de la limite.
+
+	Nous posons \( g(t)=f(\lambda t)\). Soit un ouvert \( V\) autour de \( v\) dans \( E\). Par l'hypothèse de limite pour \( f\), il existe un voisinage \( U\) de \( 0\) dans \( \eR\)  tel que \( f\big( U\setminus\{ 0 \} \big)\subset V\).
+
+	En posant \( U'=U/\lambda\), nous avons bien \( g\big( U'\setminus\{ 0 \} \big)\subset V\). En effet si \( t\in U'\setminus\{ 0 \}\), il existe \( x\in U\setminus\{ 0 \}\) tel que \( t=x/\lambda\) et donc \( g(t)=g(x/\lambda)=f(x)\in V\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Définition de la différentielle}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Quelques motivations pour la notion de différentielle sont données dans \ref{SEBSECooLPRQooJRQCFL}.
+
+\begin{propositionDef}[\cite{MonCerveau}]      \label{DefDifferentiellePta}
+	Soient deux espaces vectoriels normés\footnote{Définition \ref{DefNorme}.} de dimension finie \( E\) et \( F\) ainsi qu'une fonction \( f\colon \mU\to F\) où \( \mU\) est un ouvert de \( E\). Si il existe une application linéaire \( T\in\aL(E,F)\) satisfaisant
+	\begin{equation}	\label{EqCritereDefDiff}
+		\lim_{\substack{h\to 0\\h\in E}}\frac{f(a+h)-f(a)-T(h)}{\|h\|_E}=0,
+	\end{equation}
+	alors il en existe une seule.
+
+	Dans ce cas nous disons que \( f\) est \defe{différentiable au point \( a\)}{application!différentiable} et l'application \( T\) ainsi définie est appelée \defe{différentielle}{différentielle} de \( f\) au point \( a\), et nous la notons \( df_a\).
+\end{propositionDef}
+
+\begin{proof}
+	Soient deux applications linéaires \( T_1\), \( T_2\) satisfaisant la condition \eqref{EqCritereDefDiff}. Nous avons
+	\begin{equation}
+		\frac{ \| T_1(h)-T_2(h) \|_F }{ \| h \|_E }\leq \frac{ \| T_1(h)-f(a+h)+f(a) \| }{ \| h \| }+\frac{ \| f(a+h)-f(a)-T_2(h) \| }{ \| h \| }\to 0.
+	\end{equation}
+	Nous avons donc
+	\begin{equation}
+		\lim_{h\to 0} \frac{ \| (T_1-T_2)(h) \|_F }{ \| h \|_E }=0.
+	\end{equation}
+	Soit \( \epsilon>0\). Ce que signifie la limite est qu'il existe un \( r>0\) tel que pour tout \( u\in B_E(0,r)\), nous ayons
+	\begin{equation}
+		\frac{ \| (T_1-T_2)(u) \|_F }{ \| u \|_E }<\epsilon.
+	\end{equation}
+	Soit \( v\in E\). Nous considérons \( \lambda\in\eR\) tel que \( \lambda v\in B(0,r)\), par exemple \( \lambda<r/\| v \|\). Nous avons
+	\begin{equation}
+		\epsilon>\frac{ \| (T_1-T_2)(\lambda v) \|_F }{ \| \lambda v \|_E }=\frac{ \| (T_1-T_2)(v) \| }{ \| v \| }.
+	\end{equation}
+	Cela donne
+	\begin{equation}
+		\| (T_1-T_2)(v) \|<\| v \|\epsilon.
+	\end{equation}
+	Nous avons donc \( \| (T_1-T_2)(v) \|=0\), soit \( T_1(v)=T_2(v)\).
+\end{proof}
+
+L'application différentielle
+\begin{equation}
+	\begin{aligned}
+		df\colon E & \to \aL(E,F) \\
+		a          & \mapsto df_a
+	\end{aligned}
+\end{equation}
+est également très importante.
+
+%-------------------------------------------------------
+\subsection{Pas en dimension infinie}
+%----------------------------------------------------
+
+Pourquoi ne pas définir la différentielle en dimension infinie\cite{MonCerveau} ? Dans le cas d'une application linéaire, en posant \( T=f\), nous avons toujours la limite \eqref{EqCritereDefDiff}. Autrement dit, une application linéaire est toujours différentiable. Mais si \( f \) n'est pas bornée (et donc pas continue en dimension infinie), la limite \eqref{EqCritereDefDiff} n'implique pas la continuité, parce qu'il n'y a pas de garanties sur la valeur de
+\begin{equation}
+	\lim_{h\to 0}\| T(h) \|.
+\end{equation}
+Autrement dit, nous pourrions avoir des fonctions différentiables non continues. Pour cela, nous nous abstenons de définir la différentielle d'une application dans le cas de dimension infinie.
+
+%-------------------------------------------------------
+\subsection{Dérivée directionnelle}
+%----------------------------------------------------
+
+\begin{definition}[Dérivée directionnelle]      \label{DEFooCATTooTPLtpR}
+	Soient des espaces vectoriels normés \( V\) et \( E\). Soient une application \(f \colon V\to E  \) et \( u\in V\). La \defe{dérivée directionnelle}{dérivée directionnelle} de \( f\) en \( a\in V\) dans la direction \( u\) est l'élément de \( E\) défini par
+	\begin{equation}
+		(\partial_uf)(a)=\lim_{\epsilon\to 0}\frac{ f(a+\epsilon u)-f(a) }{ \epsilon }
+	\end{equation}
+	pourvu que la limite existe.
+
+	Soient \( f\) une application de \( U\subset\eR^m\) dans \( \eR\) et \( u\) un vecteur de \( \eR^m\). La fonction \( f\) est \defe{dérivable sur \( U\) suivant le vecteur \( u\)}{}, si \( f\) est dérivable  suivant le vecteur \( u\) en tout point de \( U\).
+\end{definition}
+
+\begin{definition}[Dérivée]      \label{DEFooOYFZooFWmcAB}
+	Soit une application \(f \colon \eR\to V  \) où \( V\) est un espace vectoriel normé. La \defe{dérivée}{dérivée} de \( f\) en \( a\in \eR\) est le nombre
+	\begin{equation}
+		f'(a)=(\partial_1f)(a)
+	\end{equation}
+	où \( \partial_1\) est la dérivée directionnelle définie en \ref{DEFooCATTooTPLtpR}.
+
+	Dans le cas où la limite définissant \( f'(a)\) existe, nous disons que la fonction \( f\) est dérivable en \( a\). La \defe{fonction dérivée}{fonction dérivée} de \( f\) est
+	\begin{equation}
+		\begin{aligned}
+			f'\colon A' & \to \eR       \\
+			a           & \mapsto f'(a)
+		\end{aligned}
+	\end{equation}
+	définie sur l'ensemble noté \( A'\) des points \( a\) où \( f\) est dérivable.
+\end{definition}
+
+\begin{normaltext}
+	En ce qui concerne les notations, si une base \( \{ e_i \}\) de \( V\) est donnée, nous notons \( \partial_if\) la dérivée de \( f\) dans la direction de \( e_i\). La fonction \( \partial_if\) est la \defe{dérivée partielle}{dérivée partielle} de \( f\). Dans le cas de \( V=\eR^n\), cela est souvent noté
+	\begin{equation}
+		\frac{ \partial f }{ \partial x_i }(a)=\Dsdd{ f(a+ te_i) }{t}{0}.
+	\end{equation}
+\end{normaltext}
+
+\begin{normaltext}
+	Même si une fonction est dérivable en un point dans toutes les directions, on n'est pas sûr qu'elle soit continue en ce point. La dérivabilité directionnelle n'est donc pas une notion suffisante pour assurer la continuité. C'est pourquoi on introduit le concept de \emph{différentiabilité}.
+\end{normaltext}
+
+
+\begin{remark}
+	De nombreuses sources parlent de dérivée \defe{dans la direction}{dérivée directionnelle} du vecteur \( v\) en définissant (avec une certaine raison) une \defe{direction}{direction} dans \( \eR^m\) comme étant un vecteur de norme \( 1\).
+
+	Ces personnes ne définissent alors \( \partial_uf\) que pour \( \| u \|=1\). Pourquoi ? Le but de la dérivée directionnelle dans la direction \( u\) est de savoir à quelle vitesse la fonction monte lorsque l'on se déplace en suivant la direction \( u\). Cette information n'aura un caractère « objectif » que si l'on avance à une vitesse donnée. En effet, si on se déplace deux fois plus vite, la fonction montera deux fois plus vite. Par convention, on demande alors d'avancer à vitesse \( 1\).
+
+	Ici, pour être plus souple en termes de notations et de manipulations, nous définissons \( \partial_uf\) pour tout \( u\) (non nul). Nous devons cependant garder en tête que le nombre \( (\partial_vf)(a)\) ne peut pas être interprété comme étant une «vitesse de croissance de \( f\) en \( a\)» de façon trop sérieuse.
+\end{remark}
+
+\subsubsection*{Cas particulier où \( n=2\):} \( a = (a_1, a_2)\), \( u =
+(u_1,u_2)\) et
+\begin{equation}
+	\frac{\partial f}{\partial u}(a_1, a_2) = \lim_{t\rightarrow 0}\frac{f(a_1+tu_1,a_2+tu_2) - f(a_1, a_2)}{t}
+\end{equation}
+
+Un cas particulier des dérivées directionnelles est la dérivée partielle. Si nous considérons la base canonique \( e_i\) de \( \eR^n\), nous notons
+\begin{equation}
+	\frac{ \partial f }{ \partial x_i }=\frac{ \partial f }{ \partial e_i }.
+\end{equation}
+Dans le cas d'une fonction à deux variables, nous avons donc les deux dérivées partielles
+\begin{equation}
+	\begin{aligned}[]
+		\frac{ \partial f }{ \partial x }(a) &  & \text{et} &  & \frac{ \partial f }{ \partial y }(a)
+	\end{aligned}
+\end{equation}
+qui correspondent aux dérivées directionnelles dans les directions des axes. Ces deux nombres représentent de combien la fonction \( f\) monte lorsqu'on part de \( a\) en se déplaçant dans le sens des axes \( X\) et \( Y\).
+
+\begin{lemma}       \label{LEMooVOTHooPJcrWH}
+	Nous notons \( \eK\) le corps \( \eR\) ou \( \eC\). Soient deux espaces vectoriels \( E\) et \( F\) sur \( \eK\). Soient une application \( f\colon E\to F\) ainsi que \( a,u\in E\) tels que \( \frac{ \partial f }{ \partial u }(a)\) existe.
+
+	Alors pour tout \( \lambda\in \eK\), \( (\partial_{\lambda u}f)(a)\) existe et
+	\begin{equation}
+		\frac{ \partial f }{ \partial (\lambda u) }(a)=\lambda\frac{ \partial f }{ \partial u }(a).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous allons utiliser le lemme \ref{LEMooYJGLooVBaglB}. D'abord nous avons, pour tout \( t\), \( \lambda\) et \( a\)  :
+	\begin{equation}        \label{EQooRDUEooScpIZa}
+		\frac{ f(a+t\lambda u)-f(a) }{ t }=\lambda\frac{ f(a+t\lambda u)-f(a) }{ \lambda t }.
+	\end{equation}
+	En posant \( g(t)=\frac{ f(a+tu)-f(a) }{ t }\) (\( t\) est une variable dans \( \eR\)), l'hypothèse est que \( \lim_{t\to 0} g(t)\) existe et vaut \( \frac{ \partial f }{ \partial u }(a)\). Le lemme \ref{LEMooYJGLooVBaglB} indique que \( \lim_{t\to 0} g(\lambda t)\) existe aussi et vaut la même chose. Donc
+	\begin{equation}
+		\lim_{t\to 0} \frac{ f(a+\lambda tu)-f(a) }{ \lambda t }=\frac{ \partial f }{ \partial u }(a).
+	\end{equation}
+	En prenant la limite dans \eqref{EQooRDUEooScpIZa}, nous avons le résultat.
+\end{proof}
+
+\begin{example}
+	Considérons la fonction \( f(x,y)=2xy^2\). Lorsque nous calculons \( \partial_xf(x,y)\), nous faisons comme si \( y\) était constant. Nous avons donc \( \partial_xf(x,y)=2y^2\). Par contre lors du calcul de \( \partial_yf(x,y)\), nous prenons \( x\) comme une constante. La dérivée de \( y^2\) par rapport à \( y\) est évidemment \( 2y\), et par conséquent, \( \partial_yf(x,y)=4xy\).
+\end{example}
+
+
+Pour les fonctions d'une seule variable, la dérivabilité en un point \( a\) implique la continuité en \( a\). Cela n'est pas vrai pour les fonctions de plusieurs variables : il existe des fonctions \( f\)  qui sont dérivables suivant tout vecteur au point \( a\) sans pour autant être continue en \( a\).
+
+\begin{example}
+	Considérons la fonction \( f:\eR^2\to \eR\)
+	\begin{equation}
+		f(x,y)=\left\{
+		\begin{array}{ll}
+			\cfrac{x^2y}{x^4+y^2} \qquad & \textrm{si } (x,y)\neq (0,0), \\
+			0                            & \textrm{sinon}.
+		\end{array}
+		\right.
+	\end{equation}
+	Pour voir que \( f\) n'est pas continue en \( (0,0)\) il suffit de calculer la limite de \( f\) restreinte à la parabole \( y=x^2\)
+	\[
+		\lim_{x\to 0} f(x,x^2)=\frac{1}{2} \neq 0.
+	\]
+	Pourtant la fonction \( f\) est dérivable en \( (0,0)\) dans toutes les directions. En effet, soit \( v=(v_1,v_2)\). Si \( v_2\neq 0\), alors
+	\begin{equation}        \label{EQooXOCWooVbCjRd}
+		\partial_v f(a)=\lim_{\begin{subarray}{l}
+				t\to 0\\ t\neq 0
+			\end{subarray}}
+		\frac{t^3v_1^2v_2}{t^5 v_1^4+ t^3 v_2^2}=\frac{v_1^2}{v_2},
+	\end{equation}
+	tandis que si \( v_2=0\), alors la valeur de \( f(tv_1, 0)\)  est \( 0\) pour tout \( t\) et \( v_1\), donc la dérivée partielle de \( f\) par rapport à \( x\) en l'origine existe et est nulle.
+\end{example}
+
+\begin{example}
+	Pour une fonction réelle à variable réelle, la dérivabilité entraine la continuité. Il n'en va pas de même pour les fonctions à plusieurs variables, comme le montre l'exemple suivant :
+	\begin{equation}
+		f(x,y)=\begin{cases}
+			0                              & \text{si } x=0 \\
+			\cfrac{ y }{ x }\sqrt{x^2+y^2} & \text{sinon.}
+		\end{cases}
+	\end{equation}
+	Nous avons tout de suite
+	\begin{equation}
+		\frac{ \partial f }{ \partial y }(0,0)=0.
+	\end{equation}
+	De plus si \( u_x\neq 0\) nous avons
+	\begin{equation}
+		\frac{ \partial f }{ \partial u }(0,0)=\frac{ u_y }{ u_x }\| u \|.
+	\end{equation}
+	Donc toutes les dérivées directionnelles de \( f\) en \( (0,0)\) existent alors que la fonction n'y est manifestement pas continue. En effet sous forme polaire,
+	\begin{equation}
+		f(r,\theta)=\frac{ r\sin(\theta) }{ \cos(\theta) },
+	\end{equation}
+	et quelle que soit la valeur de \( r\), en prenant \( \theta\) suffisamment proche de \( \pi/2\), la fraction peut être arbitrairement grande.
+
+	Nous verrons par la proposition~\ref{diff1} que la différentiabilité d'une fonction implique sa continuité.
+\end{example}
+
+\begin{definition}[gradient]		\label{DEFooWZGTooKCWBJn}
+	Soit une application \(f \colon V\to E  \) entre deux espaces vectoriels normés. Soient \( a\in V\) et une base finie \( \{ e_i \}_{i=1,\ldots,n}\) de \( V\). Nous définissons le \defe{gradient}{gradient} de \( f\) en \( a\) comme étant le vecteur
+	\begin{equation}
+		(\nabla f)(a)=\begin{pmatrix}
+			(\partial_if)(a) \\
+			\vdots           \\
+			(\partial_nf)(a).
+		\end{pmatrix}
+	\end{equation}
+\end{definition}
+
+\begin{proposition}		\label{PROPooYCLBooOLoDnM}
+	Soit une application \(f \colon V\to E  \) entre deux espaces vectoriels normés. Soient \( u\in V\), \( a\in V\) ainsi qu'une base finie \( \{ e_i \}_I\) de \( V\). Nous supposons que \( (\partial_uf(a)) \) et \( (\partial_if)(a)\) existent pour tout \( i\in I\). Alors
+	\begin{equation}
+		(\partial_uf)(a)=\sum_{i\in I}u_i(\partial_if)(a)=u\cdot(\nabla f)(a).
+	\end{equation}
+	%TODOooEAJMooVMlkse. Prouver ça.
+\end{proposition}
+
+\begin{proposition}			\label{PROPooZOFLooBmcZqN}
+	Soit une application \(f \colon V\to E  \) différentiable en \( a\in V\). Alors toutes les dérivées directionnelles \( (\partial_uf)(a)\) existent et
+	\begin{equation}
+		(df_a)(u)=\sum_i(\partial_uf)(a).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	L'hypothèse de différentiabilité de \( f\) en \( a\) dit que
+	\begin{equation}
+		\lim_{h\to 0} \frac{ f(a+h)-f(a)-df_a(h) }{ h }=0.
+	\end{equation}
+	Soit \( u\in V\). Nous utilisons la proposition \ref{PROPooREUUooUNDFRi} avec le chemin
+	\begin{equation}
+		\begin{aligned}
+			\gamma\colon \mathopen] -1,1\mathclose[ & \to V       \\
+			t                                       & \mapsto tu.
+		\end{aligned}
+	\end{equation}
+	Cela donne :
+	\begin{equation}
+		\lim_{t\to 0}\frac{ f(a+tu)-f(a)-df_a(tu) }{ | t | }=0.
+	\end{equation}
+	nous pouvons dire que la limite \( t\to 0\) existant, les limites à gauche et à droite existent et sont toutes deux égales à zéro\footnote{Cela n'est même pas un résultat en plus. C'est la proposition \ref{PROPooREUUooUNDFRi}, avec le chemin $ \gamma $ pris sur $ \mathopen[ -1,0\mathclose[$ et sur $ \mathopen] 0,1\mathclose]$ séparément. Sinon, vous pouvez invoquer la proposition \ref{PROPooGUNLooSQrJKg}}. À partir de
+	\begin{equation}
+		\lim_{t\to 0^+}\frac{ f(a+tu)-f(a)-df_a(tu) }{ | t | }=0,
+	\end{equation}
+	en utilisant la linéarité \( df_a(tu)=tdf_a(u)\), nous déduisons que
+	\begin{equation}
+		\lim_{t\to 0^+}\frac{ f(a+tu)-f(a) }{t}=df_a(u).
+	\end{equation}
+	De même à partir de la limite à gauche nous déduisons
+	\begin{equation}
+		\lim_{t\to 0^-}\frac{ f(a+tu)-f(a) }{t}=df_a(u).
+	\end{equation}
+	Et maintenant on utilise la proposition \ref{PROPooGUNLooSQrJKg} pour dire que les limites à gauche et à droite existant et étant égales, la limite existe et est égale :
+	\begin{equation}
+		\lim_{t\to 0}\frac{ f(a+tu)-f(a) }{t}=df_a(u).
+	\end{equation}
+	Cela signifie bien que \( (\partial_uf)(a)=df_a(u)\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooEOXLooNKHGHj}
+	Si \(f \colon V\to E  \) est une application différentiable et injective, alors pour tout \( x\in v\), l'application linéaire \(df_x \colon V\to E  \) est injective.
+	%TODOooPCGHooCQGPmz. Prouver ça.
+\end{proposition}
+
+
+%-------------------------------------------------------
+\subsection{Théorème des accroissements finis}
+%----------------------------------------------------
+
+Si une fonction est dérivable en \( a\) alors elle peut être approximée «au premier ordre» par une formule simple qui sera généralisée pour des dérivées d'ordre supérieurs avec les séries de Taylor, théorème~\ref{ThoTaylor}. Pour trouver des versions avec des dérivations partielles, voir le thème \ref{INTERNooXFNTooNNaOzP}.
+\begin{proposition}[Développement limité au premier ordre]  \label{PropUTenzfQ}
+	Soit un espace vectoriel normé \( E\) sur le corps \( \eK\) (\( \eR\) ou \( \eC\)).
+	Si \( f\colon \eR\to E\) est une fonction dérivable\footnote{Définition \ref{DEFooOYFZooFWmcAB}.}, alors il existe une fonction \( \alpha\colon \eR\to E\) telle que
+	\begin{subequations}     \label{EQooHBDHooPrVjJD}
+		\begin{numcases}{}
+			f(a+h)=f(a)+hf'(a)+\alpha(h)\\
+			\lim_{h\to 0} \frac{ \alpha(h) }{ h }=0.
+		\end{numcases}
+	\end{subequations}
+	Il existe aussi une fonction \( \beta\colon \eR\to E\) telle que
+	\begin{subequations}       \label{EQooPWIZooVuhjmt}
+		\begin{numcases}{}
+			f(a+h)=f(a)+ hf'(a)+h\beta(h)			\label{SUBEQooMJTJooOpBfqv}\\
+			\lim_{h\to 0}\beta(h)=0.
+		\end{numcases}
+	\end{subequations}
+\end{proposition}
+\index{développement!limité!premier ordre}
+
+\begin{proof}
+	La fonction \( f\) étant dérivable en \( a\) nous avons l'existence de la limite suivante :
+	\begin{equation}
+		f'(a)=\lim_{h\to 0} \frac{ f(a+h)-f(a) }{ h }.
+	\end{equation}
+	Nous définissons \(\beta \colon \eR\to E  \) par
+	\begin{equation}
+		\beta(h)=\frac{ f(a+h)-f(a) }{ h }-f'(a).
+	\end{equation}
+	La proposition \ref{PROPooBHHCooPbRggh}\ref{ITEMooDPBHooKRccPZ} donne directement \( \lim_{h\to 0}\beta(h)=0\). En multipliant par \( h\) (qui est différent de \( 0\)), et en isolant \( f(a+h)\), nous avons la formule \eqref{SUBEQooMJTJooOpBfqv}. En nommant \( \alpha(h)=h\beta(h)\) nous trouvons la fonction \( \alpha\) de la formule \eqref{EQooHBDHooPrVjJD} :
+	\begin{equation}
+		f(a+h)=f(a)+hf'(a)+\alpha(h)
+	\end{equation}
+	avec
+	\begin{equation}
+		\lim_{h\to 0} \frac{ \alpha(h) }{ h }=\lim_{h\to 0} \beta(h)=0.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}		\label{PROPooPLWZooCGmjfi}
+	Soient deux espaces vectoriels normés \( V\) et \( E\). Soit une application \(f \colon V\to E  \) dérivable dans le sens de \( h\) en \( a\in V\). Alors nous avons une application \(\beta \colon \eR\to E  \) telle que
+	\begin{subequations}
+		\begin{numcases}{}
+			f(a+th)=f(a)+t(\partial_hf)(a)+\beta(t)\\
+			\lim_{t\to 0}\beta(t)=0.
+		\end{numcases}
+	\end{subequations}
+\end{proposition}
+
+\begin{proof}
+	Nous posons
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \eR & \to E            \\
+			t                 & \mapsto f(a+th).
+		\end{aligned}
+	\end{equation}
+	et nous lui appliquons les accroissements finis de la proposition \ref{PropUTenzfQ} : \( \varphi(t)=\varphi(0)+t\varphi'(0)+t\beta(t)\). En ce qui concerne \( \varphi'(0)\) nous avons :
+	\begin{subequations}
+		\begin{align}
+			\varphi'(0) & =\lim_{\epsilon\to 0}\frac{ \varphi(\epsilon)-\varphi(0) }{ \epsilon } \\
+			            & =\lim_{\epsilon\to 0}\frac{ f(a+\epsilon h)-f(a) }{ \epsilon }         \\
+			            & =(\partial_hf)(a)
+		\end{align}
+	\end{subequations}
+	par la définition \ref{DEFooCATTooTPLtpR}.
+\end{proof}
+
+
+\begin{theorem}[Accroissements finis pour les dérivées suivant un vecteur]      \label{val_medio_1}
+	Soit \( U\) un ouvert dans \( \eR^m\) et soit \( f:U\to\eR^n\) une fonction. Soient \( a\) et \( b\) deux points distincts dans \( U\), tels que le segment\footnote{Définition~\ref{DefLISOooDHLQrl}.} \( [a,b]\) soit contenu dans \( U\). Soit \( u\) le vecteur
+	\[
+		u=\frac{b-a}{\|b-a\|_m}.
+	\]
+	Si \( \partial_u f(x)\) existe pour tout \( x\) dans \( [a,b]\) on a
+	\[
+		\|f(b)-f(a)\|_n\leq \sup_{x\in[a,b]}\|\partial_uf(x)\|_n\|b-a\|_m.
+	\]
+\end{theorem}
+\index{accroissements finie!dérivée partielle}
+
+\begin{proof}
+	Nous considérons la fonction \( g(t)=f\big( (1-t)a+tb \big)\). Elle décrit la droite entre \( a\) et \( b\) parce que \( g(0)=a\) et \( g(1)=b\). En ce qui concerne la dérivée,
+	\begin{equation}
+		\begin{aligned}[]
+			g'(t) & =\lim_{h\to 0} \frac{ g(t+h)-g(t) }{ h }                                          \\
+			      & =\lim_{h\to 0} \frac{ f\big( (1-t-h)a+(t+h)b \big)- f\big( (1-t)a+tb \big) }{ h } \\
+			      & =\lim_{h\to 0} \frac{ f\big( a+(t+h)(b-a) \big)-f\big( a+t(b-a) \big) }{ h }      \\
+			      & =\frac{ \partial f }{ \partial u }\big( a+t(b-a) \big)\| b-a \|.
+		\end{aligned}
+	\end{equation}
+	Le dernier facteur \( \| b-a \|\) apparaît pour la normalisation du vecteur \( u\). En effet dans la limite, il apparaît \( h(b-a)\), ce qui donnerait la dérivée le long de \( b-a\), tandis que \( u\) vaut \( (b-a)/\| b-a \|\).
+
+	Par le théorème des accroissements finis pour \( g\), il existe \( t_0\in\mathopen] 0 , 1 \mathclose[\) tel que
+		\begin{equation}
+			g(1)=g(0)+g'(t_0)(1-0).
+		\end{equation}
+		Donc
+		\begin{equation}
+			\| g(1)-g(0) \|\leq\sup_{t_0}\| g'(t_0) \|=\sup_{t_0\in\mathopen] 0 , 1 \mathclose[}\left\| \frac{ \partial f }{ \partial u }(a+t_0(b-a)) \right\|\| b-a \|.
+		\end{equation}
+		Mais lorsque \( t_0\) parcourt \( \mathopen] 0 , 1 \mathclose[\), le point \( a+t_0(b-a)\) parcourt le segment \( \mathopen] a , b \mathclose[\), d'où le résultat.
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Différentielle d'ordre \( 2\)}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooBODMooJHyzup}
+	Soient deux espaces vectoriels normés \( V\) et \( E\). Soit une application \(f \colon V\to E  \) deux fois différentiable et dont les différentielles partielles secondes existent\footnote{Ces deux hypothèses sont redondantes, mais nous n'avons pas envie de nous prendre la tête avec ça ici.}. Alors nous avons la formule
+	\begin{equation}
+		(d^2f)_a(v)w=\sum_{ij}(\partial^2_{ij}f)(a)v_iw_j.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Rappel à propos des espaces concernés :
+	\begin{subequations}
+		\begin{align}
+			f    & \colon V\to E                          \\
+			df   & \colon V\to \aL(V,E)                   \\
+			d^2f & \colon V\to \aL\big( V,\aL(V,E) \big).
+		\end{align}
+	\end{subequations}
+	En ce qui concerne la différentielle première nous avons
+	\begin{equation}
+		\begin{aligned}
+			df\colon V & \to \aL(V,E)                          \\
+			a          & \mapsto \sum_i(\partial_if)(a)e^*_i..
+		\end{aligned}
+	\end{equation}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Quelques mots à propos des différentielles d'ordre supérieur}
+%---------------------------------------------------------------------------------------------------------------------------
+
+%-----------------------------------
+\subsubsection{Classe \( C^k\)}
+
+
+Nous introduisons quelques notations pour traiter ces espaces.
+
+\begin{definition}[\cite{ZCKMFRg, MonCerveau}]  \label{DefPNjMGqy}
+	Soient deux espaces vectoriels normés \( V\) et \( W\) ainsi qu'une application \( f\colon V\to W\). Nous disons que \( f\) est
+	\begin{itemize}
+		\item de classe  \( C^0\) si elle est continue,
+		\item de classe \( C^1\) si l'application différentielle \( df\colon V\to \aL(V,W)\) est continue,
+		\item de classe \( C^k\) si sa différentielle est de classe \( C^{k-1}\).
+		\item de classe \( C^{\infty}\) si elle est de classe \( C^k\) pour tout \( k\).
+	\end{itemize}
+
+	Lorsque nous demandons que la différentielle de \( f\) soit continue, nous entendons bien la continuité de \( df\colon V\to \aL(V,W)\), c'est-à-dire la continuité de \( df_x\) par rapport à \( x\). Sur\( \aL(V,E)\), nous considérons la topologie de la norme opérateur \ref{DefNFYUooBZCPTr}.
+
+\end{definition}
+\index{application!différentiable}
+\index{application!de classe \( C^k\)}
+Le lien entre classe \( C^k\) et dérivées partielles d'ordre \( k\) sera le théorème \ref{THOooPZTAooTASBhZ}.
+
+
+%-----------------------------------
+\subsubsection{Espaces emboîtés}
+
+
+Soient deux espaces vectoriels normés \( V\) et \( W\) ainsi qu'une application \( f\colon V\to W\). La différentielle est une application \( df\colon V\to \aL(V,W)\). Pour être clair, la différentielle seconde consiste à différentier \( df_x\) par rapport à \( x\). C'est-à-dire que la différentielle seconde est une application \( d(df)\colon V\to \aL\big( V,\aL(V,W) \big)\).
+
+Et c'est là que commencent les problèmes. Les différentielles successives font intervenir des emboîtements de plus en plus profonds d'espaces comme \( d^3f\colon V\to \aL\Big( V,\aL\big( V,\aL(V,W) \big) \Big)\).
+
+\begin{definition}      \label{DEFooJYOPooBzditG}
+	Soient des espaces vectoriels normés \( V\) et \( E\). Nous définissons les espaces emboîtés par récurrence :
+	\begin{subequations}
+		\begin{numcases}{}
+			E_0=E\\
+			E_{k+1}=\aL(V,E_k).
+		\end{numcases}
+	\end{subequations}
+\end{definition}
+
+\begin{definition}
+	Si \( \{ e_i \}\) est une base d'un espace vectoriel \( V\), nous allons noter
+	\begin{equation}
+		\begin{aligned}
+			\omega_i\colon V & \to \eR      \\
+			x                & \mapsto x_i.
+		\end{aligned}
+	\end{equation}
+	Ce \( \omega_i\) est ce qu'on appelle souvent \( e_i^*\). Plus généralement, si \( I\) est le multiindice \( (i_1,\ldots, i_l)\) nous notons \( \omega_I\in \aL^l(V,\eR)\) par
+	\begin{equation}
+		\begin{aligned}
+			\omega_I\colon V^l        & \to \eR                                     \\
+			(x^{(1)},\ldots, x^{(l)}) & \mapsto  x^{(1)}_{i_1}\ldots x^{(l)}_{i_l}.
+		\end{aligned}
+	\end{equation}
+	Ce seront nos formes multilinéaires de base.
+\end{definition}
+
+Afin de garder des notations très explicites, nous ne pouvons pas écrire des formules comme
+\[
+	df_a=\sum_i\frac{ \partial f }{ \partial x_i }(a)\omega_i
+\]
+parce que si \( f\) prend ses valeurs dans \( \aL(V,\eR)\), lorsqu'on écrit \( df_a(v)\), il n'y a aucune raison à priori de vouloir que \( v\) soit pris par \( \omega_i\) au lieu de \( \partial_if(a)\).
+
+Nous introduisons donc un produit fait exprès pour dire que «c'est celui de droite qui prend».
+\begin{definition}[\cite{MonCerveau}]       \label{DEFooLULCooYjBEaZ}
+	Si \( W\) est un espace vectoriel, nous définissons le produit \( \times_n\) par
+	\begin{equation}
+		\begin{aligned}
+			\times_1\colon W\times \aL(V,\eR) & \to \aL(V,W) \\
+			(w\times_1\alpha)(v)              & =\alpha(v)w
+		\end{aligned}
+	\end{equation}
+	et par\footnote{Définition \ref{DEFooJYOPooBzditG} pour les espaces \( E_n\) et \( \eR_n\).}
+	\begin{equation}
+		\begin{aligned}
+			\times_n\colon W\times \eR_n & \to W_n                  \\
+			(w\times_n\alpha)(v)         & =w\times_{n-1} \alpha(v)
+		\end{aligned}
+	\end{equation}
+\end{definition}
+Cette notation sera utilisée dans la proposition \ref{PROPooUDJLooHwzjQF} pour écrire correctement \( df_a\). Pour l'instant nous n'en avons pas besoin.
+
+
+\begin{proposition}		\label{PROPooMGFBooHWGXyC}
+	Tout polynôme \(P \colon \eR^n\to \eR^m  \) est de classe\footnote{Classe, définition \ref{DefPNjMGqy}.} \( C^{\infty}\).
+	%TODOooIELZooDNtbDa. Prouver ça.
+\end{proposition}
+
+
+%-----------------------------------
+\subsubsection{Difféomorphisme}
+
+
+\begin{definition}[difféomorphisme]      \label{DefAQIQooYqZdya}
+	Soient \( U\) et \( V\), deux ouverts d'un espace vectoriel normé. Une application \( f\) de \( U\) dans \( V\) est un \defe{difféomorphisme}{difféomorphisme} si elle est bijective, différentiable\footnote{Différentiables, définition \ref{DefDifferentiellePta}.} et dont l'inverse \( f^{-1}:V\to U \) est aussi différentiable.
+
+	Un \( C^k\)-difféomorphisme est un difféomorphisme qui est \( C^k\) et dont l'inverse est \( C^k\).
+\end{definition}
+
+\begin{normaltext}
+	Truc marrant : un \( C^1\)-difféomorphisme n'est pas seulement un difféomorphisme qui est \( C^1\). L'inverse doit également être \( C^1\). Comment nommer un difféomorphisme qui est par ailleurs un application de classe \( C^1\) ? Je ne sais pas.
+\end{normaltext}
+
+\begin{normaltext}
+	Sur le wikipédia anglophone\footnote{\url{https://en.wikipedia.org/wiki/Diffeomorphism}}, on demande que la différentielle de l'inverse soit continue. Ce que wikipédia anglophone nomme \emph{diffeomorphism} est ici un \( C^1\)-difféomorphisme.
+\end{normaltext}
+
+\begin{remark}      \label{RemATQVooDnZBbs}
+	L'application norme étant continue, le critère du théorème~\ref{ThoWeirstrassRn} est en réalité assez général. Par exemple à partir d'une application différentiable\footnote{Définition~\ref{DefDifferentiellePta}.} \( f\colon X\to Y\)  nous pouvons considérer la fonction réelle
+	\begin{equation}
+		a\mapsto \|  df_a   \|
+	\end{equation}
+	où la norme est la norme opérateur\footnote{Définition~\ref{DefNFYUooBZCPTr}.}. Si \( f\) est de classe \( C^1\) alors cette application est continue et donc bornée sur un compact \( K\) de \( X\).
+\end{remark}
+
+
+%-------------------------------------------------------
+\subsection{Topologie et norme induite}
+%----------------------------------------------------
+
+Nous savons par le lemme \ref{LEMooKDMYooMIcFRI} que la topologie induite est celle de la norme induite.
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooORVKooIfIqVL}
+	Soient deux espaces vectoriels normés \( E\) et \( F\). Soit une application \(f \colon E\to F  \) de classe \( C^k\). Nous considérons \( A\) fermé dans \( E\). Nous considérons les normes induites sur \( A\) et \( f(A)\).
+
+	Alors \(f \colon A\to f(A)  \) est de classe \( C^k\).
+	%TODOooMYUVooHWjMhl. Prouver ça.
+\end{proposition}
+
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Différentielle d'applications linéaires}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}[Différentielle d'une application linéaire]       \label{LEMooZSNMooCfjzOB}
+	Soient deux espaces vectoriels normés \( E\) et \( F\). Soit une application linéaire \( f\colon E\to F\).
+	\begin{enumerate}
+		\item
+		      Si \( f\colon E\to F\) est linéaire, alors sa différentielle est
+		      \begin{equation}
+			      \begin{aligned}
+				      df\colon E & \to  \aL(E,F) \\
+				      a          & \mapsto f.
+			      \end{aligned}
+		      \end{equation}
+		\item
+		      Si \( f\colon E\to F\) est linéaire, toutes les différentielles d'ordre supérieures sont nulles.
+		\item
+		      Toute application linéaire est de classe \(  C^{\infty}\).
+		\item
+		      Toute application affine est de classe \(  C^{\infty}\).
+	\end{enumerate}
+\end{lemma}
+%TODOooMGPJooZCgTRv Je crois que seul le premier point est prouvé. En particulier je suis sûr que le dernier n'est pas prouvé.
+% La partie sur les applications affines C^oo est utilisée dans LEMooAJDLooIPcmIV.
+
+\begin{proof}
+	Pour rappel, toujours bon à avoir en tête : \( df\colon E\to \aL(E,F)\). Soit \( a\in E\); nous avons
+	\begin{equation}
+		\lim_{h\to 0} \frac{ \| f(a+h)-f(a)- f(h) \|_F }{ \| h \|_E }=0
+	\end{equation}
+	parce que le numérateur est nul pour tout \( h\). Donc \( h\mapsto f(h)\) est la différentielle de \( f\) au point \( a\) parce que elle vérifie la condition \eqref{DefDifferentiellePta}.
+
+	Nous avons prouvé que la différentielle de \( f\) est l'application constante
+	\begin{equation}
+		\begin{aligned}
+			df\colon E & \to \aL(E,F) \\
+			a          & \mapsto f
+		\end{aligned}
+	\end{equation}
+
+	En ce qui concerne la différentielle seconde, nous prouvons que \( d(df)_a=0\) pour tout \( a\in E\). En effet,
+	\begin{equation}
+		\lim_{h\to 0} \frac{ \| df_{a+h}-df_a \|_{\aL(E,F)} }{ \| h \|_E }=0
+	\end{equation}
+	parce que le numérateur vaut \( f-f=0\).
+
+	Maintenant il n'est pas compliqué de faire une récurrence : si \( f\) est de classe \( C^k\) et si \( d^k(f)=0\), alors \( d^k(f)\) est de classe \( C^1\) et \( d^kf=0\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooAJDLooIPcmIV}
+	Soient \( a<b\) dans \( \eR\). L'application
+	\begin{equation}        \label{EQooIINJooAlSqKF}
+		\begin{aligned}
+			f\colon \mathopen[ a , b \mathclose] & \to \mathopen[ 0 , 1 \mathclose] \\
+			x                                    & \mapsto \frac{ x-a }{ b-a }
+		\end{aligned}
+	\end{equation}
+	est un \(  C^{\infty}\)-difféomorphisme\footnote{Définition \ref{DefPNjMGqy}.}.
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Valeurs dans \( \mathopen\lbrack 0 , 1 \mathclose\rbrack\)]     \label{ITEMooLRECooOSEqJL}
+		Nous devons prouver que pour tout \( x\in\mathopen[ a , b \mathclose]\), nous avons \( f(x)\in \mathopen[ 0 , 1 \mathclose]\). D'une part si \( x\in\mathopen[ a , b \mathclose]\), alors \( x-a\geq 0\) et donc \( (x-a)/(b-a)\geq 0\).
+
+		Dans l'autre sens, si \( (x-a)/(b-a)>1\), alors \( x-a>b-a\) et donc \( x>b\). Donc \( f(x)>1\) n'arrive jamais pour \( x\in \mathopen[ a , b \mathclose]\).
+		\spitem[Injectif]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( f(x)=f(t)\), alors en simplifiant par \( b-a\neq 0\), nous trouvons \( x-a=t-a\) et donc \( x=t\) (ne citez le lemme \ref{LEMooFQMVooDNaTDT} que si vous êtes capables de le prouver, sinon faites comme si c'était évident et il ne vous arrivera rien).
+		\spitem[Surjectif]
+		% -------------------------------------------------------------------------------------------- 
+		Il est vite vérifié que
+		\begin{equation}       \label{EQooPSAWooNEJFih}
+			f^{-1}(t)=t(b-a)+a,
+		\end{equation}
+		et en procédant de même qu'au point \ref{ITEMooLRECooOSEqJL}, nous voyons que pour tout \( t\in \mathopen[ 0 , 1 \mathclose]\), \( f^{-1}(t)\in\mathopen[ a , b \mathclose]\).
+		\spitem[De classe \(  C^{\infty}\)]
+		% -------------------------------------------------------------------------------------------- 
+		C'est le lemme \ref{LEMooZSNMooCfjzOB} qui fait le travail parce que \eqref{EQooIINJooAlSqKF} est affine.
+		\spitem[Inverse de classe \(  C^{\infty}\)]
+		% -------------------------------------------------------------------------------------------- 
+		Encore le lemme \ref{LEMooZSNMooCfjzOB} parce que \eqref{EQooPSAWooNEJFih} est affine.
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Différentielle d'applications multilinéaires}
+%----------------------------------------------------
+
+Notre objectif est de calculer \( df_a(h)\) lorsque \(f \colon E_1\times \ldots\times E_n\to F  \) est une application multilinéaire. Nous mettons dans ce lemme l'essentiel de la combinatoire du problème.
+\begin{lemma}[\cite{BIBChatGPT}]	\label{LEMooOHRGooBKevzM}
+	Soient des espaces de Banach\footnote{Définition \ref{DefVKuyYpQ}.} \( E_1,\ldots,E_n\) et \( F\). Soit une application multilinéaire \(f \colon E_1\times\ldots\times E_n\to F  \). Soient \( a_i,h_i\in E_i\). Pour chaque partie \( I\subset\{ 1,\ldots,n \}\) nous posons
+	\begin{equation}
+		x_{I,i}=\begin{cases}
+			h_i & \text{si } i\in I \\
+			a_i & \text{sinon. }
+		\end{cases}
+	\end{equation}
+	Alors
+	\begin{equation}		\label{EQooTNALooHjpmWv}
+		f(a_1+h_1,\ldots,a_n+h_n)=\sum_{I\subset\{ 1,\ldots,n \}}f(x_{I,1},\ldots,x_{I,n}).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous faisons une récurrence sur \( n\) en commençant par \( n=1\). Nous avons, par linéarité de \( f\),
+	\begin{equation}
+		f(a_1+h_1)=f(a_1)+f(h_1)=f(x_{\emptyset,1})+f(x_{\{ 1 \},1})=\sum_{I\subset\{ 1 \}}f(x_{I,1}).
+	\end{equation}
+
+	Nous supposons que la formule \eqref{EQooTNALooHjpmWv} est vraie pour \( n\) et nous étudions le cas \( n+1\). Pour rappel, les éléments \( a_i\) et \( h_i\) sont fixés. Nous posons \( s=a_{n+1}+h_{n+1}\) et nous considérons l'application
+	\begin{equation}
+		\begin{aligned}
+			f\colon E_1\times \ldots\times E_n & \to F                        \\
+			(y_1,\ldots,y_n)                   & \mapsto f(y_1,\ldots,y_n,s).
+		\end{aligned}
+	\end{equation}
+	C'est une application \( n\)-multilinéaire sur laquelle l'hypothèse de récurrence fonctionne :
+	\begin{subequations}
+		\begin{align}
+			f(a_1+h_1,\ldots,a_n+h_n,a_{n+1}+h_{n+1}) & = g(a_1+h_1,\ldots,a_n+h_n)                                                      \\
+			                                          & =\sum_{J\subset\{ 1,\ldots,n \}}f(x_{J,1},\ldots,x_{J,n},s)                      \\
+			                                          & =\sum_{J\subset\{ 1,\ldots,n \}}f(x_{J,1},\ldots,x_{J,n},a_{n+1}+h_{n+1})        \\
+			                                          & =\sum_{J\subset\{ 1,\ldots,n \}}\Big( f(x_{J,1},\ldots,x_{J,n},a_{n+1})\nonumber \\
+			                                          & \qquad+f(x_{J,1},\ldots,x_{J,n}+h_{n+1}) \Big).\label{SUBEQooRCIFooUQdjXS}
+		\end{align}
+	\end{subequations}
+	En ce qui concerne l'ensemble des parties nous avons
+	\begin{equation}
+		\mP(1,\ldots,n+1)=\mP(1,\ldots,n)\bigcup_{J\in \mP(1,\ldots,n)}J\cup\{ n+1 \}.
+	\end{equation}
+	Nous avons donc
+	\begin{equation}		\label{EQooKDGYooVFgPWb}
+		\begin{aligned}[]
+			\sum_{I\in\mP(1,\ldots,n+1)}f(x_{I,1},\ldots,x_{I,n+1}) & =\sum_{I\in\mP(1,\ldots,n)}f(x_{I,1},\ldots,x_{I,n}, x_{I,n+1})\nonumber                                    \\
+			                                                        & \quad + \sum_{J\in\mP(1,\ldots,n)}f(x_{J\cup\{ n+ \},1},\ldots,x_{J\cup\{ n+1 \},n},x_{J\cup\{ n+1 \}},n+1)
+		\end{aligned}
+	\end{equation}
+	Notez que nous sommons sur \( J\subset\{ 1,\ldots,n \}\). Donc à tous les coups, \( x_{I,n+1}=a_i\) et \( x_{J\cup\{ n+1 \},n+1}=h_i\), et ce que nous avons dans \eqref{EQooKDGYooVFgPWb} est la même chose que \eqref{SUBEQooRCIFooUQdjXS}.
+\end{proof}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooNDCPooWRdSQV}
+	Soient des espaces de Banach \( E_1,\ldots,E_n\) ainsi que \( F\). Soit une application \( n\)-multilinéaire \(f \colon E_1\times \ldots\times E_n\to F  \) que nous supposons être continue. Nous considérons \( a=(a_1,\ldots,a_n)\in E_1\times\ldots\times E_n\) et \( h=(h_1,\ldots,h_n)\in E_1\times\ldots\times E_n\). Alors \( f\) est différentiable et
+	\begin{equation}
+		df_a(h)=f(h_1,a_2,\ldots,a_n)+\ldots+f(a_1,\ldots,a_{n-1},h_n).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Notre candidat différentielle est l'application
+	\begin{equation}
+		T(h_1,\ldots,h_n)=f(h_1,a_2,\ldots,a_n)+\ldots+f(a_1,\ldots,a_{n-1},h_n),
+	\end{equation}
+	et pour faire tourner la définition \eqref{EqCritereDefDiff} de la différentielle, nous devons étudier
+	\begin{equation}
+		f(a_1+h_1,\ldots,a_n+h_n)-f(a_1,\ldots,a_n)-T(h_1,\ldots,h_n).
+	\end{equation}
+	Nous reprenons les notations du lemme \ref{LEMooOHRGooBKevzM}. En notons \( \mS\) l'ensemble des singletons de \( \{ 1,\ldots,n \}\) nous avons
+	\begin{subequations}
+		\begin{align}
+			f(a_1+h_1, & \ldots,a_n+h_n)  -f(a_1,\ldots,a_n)-T(h_1,\ldots,h_n)                                                                                                       \\
+			           & =\sum_{I\subset\{ 1,\ldots,n \}}f(x_1^{(I)},\ldots,x_n^{(I)})  -f(x_1^{(\emptyset)},\ldots,x_n^{(\emptyset)}) - \sum_{I\in\mS}f(x_1^{(I)},\ldots,x_n^{(I)}) \\
+			           & =\sum_{I\in\mF}f(x_1^{(I)},\ldots,x_n^{(I)})
+		\end{align}
+	\end{subequations}
+	où \( \mS\) est l'ensemble des parties de \( \{ 1,\ldots,n \}\) contenant au moins deux éléments. Notre tâche est est maintenant d'évaluer la norme de ça. Nous avons supposé que \( f\) était continue; donc la proposition \ref{PROPooDQBOooByBvmj} donne
+	\begin{equation}
+		\| f(x_1^{(I)},\ldots,x_n^{(I)}) \|\leq \lambda\| x_1^{(I)} \|\ldots\| x_n^{(I)} \|
+	\end{equation}
+	pour un certain \( \lambda\in \eR^+\). Par ailleurs, étant donnée la norme produit \ref{DefZTHxrHA}, nous avons \( \| h_i \|\leq \| h \|\) pour tout \( i\). Étant donné que nous nous apprêtons à faire \( h\to 0\), nous pouvons supposer que \( \| h_i \|\leq \| a_j \|\) pour tout \( i\) et \( j\). Et enfin nous posons \( M=\max\{ \| a_j \| \}\). Avec tout ça si \( I\in\mF\),
+	\begin{equation}
+		\| x_1^{(I)} \|\ldots\| x_n^{(I)} \|\leq \| h \|^2M^{n-2}.
+	\end{equation}
+	Nous avons donc la majoration
+	\begin{subequations}
+		\begin{align}
+			\| f(a_1+h_1,\ldots,a_n+h_n)-f(a_1,\ldots,a_n)-T(h_1,\ldots,h_n) \| & \leq \sum_{I\in\mF}\| f(x_1^{(I)},\ldots,x_n^{(I)}) \| \\
+			                                                                    & \leq \sum_{I\in\mF}\lambda\| h \|^2M^{n-2}             \\
+			                                                                    & =\lambda \| h \|^2(2M)^{n-2}.
+		\end{align}
+	\end{subequations}
+	parce que l'ensemble \( \mF\) est fini et contient \( 2^{n-2}\) éléments. Et enfin
+	\begin{subequations}
+		\begin{align}
+			\frac{
+				\| f(a_1+h_1,\ldots,a_n+h_n)-f(a_1,\ldots,a_n)-T(h_1,\ldots,h_n)  \|
+			}{ \| h \| } & \leq\frac{ \lambda (2M)^{n-2}\| h \|^2 }{ \| h \| } \\
+			             & =\lambda\| h \| (2M)^{n-2}                          \\
+			             & \stackrel{ h\to 0}{\longrightarrow} 0.
+		\end{align}
+	\end{subequations}
+\end{proof}

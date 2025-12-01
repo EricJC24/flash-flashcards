@@ -34,3 +34,25 @@ CREATE TABLE IF NOT EXISTS review_log (
 CREATE INDEX IF NOT EXISTS idx_card_progress_user_id ON card_progress(user_id);
 CREATE INDEX IF NOT EXISTS idx_card_progress_next_review ON card_progress(next_review);
 CREATE INDEX IF NOT EXISTS idx_review_log_user_id ON review_log(user_id);
+
+CREATE TABLE IF NOT EXISTS bookmarks (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    card_id TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    UNIQUE(user_id, card_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_bookmarks_user_id ON bookmarks(user_id);
+
+CREATE TABLE IF NOT EXISTS hidden_cards (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    card_id TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    UNIQUE(user_id, card_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_hidden_cards_user_id ON hidden_cards(user_id);

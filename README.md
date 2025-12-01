@@ -4,10 +4,30 @@ A spaced repetition flashcard application with user authentication and Anki-like
 
 ## Quick Start
 
-### 1. Start the Backend Server
+### One-Command Startup ⚡
 
 ```bash
-cd /Users/ericpite/Documents/projects/tmp/Flash
+./start.sh
+```
+
+This will:
+- Start the Flask backend server (port 5001)
+- Start the web server (port 8000)
+- Open your browser automatically
+
+To stop all servers:
+```bash
+./stop.sh
+```
+
+### Manual Startup (Alternative)
+
+<details>
+<summary>Click to expand manual startup instructions</summary>
+
+#### 1. Start the Backend Server
+
+```bash
 source venv/bin/activate
 python server.py
 ```
@@ -15,12 +35,21 @@ python server.py
 You should see:
 ```
 ✅ Database initialized
-🚀 Starting Flask server on http://localhost:5000
+🚀 Starting Flask server on http://localhost:5001
 ```
 
-### 2. Open the Application
+#### 2. Start the Web Server
 
-Open `app.html` in your web browser.
+In a new terminal:
+```bash
+python3 -m http.server 8000
+```
+
+#### 3. Open the Application
+
+Navigate to `http://localhost:8000/index.html` in your browser.
+
+</details>
 
 ### 3. Create an Account
 
@@ -83,10 +112,13 @@ Open `app.html` in your web browser.
 
 **Server won't start?**
 - Make sure you're in the virtual environment: `source venv/bin/activate`
-- Check if port 5000 is available: `lsof -i :5000`
+- Check if port 5001 is available: `lsof -i :5001`
+- On macOS, port 5000 is used by AirPlay - we use 5001 instead
 
 **Can't connect?**
-- Verify server is running at http://localhost:5000
+- Verify servers are running:
+  - Backend: http://localhost:5001
+  - Web: http://localhost:8000
 - Check browser console for errors (F12 → Console)
 
 **Lost data?**

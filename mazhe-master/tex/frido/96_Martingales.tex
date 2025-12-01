@@ -1,0 +1,1175 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2012-2015,2018-2019, 2023-2024
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Convergence de martingales}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}
+	Si \( \tribA\) est une tribu, une \defe{filtration}{filtration} de \( \tribA\) est une suite croissante de sous-tribus \( \tribB_i\subseteq\tribB_{i+1}\subseteq\tribA\).
+
+	Nous disons qu'une suite de variables aléatoires \( (X_n)\) est \defe{adaptée}{processus!adapté à une filtration} à une filtration \( (\tribF_n)\) si \( X_i\) est \( \tribF_i\)-mesurable pour tout \( i\).
+\end{definition}
+
+\begin{definition}[\cite{BIBooYWQKooSdwvTG}]	\label{DEFooUNRAooOEmCsh}
+	Si nous avons les variables aléatoires \(X_k \colon \Omega\to \eR  \), la \defe{filtration naturelle}{filtration naturelle} est la suite de sous-tribus
+	\begin{equation}
+		\tribF_n=\sigma(X_1,\ldots,X_n),
+	\end{equation}
+	c'est-à-dire la tribu engendrée par les \( n\) premières variables aléatoires.
+\end{definition}
+
+
+Ces définitions impliquent immédiatement que si \( (X_n)\) est adapté à \( (\tribF_n)\) alors \( X_n\) est \( \tribF_k\)-mesurable pour \( k\geq n\).
+
+\begin{definition}		\label{DEFooESAGooUffeDa}
+	Une \defe{martingale}{martingale} adaptée à la filtration \( (\tribB_n)_{n\in \eN}\) est une suite de variables aléatoires \( M_n\) telle que
+	\begin{enumerate}
+		\item
+		      \(M_n\in L^1(\Omega,\tribA,P)\),
+		\item
+		      \( M_n\) est \( \tribB_n\)-mesurable,
+		\item
+		      \( E(M_{n+1}|\tribB_n)=M_n\).
+	\end{enumerate}
+
+	Le processus \( M_n\) est une \defe{sur-martingale}{sur-martingale} si \( E(M_{n+1}|\tribB_n)\leq M_n\) pour tout \( n\), et c'est une \defe{sous-martingale}{sous-martingale} si \( E(M_{n+1}|\tribB_n)\geq M_n\).
+\end{definition}
+
+\begin{example}
+	Si \( M\in L^1(\Omega,\tribA,P)\) et si \( (\tribB_n)_{n\in \eN}\) est une filtration, nous pouvons considérer la martingale \( M_n=E(M|\tribB_n)\).
+\end{example}
+
+\begin{example}     \label{ExtFFKTr}
+	Soit \( (X_i)_{i\geq 1}\) une suite de variables aléatoires indépendantes et centrées. On pose
+	\begin{equation}
+		S_n=X_1+\cdots +X_n
+	\end{equation}
+	et la filtration \( \tribB_n=\sigma(X_1,\ldots, X_n)\). Pour montrer que cela est une martingale, nous commençons par remarquer que
+	\begin{equation}
+		E(X_{n+1}|\tribB_n)=E(X_{n+1})=0
+	\end{equation}
+	par indépendance des tribus \( \tribB_n\) et \( \sigma(X_{n+1})\). Ici c'est le lemme~\ref{LemxUZFPV} qui joue.
+
+	Ensuite nous argumentons que \( E(X_1+\cdots +X_n|\tribB_n)=X_1+\cdots +X_n\). En effet d'une part \( X_1+\cdots +X_n\) est \( \tribB_n\)-mesurable et évidemment la condition intégrale de l'espérance conditionnelle est satisfaite.
+
+	Plus généralement si \( X\) est une variable aléatoire et si \( \sigma(X)\subset\tribB\) alors \( E(X|\tribB)=X\).
+\end{example}
+
+\begin{lemma}   \label{LemqanhgJ}
+	Soit \( (M_n)\) une martingale adaptée à la filtration \( (\tribF_n)\) et \( n\geq k\). Alors
+	\begin{subequations}
+		\begin{align}
+			E(M_n|\tribF_k) & =M_k  \\
+			E(M_k|\tribF_n) & =M_k.
+		\end{align}
+	\end{subequations}
+\end{lemma}
+
+\begin{proof}
+	La seconde relation revient seulement à dire que \( M_k\) est \( \tribF_n\)-mesurable, ce qui est évident parce que \( \tribF_k\subset\tribF_n\).
+
+	Nous prouvons la première par récurrence (à l'envers) sur \( k\). D'abord si \( k=n\), l'égalité \( E(M_n|\tribF_n)=M_n\). Nous supposons maintenant que \( E(M_n|\tribF_k)=M_k\), et nous prouvons que \( E(M_n|\tribF_{k-1})=M_{k-1}\). Si \( B_{k-1}\in \tribF_{k-1}\), nous avons
+	\begin{equation}
+		\int_{B_{k-1}}M_{k-1}=\int_{B_{k-1}}M_{k}=\int_{B_{k-1}}M_n.
+	\end{equation}
+	La première égalité est la définition d'une martingale, et la seconde est l'hypothèse de récurrence.
+\end{proof}
+
+\begin{theorem}[\cite{GubinelliMartin,PMCmartinLP}]     \label{ThobysyWI}
+	Soit \( (M_n)_{n\geq 0}\) une martingale bornée dans \( L^2(\Omega)\), c'est-à-dire telle que\index{martingale!bornée dans \( L^2(\Omega)\)}
+	\begin{equation}
+		\alpha=\sup_{n\geq 0}E(M_n^2)<\infty.
+	\end{equation}
+	Alors la suite \( M_n\) converge dans \( L^2(\Omega)\).
+\end{theorem}
+
+\begin{proof}
+	Nous écrivons \( M_n\) en somme télescopique
+	\begin{equation}
+		M_n=M_0+\sum_{k=1}^n\Delta_k
+	\end{equation}
+	où \( \Delta_k=M_k-M_{k-1}\). Nous commençons par montrer que les incréments sont orthogonaux au sens où \( E(\Delta_n\Delta_k)=0\). Pour \( n>k\), la variable aléatoire \( E\big( \Delta_n\Delta_k|\tribF_{n-1} \big)\) est la variable aléatoire \( \tribF_{n-1}\)-mesurable telle que
+	\begin{equation}
+		\int_{B_{n-1}}E\big( \Delta_n\Delta_k|\tribF_{n-1} \big)=\int_{B_{n-1}}\Delta_n\Delta_k
+	\end{equation}
+	pour tout \( B_{n-1}\in\tribF_{n-1}\). En particulier avec \( B_{n-1}=\Omega\) nous trouvons
+	\begin{equation}
+		E\Big( E\big( \Delta_n\Delta_k|\tribF_{n-1} \big)\Big)=E(\Delta_n\Delta_k)
+	\end{equation}
+	par la définition de l'espérance \eqref{EqdCBLst}. Par conséquent, en utilisant le lemme~\ref{LemqanhgJ} nous avons\footnote{À ce niveau je crois qu'il y a une faute dans \cite{PMCmartinLP} qui conditionne par rapport à \( \tribF_n\).}
+	\begin{equation}
+		E(\Delta_n\Delta_k)=E\Big( E(\Delta_n\Delta_k|\tribF_{n-1}) \Big)=E\Big( \Delta_kE(\Delta_n|\tribF_{n-1}) \Big)=0
+	\end{equation}
+	parce que \( E(\Delta_n|\tribF_{n-1})=E(M_n|\tribF_{n-1})-E(M_{n-1}|\tribF_{n-1})=0\).
+
+	Utilisant l'orthogonalité des incréments, nous avons
+	\begin{equation}
+		E(M_n^2)=E(M_0^2)+\sum_{k=1}^nE(\Delta_k^2).
+	\end{equation}
+	En prenant le supremum (par rapport à \( n\) des deux côtés),
+	\begin{equation}
+		E(M_0^2)+\sum_{k=1}^{\infty}E(\Delta_k^2)=\alpha<\infty.
+	\end{equation}
+	Cela prouve que la suite \( \sum_{k=1}^n\Delta_k\) converge dans \( L^2(\Omega)\). Nous en déduisons immédiatement que \( (M_n)\) est de Cauchy dans \( L^2(\Omega)\) parce que si \( k,l>n\), nous avons (en utilisant encore l'orthogonalité des incréments)
+	\begin{equation}
+		E\big( | M_k-M_l |^2 \big)=\sum_{i=k+1}^lE(\Delta_i^2)\leq\sum_{i=k+1}^{\infty}E(\Delta_i^2),
+	\end{equation}
+	qui tend vers zéro lorsque \( n\to\infty\).
+\end{proof}
+
+Le théorème suivant complète la conclusion du théorème~\ref{ThobysyWI}.
+\begin{theorem}[\cite{PMCmartinLP}] \label{ThofcttYW}
+	Soit \( (M_n)_{n\in \eN}\) une martingale bornée dans \( L^2\). Alors \( (M_n)\) converge dans \( L^2(\Omega)\) et presque surement vers une même variable aléatoire \( M_{\infty}\) qui vérifie
+	\begin{equation}        \label{EqmDMfZf}
+		M_n=E(M_{\infty}|\tribF_n).
+	\end{equation}
+\end{theorem}
+
+Notons en particulier que la variable aléatoire \( M_{\infty}\) est presque surement finie parce qu'en vertu de \eqref{EqmDMfZf} nous avons
+\begin{equation}
+	\int_{\Omega}M_{\infty}=\int_{\Omega}M_n<\infty.
+\end{equation}
+
+\begin{example}
+	Soient des variables aléatoires indépendantes \( V_k\sim\dE(2^k\lambda)\) et la variable aléatoire somme
+	\begin{equation}
+		S_n=\sum_{k=1}^nV_k.
+	\end{equation}
+	Nous allons montrer que \( S_n\stackrel{p.s.}{\longrightarrow}X\) où \( X\) est une variable aléatoire presque surement finie. Nous posons
+	\begin{equation}
+		M_n=S_n-\sum_{k=1}^n\frac{1}{ 2^k\lambda }
+	\end{equation}
+	Cela est une martingale adaptée à la filtration \( \tribF_n=\sigma(V_1,\ldots, V_n)\) en vertu de l'exemple~\ref{ExtFFKTr}. Nous montrons à présent qu'elle est bornée dans \( L^2(\Omega)\) au sens où \( \sum_{n\geq 1}E(M_n^2)<\infty\). Nous avons
+	\begin{equation}
+		E(M_n^2)=E\left( \big[ S_n-\sum_k\frac{1}{ 2^k\lambda } \big]^2 \right)=E\left( \big[ \sum_k(V_k-\frac{1}{ 2^k\lambda }) \big]^2 \right).
+	\end{equation}
+	La variable aléatoire \( V_k-1/2^k\lambda\) est une variable aléatoire centrée de variance \( 1/(2^k\lambda)^2\) (voir proposition~\ref{PropTxGcWn}). Étant donné que \( M_n\) est centrée, \( \Var(M_n)=E(M_n^2)\) et nous avons
+	\begin{equation}
+		E(M_n^2)=\sum_{k=1}^n\Var\left( V_k-\frac{1}{ 2^k\lambda } \right)=\sum_{k=1}^n\frac{1}{ (2^k\lambda)^2 },
+	\end{equation}
+	cette dernière somme étant bornée par \( l=\sum_{k=1}^{\infty}\frac{1}{ (2^k\lambda)^2 }\), nous avons
+	\begin{equation}
+		E(M_n^2)\leq l
+	\end{equation}
+	avec \( l\) indépendant de \( n\). C'est pour cela que \( (M_n)_{n\in \eN}\) est une martingale bornée dans \( L^2(\Omega)\). Par le théorème~\ref{ThofcttYW} nous avons \( M_n\to M_{\infty}\) et en faisant \( n\to \infty\) dans
+	\begin{equation}
+		S_n=M_n+\sum_{k=1}^n\frac{1}{ 2^k\lambda },
+	\end{equation}
+	nous trouvons
+	\begin{equation}
+		S_n\to M_{\infty}+\sum_{k=1}^{\infty}\frac{1}{ 2^k\lambda }=M_{\infty}+\frac{1}{ \lambda }
+	\end{equation}
+	qui est presque surement finie.
+\end{example}
+
+\begin{proposition}[\cite{BIBooYWQKooSdwvTG}]	\label{PROPooSWTPooOvzYPQ}
+	Si \( (M_n)_{n\in \eN}\) est une sous-martingale, alors
+	\begin{equation}
+		E(M_0)\leq E(M_n)
+	\end{equation}
+	pour tout \( n\).
+\end{proposition}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Temps d'arrêt et martingale terminée}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}[Temps d'arrêt]		\label{DEFooJBYJooKYVAJG}
+	Soit \( (\Omega,\tribF_n,\tribF,P)\) un espace de probabilité filtré. Une application \( T\colon \Omega\to \bar \eN\cup\{ \infty \}\) est un \defe{temps d'arrêt}{temps d'arrêt} adapté à la filtration \( (\tribF_n)\) si pour tout \( n\in \eN\) nous avons \( \{ T\leq n \}\in\tribF_n\).
+
+	Le temps d'arrêt \( T\) est \defe{borné}{borné!temps d'arrêt} si il existe \( k\in \eN\) tel que \( T(\omega)\leq k\) pour presque tout \( \omega\in \Omega\).
+\end{definition}
+
+
+%-------------------------------------------------------
+\subsection{Nombre de montées}
+%----------------------------------------------------
+
+\begin{definition}[\cite{BIBooYWQKooSdwvTG,MonCerveau}]	\label{DEFooIUOXooPfASWz}
+	Soient \( a,b\in \eR\) avec \( a<b\). Soit une suite de variables aléatoires \(Z_k \colon \Omega\to \eR  \). Nous définissons les applications \( T_k\) et \( S_k\) par récurrence en posant :
+	\begin{subequations}		\label{EQooVQSIooHGAWau}
+		\begin{align}
+			T_0     & =0                                  \\
+			S_{j+1} & =\min\{ k\geq T_j\tq Z_k\leq a \}   \\
+			T_{j+1} & =\min\{ k> S_{j+1}\tq Z_k\geq b \}.
+		\end{align}
+	\end{subequations}
+	Dans tout ceci, nous convenons que \( \min(\emptyset)=+\infty\) et \( \max(\emptyset)=0\).
+
+	Le \defe{nombre de montées}{nombre de montées} de \( a\) ) \( b\) est alors la variable aléatoire
+	\begin{equation}
+		U_n(a,b)=\max\{ j\leq n\tq T_j\leq n \}.
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooTYOAooEsoEPH}
+	Soit une suite de variable aléatoires \( (Z_k)_{k\in \eN}\). Les applications \( T_k\) et \( S_k\) définies par \eqref{EQooVQSIooHGAWau} sont des variables aléatoires. Elles sont également des temps d'arrêts\footnote{Définition \ref{DEFooJBYJooKYVAJG}.} pour la filtration naturelle\footnote{Définition \ref{DEFooUNRAooOEmCsh}.} des \( (Z_k)_{k\in \eN}\).
+
+	De plus, tant que \( S_j,T_j<\infty\) nous avons
+	\begin{equation}		\label{EQooTFZKooPeJtgg}
+		0=T_0\leq S_1<T_1
+	\end{equation}
+	et, pour tout \( j\geq 1\),
+	\begin{equation}		\label{EQooCOUAooSgWEmf}
+		T_j<S_{j+1}<T_{j+1},
+	\end{equation}
+	et
+	\begin{equation}		\label{EQooUNTOooXbDmWr}
+		Z_{S_j}\leq a<b\leq Z_{T_j}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Pour montrer que ce sont des variables aléatoires, tout est dans le théorème \ref{THOooWHFLooKYGsOm} et les suivants\footnote{Si vous avez un problème, écrivez-moi.}.
+
+	\begin{subproof}
+		\spitem[\( T_0\) est un temps d'arrêt]
+		%-----------------------------------------------------------
+
+		Nous avons \( \{ T_0\leq n \}=\{ 0\leq n \}=\Omega\). Or \( \Omega\) est dans toute tribu.
+
+		\spitem[Si \( T_j\) est un temps d'arrêt, alors \( S_{j+1}\) en est un]
+		%-----------------------------------------------------------
+
+		Nous supposons que \( T_j\) est un temps d'arrêt pour la filtration naturelle des \( (Z_k)_{k\in \eN}\), c'est-à-dire que pour tout \( n\),
+		\begin{equation}
+			\{ \omega\in \Omega\tq T_k(\omega)\leq n \}\in\tribF_n=\sigma(Z_1,\ldots,Z_n).
+		\end{equation}
+		Nous devons montrer que \( \{ \omega\in\Omega\tq S_j(\omega)\leq n \}\in\tribF_n\). D'abord nous écrivons
+		\begin{equation}		\label{EQooHBWRooGhAIan}
+			\{ \omega\in\Omega\tq S_j(\omega)\leq n \}=\bigcup_{k=1}^n\{ \omega\in \Omega\tq S_j(\omega)=k \}.
+		\end{equation}
+		Ensuite nous comprenons que \( S_j(\omega)=k\) signifie que \( Z_k(\omega)\leq a\) et \( k\leq T_j(\omega)\), et que \( k\) est minimum pour ces deux propriétés. Nous avons donc
+		\begin{equation}
+			\begin{aligned}[]
+				\{ \omega\in \Omega\tq S_j(\omega)=k \} & =\{ \omega\in \Omega\tq k\leq T_j(\omega) \}\cap\{ \omega\in\Omega\tq Z_k(\omega)\leq a \} \\
+				                                        & \quad\setminus \bigcup_{l=1}^k\{ \omega\in \Omega\tq T_j(\omega)=l,Z_l(\omega)>a \}.
+			\end{aligned}
+		\end{equation}
+		Nous rappelons que là dedans, \( k\leq n\) et que nous voulons que le tout soit dans \( \tribF_n=\sigma(Z_1,\ldots,Z_n)\). Comme les tribus sont stables par complémentaires, unions dénombrables et intersections dénombrables\footnote{Définition \ref{DefjRsGSy} et lemme \ref{LemBWNlKfA}.}, nous avons le droit de travailler chaque partie séparément.
+
+		Chaque élément de l'intersection sur \( l\) est de la forme \( \{ T_j=l \}\cap \{ Z_l>a \}\). Et nous avons
+		\begin{equation}
+			\{ T_k=l \}=\{ T_l\leq l \}\setminus \{ T_k\leq l-1 \}.
+		\end{equation}
+		Nous prouvons  bout par bout que pour tout \( m\leq k\leq n\), les parties suivantes sont dans \( \tribF_n\) :
+		\begin{itemize}
+			\item
+			      \( \{ T_j\leq m \}\in\tribF_n\) parce que \( T_j\) est un temps d'arrêt.
+			\item
+			      \( \{ T_j\geq k \}\in\tribF_n\) parce que c'est le complémentaire de \( \{ T_j<k \}=\{ T_k\leq k-1 \}\) et que \( k-1\leq n\).
+			\item
+			      \( \{ Z_k\leq a \}\in\tribF_n\) parce que \( \tribF_n\) est engendrée, entre autres par \( Z_k\). Ici nous utilisons le fait que \( k\leq n\).
+			\item
+			      \( \{ Z_l>a \}\in\tribF_n\) parce que \( \tribF_n\) contient entre autres \( \sigma(Z_l)\).
+		\end{itemize}
+
+		\spitem[Si \( S_j\) est un temps d'arrêt alors \( T_{j+1}\) en est un]
+		%-----------------------------------------------------------
+
+		Même raisonnement que l'autre\quext{Attention. J'ai pas vérifié. Je te conseille de vérifier, et de m'écrire si il y a une difficulté.}.
+	\end{subproof}
+	Et maintenant, les inégalités \eqref{EQooTFZKooPeJtgg}, \eqref{EQooCOUAooSgWEmf} et \eqref{EQooUNTOooXbDmWr}. Notons que dès que \( T_j=\infty\), tous les autres sont \( \infty\) et les inégalités n'ont plus vraiment de sens. Nous supposons donc toujours que \( T_j,S_j<\infty\).
+
+	\begin{subproof}
+		\spitem[\( T_0\leq S_1\)]
+		%-----------------------------------------------------------
+		Nous avons \( S_1=\min\{ k\geq T_0\tq Z_k\leq a \}\). En particulier \( S_1\geq T_0\).
+
+		\spitem[\( S_1<T_1\)]
+		%-----------------------------------------------------------
+		Par définition.
+
+		\spitem[\( T_j<S_{j+1}\) si \( j\geq 1\)]
+		%-----------------------------------------------------------
+		Par définition \( S_{j+1}=\min\{ k\geq T_j\tq Z_k\leq a \}\). En particulier \( S_{j+1}\geq T_j\). Voyons pourquoi pas \( S_{j+1}=T_j\). Vue la définition de \( S_{j+1}\), avoir \( S_{j+1}=T_j\) demanderait \( Z_{T_j}\leq a<b\). Mais \( T_j=\min\{ k>S_j\tq Z_k\leq b \}\). Donc \( Z_{T_j}\geq b\). Contradiction.
+
+		\spitem[\( S_{j+1}<T_{j+1}\)]
+		%-----------------------------------------------------------
+		Par définition.
+
+		\spitem[\( Z_{S_j}\leq a\)]
+		%-----------------------------------------------------------
+		Si \( l=S_j(\omega)\), alors en particulier \( l\in \{ k\geq T_j(\omega)\tq Z_k(\omega)\leq a \}\). En particulier \( Z_l(\omega)\leq a\).
+
+		\spitem[\( b\leq Z_{T_j}\)]
+		%-----------------------------------------------------------
+		Si \( l=T_j(\omega)\), alors \( l\in\{ k>S_j(\omega)\tq Z_k(\omega)\geq b \}\). En particulier \( Z_l(\omega)\geq b\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooYWQKooSdwvTG}]	\label{PROPooSGXJooQkbyMH}
+	Nous fixons \( a<b\) dans \( \eR\). Le nombre de montées est croissant et en posant
+	\begin{equation}
+		U_n(\omega)=\lim_{n\to \infty}U_n(\omega),
+	\end{equation}
+	l'application \( U_n\) est une variable aléatoire.
+\end{proposition}
+
+\begin{proof}
+	La définition est que \( U_n(\omega)=\max\{ j\leq n\tq T_j(\omega)\leq n \}\). Nous avons
+	\begin{equation}
+		\{ j\leq n\tq T_j(\omega)\leq n \}\subset \{ j\leq n+1\tq T_j(\omega)\leq n+1 \}.
+	\end{equation}
+	Donc le maximum de l'ensemble de droite est plus grand.
+
+	Le fait que la limite soit une variable aléatoire (c'est-à-dire mesurable) est la proposition \ref{PropooDXBGooSFqrai}.
+\end{proof}
+
+\begin{theorem}[Inégalité des montées de Doobs\cite{BIBooYWQKooSdwvTG}]	\label{THOooZKNNooVdOxKu}
+	Soit une sous-martingale \( (Z_n)_{n\in \eN}\). Soient \( a<b\) dans \( \eR\). Nous avons
+	\begin{equation}
+		E\big( U_n(a,b) \big)\leq \frac{1}{ b-a}E\Big( (Z_n-a)^+ \Big)\leq \frac{1}{ b-a}\Big( E\big( | Z_n | \big)+| a | \Big).
+	\end{equation}
+\end{theorem}
+
+
+\begin{proposition}[\cite{BIBooYWQKooSdwvTG}]	\label{PROPooMFRFooHMIjsy}
+	Soit une sous-martingale\footnote{Définition \ref{DEFooESAGooUffeDa}.} \( (Z_n)_{n\in \eN}\) telle que \( \sup_n E(Z^+_n)<\infty\). Alors il existe \( \Omega'\subset \Omega\) tel que \( P(\Omega')=1\) et une variable aléatoire \( Z\in L^1(\Omega')\) telle que
+	\begin{equation}
+		Z_n(\omega)\to Z
+	\end{equation}
+	pour tout \( \omega\in \Omega'\).
+\end{proposition}
+
+\begin{proof}
+
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[\( U(a,b)\in L^1(\Omega)\)]
+		%-----------------------------------------------------------
+
+		Soient \( a<b\in \eR\). Nous considérons également le nombre de montées\footnote{Définition \ref{DEFooIUOXooPfASWz}.} entre \( a\) et \( b\). C'est une suite croissante et la limite est une variable aléatoire (proposition \ref{PROPooSGXJooQkbyMH}). Le théorème de Beppo-Levi \ref{ThoRRDooFUvEAN} nous dit alors que
+		\begin{equation}
+			\lim_{n\to \infty}E\big( U_n(a,b) \big) = E\big( U(a,b) \big)\in\mathopen[ 0,\infty\mathclose].
+		\end{equation}
+		Nous passons à la limite dans l'inégalité montées \ref{THOooZKNNooVdOxKu} :
+		\begin{equation}
+			E\Big( U_n(a,b) \Big)\leq \lim_{n\to\infty}\frac{1}{ b-a}\Big( E\big( | Z_n | \big)+| a | \Big).
+		\end{equation}
+		Dans le membre de droite nous majorons
+		\begin{equation}
+			E\big( | Z_n | \big)\leq E(Z_n^+)\leq \sup_nE(Z_n^+).
+		\end{equation}
+		Nous avons donc
+		\begin{equation}
+			E\Big( U_n(a,b) \Big)\leq \frac{1}{ b-a}\sup_{n\in \eN}\Big( E(Z_n^+)+| a | \Big)<\infty.
+		\end{equation}
+		La dernière inégalité étant l'hypothèse. Nous avons donc démontré que
+		\begin{equation}
+			E\big( U(a,b) \big)<\infty,
+		\end{equation}
+		c'est-à-dire que \( U(a,b)\in L^1(\Omega)\), et donc \( U(a,b)<\infty\) presque surement. Donc
+		\begin{equation}		\label{EQooJDDJooNYpzru}
+			P\Big( \{ \omega\in \Omega\tq U(a,b)(\omega)=\infty \} \Big)=0.
+		\end{equation}
+
+		\spitem[La partie \( A_{a,b}\)]
+		%-----------------------------------------------------------
+
+		Pour chaque \( a<b\) dans \( \eQ\), nous introduisons cette partie de \( \Omega\) :
+		\begin{equation}
+			A_{a,b}=\{ \omega\in\Omega\tq
+			\begin{cases}
+				\liminf_nZ_n(\omega)  \leq a \\
+				\limsup_nZ_n(\omega)  \geq b
+			\end{cases}
+			\}.
+		\end{equation}
+
+		\spitem[\( T_j,S_j<\infty\) sur \( A_{a,b}\)]
+		%-----------------------------------------------------------
+
+		Soit \( \omega\in A_{a,b}\). Nous prouvons que \( T_j(\omega)<\infty\) et \( S_j(\omega)<\infty\) par récurrence. Pour tout \( N>0\), il existe \( k,>N\) tel que \( Z_k(\omega)\leq a\) et \( Z_l(\omega)\geq b\).
+
+		Si \( T_j(\omega)<\infty\), alors \( S_{j+1}<\infty\). En effet il existe \( k>T_j(\omega)\) tel que \( Z_k(\omega)\leq a\). Et donc \( S_{j+1}(\omega)<\infty\).
+
+		De même si \( S_j(\omega)<\infty\), alors il existe \( k>S_j(\omega)\) tel que \( Z_k(\omega)\geq b\). Donc \( T_{j+1}(\omega)<\infty\).
+
+		\spitem[\( U(a,b)=\infty\) sur \( A_{a,b}\)]
+		%-----------------------------------------------------------
+
+
+		Nous montrons à présent que \( U(\omega)=\infty\) pour tout \( \omega\in A_{a,b}\). Soient \( \omega\in A_{a,b}\), et \( m>0\). Nous posons
+		\begin{equation}
+			N=\max\{ T_m(\omega),m \},
+		\end{equation}
+		et nous considérons \( n>N\). Nous allons prouver qu'alors \( U_n(a,b)\geq m\). Pour rappel \( U_n(\omega)=\max\{ j\leq n\tq T_j(\omega)\leq n \}.\). Vu que \( T_m(\omega)<N<n\) et \( m\leq N<n\), nous avons \( m\in\{ j\leq n\tq T_j(\omega)\leq n \}\), et donc \( U_n(\omega)\geq m\). Nous avons donc prouvé que
+		\begin{equation}
+			\lim_{n\to \infty}U_n(a,b)(\omega)=\infty
+		\end{equation}
+		dès que \( \omega\in A_{a,b}\). En vertu de \eqref{EQooJDDJooNYpzru}, nous avons \( P(A_{a,b})=0\) pour tout \( a<b\in \eR\).
+
+		\spitem[L'union des \( A_{a,b}\)]
+		%-----------------------------------------------------------
+
+		Nous posons
+		\begin{equation}
+			A=\{ \omega\in \Omega\tq \liminf_nZ_n(\omega)<\limsup_nZ_n(\omega) \},
+		\end{equation}
+		et nous prouvons à présent que \( A=\bigcup_{\substack{ a,b\in \eQ \\ a<b }} A_{a,b} \).
+
+		Soit \( \omega\in A\). Il existe \( a,b\in \eQ\) tels que \( \omega\in A_{a,b}\). Nous avons donc
+		\begin{equation}
+			\liminf_nZ_n(\omega)\leq a<b\leq \limsup_nZ_n(\omega),
+		\end{equation}
+		et donc \( \omega\in A\). Dans l'autre sens, nous supposons que \( \omega\in \Omega\) satisfasse \( \liminf_nZ_n(\omega)<\limsup_nZ_n(\omega)\). En utilisant le lemme \ref{LemooHLHTooTyCZYL}\ref{ITEMooGVTMooQsoTCi} (deux fois), nous considérons \( a<b\) dans \( \eQ\) tels que
+		\begin{equation}
+			\liminf_nZ_n(\omega)<a<b<\limsup_nZ_n(\omega).
+		\end{equation}
+		Cela prouve que \( \omega\in A_{a,b}\subset A\).
+
+		\spitem[Convergence presque sure]
+		%-----------------------------------------------------------
+
+		En tant qu'union dénombrable de parties de mesures nulles, nous avons \( P(A)=0\). Le \( \Omega'\) dont on parle dans l'énoncé sera \( A^c\). Vu que \( P(\Omega\setminus \Omega')=0\), le mesure \( P\) restreinte aux parties de \( \Omega'\) est une mesure de probabilité sur \( \Omega'\). Pour \( \omega\in \Omega'\), nous avons
+		\begin{equation}
+			\liminf_nZ_n(\omega)=\limsup_nZ_n(\omega),
+		\end{equation}
+		et donc la suite \( (Z_n(\omega))\) converge dans \( \bar \eR\). Nous considérons la variable aléatoire
+		\begin{equation}
+			\begin{aligned}
+				Z\colon \Omega' & \to \bar \eR                          \\
+				\omega          & \mapsto \lim_{n\to\infty}Z_n(\omega).
+			\end{aligned}
+		\end{equation}
+		Vu que \( Z_n(\omega)\to Z(\omega)\), la proposition \ref{PROPooUOYTooGwGZHz} dit que \( \liminf_n| Z_n(\omega) |=| Z(\omega) |\). Nous pouvons calculer un peu d'espérance :
+		\begin{subequations}		\label{SUBEQSooPEZEooTDliNe}
+			\begin{align}
+				E\big( | Z | \big) & =\int_{\Omega'}| Z(\omega) |dP(\Omega)                                                     \\
+				                   & =\int_{\Omega'}\liminf_n| Z_n(\omega) |dP(\omega)                                          \\
+				                   & \leq \int_{\Omega'}| Z_n(\omega) |dP(\omega)      & \text{lem. Fatou \ref{LemFatouUOQqyk}} \\
+				                   & =\liminf_nE\big(| Z_n |).
+			\end{align}
+		\end{subequations}
+
+		\spitem[Un peu de majoration]
+		%-----------------------------------------------------------
+
+		Nous avons \( | Z_n |=Z_n^++Z_n^-=2Z_n^+-Z_n\), et nous continuons les inégalités \eqref{SUBEQSooPEZEooTDliNe} :
+		\begin{subequations}
+			\begin{align}
+				E(| Z |) & \leq \liminf_{n}\big( E(|Z_n) \big)                                         \\
+				         & =2E(Z_n^+)-E(Z_n)                                                           \\
+				         & \leq 2E(Z_n^+)-E(Z_0)               & \text{prop. \ref{PROPooSWTPooOvzYPQ}} \\
+				         & \leq 2\sup_nE(Z_n^+)-E(Z_0)                                                 \\
+				         & <\infty.
+			\end{align}
+		\end{subequations}
+		Cela termine de prouver que \( Z\in L^1(\Omega',P)\).
+	\end{subproof}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Théorèmes d'arrêt}
+%----------------------------------------------------
+
+
+\begin{lemma} \label{LemXYeCLXW}
+	Si \( T\) est un temps d'arrêt presque surement fini, alors\quext{Dans \cite{KXjFWKA}, dans le problème de la ruine du joueur, la seconde assertion est avec une limite sup et non avec une limite normale.}
+	\begin{enumerate}
+		\item \( T\wedge n\stackrel{p.s.}{\longrightarrow}T\),
+		\item   \label{ItemIPPkxmAii}
+		      \( \lim_{n\to \infty}  E(T\wedge n)=E(T)\).
+	\end{enumerate}
+	Note : il est d'usage assez classique de noter \( a\wedge b\)\nomenclature[P]{\( a\wedge b\)}{\( \min(a,b)\)} le minimum de \( a\) et \( b\).
+\end{lemma}
+
+\begin{proof}
+	Vu que \( T \) est presque surement finie, il suffit de prouver que
+	\begin{equation}    \label{EqRVoKxsN}
+		(T\wedge n)(\omega)\to T(\omega)
+	\end{equation}
+	pour tout \( \omega\) tel que \( T(\omega)=k\) pour tout \( k\in \eN\). Soient donc \( \omega\in \Omega\) tel que \( T(\omega)=k\) et \( n>k\). Nous avons
+	\begin{equation}
+		(T\wedge n)(\omega)=T(\omega)\wedge n=k=T(\omega).
+	\end{equation}
+
+	En ce qui concerne la seconde assertion, la suite de variables aléatoires \( X_n=T\wedge n\) est croissante et positive, donc le théorème de la convergence monotone~\ref{ThoRRDooFUvEAN} montre que
+	\begin{equation}
+		\lim_{n\to \infty}E(T\wedge n)=E(T).
+	\end{equation}
+\end{proof}
+
+\begin{remark}
+	Notons la différence subtile entre \( S_T(\omega)\) et \( (S_T)(\omega)\). La première est la variable aléatoire
+	\begin{equation}
+		\omega'\mapsto S_{T(\omega')}(\omega)
+	\end{equation}
+	et la seconde est le nombre \( S_{T(\omega)}(\omega)\).
+\end{remark}
+
+\begin{theorem}[Théorème d'arrêt borné\cite{PMCmartinLP}]   \label{ThoQMsRbkp}
+	Soit \( (X_n)\) une sur-martingale et \( S\leq T\), deux temps d'arrêts bornés. Alors
+	\begin{enumerate}
+		\item
+		      les variables aléatoires \( X_{S}\) et \( X_{T}\) sont intégrables,
+		\item
+		      \( E(X_{T}|  \sigma(S) )\leq X_{S}\) presque surement.
+	\end{enumerate}
+	Si par contre \( (X_n)\) est une martingale alors \( X_{S}\) et \( X_{T}\) sont bornées, et
+	\begin{equation}
+		E(X_{T}|\sigma(S))=X_{S}.
+	\end{equation}
+\end{theorem}
+%TODO Ceci demande une démonstration :)
+% Lorsque cette démonstration sera faite, il faudra intégrer la remarque suivante au théorème.
+
+\begin{remark}  \label{RemKCdpnid}
+	Un cas particulier intéressant de ce théorème~\ref{ThoQMsRbkp} est le cas \( S=0\) qui est un temps d'arrêt vérifiant \( \tribF_0=\{ \Omega,\emptyset \}\). Si \( X\) est n'importe quelle variable aléatoire, la tribu engendrée \( \sigma(X)\) est toujours indépendante de la tribu \( \{ \Omega,\emptyset \}\), donc le résultat \( E(X_T|\tribF_S)=X_S\) donne
+	\begin{equation}
+		E(X_T)=X_0.
+	\end{equation}
+\end{remark}
+
+\begin{theorem}[Premier théorème d'arrêt de Doob\cite{FUFFxBX,BIBooREGHooJpXSyS,BIBooYWQKooSdwvTG}] \label{ThoZTrdjtZ}
+	Soient \( (X_n)\) une martingale et \( T\) un temps d'arrêt\footnote{Définition \ref{DEFooJBYJooKYVAJG}.}; tous deux pour la filtration \( (\tribF_n)\). Nous supposons qu'une des trois propriétés suivantes soit vérifiée :
+	\begin{enumerate}
+		\item
+		      \( T\) est presque surement bornée : il existe \( c\in \eR\) tel que \( T(\omega)<c\) pour presque tout \( \omega\).
+		\item   \label{ItemQVWZuBkiii}
+		      Il existe une constante \( c\) telle que \( | X_{T\wedge n} |\leq c\) presque surement.
+		\item
+		      Il existe \( k>0\) tel que \( | X_n(\omega) |<k\) pour tout \( n\in \eN\) et \( \omega\in\Omega\). Et \( T<\infty\) presque surement.
+		\item
+		      \( E(T)<\infty\) et il existe une constante \( c\) telle que
+		      \begin{equation}
+			      E\big( | X_{n+1}-X_n |\,|\tribF_n \big)\leq c
+		      \end{equation}
+		      sur l'événement \( \{ T\geq n \}\).
+	\end{enumerate}
+	Alors \( X_T\) est une variable aléatoire presque surement bien définie nous avons
+	\begin{equation}
+		E(X_T)=E(X_0).
+	\end{equation}
+	Si \( (X_n)\) est une sur-martingale, alors la conclusion est \( E(X_T)\leq E(X_0)\) et si \( (X_n)\) est une sous-martingale, la conclusion est \( E(X_T)\geq E(X_0)\).
+\end{theorem}
+
+\begin{probleme}
+	D'après la \href{https://en.wikipedia.org/wiki/Talk:Optional_stopping_theorem}{page de discussion} de l'article sur Wikipédia, il semblerait que la seconde condition soit mal énoncée. Je n'ai pas vérifié.
+\end{probleme}
+% Lorsque cela sera fait, il faut enlever la question de la liste.
+
+\begin{remark}
+	Sous l'hypothèse~\ref{ItemQVWZuBkiii}, il est possible d'avoir \( T=\infty\) sur un ensemble de mesure non nulle. Sur cet ensemble, la variable aléatoire \( X_T\) doit être définie de façon plus fine.
+\end{remark}
+
+\begin{definition}
+	Nous disons que la martingale \( (M_n)_{n\geq 1}\) est \defe{terminée}{terminée!martingale} si il existe \( M\in L^1(\Omega,\tribA,P)\) telle que \( E(M|\tribA_n)=M\) pour tout \( n>1\).
+\end{definition}
+
+\begin{theorem} \label{ThoEFbpVXb}
+	Si \( (M_n)\) est une martingale, nous avons équivalence entre
+	\begin{enumerate}
+		\item
+		      \( (M_n)\) converge dans \( L^1\);
+		\item
+		      \( (M_n)\) est terminée;
+		\item
+		      l'ensemble \( \{ M_n \}_{n\geq 1}\) est équi-intégrable\footnote{Définition \ref{DefOZlZnse} et lemme \ref{LEMooUOQDooIkVyWm}.}.
+	\end{enumerate}
+\end{theorem}
+
+La démonstration est sans doute par petits bouts dans \cite{BIBooYWQKooSdwvTG}.
+
+Attention : en vertu de la proposition~\ref{PropWoywYG} et surtout de l'exemple~\ref{ExPOmxICc}, la convergence \( L^1\) n'implique pas la convergence presque partout.
+
+\begin{theorem}[Théorème de Doob\cite{ProbaDanielLi}]   \label{ThoHBvnTRk}
+	À propos de convergence de martingales.
+	\begin{enumerate}
+		\item
+		      Toute martingale terminée converge presque surement et pour la norme \( L^1\).
+		\item
+		      Toute martingale bornée dans \( L^2\) converge presque surement et pour la norme \( L^2\).
+	\end{enumerate}
+\end{theorem}
+\index{théorème!Doob}
+\index{convergence!de martingales}
+
+
+\begin{proposition}[\cite{HPVCqkr}] \label{PropAYJpGsc}
+	Soient \( (M_n)\) une martingale et \( T\) un temps d'arrêt (pour la même filtration \( (\tribB_n)\)). Alors le processus \( V_n=M_{n\wedge T}\) est une martingale.
+\end{proposition}
+
+\begin{proof}
+	Nous décomposons \( V_n\) de la façon suivante :
+	\begin{equation}    \label{EqYJjUZrv}
+		V_n=M_{n\wedge T}=M_n\mtu_{T\geq n}+M_T\mtu_{T<n}=M_n\mtu_{T\geq n}+\sum_{k< n}M_k\mtu_{T=k}.
+	\end{equation}
+	Nous avons, grâce au lemme~\ref{LemBWNlKfA},
+	\begin{equation}
+		\{ T\geq n \}=\complement\{ T<n \}=\complement\{ T\leq n-1 \}\in\tribB_{n-1}
+	\end{equation}
+	et, si \( k\leq n\),
+	\begin{equation}
+		\{ T=k \}=\underbrace{\{ T\leq k \}}_{\in\tribB_k}\setminus\underbrace{\{ T\leq k-1 \}}_{\in\tribB_{k-1}}\in\tribB_k\subset\tribB_n.
+	\end{equation}
+	La forme \eqref{EqYJjUZrv} donne donc manifestement la \( \tribB_n\)-mesurabilité de \( V_n\).
+
+	En ce qui concerne l'espérance nous devons calculer
+	\begin{equation}
+		E(V_{n+1}|\tribB_n)=E(M_{n+1}\mtu_{T\geq n+1}|\tribB_n)+\sum_{k<n+1}E(M_k\mtu_{T=k}|\tribB_n)
+	\end{equation}
+	où nous avons utilisé la proposition~\ref{PropZBnsCgh}. Étant donné que \( \mtu_{T\geq n+1}\) et \( \mtu_{T=k}\) sont des variables aléatoires \( \tribB_n\)-mesurables nous pouvons utiliser la proposition~\ref{PropRNBtfql} pour les sortir :
+	\begin{equation}
+		E(V_{n+1}|\tribB_n)=\mtu_{T\geq n+1}M_n+\sum_{k\leq n}\mtu_{T=k}M_k=M_{T\wedge n}=V_n.
+	\end{equation}
+	Pour cette ligne, nous avons aussi utilisé les égalités suivantes :
+	\begin{itemize}
+		\item
+		      \( E(M_{n+1}|\tribB_n)=M_n\) parce que \( (M_n)\) est une martingale
+		\item
+		      \( E(M_k|\tribB_n)=M_k\) parce que \( M_k\) est \( \tribB_n\)-mesurable.
+	\end{itemize}
+\end{proof}
+
+\begin{definition}[Processus arrêté\cite{BIBooHEFCooKoSqPC}]
+	Si \( (X_n)\) est un processus adapté à la filtration \( (\tribF_n)\) et si \( T\) est un temps d'arrêt \( \tribF_n\)-mesurable alors le \defe{processus arrêté}{processus!arrêté} à l'instant \( T\) est le processus
+	\begin{equation}
+		X_n^T(\omega)=X_{\min\{ n,T(\omega) \}}(\omega).
+	\end{equation}
+	Il peut également être écrit \( X_n^T=X_{n\wedge T}\).
+
+	Dans le cas continu, nous avons cette définition. Soient :
+	\begin{enumerate}
+		\item
+		      Un espace de probabilité \( (\Omega,\tribF,P)\),
+		\item
+		      Un espace mesurable \( (X,\tribA)\),
+		\item
+		      Un processus stochastique  \(X \colon \mathopen[ 0,\infty\mathclose[\times \Omega\to X  \),
+		\item
+		      Un temps d'arrêt \( \tau\) de \( X\) pour la filtration \( \{ \tribF_t \}_{t\geq 0}\) de \( \tribF\).
+	\end{enumerate}
+	Le \defe{processus arrêté}{processus arrêté} \( X^{\tau}\) est le processus
+	\begin{equation}
+		X^{\tau}_t(\omega)=X_{\min\{ t,\tau(\omega) \}}(\omega).
+	\end{equation}
+\end{definition}
+
+\begin{lemma}	\label{LEMooWTLJooUyMYoV}
+	Si \( (X_n)\) est une martingale alors son processus arrêté est encore une martingale.
+\end{lemma}
+
+\begin{proof}
+	C'est  la proposition~\ref{PropAYJpGsc}.
+\end{proof}
+
+%TODOooMPDYooUUyxde : Il faut voir si cette martingale est une martingale arrêtée. Sinon c'est que le vocable est très bizarre.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Décomposition de martingales}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}[Processus croissant prévisible\cite{PMCmartinLP}]
+	Un processus \( X_n\) adapté à la filtration \( \tribF_n\) est un processus \defe{croissant prévisible}{processus!croissant prévisible} si
+	\begin{enumerate}
+		\item
+		      \( A_0=0\)
+		\item
+		      \( A_n\leq A_{n+1}\); c'est cette condition qui correspond à «croissant»,
+		\item
+		      \( A_{n+1}\) est \( \tribF_n\)-mesurable; c'est cette condition qui correspond à «prévisible».
+	\end{enumerate}
+\end{definition}
+
+\begin{proposition}[Décomposition de Doob pour une sous-martingale\cite{PMCmartinLP}]
+	Toute sous-martingale \( (X_n)\) s'écrit de façon unique sous la forme
+	\begin{equation}\label{EqCCsAwbZ}
+		X_n=M_n+A_n
+	\end{equation}
+	où \( (M_n)\) est une martingale et \( (A_n)\) est un processus croissant prévisible.
+\end{proposition}
+
+\begin{proof}
+	Nous considérons le processus
+	\begin{subequations}    \label{EqQFlGRzo}
+		\begin{numcases}{}
+			A_0=0\\
+			A_{n+1}=A_n+E(X_{n+1}-X_n|\tribF_n).
+		\end{numcases}
+	\end{subequations}
+	Nous vérifions que cela est un processus croissant prévisible. D'abord
+	\begin{equation}
+		E(X_{n+1}-X_n|\tribF_n)=E(X_{n+1}|\tribF_n)-E(X_n|\tribF_n).
+	\end{equation}
+	Le second terme est égal à \( X_n\) parce que cette variable aléatoire est \( \tribF_n\)-mesurable tandis que \( (X_n)\) étant une sous-martingale nous avons \( E(X_{n+1}|\tribF_n)\geq X_n\). Nous avons donc bien \( A_{n+1}\geq A_n\) et le processus \( (A_n)\) est croissant.
+
+	En ce qui concerne la prévisibilité nous devons prouver que \( A_{n+1}\) est \( \tribF_n\)-mesurable. D'une part \( A_n\) est \( \tribF_n\)-mesurable et d'autre part par définition de l'espérance conditionnelle, la variable aléatoire \( E(X_{n+1}-X_n|\tribF_n)\) est également \( \tribF_n\)-mesurable.
+
+	Nous posons alors \( M_n=X_n-A_n\) et nous devons prouver que cela est une martingale. Nous avons
+	\begin{equation}
+		E(M_{n+1}-M_n|\tribF_n)=E(X_{n+1}-X_n|\tribF_n)-E(A_{n+1}-A_n|\tribF_n).
+	\end{equation}
+	Le second terme vaut
+	\begin{equation}
+		E(A_{n+1}-A_n|\tribF_n)=E\Big( E(X_{n+1}-X_n|\tribF_n)|\tribF_n \Big)=E(X_{n+1}-X_n|\tribF_n)
+	\end{equation}
+	par la proposition~\ref{PropRGcscXj}. Le processus \( (M_n)\) est donc une martingale. La preuve de l'existence d'une décomposition \eqref{EqCCsAwbZ} est achevée.
+
+	Nous passons maintenant à l'unicité en posant \( X_n=M_n+A_n=M'_n+A'_n\). Nous avons \( A_0=A'_0=0\) et \( A'_n=X_n-M'_n\), donc
+	\begin{equation}
+		A'_{n+1}-A'_n=X_{n+1}-X_n+M'_{n+1}-M'_n=X_{n+1}-X_n-(M'_{n+1}-M'_n).
+	\end{equation}
+	Nous appliquons \( E(.|\tribF_n)\) des deux côtés de cette égalité :
+	\begin{equation}
+		\underbrace{E(A'_{n+1}-A'_n|\tribF_n)}_{=A'_{n+1}-A'_n}=E(X_{n+1}-X_n|\tribF_n)-\underbrace{E(M'_{n+1}-M'_n|\tribF_n)}_{=0}.
+	\end{equation}
+	Nous avons utilisé le que que \( (M_n)\) étant une martingale, \( E(M_{n+1}-M_n|\tribF_n)=0\), et idem avec \( (M_n')\). Donc
+	\begin{equation}
+		A'_{n+1}-A'_n=E(X_{n+1}-X_n|\tribF_n)=E(M_{n+1}-M_n|\tribF_n)+E(A_{n+1}-A_n|\tribF_n)=A_{n+1}-A_n.
+	\end{equation}
+	Nous avons donc montré que \( A_{n+1}-A_n=A'_{n+1}-A'_n\) et donc que \( A_n=A'_n\) pour tout \( n\). Nous en déduisons immédiatement que \( M_n=M'_n\) pour tout \( n\) et l'unicité de la décomposition.
+\end{proof}
+
+\begin{lemma}   \label{LemPVgeKfc}
+	Si \( (X_n)\) est une martingale de carré intégrable adaptée à la filtration \( (\tribF_n)\) alors
+	\begin{enumerate}
+		\item
+		      Le processus \( (X_n^2)\) est une sous-martingale.
+		\item
+		      Si \( X_n^2=M_n+A_n\) est la décomposition de Doob, alors
+		      \begin{equation}    \label{EqSTGxVWP}
+			      A_n=\sum_{i=1}^n\Big( E(X_i^2|\tribA_{i-1})-X_{i-1}^2 \Big)=\sum_{i=1}^nE\Big( (X_i-X_{i-1})^2|\tribA_{i-1} \Big).
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Pour la première assertion, nous utilisons l'inégalité de Jensen~\ref{PropABtKbBo} :
+	\begin{equation}
+		E(X_n^2|\tribF_{n-1})\geq \big( E(X_n|\tribF_{n-1}) \big)^2=X_n^2
+	\end{equation}
+	parce que \( E(X_n|\tribF_{n-1})=X_n\) du fait que \( (X_n)\) soit une martingale.
+
+	En ce qui concerne la seconde assertion, nous nous souvenons que le processus prévisible de la décomposition de Doob d'une sous-martingale est donné par la récurrence \eqref{EqQFlGRzo} que nous recopions ici :
+	\begin{subequations}
+		\begin{numcases}{}
+			A_0=0\\
+			A_{n+1}=A_n+E(X_{n+1}^2-X_n^2|\tribF_n)
+		\end{numcases}
+	\end{subequations}
+	Vu que \( X_n^2\) est \( \tribF_n\)-mesurable, il peut sortir de l'espérance :
+	\begin{equation}
+		A_{n+1}=A_n+E(X_{n+1}^2|\tribF_n)-X_n^2
+	\end{equation}
+	et donc
+	\begin{equation}
+		A_n=\sum_{i=1}^n\Big( E(X_i^2|\tribF_{i-1})-X_{i-1}^2 \Big).
+	\end{equation}
+	Pour obtenir la dernière partie de \eqref{EqSTGxVWP} nous travaillons un peu :
+	\begin{subequations}
+		\begin{align}
+			E\big( (X_i-X_{i-1})^2|\tribF_{i-1} \big) & =E\big( X_i^2+X_{i-1}^2-2X_iX_{i-1}|\tribF_{i-1} \big)                           \\
+			                                          & =E(X_i^2|\tribF_{i-1})+X_{i-1}^2-2E(X_iX_{i-1}|\tribF_{i-1})                     \\
+			                                          & =E(X_i^2|\tribF_{i-1})+X_{i-1}^2-2X_{i-1}E(X_i|\tribF_{i-1})   \label{EqFBkXiJH} \\
+			                                          & =E(X_i^2|\tribF_{i-1})+X_{i-1}^2-2X_{i-1}X_i
+		\end{align}
+	\end{subequations}
+	où nous avons utilisé la proposition~\ref{PropRNBtfql} pour obtenir \eqref{EqFBkXiJH}.
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Problème de la ruine du joueur}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SecMSOjfgM}
+\index{variable aléatoire!de Bernoulli!utilisation}
+\index{indépendance!événements!utilisation}
+\index{variable aléatoire!binomiale!utilisation}
+
+Nous considérons un joueur compulsif qui joue à un jeu très simple\footnote{Le gros des choses dites à propos de la ruine du joueur provient de \cite{KXjFWKA}.} : il joue à pile ou face contre la banque avec une pièce truquée. Si pile sort, la banque donne \( 1\) au joueur et si c'est face, c'est le joueur qui donne \( 1\) à la banque. Nous nommons \( a\) la fortune initiale du joueur,  \( b\) celle de la banque et \( p\) la probabilité d'obtenir pile.
+
+Nous supposons que le jeu se poursuit jusqu'à la ruine du joueur ou de la banque. La modélisation est comme suit : nous considérons \( (Y_n)\) une suite de variables aléatoires indépendantes et identiquement distribuées de loi
+\begin{equation}
+	Y_n\sim p\delta_1+(1-p)\delta_{-1}.
+\end{equation}
+C'est le résultat financier pour le joueur du \( n\)\ieme\ jet. La fortune du joueur au bout de \( n\) jets est la variable aléatoire
+\begin{equation}
+	S_n=a+\sum_{j=1}^nY_j.
+\end{equation}
+Nous notons \( Y_0=a\).
+
+Nous considérons la filtration
+\begin{equation}
+	\tribA_n=\sigma\big( S_i\tq 0\leq i\leq n \big)=\sigma\big( Y_i\tq 0\leq i\leq n \big),
+\end{equation}
+et le temps d'arrêt du jeu :
+\begin{equation}
+	T=\inf\{ n\geq 1\tq S_n\in\{ 0,a+b \} \};
+\end{equation}
+c'est le temps qu'il faut pour que tout l'argent appartienne soit au joueur soit à la banque.
+
+Nous voulons étudier les paramètres suivants :
+\begin{enumerate}
+	\item
+	      \( \rho=P(S_T=a+b)\), c'est-à-dire la probabilité que ce soit le joueur qui gagne contre la banque.
+	\item
+	      \( P(T<\infty)\), c'est-à-dire la probabilité que le jeu se finisse.
+	\item
+	      \( E(T)\), la durée moyenne du jeu.
+\end{enumerate}
+
+\begin{lemma}   \label{LemEOAmVyZ}
+	Le processus \( S_n\) du problème de la ruine du joueur, en notant \( q=1-p\), vérifie
+	\begin{equation}    \label{EqZQtwVMXyiB}
+		E(S_n|\tribA_{n-1})=S_{n-1}+p-q.
+	\end{equation}
+	De plus le processus \( S_n\) est
+	\begin{enumerate}
+		\item
+		      une martingale si \( p=q=\frac{ 1 }{2}\),
+		\item
+		      une sous-martingale si \( p>q\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Pour \( n\geq 1 \) nous avons
+	\begin{equation}
+		E(S_n|\tribA_{n-1})=a+\sum_{j=1}^nE(Y_j|\tribA_{n-1})=a+\sum_{j=1}^{n-1}E(Y_j|\tribA_{n-1})+E(Y_n|\tribA_{n-1}).
+	\end{equation}
+	Si \( j\leq n-1\) alors \( Y_j\in m(\tribA_{n-1})\). Mais nous savons que si \( X\) est \( \tribF\)-mesurable, alors \( E(X|\tribF)=X\) (c'est la définition de l'espérance conditionnelle), donc \( \sum_{j=1}^{n-1}E(Y_j|\tribA_{n-1})=\sum_{j=1}^{n-1}Y_j\).
+
+	En ce qui concerne le terme \( j=n\) nous utilisons le fait que \( \sigma(Y_n)\) soit une tribu indépendante de \( \tribA_{n-1}\); nous avons donc au final pour tout \( j\) que \( E(Y_j|\tribA_{n-1})E(Y_j)=p-q\). Nous avons donc
+	\begin{equation}
+		E(S_n|\tribA_{n-1})=S_{n-1}+p-q.
+	\end{equation}
+	Si \( p=q=\frac{ 1 }{2}\) alors c'est une martingale, et si \( p>q\) c'est une sous-martingale.
+\end{proof}
+
+\begin{lemma}   \label{LemXDlNxtE}
+	La variable aléatoire \( T\) est un temps d'arrêt.
+\end{lemma}
+
+\begin{proof}
+	Par définition \( T=\inf\{ n\geq 1\tq S_n\in\{ 0,a+b \} \}\). Vu que les variables aléatoires \( S_i\) avec \( i\leq n\) sont \( \tribA_n\)-mesurables, les ensembles \( \big\{ S_k\notin\{ 0,a+b \} \big\}\) avec \( k\leq n\) sont \( \tribA_n\)-mesurables. Donc les ensembles
+	\begin{equation}
+		\{ T=n \}=\bigcap_{k\leq n}\big\{ S_k\notin\{ 0,a+b \} \big\}\cap\big\{ S_n\in\{ 0,a+b \} \big\}
+	\end{equation}
+	sont \( \tribA_n\)-mesurables. Nous en concluons que l'ensemble \( \{ T\leq n \}\) est également mesurable.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Le cas où la pièce est truquée}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous supposons être dans le cas \( p>q\).
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Introduction d'une martingale}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Considérons le processus
+\begin{subequations}
+	\begin{numcases}{}
+		A_0=0\\
+		A_n=A_{n-1}+E(S_n-S_{n-1}|\tribA_{n-1}).
+	\end{numcases}
+\end{subequations}
+Vu que \( E(S_n|\tribA_{n-1})=S_{n-1}+p-q\) (lemme~\ref{LemEOAmVyZ}) et que \( E(S_{n-1}|\tribA_{n-1})=S_{n-1}\) (parce que \( S_{n-1}\) est dans la tribu de \( \tribA_{n-1}\)), nous avons \( A_n=A_{n-1}+(p-q)\) et donc
+\begin{equation}
+	A_n=n(p-q).
+\end{equation}
+Ce processus \( (A_n)\) est croissant et prévisible. Nous introduisons le processus
+\begin{equation}    \label{EqMUajTwl}
+	M_n=S_n-A_n
+\end{equation}
+et nous montrons que c'est une martingale\footnote{Ceci est un peu le contraire de la décomposition de Doob.}. Nous conditionnons la définition \eqref{EqMUajTwl} par rapport à \( \tribA_{n-1}\) :
+\begin{subequations}
+	\begin{align}
+		E(M_n|\tribA_{n-1}) & =E(S_n|\tribA_{n-1})-\underbrace{E(A_n|\tribA_{n-1})}_{=A_n} \\
+		                    & =A_n-A_{n-1}+E(S_{n-1}|\tribA_{n-1})-A_n                     \\
+		                    & =E(S_{n-1}|\tribA_{n-1})-A_{n-1}.
+	\end{align}
+\end{subequations}
+Mais \( S_{n-1}\) est \( \tribA_{n-1}\)-mesurable, donc \( E(S_{n-1}|\tribA_{n-1})=S_{n-1}\) et
+\begin{equation}
+	E(M_n|\tribA_{n-1})=S_{n-1}-A_{n-1}=M_{n-1},
+\end{equation}
+ce qui signifie que \( (M_n)\) est une martingale.
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Finitude du temps d'arrêt}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Nous montrons maintenant, en étudiant \( M_{T\wedge n}\) que \( T\) est intégrable et nous prouvons que \( P(T=\infty)=0\).
+
+\begin{proposition}
+	La variable aléatoire \( T\) est intégrable, et \( P(T=\infty)=0\), c'est-à-dire que le jeu se termine presque certainement après un temps fini.
+\end{proposition}
+
+\begin{proof}
+	Nous rappelons que le lemme~\ref{LemXDlNxtE} nous indique que \( T\) est un temps d'arrêt. Le temps d'arrêt \( T\wedge n\) est borné (par \( n\) évidemment) et nous pouvons donc lui appliquer le théorème d'arrêt~\ref{ThoZTrdjtZ} pour dire que
+	%TODOooJMPYooYxsaNI L'utilisation de ThoZTrdjtZ est à justifier parce que l'énoncé a changé en juillet 2024.
+	\begin{equation}
+		E(M_{T\wedge n})=E(M_0).
+	\end{equation}
+	Le membre de droite est simple parce que \( M_0=S_0-A_0=S_0=a\) parce que c'est l'argent de départ du joueur. Pour l'autre :
+	\begin{equation}    \label{EqKEkJvBg}
+		E(M_{T\wedge n})=E(S_{T\wedge n})-E(A_{T\wedge n}).
+	\end{equation}
+	D'une part, \( E(A_{T\wedge n})=E\big( (T\wedge n)(p-q) \big)\) et d'autre part, \( E(S_{T\wedge n})\leq a+b\) parce que \( S_T\) vaut zéro ou \( a+b\) (avec des probabilités encore inconnues\footnote{Mais on y travaille.}). En combinant avec ce qui était dit juste au dessus et remarquant que \( (p-q)E(T\wedge n)\geq 0\) nous pouvons écrire
+	\begin{equation}    \label{EqHWtxOcW}
+		0\leq (p-q)E(T\wedge n)\leq b.
+	\end{equation}
+	La suite de variables aléatoires \( T\wedge n\) est donc croissante, positive et intégrable\footnote{Je rappelle que les constantes sont des fonctions intégrables sur \( \Omega\). Oui, je sais, quand on est habitué à faire de l'analyse sur \( \eR^n\) c'est un truc qu'on perd toujours un peu de vue.} et donc nous avons du travail pour le théorème de la convergence monotone~\ref{ThoRRDooFUvEAN}. La variable aléatoire \( T\) est alors mesurable et\quext{Dans \cite{KXjFWKA}, l'équation \eqref{EqABPXmgr} vient avec une \( \limsup\) et non une limite normale. Je ne comprends pas pourquoi.}
+	\begin{equation}    \label{EqABPXmgr}
+		\lim_{n\to \infty} E(T\wedge n)=E(T).
+	\end{equation}
+	Notons que nous n'avons pas encore prouvé que \( E(T)<\infty\), mais en passant à la limite dans \eqref{EqHWtxOcW} nous écrivons
+	\begin{equation}
+		0\leq (p-q)E(T)\leq b.
+	\end{equation}
+	Maintenant nous avons prouvé que \( T\) est intégrable et même \( L^1\). Par conséquent
+	\begin{equation}
+		P(T=\infty)=0.
+	\end{equation}
+	Le jeu se termine donc presque certainement après un temps fini.
+\end{proof}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Temps moyen de jeu}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Le lemme~\ref{LemXYeCLXW} nous indique que \( S_{T\wedge n}\stackrel{p.s.}{\longrightarrow}S_T\).
+
+Nous avons les bornes \( 0\leq S_{T\wedge n}\leq a+b\) et comme \( a+b\) est intégrable, \( S_{T\wedge n}\) l'est aussi et nous pouvons parler de \( E(S_{T\wedge n})\). Repartons de \eqref{EqKEkJvBg} :
+\begin{equation}    \label{EqLKdCOQg}
+	a=E(M_0)=E(M_{T\wedge n})=E(S_{T\wedge n})-E(A_{T\wedge n})=E(S_{T\wedge n})-(p-q)E(T\wedge n).
+\end{equation}
+La variable aléatoire \( S_{T\wedge n}\) est majorée par \( a+b\) indépendamment de \( n\); donc le théorème de la convergence dominée~\ref{ThoConvDomLebVdhsTf} donne \( \lim_{n\to \infty} E(S_{T\wedge n})=E(S_T)\). En ce qui concerne le second terme, la convergence dominée ne fonctionne pas parce que \( T\wedge n\) n'est pas à priori majoré par quelque chose d'indépendant de \( n\). Heureusement, le théorème de la convergence monotone donne \( \lim_{n\to \infty} E(T\wedge n)=E(T)\). Au final en passant à la limite dans \eqref{EqLKdCOQg} nous avons
+\begin{equation}
+	a=E(S_T)-(p-q)E(T).
+\end{equation}
+Étant donné que \( T>0\) et \( p-q>0\) nous pouvons récrire cela sous la forme
+\begin{equation}
+	0\leq (p-q)E(T)=E(S_T)-a.
+\end{equation}
+Par définition de \( T\) nous avons aussi
+\begin{equation}
+	E(S_T)=(a+b)P(S_T=a+b)+0\cdot P(S_T=0)=\rho(a+b).
+\end{equation}
+Nous déduisons
+\begin{equation}    \label{EqRHUVuKv}
+	E(T)=\frac{ (a+b)\rho-a }{ p-q }.
+\end{equation}
+Ne crions pas victoire trop vite : nous n'avons pas encore d'expression de \( \rho=P(S_T=a+b)\). Le temps moyen de jeu n'est donc pas encore tout à fait connu.
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Probabilité de victoire du joueur}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+% Référence 204859606
+Nous avons besoin d'exprimer \( \rho\) en termes de \( a\), \( b\) et \( p\). Pour cela nous introduisons la variable aléatoire\footnote{Nous dirons un mot sur ce choix dans le «petit complément» \ref{SUBSECooACWWooBuSxGv}.}
+\begin{equation}    \label{EqFUsSnit}
+	U_n=\left( \frac{ q }{ p } \right)^{S_n}.
+\end{equation}
+Nous commençons par prouver que c'est une martingale en calculant
+\begin{equation}
+	E(U_n|\tribA_{n-1})=E\left( \left( \frac{ q }{ p } \right)^{S_{n-1}}\left( \frac{ q }{ p } \right)^{Y_n} \Big |\,\tribA_{n-1} \right)
+\end{equation}
+Nous utilisons la proposition~\ref{PropRNBtfql}. Dans notre cas, \( S_{n-1}\) et \( Y_n\) sont des variables aléatoires \( \tribA_n\)-mesurables; la variable aléatoire \( Y_n\) est même \( \tribA_{n-1}\)-mesurable et sort donc du conditionnement; nous avons donc
+\begin{equation}    \label{EqWTkXcEK}
+	E(U_n|\tribA_{n-1})=\left( \frac{ q }{ p } \right)^{S_{n-1}}E\left( \left( \frac{ q }{ p } \right)^{Y_n} \right)
+\end{equation}
+Nous allons utiliser le théorème de transfert~\ref{PropintdPintdPXeR} :
+\begin{equation}
+	E(s^{Y_n})=\int_{\Omega}s^{Y_n(\omega)}dP(\omega)=\int_{Y_n=1}sdP(\omega)+\int_{Y_n=-1}\frac{1}{ s }dP(\omega).
+\end{equation}
+Mais nous savons que \( P(Y_n=1)=p\) et \( P(Y_n=-1)=1-p=q\), donc
+\begin{equation}
+	E(s^{Y_n})=ps+\frac{ 1-p }{ s }.
+\end{equation}
+En posant \( s=q/p\) et en tenant compte de \( 1-p=q\), nous trouvons
+\begin{equation}
+	E\left( \left( \frac{ q }{ p } \right)^{Y_n} \right)=p+q=1.
+\end{equation}
+Donc
+\begin{equation}
+	E(U_n|\tribA_{n-1})=\left( \frac{ q }{ p } \right)^{S_n-1}=U_{n-1},
+\end{equation}
+ce qui prouve que \( (U_n)\) est une martingale.
+
+Par définition nous avons toujours \( S_n\geq 0\) tant que \( n\leq T\)\footnote{Pour \( n>T\) le jeu est terminé, donc on ne se pose pas la question.}, donc \( U_{T\wedge n}\in\mathopen[ 0 , 1 \mathclose]\). Il est donc évident que si \( a\geq 1\) nous avons
+\begin{equation}
+	\int_{| U_{T\wedge n} |>a}| U_{T\wedge n} |dP=0
+\end{equation}
+parce que le domaine d'intégration est vide. Donc les variables aléatoires \( V_n=U_{T\wedge n}\) sont équi-intégrables\footnote{Définition~\ref{DefOZlZnse}.} et le théorème~\ref{ThoEFbpVXb} montre que la martingale \( (V_n)\) est terminée; par ricochet\footnote{Nous rappellons que la convergence \( L^1\) n'implique pas la convergence presque partout.} le théorème de Doob~\ref{ThoHBvnTRk} montre qu'il existe une variable aléatoire \( X\) telle que \( V_n\stackrel{p.s.}{\longrightarrow}X\). Nous allons prouver que \( X=U_T\) presque partout. Nous savions déjà (voir l'équation \eqref{EqRVoKxsN} et ses alentours) que
+\begin{equation}
+	S_{n\wedge T}\stackrel{p.s.}{\longrightarrow}S_T.
+\end{equation}
+Nous avons alors (au sens du presque surement) :
+\begin{equation}
+	\lim_{n\to \infty} V_n=\lim_{n\to \infty} U_{T\wedge n}=\lim_{n\to \infty} \left( \frac{ q }{ p } \right)^{S_{T\wedge n}}=\left( \frac{ q }{ p } \right)^{S_T}=U_T.
+\end{equation}
+Donc par unicité de la limite presque partout nous avons \( X=U_T\) presque partout. Par le théorème de transfert~\ref{PropintdPintdPXeR} nous évaluons
+\begin{equation}    \label{EqYFycUag}
+	E(U_T)=\left( \frac{ q }{ p } \right)^0P(S_T=0)+\left( \frac{ q }{ p } \right)^{a+b}P(S_T=a+b)=(1-\rho)+\left( \frac{ q }{ p } \right)^{a+b}\rho.
+\end{equation}
+La remarque~\ref{RemKCdpnid} nous permet de dire que
+\begin{equation}
+	E(U_{T\wedge n})=U_0.
+\end{equation}
+Mais par définition
+\begin{equation}
+	U_0=\left( \frac{ q }{ p } \right)^{S_0}=\left( \frac{ q }{ p } \right)^a,
+\end{equation}
+donc nous avons
+\begin{equation}
+	E(U_{T\wedge n})=\left( \frac{ q }{ p } \right)^a.
+\end{equation}
+Nous voudrions passer à la limite \( n\to \infty\) dans cette équation. Pour permuter la limite et l'espérance, il faut utiliser le théorème de la convergence dominée~\ref{ThoConvDomLebVdhsTf}. Vu que nous avons choisi \( q>p\), nous avons \( q/p>1\) et donc \( U_{T\wedge n}\leq (q/p)^{a+b}\), ce qui montre que la fonction \( \omega\mapsto (U_{T\wedge n})(\omega)\) est majorée par une constante (qui est une fonction intégrable). Nous pouvons donc permuter la limite et l'espérance :
+\begin{equation}
+	\lim_{n\to \infty} E(U_{T\wedge n})=E\big( \lim_{n\to \infty} U_{T\wedge n} \big).
+\end{equation}
+Mais nous avions déjà montré que \( U_{T\wedge n}\stackrel{p.s.}{\longrightarrow}U_T\). Donc
+\begin{equation}
+	E(U_T)=\left( \frac{ q }{ p } \right)^a.
+\end{equation}
+En égalisant avec l'expression \eqref{EqYFycUag} de \( E(U_T)\) nous trouvons
+\begin{equation}
+	\rho=\frac{ \left( \frac{ q }{ p } \right)^{a}-1 }{ \left( \frac{ q }{ p } \right)^{a+b}-1 }
+\end{equation}
+et ensuite nous trouvons \( E(T)\) en remettant ce \( \rho\) dans l'expression \eqref{EqRHUVuKv} donnée plus haut.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Le cas où la pièce est non truquée}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Maintenant \( p=q=1/2\).
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Probabilité de gagner}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Le lemme~\ref{LemEOAmVyZ} nous indique alors que \( (S_n)\) est une martingale et le lemme~\ref{LemPVgeKfc} nous permet de dire que \( (S_n^2)\) est alors une sous-martingale. Le processus croissant prévisible de \( (S_n^2)\) est donné par \eqref{EqQFlGRzo} qui en adaptant les notations est
+\begin{subequations}
+	\begin{numcases}{}
+		B_0=0\\
+		B_n=B_{n-1}+E\Big( (S_n-S_{n-1})^2|\tribA_{n-1} \Big).  \label{subEqJQbqJEq}
+	\end{numcases}
+\end{subequations}
+Nous avons toujours \( S_n-S_{n-1}=\pm 1\) parce que soit le joueur gagne soit le joueur perd, mais de toutes façons sa fortune varie de \( 1\) à chaque étape du jeu. Donc \eqref{subEqJQbqJEq} nous donne \( B_n=B_{n-1}+1\) et
+\begin{equation}
+	B_n=n.
+\end{equation}
+Cela nous dit que la variable aléatoire
+\begin{equation}
+	S_n^2-B_n=S_n^2-n
+\end{equation}
+est une martingale (une sur-martingale moins son processus prévisible croissant). Nous lui appliquons le théorème d'arrêt~\ref{ThoQMsRbkp} avec les temps d'arrêt \( 0\) et \( T\wedge n\) :
+\begin{equation}        \label{EqINevNUV}
+	E(S^2_{T\wedge n}-T\wedge n|\tribF_0)=S_0^2-0
+\end{equation}
+où \( \tribF_0\) est la tribu engendrée par la variable aléatoire \( 0\), c'est-à-dire \( \{ \Omega,\emptyset \}\). Cette tribu est indépendante de toute autre tribu et nous pouvons donc supprimer le conditionnement dans \eqref{EqINevNUV}. Nous avons aussi \( S_0=a\) par définition. Avec tout ça nous avons la majoration
+\begin{equation}    \label{EqQXeFPpq}
+	E(T\wedge n)=E(S_{T\wedge n}^2)-a^2\leq (a+b)^2-a^2
+\end{equation}
+parce que \( S_k\) est toujours positif et entre \( 0\) et \( a+b\). En utilisant le lemme~\ref{LemXYeCLXW} et en passant à la limite,
+\begin{equation}
+	E(T)\leq (a+b)^2-a^2.
+\end{equation}
+En particulier, \( T\in L^1(\Omega)\) et \( P(T<\infty)=1\).
+
+En suivant exactement les mêmes étapes que dans le lemme~\ref{LemXYeCLXW}\ref{ItemIPPkxmAii} nous avons aussi
+\begin{equation}
+	\lim_{n\to \infty} S_{T\wedge n}=S_T
+\end{equation}
+presque partout. De plus nous savons que
+\begin{equation}
+	0\leq S_{T\wedge n}^2\leq (a+b)^2,
+\end{equation}
+et nous pouvons donc utiliser le théorème de la convergence dominée~\ref{ThoConvDomLebVdhsTf} pour dire que
+\begin{equation}
+	\lim_{n\to \infty} E(S^2_{T\wedge n})=E(S_T^2).
+\end{equation}
+Nous montrons à présent que \( S_{T\wedge n}\stackrel{L^2}{\longrightarrow}S_T\). Pour cela nous devons évaluer la limite
+\begin{equation}
+	\lim_{n\to \infty} \int_{\Omega}| S_{T\wedge n}-S_T |^2.
+\end{equation}
+La fonction \( | S_{T\wedge n}-S_T |^2\) est majorée par \( (a+b)^2\) et nous pouvons à nouveau appliquer la convergence dominée :
+\begin{equation}
+	\lim_{n\to \infty} E(| S_{T\wedge n}-S_T |^2)=\lim_{n\to \infty} \int_{\Omega}| S_{T(\omega)\wedge n}(\omega)-S_{T(\omega)}(\omega) |^2dP(\omega)=\int_{\Omega}\lim_{n\to \infty} | S_{T\wedge n}-S_T |^2=0.
+\end{equation}
+La même chose en n'écrivant pas les carrés montre que l'on a aussi \( S_{T\wedge n}\stackrel{L^1}{\longrightarrow}S_T\).
+
+Il n'y a pas que \( n\mapsto S_n^2-n\) qui est une martingale. Il y a aussi \( (S_n)\) lui-même (lemme~\ref{LemEOAmVyZ}). Nous pouvons lui appliquer le théorème d'arrêt~\ref{ThoQMsRbkp} pour les temps d'arrêts \( T\wedge n\) et \( 0\) :
+\begin{equation}    \label{EqGWrUwWE}
+	E(S_{T\wedge n})=E(S_0)=a.
+\end{equation}
+En passant à la limite, \( E(S_T)=a\). L'espérance \( E(S_T)\) peut par ailleurs être calculée comme
+\begin{equation}    \label{EqDRXoLXt}
+	E(S_T)=0\cdot P(S_T=0)+(a+b)P(S_T=a+b).
+\end{equation}
+En égalisant les valeurs \eqref{EqGWrUwWE} et \eqref{EqDRXoLXt} de \( E(S_T)\) nous trouvons
+\begin{equation}    \label{EqIHhbeCB}
+	\rho=\frac{ a }{ a+b }.
+\end{equation}
+Cette formule est assez logique : la probabilité que le joueur gagne est égale à la proportion d'argent en jeu qu'il a amené.
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Temps moyen de jeu}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Nous calculons maintenant l'espérance \( E(T)\) du temps de jeu (sans compter les pauses ni les jours de fermeture du casino\footnote{Le joueur est un \emph{vrai} joueur compulsif.}).
+
+Nous recopions la première égalité de \eqref{EqQXeFPpq} sous la forme
+\begin{equation}
+	a^2=E(S^2_{T\wedge n}-T\wedge n)
+\end{equation}
+et nous passons à la limite\footnote{Comme il est dit dans La Grande Illusion, à quoi sert un \( n\) ? À passer à la limite.} en sachant que \( E(S^2_T)=\rho(a+b)^2\) :
+\begin{equation}
+	a^2=\rho(a+b)^2-E(T).
+\end{equation}
+En reprenant la valeur \eqref{EqIHhbeCB} de \( \rho\),
+\begin{equation}
+	E(T)=ab.
+\end{equation}
+Et là, on voit que si le joueur amène \( 1000\) euros contre une banque qui en a un million, et si ils jouent toutes les secondes, on en a pour \( 32\) ans de jeu en moyenne.
+
+Voilà. C'est fini pour la ruine du joueur.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Un petit complément}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{SUBSECooACWWooBuSxGv}
+% Le nom de cette sous-section est codé en dur à la référence 204859606. Si on change ce titre, il faudra modifier le texte là-bas.
+
+Nous avons introduit lors de l'équation \eqref{EqFUsSnit} la variable aléatoire \( U_n=(p/q)^{S_n}\). Sans aller jusqu'à motiver complètement ce choix, nous nous proposons maintenant de voir que parmi les variables aléatoires \( U_n=s^{S_n}\), le choix \( s=p/q\) est le seul qui donne une martingale.
+
+Soit donc \( U_n=s^{S_n}\) et exprimons le fait que ce soit une martingale. Nous avons
+\begin{subequations}
+	\begin{align}
+		E(U_n|\tribA_{n-1}) & =E(s^{S_{n-1}}s^{Y_n}|\tribA_{n-1})                         \\
+		                    & =s^{S_{n-1}}E(s^{Y_n}|\tribA_{n-1})    \label{subeqYQzYOxS} \\
+		                    & =s^{S_{n-1}}E(s^{Y_n}).
+	\end{align}
+\end{subequations}
+Le passage à \eqref{subeqYQzYOxS} se justifie en disant que \( s^{S_{n-1}}\) est une variable aléatoire bornée et \( \tribA_{n-1}\)-mesurable, et en invoquant proposition~\ref{PropRNBtfql}. La variable aléatoire \( Y_n\) vaut \( 1\) avec probabilité \( p\) et \( -1\) avec probabilité \( q\); donc l'espérance est vite vue :
+\begin{equation}
+	E(s^{Y_n})=ps+q\frac{1}{ s }
+\end{equation}
+et nous avons
+\begin{equation}
+	E(U_n|\tribA_{n-1})=\left( ps+q\frac{1}{ s } \right)s^{S_{n-1}}=(ps+\frac{ q }{ s })U_{n-1}.
+\end{equation}
+Pour que \( (U_n)\) soit une martingale il faut (et il suffit) que
+\begin{equation}    \label{EqFMRHybk}
+	ps+\frac{ q }{ s }=1.
+\end{equation}
+Les solutions de cette équation sont \( s\in\{ 1,\frac{ p }{ q } \}\). C'est évidemment \( s=p/q\) qui donne une martingale non triviale. Attention pour être complet, il faut se demander ce qu'il se passe si \( s=0\) séparément parce que manifestement l'équation \eqref{EqFMRHybk} ne traite pas ce cas. Encore une fois, en repartant du début, \( s=0\) ne se révèle pas être une martingale très excitante.
+
+Bref, nous devons poser
+\begin{equation}
+	U_n=\left( \frac{ p }{ q } \right)^{S_n}
+\end{equation}
+pour avoir une martingale.
+
+\begin{probleme}
+	Les variables \( p\) et \( q\) sont inversées par rapport à \eqref{EqFUsSnit}. Écrivez-moi si vous voyez pourquoi.
+\end{probleme}

@@ -1,0 +1,1773 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2011-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+Attention aux conventions. Dans le Frido, un corps peut être réduit à \( \{ 0 \}\) et un idéal premier ne peut pas être \( \{ 0 \}\). Ces conventions ont une série de conséquences un peu partout, par exemple dans la proposition \ref{PROPooRUQKooIfbnQX} où nous parlons d'idéal maximum propre. Comparez par exemple avec \cite{ooWEUDooQybvIx}. Soyez \randomGender{attentif}{attentive}.
+
+En cas de doutes, nous suivons les conventions de Wikipédia.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Inversibles et nilpotents}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Le concept d'anneau est la définition \ref{DefHXJUooKoovob}.
+
+\begin{lemma}       \label{LEMooOYZEooLivKWI}
+	Si \( a\) et \( b\) commutent, nous avons, pour tout \( r \in \eN \) et \( r > 0\), la formule
+	\begin{equation}        \label{Eqarpurmkbk}
+		a^{r+1}-b^{r+1}=(a-b)\left(\sum_{k=0}^ra^{r-k}b^k\right).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Démontrons cela par récurrence. Le cas \( r = 0 \) est évident. Pour
+	un \( r \) donné, si \eqref{Eqarpurmkbk} est vraie, alors
+	\begin{align*}
+		a^{r+2}-b^{r+2} & = a^{r+1}a - a^{r+1}b +a^{r+1}b - b^{r+1}b                            \\
+		                & = a^{r+1}(a - b) + (a^{r+1} - b^{r+1})b                               \\
+		                & = a^{r+1}(a - b) + (a-b)\left(\sum_{k=0}^ra^{r-k}b^k\right)b          \\
+		                & = (a - b) \left(a^{r+1} + \left(\sum_{k=0}^ra^{r-k}b^k\right)b\right) \\
+		                & = (a - b) \left(a^{r+1} + \sum_{k=0}^ra^{r-k}b^{k + 1}\right)         \\
+		                & = (a - b) \left(a^{r+1} + \sum_{k'=1}^{r+1}a^{(r+1)-k'}b^{k'}\right)  \\
+		                & = (a - b) \left(\sum_{k'=0}^{r+1}a^{(r+1)-k'}b^{k'}\right).
+	\end{align*}
+\end{proof}
+
+\begin{proposition}
+	Si \( a\) est un élément nilpotent de l'anneau \( A\), alors \( 1-a\) est inversible. Si \( a\) est nilpotent non nul, alors il est diviseur de zéro.
+\end{proposition}
+
+\begin{proof}
+	Soit \( n\) le minimum tel que \( a^n=0\). En vertu de la formule \eqref{Eqarpurmkbk} nous avons
+	\begin{equation}
+		1=1-a^n=(1-a)(1+a+\cdots+a^{n-1})=(1+a+\cdots+a^{n-1})(1-a).
+	\end{equation}
+	La somme \( 1+a+\cdots+a^{n-1}\) est donc un inverse de \( (1-a)\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQMZMooBrQhhr}
+	Soit un anneau (pas spécialement commutatif) \( A\). Si \( a_i\in A\), alors
+	\begin{equation}
+		\sum_i\sum_ja_ia_j=\sum_ia_i^2+2\sum_{i<j}a_ia_j=(\sum_ia_i)^2+\sum_{i<j}[a_ia_j]
+	\end{equation}
+	où \( [x,y]\) signifie \( xy-yx\).
+	%TODOooGURMooJxsXYb. Prouver ça.
+\end{proposition}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{PGCD, PPCM et éléments inversibles}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+La définition de pgcd et ppcm dans un anneau commutatif est la définition \ref{DefrYwbct}. Dans la plus grande tradition, elle a été introduite sans motivation, et utilisée par-ci par-là. Nous revenons maintenant dessus.
+
+Commençons par donner une autre vision de la divisibilité dans les anneaux intègres.
+\begin{proposition}\label{PropDiviseurIdeaux}
+	Dans un anneau intègre\footnote{Définition \ref{DEFooTAOPooWDPYmd}.} \( A\), on a l'équivalence suivante concernant deux éléments \( a, b \in A \):
+	\begin{equation}
+		a\divides b\Leftrightarrow (b)\subset (a).
+	\end{equation}
+\end{proposition}
+
+Donc la divisibilité devient en réalité une relation d'ordre dont nous pouvons chercher un maximum et un minimum. Si \( S\) est une partie de \( A\), nous notons \( a\divides S\) pour exprimer que \( a\divides x\) pour tout \( x\in S\); de la même façon, \( S\divides b\) signifie que \( x\divides b\) pour tout \( x\in S\).
+
+Nous rappelons également la définition~\ref{DEFooSPHPooCwjzuz} de morphisme d'anneaux. Remarquons que si \( f\) est un morphisme, nous avons \( f(0)=0\) et \( f(x)^{-1}=f(x^{-1})\).
+
+\begin{lemma}[\cite{ooLIOMooBuCPUS}]
+	Les éléments inversibles d'un anneau sont diviseurs de tous les éléments.
+\end{lemma}
+
+\begin{proof}
+	Soit \( k\) inversible d'inverse \( k'\) : \( kk'=1\); soit aussi \( a\in A\). Alors \( a=k(k'a)\), ce qui montre que \( k\) divise \( a\).
+\end{proof}
+
+\begin{lemma}[\cite{ooLIOMooBuCPUS}]
+	Dans un anneau, \( 1\) est un pgcd de \( a\) et \( b\) si et seulement si les seuls diviseurs communs sont les inversibles.
+\end{lemma}
+
+\begin{proof}
+	Supposons pour commencer que \( 1\) est un pgcd de \( a\) et \( b\). Un diviseur commun de \( a\) et \( b\) doit donc diviser \( 1\). Or un diviseur de \( 1\) est forcément inversible.
+
+	Dans l'autre sens, les diviseurs communs de \( a\) et \( b\) sont tous inversibles et donc diviseurs de \( 1\). Donc \( 1\) est un pgcd de \( a\) et \( b\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Calcul effectif du PGCD et théorème de Bézout}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{subSecIpmnhO}
+
+Soient \( a\) et \( b\), deux entiers que nous allons prendre positifs. Nous allons voir maintenant l'algorithme de \defe{Euclide étendu}{Euclide!algorithme étendu} qui est capable, pour \( a\) et \( b\) donnés, de calculer le PGCD de \( a\) et \( b\), et un couple de Bézout \( (u,v)\) tel que \( ua+vb=\pgcd(a,b)\). Ce calcul est indispensable si on veut implémenter RSA (\ref{SecEVaFYi}).
+
+Cela se base sur le lemme suivant.
+
+\begin{lemma}       \label{LemiVqita}
+	Soient \( a,b\in \eN\) et des nombres \( q\) et \( r\) tels que \( a=qb+r\). Alors \( \pgcd(a,b)=\pgcd(r,b)\).
+\end{lemma}
+
+\begin{proof}
+	Il suffit de voir que les diviseurs communs de \( a\) et \( b\) sont diviseurs de \( r\) et que les diviseurs communs de \( r\) et \( b\) divisent \( a\).
+
+	Si \( s\) divise \( a\) et \( b\), alors dans l'équation
+	\begin{equation*}
+		\frac{ a }{ s }=\frac{ qb }{ s }+\frac{ r }{ s }
+	\end{equation*}
+	les termes \( a/s\) et \( qb/s\) sont entiers, donc \( r/s\) est aussi entier, et \( s\) divise \( r\).
+
+	Inversement, si \( s\) divise \( r\) et \( b\), alors il divise \( qb+r\) et donc \( a\).
+\end{proof}
+\begin{remark}
+	Ce lemme est surtout intéressant lorsque \( a=qb+r\) est la division euclidienne de \( a\) par \( b\): en effet, dans ce cas \( r < b \), et le calcul du PGCD de deux nombres (\(a \) et \( b\)) est ramené à un calcul de PGCD de deux nombres plus petits (\( b\) et \( r\)).
+
+	L'algorithme pour calculer \( \pgcd(a,b)\) consiste à écrire des divisions euclidiennes successives de la manière suivante:
+	\begin{subequations}
+		\begin{align}
+			a & = q_2 b   + r_2 &  & r_2<b   \\
+			b & = q_3 r_2 + r_3 &  & r_3<r_2 \\
+			  & \vdots
+		\end{align}
+	\end{subequations}
+	en remarquant que \( \pgcd(a,b)=\pgcd(b,r_2)=\pgcd(r_2,r_3) \). Étant donné que les inégalités \( r_2<b\) et \( r_3<r_2\) sont strictes, en continuant ainsi nous finissons sur zéro, c'est-à-dire qu'il existera un \( n\) pour lequel \( r_{n+1} = 0 \); et donc
+	\begin{equation*}
+		r_{n-1}=q_{n+1}r_n,
+	\end{equation*}
+	et à ce moment nous avons \( \pgcd(a,b)=\pgcd(r_{n-1},r_n)=r_n\).
+\end{remark}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Algorithme d'Euclide pour le PGCD}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\label{SUBSECooAEBLooFGJRkg}
+\index{pgcd!calcul effectif}
+
+Écrivons l'algorithme\cite{BezoutCos} en détail (parce que Bézout, ça va être la même chose en cinq fois plus compliqué). On pose
+\begin{subequations}
+	\begin{align}
+		r_0=a \\
+		r_1=b
+	\end{align}
+\end{subequations}
+(ce qui explique que nous n'ayons pas utilisé \( r_0\) et \( r_1\) précédemment). Ensuite on écrit la division euclidienne \( a=q_2b+r_2\), c'est-à-dire \( r_0=q_2r_1+r_2\). Cela donne \( r_2\) et \( q_2\) en termes de \( r_0\) et \( r_1\) :
+\begin{equation}
+	r_2=r_0-q_2r_1.
+\end{equation}
+Ensuite, sachant \( r_2\) nous pouvons continuer :
+\begin{equation}
+	r_1=q_3r_2+r_3
+\end{equation}
+donne \( q_3\) et \( r_3=r_1-q_3r_2\). On continue avec \( r_2=q_4r_3+r_4\). Tout cela pour poser la suite
+\begin{equation}        \label{SUBEQooDYUEooYNQnII}
+	\begin{aligned}[]
+		r_0 & =a                      \\
+		r_1 & =b                      \\
+		r_k & =q_{k+2}r_{k+1}+r_{k+2}
+	\end{aligned}
+\end{equation}
+où la troisième équation définit \( r_{k+2}\) et \( q_{k+2}\) en fonction de \( r_k\) et \( r_{k+1}\), à l'aide du théorème de la division euclidienne. La suite \( (r_k)\) ainsi construite est strictement décroissante et à chaque étape le lemme~\ref{LemiVqita} et le principe de l'algorithme d'Euclide nous donnent
+\begin{subequations}
+	\begin{numcases}{}
+		\pgcd(r_k,r_{k+1})=\pgcd(r_{k+1},r_{k+2})=\pgcd(a,b)\\
+		0\leq r_{k+1}<r_k.
+	\end{numcases}
+\end{subequations}
+La suite étant strictement décroissante, nous prenons \( r_n\), le dernier non nul : \( r_{n+1}=0\). Dans ce cas, en prenant \( k=n-1\) dans la la dernière équation \eqref{SUBEQooDYUEooYNQnII} devient :
+\begin{equation}
+	r_{n-1}=q_{n+1}r_n
+\end{equation}
+avec \( \pgcd(a, b)=\pgcd(r_n,r_{n-1})=r_n\).
+
+\begin{example}
+	Calculons le PGCD de \( 18\) et \( 231\). Pour cela nous écrivons les divisions euclidiennes en chaine :
+	\begin{subequations}
+		\begin{align}
+			231 & = 18 \cdot 12 + 15 \\
+			18  & =  1 \cdot 15 + 3  \\
+			15  & =  5 \cdot 5  + 0.
+		\end{align}
+	\end{subequations}
+	Donc le PGCD est \( 3\) (le dernier reste non nul).
+\end{example}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Algorithme étendu: calcul effectif des coefficients de Bézout}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\label{SUBSECooRHSQooEuBWbd}
+\index{Bézout!calcul effectif}
+
+La difficulté est de construire la suite qui donne des coefficients de Bézout. Elle va être construite à l'envers. Nous supposons déjà connaitre la liste complète des \( r_k\) jusqu'à \( r_n=\pgcd(a,b)\), ainsi que la liste complète des divisions euclidiennes
+\begin{equation}
+	r_k=q_{k+2}r_{k+1}+r_{k+2}.
+\end{equation}
+
+Nous voulons trouver les couples \( (u_k,v_k)\) de telle façon à avoir à chaque étape
+\begin{equation}
+	r_n=u_kr_k+v_kr_{k-1}.
+\end{equation}
+Notons que c'est à chaque fois \( r_n\) que nous construisons. La première équation de type Bézout à résoudre est
+\begin{equation}
+	r_n=u_nr_n+v_nr_{n-1},
+\end{equation}
+sachant que \( r_{n-1}=q_{n+1}r_n\). On pose \( v_n=0\) et \( u_n=1\) et c'est bon. Pour la récurrence, supposons les coefficients \( u_k\) et \( v_k\) connus, et déterminons les coefficients \( u_{k-1} \) et \( v_{k-1} \). Pour ce faire, nous égalons les deux expressions pour \( r_n\) :
+\begin{equation}
+	r_n=u_kr_k+v_kr_{k-1}=u_{k-1}r_{k-1}+v_{k-1}r_{k-2};
+\end{equation}
+dans laquelle nous substituons \( r_{k-2}=q_k r_{k-1}+r_k\):
+\begin{align}
+	u_kr_k+v_kr_{k-1} & = u_{k-1}r_{k-1}+v_{k-1}(q_k r_{k-1}+r_k)      \\
+	                  & = (u_{k-1} + q_k v_{k-1}) r_{k-1} +v_{k-1} r_k
+\end{align}
+et nous égalons les coefficients de \( r_k\) et \( r_{k-1}\) pour obtenir
+\begin{subequations}
+	\begin{numcases}{}
+		v_{k-1}=u_k\\
+		u_{k-1}=v_k-v_{k-1}q_k.
+	\end{numcases}
+\end{subequations}
+Dès que \( u_k\) et \( v_k\) ainsi que \( q_k\) sont connus, on peut calculer \( u_{k-1}\) et \( v_{k-1}\).
+
+La dernière équation, celle avec \( k=1\), est
+\begin{equation}
+	r_n=u_1r_1+v_1r_0,
+\end{equation}
+c'est-à-dire
+\begin{equation}        \label{EqNDMLooDvaiAc}
+	\pgcd(a,b)=u_1b+v_1a.
+\end{equation}
+Nous avons ainsi trouvé des coefficients de Bézout pour \( a\) et \( b\).
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Générateurs}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{normaltext}
+	Les éléments de \( \eZ/n\eZ\) ne sont pas des éléments de \( \eZ\); ce sont des parties de \( \eZ\). Pour rappel :
+	\begin{equation}
+		[a]_n=\{ a+kn \tq k\in \eZ \}.
+	\end{equation}
+
+	Pour écrire les éléments de \( \eZ/n\eZ\), nous pouvons écrire
+	\begin{equation}
+		\{ [i]_n \}_{i=1,\ldots, n}
+	\end{equation}
+	ou
+	\begin{equation}
+		\{ [i]_n\tq 1\leq i\leq n \}.
+	\end{equation}
+
+	Mais attention : l'ensemble
+	\begin{equation}
+		\bigcup_{i=1}^n[i]_n
+	\end{equation}
+	est très différent. Ce dernier ensemble est \( \eZ\).
+\end{normaltext}
+
+\begin{proposition}[\cite{BIBooFOGTooQgFAbQ}]   \label{PROPooEWREooUOSMsE}
+	Soit \( n\geq 2\).
+	\begin{enumerate}
+		\item
+		      L'ensemble quotient \( \eZ/n\eZ\) contient \( n\) éléments
+		\item		\label{ITEMooHTRHooDWgXlk}
+		      Nous avons \( \eZ/n\eZ=\{ [k]_n \}_{k=0,\ldots, n-1}\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous montrons que
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \{ 1,\ldots,n \} & \to \eZ/n\eZ  \\
+			k                              & \mapsto [k]_n
+		\end{aligned}
+	\end{equation}
+	est une bijection.
+
+	\begin{subproof}
+		\spitem[Injective]
+		%-----------------------------------------------------------
+		Supposons que \( \varphi(k)=\varphi(l)\) pour \( k,l\in \{ 1,\ldots,n \}\). Il existe \( t\in \eZ\) tel que \( l=l+tn\). Si \( t>0\), alors nous avons
+		\begin{equation}
+			l+tn\geq 1+n>n,
+		\end{equation}
+		ce qui est impossible parce que \( k\in\{ 0,\ldots,n \}\). Nous montrons de même que \( t<0\) est impossible. Nous en déduisons que \( t=0\) et donc que \( k=l\).
+		\spitem[Surjective]
+		%-----------------------------------------------------------
+		Soit \( l\in \eZ\). Nous allons montrer que \( [l]_n\) est dans l'image de \( \varphi\). Par la division euclidienne \ref{ThoDivisEuclide}, il existe \( q\in \eZ\) et \( r<n\) (dans \( \eN\)) tels que \( l=qn+r\). Nous venons de prouver que \( [l]_n=[r]_n=\varphi(r)\).
+	\end{subproof}
+	Pour le point \ref{ITEMooHTRHooDWgXlk}, c'est juste l'image de \( \varphi\).
+\end{proof}
+
+\begin{proposition}[\cite{BIBooFOGTooQgFAbQ}]       \label{PROPooMTWGooEMbvDi}
+	Soit \( n\geq 2\) et \( m\in \eZ\). Nous avons équivalence entre
+	\begin{enumerate}
+		\item	\label{ITEMooMCIJooItgSHc}
+		      \( \pgcd(n,m)=1\),
+		\item		\label{ITEMooMNKCooPnpyye}
+		      \( [m]_n\) engendre le groupe \( (\eZ/n\eZ,+)\)
+		\item		\label{ITEMooBPWLooFLdJfr}
+		      \( [m]_n\) est inversible dans \( \big( (\eZ/n\eZ)^*,\cdot \big)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En trois parties.
+	\begin{subproof}
+		\spitem[\ref{ITEMooMCIJooItgSHc} implique \ref{ITEMooMNKCooPnpyye}]
+		%-----------------------------------------------------------
+
+		Si \( \pgcd(m,n)=1\), le théorème de Bézout \ref{ThoBuNjam} donne des \( u,v\in \eZ\) tels que \( um+vn=1\), autrement dit \( u[m]_n=[1]_n\). Si \( k\) est quelconque, nous avons
+		\begin{equation}
+			[k]_n=uk[m]_n,
+		\end{equation}
+		ce qui signifie que \( [k]_n\) est bien un multiple de \( [m]_n\) qui est donc générateur.
+
+		\spitem[\ref{ITEMooMNKCooPnpyye} implique \ref{ITEMooBPWLooFLdJfr}]
+		%-----------------------------------------------------------
+
+		Si \( [m]_n\) engendre \( \big( \eZ/n\eZ,+ \big)\), il existe en particulier un multiple de \( [m]_n\) qui vaut \( [1]_n\) : il existe \( k\in \eZ\) tel que \( k[m]_n=[1]_n\).
+
+		Nous voyons que \( [k]_n\) est un inverse de \( [m]_n\) dans \( \big( (\eZ/n\eZ)^*,\cdot \big)\).
+
+		\spitem[\ref{ITEMooBPWLooFLdJfr} implique \ref{ITEMooMCIJooItgSHc}]
+		%-----------------------------------------------------------
+
+		Nous supposons que \( [m]_n\) est inversible dans \( \big( (\eZ/n\eZ)^*,\cdot \big)\). C'est-à-dire qu'il existe \( k\in \eZ\) tel que \( [k]_n[m]_n=[1]_n\). Cela signifie qu'il existe \( l\in \eZ\) tel que
+		\begin{equation}
+			km=1+ln.
+		\end{equation}
+		Par le théorème de Bézout (pris dans l'autre sens), cela signifie que \( \pgcd(m,n)=1\).
+
+	\end{subproof}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{pgcd, ppcm dans \( \eN\)}
+%----------------------------------------------------
+
+
+\begin{lemma}[\cite{MonCerveau}]       \label{LEMooBJVJooFyuFeN}
+	Dans \( \eN\), le pgcd\footnote{Le pgcd et ppcm sont définis dans \ref{DefrYwbct}.} et le ppcm sont uniques.
+\end{lemma}
+
+\begin{proof}
+	Supposons que \( \delta_1\) et \( \delta_2\) soient des pgcd de la partie \( S\). Puisque \( \delta_1\divides S\), nous avons \( \delta_1\divides \delta_2\) parce que \( \delta_2\) est un pgcd. Le même raisonnement, inversant \( \delta_1\) et \( \delta_2\) montre que \( \delta_2\divides \delta_1\). Si \( (a_p)\) sont les éléments de la décomposition de \( \delta_1\) et \( (b_p)\) ceux de \( \delta_2\), alors le lemme \ref{LEMooDTQQooYoJABt} nous indique que \( a_p\leq b_p\) et \( b_p\leq a_p\), ce qui implique que \( a_p=b_p\).
+
+	La démonstration pour le ppcm s'effectue selon le même principe.
+\end{proof}
+
+\begin{lemma}	\label{LEMooWMZWooCmkOoD}
+	Si \(d\divides\delta \) dans \( \eN\) alors \( d\leq \delta\).
+\end{lemma}
+
+\begin{proof}
+	Nous avons \( k\in \eN\) tel que \( kd=\delta\). Le lemme \ref{LEMooSVDDooWsyxNP} dit qu'alors \( \delta\geq d\).
+\end{proof}
+
+\begin{normaltext}		\label{NORMooNAMKooCKKZMc}
+	Rappel de ce que nous disions dans \ref{REMooExistenceUnicitePGCD}. Dans \( \eZ\), le pgcd n'est pas à proprement parler unique, mais nous faisons une exception en disant qu'on ne prend que les pgcd positifs.
+\end{normaltext}
+
+\begin{lemma}       \label{LEMooJIGRooARiIPC}
+	Soit une partie \( S\) de \( \eN\).
+	\begin{enumerate}
+		\item
+		      Le pgcd de \( S\) est le plus grand élément de \( \eN\) divisant tous les éléments de \( S\).
+		\item
+		      Le ppcm de \( S\) est le plus petit élément de \( \eN\) que tous les éléments de \( S\) divisent.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Pour le pgcd]
+		%-----------------------------------------------------------
+		Soit \( \delta\), le pgcd de \( S\). Si \( d\) divise également tous les éléments de \( S\), nous avons \( d\divides \delta\) par définition du pgcd. Le lemme \ref{LEMooWMZWooCmkOoD} dit qu'alors \( d\leq \delta\).
+
+		\spitem[Pour le ppcm]
+		%-----------------------------------------------------------
+		Soit le ppcm \( \mu\) de \( S\). Si \( m\) est également divisé par tous les éléments de \( S\) nous avons \( \mu\divides m\) et donc \( \mu\leq m\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooEVIZooPAkQZW}
+	Soient \( a,b\in \eZ\) et \( k\in \eN\) tels que \( ab=q^k\) et \( \pgcd(a,b)=1\). Alors il existe \( \alpha,\beta\in\eZ\) tels que \( a=\alpha^k\) et \( b=\beta^k\).
+\end{lemma}
+
+\begin{proof}
+	Nous décomposons \( a\), \( b\) et \( q\) en facteurs premiers suivant le théorème \ref{ThoAJFJooAveRvY} :
+	\begin{subequations}
+		\begin{align}
+			a & = \prod_ip_i^{a_i}      \label{SUBEQooBJEQooDiWbYg} \\
+			b & = \prod_ip_i^{b_i}                                  \\
+			q & = \prod_{i}p_i^{q_i}.
+		\end{align}
+	\end{subequations}
+	D'un part, en utilisant la commutativité et l'associativité du produit,
+	\begin{equation}
+		ab=\prod_ip_i^{a_i+b_i}.
+	\end{equation}
+	D'autre part, puisque \( ab=q^k\), nous avons
+	\begin{equation}
+		ab=(\prod_ip_i^{q_i})^k=\prod_ip_i^{kq_i}.
+	\end{equation}
+	En vertu de l'unicité de la décomposition en facteurs premiers, pour chaque \( i\) nous avons
+	\begin{equation}
+		a_i+b_i=kq_i.
+	\end{equation}
+	Comme \( a\) et \( b\) sont premiers entre eux, si \( a_i\neq0\) alors \( b_i=0\) et inversement. Prenons un \( i\) tel que \( a_i\neq 0\). Alors \( b_i=0\) et nous avons \( a_i=kq_i\). Idem pour les \( b_i\).
+
+	Donc tous les \( a_i\) et les \( b_i\) qui sont non nuls sont des multiples de \( k\). Nous posons \( a_i=ks_i\) et nous reportons dans \eqref{SUBEQooBJEQooDiWbYg} :
+	\begin{equation}
+		a=\prod_ip_i^{ks_i}=(\prod_ip_i^{s_i})^k,
+	\end{equation}
+	de telle sorte que \( a\) soit une puissance \( k\)\ieme. La même chose tient pour \( b\).
+\end{proof}
+
+\begin{proposition}     \label{PROPooNQBOooHWqTvs}
+	Soient \( a,b\in \eZ\setminus\{ 0 \}\) décomposés en \( a=\prod_{p\in\mP}p^{a_p}\) et \( b=\prod_{p\in\mP}p^{b_p}\). En posant
+	\begin{subequations}
+		\begin{align}
+			m_p & = \min\{ a_p,b_p \}  \\
+			M_p & = \max\{ a_p,b_p \},
+		\end{align}
+	\end{subequations}
+	nous avons
+	\begin{subequations}
+		\begin{align}
+			\pgcd(a,b) & = \prod_{p\in\mP}p^{m_p}  \\
+			\ppcm(a,b) & = \prod_{p\in\mP}p^{M_p}.
+		\end{align}
+	\end{subequations}
+	Pour rappel, la définition de pgcd et ppcm sont dans \ref{DefrYwbct}.
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par le pgcd. Nous notons \( \delta=\prod_{p\in\mP}p^{m_p}\) et nous prouvons que \( \delta\) est un pgcd de \( \{ a,b \}\). Il y a deux propriétés à vérifier.
+
+	\begin{subproof}
+		\spitem[\( \delta\) divise \( a\) et \( b\)]
+		Puisque \( m_p=\min\{ a_p,b_p \}\), nous avons \( m_p\leq a_p\) et \( m_p\leq b_p\). Le lemme \ref{LEMooDTQQooYoJABt} nous dit alors que \( \delta\divides a\) et \( \delta\divides b\).
+		\spitem[Si \( s\) divise \( a\) et \( b\)]
+		De même, si \(s\divides a\) et \( s\divides b\), nous avons \( s_p\leq a_p\) et \( s_p\leq b_p\), ce qui montre que \( s_p\leq m_p\) et donc que \( s\divides \delta\).
+	\end{subproof}
+
+	Pour le ppcm, nous posons \( \mu=\prod_{p\in\mP}p^{M_p}\), et nous prouvons que \( \mu\) est un ppcm de \( \{ a,b \}\).
+	\begin{subproof}
+		\spitem[\( a\) et \( b\) divisent \( \mu\)]
+		Pour tout \( p\), nous avons \( M_p\geq a_p\). Le lemme \ref{LEMooDTQQooYoJABt} implique que \( a\divides \mu\). Idem pour \( b\), donc tous les éléments de \( \{ a,b \}\) divisent \( \mu\).
+		\spitem[Si \( a\) et \( b\) divisent \( r\)]
+		Supposons que \( a\) et \( b\) divisent un certain nombre \( r\). Alors \( a_p\leq r_p\) et \( b_p\leq r_p\). Donc \( r_p\geq\max\{ a_p,b_p \}=M_p\). Nous en déduisons que \( \mu\divides r\).
+	\end{subproof}
+
+	Puisque les pgcd et ppcm sont uniques (lemme \ref{LEMooBJVJooFyuFeN} et remarque \ref{NORMooNAMKooCKKZMc}), nous avons prouvé que \( \delta\) et \( \mu\) sont les nombres recherchés.
+\end{proof}
+
+\begin{corollary}       \label{CORooQIMHooUzLUJY}
+	Soit un nombre premier \( p\). Un élément \( m\in \eZ^*\) vérifie \( \pgcd(m,p^n)\neq 1\) si et seulement si \( m=qp\) pour un certain \( q\).
+\end{corollary}
+
+\begin{proof}
+	Nous considérons les décompositions en facteurs premiers \( m=\prod_{s\in\mP}s^{a_s}\) et \( p^n=\prod_{s\in\mP}s^{b_s}\). Par la partie unicité du théorème \ref{ThoAJFJooAveRvY}, nous savons que \( b_s=0\) pour \( s\neq p\) et \( b_p=n\).
+
+	Nous prenons ensuite l'expression du \( \pgcd\) donné par la proposition \ref{PROPooNQBOooHWqTvs} :
+	\begin{equation}
+		\pgcd(m,p^n)=\prod_{s\in\mP}s^{\min\{ a_s,b_s \}}.
+	\end{equation}
+	Le minimum est toujours zéro lorsque \( s\neq p\), donc \( \pgcd(m,p^n)=p^{\min\{ a_s,n \}}\).
+
+	Nous avons donc \( \pgcd(m,p^n)\neq 1\) si et seulement si \( a_p\neq 0\). Mais \( a_p\neq 0\) si et seulement si \( m\) est un multiple de \( p\).
+\end{proof}
+
+\begin{lemma}   \label{LemheKdsa}
+	Un entier \( n\geq 1\) se décompose de façon unique en produit de la forme \( n=qm^2\) où \( q\) est un entier sans facteurs carrés et \( m\), un entier.
+\end{lemma}
+
+\begin{proof}
+	Pour \( n=1\), c'est évident. Nous supposons \( n\geq 2\).
+
+	En ce qui concerne l'existence, nous décomposons \( n\) en facteurs premiers\footnote{Théorème~\ref{ThoAJFJooAveRvY}.} et nous séparons les puissances paires des puissances impaires :
+	\begin{subequations}
+		\begin{align}
+			n & = \prod_{i=1}^r p_i^{2\alpha_i}\prod_{j=1}^sq_{j}^{2\beta_j+1}                                                              \\
+			  & = \underbrace{\left( \prod_{i=1}^rp_i^{2\alpha_i}\prod_{j=1}^sq^{2\beta_j} \right)}_{m^2}\underbrace{\prod_{j=1}^sq_j}_{q}.
+		\end{align}
+	\end{subequations}
+
+	Nous passons à l'unicité. Supposons que \( n=q_1m_1^2=q_2m_2^2\) avec \( q_1\) et \( q_2\) sans facteurs carrés (dans leur décomposition en facteurs premiers). Soit \( d=\pgcd(m_1,m_2)\) et \( k_1\), \( k_2\) définis par \( m_1=dk_1\), \( m_2=dk_2\). Par construction, \( \pgcd(k_1,k_2)=1\). Étant donné que
+	\begin{equation}        \label{EqWPOtto}
+		n=q_1d^2k_1^2=q_2d^2k_2^2,
+	\end{equation}
+	nous avons \( q_1k_1^2=q_2k_2^2\) et donc \( k_1^2\) divise \( q_2k_2^2\). Mais \( k_1\) et \( k_2\) n'ont pas de facteurs premiers en commun, donc \( k_1^2\) divise \( q_2\), ce qui n'est possible que si \( k_1=1\) (parce que \( k_1^2\) n'a que des facteurs premiers alors que \( q_2\) n'en a pas). Dans ce cas, \( d=m_1\) et \( m_1\) divise \( m_2\). Si \( m_2=lm_1\) alors l'équation \eqref{EqWPOtto} se réduit à  \( n=q_1m_1^2=q_2l^2m_1^2\) et donc
+	\begin{equation}
+		q_1=q_2l^2,
+	\end{equation}
+	ce qui signifie \( l=1\) et donc \( m_1=m_2\).
+\end{proof}
+
+Les nombres premiers ne sont pas si rares que ça dans \( \eN\). Nous allons voir dans \ref{ThonfVruT} que la somme des inverses des nombres premiers diverge. Pour comparaison, la somme des inverses des carrés converge par la proposition \ref{PROPooFPVZooGnsqrs}. Il y a donc, dans un certains sens, plus de nombres premiers que de carrés; dans un autre sens, il y en a autant : une infinité dénombrable.
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Ordre d'un élément dans un groupe fini}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Voir plus d'informations dans la partie \ref{SECooXIHPooWVSjhT} sur les groupes monogènes.
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooRFKQooWTdYcr}
+	Si \( g\) est un élément d'ordre \( s\), et si \( g^r=e\), alors \( s\divides r\).
+\end{lemma}
+
+\begin{theorem}[Théorème de Cauchy\cite{ooTZHGooEPFstf,BIBooFBHDooWXABaM}]    \label{THOooSUWKooICbzqM}
+	Soit \( G\), un groupe cyclique d'ordre \( n\). Si \( d\) divise \( n\), alors \( G\) possède un unique sous-groupe d'ordre \( d\).
+
+	En particulier, \( G\) possède des éléments de tous les ordres divisant \( n\).
+\end{theorem}
+\index{théorème!Cauchy!groupe}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Existence]
+		%-----------------------------------------------------------
+		L'hypothèse est que \( G\) est un groupe cyclique. Donc nous pouvons considérer une générateur \( g\) de \( G\). Nous considérons \( H_d=\gr(g^{n/d})\), et nous prouvons que \( H_d\) est un sous-groupe d'ordre \( d\).
+
+		D'abord nous avons \( (g^{n/d})^d=g^n=e\). Donc \( | H_d |\leq d\). Pour prouver que \( | H_d |\geq d\), nous supposons par l'absurde qu'il existe \( k<d\) tel que \( (g^{n/d})^k=e\). Nous aurions alors \( g^{nk/d}=e\) avec \( nk/d<n\), ce qui contredirait que \( g\) est générateur d'un groupe d'ordre \( n\).
+
+		\spitem[Unicité]
+		%-----------------------------------------------------------
+		Soit \( H\), un sous-groupe de \( G\) d'ordre \( d\). Nous allons prouver que \( H=\gr(g^{n/d})\). Vu que \( H\) et \( H_d\) ont le même cardinal, il suffira de montrer que \( H\subset H_d\) pour avoir \( H=H_d\).
+
+		Vu que \( \{ e \}\) est l'unique sous-groupe d'ordre \( 1\), nous supposons que \( d>1\). Soit \( h\neq e\) dans \( H\). Vu que \( g\) est générateur de \( G\), il existe \( k\in \eN^*\) tel que \( g^k=h\). Vu que \( H\) est d'ordre \( d\), nous avons \( h^d=e\) (corolaire \ref{CorpZItFX}). Donc
+		\begin{equation}
+			g^{kd}=e.
+		\end{equation}
+		Le lemme \ref{LEMooRFKQooWTdYcr} dit alors que \( n\divides kd\). Soit \( t\in \eN^*\) tel que \( nt=kd\); nous pouvons écrire \( k=tn/d\) et récrire \( g^k=h\) avec cette valeur de \( k\) :
+		\begin{equation}
+			h=g^{tn/d}=(g^{n/d})^t\in\gr(g^{n/d}).
+		\end{equation}
+		Vu que \( h\) a été pris arbitrairement dans \( H\), nous en déduisons que \( H\subset \gr(g^{n/d})\).
+	\end{subproof}
+\end{proof}
+
+Le lemme suivant indique que sous hypothèse de commutativité, l'ordre d'un élément est une notion multiplicative.
+\begin{lemma}[\cite{rqrNyg}]    \label{LemyETtdy}
+	Soit \( G\) un groupe et \( a,b\in G\) tels que \( ab=ba\) d'ordres respectivement \( r\) et \( s\), deux nombres premiers entre eux. Alors l'élément \( ab\) est d'ordre \( rs\).
+\end{lemma}
+
+\begin{proof}
+	Étant donné que \( (ab)^{rs}=a^{rs}b^{rs}=1\), l'ordre de \( ab\) divise \( rs\). Et comme \( r\) et \( s\) sont premiers entre eux, l'ordre de \( ab\) s'écrit sous la forme \( r_1s_1\) avec \( r_1\divides r\) et \( s_1\divides s\). Nous avons
+	\begin{equation}
+		a^{r_1s_1}b^{r_1s_1}=(ab)^{r_1s_1}=1,
+	\end{equation}
+	que nous élevons à la puissance \( r_2\) où \( r_2\) est défini en posant \(r=r_1r_2\) :
+	\begin{equation}
+		a^{rs_1}b^{rs_1}=1.
+	\end{equation}
+	Et comme \( a^{rs_1}=1\), nous concluons que \( b^{rs_1}=1\). Donc \( s\divides rs_1\). Par le lemme de Gauss \ref{LemPRuUrsD}, nous avons en fait \( s\divides s_1\). Puisqu'on a aussi \( s_1\divides s\), nous avons \( s=s_1\).
+
+	Le même type d'argument donne \( r=r_1\), et finalement l'ordre de \( ab\) est \( r_1s_1=rs\).
+\end{proof}
+
+\begin{lemma}[\cite{Combes}]    \label{LemSkIOOG}
+	Un sous-groupe d'indice \( 2\) est un sous-groupe normal.
+\end{lemma}
+
+\begin{proof}
+	Si \( H\) est un tel sous-groupe d'un groupe \( G\), alors \( G\) possède exactement deux classes à gauche par rapport à \( H\) (théorème de Lagrange~\ref{ThoLagrange}) et se partitionne donc en deux parties : \( G=H\cup xH\) avec \( x \notin H \). De même pour les classes à droite : \( G=H\cup Hx\). Puisque la classe à droite \( Hx \) n'est pas \( H\), on a \( xH = Hx \), et \( H\) est normal dans \( G\) par la proposition~\ref{propGroupeNormal}.
+\end{proof}
+
+\begin{lemma}[\cite{NielsBMorph}]\label{PropubeiGX}
+	Soit \( H\), un sous-groupe normal d'indice \( m\) de \( G\). Alors pour tout \( a\in G\) nous avons \( a^m\in H\).
+\end{lemma}
+
+\begin{proof}
+	Par définition de l'indice, le groupe \( G/H\) est d'ordre \( m\). Donc si \( [a]\in G/H\), nous avons \( [a]^m=[e]\), ce qui signifie \( [a^m]=[e]\), ou encore \( a^m\in H\).
+\end{proof}
+
+\begin{proposition}[\cite{NielsBMorph}]     \label{PROPooVWVIooQzuAlA}
+	Soit un groupe fini \( G\) et \( H\), un sous-groupe normal d'ordre \( n\) et d'indice \( m\) avec \( m\) et \( n\) premiers entre eux. Alors \( H\) est l'unique sous-groupe de \( G\) à être d'ordre \( n\).
+\end{proposition}
+
+\begin{proof}
+	Soit \( H'\) un sous-groupe d'ordre \( n\). Si \( h\in H'\) alors \( h^n=1\) et \( h^m\in H\) par le lemme \ref{PropubeiGX}. Étant donné que \( m\) et \( n\) sont premiers entre eux, par le théorème de Bézout~\ref{ThoBuNjam}, il existe \( a,b\in \eZ\) tels que
+	\begin{equation}
+		am+bn=1.
+	\end{equation}
+	Et donc, \( h=h^1=(h^m)^a(h^n)^b\). En tenant compte du fait que \( h^n=1\) et \( h^m\in H\), nous avons \( h\in H\). Ce que nous venons de prouver est que \( H'\subset H\) et donc que \( H=H'\) parce que \( | H' |=| H |=| G |/m\).
+\end{proof}
+
+\begin{normaltext}
+	Notons que cette proposition ne dit pas qu'il existe un sous-groupe d'ordre \( n\) et d'indice \( m\). Il dit juste que si il y en a un et si il est normal, alors il n'y en a pas d'autre.
+\end{normaltext}
+
+\begin{lemma}       \label{LemqAUBYn}
+	L'ensemble des ordres d'un groupe commutatif est stable par PPCM\footnote{Définition \ref{DefrYwbct}.}.
+
+	Autrement dit, si \( x\in G\) est d'ordre \( r\) et si \( y\in G\) est d'ordre \( s\), alors il existe un élément d'ordre \( \ppcm(r,s)\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( m=\ppcm(r,s)\). Afin d'écrire \( m\) sous une forme pratique, nous considérons les décompositions en facteurs premiers de \( r\) et \( s\) :
+	\begin{subequations}
+		\begin{align}
+			r & =\prod_{i=1}^kp_i^{\alpha_i} \\
+			s & =\prod_{i=1}^kp_i^{\beta_i}
+		\end{align}
+	\end{subequations}
+	où \( \{ p_i \}_{i=1,\ldots, k}\) est l'ensemble des nombres premiers arrivant dans les décompositions de \( r\) et de \( s\). Si nous posons
+	\begin{subequations}
+		\begin{align}
+			r' & =\prod_{\substack{i=1 \\\alpha_i>\beta_i}}^kp_i^{\alpha_i}      \\
+			s' & =\prod_{\substack{i=1 \\\alpha_i\leq \beta_i}}^kp_i^{\beta_i},
+		\end{align}
+	\end{subequations}
+	alors \( \ppcm(r,s)=r's'\) et \( r'\) et \( s'\) sont premiers entre eux. L'élément \( x^{r/r'}\) est d'ordre \( r'\) et l'élément \( y^{s/s'}\) est d'ordre \( s'\). Maintenant nous utilisons le fait que \( G\) soit commutatif et le lemme~\ref{LemyETtdy} pour conclure que l'ordre de \( x^{r/r'}y^{s/s'}\) est \( r's'=m\).
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Écriture des fractions}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem}[\cite{BIBooAXNUooSqTVng}]     \label{THOooWYQVooRBaAAM}
+	Tout élément de \( \eQ^+\) s'écrit de façon unique comme quotient de deux entiers premiers entre eux.
+\end{theorem}
+
+\begin{proof}
+	En deux parties\footnote{Définitions des pgcd et ppcm en \ref{DefrYwbct}.}
+	\begin{subproof}
+		\spitem[Unicité]
+		Supposons avoir \( \frac{ a }{ b }=\frac{ c }{ d }\) avec \( \pgcd(a,b)=\pgcd(c,d)=1\). Nous avons
+		\begin{equation}
+			ad=bc
+		\end{equation}
+		donc
+		\begin{enumerate}
+			\item
+			      \( a\) divise \( bc\) mais est premier avec \( b\) donc \( a\) divise \( c\) par le lemme de Gauss~\ref{LemPRuUrsD}.
+			\item
+			      \( c\) divise \( ad\) mais est premier avec \( d\) donc \( c\) divise \( a\) par le lemme de Gauss~\ref{LemPRuUrsD}.
+		\end{enumerate}
+		En conclusion \( a\) divise \( c\) et \( c\) divise \( a\), ergo\footnote{Lemme \ref{LEMooSRFMooHgEMwj}.} \( a=c\). L'égalité \( b=d\) est alors immédiate.
+		\spitem[Existence]
+		Soit le quotient \( \frac{ a }{ b }\). Nous avons
+		\begin{equation}
+			\frac{ a }{ b }=\frac{ a/\pgcd(a,b) }{ b/\pgcd(a,b) },
+		\end{equation}
+		qui est encore un quotient d'entiers parce que \( \pgcd(a,b)\) divise aussi bien \( a\) que \( b\). Il faut montrer que les nombres \( a/\pgcd(a,b)\) et \( b/\pgcd(a,b)\) sont premiers entre eux. Pour cela nous supposons que \( k\) est un diviseur commun. En particulier, les nombres \( a/k\pgcd(a,b)\) et \( b/k\pgcd(a,b)\) sont des entiers, ce qui fait que \( k\pgcd(a,b)\) est un diviseur commun de \( a\) et \( b\). Étant donné que \( \pgcd(a,b)\) est le plus grand tel diviseur, nous devons avoir \( k\pgcd(a,b)=\pgcd(a,b)\) c'est-à-dire que \( k=1\). Donc les nombres \( a/\pgcd(a,b)\) et \( b/\pgcd(a,b)\) sont premiers entre eux.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooWBFJooWisSZX}
+	Soient \( l,l,d_1,d_2\in \eN\) tels que
+	\begin{equation}
+		\frac{ k }{ d_1 }=\frac{ l }{ d_2 }
+	\end{equation}
+	avec \( \pgcd(k,d_1)=1\).
+
+	Alors
+	\begin{enumerate}
+		\item
+		      \( d_1\leq d_2\)
+		\item
+		      \( d_1=\frac{ d_2 }{ \pgcd(l,d_2) }\).
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proposition}     \label{PROPooRZDDooLJabov}
+	Les entiers \( p\) et \( q\) sont premiers entre eux\footnote{Premiers entre eux, définition \ref{DEFooXSPFooPumQSy}.} si et seulement si \( p^2\) et \( q^2\) sont premiers entre eux.
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		% -------------------------------------------------------------------------------------------- 
+		Nous supposons que \( p^2\) et \( q^2\) ne sont pas premiers entre eux. Donc il existe \( \delta\) divisant \( p^2\) et \( q^2\). Si \( \delta'\) est un facteur premier de \( \delta\), alors \( \delta'\) divise \( \delta\) et donc aussi \( p^2\) et \( q^2\). Le lemme \ref{LEMooGLZHooUcRNgu} implique que \( \delta\) divise \( p\) et \( q\). Donc \( p\) et \( q\) ne sont pas premiers entre eux.
+		\spitem[\( \Leftarrow\)]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( p^2\) et \( q^2\) sont premiers entre eux, par le théorème de Bézout~\ref{ThoBuNjam} il existe \( a,b\in \eZ\) tels que
+		\begin{equation}
+			ap^2+bq^2=1
+		\end{equation}
+		Dans ce cas, \( (ap)p+(bq)q=1\), ce qui montre (par encore Bézout, mais l'autre sens) que \( p\) et \( q\) sont premiers entre eux.
+	\end{subproof}
+\end{proof}
+
+Une des conséquences de ces résultats sera le fait que \( \sqrt{n}\) est irrationnelle dès que \( n\) n'est pas un carré parfait, théorème~\ref{THOooYXJIooWcbnbm}.
+
+Nous avons déjà vu dans la proposition~\ref{PropooRJMSooPrdeJb} que \( \sqrt{2}\) était irrationnel. En fait le théorème suivant va nous montrer que le nombre \( \sqrt{ n }\) est soit entier, soit irrationnel.
+\begin{theorem}     \label{THOooYXJIooWcbnbm}
+	Soit \( n\in \eN\). Le nombre \( \sqrt{n}\) est rationnel si et seulement si \( n\) est un carré parfait.
+\end{theorem}
+
+\begin{proof}
+	Supposons que \( \sqrt{n}\) soit rationnel. Le théorème~\ref{THOooWYQVooRBaAAM} nous donne \( p,q\in \eN\) premiers entre eux tels que \( \sqrt{n}=p/q\). La proposition~\ref{PROPooRZDDooLJabov} nous enseigne de plus que \( p^2\) et \( q^2\) sont premiers entre eux. Nous avons
+	\begin{equation}
+		p^2=nq^2.
+	\end{equation}
+	Le nombre \( q\) est alors un diviseur commun de \( q^2\) et de \( p\). Donc \( q=1\) et \( n=p^2\) est un carré parfait.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Équation diophantienne linéaire à deux inconnues}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{subsecZVKNooXNjPSf}
+
+\index{équation!diophantienne}
+
+Soient \( a\), \( b\) et \( c\) des entiers naturels donnés. Nous considérons l'équation
+\begin{equation}        \label{EqTOVSooJbxlIq}
+	ax+by=c
+\end{equation}
+à résoudre\cite{PAYUooYVuNAB} pour \( (x,y)\in \eN^2\).
+
+Si \( a\) ou \( b\) est nul, c'est facile; nous supposons donc que \( a\) et \( b\) sont tous deux non nuls. Nous commençons par simplifier l'équation en cherchant les diviseurs communs. Soit \( d=\pgcd(a,b)\) et notons \( a=da'\), \( b=db'\). Nous avons déjà l'équation
+\begin{equation}
+	d(a'x+b'y)=c,
+\end{equation}
+et donc si \( c\) n'est pas un multiple de \( d\), il n'y a pas de solution\footnote{Exemple : \( 8x+2y=9\). Le membre de gauche est certainement un nombre pair et il n'y a donc pas de solution.}. Si par contre \( c\) est un multiple de \( d\) alors nous écrivons \( c=c'd\) et l'équation devient
+\begin{equation}
+	a'x+b'y=c'
+\end{equation}
+C'est maintenant que nous utilisons le théorème de Bézout~\ref{ThoBuNjam} : puisque \( a'\) et \( b'\) sont premiers entre eux, nous avons la relation  \( a'u+b'v=1\) pour certains\footnote{Nous avons décrit un algorithme pour les trouver en démontrant l'équation~\ref{EqNDMLooDvaiAc}.} nombres entiers \( u\) et \( v\). Nous récrivons notre équation sous la forme \( a'x+b'y=c'(a'u+b'v)\) et rassemblons les termes :
+\begin{equation}
+	a'(x-c'u)=b'(c'v-y).
+\end{equation}
+C'est-à-dire que si \( (x,y)\) est une solution, alors \( a'\) divise \( b'(c'v-y)\). Mais comme \( a'\) et \( b'\) sont premiers entre eux, le nombre \( a'\) doit forcément\footnote{C'est Gauss~\ref{LemPRuUrsD} qui le dit, et vous savez que lorsque Gauss dit, c'est \emph{forcément} vrai.} diviser \( c'v-y\). Disons \( c'v-y=ka'\). Alors \( a'(x-c'u)=b'ka'\) et donc
+\begin{equation}
+	x=b'k+c'u.
+\end{equation}
+Nous trouvons alors une expression pour \( y\) en injectant ce résultat dans  \( a'x+b'y=c'\) et en utilisant le théorème de Bézout : \( a'c'u=(1-b'v)c'\). Au final nous avons prouvé que toutes les solutions sont de la forme
+\begin{subequations}            \label{EqYCQVooZzHuRq}
+	\begin{numcases}{}
+		x=b'k+c'u\\
+		y=vc'-a'k
+	\end{numcases}
+\end{subequations}
+avec \( k\in\eZ\). Si nous ne voulons réellement que les solutions dans \( \eN\) et non dans \( \eZ\), il faut seulement un peu restreindre les valeurs de \( k\). Il en reste un nombre fini parce que l'équation pour \( x\) borne \( k\) vers le bas tandis que celle pour \( y\) borne \( k\) vers le haut.
+
+Par ailleurs, il est très vite vérifié que tous les couples \( (x,y)\) de la forme \eqref{EqYCQVooZzHuRq} sont solutions.
+
+\begin{example}
+	Résoudre l'équation \( 2x+6y=52\).
+
+	Nous pouvons factoriser \( 2\) dans le membre de gauche et simplifier alors toute l'équation par \( 2\) :
+	\begin{equation}
+		x+3y=26.
+	\end{equation}
+	Nous cherchons une relation de Bézout pour \( u+3v=1\). Ce n'est heureusement pas très compliqué : \( u=-5\), \( v=2\). Nous pouvons alors écrire
+	\begin{equation}
+		x+3y=26\times (-5+3\times 2),
+	\end{equation}
+	et donc \( x+5\times 26=-3(y-26\times 2)\), et en posant \( k=y-26\times 2\) nous avons
+	\begin{equation}
+		x=-3k-130.
+	\end{equation}
+	En injectant nous trouvons l'équation \( 3y-3k-130=26\) et donc
+	\begin{equation}
+		y=52+k.
+	\end{equation}
+\end{example}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Quotients}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous écrivons \( a=b\mod p\) essentiellement si il existe \( k\in \eZ\) tel que \( b+kp=a\). Plus généralement nous notons \( [a]_p=\{ a+kp|k\in \eZ \}\)\nomenclature[R]{\( [a]_p\)}{ensemble des \( a+kp\)} et l'écriture «\( a=n\mod p\)» peut tout autant signifier \( a=[b]_p\) que \( a\in [b]_p\). La différence entre les deux est subtile mais peut de temps en temps valoir son pesant d'or.
+
+\begin{proposition}
+	Soit \( n\in\eN\). Le groupe \( (\eZ/n\eZ, +)\) est monogène. Si \( n\neq 0\), il est cyclique d'ordre \( n\).
+\end{proposition}
+
+\begin{proof}
+	Nous considérons la surjection canonique \( \mu\colon \eZ\to \eZ/n\eZ\). Si \( a\in\eZ\), alors \( \mu(a)=a\mu(1)\). Par conséquent \( \eZ/n\eZ=\gr\bigl( \mu(1) \bigr)\) parce que tout groupe contenant \( \mu(1)\) contient tous les multiples de \( \mu(1)\), et par conséquent contient \( \mu(\eZ)=\eZ/n\eZ\).
+
+	Soit \( x\in\eZ/n\eZ\) et considérons \( x_0\), le plus petit naturel représentant \( x\). Nous notons \( x=[x_0]\). Le théorème de la division euclidienne~\ref{ThoDivisEuclide} donne l'existence de \( q\) et \( r\) avec \( 0\leq r<n\) et \( q\geq 0\) tels que
+	\begin{equation}
+		x_0=nq+r.
+	\end{equation}
+	Nous avons \( [x_0]=[r]=\mu(r)\) parce que \( x_0-r\) est un multiple de \( n\). Nous avons donc \( [x_0]\in\mu(\eN_{n-1})\). Par conséquent
+	\begin{equation}
+		\eZ/n\eZ=\mu(\eZ)=\mu(\eN_{n-1}).
+	\end{equation}
+	La restriction \( \mu\colon \eN_{n-1}\to \eZ/n\eZ\) est donc surjective. Montrons qu'elle est également injective. Si \( \mu(x_0)=\mu(x_1)\), alors \( x_1=x_0+kn\). Si nous supposons que \( x_1>x_0\), alors \( k>0\) et si \( x_0\in\eN_{n-1}\), alors \( x_1>n-1\).
+
+	L'ordre de \( \eZ/n\eZ\) est donc le même que le cardinal de \( \eN_{n-1}\), c'est-à-dire \( n\). Le groupe \( \eZ/n\eZ\) est donc fini, d'ordre \( n\) et monogène parce que \( \eZ/n\eZ=\gr(\mu(1))\). Il est donc cyclique.
+\end{proof}
+
+\begin{lemma}[\cite{KXjFWKA}]
+	Soit \( q\in \eN\) avec \( q\geq 2\). Soient \( n,d\in \eN\) tels que \( q^d-1\divides q^n-1\). Alors \( d\divides n\).
+\end{lemma}
+
+\begin{proof}
+	Par le théorème de division euclidienne~\ref{ThoDivisEuclide}, il existe \( a,b\in \eZ\) tels que \( n=ad+b\) avec \( 0\leq b<d\). En remarquant que \( q^d\in[1]_{q^d-1}\) nous avons
+	\begin{equation}
+		q^n=(q^d)^aq^b\in[1]_{q^d-1}q^b=[q^b]_{q^d-1}.
+	\end{equation}
+	Pour cela nous avons utilisé d'abord le fait que si \( a\in [z]_k\), alors \( a^n\in[z^n]_k\) et ensuite le fait que \( [1]_kx=[x]_k\). D'autre part l'hypothèse \( q^d-1\divides q^n-1\) implique
+	\begin{equation}
+		q^n\in[1]_{q^d-1}.
+	\end{equation}
+	Par conséquent le nombre \( q^n\) est à la fois dans \( [q^b]_{q^d-1}\) et dans \( [1]_{q^d-1}\). Cela implique que
+	\begin{equation}
+		[1]_{q^d-1}=[q^b]_{q^d-1},
+	\end{equation}
+	ou encore que \( q^b\in[1]_{q^d-1}\) ou encore que \( q^d-1\divides q^b-1\).
+
+	Étant donné que \( b<d\) et que \( q\geq 2\), nous avons que \( q^b-1<q^d-1\); donc pour que \( q^d-1\) divise \( q^b-1\), il faut que \( q^b-1\) soit zéro, c'est-à-dire \( b=0\).
+
+	Mais dire \( b=0\) revient à dire que \( d\divides n\), ce qu'il fallait démontrer.
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Coefficients multinomiaux}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%-------------------------------------------------------
+\subsection{Théorème multinomial}
+%----------------------------------------------------
+
+\begin{definition}[multiindices\cite{BIBooPZIKooWOsgst}]		\label{DEFooCQPRooFeWeOS}
+	Un \defe{multiindice}{multiindice} pour \( \eR^n\) est un élément de \( \eN^n\). Sa taille est définie par
+	\begin{equation}
+		| \alpha |=\sum_i\alpha_i.
+	\end{equation}
+	Nous disons que \( \beta\leq \alpha\) lorsque \( \beta_i\leq \alpha_i\) pour tout \( i\).
+
+	Nous définissons sa factorielle par
+	\begin{equation}		\label{EQooMZAMooMJuLKD}
+		\alpha!=\prod_{k=1}^n(\alpha_k!)=\alpha_1!\times\ldots \times \alpha_n!.
+	\end{equation}
+	En ce qui concerne les coefficients binomiaux, nous posons
+	\begin{equation}		\label{EQooKBURooKFBxnt}
+		\binom{ \alpha }{ \beta }=\frac{ \alpha! }{ (\alpha-\beta)!\beta! }=\prod_{i=1}^n\binom{ \alpha_i }{ \beta_i }.
+	\end{equation}
+
+	Si \( x\in \eR^n\) et si \( \alpha\in \eN^n\), nous notons
+	\begin{equation}
+		x^{\alpha}=\prod_{i=1}^nx_i^{\alpha_i}.
+	\end{equation}
+\end{definition}
+
+\begin{theorem}[Théorème multinomial\cite{BIBooPZIKooWOsgst}]		\label{THOooNHAUooQvuytn}
+	Soit \( x\in \eR^n\), et \( \alpha\in \eN^n\). Nous avons
+	\begin{equation}
+		(x_1+\ldots+x_n)^k=\sum_{\substack{ \alpha\in \eN^n \\ | \alpha |=k }  } \frac{ k! }{ \alpha! }x^{\alpha}.
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Le cas \( n=2\) est la formule binomiale \ref{PropBinomFExOiL} :
+	\begin{subequations}
+		\begin{align}
+			(x_1+x_2)^k & = \sum_{l=0}^k\binom{ k }{ l }x_1^lx_2^{k-l}                                              \\
+			            & = \sum_{l=0}^k\frac{ k! }{ l!(k-l)! }x_1^lx_2^{k-l}                                       \\
+			            & = \sum_{\alpha_1+\alpha_2=k}\frac{ k! }{ \alpha_1!\alpha_2! }x_1^{\alpha_1}x_2^{\alpha_2} \\
+			            & = \sum_{\substack{ \alpha\in \eN^2                                                        \\ | \alpha |=k }  }\frac{ k! }{ \alpha! }x^{\alpha}.
+		\end{align}
+	\end{subequations}
+	Et maintenant, nous faisons une récurrence sur \( n\), en tenant \( k\) fixé. Nous supposons que la formule est démontrée pour tout \( n\leq N\), et nous allons avec \( N+1\). Soit \( x=(x_1,\ldots,x_{N+1})\), et posons \( y=(x_1,\ldots,x_N)\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			(x_1+\ldots+x_{N+1})^k & =\big( (x_1+\ldots+x_{N})+x_{N+1} \big)^k                        \\
+			                       & =\sum_{i+j=k} \frac{ k! }{ i!j! } (x_1+\ldots+x_N)^ix_{N+1}^j    \\
+			                       & =\sum_{i+j=k}\frac{ k! }{ i!j! }\sum_{\substack{ \alpha\in \eN^N \\ | \alpha |=i }  }x^{j}_{N+1}\frac{ i! }{ \alpha! }y^{\alpha}\\
+			                       & = \sum_{j=0}^k\sum_{\substack{ \alpha\in \eN^N                   \\ | \alpha |=k-j }  }x_{N+1}\frac{ k! }{ j! }\frac{1}{ \alpha!}y^{\alpha}\\
+			                       & = \sum_{\substack{ \beta\in \eN^{N+1}                            \\ | \beta |=k }  }  \frac{ k! }{ \beta_{N+1}!\alpha! }  x_{N+1}^{\beta_{N+1}}x_1^{\alpha_1}\ldots x_N^{\alpha_N}                                                           & \text{cf. justif.} \label{SUBEQooTQFGooHyUhCi}\\
+			                       & = \sum_{\substack{ \beta\in \eN^{N+1}                            \\ | \beta |=k }  }x^{\beta}\frac{ k! }{ \beta! }.
+		\end{align}
+	\end{subequations}
+	Justification pour \eqref{SUBEQooTQFGooHyUhCi}. Les deux sommes ensemble font une somme sur tous \( \beta=(\alpha,j)\in \eN^{N+1}\) avec \( | \beta |=| \alpha |+j=(k-j)+j=k\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]			\label{LEMooBSYRooDboTor}
+	Soit une application \(f \colon \eN^n\to \eR  \). Nous avons
+	\begin{equation}
+		\sum_{\substack{ \alpha\in\eN^n \\ | \alpha |=2 }  }\frac{1}{ \alpha!}f(\alpha)=\frac{1}{ 2}\sum_{k,l}f(e_k+e_l).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous avons
+	\begin{equation}
+		\{ \alpha\in \eN^n\tq | \alpha |=2 \}=\{ e_k+e_l\tq k,l=1,\ldots,n \},
+	\end{equation}
+	mais nous ne pouvons pas sommer en faisant \( \sum_{\substack{ \alpha\in \eN^2 \\ | \alpha |=2 }  }=\sum_{k,l}\) parce que à droite, les termes \( (k,l)\) et \( (l,k)\) sont identiques.
+
+	Au lieu de ça, remarquons que nous avons une bijection
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \{ (k,l)\in \{ 1,\ldots,n \}^2\tq k\leq n \} & \to \{ e_k+e_l \}_{k,l=1,\ldots,n} \\
+			(k,l)                                                      & \mapsto e_k+e_l.
+		\end{aligned}
+	\end{equation}
+	Prouvons que cette application est injective. Si \( \varphi(k,l)=\varphi(s,t)\), alors \( e_k+e_l=e_s+e_t\). Le produit scalaire avec \( e_k\) donne
+	\begin{equation}
+		1+\delta_{kl}=\delta_{st}+\delta_{tk}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[Si \( k<l\)]
+		%-----------------------------------------------------------
+		Alors \( 1=\delta_{sk}+\delta_{tk}\). Nous avons donc forcément \( k=s\) ou \( k=t\), mais pas les deux en même temps.
+		\begin{subproof}
+			\spitem[Si \( s=k\)]
+			%-----------------------------------------------------------
+			Dans ce csa \( t\neq k\), et nous avons \( e_k+e_l=e_k+e_t\), donc \( e_l=e_t\) et donc \( l=t\). Nous avons donc \( (k,l)=(s,t)\), ce qu'il fallait.
+			\spitem[Si \( t=k\)]
+			%-----------------------------------------------------------
+			Alors \( e_l=e_s\) et donc \( l=s\), ce qui donnerait \( (k,l)=(l,k)\), ce qui est impossible parce que \( k<l\).
+		\end{subproof}
+		\spitem[Si \( k=l\)]
+		%-----------------------------------------------------------
+		Alors \( 2e_k=e_s+t_t\). Le produit scalaire avec \( e_k\) donne \( 2=\delta_{sk}+\delta_{tk}\) et donc \( s=t=k\).
+	\end{subproof}
+	Nous pouvons donc sommer de la façon suivante :
+	\begin{subequations}
+		\begin{align}
+			\sum_{\substack{ \alpha\in \eN^n                                                                                     \\ | \alpha |=2 }  }\frac{1}{ \alpha!}f(\alpha)&=\sum_{k\leq l}\frac{1}{ (e_k+e_l)!}f(e_k+e_l)\\
+			 & =\sum_{k<l}f(e_k+e_l)+\sum_k\frac{1}{ 2}f(2e_k)                                                                   \\
+			 & =\frac{1}{ 2}\sum_{k\neq l}f(e_k+e_l)+\sum_k\frac{1}{ 2}f(2e_k) & \text{cf. justif.}		\label{SUBEQooZERNooOeAAgb} \\
+			 & =\frac{1}{ 2}\sum_{k,l}f(e_k+e_l).
+		\end{align}
+	\end{subequations}
+	Justification pour \eqref{SUBEQooZERNooOeAAgb}. Nous avons \( f(e_l+e_l)=f(e_l+e_k)\). Donc \( \sum_{k<l} f(e_k+e_l)=\sum_{k>l}f(e_k+e_l)\).
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Polynômes de plusieurs variables}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}      \label{DEFooZNHOooCruuwI}
+	L'ensemble des \defe{polynôme de \( n\) variables}{polynôme de plusieurs variables} sur l'anneau \( A\) est \( A^{(\eN^n)}\), c'est-à-dire l'ensemble des suites indexées par \( \eN^n\) et dont seulement une quantité finie de coefficients sont non nuls.
+
+	Le produit sur \( A[X_1,\ldots, X_n]\) est défini par
+	\begin{equation}
+		(PQ)(k_1,\ldots, k_n)=\sum_{\substack{ (l_1,\ldots, l_n),(m_1,\ldots, m_n)\in \eN^n\times \eN^n   \\l_i+m_i=k_i}}P_{l_1,\ldots, l_n}Q_{m_1,\ldots, m_n}.
+	\end{equation}
+\end{definition}
+
+\begin{normaltext}
+	Dans \( A[X_1,\ldots, X_n]\), la multiplication n'est pas la multiplication de fonctions \( \eN^n\to \eK\), parce que le but est d'obtenir la multiplication usuelle au niveau des évaluations.
+\end{normaltext}
+
+\begin{definition}
+	Si \( P\) est un polynôme de \( n\) variables sur \( A\), et si \( (x_1,\ldots, x_n)\in A^n\), \defe{l'évaluation}{évaluation!polynôme plusieurs variables} de \( P\) sur \( (x_1,\ldots, x_n)\) est
+	\begin{equation}
+		P(x_1,\ldots, x_n)=\sum_{(k_1,\ldots, k_n)\in \eN^n}P_{k_1,\ldots, k_n}x_1^{k_1}\ldots x_n^{k_n}.
+	\end{equation}
+	Notez que la somme, bien que sur \( \eN^n\), est une somme finie.
+\end{definition}
+
+\begin{normaltext}
+	Comme dans le cas des polynômes d'une seule variable, les \( X_i\) dans la notation \( A[X_1,\ldots, X_n]\) sont à prendre à la légère. L'anneau des polynômes de \( n\) variables sur \( A\) aurait mieux fait d'être noté par exemple par \( \mP_n(A)\).
+
+	Le fait est que nous avons les polynômes élémentaires définis par
+	\begin{equation}
+		X_1(k_1,\ldots, k_n)=\begin{cases}
+			1 & \text{si } (k_1,\ldots, k_n)=(1,0\ldots, 0) \\
+			0 & \text{sinon. }
+		\end{cases}
+	\end{equation}
+	et que l'anneau des polynômes peut être vu comme \( A\) (les polynômes constants) étendus par les \( X_i\).
+
+	Quoi qu'il en soit, les \( X_i\) dans la notation \( A[X_1,\ldots, X_n]\) sont des indices muets. L'anneau \( A[X_1,\ldots, X_n]\) est exactement le même que \( A[T_1,\ldots, T_n]\).
+\end{normaltext}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Divisibilité et classes d'association}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{DivisibiliteAnneauxIntegres}
+
+\begin{definition}\label{DefrXUixs}
+	On dit de deux éléments \( a,b\in A\) qu'ils sont \defe{associés}{associés!éléments d'un anneau} si il existe un inversible \( u\in A\) tel que \( a=ub\).
+
+	%TODO: qu'est ce que 'U(A)' ici ?
+	La \defe{classe d'association}{classe d'association}\index{classe!d'association} d'un élément \( a \in A \) est l'ensemble des éléments qui lui sont associés.
+\end{definition}
+
+\begin{lemma}\label{LemRmVTRq}
+	Si \( A\) est un anneau intègre et si \( a,b\in A\) sont deux éléments vérifiant \( a\divides b\) et \( b\divides a\), alors ils sont associés, c'est-à-dire qu'il existe un inversible \( u\in A\) tel que \( a=ub\).
+\end{lemma}
+
+\begin{proof}
+	Les hypothèses à propos de la divisibilité nous indiquent que \( a=xb\) et \( b=ya\) pour certains \( x,y\in A\). Alors,
+	\begin{equation}
+		b(1-yx)=0.
+	\end{equation}
+	Étant donné que \( A\) est intègre, cela montre que \( b=0\) ou \( 1-yx=0\). Si \( b=0\) nous avons immédiatement \( a=0\) et le lemme est prouvé. Si au contraire \( yx=1\), c'est que \( y\) et \( x\) sont inversibles et inverses l'un de l'autre.
+\end{proof}
+
+
+\begin{example}
+	Dans \( \eZ[i]\), les inversibles sont \( \pm 1\) et \( \pm i\). Donc les éléments associés à \( z\) sont \( z\), \( -z\), \( iz\) et \( -iz\).
+
+	Notons au passage que la notion de divisibilité dans \( \eZ[i]\) n'est pas immédiatement intuitive. En effet bien que \( 7\) ne soit pas divisible par \( 2\) (ni dans \( \eZ\) ni dans \( \eZ[i]\)), le nombre \( 7+6i\) est divisible par \( 2+i\) dans \( \eZ[i]\). En effet :
+	\begin{equation}
+		(2+i)(4+i)=7+6i.
+	\end{equation}
+\end{example}
+
+\begin{example}
+	Si \( \eK\) est un corps, l'élément \( XY\) de \( \eK[X,Y]\) n'est pas premier parce que \( XY\divides X^2Y^2\) alors que \( XY\) ne divise ni \( X^2\) ni \( Y^2\).
+\end{example}
+
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooLXPSooYjULCJ}
+	Si \( a\) et \( b\) sont associés, alors \( (a)=(b)\).
+\end{lemma}
+
+\begin{proof}
+	Vu que \( a\) et \( b\) sont associés, il existe un inversible \( u\) tel que \( a=ub\) et \( b=va\) (en posant \( v=u^{-1}\)). Si \( x\in(a)\), alors il existe \( \alpha,\beta\in A\) tels que \( x=\alpha a\beta=\alpha ub\beta\in AbA=(b)\). Donc \( (a)\subset (b)\). L'inclusion dans l'autre sens se fait de la même manière.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{PGCD et PPCM}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Pour le théorème de Bézout et autres opérations avec des modulo, voir le thème~\ref{THEMEooNRZHooYuuHyt}. Le pgcd et le ppcm sont définis en \ref{DefrYwbct}.
+
+\begin{lemma}		\label{LEMooGWKMooLEepxz}
+	Soient \( A\) un anneau intègre et \( S\subset A\). Si \( \delta\) est un PGCD de \( S\), alors l'ensemble des PGCD de \( S\) est la classe d'association\footnote{Éléments associés, définition \ref{DefrXUixs}.} de \( \delta\).
+
+	De la même façon si \( \mu\) est un PPCM de \( S\), alors l'ensemble des PPCM de \( S\) est la classe d'association de \( \mu\).
+\end{lemma}
+
+\begin{proof}
+	Soient \( \delta\) un PGCD de \( S\) et \( u\) un inversible dans \( A\). Si \( x\in S\) nous avons \( \delta\divides x\) et donc \( x=a\delta\). Par conséquent \( x=au^{-1}u\delta\) et donc \( u\delta\) divise \( x\). De la même manière, si \( d\) divise \( x\) pour tout \( x\in S\), alors \( d\) divise \( \delta\) et donc \( \delta=ad\) et \( u\delta=aud\), ce qui signifie que \( d\) divise \( u\delta\).
+
+	Dans l'autre sens nous devons prouver que si \( \delta'\) est un autre PGCD de \( S\), alors il existe un inversible \( u\in A\) tel que \( \delta'=u\delta\). Comme \( \delta'\) divise \( x\) pour tout \( x\in S\), nous avons \( \delta'\divides \delta\), et symétriquement nous trouvons \( \delta\divides\delta'\). Par conséquent (lemme~\ref{LemRmVTRq}), il existe un inversible \( u\) tel que \( \delta=u\delta'\).
+
+	Le même type de raisonnement tient pour le PPCM.
+\end{proof}
+
+Si \( \delta\) est un PGCD de \( S\), nous dirons \emph{par abus de langage} que \( \delta\) est \emph{le} PGCD de \( S\), gardant en tête qu'en réalité toute sa classe d'association est PGCD. Nous noterons aussi, toujours par abus que \( \delta=\pgcd(S)\).
+
+\begin{remark}
+	La classe d'association d'un élément n'est pas toujours très grande. Les inversibles dans \( \eZ\) étant seulement \( \pm 1\), nous pouvons obtenir l'unicité du PGCD et du PPCM en imposant qu'ils soient positifs.
+
+	Pour les polynômes, nous obtenons l'unicité en demandant que le PGCD soit unitaire.
+
+	Dans les cas pratiques, il y a donc en réalité peu d'ambiguïté à parler du PGCD ou du PPCM d'un ensemble.
+\end{remark}
+
+
+%-------------------------------------------------------
+\subsection{pgcd, ppcm dans un anneau principal}
+%----------------------------------------------------
+
+Juste pour ne pas l'oublier, un anneau principal est toujours commutatif.
+
+
+\begin{proposition}[\cite{BIBooNVSKooJdnbyO,MonCerveau}]	\label{PROPooPZXNooNpVZCm}
+	Soit un anneau principal\footnote{Définition \ref{DEFooGWOZooXzUlhK}.} \( A\). Soit une partie \( S\subset A\) d'éléments non nuls. Alors :
+	\begin{enumerate}
+		\item		\label{ITEMooPTAGooXNHQut}
+		      \( S\) admet un pgcd,
+		\item		\label{ITEMooHCZAooNkFHqc}
+		      \( S\) admet un ppcm,
+		\item		\label{ITEMooMJPXooDadqdP}
+		      L'élément \( \delta\in A\) est un pgcd de \( S\) si et seulement si il engendre
+		      \begin{equation}
+			      J=\bigcup_{\alpha\text{ fini dans } S}\sum_{s\in \alpha}sA.
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En ce qui concerne l'existence, nous savons que tout idéal est principal et admet donc un générateur. Les parties \( I\) et \( J\) de la proposition \ref{PROPooMMHPooZYzvdK} sont des idéaux principaux et admettent donc des générateurs qui sont dont respectivement ppcm et pgcd de \( S\). Les parties \ref{ITEMooPTAGooXNHQut} et \ref{ITEMooHCZAooNkFHqc} sont prouvées.
+
+	Il reste à prouver \ref{ITEMooMJPXooDadqdP}. Le sens réciproque est déjà dans \ref{PROPooMMHPooZYzvdK}. Nous supposons donc que \( \delta\in\pgcd(S)\) et nous prouvons que \( (\delta)=J\).
+
+	Vu que \( J\) est un idéal, il admet un générateur \( d\), qui est également un pgcd de \( S\). Les éléments \( d\) et \( \delta\) sont donc associés par le lemme \ref{LEMooGWKMooLEepxz}. Donc \( (d)=(\delta)\) par \ref{LEMooLXPSooYjULCJ}. Et au final, \( (\delta)=(d)=J\).
+\end{proof}
+
+Pour rappel, la notation \( (a)\) représente l'idéal engendré par \( a\), c'est-à-dire
+\begin{equation}
+	(a)=\{ ax\tq x\in A \}=aA.
+\end{equation}
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Anneaux intègres et corps}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Le fait d'être intègre pour un anneau n'assure pas le fait d'être un corps. Nous avons cependant ce résultat pour les anneaux finis.
+
+\begin{proposition}     \label{PropanfinintimpCorp}
+	Un anneau fini intègre est un corps.
+\end{proposition}
+
+\begin{proof}
+	Soit \( A\) un tel anneau. Soit \( a\neq 0\). Les applications
+	\begin{subequations}
+		\begin{align}
+			l_a\colon x\mapsto ax \\
+			r_a\colon x\mapsto xa
+		\end{align}
+	\end{subequations}
+	sont injectives. En tant que applications injectives entre ensembles finis, elles sont surjectives. Il existe donc \( b\) et \( c\) tels que \( 1=ba=ac\). Nous trouvons que \( b\) et \( c\) sont égaux parce que
+	\footnote{Il faut être un peu souple avec les notations communément employées dans les ouvrages mathématiques, et que nous reprenons telles quelles. Dans l'équation qui suit, \( b(ac)\) est le produit de \( b\) par l'élément \( ac\), et non quelque chose comme le produit de \( b\) avec l'idéal \( (ac)\) par exemple.}
+	\begin{equation}
+		b=b(ac)=(ba)c=c.
+	\end{equation}
+	Par conséquent \( b\) est un inverse de \( a\).
+\end{proof}
+
+\begin{proposition}     \label{PropzhFgNJ}
+	Soit \( n\in\eN^*\). Les conditions suivantes sont équivalentes :
+	\begin{enumerate}
+		\item
+		      \( n\) est premier.
+		\item
+		      \( \eZ/n\eZ\) est un anneau intègre.
+		\item
+		      \( \eZ/n\eZ\) est un corps.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	L'équivalence entre les deux premiers points est le contenu du corolaire~\ref{CorZnInternprem}. Le fait que \( \eZ/n\eZ\) soit un corps lorsque \( \eZ/n\eZ\) est intègre est la proposition~\ref{PropanfinintimpCorp}. Le fait que \( \eZ/n\eZ\) soit intègre lorsque \( \eZ/n\eZ\) est un corps est une propriété générale des corps : ce sont en particulier des anneaux intègres (lemme~\ref{LEMooIKNMooMfvQnu}).
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Anneau factoriel}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}[Anneau factoriel]        \label{DEFooVCATooPJGWKq}
+	Un anneau commutatif \( A\) est \defe{factoriel}{factoriel!anneau}\index{anneau!factoriel} si il vérifie les propriétés suivantes.
+	\begin{enumerate}
+		\item
+		      L'anneau \( A\) est intègre\footnote{Anneau intègre, définition \ref{DEFooTAOPooWDPYmd}.}.
+		\item
+		      Si \( a\in A\) est non nul et non inversible, alors il admet une décomposition en facteurs irréductibles: \( a=p_1\ldots p_k\) où les \( p_i\) sont irréductibles\footnote{Élément irréductible, définition \ref{DeirredBDhQfA}.}.
+		\item		\label{ITEMooKVDBooTASwVO}
+		      Si \( a=q_1\ldots q_m\) est une autre décomposition de \( a\) en irréductibles, alors \( m=k\) et il existe une permutation\footnote{Définition~\ref{DEFooJNPIooMuzIXd}.} \( \sigma\in S_k\) telle que \( p_i\) et \( q_{\sigma(i)}\) soient associés\footnote{Définition~\ref{DefrXUixs}.}.
+	\end{enumerate}
+\end{definition}
+
+Un anneau factoriel permet de caractériser le \( \pgcd\) et le \( \ppcm\) de nombres.
+
+\begin{lemma}[\cite{BIBooWDEHooThQBql}]		\label{LEMooLVKMooSLuzao}
+	Soit un anneau factoriel \( A\) et un élément irréductible \( p\in A\). Si \( p|xy\), alors \( p\) divise \( x\) ou \( y\) ou les deux.
+\end{lemma}
+
+\begin{proof}
+	Comme nous sommes dans un anneau factoriel, nous pouvons écrire \( q\), \(x\) et \( y\) comme produits d'irréductibles, et profiter de la plus ou moins unicité de ces décompositions (la propriété \ref{DEFooVCATooPJGWKq}\ref{ITEMooKVDBooTASwVO}). Nous notons \( q=q_1\ldots q_k\), \( x=x_1\ldots x_m\) et \( y=y_1\ldots y_l\). L'égalité \( pq=xy\) devient :
+	\begin{equation}
+		pq_1\ldots q_k=x_1\ldots x_my_1\ldots y_l.
+	\end{equation}
+	Il existe un des \( x_j\) ou \( y_j\) qui est associé à \( p\). Fixons un \( i\) et disons que c'est \( x_i\) (si c'est un des \( y_j\), adaptez) : il existe un inversible \( u\) tel que \( x_i=pu\). Nous avons alors\footnote{Le fait que \( A\) soit commutatif est utilisé partout.}
+	\begin{equation}
+		x=pux_1\ldots x_{i-1}x_{i+1}\ldots x_m.
+	\end{equation}
+	Donc \( p\) divise \( x\) et fin de l'histoire.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooWDEHooThQBql}]		\label{PROPooOQSXooYidPQv}
+	Dans un anneau factoriel, tout élément irréductible est premier\footnote{Élément premier, définition \ref{DEFooZCRQooWXRalw}.}.
+\end{proposition}
+
+\begin{proof}
+	Soit un anneau factoriel \( A\) et un élément irréductible \( p\) dans \( A\). Nous devons prouver qu'il est premier.
+	\begin{subproof}
+		\spitem[\( p\) est non nul]
+		%-----------------------------------------------------------
+		Si \( p=0\), nous avons \( p=0\times 0\). Comme \( 0\) n'est pas inversible (un anneau factoriel est par définition intègre), \( p\) serait un produit de deux non inversibles.
+		\spitem[Non inversible]
+		%-----------------------------------------------------------
+		L'élément \( p\) est non inversible parce que c'est dans la définition d'un élément irréductible.
+
+		\spitem[Si \( p\divides xy\)]
+		%-----------------------------------------------------------
+		Si \( p\) divise \( xy\), alors il divise \( x\) ou \( y\); c'est le lemme \ref{LEMooLVKMooSLuzao}.
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooGKOSooRKtfDJ}
+	Si \( A\) est un anneau factoriel, et si \( p\) est irréductible dans \( A\), alors :
+	\begin{enumerate}
+		\item
+		      L'idéal \( pA\) est premier.
+		\item
+		      L'anneau \( A/pA\) est intègre.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( pA\) est premier]
+		%-----------------------------------------------------------
+		D'abord \( pA\) est strictement inclus dans \( A\) parce que \( p\) n'étant pas inversible, l'élément \( 1\) n'est pas dans \( pA\).
+
+		Soient \( a,b\in A\) tels que \( ab\in pA\). Cela signifie qu'il existe \( x\in A\) tel que \( px=ab\), ou encore que \( p\) divise \( ab\). Le lemme \ref{LEMooLVKMooSLuzao} dit alors que \( p\) divise \( a\) ou \( b\). Supposons pour fixer les idées que \( p\divides a\). Il existe \( y\) tel que \( a=py\in pA\).
+
+		\spitem[L'anneau \(A/ pA\) est intègre]
+		%-----------------------------------------------------------
+		C'est la proposition \ref{PROPooRUQKooIfbnQX}.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}		\label{PROPooOXQMooVEzlyG}
+	Soit une famille \( \{ a_n \}\) d'éléments de \( A\) qui se décomposent en irréductibles comme
+	\begin{equation}
+		a_i=\prod_k p_k^{\alpha_{k,i}}.
+	\end{equation}
+	Alors
+	\begin{equation}
+		\pgcd\{ a_n \}=\prod_k p_k^{\min_i\{ \alpha_{k,i} \}}.
+	\end{equation}
+
+	De plus le PGCD est :
+	\begin{enumerate}
+		\item
+		      Un multiple de tous les diviseurs communs des \( a_i\).
+		\item
+		      Unique pour cette propriété à multiple près par un inversible\quext{Soyez prudent avec cette affirmation : je n'en n'ai pas de démonstrations sous la main et ne suis pas certain que ce soit vrai.}.
+	\end{enumerate}
+	%TODOooVQKHooBIiKYB. Prouver ça.
+\end{proposition}
+
+De la même manière,
+\begin{equation}
+	\ppcm\{ a_n \}=\prod_kp_k^{\max_i\{ \alpha_{k,i} \}}.
+\end{equation}
+Un anneau factoriel a une relation de préordre partiel\index{ordre!sur un anneau factoriel} donnée par \( a<b\) si \( a\) divise \( b\). En termes d'idéaux, cela donne l'ordre inverse de celui de l'inclusion\footnote{Voir proposition~\ref{PropDiviseurIdeaux}.} : \( a<b\) si et seulement si \( (b)\subset (a)\).
+
+\begin{example} \label{EXooCWJUooCDJqkr}
+	L'anneau \( \eZ[i\sqrt{3}]\) n'est pas factoriel parce que \( 4\) a au moins deux décompositions distinctes en irréductibles :
+	\begin{equation}
+		4=2\cdot 2,
+	\end{equation}
+	et
+	\begin{equation}
+		4=(1+i\sqrt{3})(1-i\sqrt{3}).
+	\end{equation}
+\end{example}
+
+Nous allons voir dans l'exemple~\ref{ExeDufyZI} que \( \eZ[i\sqrt{2}]\) est factoriel parce qu'il sera euclidien.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Autour du théorème de Bézout}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Rappel de notations : si \( A\) est un anneau et si \( p\in A\), nous notons \( (p)\) l'idéal engendré\footnote{Définition \ref{DefSKTooOTauAR} et caractérisation \ref{PROPooDTYUooJPzPZV}.} par \( p\).
+
+
+\begin{proposition}[Bézout dans un anneau principal\cite{MonCerveau,XPXxPl}]	\label{PROPooXQKMooWJlEFq}
+	Soit un anneau principal \( A\). Soient \( a_1,\ldots,a_n\in A\) et \( \delta\in \pgcd(a_1,\ldots,a_n)\). Alors il existe \( u_1,\ldots,u_n\in A\) tels que
+	\begin{equation}
+		a_1u_1+\ldots+a_nu_n=\delta
+	\end{equation}
+\end{proposition}
+\index{anneau principal!Bézout}
+
+\begin{proof}
+	Soit \( \delta\in\pgcd(a_1,\ldots,a_n)\). Nous utilisons la proposition \ref{PROPooPZXNooNpVZCm} pour la partie \( S=\{ a_1,\ldots,a_n\}\). Dans notre cas, nous savons que \( \delta\) engendre \( J=a_1A+\ldots+a_nA\). En particulier \( \delta\in a_1A+\ldots+a_nA\) et donc il existe \( u_1,\ldots,u_n\in A\) tels que \( \delta=u_1a_1+\ldots+u_na_n\)\footnote{Je rappelle que \( A\) est commutatif.}.
+\end{proof}
+
+Le lemme de Gauss est une application immédiate du théorème de Bézout. Il y aura aussi un lemme de Gauss à propos de polynômes (lemme~\ref{LemEfdkZw}), et une généralisation directe au théorème de Gauss, théorème~\ref{ThoLLgIsig}.
+\begin{lemma}[Lemme de Gauss dans un anneau principal\cite{BIBooEPIDooKerHPs}]    \label{LemSdnZNX}
+	Soit \( A\) un anneau principal et \( a,b,c\in A\) tels que \( a\) divise \( bc\). Si \( a\) est premier avec \( c\), alors \( a\) divise \( b\).
+\end{lemma}
+\index{lemme!Gauss!dans un anneau principal}
+
+\begin{proof}
+	Comme \( a\) est premier avec \( c\), nous avons \( \pgcd(a,c)=1\) et Bézout (\ref{ThoBuNjam}) nous donne donc \( s,t\in A\) tels que \( sa+tc=1\). En multipliant par \( b\),
+	\begin{equation}
+		sab+tbc=b.
+	\end{equation}
+	Mais les deux termes du membre de gauche sont multiples de \( a\) parce que \( a\) divise \( bc\). Par conséquent \( b\) est somme de deux multiples de \( a\) et donc est multiple de \( a\).
+\end{proof}
+
+\begin{lemma}[\cite{BIBooNVSKooJdnbyO}]		\label{LEMooQJGIooEtVnyj}
+	Soit un anneau principal \( A\). Soient \( a,b,c\in A\) tels que
+	\begin{enumerate}
+		\item
+		      \( \pgcd(a,b)=1\)
+		\item
+		      \( \pgcd(a,c)=1\).
+	\end{enumerate}
+	Alors \( \pgcd(a,bc)=1\).
+\end{lemma}
+
+\begin{proof}
+	Le théorème de Bézout \ref{PROPooXQKMooWJlEFq} donne des éléments \( u,v,x,y\in A\) tels que \( ua+vb=1\) et \( xa+yc=1\). En multipliant ces équations l'une avec l'autre,
+	\begin{equation}
+		(ua+vb)(xa+yc)=1.
+	\end{equation}
+	En développant, nous trouvons
+	\begin{equation}
+		(uax+uc+vbx)a+(vy)bc=1.
+	\end{equation}
+	Donc le théorème de Bézout (dans l'autre sens) nous indique que \( \pgcd(a,bc)=1\).
+\end{proof}
+
+
+\begin{proposition}[\cite{BIBooGIDYooKaacXf,BIBChatGPT}]	\label{PROPooYTMYooEYxuQc}
+	Soient un anneau principal\footnote{Définition \ref{DEFooGWOZooXzUlhK}.} \( A\) ainsi que \( a,b\in A\).
+	\begin{enumerate}
+		\item
+		      Nous avons \( \delta\in \pgcd(a,b)\) si et seulement si \( (a)+(b)=(\delta)\).
+		\item
+		      Nous avons \( \mu\in\ppcm(a,b)\) si et seulement si \( (a)\cap (b)=(\mu)\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties. On commence par le pgcd.
+	\begin{subproof}
+		\spitem[Si \( \sigma\in \pgcd(a,b)\)]
+		%-----------------------------------------------------------
+		Vu que \( \delta\in \pgcd(a,b)\), il existe \( a_1,b_1\in A\) tels que \( a=\delta a_1\) et \( b=\delta b_1\). Un élément général de \( (a)+(b)\) s'écrit \( ax+by\), c'est-à-dire
+		\begin{equation}
+			ax+by=\delta a_1x+\delta b_1y=\delta(a_1x+b_1y)\in (\delta).
+		\end{equation}
+		Cela prouve que \( (a)+(b)\subset(\delta)\).
+
+		Pour l'autre inclusion, nous faisons appel à \ref{PROPooXQKMooWJlEFq} disant qu'il existe \( u,v\in A\) tels que \( au_1+bu_2=\delta\). Cela montre que \( \delta\in (a)+(b)\) et donc que \( (\delta)\subset (a)+(b)\).
+
+		\spitem[Si \( (a)+(b)=(\delta)\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( (a)+(b)=(\delta)\). Nous devons montrer qu'alors \( \delta\in\pgcd(a,b)\). Vu que \( a\) et \( b\) sont dans \( (a)+(b)=(\delta)\) il existe \( x,y\) tels que \( a=\delta x\) et \( b=\delta y\). Donc \( \delta\) divise \( a\) et \( b\).
+
+		Supposons que \( d\) divise également \( a\) et \( b\). Nous avons \( a=da_1\) et \( b=db_1\). Tout élément de \( (a)+(b)\) s'écrit \( ra+sb\), c'est-à-dire, en utilisant le fait que \( A\) est commutatif :
+		\begin{equation}
+			ra+sb=rda_1+rdb_1=d(ra_1+rb_1).
+		\end{equation}
+		Donc \( d\) divise tout élément de \( (a)+(b)\). En particulier \( d\divides \delta\).
+	\end{subproof}
+
+	Et on continue avec le ppcm.
+	\begin{subproof}
+		\spitem[Si \( (a)\cap (b)=(\mu)\)]
+		%-----------------------------------------------------------
+		Vu que \( \mu\) est dans \( (a)\), l'élément \( \mu\) est multiple de \( a\). Et idem pour \( b\). Donc \( \mu\) est un multiple commun de \( a\) et \( b\).
+
+		Supposons que \( \mu\) soit également un multiple commun de \( a\) et \( b\). Nous avons alors \( m\in(a)\cap(b)=(\mu)\), c'est-à-dire que \( m\divides \mu\). Donc on a bien \( \mu\in\ppcm(a,b)\).
+
+		\spitem[Si \( \mu\in \ppcm(a,b)\)]
+		%-----------------------------------------------------------
+		Nous prouvons que \( (a)\cap(b)=(\mu)\). Soit \( x\in (a)\cap (b)\). Nous avons \( x=aa_1\) et \( x=bb_1\); donc \( x\) est multiple de \( a\) et de \( b\). Vu que \( \mu\) est un ppcm, nous avons \( \mu\divides x\) et donc \( x\in (\mu)\), ce qui signifie \( (a)\cap(b)\subset(\mu)\).
+
+		Dans l'autre sens, vu que \( \mu\) divise \( a\) et \( b\) nous avons \( \mu\in(a)\cap (b)\) et donc \( (\mu)\subset (a)\cap (b)\).
+	\end{subproof}
+\end{proof}
+
+
+
+%-------------------------------------------------------
+\subsection{Théorème chinois}
+%----------------------------------------------------
+
+
+\begin{theorem}[Théorème des restes chinois\cite{BIBooJVIDooLZroz}]\index{théorème!chinois!anneau principal}	\label{ThofPXwiM}
+	Soit un anneau principal \( A\) ainsi que des éléments \( a_1,\ldots,a_r\in A\setminus\{ 0 \}\) deux à deux premiers entre eux. Nous notons \( a\) le produit \( a=a_1\ldots a_r\).
+
+	\begin{enumerate}
+		\item		\label{ITEMooWBSWooGWjnNx}
+		      Il existe une unique application
+		      \begin{equation}
+			      f \colon A/(a)\to A/(a_1)\times\ldots\times A/(a_r)
+		      \end{equation}
+		      telle que
+		      \begin{equation}
+			      f([x]_a)=\big( [x]_{a_1},\ldots,[x]_{a_r} \big)
+		      \end{equation}
+		      pour tout \( x\in A\).
+		\item		\label{ITEMooANYPooGPgEQc}
+		      Cette application \( f\) est un isomorphisme d'anneaux.
+		\item		\label{ITEMooTUOKooHcSwTD}
+		      Il existe \( u_1,\ldots,u_r\in A\) tels que
+		      \begin{equation}
+			      \sum_{i=1}^ru_i\frac{ a }{ a_i }=1.
+		      \end{equation}
+		      Notez ici que \( a_i\) n'est pas spécialement inversible, mais \( a\) étant le produit de tous les \( a_i\), ça va.
+		\item		\label{ITEMooGXOEooUdKmzU}
+		      Si des \( u_i\in A\) vérifient \( \sum_{i=1}^ru_ia/a_i=1\) alors la réciproque
+		      \begin{equation}
+			      f^{-1} \colon A/(a_1)\times \ldots\times A/(a_r)\to  	A/(a)
+		      \end{equation}
+		      vérifie
+		      \begin{equation}
+			      f^{-1}\big( [x_1]_{a_1},\ldots,[x_r]_{a_r} \big)=\sum_{i=1}^r[x_iu_i\frac{ a }{ a_i }]
+		      \end{equation}
+		      pour tout \( x_1,\ldots,x_r\in A\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En plusieurs points.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooWBSWooGWjnNx} et \ref{ITEMooANYPooGPgEQc}]
+		%-----------------------------------------------------------
+		Vu que les \( a_i\) sont premiers entre eux, nous avons \( a=a_1\ldots a_r\in\ppcm(a_1,\ldots,a_r)\) et donc \( (a)=\bigcap_{i=1}^r(a_i)\) par \ref{PROPooYTMYooEYxuQc}. Pour l'existence, l'unicité et fait que ce soit un isomorphisme d'anneaux, le théorème \ref{THOooCBWWooEGjeSV} fait tout le boulot.
+
+		\spitem[Pour \ref{ITEMooTUOKooHcSwTD}]
+		%-----------------------------------------------------------
+		Les \( a_i\) sont premiers entre eux. Montrons que les \( a/a_i\) aussi. Supposons pour cela que \( p\) divise tous les \( a/a_i\). En particulier \( p\divides a/a_1=a_2\dots a_r\). Vu que les \( a_2,\ldots,a_r\) sont premiers entre eux, le lemme de Gauss \ref{LemSdnZNX} dit qu'il existe un \( k=2,\ldots,r\) tel que \( p\divides a_k\). Mais \( p\) divise aussi \( a/a_k\). Donc il existe \( l\neq k\) tel que \( p\divides a_l\). L'élément \( p\) est un diviseur commun de \( a_k\) et \( a_l\). Pas possible parce que les \( a_i\) sont premiers deux à deux.
+
+		Nous avons \( 1\in\pgcd(a_1,\ldots,a_r)\) et donc Bézout \ref{PROPooXQKMooWJlEFq} dit qu'il existe des \( u_i\) tels que
+		\begin{equation}	\label{EQooMBGBooKoGKwJ}
+			\sum_{i=1}^nu_i\frac{ a }{ a_i }=1.
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooGXOEooUdKmzU}]
+		%-----------------------------------------------------------
+		Lorsque nous caculons
+		\begin{equation}
+			f\big( \sum_{i=1}^r[x_iu_ia/a_i] \big),
+		\end{equation}
+		nous avons un vecteur d'éléments de la forme \( [ \sum_{i=1}^rx_iu_i\frac{ a }{ a_i }]_{a_k}\). En vertu de \eqref{EQooJAAQooJCcmVE}, tous les termes avec \( i\neq k\) sont nuls et donc
+		\begin{equation}		\label{EQooZBYVooAoUnfM}
+			f\big( \sum_{i=1}^r[x_iu_ia/a_i] \big)=\big( [x_1u_1\frac{ a }{ a_1 }]_{a_1},\ldots,[x_ru_r\frac{ a }{ a_r }]_{a_r} \big).
+		\end{equation}
+
+		Par ailleurs nous prenons la classe par rapport à \( (a_k)\) des deux côtés de \eqref{EQooMBGBooKoGKwJ}. Comme précédemment tous les termes \( i\neq k\) sont nuls et il reste
+		\begin{equation}
+			[u_ka/a_k]_{a_k}=[1]_{a_k}.
+		\end{equation}
+		Nous avons donc
+		\begin{equation}
+			[x_ku_k\frac{ a }{ a_k }]=[x_k]_{a_k}\underbrace{[u_k\frac{ a }{ a_k }]_{a_k}}_{=[1]_{a_k}}=[x_k]_{a_k}.
+		\end{equation}
+		En remettant dans \eqref{EQooZBYVooAoUnfM} nous trouvons ce qu'il faut :
+		\begin{equation}
+			f\big( \sum_{i=1}^r[x_iu_ia/a_i] \big)=\big( [x_1]_{a_1},\ldots,[x_k]_{a_k} \big).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Idéal premier}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}[\cite{ooJHFCooSbHtEC,MonCerveau}, thème \ref{THEMEooVIQIooOcFAQS}]     \label{PROPooZICGooNmblhl}
+	Soit un anneau principal \( A\) et un élément \( p\neq 0\) dans \( A\). Nous avons équivalence de :
+	\begin{enumerate}
+		\item   \label{ITEMooBTEAooWlFUTX}
+		      \( (p)\) est un idéal premier,
+		\item   \label{ITEMooKQRMooBNPDMX}
+		      \( p\) est un élément premier,
+		\item   \label{ITEMooZYYJooCWiBhL}
+		      \( p\) est un élément irréductible,
+		\item   \label{ITEMooHPAIooYoQzqD}
+		      \( (p)\) est un idéal maximum propre\quext{Ce «propre» n'est pas dans l'énoncé sur Wikipédia. Je ne comprends pas pourquoi, et j'ai posé la question sur la page de discussion.\\\url{https://fr.wikipedia.org/wiki/Idéal_premier}}.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs implications.
+	\begin{subproof}
+		\spitem[\ref{ITEMooBTEAooWlFUTX} implique \ref{ITEMooKQRMooBNPDMX}]
+		En plusieurs points.
+		\begin{itemize}
+			\item La condition \( p\neq 0\) est dans les hypothèses de la proposition.
+			\item Si \( p\) était inversible, nous aurions \( (p)=A\) et donc pas que \( (p)\) est un idéal premier.
+			\item Soient \( a,b\in A\) tels que \( p\divides ab\). En particulier, \( (ab)\in (p)\). Mais comme \( (p)\) est un idéal premier, cela implique soit \( a\in (p)\) soit \( b\in (p)\). Donc soit \( p\) divise \( a\) soit \( p\) divise \( b\).
+		\end{itemize}
+		\spitem[\ref{ITEMooKQRMooBNPDMX} implique \ref{ITEMooZYYJooCWiBhL}]
+		Un anneau principal est intègre; c'est dans la définition \ref{DEFooGWOZooXzUlhK}. Dans un anneau intègre, tout élément premier est irréductible, c'est la proposition \ref{PROPooWMNPooZdvOBt}.
+		\spitem[\ref{ITEMooZYYJooCWiBhL} implique \ref{ITEMooHPAIooYoQzqD}]
+		Soit un idéal \( I\) contenant \( (p)\). Puisque \( A\) est principal, \( I\) est engendré par un seul élément; soit \( I=(a)\). Vu que \( p\in I\), l'élément \( a\) divise \( p\). Mais comme \( p\) est un élément premier, \( a\divides p\) implique \( a=p\) ou \( a=1\). Dans le premier cas, \( I=(a)=(p)\), et dans le second cas, \( I=(a)=(1)=A\). Donc \( (p)\) est bien un idéal maximum.
+
+		De plus l'idéal \( (p)\) est propre. En effet avoir \( (p)=A\) dirait en particulier que \( 1\in (p)\), c'est-à-dire qu'il existe \( x\in A\) tel que \( xp=1\). Or \( p\) étant irréductible, il est non inversible.
+		\spitem[\ref{ITEMooHPAIooYoQzqD} implique \ref{ITEMooBTEAooWlFUTX}]
+		C'est la proposition \ref{PROPooRUQKooIfbnQX}\ref{ITEMooTFFQooOUajFw}.
+	\end{subproof}
+\end{proof}
+
+Un exemple d'élément premier non irréductible est \( [4]_6\) dans l'anneau non principal \( \eZ/6\eZ\). Voir \ref{NORMooAXOKooAQMXoB} et le lemme \ref{LEMooZSELooGOFEIz}.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Anneau noethérien}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}      \label{DEFooPWMHooCnrQuJ}
+	Un anneau est dit \defe{noethérien}{anneau!noethérien} si toute suite croissante d'idéaux est stationnaire (à partir d'un certain rang).
+\end{definition}
+
+Montrer que tout anneau principal est noethérien est le premier pas pour montrer que tout anneau principal est factoriel.
+
+\begin{lemma}       \label{LEMooHQPVooTfkhRV}
+	Tout anneau principal\footnote{Définition \ref{DEFooGWOZooXzUlhK}.} est noethérien.
+\end{lemma}
+
+\begin{proof}
+	Soit \( (J_n)\) une suite croissante d'idéaux et \( J\) la réunion. L'ensemble \( J\) est encore un idéal parce que les \( J_i\) sont emboités. Étant donné que l'idéal est principal nous pouvons prendre \( a\in J\) tel que \( J=(a)\). Il existe \( N\) tel que \( a\in J_N\). Alors pour tout \( n\geq N\) nous avons
+	\begin{equation}
+		J\subset J_N\subset J_n\subset J.
+	\end{equation}
+	La première inclusion est le fait que \( J=(a)\) et \( a\in J_N\). La seconde est la croissance des idéaux et la troisième est le fait que \( J\) est une union. Par conséquent pour tout \( n\geq N\) nous avons \( J_N=J_n=J\). La suite est par conséquent stationnaire.
+\end{proof}
+
+\begin{example}
+	Il y a moyen d'avoir un anneau noetherien non principal. C'est le cas de \( \eZ/6\eZ\) dont nous parlerons dans \ref{LEMooZSELooGOFEIz}.
+\end{example}
+
+\begin{theorem}[\cite{FSwlnf,BIBooNVSKooJdnbyO}]      \label{THOooANCAooBChmwp}
+	Tout anneau principal est factoriel.
+\end{theorem}
+
+\begin{proof}
+	Soit un anneau principal \( A\). Nous devons prouver les trois points de la définition \ref{DEFooVCATooPJGWKq}. D'abord \( A\) est intègre parce que ça fait partie de la définition \ref{DEFooGWOZooXzUlhK} d'un anneau principal. Le gros morceau est l'existence et l'unicité d'une décomposition en irréductibles.
+
+	\begin{proofpart}
+		mini lemme
+	\end{proofpart}
+	Nous prouvons que si \( a\) est ni nul ni inversible, il est divisible par un irréductible.
+
+	Soit \( a\in A\) que nous supposons être ni nul ni inversible. L'idéal \( aA\) ne contient pas tout \( A\) parce que \( a\) n'est pas inversible; par le théorème de Krull \ref{THOooFWYLooOofaPa} il existe un idéal maximal \( M\) contenant \( aA\). Tous les idéaux étant principaux dans \( A\), l'idéal \( M\) est principal.
+
+	Par définition d'idéal principal, il existe \( p\in A\) tel que \( M=pA\). Résumé :
+	\begin{equation}
+		a\in aA\subsetneq M=pA.
+	\end{equation}
+	Comme l'idéal \( pA\) est maximal, la proposition \ref{PROPooZBTIooRhAhvg} dit que \( p\) est irréductible. Et donc \( p\divides a\) avec \( p \) est irréductible.
+
+	\begin{proofpart}
+		Existence
+	\end{proofpart}
+
+	Nous définissons des suites \( (a_n)\) et \( (p_n)\) par récurrence. D'abord \( a_0=a\), et en suite, si \( a_n\) est défini nous définissons \( a_{n+1}\) et \( p_{n+1}\) de la façon suivante.
+	\begin{enumerate}
+		\item
+		      Si \( a_n\) est inversible, nous nous arrêtons et la suite est finie.
+		\item
+		      Si \( a_n\) n'est pas inversible, nous définissons \( a_{n+1}\) et \( p_{n+1}\) par la relation donnée par le mini-lemme :
+		      \begin{equation}
+			      a_n=p_{n+1}a_{n+1}
+		      \end{equation}
+		      avec \( p_{n+1}\) irréductible.
+	\end{enumerate}
+
+	Pour tout \( n\) assez petit pour que la suite ne soit pas finie, nous avons
+	\begin{equation}
+		a=a_0=p_1a_1=p_1p_2a_2=\ldots =p_1\ldots p_na_n
+	\end{equation}
+	où les \( p_i\) sont irréductibles.
+
+	Nous montrons à présent que la suite des \( (a_n)\) est finie. Considérons les idéaux \( I_n=a_nA\), et montrons qu'ils sont croissants en montrant que \( a_{n+1}\) n'est pas dans \( I_n\).
+
+	En effet supposons que \( a_{n+1}\in I_n=a_nA\). Il existerait \( k\in A\) tel que \( a_nk=a_{n+1}\), c'est-à-dire \( p_{n+1}a_{n+1}k=a_{n+1}\). Vu que l'anneau est intègre et que les \( a_i\) sont non nums, nous simplifions par \( a_{n+1}\) : \( p_{n+1}k=1\). Cela n'est pas possible parce que \( p_{n+1}\) n'est pas inversible. Bref, nous avons uns suite strictement croissante d'idéaux.
+
+	L'anneau \( A\) est principal et donc noetherien (lemme \ref{LEMooHQPVooTfkhRV}). Donc toute suite croissante d'idéaux est stationnaire. Oh mais ça c'est pas possible si la suite des \( (a_n)\) est infinie parce que nous venons de prouver qu'elle est toujours strictement croissante.
+
+	Bon. Ben c'est que la suite des \( (a_n)\) est finie. Il existe donc un \( N\) tel que \( a_N\) est inversible. Pour ce \( N\) nous avons
+	\begin{equation}
+		a=a_0=p_1a_1=p_1p_2a_2=\ldots =p_1\ldots p_Na_N.
+	\end{equation}
+	Il nous reste à prouver que \( p_Na_N\) est irréductible.
+
+	D'abord \( p_Na_N\) est non ivnersible parce que \( p_N\) n'est pas inversible et \( a_N\) est inversible. Ensuite supposons que \( p_Na_N=st\) avec \( s,t\in A\). Nous allons prouver qu'au moins \( s\) ou \( t\) est inversible. Nous avons
+	\begin{equation}
+		p_N=s(ta_N^{-1}).
+	\end{equation}
+	Vu que \( p_N\) est irréductible, il n'est pas le produit de deux non-inversibles. Soit \( s\) est inversible (alors on a gagné), soit \( ta_N^{-1}\) est inversible, et alors \( t\) est inversible parce que \( a_N^{-1}\) est inversible.
+
+	\begin{proofpart}
+		Unicité
+	\end{proofpart}
+
+	Soient des irréductibles \( p_1,\ldots,p_k\), \( q_1,\ldots,q_m\) tels que \( a=p_1\ldots p_k=q_1\ldots q_m\). Nous utilisons le lemme \ref{LEMooQJGIooEtVnyj} : si \( p_1\) était premier avec tous chacun des \( q_j\), il serait premier avec le produit, ce qui serait absurde parce que le produit est \( a\) et \( p_1\) divise \( a\). Bref, il y a un des \( q_j\) qui n'est pas premier avec \( p_1\).
+
+	Nous considérons \( \sigma_1\in S_1\) tel que \( p_1\) n'est pas premier avec \( q_{\sigma_1(1)}\). Au passage, nous notons \( q^{(1)}_k=q_{\sigma_1(k)}\). Soit un diviseur commun \( d\) non inversible entre \( p_1\) et \( q^{(1)}_1\). Nous avons des éléments \( u,v\) tels que
+	\begin{equation}
+		\begin{aligned}[]
+			p_1 & =du &  & q_1^{(1)}=dv.
+		\end{aligned}
+	\end{equation}
+	Vu que \( p_1\) et \( q_1^{(1)}\) sont irréductibles, ils ne peuvent pas être produit de deux non inversibles. Donc \( u\) et \( v\) sont inversibles. Nous pouvons écrire \( d=q_1^{(1)}v^{-1}\), et donc
+	\begin{equation}
+		p_1=q_1^{(1)}uv^{-1}.
+	\end{equation}
+	Nous récrivons \( p_1\ldots p_k=q_1\ldots q_m\) avec ces valeurs :
+	\begin{equation}
+		dup_2\ldots p_k=dvq^{(1)}_2\ldots q_m^{(1)}.
+	\end{equation}
+	Nous simplifions par \( d\) et nous avons
+	\begin{equation}
+		(up_2)p_3\ldots p_k=(vq^{(1)}_2)q^{(1)}_3\ldots q_m^{(1)}.
+	\end{equation}
+	Par récurrence nous construisons les \( \sigma_i\) et les  \( q^{(i)}_j\).
+\end{proof}
+
+\begin{proposition}		\label{PROPooPVFOooJvWRIh}
+	Un corps est un anneau principal et un anneau factoriel.
+\end{proposition}
+
+\begin{proof}
+	Un anneau est principal quand :
+	\begin{itemize}
+		\item
+		      Commutatif
+		\item
+		      intègre
+		\item
+		      tous les idéaux sont principaux.
+	\end{itemize}
+	Un corps est toujours commutatif. Un corps est un anneau intègre par le lemme \ref{LEMooIKNMooMfvQnu}. Donc un corps, les seuls idéaux sont \( \{ 0 \} \) et \( \eK\). Le premier est principal parce que \( 0A=\{ 0 \}\). Et le second est également principal parce que \( \eK=1\eK\).
+
+	Donc un corps est un anneau principal.
+
+	Le fait qu'un corps soit un anneau factoriel est maintenant le théorème \ref{THOooANCAooBChmwp}.
+\end{proof}
+
+\begin{example}[\( \eZ\lbrack i\sqrt{ 5 }\rbrack\) n'est ni factoriel ni principal]     \label{EXooYCTDooGXAjGC}
+	Puisque \( (i\sqrt{ 5 })^2=-5\), les éléments de \( \eZ[i\sqrt{ 5 }]\) sont les éléments de \( \eC\) de la forme \( a+bi\sqrt{ 5 }\) avec \( a,b\in \eZ\). Nous définissons la \defe{norme}{norme!sur \( \eZ[i\sqrt{ 5 }]\)} sur \( \eZ[i\sqrt{ 5 }]\) par\footnote{C'est le carré de la norme usuelle, mais c'est l'usage dans le milieu.}
+	\begin{equation}
+		\begin{aligned}
+			N\colon \eZ[i\sqrt{ 5 }] & \to \eN          \\
+			z                        & \mapsto z\bar z.
+		\end{aligned}
+	\end{equation}
+	Le fait que ce soit à valeurs dans \( \eN\) est un simple calcul :
+	\begin{equation}
+		N(x+iy\sqrt{ 5 })=(x+iy\sqrt{ 5 })(x-iy\sqrt{ 5 })=x^2+5y^2.
+	\end{equation}
+	De plus \( N\) est multiplicative : \( N(z_1z_2)=N(z_1)N(z_2)\).
+
+	Nous pouvons maintenant déterminer les inversibles de \( \eZ[i\sqrt{ 5 }]\). Si \( \alpha\) est inversible, alors il existe \( \beta\) tel que \( \alpha\beta=1\). Au niveau de la norme,
+	\begin{equation}
+		N(\alpha)N(\beta)=1,
+	\end{equation}
+	ce qui implique que \( N(\alpha)=1\). Or l'équation \( x^2+5y^2=1\) dans \( \eN\) donne \( y=0\), \( x=\pm 1\).
+
+	Au final, les inversibles de \( \eZ[i\sqrt{ 5 }]\) sont \( \pm 1\).
+
+	L'anneau \( \eZ[i\sqrt{ 5 }]\) n'est alors pas factoriel (définition~\ref{DEFooVCATooPJGWKq}) parce que
+	\begin{equation}
+		2\times 3=(1+i\sqrt{ 5 })(1-i\sqrt{ 5 }).
+	\end{equation}
+	Cela donne deux décompositions du nombre \( 6\) en produit d'éléments non associés\footnote{Définition~\ref{DefrXUixs}.} (\( 2\) n'est associé qu'à \( 2\) et \( -2\)) parce que les inversibles sont \( 1\) et \( -1\).
+
+	Le fait que \( \eZ[i\sqrt{ 5 }]\) ne soit pas factoriel implique qu'il ne soit pas principal, théorème~\ref{THOooANCAooBChmwp}.
+\end{example}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Anneau \texorpdfstring{\(  \eZ/6\eZ\)}{Z/6Z}}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SECooSWGKooEeOZTO}
+
+Nous allons donner quelques propriétés de cet anneau, et en particulier voir que dans cet anneau non intègre, la notion d'élément irréductible n'est pas très intéressante.
+
+Voici pour commencer un calcul de la table de multiplication de \( A=\eZ/6\eZ\). Pour les multiples de (par exemple) \( [4]_6\) nous écrivons
+\begin{equation}
+	1\times [4]_6=[4_6]
+\end{equation}
+et ensuite
+\begin{equation}
+	2\times [4]_6=[8]_6=[2]_6,
+\end{equation}
+puis
+\begin{equation}
+	3\times [4]_6=[2+4]_6=[6]_6=[0]_6,
+\end{equation}
+et caetera. Le résultat est :
+\begin{equation}
+	\begin{array}{c|c|c|c|c|c|c}
+		\times & [0]_6 & [1]_6 & [2]_6 & [3]_6 & [4]_6 & [5]_6 \\
+		\hline\hline
+		[0]_6  & 0     & 0     & 0     & 0     & 0     & 0     \\
+		\hline
+		[1]_6  & 0     & 1     & 2     & 3     & 4     & 5     \\
+		\hline
+		[2]_6  & 0     & 2     & 4     & 0     & 2     & 4     \\
+		\hline
+		[3]_6  & 0     & 3     & 0     & 3     & 0     & 3     \\
+		\hline
+		[4]_6  & 0     & 4     & 2     & 0     & 4     & 2     \\
+		\hline
+		[5]_6  & 0     & 5     & 4     & 3     & 2     & 1     \\
+		\hline
+	\end{array}
+\end{equation}
+Pour ne pas alourdir, nous n'avons pas écrit \( [x]_6\) partout au lieu de \( x\).
+
+\begin{normaltext}[Inversibles]
+	Les éléments inversibles de \( \eZ/6\eZ\) sont ceux qui ont un \( [1]_6\) dans leur table de multiplication. Ce sont donc
+	\begin{equation}
+		U(\eZ/6\eZ)=\big\{ [1]_6,[5]_6 \big\}.
+	\end{equation}
+\end{normaltext}
+
+\begin{normaltext}[Diviseurs de zéro]
+	Les diviseurs de zéro sont ceux qui ont un \( [0]_6\) dans leur table de multiplication, c'est-à-dire
+	\begin{equation}
+		\big\{ [2]_6,[3]_6,[4]_6 \big\}.
+	\end{equation}
+\end{normaltext}
+
+\begin{normaltext}[Irréductibles]
+	Les irréductibles sont ceux qui ne sont ni inversibles ni produit de deux éléments non inversibles. Les non inversibles sont :
+	\begin{equation}
+		\big\{ [0]_6,[2]_6,[3]_6,[4]_6 \}.
+	\end{equation}
+	Ils sont candidats à être irréductibles. Les produits de ces éléments (on oublie les crochets) sont :
+	\begin{subequations}
+		\begin{align}
+			2\times 2 & =4  \\
+			2\times 3 & =0  \\
+			2\times 4 & =2  \\
+			3\times 3 & =3  \\
+			3\times 4 & =0  \\
+			4\times 4 & =4.
+		\end{align}
+	\end{subequations}
+	Donc \( [0]_6\), \( [2]_6\), \( [3]_6\) et \( [4]_6\) ne sont plus candidats à être irréductible. Bref, il ne reste aucun candidats.
+
+	L'anneau \( \eZ/6\eZ\) n'a aucun élément irréductible.
+\end{normaltext}
+
+\begin{normaltext}[Éléments premiers]       \label{NORMooAXOKooAQMXoB}
+	Les éléments non nuls et non inversibles sont \( 2\), \( 3\) et \( 4\).
+	\begin{subproof}
+		\spitem[Pour \( 2\)]
+		L'élément \( [2]_6\) divise \( 2\), \( 4\) et \( 0\).
+		\begin{itemize}
+			\item Les \( (a,b)\) tels que \( ab=2\) sont : \( (1,2)\), \( (2,4)\) et \( (5,4)\). L'élément \( 2\) divise donc toujours \( a\) ou \( b\).
+			\item Les \( (a,b)\) tels que \( ab=4\) sont : \( (1,4)\), \( (2,5)\) et \( (4,4)\). L'élément \( 2\) divise donc toujours \( a\) ou \( b\).
+			\item Les \( (a,b)\) tels que \( ab=0\) sont : \( (0,x)\), \( (3,2)\) et \( (4,3)\). L'élément \( 2\) divise donc toujours \( a\) ou \( b\). En particulier, \( [2]_6\) divise \( [0]_6\); c'est important.
+		\end{itemize}
+		Donc \( [2]_6\) est un élément premier.
+		\spitem[Pour \( 3\)]
+		L'élément \( [3]_6\) divise \( 3\) et \( 0\).
+		\begin{itemize}
+			\item Les \( (a,b)\) tels que \( ab=3\) sont : \( (1,3)\) et \( (3,5)\).             L'élément \( 3\) divise donc toujours \( a\) ou \( b\).
+			\item Les \( (a,b)\) tels que \( ab=0\) sont : \( (0,x)\), \( (3,2)\) et \( (4,3)\). L'élément \( 3\) divise donc toujours \( a\) ou \( b\).
+		\end{itemize}
+		Donc \( [3]_6\) est un élément premier.
+		L'élément \( [4]_6\) divise \( 4\), \( 2\) et \( 0\).
+		\begin{itemize}
+			\item Les \( (a,b)\) tels que \( ab=4\) sont : \( (1,4)\), \( (2,5)\) et \( (4,4)\). L'élément \( 4\) divise donc toujours \( a\) ou \( b\).
+			\item Les \( (a,b)\) tels que \( ab=2\) sont : \( (1,2)\), \( (2,4)\) et \( (5,4)\). L'élément \( 4\) divise donc toujours \( a\) ou \( b\).
+			\item Les \( (a,b)\) tels que \( ab=0\) sont : \( (0,x)\), \( (3,2)\) et \( (4,3)\). L'élément \( 4\) divise donc toujours \( a\) ou \( b\).
+		\end{itemize}
+		Donc \( [4]_6\) est un élément premier.
+	\end{subproof}
+	Au final, les éléments premiers dans \( \eZ/6\eZ\) sont
+	\begin{equation}
+		\big\{ [2]_6, [3]_6, [4]_6  \big\}.
+	\end{equation}
+\end{normaltext}
+
+Vous noterez que \( \eZ/6\eZ\) a des éléments premiers non irréductibles. Cela est un contre-exemple à la proposition \ref{PROPooZICGooNmblhl} dans le cas d'un anneau non-intègre.
+
+\begin{lemma}[\cite{MonCerveau}]    \label{LEMooZSELooGOFEIz}
+	L'anneau \( \eZ/6\eZ\) est noetherien, mais ni intègre ni principal\footnote{Toutes les définitions dans le thème \ref{THEMEooVIQIooOcFAQS}.}.
+\end{lemma}
+
+\begin{proof}
+	Comme c'est un anneau fini, toute suite croissante de quoi que ce soit devient stationnaire; donc \( \eZ/6\eZ\) est noetherien.
+
+	Puisque \( \eZ/6\eZ\) a des diviseurs de zéro, il n'est pas intègre. Et s'il n'est pas intègre, il n'est pas factoriel non plus.
+\end{proof}

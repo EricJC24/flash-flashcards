@@ -1,0 +1,2270 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2011-2020, 2022-2024
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Espace de probabilité}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}
+	Une \defe{mesure de probabilité}{mesure!probabilité} sur un espace mesurable\footnote{Espace mesurable :~\ref{DefjRsGSy}, mesure positive :~\ref{DefBTsgznn}.} \( (\Omega,\tribA)\) est une mesure positive telle que \( P(\Omega)=1\). Dans ce cas, le triple \( (\Omega,\tribA,P)\) est un \defe{espace de probabilité}{espace!de probabilité}.
+\end{definition}
+
+Un point \( \omega\in\Omega\) est une \defe{observation}{observation}, une partie mesurable \( A\in\tribA\) est un \defe{événement}{evenement@événement}. L'ensemble \( A\cup B\) représente l'événement \( A\) ou \( B\) tandis que l'ensemble \( A\cap B\) représente l'événement \( A\) et \( B\).
+
+Si les \( A_n\) sont des événements, nous avons défini en~\ref{ooEEQJooRMFzVR} limite supérieure et la limite inférieure de la suite \( A_n\) par
+\begin{equation}
+	\limsup_{n\to\infty}A_n=\bigcap_{n\geq 1}\bigcup_{k\geq n}A_k
+\end{equation}
+et
+\begin{equation}
+	\liminf_{n\to\infty}A_n=\bigcup_{n\geq 1}\bigcap_{k\geq n}A_k
+\end{equation}
+Si \( \omega\in\liminf A_n\), alors \( \omega\) réalise tous les \( A_n\) sauf un nombre fini.
+
+Nous avons
+\begin{equation}
+	\limsup A_n=\{ \omega\in\Omega\tq \omega\in A_n\text{pour une infinité de } n \}.
+\end{equation}
+
+\begin{theorem}[Borel-Cantelli]\index{théorème!Borel-Cantelli}
+	Si
+	\begin{equation}
+		\sum_{n=1}^{\infty}P(A_n)<\infty
+	\end{equation}
+	alors \( P(\limsup A_n)=0\).
+\end{theorem}
+%TODO : une conséquence de Borel-Cantelli a l'air d'être le théorème des nombres normaux,
+% prouvé sur la page https://fr.wikipedia.org/wiki/Nombre_normal
+
+\begin{proof}
+	La condition \( \sum_{n\geq 1}P(A_n)<\infty\) signifie que la fonction
+	\begin{equation}
+		\varphi=\sum_{n\geq 1}\caract_{A_n}
+	\end{equation}
+	est \( P\)-intégrable. Par conséquent, elle est finie presque partout (au sens de \( P\)), c'est-à-dire
+	\begin{equation}
+		P(\varphi=\infty)=0.
+	\end{equation}
+	Les points \( \omega\) sur lesquels \( \varphi(\omega)=\infty\) sont ceux tels que
+	\begin{equation}
+		\sum_{n\geq 1}\caract_{A_n}(\omega)=\infty,
+	\end{equation}
+	c'est-à-dire les \( \omega\) qui appartiennent à une infinité d'ensembles \( A_n\), ou encore les \( \omega\in\limsup A_n\). Nous avons donc montré que
+	\begin{equation}
+		\{ \omega\tq \varphi(\omega)=\infty \}=\{ \omega\in\Omega\tq \omega\in A_n\text{pour une infinité de } n \}=\limsup A_n.
+	\end{equation}
+	Or l'hypothèse signifie que la probabilité du membre de gauche est nulle.
+\end{proof}
+
+\begin{corollary}       \label{CORooUWLZooFLYmcY}
+	Si \( \sum_{n=1}^{\infty}P(\complement A_n)<\infty\), alors presque surement tous les \( B_n\) sont réalisés à l'exception d'un nombre fini.
+\end{corollary}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Variables aléatoires}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}      \label{DEFooSZRXooQUSZYU}
+	Une \defe{variable aléatoire}{variable aléatoire} est une application mesurable
+	\begin{equation}
+		X\colon (\Omega,\tribA)\to (\eR^d,\Borelien(\eR^d)).
+	\end{equation}
+\end{definition}
+Nous convenons que \( \eR^1=\bar\eR\), c'est-à-dire que dans le cas où la variable aléatoire \( X\) est réelle, nous acceptons les valeurs \( \pm\infty\).
+
+\begin{definition}[densité\cite{BIBooTFZVooMpdTzJ}]      \label{DEFooRNKZooRczFwB}
+	Une variable aléatoire réelle \( X\colon \Omega\to \eR^d\) est \defe{absolument continue}{variable aléatoire!absolument continue} si il existe une fonction positive et intégrable \( f\colon \eR\to \eR\) telle que pour tout borélien \( A\subset \eR^d\),
+	\begin{equation}
+		P(X\in A)=\int_{\eR^d}\mtu_A(x)f(x)dx.
+	\end{equation}
+	Nous disons alors que \( f\) est la \defe{densité}{densité!d'une variable aléatoire} de \( X\).
+\end{definition}
+Cela ne devrait pas être sans rappeler la proposition \ref{PROPooUMXIooUhbZvl} et la définition \ref{DEFooJNQYooKUcezo}.
+
+
+\begin{probleme}		\label{PROBooSWDQooHlSZPD}
+	Je ne suis pas 100\% certain de la proposition \ref{PROPooDXCVooBxaToe}. Écrivez-moi si vous avez un doute ou une preuve.
+\end{probleme}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooDXCVooBxaToe}
+	Si \(X \colon \Omega\to \eR  \) est une variable aléatoire à densité, alors sa densité est donnée par
+	\begin{equation}
+		\begin{aligned}
+			f\colon \eR & \to \eR         \\
+			x           & \mapsto P(X<x).
+		\end{aligned}
+	\end{equation}
+	%TODOooXOKRooTAJQgO. Prouver ça. Quand la démonstration est faite, supprimer PROBooSWDQooHlSZPD.
+\end{proposition}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Loi d'une variable aléatoire}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{propositionDef}[Loi d'une variable aléatoire\cite{BIBooXYCNooXgKIrP}]        \label{DEFooBKJVooRJdMeA}
+	Soient un espace probabilisé \( (\Omega,\tribF,P)\) ainsi qu'une variable aléatoire \( X\colon \Omega\to \eR^n\). En définissant
+	\begin{equation}
+		\begin{aligned}
+			P_X\colon \Borelien(\eR^n) & \to \eR^+                   \\
+			B                          & \mapsto (P\circ X^{-1})(B),
+		\end{aligned}
+	\end{equation}
+	le triple \( (\eR^n,\Borelien(\eR^n),P_X)\) est un espace probabilisé.
+
+	La mesure \( P_X\) est la \defe{loi}{loi d'une variable aléatoire} de la variable aléatoire \( X\)
+\end{propositionDef}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Indépendance}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[\cite{CourgGudRennes}]      \label{DEFooVYCUooKWvReO}
+	Nous disons que les événements \( A_1,\ldots,A_n\) sont \defe{indépendants}{indépendance!événements} si pour tout choix \( \{ i_1,\ldots,i_k \}\subset\{ 1,\ldots,n \}\) nous avons
+	\begin{equation}
+		P(A_{i_1}\cap\ldots\cap A_{i_k})=P(A_{i_1})\ldots P(A_{i_k}).
+	\end{equation}
+	Les sous tribus \( \tribA_1,\ldots,\tribA_n\) sont \defe{indépendantes}{indépendance!sous tribus} si pour tout choix \( A_i\in \tribA_i\), les événements \( A_i\) sont indépendants.
+\end{definition}
+
+\begin{example}
+	Soit \( \Omega=\mathopen[ 0 , 1 \mathclose]\times \mathopen[ 0 , 1 \mathclose]\) muni de la mesure de Lebesgue. Soient \( A=\mathopen[ 0 , a \mathclose]\times \mathopen[ 0 , 1 \mathclose]\) et \( B=\mathopen[ 0 , 1 \mathclose]\times \mathopen[ 0 , b \mathclose]\). Nous avons \( P(A)=a\) et \( P(B)=b\) ainsi que \( P(A\cap B)=ab\).
+\end{example}
+
+\begin{lemma}       \label{LemIndepEvenCompl}
+	Les événements \( (A_i)_{i=0,\ldots,n}\) sont indépendants si et seulement si les événements que nous obtenons en remplaçant certains des \( A_i\) par \( \complement A_i\) le sont.
+\end{lemma}
+
+\begin{proof}
+	Sans perte de généralité, nous pouvons nous contenter de prouver que les événements \( \complement A_0,A_1,\ldots,A_n\) sont indépendants sous l'hypothèse que les événements \( A_0,A_1,\ldots,A_n\) sont indépendants. Soit \( I\) un sous-ensemble de \( \{ 1,\ldots,n \}\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			P\big( \complement A_0\bigcap_{i\in I}A_i \big) & =P\big( \bigcap_{i\in I}A_i\setminus\bigcap_{i\in I}A_i\cap A_0 \big)      \\
+			                                                & =P\big( \bigcap_{i\in I}A_i \big)-P\big( \bigcap_{i\in I}A_i\cap A_0 \big) \\
+			                                                & =P\big( \bigcap_{i\in I}A_i \big)\big( 1-P(\complement A_0) \big)          \\
+			                                                & =P\big( \bigcap_{i\in I}A_i \big)P(\complement A_0).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{lemma}       \label{LemTribIndepProdProb}
+	Les tribus \( \tribA_1,\ldots,\tribA_n\) sont indépendantes si et seulement si
+	\begin{equation}
+		P(A_1\cap\ldots\cap A_n)=P(A_1)\ldots P(A_n)
+	\end{equation}
+	pour tout \( A_i\in\tribA_i\).
+\end{lemma}
+
+\begin{proof}
+	L'implication dans le sens direct découle immédiatement des définitions.
+
+	Nous supposons avoir un choix \( (A_i)_{i=1,\ldots,n}\) avec \( A_i\in\tribA_i\) et nous devons montrer que ces événements sont indépendants, c'est-à-dire que si \( J\subset\{ 1,\ldots,n \}\) alors les événements \( (A_j)_{j\in J}\) sont indépendants. Sans perte de généralité, nous pouvons supposer que si \( i\notin J\), \( A_i=\Omega\). Alors nous avons
+	\begin{equation}
+		P\big( \bigcap_{j\in J}A_j \big)=P\big( \bigcap_{i=1}^nA_i \big)=\prod_{i=1}^nP(A_i)=\prod_{j\in J}P(A_j)
+	\end{equation}
+	parce que \( P(A_i)=P(\Omega)=1\) lorsque \( i\) n'est pas dans \( J\).
+\end{proof}
+
+\begin{definition}  \label{DefNJUkotc}
+	Nous disons que les variables aléatoires \( X_k\colon \Omega\to \eR^d\) sont \defe{indépendantes}{indépendance!variables aléatoires} lorsque les tribus engendrées\footnote{Définition \ref{DefNOJWooLGKhmJ}.} \( \tribA_{X_1},\ldots,\tribA_{X_n}\) le sont.
+\end{definition}
+
+\begin{remark}
+	Il n'a de sens de dire que \( X_1\) et \( X_2\) sont indépendants que si \( X_1\) et \( X_2\) sont des applications dont l'espace de départ est identique.
+
+	Si nous voulons modéliser le jet de deux pièces indépendantes, le mauvais choix est de faire \( \Omega=\{ 0,1 \}\), y mettre la mesure d'équiprobabilité, et de considérer les deux variables aléatoires
+	\begin{equation}
+		X_i(\omega)=\begin{cases}
+			f & \text{si } \omega=0  \\
+			p & \text{si } \omega=1.
+		\end{cases}
+	\end{equation}
+	Ces deux variables sont évidemment pas indépendantes. Il faut poser \( \Omega=\{ 0,1 \}\times \{ 0,1 \}\), y mettre la mesure d'équiprobabilité et poser
+	\begin{equation}
+		X_1(x,y)=\begin{cases}
+			f & \text{si } x=0 \\
+			p & \text{si } x=1
+		\end{cases},
+	\end{equation}
+	\begin{equation}
+		X_2(x,y)=\begin{cases}
+			f & \text{si } y=0 \\
+			p & \text{si } y=1
+		\end{cases},
+	\end{equation}
+	Ces variables aléatoires sont indépendantes. Par exemple
+	\begin{subequations}
+		\begin{align}
+			X_1^{-1}\{ p \}=\{ (1,0),(1,1) \} \\
+			X_2^{-1}\{ p \}=\{ (0,1),(1,1) \}
+		\end{align}
+	\end{subequations}
+	et on a bien
+	\begin{equation}
+		P\big( X_1^{-1}\{ p \}\cap X_2^{-1}\{ p \} \big)=P\{ (1,1) \}=\frac{1}{ 4 }
+	\end{equation}
+	ainsi que
+	\begin{equation}
+		P\{ X_i^{-1}(p) \}=\frac{ 1 }{2}
+	\end{equation}
+	pour \( i=1\) et \( i=2\).
+\end{remark}
+
+\begin{proposition} \label{PropMLbfRTk}
+	Soient \( (X_k\colon \Omega\to \eR^{d_k})\) des variables aléatoires indépendantes.
+	\begin{enumerate}
+		\item
+		      Si \( B_k\in \Borelien(\eR^{d_k})\). Alors
+		      \begin{equation}
+			      P(X_k\in B_k\forall k\leq n)=P(X_1\in B_1)\ldots P(X_n\in B_n).
+		      \end{equation}
+		\item\label{ItemHRjuTTii}
+		      Les événements \( \{   X_i\in B_i   \}\) sont indépendants.
+		\item\label{ItemHRjuTTiii}
+		      Les tribus engendrées par des \( X_i\) et d'autres sont indépendantes. Plus précisément, si \( I\) et \( J\) sont deux ensembles disjoints de \( \eN\) alors les tribus
+		      \begin{equation}
+			      \sigma(  \{ X_i,i\in I \}  )
+		      \end{equation}
+		      et
+		      \begin{equation}
+			      \sigma(  \{ X_i,i\in J \}  )
+		      \end{equation}
+		      sont indépendantes.
+	\end{enumerate}
+
+\end{proposition}
+
+\begin{proof}
+	Lorsque nous écrivons \( X_i\in B_i\), nous parlons de l'événement
+	\begin{equation}
+		(X_i\in B_i)=\{ \omega\in\Omega\tq X_i(\omega)\in B_i \}=X_i^{-1}(B_i)\in \tribA_{X_i}.
+	\end{equation}
+	Vu que par hypothèse les tribus \( (\tribA_i)\) sont indépendantes, le lemme~\ref{LemTribIndepProdProb} nous montre que
+	\begin{equation}
+		P\big( \bigcap_{i=1}^nX_i\in B_i \big)=\prod_iP(X_i\in B_i).
+	\end{equation}
+	Il reste à voir que l'ensemble \( X_i^{-1}(B_i)\) fait partie de la tribu \( \tribA\) de départ. Cela est la définition du fait que l'application \( X_i\) soit une variable aléatoire : elle doit être mesurable en tant qu'application
+	\begin{equation}
+		X_i\colon (\Omega,\tribA)\to (\eR^d,\Borelien(\eR^d)).
+	\end{equation}
+
+	Les affirmations~\ref{ItemHRjuTTii} et~\ref{ItemHRjuTTiii} ne sont que des façons alternatives d'exprimer la même chose.
+\end{proof}
+
+\begin{proposition}
+	Les événements \( (A_i)_{i=1,\ldots,n}\) sont indépendants\footnote{Événements indépendants, définition \ref{DEFooVYCUooKWvReO}.} si et seulement si les variables aléatoires associées \( \mtu_{A_1},\ldots,\mtu_{A_n}\) le sont.
+\end{proposition}
+
+\begin{proof}
+	La tribu engendrée par la variable aléatoire \( \mtu_{A_k}\) est
+	\begin{equation}    \label{EqtribAAimtu}
+		\tribA_{\mtu_{A_k}}=\{ \emptyset,A_k,\complement A_k,\Omega \}.
+	\end{equation}
+	En effet si \( 1\in B\), alors \( A_i\subset\mtu_{A_i}^{-1}(B)\), et si \( 0\in B\), alors \( \complement A_i\subset\mtu_{A_i}^{-1}(B)\). Les éléments \( 0\) et \( 1\) sont tous deux soit dans \( B\), soit hors de \( B\). Cela donne les \( 4\) possibilités énumérées dans \eqref{EqtribAAimtu}.
+
+	Supposons que les événements \( (A_i)\) sont indépendants. Nous devons vérifier que les tribus le soient, c'est-à-dire que les événements \( A_i\) et \( \complement A_j\) sont indépendants. Cela est une conséquence du lemme~\ref{LemIndepEvenCompl}.
+\end{proof}
+
+\begin{proposition}     \label{PROPooSYNQooAlpGdI}
+	Soient des variables aléatoires indépendantes \( X_k\colon \Omega\to \eR^{d_k}\) et des fonctions boréliennes \( f_k\colon \eR^{d_k}\to \eR^{p_k}\). Alors les variables aléatoires
+	\begin{equation}
+		f_k\circ X_k
+	\end{equation}
+	sont indépendantes.
+\end{proposition}
+
+\begin{proof}
+	Le théorème~\ref{ThofrestemesurablesXYYX} assure que les applications
+	\begin{equation}
+		f_k\circ X_k\colon \Omega\to \eR^{p_k}:
+	\end{equation}
+	sont \( \tribA_{X_k}\)-mesurables. En particulier pour tout borélien \( B\subset\eR^{p_k}\), nous avons \( X^{-1}_k\circ f^{-1}_k(B)\in\tribA_{X_k}\). Nous avons donc
+	\begin{equation}
+		\sigma(f_k\circ X_k)\subset\sigma(X_k),
+	\end{equation}
+	et par conséquent les tribus \( \sigma(f_k\circ X_k)\) sont indépendantes étant donné que les tribus \( \sigma(X_k)\) le sont.
+\end{proof}
+
+\begin{lemma}       \label{LEMooWBAZooLVVRjO}
+	Soient des variables aléatoires \( X,Y\colon \Omega\to E\) que nous supposons être indépendantes et identiquement distribuées. Si \( f\colon E\to F\) est mesurable,alors les variables aléatoires \( f\circ X\) et \( f\circ Y\) sont indépendantes et identiquement distribuées.
+\end{lemma}
+
+\begin{lemma}[Lemme de regroupement\cite{VincentBa}]\index{lemme de regroupement}  \label{LemHOjqqw}
+	Soit \( (\Omega,\tribA,P)\) un espace de probabilité et \( (\tribA_i)_{i\in I}\) une famille de tribus indépendantes dans \( \tribA\). Si \( (M_j)_{j\in J}\) est une partition de \( I\), alors les tribus
+	\begin{equation}
+		\tribB_j=\sigma\big( \bigcup_{i\in M_j}\tribA_i \big)
+	\end{equation}
+	sont indépendantes.
+
+	Si les variables aléatoires \( \{ X_1,X_2,X_3,X_4,X_5 \}\) sont indépendantes, et si \( f\) et \( g\) sont des fonctions mesurables, alors les variables aléatoires \( f(X_2,X_3,X_5)\) et \( g(X_1,X_4)\) sont indépendantes.
+\end{lemma}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Lois conjointes et indépendance}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[Loi conjointe et loi marginale]
+	Si nous considérons \( n\) variables aléatoires réelles \( X_1,\ldots,X_n\colon\Omega\to\eR\), la loi du \( n\)-uplet \( X=(X_1,\ldots,X_n)\) est une variable aléatoire \( X\colon \Omega\to \eR^n\) appelée la \defe{loi conjointe}{loi!conjointe} des lois \( X_i\). Dans ce cas, les variables aléatoires \( X_i\) elles-mêmes sont dites lois \defe{marginales}{loi!marginale} de \( X\).
+\end{definition}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooCXSWooByucuN}
+	Soient un espace de probabilité \( \Omega\) ainsi que deux variables aléatoires indépendantes
+	\begin{subequations}
+		\begin{align}
+			X_1 & \colon \Omega\to \eR^k \\
+			X_2 & \colon \Omega\to \eR^l
+		\end{align}
+	\end{subequations}
+	Nous supposons que \( X_1\) et \( X_2\) ont des densités \(f_1 \colon \eR^k\to \eR  \) et \(f_2 \colon \eR^l\to \eR  \).
+
+	\begin{enumerate}
+		\item
+		      En notant \( \lambda\) la mesure de Lebesgue sur \( \eR^n\), avons égalité des mesures\footnote{Voir les définitions \ref{DEFooBKJVooRJdMeA} et \ref{PropooVXPMooGSkyBo}.}
+		      \begin{equation}
+			      P_X=f\cdot \lambda=P_{X_1}\otimes P_{X_2}
+		      \end{equation}
+
+		\item
+
+		      La variable aléatoire
+		      \begin{equation}
+			      \begin{aligned}
+				      X\colon \Omega & \to \eR^{k+l}                               \\
+				      \omega         & \mapsto \big( X_1(\omega),X_2(\omega) \big)
+			      \end{aligned}
+		      \end{equation}
+		      a pour densité la fonction
+		      \begin{equation}
+			      \begin{aligned}
+				      f\colon \eR^k\times \eR^l & \to \eR               \\
+				      (x,y)                     & \mapsto f_1(x)f_2(y).
+			      \end{aligned}
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par considérer un borélien de la forme \( B_1\times B_2\) avec \( B_1\in\Borelien(\eR^k)\) et \( B_2\in\Borelien(\eR^l)\). Par définition de \( P_X\) et par indépendance (proposition \ref{PropMLbfRTk}) nous avons d'une part
+	\begin{subequations}
+		\begin{align}
+			P_X(B_1\times B_2) & =P(X\in B_1\times B_2)        \\
+			                   & =P(X_1\in B_1\cap X_2\in B_2) \\
+			                   & =P(X_1\in B_1)P(X_2\in B_2).
+		\end{align}
+	\end{subequations}
+	Et d'autre part nous pouvons utiliser le théorème de Fubini \ref{ThoWTMSthY} parce que \( f_1\) et \( f_2\) sont positives :
+	\begin{subequations}
+		\begin{align}
+			(f\cdot \lambda)(B_1\times B_2) & =\int_{B_1\times B_2}f(x,y)\,dx\,dy       \\
+			                                & =\int_{B_1\times B_2}f_1(x)f_2(y)\,dx\,dy \\
+			                                & =\int_{B_1}f_1(x)\int_{B_2}f_2(x)         \\
+			                                & =P(X_1\in B_1)P(X_2\in B_2).
+		\end{align}
+	\end{subequations}
+	Les mesures \( P_X\) et \( f\cdot\lambda\) sont donc égales sur ces boréliens. La partie unicité du théorème \ref{ThoWWAjXzi}\ref{ITEMooMMAAooVnHmzc} dit qu'alors elles sont égales sur tous les boréliens et qu'en plus, elles sont égales à \( P_{X_1}\otimes P_{X_2}\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooANJQooPjBPSy}
+	Soient des variables aléatoires indépendantes \(X_i \colon \Omega\to \eR  \) de densités \(f_i \colon \eR\to \eR  \). Nous considérons la variable aléatoire
+	\begin{equation}
+		\begin{aligned}
+			X\colon \Omega & \to \eR^n                                           \\
+			\omega         & \mapsto \big( X_1(\omega),\ldots,X_n(\omega) \big).
+		\end{aligned}
+	\end{equation}
+	Nous avons :
+	\begin{enumerate}
+		\item
+		      La variable aléatoire \( X\) admet la densité
+		      \begin{equation}
+			      \begin{aligned}
+				      f\colon \eR^n & \to \eR                        \\
+				      x             & \mapsto \prod_{i=1}^nf_i(x_i).
+			      \end{aligned}
+		      \end{equation}
+		\item		\label{ITEMooNIMQooGqFKNn}
+		      Nous avons, pour tout borélien \( B\subset \eR^n\) :
+		      \begin{equation}
+			      P(X\in B)=\int_B\prod_{i=1}^nf_i(x_i)dx
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Il s'agit de faire une récurrence sur la proposition \ref{PROPooCXSWooByucuN}.
+\end{proof}
+
+
+\begin{proposition}     \label{PropPXXXPXPXPX}
+	Les variables aléatoires \( \{ X_i \}\) sont indépendantes\footnote{Variables aléatoires indépendantes, définition \ref{DefNJUkotc}.} si et seulement si
+	\begin{equation}
+		P_{(X_1,\ldots,X_n)}=P_{X_1}\otimes\ldots\otimes P_{X_n}
+	\end{equation}
+	où les mesures \( P_{X_i}\) sont les lois des variables aléatoires introduites en \ref{DEFooBKJVooRJdMeA} et le produit des mesures est défini dans \ref{ThoWWAjXzi}.
+\end{proposition}
+
+\begin{definition}[densité conjointe]      \label{DefFonrepConj}
+	Soient \( \{ X_i \}_{1\leq i\leq n}\) des variables aléatoires réelles (pas spécialement indépendantes). Une fonction \( f\colon \eR^n\to \eR\) qui satisfait
+	\begin{enumerate}
+		\item
+		      \( f(x_1,\ldots,x_n)\geq 0\) pour tout \( (x_1,\ldots,x_n)\in\eR^n\),
+		\item
+		      \( \int_{\eR^n}f=1\),
+		\item       \label{ItemDefFonrepConjiii}
+		      Si les parties \( A_i\) sont mesurables dans \( \eR\), nous avons
+		      \begin{equation}
+			      P(\bigcap_{i=1}^n X_i\in A_i)=\int_{\prod_i A_i}f(x_1,\ldots,x_n)dx_1\ldots dx_n
+		      \end{equation}
+	\end{enumerate}
+	est nommée \defe{densité conjointe}{densité conjointe} de \( X_1\),\ldots,\( X_n\)
+\end{definition}
+
+\begin{probleme}		\label{PROBooPVIXooNLpmIn}
+	Il manque un théorème d'unicité pour la densité conjointe. Écrivez-moi si vous en connaissez un.
+\end{probleme}
+
+\begin{normaltext}
+	Il y a une différence entre la densité conjointe de \( X_1,\ldots,X_n\) et la densité de la variable aléatoire \( \omega\mapsto \big( X_1(\omega,\ldots,X_n(\omega)) \big)\). La densité de cette dernière est une fonction \( f\) qui doit satisfaire
+	\begin{equation}
+		P(X\in B)=\int_Bf(x)dx
+	\end{equation}
+	pour tout borélien \( B\). La densité conjointe ne vérifie cela que pour les boréliens très particuliers qui se présentent comme produits cartésiens de boréliens de \( \eR\).
+\end{normaltext}
+
+\begin{proposition}     \label{PropDensiteConjIndep}
+	Si les variables aléatoires \( X_1\),\ldots \( X_n\) sont indépendantes et ont des densités \( f_{X_1}\),\ldots,\( f_{X_n}\), alors la variable aléatoire conjointe \( X=(X_1,\ldots,X_n)\) a pour densité conjointe la fonction
+	\begin{equation}
+		f_X(x_1,\ldots,x_n)=f_{X_1}(x_1)\ldots f_{X_n}(x_n).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	En partant de la définition de l'indépendance et de la fonction de densité conjointe, ainsi qu'en utilisant le théorème de Fubini,
+	\begin{equation}
+		\begin{aligned}[]
+			\int_{A_1\times \ldots\times A_n}f_X(x_1,\ldots,x_n)dx_1\ldots dx_n & =
+			P(X_1\in A_1,\ldots,X_n\in A_n)                                                                                                                                 \\
+			                                                                    & =P(X_1\in A_1)\ldots P(X_n\in A_n)                                                        \\
+			                                                                    & =\left( \int_{A_1}f_{X_1}(x_1)dx_1 \right)\ldots\left( \int_{A_n}f_{X_n}(x_n)dx_n \right) \\
+			                                                                    & =\int_{A_1\times\ldots\times A_n}f_{X_1}(x_1)\ldots f_{X_n}(x_n)dx_1\ldots dx_n.
+		\end{aligned}
+	\end{equation}
+	La fonction \( (x_1,\ldots,x_n)\mapsto f_{X_1}(x_1)\ldots f_{X_n}(x_n)\) vérifie donc la condition~\ref{ItemDefFonrepConjiii} de la définition~\ref{DefFonrepConj}. La vérification des autres conditions est immédiate.
+\end{proof}
+
+
+\begin{lemma}[\cite{BIBooORZFooWKgLCH}]     \label{LEMooLNIZooDWUvRN}
+	Si les variables aléatoires \( X_1,\ldots, X_n\) sont indépendantes\footnote{Variables aléatoires indépendantes, définition \ref{DefNJUkotc}.} et identiquement distribuées de densité\footnote{Définition \ref{DEFooRNKZooRczFwB}.} \( f\). Nous considérons la variable aléatoire
+	\begin{equation}
+		\begin{aligned}
+			X\colon \Omega & \to \eR^n                                           \\
+			\omega         & \mapsto \big( X_1(\omega),\ldots,X_n(\omega) \big).
+		\end{aligned}
+	\end{equation}
+
+	Alors la densité de variable aléatoire \( X\) est
+	\begin{equation}
+		\begin{aligned}
+			g\colon \eR^n & \to \eR                                                      \\
+			x             & \mapsto    n!\prod_{i=1}^nf(x_i)\mtu_{\{ x_1<\ldots<x_n \}}.
+		\end{aligned}
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous devons vérifier les différents points de la définition \ref{DefFonrepConj}.
+	\begin{subproof}
+		\spitem[\( g\geq 0\)]
+		%-----------------------------------------------------------
+		Celle-là, elle est facile.
+
+		\spitem[Les parties \( \eR^n_{\sigma}\)]
+		%-----------------------------------------------------------
+		Soit \( \sigma\in S_n\) (une permutation de \( \{ 1,\ldots,n \}\)). Nous considérons les parties
+		\begin{equation}
+			\eR^n_{\sigma}=\{ x\in \eR^n\tq x_{\sigma(1)}<\ldots <x_{\sigma(n)} \},
+		\end{equation}
+		et la bijection
+		\begin{equation}		\label{EQooLQDGooQJNLsd}
+			\begin{aligned}
+				\varphi\colon \eR_{\id}^n & \to \eR^n_{\sigma}                                                 \\
+				x                         & \mapsto \big( x_{\sigma^{-1}(1)},\ldots, x_{\sigma^{-1}(n)} \big).
+			\end{aligned}
+		\end{equation}
+		Nous avons
+		\begin{equation}
+			\eR^n=\bigcup_{\sigma\in S_{n}}\eR^n_{\sigma}\cup Z
+		\end{equation}
+		où \( Z\) est de mesure (le Lebesgue) nulle. Cela a pour conséquence que
+		\begin{equation}		\label{EQooIEWWooZgORTM}
+			\int_{\eR^n}s(x)dx=\sum_{\sigma\in S_n}\int_{\eR^n_{\sigma}}s(x)dx
+		\end{equation}
+		pour toute fonction \( s\) intégrable.
+
+		\spitem[Une formule intermédiaire]
+		%-----------------------------------------------------------
+		Nous prouvons, pour tout \( \sigma\in S_n\), la formule \( \int_{\eR^n_{\sigma}}\prod_{i=1}^nf(x_i)=\int_{\eR^n_{\id}}\prod_{i=1}^nf(x_i)\). Pour cela nous fixons \( \sigma\in S_n\).
+
+		Vu que le produit est commutatif nous avons
+		\begin{equation}		\label{EQooJEDAooQMmHrb}
+			\prod_{i=1}^nf\big( x_{\sigma^{-1}(i)} \big)=\prod_{i=1}^nf(x_i)
+		\end{equation}
+
+
+
+		\spitem[Intégrale \( 1\)]
+		%-----------------------------------------------------------
+		Nous prouvons que \( \int_{\eR^n}g=1\). Pour cela nous utilisons le théorème de Fubini \ref{ThoFubinioYLtPI}\ref{ItemQMWiolgiii} :
+		\begin{subequations}
+			\begin{align}
+				\int_{\eR^n}\prod_{i=1}^nf(x_i)dx & =\int_{\eR^{n-1}}\left(   \int_{\eR}\prod_{i=1}^nf(x_i)dx_n  \right)dx_1\ldots dx_{n-1}                         \\
+				                                  & =\int_{\eR^{n-1}}\Big(  \prod_{i=1}^{n-1}f(x_i)\underbrace{\int_{\eR}f(x_n)dx_n}_{=1}  \Big)dx_1\ldots dx_{n-1}
+			\end{align}
+		\end{subequations}
+		Par récurrence sur \( n\), nous déduisons que \( \int_{\eR^n}g=1\).
+
+		\spitem[\( P(X\in A)\)]
+		%-----------------------------------------------------------
+
+		Soit un borélien \( A\subset \eR^n\). Vu qu'à partie de mesure nulle près, \( A\) est l'union disjointe des \( A_{\sigma}\), nous avons, en utilisant la proposition \ref{PROPooANJQooPjBPSy}\ref{ITEMooNIMQooGqFKNn},
+		\begin{equation}
+			P(X\in A)=\int_A\prod_if(x_i)dx=\sum_{\sigma\in S_n}\int_{A_{\sigma}}\prod_if(x_i)dx.
+		\end{equation}
+		Pour un \( \sigma\) donné, nous considérons l'application \( \varphi\) de \eqref{EQooLQDGooQJNLsd}. Nous avons \( A_{\sigma}=\varphi(A_{\id})\) et donc
+		\begin{equation}
+			P(X\in A)=\sum_{\sigma}\int_{\varphi_{\sigma}(A_{\id})}\prod_if(x_i)dx.
+		\end{equation}
+		Là-dessus, nous utilisons \( \varphi_{\sigma}\) comme changement de variables dans l'intégrale, théorème \ref{THOooUMIWooZUtUSg}\ref{ITEMooEZUBooGBuDOS} :
+		\begin{subequations}
+			\begin{align}
+				P(X\in A) & =\sum_{\sigma}\int_{\varphi_{\alpha}(A_{\id})}\prod_if(x_i)dx                                                     \\
+				          & =\sum_{\sigma}\int_{A_{\id}}f\big( \varphi_{\alpha}(x)_i \big)dx                                                  \\
+				          & =\sum_{\sigma}\int_{A_{\id}}\prod_if(x_i)dx                                                                       \\
+				          & =n!\int_{A_{\id}}\prod_if(x_i)dx                                 & \text{cf. justif.} \label{SUBEQooEJBQooFyLbct} \\
+				          & =n!\int_A\prod_if(x_i)\mtu_{\eR^n_{\id}}(x)dx.
+			\end{align}
+		\end{subequations}
+		Justification pour \eqref{SUBEQooEJBQooFyLbct}. Les termes de la somme sur \( \sigma\) sont tous les mêmes, et il y en a \( n!\).
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Densité jointe}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{BIBooLZZZooOmMYQG}]	\label{PROPooGXEOooWMAuIp}
+	Soit un ouvert \( A\) de \( \eR\). Si \(f \colon A\to \eR  \) est dérivable, alors \( f'\) est mesurable.
+	%TODOooISDIooSwVrOR. Prouver ça.
+\end{proposition}
+
+Si \(X,Y \colon \Omega\to \eR  \) sont des variables aléatoires, nous définissons l'application
+\begin{equation}
+	\begin{aligned}
+		F_{X,Y}\colon \eR^2 & \to \eR                               \\
+		(x,y)               & \mapsto P\big( X\leq x,Y\leq y \big).
+	\end{aligned}
+\end{equation}
+
+\begin{definition}[\cite{BIBooJGNTooONUnvl}]	\label{DEFooUOKQooMIjDkr}
+	Lorsque cela a un sens, nous définissons la \defe{densité jointe}{densité jointe} de \( X\) et \( Y\) par\footnote{Vous préférez peut-être la notatoin \( \partial_{xy}F_{X,Y}\).}
+	\begin{equation}
+		f_{X,Y}(x,y)=(\partial^2_{1,2}F_{X,Y})(x,y).
+	\end{equation}
+\end{definition}
+
+\begin{probleme}
+	Pour la proposition \ref{PROPooPDIWooHzjqcZ}, vous pouvez essayer de répondre aux questions suivantes :
+	\begin{enumerate}
+		\item
+		      \url{ahttps://math.stackexchange.com/questions/4961906/random-variable-density-from-basis-of-topology-to-borel-sets}
+		\item
+		      \url{https://math.stackexchange.com/questions/4961074/is-the-join-density-the-density-of-the-vector?noredirect=1&lq=1}
+	\end{enumerate}
+	Bref. Soyez très \randomGender{prudent}{prudente}. N'ayez confiance en personne.
+\end{probleme}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooPDIWooHzjqcZ}
+	Soient deux variables aléatoires \(X,Y \colon \Omega\to \eR  \). Nous supposons
+	\begin{enumerate}
+		\item
+		      que la densité jointe\footnote{Définition \ref{DEFooUOKQooMIjDkr}.} \( f_{X,Y}\) soit bien définie.
+		\item
+		      Pour toute borélien \( Z\) de mesure de Lebesgue nulle dans \( \eR\), nous avons
+		      \begin{equation}
+			      P(X\in Z)=P(Y\in Z)=0.
+		      \end{equation}
+	\end{enumerate}
+	Alors pour tout borélien \( B\subset \eR^2\), nous avons
+	\begin{equation}
+		P\big( (X,Y)\in B \big)=\int_Bf_{X,Y}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Vu que \( F_{X,Y}\) est croissante en ses deux variables, la fonction \( f_{X,Y}\) est positive. Et en tant que dérivée d'une fonction mesurable, elle est également mesurable (proposition \ref{PROPooGXEOooWMAuIp}). Nous pouvons donc appliquer le théorème de Fubini-Tonelli \ref{ThoWTMSthY} :
+	\begin{subequations}
+		\begin{align}
+			\int_Bf_{X,Y} & =\int_{\eR\times \eR}f_{X,Y}(x,y)\mtu_B(x,y)dxdy                   \\
+			              & =\int_{\eR}\left[  \int_{\eR}f_{X,Y}(x,y)\mtu_B(x,y)dy  \right]dx.
+		\end{align}
+	\end{subequations}
+	\begin{subproof}
+		\spitem[Sur un rectangle]
+		%-----------------------------------------------------------
+		Nous supposons que soit un rectangle ouvert :  \( B=\mathopen] a,b\mathclose[\times \mathopen] c,d\mathclose[\). Les intégrales deviennent :
+		\begin{equation}
+			\int_Bf_{X,Y}=\int_a^b\left[\int_c^df_{X,Y}(x,y)dy\right]dx.
+		\end{equation}
+		Nous nous fixons à présent \( x\) et nous nous concentrons sur l'intégrale intérieure  : \( \int_c^df_{X,Y}(x,y)dy\). Nous posons
+		\begin{equation}
+			\begin{aligned}
+				G_x\colon \eR & \to \eR                           \\
+				y             & \mapsto (\partial_xF_{X,Y})(x,y),
+			\end{aligned}
+		\end{equation}
+		de telle sorte que \( F_{X,Y}(x,y)=G'_x(y)\) et que
+		\begin{subequations}
+			\begin{align}
+				\int_c^df_{X,Y}(x,y)dy & =\int_c^dG_x'(y)dy                                  \\
+				                       & =G_x(d)-G_x(c)                                      \\
+				                       & =(\partial_xF_{X,Y})(x,d)-(\partial_xF_{X,Y})(x,c).
+			\end{align}
+		\end{subequations}
+		Nous passons à l'intégrale sur \( x\). Pour le premier terme, nous posons
+		\begin{equation}
+			\begin{aligned}
+				H\colon \eR & \to \eR         \\
+				x           & \mapsto F(x,d),
+			\end{aligned}
+		\end{equation}
+		de telle sorte à avoir \( (\partial_xF_{X,Y})(x,d)=H'(x)\) et
+		\begin{equation}
+			\int_a^b(\partial_xF_{X,Y})(x,d)=H(b)-H(a)=F_{X,Y}(b,d)-F_{X,Y}(a,d).
+		\end{equation}
+		En faisant de même pour le second terme, nous trouvons
+		\begin{subequations}
+			\begin{align}
+				\int_Bf_{X,Y} & =F_{X,Y}(b,d)-F_{X,Y}(a,d)-F_{X,Y}(b,c)+F_{X,Y}(a,c)                                                      \\
+				              & =P(X\leq b,Y\leq d)-P(X\leq a,Y\leq d)-P(X\leq b,Y\leq c)+P(X\leq a,Y\leq c).	\label{SUBEQooLUZJooTpqbGO}
+			\end{align}
+		\end{subequations}
+		Nous divisons \( A=\{ (x,y)\in \eR^2\tq x\leq b,y\leq d \}\) en \( 4\) parties :
+		\begin{subequations}
+			\begin{align}
+				A_1 & =\{ x\leq a,c\leq y\leq d \}         \\
+				A_2 & =\{ a\leq x\leq b,c\leq y\leq d \}=B \\
+				A_3 & =\{ a\leq x\leq b,y\leq c \}         \\
+				A_4 & =\{ x\leq a,y\leq c \}.
+			\end{align}
+		\end{subequations}
+		Faites quelques dessins pour voir quelle partie ressemble à quoi. Il n'est pas trop compliqué de voir que
+		\begin{equation}
+			\{ X\leq b,Y\leq d \}=\{ (X,Y)\in A_4 \}\cup\{ (X,Y)\in A_1 \}.
+		\end{equation}
+		En faisant de même pour les différents termes de \eqref{SUBEQooLUZJooTpqbGO}, nous trouvons
+		\begin{equation}
+			\int_Bf_{X,Y}=P\big( (X,Y)\in A_2 \big)=P\big( (X,Y)\in B \big).
+		\end{equation}
+
+		\spitem[Théorème d'extension]
+		%-----------------------------------------------------------
+		Nous voulons utiliser le théorème d'extension des mesures \ref{ThoJDYlsXu} en considérant \( \tribE\), l'ensemble des rectangles ouverts de \( \eR^2\) de coordonnées rationnelles\footnote{Pourquoi nous ne considérons que les rectangles de coordonnées rationnelles ? Nous allons comprendre cela plus tard.}. Nous posons
+		\begin{equation}		\label{EQooPFXUooOumsUl}
+			\mu_1(B)=P\big( (X,Y)\in B \big)=\big( P\circ (X,Y)^{-1} \big)(B)
+		\end{equation}
+		et
+		\begin{equation}
+			\mu_2(B)=\int_Bf_{X,Y}
+		\end{equation}
+		pour tout borélien \( B\) de \( \eR^2\). Nous allons prouver que \( \mu_1\) et \( \mu_2\) sont des mesures\footnote{Définition \ref{DefWUPHooEklLmR}.}.
+
+		\spitem[\( \mu_1\) est une mesure]
+		%-----------------------------------------------------------
+		La formule \eqref{EQooPFXUooOumsUl} a un sens parce que si \( B\) est mesurable dans \( \Omega\), alors
+		\begin{subequations}
+			\begin{align}
+				(X,Y)^{-1}(B) & \in\Borelien(\eR)\otimes\Borelien(\eR) & \text{prop. \ref{PROPooSKIEooCpLVQT}} \\
+				              & =\Borelien(\eR^2)                      & \text{prop. \ref{PropNAAJooBPbjkX}}.
+			\end{align}
+		\end{subequations}
+		À partir de là, \( \mu_1\) est une mesure par la proposition \ref{PROPooJXMKooNNNXaT}. En effet \( P\) est une mesure sur \( \Omega\) et \((X,Y) \colon \Omega\to \eR^2  \) est mesurable.
+
+		\spitem[\( \mu_2\) est une mesure]
+		%-----------------------------------------------------------
+		Vu que \( F_{X,Y}\) est croissante en ses deux arguments, il n'y a pas de problèmes pour que \( f_{X,Y}\) soit positive. Donc tant que \( B\) est borélien, \( \int_BF_{X,Y}\) existe et est dans \( \mathopen[ 0,\infty\mathclose]\).
+
+		Nous avons évidemment \( \mu_2(\emptyset)=0\). Ensuite, si les \( A_i\) sont des boréliens disjoints de \( \eR^2\), alors
+		\begin{subequations}
+			\begin{align}
+				\mu_2\big( \bigcup_{i=1}^{\infty}A_i \big) & =\int_{\bigcup_iA_i}f_{X,Y} \\
+				                                           & =\sum_i\int_{A_i}f          \\
+				                                           & =\sum_i\mu_2(A_i).
+			\end{align}
+		\end{subequations}
+
+		\spitem[\( \sigma(\tribE)\) contient \( \Borelien(\eR^2)\)]
+		%-----------------------------------------------------------
+		Pour utiliser le théorème \ref{ThoJDYlsXu} nous devons encore prouver que la tribu engendrée par \( \tribE\) contient les boréliens de \( \eR^2\). Vu que \( \tribE\) est dénombrable, la proposition \ref{PROPooAMTTooDfFqcP} dit que \( \Borelien(\eR)=\sigma(\tribE)\).
+
+		\spitem[Autres hypothèses]
+		%-----------------------------------------------------------
+		Vérifions vite fait les autres hypothèses du théorème \ref{ThoJDYlsXu}. Si \( A\) et \( B\) sont des rectangles, \( A\cap B\) est encore un rectangle. En posant \( E_n=\mathopen] -n,n\mathclose[\times \mathopen] -n,n\mathclose[\), nous avons bien \( \mu_1(E_n)=\mu_2(E_n)<\infty\). Et en plus \( \lim E_n=\eR^2\).
+
+		\spitem[Conclusion]
+		%-----------------------------------------------------------
+		Nous avons \( \mu_1=\mu_2\) sur \( \Borelien(\eR^2)\), c'est-à-dire que pour tout \( B\in Borelien(\eR^2)\), nous avons
+		\begin{equation}
+			P\big( (X,Y)\in B \big)=\int_Bf_{X,Y}.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Espérance}
+%----------------------------------------------------
+
+\begin{definition}      \label{DEFooQKFBooCBZtRG}
+	Si \( X\in L^1(\Omega,\tribA,P)\) est à valeurs dans \( \eR^n\), nous définissons l'\defe{espérance}{espérance} de \( X\) par
+	\begin{equation}        \label{EqdCBLst}
+		E(X)=\int_{\Omega}X(\omega)dP(\omega).
+	\end{equation}
+\end{definition}
+
+Pour l'espérance de \( f\circ X\), il y a le lemme de transfert \ref{PropintdPintdPXeR}.
+
+\begin{proposition}		\label{PROPooESPWooAfLmeW}
+	Soit une variable aléatoire \( X\) sur \( \Omega\). Nous avons :
+	\begin{enumerate}
+		\item		\label{ITEMooWSJVooAlZSBZ}
+		      \( E(X)\) existe et est finie si et seulement si \( E(| X |)<\infty\).
+		\item		\label{ITEMooLDFWooXjyZyz}
+		      Si \( E(| X |)<\infty\), alors \( | E(X) |\leq E(| X |)<\infty\).
+		\item		\label{ITEMooFJCTooEBeFaz}
+		      Si \( 0<r\leq s\) alors si \( E(| X |^s)<\infty\) alors \( E(| X |^r)<\infty\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Point par point.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooWSJVooAlZSBZ}]
+		%-----------------------------------------------------------
+		C'est le lemme \ref{LEMooMWKTooIKomSw}.
+		\spitem[Pour \ref{ITEMooLDFWooXjyZyz}]
+		%-----------------------------------------------------------
+		C'est la proposition \ref{PROPooDOMBooIVNzlZ}.
+		\spitem[Pour \ref{ITEMooFJCTooEBeFaz}]
+		%-----------------------------------------------------------
+		C'est la proposition \ref{PROPooDVCCooKqbAwo}.
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooEHTYooWmMAgf}
+	Soit un espace de probabilité \( \Omega\) ainsi qu'une variable aléatoire \( X\colon \Omega\to \eR\) prenant seulement les valeurs \( \{ y_k \}_{k\in \eN}\). Alors
+	\begin{equation}
+		E(X)=\sum_{k=0}^{\infty}y_kP(X=y_k).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Vu que l'application \( X\colon \Omega\to \eR\) ne prend que les valeurs \( y_k\), nous avons \( \Omega=\bigcup_{k=0}^{\infty}X^{-1}(y_k)\), avec une union disjointe. Nous avons
+	\begin{subequations}
+		\begin{align}
+			E(X) & =\int_{\bigcup_iX^{-1}(y_i)}X(\omega)dP(\omega)                                                                \\
+			     & =\sum_{i=0}^{\infty}\int_{X^{-1}(y_k)}\underbrace{X(\omega)}_{=y_k}dP(\omega)      \label{SUBEQooVLTMooOflpAI} \\
+			     & =\sum_{k=0}^{\infty}y_k\int_{X^{-1}(y_k)}dP(\omega)                                                            \\
+			     & =\sum_{k=0}^{\infty}y_kP\big( X^{-1}(y_k) \big)        \label{SUBEQooXRHOooJVuFtY}                             \\
+			     & =\sum_{k=0}^{\infty}y_kP(X=y_k)        \label{SUBEQooHDIBooNxnBwg}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item
+		      Pour \eqref{SUBEQooVLTMooOflpAI}, nous avons utilisé la \( \sigma\)-additivité de l'intégrale de la proposition \ref{PROPooTFOAooJBwmCV}.
+		\item
+		      Pour \eqref{SUBEQooXRHOooJVuFtY}, l'intégrale de la fonction \( 1\) donne la mesure de la partie, c'est le lemme \ref{LemooPJLNooVKrBhN}.
+		\item
+		      Pour \eqref{SUBEQooHDIBooNxnBwg}, la notation \( P(X=y)\) signifie \( P\big( \{ \omega\in \Omega \tq X(\omega)=y\}\big)\); c'est la mesure de \( X^{-1}(y)\).
+	\end{itemize}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooIUHRooKqqpaZ}]	\label{PROPooHJZWooGCpKLf}
+	Si \(X \colon \Omega\to \eR  \) est une variable aléatoire positive, alors
+	\begin{equation}
+		E(X)=\int_0^{\infty}P(X\geq t)dt.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Pour chaque \( t\in \eR\) nous définissons
+	\begin{equation}
+		\Omega_t=\{ \omega\in\Omega\tq X(\omega)\geq t \}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[\( P(X\geq t)=E(\mtu_{\Omega_t})\)]
+		%-----------------------------------------------------------
+		En utilisant le lemme \ref{LemooPJLNooVKrBhN}, nous avons
+		\begin{equation}
+			E(\mtu_{\Omega_t})=\int_{\Omega}\mtu_{\Omega_t}d\omega  = P(\Omega_t)  =P(X\geq t).
+		\end{equation}
+
+		\spitem[Une expresion pour \( X(\omega)\)]
+		%-----------------------------------------------------------
+		Soit \( \omega\in \Omega\). Nous allons montrer que \( X(\omega)=\int_0^{\infty}\mtu_{\Omega_t}(\omega)dt\). Pour cela il faut remarquer que :
+		\begin{equation}
+			\mtu_{\Omega_t}(\omega)=\begin{cases}
+				1 & \text{si } X(\omega)\geq t \\
+				0 & \text{sinon. }
+			\end{cases}
+		\end{equation}
+		Avec cela nous avons
+		\begin{equation}
+			\int_{\eR^+}\mtu_{\Omega_t}(\omega)dt=\int_0^{X(\omega)}1dt=X(\omega).
+		\end{equation}
+
+		\spitem[Le calcul]
+		%-----------------------------------------------------------
+		En utilisant les points précédents,
+		\begin{subequations}
+			\begin{align}
+				E(X) & =\int_{\Omega}X(\omega)d\omega                                                                   \\
+				     & =\int_{\Omega}\int_0^{\infty}\mtu_{\Omega_t}(\omega)dt                                           \\
+				     & =\int_0^{\infty}\int_{\Omega}\mtu_{\Omega_t}(\omega)dt & \text{Fubini-Tonelli \eqref{EqJRVtOGx}} \\
+				     & =\int_0^{\infty}E(\mtu_{\Omega_t})dt                                                             \\
+				     & =\int_0^{\infty}P(X\geq t)dt.
+			\end{align}
+		\end{subequations}
+	\end{subproof}
+\end{proof}
+
+La proposition suivante provient du fait que la mesure d'une loi conjointe est le produit des mesures lorsque les variables aléatoires sont indépendantes (proposition~\ref{PropPXXXPXPXPX}).
+\begin{proposition}[\cite{ProbaDanielLi}]           \label{PROPooDKQDooREiSSf}
+	Si les variables aléatoires réelles \( X_1\),\ldots,\( X_n\) sont intégrables et indépendantes, alors leur produit est intégrable et l'espérance\footnote{Espérance d'une variable aléatoire, définition \ref{DEFooQKFBooCBZtRG}.} du produit est égal au produit des espérances :
+	\begin{equation}
+		E(X_1\cdots X_n)=E(X_1)\ldots E(X_n).
+	\end{equation}
+\end{proposition}
+
+\begin{lemma}       \label{LEMooIVIWooUUVStW}
+	Soit une variable aléatoire à densité \( X\colon \Omega\to \eR^n\). Soit une fonction \( f\colon \eR^n\to \eR\) telle que pour tout choix \( a_1<b_1<a_2<\ldots <a_n<b_n\) nous ayons
+	\begin{equation}
+		P(X\in I)=\int_I f
+	\end{equation}
+	où \( I=\prod_{i=1}^n\mathopen] a_i , b_i \mathclose]\).
+
+	Alors \( f\) est une densité pour \( X\).
+
+	\begin{probleme}		\label{PROBooAHJSooWUuJhb}
+		Je n'ai pas vérifié que ce lemme est correct. Soyez \randomGender{prudent}{prudente}. À mon avis il doit être bon parce que les pavés donnés engendrent la tribu des boréliens d'une façon ou d'une autre. C'est à peu près ce qui est dit dans \cite{BIBooMECWooHQJweh}.
+
+		Écrivez-moi si vous avez une preuve ou un contre-exemple.
+	\end{probleme}
+\end{lemma}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Moment}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}		\label{DEFooTECPooMzGYgG}
+	Soit \( 1\leq p<\infty\). Le \defe{moment}{moment} d'ordre \( p\) d'une variable aléatoire \( X\in\) sur \( (\Omega,\tribA,P)\) est l'espérance
+	\begin{equation}
+		m_p(X)=E(X^p)
+	\end{equation}
+	pour autant que \( X^p\) soit intégrable\footnote{C'est-à-dire que \( \int_{\Omega}| X |^p<\infty\). Voir \ref{NORMooRDHAooKRniYt}.}.
+\end{definition}
+
+
+\begin{proposition}		\label{PROPooIQGWooZeQJgb}
+	Soit une variable aléatoire \( X\). Si elle admet un moment d'ordre \( p\in \eN\), elle admet un moment d'ordre \( k\) pour tout \( k\leq p\).
+\end{proposition}
+
+\begin{proof}
+	L'hypothèse est que \( \int_{\Omega}| X |^p<\infty\), c'est-à-dire que \( E(| X |^p)<\infty\). La proposition \ref{PROPooESPWooAfLmeW}\ref{ITEMooFJCTooEBeFaz} conclut que \( E(| X |^s)<\infty\) pour tout \( s\leq p\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Somme et produit de variables aléatoires indépendantes}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{subsecscnvommevariablsindep}
+
+À propos de la somme de variables aléatoires, nous avons la proposition suivante.
+
+
+\begin{proposition}		\label{PROPooBNUEooOUvpdp}
+	La densité de la somme de deux variables aléatoires réelles indépendantes est le produit de convolution des densités :
+	\begin{equation}
+		f_{X+Y}=f_X* f_Y
+	\end{equation}
+	dès que \( X\) et \( Y\) sont indépendantes.
+\end{proposition}
+
+\begin{proof}
+	Soient \( X\) et \( Y\), deux variables aléatoires réelles indépendantes. Nous voudrions étudier la loi de la variable aléatoire \( S=X+Y\). Nous commençons par calculer la fonction de répartition en utilisant le résultat de la proposition~\ref{PropDensiteConjIndep} :
+	\begin{subequations}
+		\begin{align}
+			F_{X+Y}(z)=P(X+Y\leq z) & =\int_{x+y\leq z}f_{X,Y}(x,y)dx\,dy                            \\
+			                        & =\int_{-\infty}^{\infty}dx\int_{-\infty}^{z-x}dyf_X(x)f_Y(y)   \\
+			                        & =\int_{\eR}\left( \int_{-\infty}^{z-x}f_Y(y)dy \right)f_X(x)dx \\
+			                        & =\int_{\eR}F_Y(z-x)f_X(x)dx.
+		\end{align}
+	\end{subequations}
+	Pour calculer la fonction de densité de \( S\), nous dérivons la fonction de répartition :
+	\begin{subequations}
+		\begin{align}
+			f_{X+Y}(z) & =\frac{ d F_{X+Y} }{ d z }(z) \\
+			           & =\int_{\eR}f_Y(z-x)f_X(x)dx,
+		\end{align}
+	\end{subequations}
+	ce qui nous amène à dire que la densité de la somme est le produit de convolution\footnote{Définition~\ref{DEFooHHCMooHzfStu}.}\index{convolution} des densités :
+	\begin{equation}        \label{EQooFKHHooWvUBMV}
+		f_{X+Y}(x)=\int_{\eR}f_Y(x-t)f_X(t)dt,
+	\end{equation}
+	ou encore \( f_{X+Y}=f_X* f_Y\).
+\end{proof}
+
+%TODOooAMHRooNlqyCz ne pas passer sous silence
+Notez que nous avons passé sous le silence la difficulté d'inverser la dérivée et l'intégrale. Un exemple sera donné au point~\ref{subsecPoissonetexpo}.
+
+\begin{lemma}       \label{LemEXYEXEYprodindep}
+	Soient \( X\) et \( Y\), deux variables aléatoires indépendantes. Alors\footnote{Espérance d'une variable aléatoire, définition \ref{DEFooQKFBooCBZtRG}.}
+	\begin{equation}
+		E(XY)=E(X)E(Y).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Par indépendance et par proposition~\ref{PropDensiteConjIndep}, la fonction de densité conjointe de \( X\) et \( Y\) vaut \( f_{X,Y}=f_Xf_Y\). Par conséquent l'utilisation de Fubini sous la forme \eqref{EqTJEEsJW} entraine
+	\begin{equation}
+		E(XY)=\int_{\eR\times\eR}xyf_{X,Y}(x,y)dxdy=E(X)E(Y).
+	\end{equation}
+\end{proof}
+
+Nous dirons tout un tas de chose sur l'indépendance et la variance en~\ref{subsecTTHohur}, mais pour l'instant nous allons mentionner et démontrer déjà ceci :
+\begin{lemma}   \label{LemVarXpYsmindep}
+	Soient \( X\) et \( Y\) deux variables aléatoires indépendantes et identiquement distribuées. Alors
+	\begin{equation}
+		\Var(X+Y)=\Var(X)+\Var(Y).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Par définition, \( \Var(X+Y)=E\big( [X+Y-E(X)-E(Y)]^2 \big)\). En développant le carré et en utilisant le lemme~\ref{LemEXYEXEYprodindep},
+	\begin{equation}
+		\Var(X+Y)=E(X^2)-E(X)^2+E(Y^2)-E(Y)^2=\Var(X)+\Var(Y).
+	\end{equation}
+\end{proof}
+
+\begin{example} \label{ExWLzkuWd}
+	Deux variables aléatoires non indépendantes dont la covariance est nulle. Nous considérons la variable aléatoire
+	\begin{equation}
+		Z\colon \Omega\to \{ (1,0),(-1,0),(0,1),(0,-1) \}
+	\end{equation}
+	de loi uniforme. C'est-à-dire que \(  P\big( Z=z \big)=\frac{1}{ 4 }  \) pour tout \( z\). Ensuite nous considérons les variables aléatoires \( X=\pr_1\circ Z\) et \( Y=\pr_2\circ Z\). Toute personne étant capable de compter jusqu'à \( 4\) voit que
+	\begin{subequations}
+		\begin{align}
+			P(X=1) & =P(X=-1)=\frac{1}{ 4 } \\
+			P(X=0) & =\frac{ 1 }{2},
+		\end{align}
+	\end{subequations}
+	et les mêmes probabilités pour \( Y\). De même \( E(X)=E(Y)=0\). Par conséquent
+	\begin{equation}
+		\Cov(X,Y)=E(XY)=0
+	\end{equation}
+	parce que pour tout \( \omega\in \Omega\) nous avons soit \( X(\omega)=0\) soit \( Y(\omega)=0\). Ces variables aléatoires \( X\) et \( Y\) ne sont donc pas corrélées.
+
+	Mais elles ne sont pas indépendantes pour autant, comme nous allons le voir pas plus tard qu'immédiatement. Nous avons
+	\begin{equation}
+		P(X=0|Y=0)=\frac{ P(X=0,Y=0) }{ P(Y=0) }=0
+	\end{equation}
+	parce que \( X\) et \( Y\) ne peuvent pas être simultanément nulles, tandis que
+	\begin{equation}
+		P(X=0)P(Y=0)=\frac{1}{ 4 }.
+	\end{equation}
+\end{example}
+
+\begin{definition}
+	Si \( E(X)=0\) nous disons que la variable aléatoire est \defe{centrée}{variable aléatoire!centrée}. La variable aléatoire \( X-E(X)\) est la variable aléatoire centrée associée à \( X\).
+\end{definition}
+
+\begin{proposition}[\cite{Marazzi,BIBooKEZXooTlvKgx}] \label{PropZBnsCgh}
+	Soient deux variables aléatoires \( X,Y\in L^1(\Omega,\tribA, P)\). Alors
+	\begin{equation}
+		E(X+Y)=E(X)+E(Y).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Il suffit d'écrire
+	\begin{equation}
+		E(X+Y)=\int_{\Omega}(X+Y)(\omega)dP(\omega),
+	\end{equation}
+	et de faire jouer la linéarité de l'intégrale de la proposition \ref{PROPooFIYEooCpdmwZ}.
+\end{proof}
+
+Une application de l'inégalité de Hölder (proposition~\ref{ProptYqspT}) est la suivante. Si \( X\) et \( Y\) sont des variables aléatoires intégrables alors
+\begin{equation}
+	E(XY)\leq E(X^2)^{1/2}E(Y^2)^{1/2}.
+\end{equation}
+En effet
+\begin{equation}    \label{EqEXYleqXdYdNormHolder}
+	E(XY)\leq \| XY \|_{L^1(\Omega)}\leq \| X \|_{L^2(\Omega)}\| Y \|_{L^2(\Omega)}.
+\end{equation}
+\index{inégalité!Hölder!utilisation}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Variance}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[Variance]	\label{DEFooBHQOooVzpsob}
+	Si \( X\in L^2(\Omega,\tribA,P)\) alors nous définissons la \defe{variance}{variance} de \( X\) par
+	\begin{equation}
+		\Var(X)=E\big( [X-E(X)]^2 \big).
+	\end{equation}
+\end{definition}
+
+\begin{proposition}     \label{PrropVarAlterfrom}
+	La variance de la variable aléatoire \( X\) peut être exprimée par la formule
+	\begin{equation}        \label{EqtWqMGB}
+		\Var(X)=E(X^2)-[E(X)]^2
+	\end{equation}
+	où \( X^2=X\cdot X\) et \( E(X)^2=E(X)\cdot E(X)\) sont des produits scalaires dans \( \eR^d\).
+\end{proposition}
+
+\begin{proof}
+	De façon explicite, nous avons
+	\begin{equation}
+		E\big( [X-E(X)]^2 \big)=\int_{\Omega}\big( X(\omega)-E(X) \big)\cdot\big( X(\omega)-E(X) \big)dP(\omega)
+	\end{equation}
+	où \( E(X)\in\eR^d\) est une constante. En développant le produit scalaire nous avons
+	\begin{subequations}
+		\begin{align}
+			E\big( [X-E(X)]^2 \big) & =E\big( X^2-2X\cdot E(X)+E(X)^2 \big) \\
+			                        & =E(X^2)-2E(X)^2+E(X)^2                \\
+			                        & =E(X^2)-E(X)^2.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{definition}[écart-type]
+
+	Nous définissons l'\defe{écart-type}{ecart-type@écart-type} de \( X\) par
+	\begin{equation}
+		\sigma_X=\sqrt{\Var(X)},
+	\end{equation}
+	c'est-à-dire
+	\begin{equation}
+		\sigma_X=\| X-E(X) \|_{L^2}.
+	\end{equation}
+\end{definition}
+
+
+\begin{definition}[moyenne quadratique]
+	On définit encore la \defe{moyenne quadratique}{moyenne!quadratique} de \( X\) par
+	\begin{equation}
+		\| X \|_{L^2}=\big[ E(X^2) \big]^{1/2}.
+	\end{equation}
+\end{definition}
+
+\begin{definition}[moyenne empirique]
+	Si les \( X_1,\ldots,X_n\) sont des variables aléatoires on considère la \defe{moyenne empirique}{moyenne!empirique}
+	\begin{equation}
+		\bar X_n=\frac{ X_1+\cdots+X_n }{ n }.
+	\end{equation}
+\end{definition}
+
+\begin{definition}[variance empirique]
+	Si \( (X_1,\ldots,X_n)\) sont des variables aléatoires, nous notons \( \bar X_n\) leur moyenne empirique, et la variable aléatoire
+	\begin{equation}
+		\bar V_n=\frac{1}{ n }\sum_i(X_i-\bar X_n)^2
+	\end{equation}
+	est la \defe{variance empirique}{variance!empirique} de l'échantillon \( (X_i)\).
+\end{definition}
+
+\begin{lemma}       \label{LemEXYEXEYindep}
+	Si \( X\) est une variable aléatoire,
+	\begin{enumerate}
+		\item
+		      \( \Var(aX)=a^2\Var(X)\) pour tout \( a\in\eR\);
+		\item
+		      Si de plus \( Y\) est une variable aléatoire indépendante de \( X\), alors \( \Var(X+Y)=\Var(X)+\Var(Y)\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Nous avons
+	\begin{subequations}
+		\begin{align}
+			\Var(X+Y) & =E(X^2+Y^2+2XY)-\big( E(X)+E(Y) \big)^2        \\
+			          & =E(X^2)+E(Y^2)+2E(XY)-E(X)^2-E(Y)^2+2E(X)E(Y).
+		\end{align}
+	\end{subequations}
+	Étant donné que \( X\) et \( Y\) sont indépendantes nous avons \( E(XY)=E(X)E(Y)\) par le lemme~\ref{LemEXYEXEYprodindep}.
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Covariance}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Soient \( X\) et \( Y\), deux variables aléatoires réelles. Leur \defe{covariance}{covariance} est définie par
+\begin{equation}    \label{EqHUWtttN}
+	\Cov(X,Y)=E\Big[ \big( X-E(X) \big)\big( Y-E(Y) \big) \Big]
+\end{equation}
+L'idée est que la covariance devient grande si \( X\) et \( Y\) s'écartent de leurs moyennes dans le même sens. Il existe une formule alternative :
+\begin{equation}
+	\Cov(X,Y)=E(XY)-E(X)E(Y)
+\end{equation}
+
+En ce qui concerne les dimensions plus hautes, si \( X\colon \Omega\to \eR^d\) est un vecteur aléatoire de carré intégrable, nous définissons
+\begin{equation}    \label{EqZlvLWx}
+	\Cov(X)=E\Big[ \big(  X-E(X) \big)\otimes\big( X-E(X)\big) \Big]
+\end{equation}
+où par \( a\otimes b\) nous entendons la matrice \( (a\otimes b)_{ij}=a_ib_j\). Cela peut aussi être noté \( a^tb\) si l'on fait bien attention à qui est un vecteur colonne et qui est un vecteur ligne.
+
+\begin{proposition}     \label{PropoVarXpYCov}
+	Si \( X\) et \( Y\) sont deux variables aléatoires non spécialement indépendantes, nous avons
+	\begin{equation}
+		\Var(X+Y)=\Var(X)+\Var(Y)+2\Cov(X,Y).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Il s'agit d'un calcul en partant de
+	\begin{equation}
+		\begin{aligned}[]
+			\Var(X+Y) & =E\big( (X+Y)^2 \big)-E(X+Y)^2                  \\
+			          & =E(X^2)+E(Y^2)+2E(XY)                           \\
+			          & \quad+\big( E(X)+E(Y) \big)^2-2E(X)^2-2E(X)E(Y) \\
+			          & \quad-2 E(Y)E(X)-2E(Y)^2.
+		\end{aligned}
+	\end{equation}
+	À partir d'ici il s'agit de recombiner tous les termes pour former la formule annoncée.
+\end{proof}
+
+Plus généralement nous avons la formule
+\begin{equation}
+	\Var(\sum_i X_i)=\sum_i\Var(X_i)+2\sum_{1\leq i< j\leq n}\Cov(X_i,X_j).
+\end{equation}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Probabilité conditionnelle : événements}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{propositionDef}      \label{DEFooGJVHooVbhVYv}
+	Soit \( (\Omega,\tribA,P)\) un espace de probabilité et \( B\in\tribA\) avec \( P(B)>0\). Alors avec la formule
+	\begin{equation}    \label{EqProbCond}
+		P_B(A)=\frac{ P(A\cap B) }{ P(B) },
+	\end{equation}
+	l'espace \( (\Omega,\tribA,P_B)\) est un espace probabilisé. Nous notons \( P(A|B)\) le nombre \( P_B(A) \) et nous le nommons \defe{probabilité conditionnelle}{probabilité!conditionnelle} de \( A\) sachant \( B\).
+\end{propositionDef}
+
+\begin{proof}
+	On vérifie que \( (\Omega,\tribA,P_B)\) est un espace de probabilité parce que \( P_B(\Omega)=1\) et
+	\begin{equation}
+		P_B(\bigcup_iA_i)=\sum_iP_B(A_i)
+	\end{equation}
+	si les \( A_i\) sont deux à deux disjoints.
+\end{proof}
+
+Une conséquence immédiate de \eqref{EqProbCond} est que si \( A\) et \( B\) sont des événements indépendants alors
+\begin{equation}
+	P(A|B)=\frac{ P(A\cap B) }{ P(B) }=P(A).
+\end{equation}
+
+La probabilité conditionnelle à \( B\) est quelque chose qui ne tient compte que de ce qui se passe dans \( B\). Si \( K\) est un événement tel que \( A\cap B=K\cap B\), alors
+\begin{equation}    \label{EqOVHCWom}
+	P(A|B)=P(K|B).
+\end{equation}
+
+
+\begin{example}[\cite{BIBooQJSEooTmVuyk}]       \label{EXooIAYTooFjFTrT}
+	Soient des événements \( A\), \( B\) et \( X\) dont \( A\) et \( B\) sont indépendants. Intuitivement, nous devrions avoir\footnote{Probabilité conditionnelle, définition \ref{DEFooGJVHooVbhVYv}.}
+	\begin{equation}
+		P(A|B\cap X)=P(A|X).
+	\end{equation}
+	Cela est faux. Prenez par exemple \( \Omega=\{ 1,2,3,4 \}\) avec la mesure d'équiprobabilité. Ensuite \( A=\{ 1,2 \}\), \( B=\{ 1,3 \}\) et \( X=\{ 1,4 \}\). Alors \( P(A)=1/2\), \( P(B)=1/2\) de telle sorte que
+	\begin{equation}
+		P(A)P(B)=\frac{1}{ 4 }=P(A\cap B)
+	\end{equation}
+	parce que \( A\cap B=\{ 1 \}\). Les événements \( A\) et \( B\) sont donc bien indépendants. Nous avons
+	\begin{equation}
+		P(A|B\cap X)=\frac{ P(A\cap B\cap X) }{ P(B\cap X) }=\frac{ P(\{ 1 \}) }{ P(\{ 1 \})  }=1,
+	\end{equation}
+	mais
+	\begin{equation}
+		P(A|X)=\frac{ P(A\cap X) }{ P(X) }=\frac{ 1/4 }{ 1/2 }=\frac{1}{ 2 }.
+	\end{equation}
+\end{example}
+
+
+\begin{theorem}     \label{ThoBayesEtAutres}
+	Soient \( (B_n)_{n\geq 1}\) une partition finie de \( \Omega\) telle que \( P(B_i)>0\). Soit \( A\in\tribA\) tel que \( P(A)>0\).
+	\begin{enumerate}
+		\item
+		      Si \( A\), \( B\) et \( C\) sont des événements, alors
+		      \begin{equation}
+			      P(A\cap B|C)=P(A|B\cap C)P(B|C).
+		      \end{equation}
+		\item
+		      Si \( P(B)>0\), alors \( P(A\cap B)=P(A|B)P(B)=P(B|A)P(A)\).
+		\item On a la \defe{formule des probabilités totales}{formule!probabilité totales} :
+		      \begin{equation}
+			      P(A)=\sum_{i=1}^nP(A|B_i)P(B_i)=\sum_iP(A\cap B_i).
+		      \end{equation}
+		\item
+		      On a la \defe{formule de Bayes}{formule!Bayes} :
+		      \begin{equation}
+			      P(B_k|A)=\frac{ P(A|B_k)P(B_k) }{ \sum_iP(A|B_i)P(B_i) }.
+		      \end{equation}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item
+		      En développant le membre de droite,
+		      \begin{equation}
+			      \begin{aligned}[]
+				      P(A\cap B|C) & =\frac{ P(A\cap B\cap C) }{ P(B\cap C) }\frac{ P(B\cap C) }{ P(C) } \\
+				                   & =P(A\cap B|C).
+			      \end{aligned}
+		      \end{equation}
+		\item
+		      C'est la définition de \( P(A|B)\) et \( P(B|A)\).
+		\item
+		      Vu que les \( B_i\) forment une partition, nous avons
+		      \begin{equation}
+			      P(A)=\sum_iP(A\cap B_i)=\sum_iP(A|B_i)P(B_i).
+		      \end{equation}
+		\item
+		      En utilisant les deux premiers points, nous trouvons
+		      \begin{equation}
+			      \begin{aligned}[]
+				      P(A|B_k)P(B_k) & =P(A\cap B_k)                  \\
+				                     & =P(B_k|A)P(A)                  \\
+				                     & =P(B_k|A)\sum_iP(A|B_i)P(B_i).
+			      \end{aligned}
+		      \end{equation}
+	\end{enumerate}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]
+	Soient une variable aléatoire \( X\colon \Omega\to \eR\) ainsi qu'un réel \( y\neq 0\) et qu'une partie \( A\subset \Omega\) de mesure non nulle\footnote{Ceci est exactement synonyme de «un événement de probabilité non nulle».}. Alors
+	\begin{equation}
+		P(X\mtu_A=y)=P(X=y|A)P(A).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Juste pour être clair avec les notations,
+	\begin{itemize}
+		\item La notation \( X=y\) désigne l'ensemble \( \{ \omega\in \Omega\tq X(\omega)=y \}=X^{-1}(y)\)
+		\item
+		      De même \( X\mtu_A=y\) désigne l'ensemble \( \{ \omega\in \Omega\tq X(\omega)\mtu_A(\omega)=y \}\). Comme ici \( y\neq 0\), il s'agit des éléments de \( A\) tels que \( X(\omega)=y\), ou encore \( X^{-1}(y)\cap A\).
+	\end{itemize}
+	Nous avons :
+	\begin{subequations}
+		\begin{align}
+			P(X=y|A) & =\frac{ P(X=y\cap A) }{ P(A) }     \label{SUBEQooTJDIooHlIiTD}     \\
+			         & =\frac{ P(A\mtu_A=y) }{ P(A) }.        \label{SUBEQooDAATooBeClLa}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooTJDIooHlIiTD}, c'est la définition \ref{DEFooGJVHooVbhVYv}.
+		\item Pour \eqref{SUBEQooDAATooBeClLa}, vu que \( y\neq 0\) nous avons
+		      \begin{equation}
+			      \{ \omega\in \Omega\tq X(\omega)=y \}\cap A=\{ \omega\in \Omega\tq (X\mtu_A)(\omega)=y \}.
+		      \end{equation}
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooRDXRooQLMRGF}
+	Soit un espace de probabilité \( (\Omega,\tribF,P)\). Nous considérons un mesurable \(B\in \tribF \) ainsi que des mesurables \( (A_i)_{i\in \eN}\) deux à deux disjoints. Alors
+	\begin{equation}
+		P\big( \bigcup_{i=0}^{\infty}A_i|B \big)=\sum_{i=0}^{\infty}P(A_i|B).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous commençons par la définition \ref{DEFooGJVHooVbhVYv} de la probabilité conditionnelle :
+	\begin{equation}        \label{EQooRUXMooNzxnxg}
+		P\big( \bigcup_iA_i|B \big)=\frac{ P\big( \bigcup_iA_i\cap B \big) }{ P(B) }=\frac{ P\big( \bigcup_i(A_i\cap B) \big) }{ P(B) }.
+	\end{equation}
+	Ensuite, les \( A_i\) étant disjoints, les \( A_i\cap B\) le sont aussi. Vu que \( P\) est une probabilité (et donc une mesure), elle vérifie la condition de la définition \ref{DefBTsgznn}\ref{ItemQFjtOjXiii}, qui donne ici
+	\begin{equation}
+		P\big( \bigcup_{i=0}^{\infty}(A_i\cap B) \big)=\sum_{i=0}^{\infty}P(A_i\cap B).
+	\end{equation}
+	En remettant dans \eqref{EQooRUXMooNzxnxg},
+	\begin{equation}
+		P\big( \bigcup_iA_i|B \big)=\sum_{i=0}^{\infty}\frac{ P(A_i\cap B) }{ P(B) }=\sum_{i=0}^{\infty}P(A_i|B).
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]       \label{LEMooVYDTooGELPRY}
+	Soient des ensembles \( E\), \( F\), \( G\). Soit une application \( f\colon E\times F\to G\). Soient des éléments \( a\in G\), \( x\in E\). Nous considérons des variables aléatoires \( X\colon \Omega\to E\) et \( Y\colon \Omega\to F\).
+
+	Soit \( B\subset \Omega\) tel que \( X(\omega)=x\) pour tout \( \omega\in B\). Alors nous avons
+	\begin{equation}
+		P\big( f(X,Y)=a|B \big)=P\big( f(x,Y)=a|B \big).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Posons \( A=\{ \omega\in \Omega\tq f\big( X(\omega),Y(\omega) \big)=a \}\). Ce que nous cherchons à calculer est \( P(A|B)\) qui est défini en \ref{DEFooGJVHooVbhVYv}. En posant \(  A'=\{ \omega\in\Omega\tq f\big( x,Y(\omega) \big)=a \} \),  nous avons
+	\begin{subequations}
+		\begin{align}
+			A\cap B & =\{ \omega\in \Omega\tq f\big( X(\omega),Y(\omega) \big)=a, \omega\in B \} \\
+			        & =\{ \omega\in\Omega\tq f\big( x,Y(\omega) \big)=a,\omega\in B \}           \\
+			        & =A'\cap B.
+		\end{align}
+	\end{subequations}
+	Donc
+	\begin{equation}
+		P(A|B)=\frac{ P(A\cap B) }{ P(B) }=\frac{ P(A'\cap B) }{ P(B) }=P(A'|B).
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]            \label{LEMooZTBSooLemswG}
+	Soient des ensembles \( E_i\) (\( i=1,\ldots, n\)), \( F\) et \( E\). Soient des variables aléatoires \( X_i\colon \Omega\to E_i\) et \( Y\colon \Omega\to E\), et une application \( f\colon E_1\times \ldots\times E_n\to F\).
+
+	Nous supposons que \( Y\) est indépendante des \( X_i\). Pour \( y\in E\) et \( z\in F\) nous avons
+	\begin{equation}
+		P\big( Y=y|f(X_1,\ldots, X_n)=z \big)=P(Y=y).
+	\end{equation}
+\end{lemma}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooWAOSooBsGucQ}
+	Soient des variables aléatoires \( X_i\colon \Omega\to E_i\) (\( i=1,\ldots, n\)) et \( Y_i\colon \Omega\to F_i\). Nous supposons qu'elles sont toutes indépendantes. Nous considérons des applications \( f\colon E_1\times \ldots \times E_n\to S\) et \( g\colon F_1\times F_m\to T\). Alors les variables aléatoires
+	\begin{equation}
+		\omega\mapsto f\big( X_1(\omega),\ldots, X_n(\omega) \big)
+	\end{equation}
+	et
+	\begin{equation}
+		\omega\mapsto g\big( Y_1(\omega),\ldots, Y_m(\omega) \big)
+	\end{equation}
+	sont indépendantes.
+\end{lemma}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Espérance conditionnelle}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theoremDef}[Définition de l'espérance conditionnelle\cite{ProbCOndutetz}]     \label{ThoMWfDPQ}
+	Soit un espace de probabilité \( (\Omega,\tribA,P)\) et une variable aléatoire intégrable \( X\colon \Omega\to \eR\). Pour chaque sous tribu \( \tribF\) de \( \tribA\), il existe une (presque partout) unique variable aléatoire \( Y\colon \Omega\to \eR\) telle que
+	\begin{enumerate}
+		\item
+		      \( Y\) est \( \tribF\)-mesurable
+		\item
+		      \( Y\) est \( P\)-intégrable
+		\item
+		      pour tout \( B\in\tribF\),
+		      \begin{equation}        \label{EqBwBkgE}
+			      \int_{B}XdP=\int_B YdP.
+		      \end{equation}
+	\end{enumerate}
+	Cette variable aléatoire sera notée \( E(X|\tribF)\)\nomenclature[P]{\( E(X|\tribF)\)}{Espérance conditionnelle de \( X\) sachant \( \tribF\)} pour des raisons qui apparaîtront plus tard.
+\end{theoremDef}
+\index{espérance!conditionnelle}
+
+\begin{proof}
+	Remarquons que prendre \( Y=X\) ne fonctionne pas parce qu'en général si \( \mO\) est mesurable dans \( \eR\), alors \( X^{-1}(\mO)\) est dans la tribu \( \tribA\), mais n'est pas automatiquement dans la tribu \( \tribF\). Il faudra donc un peu plus travailler.
+	\begin{subproof}
+		\spitem[Unicité] Si \( Y_1\) et \( Y_2\) vérifient tous les deux les conditions, l'ensemble \( \{ Y_1<Y_2 \}\) est un élément de \( \tribF\) et nous avons
+		%-----------------------------------------------------------
+		\begin{equation}
+			\int_{\{ Y_1<Y_2 \}}X=\int_{Y_1<Y_2}Y_1=\int_{Y_1<Y_2}Y_2.
+		\end{equation}
+		En particulier nous avons \( \int_{\{ Y_1<Y_2 \}}(Y_1-Y_2)=0\) et donc
+		\begin{equation}
+			(Y_1-Y_2)\mtu_{Y_1<Y_2}=0
+		\end{equation}
+		presque partout. Le corolaire~\ref{CorjLYiSm} montre alors que \( Y_1-Y_2\geq 0\) presque partout. De la même manière, l'ensemble \( \{ Y_2<Y_1 \}\) est dans \( \tribF\) et nous trouvons que \( Y_2-Y_1\geq 0\) presque partout. Par conséquent \( Y_1=Y_2\) presque partout.
+
+		\spitem[Existence dans le cas de carré intégrable]
+		%-----------------------------------------------------------
+
+		Nous supposons à présent que \( X\in L^2(\Omega,\tribA,P)\) et nous considérons \( K\), le sous-ensemble de \( L^2(\Omega,\tribA,P)\) des fonctions \( \tribF\)-mesurables. Le théorème des projections~\ref{ThoProjOrthuzcYkz} nous indique que
+		\begin{equation}
+			L^2(\Omega,\tribA,P)=K\oplus K^{\perp}
+		\end{equation}
+		par la décomposition \( X=\pr_{K}X+(X-\pr_KX)\). La variable aléatoire \( Y=\pr_KX\) a les propriétés d'être \( \tribF\)-mesurable et \( \langle Y-X, Z\rangle =0\) pour tout \( Z\in K\). Soit \( A\in\tribF\), si nous considérons \( Z=\mtu_A\), la dernière condition signifie que
+		\begin{equation}
+			\int_{\Omega}X\mtu_A=\int_{\Omega}Y\mtu_A,
+		\end{equation}
+		ou encore
+		\begin{equation}
+			\int_AY=\int_AX.
+		\end{equation}
+		La variable aléatoire \( Y=\pr_K(X)\) répond donc à la question lorsque \( X\in L^2(\Omega,\tribA,P)\).
+
+		\spitem[Existence en général]
+		%-----------------------------------------------------------
+
+		Nous considérons maintenant que \( X\in L^1(\Omega,\tribA,P)\). Quitte à décomposer \( X\) en deux fonctions positives \( X_+\) et \( X_-\) telles que \( X=X_++X_-\), nous pouvons supposer que \( X\) est positive. Par hypothèse \( X\in L^1(\Omega,\tribA,P)\); pour chaque \( n\in\eN\) nous posons
+		\begin{equation}
+			X_n(\omega)=\min\{ X(\omega),n \}.
+		\end{equation}
+		Étant donné que la mesure \( P\) est une mesure de probabilité, les constantes sont intégrables et \( X_n\in L^2(\Omega,\tribA,P)\). De plus la suite \( (X_n)\) est croissante et
+		\begin{equation}
+			\lim_{n\to \infty} X_n(\omega)=X(\omega).
+		\end{equation}
+
+		Si nous notons encore \( K\) l'ensemble des variables aléatoires dans \( L^2(\Omega,\tribA,P)\) qui sont \( \tribF\)-mesurables, pour chaque \( n\) nous avons donc la variable aléatoire
+		\begin{equation}
+			Y_n=\pr_KX_n=E(X_n|\tribF)
+		\end{equation}
+		qui est \( \tribF\)-mesurable et telle que
+		\begin{equation}
+			\int_A X_n=\int_AY_n
+		\end{equation}
+		pour tout \( A\in\tribF\). Nous voudrions prouver que la variable aléatoire \( Y=\lim_nY_n\) existe et est la solution au problème, c'est-à-dire est \( E(X|\tribF)\).
+
+		Commençons par prouver que \( Y_n\geq 0\) presque partout. Pour cela nous remarquons que l'ensemble \( \{ Y_n<0 \}\) est mesurable et
+		\begin{equation}
+			0\geq\int_{Y_n<0}Y_n=\int_{Y_n<0}X_n\geq 0.
+		\end{equation}
+		La première inégalité est évidente et la dernière est due au fait que \( X_n\) est positive. Par conséquent
+		\begin{equation}
+			\int_{Y_n<0}Y_n=0
+		\end{equation}
+		et le lemme~\ref{CorjLYiSm} conclut que \( P(Y_n<0)=0\).
+
+		Soit \( Z\colon \Omega\to \eR\) une variable aléatoire positive dans \( L^2(\Omega,\tribA,P)\). Montrons que \( \pr_KZ\) est encore positive. Pour cela nous considérons l'ensemble \( A=\{ \pr_KZ<0 \}\) et les inégalités
+		\begin{equation}
+			0\leq \int_AZ=\int_A\pr_KZ\leq 0,
+		\end{equation}
+		ce qui montre que \( \int_A\pr_KZ=0\) et par conséquent que \( P\{ \pr_K(Z)<0 \}=0\). Cela nous montre que la projection depuis \( L^2\) conserve la positivité.
+
+		Étant donné que \( X_{n+1}-X_n\geq 0\) nous avons aussi
+		\begin{equation}
+			Y_{n+1}-Y_{n}\geq 0
+		\end{equation}
+		La suite de fonctions
+		\begin{equation}
+			n\mapsto Y_n=E(X_n|\tribF)
+		\end{equation}
+		est croissante et vérifie le théorème de la convergence monotone :
+		\begin{equation}
+			\int_A X=\lim_{n\to \infty} \int_A X_n =\lim_{n\to \infty} \int_A E(X_n|\tribF)=\int_A\lim_{n\to \infty } E(X_n|\tribF)=\int_A Y.
+		\end{equation}
+		Par conséquent \( E(X|\tribF)\) existe et
+		\begin{equation}
+			Y=\lim_{n\to \infty} E(X_n|\tribF)=E(X|\tribF).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}      \label{NORMooHPHOooUuJWHR}
+	Vu la définition~\ref{ThoMWfDPQ} nous pourrions croire que la variable aléatoire \( E(X|\tribF)=X\) fait l'affaire. Il n'en est rien parce que la variable aléatoire \( X\) n'est pas spécialement \( \tribF\)-mesurable alors qu'il est requis que \( E(X|\tribF)\) le soit. Avec la tribu \( \tribF=\{ \emptyset,\Omega \}\), nous n'avons en général pas que \( X^{-1}(B)\in \tribF\) pour tout borélien \( B\).
+
+	Par contre si \( \sigma(X)\) est la tribu engendrée par la variable aléatoire \( X\), alors \( E\big( X |\sigma(X) \big)=X\).
+\end{normaltext}
+
+\begin{definition}      \label{DefooKIHPooMhvirn}
+	Soit \( Z\) une variable aléatoire. L'\defe{espérance conditionnelle}{espérance!conditionnelle} «\( X\) sachant \( Z\)» est la variable aléatoire
+	\begin{equation}
+		E(X|Z)=E(X|\sigma(Z))
+	\end{equation}
+	où \( \sigma(Z)\) est la tribu engendrée par \( Z\). Le membre de droite est une variable aléatoire définie en~\ref{ThoMWfDPQ}.
+\end{definition}
+
+\begin{definition}      \label{DEFooEYVCooCeyOXW}
+	Soient \( A\in\tribA\) un événement et \( \tribF\) une sous-tribu de \( \tribA\). Nous définissons\index{espérance!conditionnelle!événement} \( P(A|\tribF)\) par
+	\begin{equation}
+		P(A|\tribF)=E(\mtu_{A}|\tribF).
+	\end{equation}
+	Notons que cela est une variable aléatoire et non un réel. Le membre de droite est l'espérance conditionnelle de la variable aléatoire \( \caract_A\) par rapport à \( \tribF\) définie en~\ref{ThoMWfDPQ}.
+
+	Et l'espérance conditionnelle d'un événement par rapport à une variable aléatoire est :
+	\begin{equation}
+		E(A|X)=E\big( A|\sigma(X) \big).
+	\end{equation}
+\end{definition}
+
+
+\begin{proposition}
+	Soit un espace probabilisé \( (\Omega,\tribA,P)\) ainsi qu'une variable aléatoire \( X\) à valeurs dans \( \eR^d\), et un événement \( A\). Alors
+	\begin{equation}
+		E\big( P(A|X) \big)=P(A).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Tout le point de la preuve est de remarquer que \( E(\mtu_A)=E(\mtu_A|X)\).
+
+	\begin{subproof}
+		\spitem[La formule \( E(\mtu_A)=E(\mtu_A|X)\)]
+
+		La notation \( E(\mtu_A|X)\) est un raccourci pour écrire la variable aléatoire \( E\big(\mtu_A|\sigma(X)\big)\). Cette dernière est l'application \( \Omega\to \eR^d\) telle que
+		\begin{equation}
+			\int_B E\big( \mtu_A|\sigma(X) \big)=\int_B\mtu_A
+		\end{equation}
+		pour tout borélien \( B\) de \( \eR^d\) tout en étant \( \sigma(X)\)-mesurable. Comme expliqué en~\ref{NORMooHPHOooUuJWHR}, il est tentant de dire \( E\big( \mtu_A|\sigma(X) \big)=\mtu_A\), mais ce n'est pas le cas parce qu'il n'y a aucune raisons que \( \mtu_A\) soit une application \( \sigma(X)\)-mesurable. Au niveau des espérances, par contre, l'égalité tient :
+		\begin{equation}
+			E\big( E(\mtu_A|X) \big)=\int_{\Omega}E(\mtu_A|X)=\int_{\Omega}\mtu_A=E(\mtu_A)
+		\end{equation}
+		où nous avons utilisé le fait que \( \Omega\) lui-même soit \( \sigma(X)\)-mesurable.
+
+		\spitem[La preuve]
+
+		Nous avons alors
+		\begin{equation}
+			P(A)=E(\mtu_A)=E\big( E(\mtu_A|X) \big),
+		\end{equation}
+		alors que \( E(\mtu_A|X)=P(A|X)\). En mettant l'un dans l'autre :
+		\begin{equation}
+			P(A)=E\big( P(A|X) \big).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[Transitivité de l'espérance conditionnelle]     \label{PropRGcscXj}
+	Si \( \tribB_2\subseteq\tribB_1\subset\tribA\) alors
+	\begin{equation}
+		E\Big( E(X|\tribB_1)|\tribB_2 \Big)=E(X|\tribB_2).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Si \( B\in\tribB_2\), nous avons
+	\begin{equation}
+		\int_BE\big( E(X|\tribB_1)|\tribB_2 \big)dP=\int_B E(X|\tribB_1)dP=\int_BXdP.
+	\end{equation}
+	La première égalité est la définition de l'espérance conditionnelle par rapport à \( \tribB_2\). La seconde égalité est celle de l'espérance conditionnelle par rapport à \( \tribB_1\) et le fait que \( B\in\tribB_2\subset\tribB_1\). Ce que nous avons prouvé est que
+	\begin{equation}
+		E\big( E(X|\tribB_1)|\tribB_2 \big)
+	\end{equation}
+	est une variable aléatoire \( \tribB_2\)-mesurable vérifiant la condition
+	\begin{equation}
+		\int_BE\big( E(X|\tribB_1)|\tribB_2 \big)=\int_BE(X|\tribB_2)
+	\end{equation}
+	pour tout \( B\in \tribB_2\). C'est donc \( E(X|\tribB_2)\) par la partie unicité du théorème~\ref{ThoMWfDPQ}.
+\end{proof}
+
+\begin{proposition}
+	Soit \( (\Omega,\tribF,P)\) un espace de probabilité, soit \( \tribA\) une sous tribu de \( \tribF\) et \( X\), une variable aléatoire \( \tribF\)-mesurable et intégrable. Alors la variable aléatoire \( E(X|\tribA)\) du théorème~\ref{ThoMWfDPQ} est l'unique (presque partout) variable aléatoire à être \( \tribA\)-mesurable telle que nous ayons
+	\begin{equation}
+		E\big( E(X|\tribA)Y \big)=E(XY).
+	\end{equation}
+	pour toute variable aléatoire \( Y\) \( \tribA\)-mesurable.
+\end{proposition}
+
+\begin{proof}
+	Supposons pour commencer que \( Y\) soit une fonction simple positive, alors \( Y=\sum_{i=1}^na_i\mtu_{E_i}\) et nous avons
+	\begin{subequations}
+		\begin{align}
+			\int_{\Omega}E(X|Y) & =\sum_{i}a_i\int_{E_i}E(X|\tribA) \\
+			                    & =\sum_ia_i\int_{E_i}X             \\
+			                    & =\int_{\Omega}XY.
+		\end{align}
+	\end{subequations}
+	Maintenant si \( Y\) est mesurable et bornée, elle est limite croissante de fonctions étagées bornées (proposition~\ref{THOooXHIVooKUddLi}) et le résultat tient par la convergence monotone, théorème~\ref{ThoRRDooFUvEAN}.
+
+	Si \( Y\) n'est pas positive, nous séparons \( Y=Y_+-Y_-\).
+
+	Pour l'unicité, soit \( Z\) et \( Z'\) deux variables aléatoires telles que pour toute variable aléatoire \( Y\),
+	\begin{equation}
+		\int_{\Omega}ZY=\int_{\Omega}XY=\int_{\Omega}Z'Y.
+	\end{equation}
+	Si nous prenons \( Y=\mtu_{\{ Z\neq Z' \}}\), nous avons
+	\begin{equation}
+		0=\int_{\Omega}(Z-Z')\mtu_{Z\neq Z'}=\int_{Z\neq Z'}Z-Z',
+	\end{equation}
+	d'où le fait que \( P(Z\neq Z')=0\).
+\end{proof}
+
+Si \( X\) est une variable aléatoire dont la tribu engendrée est indépendante de la tribu \( \tribF\), nous voudrions que la connaissance de \( \tribF\) n'influence pas la connaissance de \( X\), c'est-à-dire que
+\begin{equation}
+	E(X|\tribF)=E(X).
+\end{equation}
+Ce que nous avons est même mieux. Nous avons le lemme suivant qui dit que conditionner une variable aléatoire par rapport à une tribu indépendante ne change pas notre connaissance de la variable aléatoire.
+\begin{lemma}[\cite{ProbaDanielLi}]     \label{LemxUZFPV}
+	Les tribus \( \tribF_1\) et \( \tribF_2\) sont indépendantes si et seulement si
+	\begin{equation}
+		E(U|\tribF_1)=E(U|\tribF_2)=E(U)
+	\end{equation}
+	pour toute variable aléatoire \( U\) étant \( \tribF_1\)-mesurable.
+\end{lemma}
+Ici, par \( E(U)\) nous entendons la variable aléatoire constante prenant la valeur numérique \( E(U)\) en tout point de \( \Omega\).
+
+\begin{proof}
+	Si \( \tribF_1\) et \( \tribF_2\) sont indépendantes, alors pour tout \( B\in\tribF_2\) nous avons
+	\begin{subequations}    \label{EqGGqgxl}
+		\begin{align}
+			\int_B UdP & =E(U\mtu_B)                                \\
+			           & =E(U)E(\mtu_B)         \label{subeqBZWLNS} \\
+			           & =E(U)\int_{\Omega}\mtu_BdP                 \\
+			           & =\int_B E(U)dP.
+		\end{align}
+	\end{subequations}
+	Justifications.
+	\begin{itemize}
+		\item L'intégrale \( \int_BUdP\) a un sens même si \( B\in\tribF_2\) alors que \( U\) est \( \tribF_1\)-mesurable. Le supremum \eqref{EqDefintYfdmu} définissant l'intégrale est tout de même bien défini, en particulier, l'ensemble sur lequel on prend le supremum est non vide.
+		\item
+		      Pour \eqref{subeqBZWLNS}, la variable aléatoire \( U\) est \( \tribF_1\)-mesurable (donc la tribu engendrée par \( U\) est dans \( \tribF_1\)) alors que \( \mtu_B\) est \( \tribF_2\)-mesurable. Les tribus engendrées étant indépendantes, les variables aléatoires le sont et nous pouvons décomposer l'espérance.
+	\end{itemize}
+	Ce que montre le calcul \eqref{EqGGqgxl} est que \( E(U)\) est une variable aléatoire \( \tribF_2\)-mesurable (parce que constante) dont l'intégrale sur chaque élément de \( \tribF_2\) vaut l'intégrale de \( U\). Par la partie unicité du théorème~\ref{ThoMWfDPQ}, nous déduisons que \( E(U)=E(U|\tribF_2)\).
+
+	Pour l'autre sens, écrivez-moi si vous avez une démonstration. %TODOooKWMNooZRsddI
+\end{proof}
+
+\begin{corollary}   \label{CorakyvMp}
+	Si \( X\) est une variable aléatoire et si \( \tribF\) est une tribu, alors
+	\begin{equation}
+		E\big( E(X|\tribF) \big)=E(X).
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Il suffit d'appliquer la définition \eqref{EqBwBkgE} à \( B=\Omega\) :
+	\begin{equation}
+		E\big( E(X|\tribF) \big)=\int_{\Omega}E(X|\tribF)(\omega)dP(\omega)=\int_{\Omega}X(\omega)dP(\omega)=E(X).
+	\end{equation}
+\end{proof}
+
+\begin{example}
+	Soient \( X_1\), \( X_2\) deux variables aléatoires à valeurs dans \( \{ 0,1 \}\) avec probabilité \( 1/2\) et indépendantes. Nous considérons \( S=X_1+X_2\). La situation est modélisée par l'espace
+	\begin{equation}
+		\Omega=\{ (0,0),(0,1),(1,0),(1,1) \}
+	\end{equation}
+	et les variables aléatoires
+	\begin{subequations}
+		\begin{align}
+			X_i(\omega_1,\omega_2) & =\omega_{i}         \\
+			S(\omega_1,\omega_2)   & =\omega_1+\omega_2.
+		\end{align}
+	\end{subequations}
+	Pour vérifier que de cette manière nous avons bien que \( X_1\) est indépendante de \( X_2\), nous commençons par voir les tribus associées. Un ouvert de \( \eR\) soit contient \( 0\) et \( 1\), soit contient un seul des deux soit n'en contient aucun des deux. En appliquant \( X_1^{-1}\) à chacune de ces quatre situations nous voyons que la tribu \( \sigma(X_1)\) est
+	\begin{equation}
+		\tribF_1=\sigma(X_1)=\big\{ \{ (0,0),(0,1) \},\{ (1,0),(1,1) \},\Omega,\emptyset \}.
+	\end{equation}
+	De la même façon nous avons
+	\begin{equation}
+		\tribF_2=\sigma(X_1)=\big\{ \{ (0,0),(1,0) \},\{ (0,1),(1,1) \},\Omega,\emptyset \}.
+	\end{equation}
+	Nous posons
+	\begin{subequations}
+		\begin{align}
+			A_0 & =\{ (0,0),(0,1) \}  \\
+			A_1 & =\{ (1,0),(1,1) \}  \\
+			B_0 & =\{ (0,0),(1,0) \}  \\
+			B_1 & =\{ (0,1),(1,1) \}.
+		\end{align}
+	\end{subequations}
+	Étant donné que \( A_i\cap B_j=(i,j)\), nous avons toujours que \( P(A_i\cap B_j)=\frac{1}{ 4 }=P(A_i)P(B_j)\). L'indépendance est donc assurée.
+
+	Calculons l'espérance conditionnelle \( E(S|\tribF_1)\). Une fonction \( \tribF_1\)-mesurable doit être constante sur \( A_0\) et \( A_1\), donc l'espérance conditionnelle est une fonction constante sur \( A_0\) et \( A_1\) dont l'intégrale sur ces ensembles est égale à l'intégrale de \( S\). Nous avons en particulier
+	\begin{equation}
+		\int_{A_0}E(S|\tribF_1)=\int_{A_0}S,
+	\end{equation}
+	c'est-à-dire
+	\begin{equation}
+		E(S|\tribF_1)(0,0)+E(S|\tribF_1)(0,1)=S(0,0)+S(0,1)=1.
+	\end{equation}
+	Nous en concluons que \( E(S|\tribF_1)(0,0)=E(S|\tribF_1)(0,1)=\frac{ 1 }{2}\). Cela correspond à l'intuition que si on est au point \( (0,1)\) ou au point \( (0,0)\) en ne sachant que \( X_1\), nous ne savons que le premier zéro, et donc l'espérance de la somme est \( \frac{ 1 }{2}\).
+
+	Un calcul très similaire montre que
+	\begin{equation}
+		E(S|\tribF_1)(1,0)=E(S|\tribF_1)(1,1)=\frac{ 3 }{2}.
+	\end{equation}
+	Cela correspond au fait qu'en ces points, nous ne savons que le fait que le premier tirage a donné \( 1\), et donc que l'espérance est \( \frac{ 3 }{2}\).
+
+	Complétons ce tour d'horizon en mentionnant que la tribu engendrée par \( X_1\) et \( X_2\) est la tribu des parties de \( \Omega\), de telle façon que l'espérance conditionnelle de \( S\) sachant \( X_1\) et \( X_2\) est égale à \( S\).
+\end{example}
+
+\begin{proposition}[\cite{ProbaDanielLi}]   \label{PropRNBtfql}
+	Soit \( (\Omega,\tribA,P)\) un espace probabilisé et \( X,Y\) deux variables aléatoires sur \( \Omega\) réelles. Soit \( \tribB\) une sous-tribu de \( \tribA\). Nous supposons que \( X\in L^1(\Omega,\tribA,P)\), que \( Z\in L^{\infty}(\Omega,\tribB,P)\) et que \( XZ\in L^1(\Omega,P)\). Alors
+	\begin{equation}
+		E(ZX|\tribB)=ZE(X|\tribB)
+	\end{equation}
+	presque surement.
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par prouver que
+	\begin{equation}    \label{EqNDQWIea}
+		\int_{\Omega}ZE(X|\tribB)=\int_{\Omega}ZX.
+	\end{equation}
+	Si \( Z=\mtu_B\) pour un ensemble \( B\in\tribB\), alors cette égalité est vraie par définition de l'espérance conditionnelle\footnote{Théorème~\ref{ThoMWfDPQ}.}. Donc cette égalité est correcte tant que \( Z\) est une variable aléatoire \( \tribB\)-mesurable et étagée. Nous considérons alors, grâce au lemme~\ref{LemYFoWqmS}, une suite \( Z_n\) de variables aléatoires étagées et \( \tribB\)-mesurables avec \( | Z_n |<Z\). Pour chaque \( n\) nous avons donc
+	\begin{equation}    \label{EqNVpOSaH}
+		\int_{\Omega}Z_nX=\int_{\Omega}Z_nE(X|\tribB).
+	\end{equation}
+	Notre idée est de passer à la limite. Vu que \( Z\) et \( Z_n\) sont bornées (et donc intégrables sur \( \Omega\)), pour chaque \( n\) nous avons \( | Z_nX |\leq M| X |\) où \( M\) majore \( Z\) et donc tous les \( Z_n\) de façon uniforme vis-à-vis de \( n\). Tout cela pour dire que le théorème de la convergence dominée fonctionne et que
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}Z_nX=\int_{\Omega}ZX.
+	\end{equation}
+	D'autre part vu que \( X\in L^1\) et que \( \Omega\in\tribB\) nous avons l'égalité \( \int_{\Omega}E(X|\tribB)=\int_{\Omega}X\), ce qui prouve que \( | E(X|\tribB) | \) est intégrable. Cela nous permet d'utiliser encore la convergence dominée avec l'inégalité \( | Z_nE(X|\tribB) |\leq M| E(X|\tribB) |\) pour écrire
+	\begin{equation}
+		\lim_{n\to \infty} \int_{\Omega}Z_nE(X|\tribB)=\int_{\Omega}ZE(X|\tribB).
+	\end{equation}
+	En passant à la limite des deux côtés de \eqref{EqNVpOSaH} nous avons donc
+	\begin{equation}
+		\int_{\Omega}ZE(X|\tribB)=\int_{\Omega}ZX.
+	\end{equation}
+	L'égalité \eqref{EqNDQWIea} est prouvée.
+
+	Nous passons maintenant à la preuve de l'égalité demandée : \( E(ZX|\tribB)=ZE(X|\tribB)\). Pour cela il faut montrer que pour tout \( B\in\tribB\) nous avons
+	\begin{equation}
+		\int_{B}ZE(X|\tribB)=\int_BZX.
+	\end{equation}
+	Cela n'est rien d'autre que l'égalité \eqref{EqNDQWIea} que nous venons de prouver avec \( Z\mtu_{B}\) au lieu de \( Z\).
+\end{proof}
+
+\begin{proposition}
+	Soit une variable aléatoire réelle \( X\in L^1(\Omega,\tribA,P)\). Pour toute variable aléatoire \( Y\colon \Omega\to \eR^d\), il existe une fonction borélienne \( \tribA_Y\)-mesurable \( h\colon \eR^d\to \eR\) telle que
+	\begin{equation}
+		E(X|Y)=h\circ Y.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous utilisons le résultat de Doob (théorème~\ref{ThofrestemesurablesXYYX}). Par définition \( E(X|Y)\) est une variable aléatoire réelle \( \tribA_Y\)-mesurable, et il existe une fonction borélienne \( h\colon \eR^d\to \eR\) telle que \( E(X|Y)=h\circ Y\).
+\end{proof}
+
+Cette fonction \( h\colon \eR^d\to \eR\) nous permet de définir\index{espérance!conditionnelle!variable aléatoire}
+\begin{equation}
+	E(X|Z=z)=h(z).
+\end{equation}
+Cela est l'espérance conditionnelle d'une variable aléatoire par rapport à une valeur donnée d'une autre variable aléatoire.
+
+\begin{definition}[Espérence conditionnelle à un événement\cite{BIBooUYJDooRdHHpe}]     \label{DEFooOMLCooJgrbpx}
+	Si \( X\) est une variable aléatoire et si \( A\) est un événement, nous définissons
+	\begin{equation}
+		E(X|A)=\frac{ E(X\mtu_A) }{ P(A) }.
+	\end{equation}
+\end{definition}
+Pour rappel, la définition de l'espérance d'une variable aléatoire est \ref{DEFooQKFBooCBZtRG}.
+
+\begin{lemma}[\cite{MonCerveau}]    \label{LEMooRTVBooCEeIxL}
+	Soit un espace de probabilité \( (\Omega,\tribF,P)\). Nous considérons une variable aléatoire \( X\) à valeurs réelles, prenant ses valeurs dans la partie dénombrable
+	\begin{equation}
+		\{ 0 \}\cup \{ y_k \}_{k\in \eN}
+	\end{equation}
+	avec \( y_k\neq 0\).  Si \( A\) est mesurable dans \( \Omega\), alors
+	\begin{equation}
+		E(X|A)=\sum_{k=0}^{\infty}y_kP(X=y_k|A),
+	\end{equation}
+	c'est-à-dire que nous prenons la somme sur les valeurs non nulles atteintes par \( X\).
+\end{lemma}
+
+\begin{proof}
+	Nous partons de la définition \ref{DEFooOMLCooJgrbpx} de l'espérance conditionnelle : \( E(X|A)=E(X\mtu_A)/P(A)\). La variable aléatoire \( X\mtu_A\) peut prendre les valeurs \( 0\) et  \( y_k\). Nous pouvons utiliser le lemme \ref{LEMooEHTYooWmMAgf} pour écrire
+	\begin{equation}        \label{EQooZSRJooZNtajK}
+		E(X\mtu_A)=0\times P(X\mtu_A=0)+\sum_{k=0}^{\infty}y_kP(X\mtu_A=y_k)=\sum_{k=0}^{\infty}y_kP(X\mtu_A=y_k).
+	\end{equation}
+	Afin de traiter le dernier terme, nous prouvons que \( \{ X\mtu_A=y_k \}=X^{-1}(y_k)\cap A\). En effet si \( \omega\in\{ X\mtu_A=y_k \}\), c'est que
+	\begin{equation}
+		X(\omega)\mtu_A(\omega)=y_k.
+	\end{equation}
+	Mais dans notre cas, \( y_k\neq 0\), donc \( \mtu_A(\omega)=1\), ce qui signifie \( \omega\in A\). Donc \( \omega\in A\) et \( X(\omega)=y_k\), ce qui signifie \( \omega\in X^{-1}(y_k)\cap A\). Nous avons donc
+	\begin{equation}
+		P(X\mtu_A=y_k)=P\big( X^{-1}(y_k)\cap A \big).
+	\end{equation}
+	En utilisant (à l'envers) la définition de la probabilité conditionnelle \ref{DEFooGJVHooVbhVYv},
+	\begin{equation}
+		P(X\mtu_A=y_k)=P\big( X^{-1}(y_k)|A \big)P(A).
+	\end{equation}
+
+	En remettant ça dans \eqref{EQooZSRJooZNtajK} et dans la définition de \( E(X|A)\),
+	\begin{equation}
+		E(X|A)=\frac{\sum_{k=0}^{\infty}y_kP(X\mtu_A=y_k)}{P(A)}=\frac{1}{ P(A) }\sum_{k=0}^{\infty}P(X=y_k|A)P(A)=\sum_{k=0}^{\infty}y_kP(X=y_k|A)
+	\end{equation}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Probabilité conditionnelle : tribu}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Soit un espace probabilisé \( (\Omega,\tribA,P)\).
+
+\begin{lemma}       \label{LEMooXXTYooZCXiYr}
+	Soit \( (B_i)_{i\in\eN}\) une partition de \( \Omega\) en éléments de \( \tribA\) deux à deux disjoints tels que \( P(B_i)\neq 0\). Soit \( \tribF\) la tribu engendrée par les \( B_i\). Une variable aléatoire réelle est \( \tribF\)-mesurable si et seulement si elle est constante sur chaque \( B_i\).
+\end{lemma}
+
+\begin{proposition}
+	Soit \( (B_i)_{i\in\eN}\) une partition de \( \Omega\) en éléments de \( \tribA\) deux à deux disjoints tels que \( P(B_i)\neq 0\). Soit \( \tribF\) la tribu engendrée par les \( B_i\). Soit une variable aléatoire \( X\). Alors nous avons :
+	\begin{equation}    \label{EqCibwoG}
+		E(X|\tribF)=\sum_{i\in \eN}\left( \frac{1}{ P(B_i) }\int_{B_i}XdP \right)\mtu_{B_i}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Si \( X\) est une variable aléatoire, alors la variable aléatoire \( E(X|\tribF)\) définie en~\ref{ThoMWfDPQ} est une variable aléatoire \( \tribF\)-mesurable et elle est donc constante sur les ensembles \( B_i\) par le lemme~\ref{LEMooXXTYooZCXiYr} :
+	\begin{equation}
+		E(X|\tribF)=\sum_{i\in\eN}a_i\mtu_{B_i}.
+	\end{equation}
+	Étant donné que, par construction, \( B_i\) est \( \tribF\)-mesurable, nous avons
+	\begin{equation}
+		\int_{B_i}XdP=\int_{B_i}E(X|\tribF)
+		=\sum_ja_j\int_{B_i}\mtu_{B_j}
+		=\sum_ja_j\delta_{ij}P(B_j)
+		=a_iP(B_i).
+	\end{equation}
+	Par conséquent
+	\begin{equation}
+		a_i=\frac{1}{ P(B_i) }\int_{B_i}XdP
+	\end{equation}
+	et
+	\begin{equation}
+		E(X|\tribF)=\sum_{i\in \eN}\left( \frac{1}{ P(B_i) }\int_{B_i}XdP \right)\mtu_{B_i},
+	\end{equation}
+	ce qu'il fallait.
+\end{proof}
+
+Notons que si \( B\in\tribA\) alors la tribu engendrée par \( B\) est aussi celle engendrée par la partition \( \{ B,\complement B \}\) de \( \Omega\). Cette circonstance nous permet d'aller plus loin.
+
+\begin{proposition}
+	Soit un espace probabilisé \( (\Omega,\tribA,P)\) et un événement \( B\in\tribA\) avec sa tribu engendrée \( \tribF=\sigma(B)\). Alors
+	\begin{equation}
+		E(\mtu_A|\tribF)=P(A|B)\mtu_B+P(A|\complement B)\mtu_{\complement B}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous allons particulariser la formule \eqref{EqCibwoG}. Si \( B\in \tribA\) nous considérons la partition \( \{ B,\complement B \}\) de \( \Omega\) et la tribu engendrée
+	\begin{equation}
+		\tribF=\{ \emptyset,B,\complement B,\Omega \}.
+	\end{equation}
+	La formule \eqref{EqCibwoG} devient
+	\begin{equation}
+		E(X|\tribF)=\left( \frac{1}{ P(B) }\int_BXdP \right)\mtu_B+\left( \frac{1}{ P(\complement B) }\int_{\complement B}XdP \right)\mtu_{\complement B}.
+	\end{equation}
+	Si nous considérons \( A\in\tribA\), nous écrivons cette égalité avec \( X=\mtu_A\) pour obtenir
+	\begin{equation}
+		E(\mtu_A|\tribF)=\frac{ P(A\cap B) }{ P(B) }\mtu_B+\frac{ P(A\cap\complement B) }{ P(\complement B) }\mtu_{\complement B} =P(A|B)\mtu_B+P(A|\complement B)\mtu_{\complement B}
+	\end{equation}
+	parce que nous avons reconnu la probabilité conditionnelle \( P(A|B)\) de la définition~\ref{DEFooGJVHooVbhVYv}.
+\end{proof}
+
+\begin{remark}
+	Le nombre \(P\big( A |\sigma(B) \big)=P\big(\caract_A|\sigma(B)\big)\) n'est pas la probabilité conditionnelle de \( A\) sachant \( B\).
+\end{remark}
+
+Il nous reste à définir la probabilité conditionnelle d'un événement relativement à une variable aléatoire.
+
+\begin{definition}      \label{DEFooFRLFooNvXuPK}
+	Si la variable aléatoire \( X\) est à valeurs discrètes, nous disons que \( P(A|X)\) est la variable aléatoire de valeur
+	\begin{equation}
+		P(A|X)(\omega)=P(A|X=X(\omega)).
+	\end{equation}
+\end{definition}
+Dans le cas d'une variable aléatoire à valeurs continues, cette définition ne fonctionne pas parce que la condition \( X=X(\omega)\) est souvent de probabilité nulle, tandis que c'est toujours une mauvaise idée de conditionner par rapport à un événement de probabilité nulle. C'est la base du \wikipedia{en}{Borel's_paradox}{paradoxe de Borel}. La bonne définition du conditionnement de l'événement \( A\) par rapport à la variable aléatoire \( X\) est
+
+\begin{definition}      \label{DEFooIUJMooBAVtMW}
+	Si \( A\) est un événement et \( X\) une variable aléatoire à valeurs continues dans \( \eR\), nous définissons
+	\begin{equation}
+		P(A|X)=P(A|\sigma(X))=E\big( \mtu_A|\sigma(X) \big).
+	\end{equation}
+	La première égalité est une notation. La seconde est la définition.
+\end{definition}
+Cette définition s'appuie également sur la définition~\ref{ThoMWfDPQ}.
+
+\begin{proposition}
+	Si \( X\) est une variable aléatoire et si \( A\) est un événement, alors
+	\begin{equation}
+		E\big( P(A|X) \big)=P(A).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous commençons par le cas discret, c'est-à-dire \( X\colon \Omega\to \eN\). Nous notons \( p_k=P(X=k)\). En décomposant l'intégrale sur \( \Omega\) par rapport à l'union disjointe
+	\begin{equation}
+		\Omega=\bigcup_{k\in \eN}A_k=\bigcup_{k\in \eN}\{ \omega\in\Omega \tq X(\omega)=k\},
+	\end{equation}
+	nous obtenons
+	\begin{subequations}
+		\begin{align}
+			E\big( P(A|X) \big) & =\int_{\Omega}P(A|X)(\omega)dP(\omega)                                                                                     \\
+			                    & =\sum_{k=0}^{\infty}\int_{A_k}P(A|X=X(\omega))dP(\omega)                                                                   \\
+			                    & =\sum_k\int_{A_k}\frac{ P(A\cap X=k) }{ P(X=k) }dP(\omega)                         & \text{dans } A_k\text{, } X(\omega)=k \\
+			                    & =\sum_k\frac{1}{ p_k }P(A\cap X=k)\underbrace{\int_{A_k}1dP(\omega)}_{=P(A_k)=p_k}                                         \\
+			                    & =\sum_{k}P(A\cap X=k)                                                                                                      \\
+			                    & =P(A).
+		\end{align}
+	\end{subequations}
+	Nous devons maintenant prouver la propriété dans le cas où \( X\) prend des valeurs continues. Pour cela il suffit d'appliquer le corolaire~\ref{CorakyvMp} :
+	\begin{equation}
+		E\big( E(\mtu_A|\sigma(A)) \big)=E(\mtu_A)=P(A).
+	\end{equation}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Variables de Rademacher indépendantes}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{SUBSECooWOOGooVxflVZ}
+
+Une variable aléatoire de Rademacher est une variable aléatoire qui prend les valeurs \( 1\) et \( -1\) avec probabilité \( \frac{ 1 }{2}\). Nous pouvons en décrire une explicitement de la façon suivante. L'espace probabilité est à deux éléments : \( \Omega=\{ a,b \}\) avec la mesure \( P(\{ a \})=P(\{ b \})=\frac{ 1 }{2}\). La variable aléatoire est alors l'application \( X\colon \Omega\to \eR\) donnée par \( X(a)=1\) et \( X(b)=-1\).
+
+Soient \( X\) et \( Y\) deux variables aléatoires de Rademacher indépendantes. Cela donne \( \Omega=\{ a,b \}^2\) et
+\begin{equation}
+	\begin{aligned}[]
+		X(a,a) & =1 & X(a,b) & =1  & X(b,a) & =-1 & X(b,b)=-1 \\
+		Y(a,a) & =1 & Y(a,b) & =-1 & Y(b,a) & =1  & Y(b,b)=-1
+	\end{aligned}
+\end{equation}
+
+\begin{remark}
+	Si une variable aléatoire d'un certain type est donnée par une application \( X\colon \Omega\to \eR\), pour construire des variables aléatoires indépendantes identiquement distribuées, il faut considérer les variables aléatoires sur (au moins) le produit \( \Omega\times \Omega\) muni de la mesure produit.
+\end{remark}
+
+\begin{subproof}
+	\spitem[Tribu du produit \( XY\)]
+
+	Quelle est la tribu de la variable aléatoire produit \( XY\) ? Le produit \( XY\) peut prendre les valeurs \( 1\) et \( -1\). Nous avons
+	\begin{subequations}
+		\begin{align}
+			(XY)^{-1}(1)  & =\{ (a,a),(b,b) \} \\
+			(XY)^{-1}(-1) & =\{ (a,b),(b,a) \}
+		\end{align}
+	\end{subequations}
+	La tribu est donc
+	\begin{equation}
+		\sigma(XY)=\{  \Omega,\emptyset, A,B  \}
+	\end{equation}
+	avec \( A=\{ (a,a),(b,b) \}\) et \( B=\{ (a,b),(b,a) \}\).
+
+	\spitem[Calcul de \( E(X|XY)\)]
+
+	La définition de l'espérance à calculer est le théorème~\ref{ThoMWfDPQ}. Pour chaque élément \( B\) de \( \sigma(XY)\) nous avons besoin de \( \int_BX=\int_B E(X|XY)\). Nous notons \( V=E(X|XY)\) pour alléger la notation. Nous avons
+	\begin{equation}
+		4\int_AV=V(a,a)+V(b,b)
+	\end{equation}
+	et
+	\begin{equation}
+		4\int_AX=X(a,a)+X(b,b)=0.
+	\end{equation}
+
+	Pourquoi le facteur \( 4\) ? Parce que sur \( \Omega^2\) nous avons la mesure produit de celle que dont nous avions parlé sur \( \{ a,b \}\). C'est la mesure d'équiprobabilité et donc chaque singleton a mesure \( 1/4\). Pour plus de détails, il y a le théorème~\ref{ThoWWAjXzi}.
+
+	Nous en déduisons \( V(a,a)+V(b,b)=0\). Mais pour tout \( t\in \eR\) nous avons \( V^{-1}(t)\in \sigma(XY)\) parce que la contrainte est que \( V\) soit \( XY\)-mesurable. En particulier
+	\begin{equation}
+		V^{-1}\big( V(a,a) \big)
+	\end{equation}
+	est un mesurable qui contient \( (a,a)\). C'est donc soit \( \Omega\), soit \( \{ (a,a),(b,b) \}\). Dans les deux cas nous avons \( V(a,a)=V(b,b)\) et nous en déduisons \( V(a,a)=V(b,b)=0\).
+
+	En faisant de même avec \( \int_BV=V(a,b)+V(b,a)\) nous déduisons \( V(a,b)=V(b,a)=0\) et au final nous avons
+	\begin{equation}
+		E(X|XY)=0.
+	\end{equation}
+	Cette égalité signifie \( E(X|XY)(\omega)=0\) pour tout \( \omega\in \Omega^2\).
+
+	\spitem[Calcul de \( E(X|X+Y)\)] Il ne faudrait pas croire que, seulement parce que \( X\) a une espérance nulle, nous trouverons une espérance nulle quel que soit le conditionnement. Juste pour le plaisir, nous calculons \( E(X|X+Y)\).
+
+	La variable aléatoire \( X+Y\) peut prendre trois valeurs : \( -2\), \( 0\) et \( 2\). La tribu engendrée par \( X+Y\) doit en particulier contenir \( A=\{ (a,a) \}\), \( B=\{ (b,b) \}\) et \( C=\{ (a,b),(b,a) \}\).
+
+	Nous notons \( V=E\big( X|\sigma(X+Y) \big)\). Vu que
+	\begin{equation}
+		\int_AV=\int_AX,
+	\end{equation}
+	nous avons \( V(a,a)=X(a,a)=1\). Même chose pour \( B\) qui donne \( V(b,b)=X(b,b)=-1\). En ce qui concerne l'intégrale sur \( C\) nous avons
+	\begin{equation}        \label{EQooGWDYooTNxYAg}
+		V(a,b)+V(b,a)=X(a,b)+X(b,a)=0.
+	\end{equation}
+	Par ailleurs l'ensemble \( V^{-1}\big( V(a,b) \big)\) est un ensemble mesurable qui doit au moins contenir \( (a,b)\). Vu la tribu que nous avons, cela doit également contenir \( (b,a)\), de telle sorte que \( V(a,b)=V(b,a)\). La relation \eqref{EQooGWDYooTNxYAg} nous permet alors de conclure que \( V(a,b)=V(b,a)=0\).
+
+	Quoi qu'il en soit, l'espérance conditionnelle \( E(X|X+Y)\) n'est pas nulle.
+
+	\spitem[Calcul de \( E(XY|\sigma(XY))\)]. Celle-là, elle est facile par~\ref{NORMooHPHOooUuJWHR} : c'est \( XY\).
+
+\end{subproof}
+
+Nous aurions pu croire que si \( X\) et \( Y\) sont indépendantes, alors
+\begin{equation}        \label{EQooHSVCooAcgRhw}
+	E(XY|\tribA)=E(X|\tribA)E(Y|\tribA).
+\end{equation}
+L'exemple que nous venons de faire montre qu'il n'en est rien.
+
+\begin{example}[\cite{ooPVYRooKqZQZd}]
+	Un autre exemple, peut-être plus simple, pour contredire l'équation \eqref{EQooHSVCooAcgRhw}. Soient \( X\) et \( Y\) des expériences indépendantes de pile ou face non truquées. Les résultats sont représentés par \( 0\) et \( 1\). Nous notons \( \tribA\)  la tribu engendrée par l'événement «les résultats des deux lancers sont différents»; c'est-à-dire la tribu engendrée par l'événement \( A={(1,0),(1,0)}\). La variable aléatoire \( X\) et la tribu \( \tribA\) sont indépendants (définition~\ref{DEFooVYCUooKWvReO}), donc, donc \( E(X|\tribA)=E(X)=1/2\). Pareil pour Y. En revanche, le produit \( XY\) est nul sur \( A\) donc \( E(XY|\tribA)\) aussi. Ça ne peut donc être égal à la constante \( 1/4=(1/2)^2\).
+\end{example}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Un petit paradoxe}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{subSecGXVYooTDdZaB}
+
+Attention : ce qui est écrit ici est ma réflexion personnelle sur le sujet. Merci de me dire si je me trompe.
+
+Soit une famille dont vous savez seulement qu'il y a exactement deux enfants. Trois situations :
+\begin{enumerate}
+	\item       \label{ITEMooNUPAooWCXwBE}
+	      Vous frappez, une fille ouvre la porte et dit «Bonjour, je suis l'aînée». Quelle est la probabilité que l'autre enfant soit une fille ?
+	\item   \label{ITEMooBGIWooLnVCpm}
+	      Vous frappez, une fille ouvre la porte et dit «Bonjour». Quelle est la probabilité que l'autre enfant soit une fille ?
+	\item       \label{ITEMooCBNSooMaIwwB}
+	      Vous demandez aux parents si il y a au moins une fille, ils répondent «oui». Quelle est la probabilité que les deux enfants soient des filles ?
+\end{enumerate}
+Dans les trois cas l'intuition dit que la probabilité est \( 1/2\). Il semble que de plus la~\ref{ITEMooBGIWooLnVCpm} et la~\ref{ITEMooCBNSooMaIwwB} soient les mêmes parce que l'on sait qu'il y a une fille et on se demande quelle est la probabilité qu'il y ait deux filles.
+
+Nous allons voir ça de plus près.
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{«Bonjour, je suis l'aînée»}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+\paragraph{Résolution}
+
+Si nous notons \( X_0\) et \( X_1\) les variables aléatoires donnant le sexe des deux enfants, ce sont des variables aléatoires indépendantes et identiquement distribuées, avec \( P(X_i=f)=\frac{ 1 }{2}\). La formule \eqref{EqProbCond} de la probabilité conditionnelle ainsi que l'indépendance donnent :
+\begin{equation}
+	P(X_1=f|X_2=f)=\frac{ P(X_1=f,X_2=f) }{ P(X_2=f) }.
+\end{equation}
+Le numérateur vaut \( \frac{1}{ 4 }\) et le dénominateur vaut \( \frac{ 1 }{2}\); le résultat vaut \( \frac{ 1 }{2}\). Fin de l'histoire.
+
+\paragraph{Simulation}
+
+Voici un petit programme qui simule la situation. Il retourne clairement \( 1/2\).
+\lstinputlisting{tex/sage/simul_famille_aine.py}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{«Bonjour»}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Nous frappons à la porte, une fille ouvre en disant «bonjour», sans préciser si elle est la première ou la seconde. Quelle est la probabilité que l'autre soit une fille ? Naïvement on croirait que la probabilité est également \( \frac{ 1 }{2}\).
+
+Un raisonnement moins naïf montre le contraire.
+
+Et nous allons voir qu'un raisonnement encore moins naïf montre que la probabilité est bien \( \frac{ 1 }{2}\).
+
+\paragraph{Premier raisonnement (incorrect)}
+
+Voici le raisonnement qui est, à mon avis, faux. Vu que l'enfant qui ouvre la porte est une fille, la famille a une des compositions suivantes : \( fg\), \( ff\) ou \( gf\). Le cas où une fille ouvre la porte \emph{et} que l'autre est également une fille est seulement le cas \( ff\) dont la probabilité est \( \frac{1}{ 3 }\).
+
+Pour justifier cela nous considérons le couple de variables aléatoires \( \left( X_1,X_2 \right)\) et le conditionnement \( A=\{ X_1=f \}\cup\{ X_2=f \}\) : évidemment \( P(A)=\frac{ 3 }{ 4 }\). Nous calculons facilement la loi du couple \( (X_1,X_2)\) conditionné à \( A\) :
+\begin{equation}
+	P(X_1=f,X_2=f|A)=\frac{ P(  \{ X_1=f,X_2=f \}\cap A  ) }{ P(A) }=\frac{ 1/4 }{ 3/4 }=\frac{1}{ 3 }.
+\end{equation}
+Donc sachant \( A\), la probabilité que la famille soit constituée de deux filles est \( \frac{1}{ 3 }\).
+
+\paragraph{Comment faire mieux ?}
+
+Ce calcul semble être correct, mais il ne l'est pas. Ce raisonnement fait l'hypothèse implicite que l'espace probabilisé décrivant la situation contient deux variables aléatoires \( X_1\) et \( X_2\) représentant les deux enfants. Or nous avons bien trois événements aléatoires dans l'histoires : le sexe des deux enfants et le \emph{choix} de l'enfant qui ouvre la porte.
+
+Certes, nous pouvons penser que cette troisième variable aléatoire ne change rien. Oui oui, on peut le penser. Mais ici, on ne doit pas penser, on doit \emph{démontrer}.
+
+Nous allons donc rédiger un calcul complet, en introduisant toutes les variables aléatoires, et en décrivant correctement l'espace probabilisé \( \Omega\) et la mesure de probabilité \( P\).
+
+Peut-être que ça ne changera rien. Ou peut-être pas. Mais au moins nous serons surs d'avoir résolu le problème correctement.
+
+\paragraph{La vraie réponse}
+
+Nous considérons les variables aléatoires \( X_0,X_1\colon \Omega_E\to \{ f,g \}\) avec probabilité \( \frac{ 1 }{2}\). De plus nous considérons une nouvelle variable aléatoire qui donne le numéro de l'enfant qui ouvre la porte :
+\begin{equation}
+	\sigma\colon \Omega_C\to \{ 1,2 \}.
+\end{equation}
+
+Notre espace de probabilité est donc l'ensemble \( \Omega=\{ f,g \}\times \{ f,g \}\times {0,1}\) sur lequel nous considérons la mesure d'équiprobabilité\footnote{C'est une hypothèse forte faisant appel d'un part ce que l'on sait de la reproduction humaine, et d'autre part ce que l'on sait de la sociologie de deux enfants qui entendent une sonnette.}.
+
+Nous introduisons les variables aléatoires\footnote{Sur \( \Omega\), sur \( \{ f,g \}\) et sur \( \{ 0,1 \}\) nous mettons la tribu des parties. Vérifiez que \( X_1\), \( X_2\) et \( \sigma\) sont mesurables.}
+\begin{equation}
+	\begin{aligned}
+		X_1\colon \Omega & \to \{ f,g \} \\
+		(s_1,s_2,n)      & \mapsto s_1
+	\end{aligned}
+\end{equation}
+et
+\begin{equation}
+	\begin{aligned}
+		X_2\colon \Omega & \to \{ f,g \} \\
+		(s_1,s_2,n)      & \mapsto s_2
+	\end{aligned}
+\end{equation}
+et
+\begin{equation}
+	\begin{aligned}
+		\sigma\colon \Omega & \to \{ 1,2 \} \\
+		(s_1,s_2,n)         & \mapsto n
+	\end{aligned}
+\end{equation}
+
+
+Nous devons calculer
+\begin{equation}
+	P\big( X_{1-\sigma}=f|X_{\sigma}=f \big)=\frac{ P\big( X_{1-\sigma}=f,X_{\sigma}=f \big) }{ P(X_{\sigma}=f) }.
+\end{equation}
+
+Pour être explicite jusqu'au bout, nous énumérons tous les éléments de \( \Omega\) :
+\begin{multicols}{4}
+	\begin{enumerate}
+		\item
+		      \( g,g,0\)
+		\item
+		      \( g,g,1\)
+		\item
+		      \( g,f,0\)
+		\item
+		      \( g,f,1\)
+		\item
+		      \( f,g,0\)
+		\item
+		      \( f,g,1\)
+		\item
+		      \( f,f,0\)
+		\item
+		      \( f,f,1\).
+	\end{enumerate}
+\end{multicols}
+
+Et tant qu'à être explicite, l'événement vulgairement noté \( \{ X_{\sigma}=f \}\) est la partie
+\begin{subequations}
+	\begin{align}
+		\{ X_{\sigma}=f \} & =\{ \omega\in \Omega\tq X_{\sigma(\omega)}(\omega)=f \} \\
+		                   & =\{ (s_1,s_2,n)\tq X_n(s_1,s_2,n)=f \}                  \\
+		                   & =\{ (s_1,s_2,n)\tq s_n=f \}.
+	\end{align}
+\end{subequations}
+Méditez la dernière égalité; elle n'est pas totalement indispensable au raisonnement, mais elle est cool.
+
+
+Nous avons
+\begin{equation}
+	\{ X_{\sigma}=f \}=\{ (g,f,1),(f,g,0),(f,f,0),(f,f,1) \}.
+\end{equation}
+et
+\begin{equation}
+	\{ X_{1-\sigma}=f \}\cap\{ X_{\sigma}=f \}=\{ (f,f,0),(f,f,1) \}.
+\end{equation}
+Donc
+\begin{equation}
+	P\big( X_{1-\sigma}=f,X_{\sigma}=f \big)=\frac{ 2 }{ 8 }=\frac{1}{ 4 }
+\end{equation}
+et
+\begin{equation}
+	P(X_{\sigma}=f)=\frac{ 4 }{ 8 }=\frac{ 1 }{2}.
+\end{equation}
+Au final,
+\begin{equation}
+	P\big( X_{1-\sigma}=f|X_{\sigma}=f \big)=\frac{ 1/4 }{ 1/2 }=\frac{ 2 }{ 4 }=\frac{ 1 }{2}.
+\end{equation}
+
+\paragraph{Simulation}
+
+Vous avez encore un doute ? Faites tourner la simulation suivante :
+\lstinputlisting{tex/sage/simul_famille_simple.py}
+
+Le faisant tourner, la réponse est sans appel : la fréquence observée est beaucoup plus proche de \( 0.5\) que de \( 0.33\) ou \( 0.66\).
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Le parent qui répond aux questions}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Nous avons une famille de deux enfants dont nous savons qu'au moins un des deux est une fille. Quelle est la probabilité que la famille contienne deux filles ? Cela est à priori la même question que celle où une fille ouvre la porte sans dire si elle est l'aînée ou non.
+
+\paragraph{Simulation}
+
+Commençons par la simulation :
+
+\lstinputlisting{tex/sage/simul_famille_une_fille.py}
+
+Et là, bing, la réponse est clairement plutôt \( 0.33\) que \( 0.5\).
+
+\paragraph{Résolution}
+
+Nous avons les variables aléatoires \( X_1\) et \( X_2\) qui valent \( 0\) ou \( 1\) suivant que l'enfant soit une fille ou un garçon; ce sont des variables aléatoires indépendantes et identiquement distribuées. Nous définissons la variable aléatoire somme
+\begin{equation}
+	S=X_1+X_2
+\end{equation}
+qui compte le nombre de filles. La question est de calculer
+\begin{equation}
+	P( S=2|S\geq 1 )=\frac{ P(S=2\cap S\geq 1) }{ P(S\geq 1) }=\frac{ P(S=2) }{ P(S\geq 1) }.
+\end{equation}
+L'événement \( S=2\) est réduit au singleton \( \{ ff \}\) et sa probabilité est \( \frac{1}{ 4 }\). Au contraire l'événement \( S\geq 1\) est l'ensemble \( \{ fg,gf,ff \}\) et sa probabilité est \( \frac{ 3 }{ 4 }\). Nous avons donc
+\begin{equation}
+	P( S=2|S\geq 1 )=\frac{ 1/4 }{ 3/4 }=\frac{1}{ 3 }.
+\end{equation}
+Et là, la réponse est \( 1/3\) et non \( 1/2\) comme d'aucuns auraient pu le croire.
+
+\paragraph{Précision}
+Notons que l'événement \( S\geq 1\) n'est pas le même que l'événement \( X_{\sigma}=f\). En effet
+\begin{equation}
+	S\geq 1=\{ (ff,1),(ff,2),(fg,1),(fg,2),(gf,1),(gf,2) \}
+\end{equation}
+tandis que
+\begin{equation}
+	\{ X_{\sigma}=f \}=\{ (ff,1),(ff,2),(fg,1),(gf,2) \}.
+\end{equation}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Conclusion}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+L'internet regorge de sites discutant du paradoxe des deux enfants\footnote{Par exemple \cite{BIBooBXKDooOTEkjy}.}.
+
+Beaucoup insistent sur le fait que non seulement certaines informations apparemment anodines sont importantes, mais en plus \emph{la façon} dont on obtient l'information est importante. Dans la situation «une fille ouvre», nous obtenons l'information «il y a au moins une fille» en en voyant une; dans la situation «la parent dit qu'il y a au moins une fille», nous obtenons l'information «il y a au moins une fille» de façon plus «pure».
+
+Personnellement je ne souscris pas vraiment à cette façon de penser. Le fait est que la formule
+\begin{equation}
+	P(A|B)=\frac{ P(A\cap B) }{ P(B) }
+\end{equation}
+n'est pas seulement une formule dans laquelle il faut remplacer \( A\) par «la question» et \( B\) par «ce qu'on sait». Il faut également remplacer \( P\) par «la bonne» mesure de probabilité.
+
+Il est important de construire le bon espace de probabilité, avec la bonne mesure. Et pour cela, il faut bien s'assurer d'introduire une variable aléatoire pour chaque événement aléatoire se produisant dans l'histoire.
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Une analogie}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Imaginez un parc de jeux réservée aux familles de deux enfants dont au moins une fille. Le videur à l'entrée a (au moins) trois stratégies possibles pour ne laisser entrer que les familles contenant au moins une fille.
+
+\begin{enumerate}
+	\item
+	      Regarder l'ensemble de la famille, et ne laisser entrer que les familles ayant au moins une fille.
+	\item
+	      Ne regarder que l'aîné et ne laisser entrer que les familles dont l'aîné est une fille.
+	\item\label{ITEMooRKUAooGtfavc}
+	      Prendre un des deux enfants au hasard et ne laisser rentrer la famille que si cet enfant est une fille.
+\end{enumerate}
+
+Je vous laisse déterminer à quel scénario correspondent ces trois stratégies. Notez que la stratégie \ref{ITEMooRKUAooGtfavc} contient un énorme biais de sélection : la moitié des familles fille-garçon et garçon-fille sont supprimées, alors que toutes les familles fille-fille entrent.
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{La belle au bois dormant}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Vous avez aimé les questions avec les filles qui ouvrent la porte ? Vous trouvez que Monty Hall est trop facile ?
+
+Cadeau de numperphile : «Sleeping Beauty Paradox» \url{https://www.youtube.com/watch?v=cW27QJYNXtU}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Inégalité de Jensen}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}[Inégalité de Jensen]    \label{PropABtKbBo}
+	Soit \( g\) une fonction convexe\footnote{Définition~\ref{DefVQXRJQz}.} sur \( \eR\) et une variable aléatoire \( Y\in L^1(\Omega,\tribA,P)\) telle que \( g\circ Y\) soit également \( L^1\). Alors
+	\begin{equation}
+		g\big( E(Y|\tribF) \big)\leq E\big( (g\circ Y)|\tribF \big).
+	\end{equation}
+\end{proposition}
+\index{inégalité!Jensen!espérance conditionnelle}
+
+\begin{proof}
+	La convexité de \( g\) et la proposition~\ref{PropPEJCgCH} nous donnent deux suites \( (a_n)\) et \( (b_n)\) dans \( \eR\) telles que pour tout \( x\in \eR\),
+	\begin{equation}
+		g(x)=\sup_{n\in \eN}(a_nx+b_n).
+	\end{equation}
+	Nous avons alors
+	\begin{equation}    \label{EqVAvCziG}
+		a_nE(Y|\tribF)+b_n\stackrel{p.s.}{=}E\big( a_nY+b_n|\tribF \big)\leq  E(g\circ Y|\tribF).
+	\end{equation}
+	L'inégalité est due au fait que \( g\circ Y\) est le supremum sur les \( n\) de \( a_nY+b_n\). Pour chaque \( n\), l'inégalité \eqref{EqVAvCziG} est fausse sur un ensemble de mesure nulle \( R_n\subset\Omega\). L'union
+	\begin{equation}
+		R=\bigcup_{n\in \eN}R_n
+	\end{equation}
+	est encore de mesure nulle. Sur \( \Omega\setminus R\), nous avons
+	\begin{equation}
+		a_nE(Y|\tribF)+b_n\leq E(g\circ Y|\tribF).
+	\end{equation}
+	Vu que cela est vrai presque partout et pour tout \( n\) nous passons au supremum et nous avons encore presque partout l'inégalité
+	\begin{equation}
+		\sup_{n\in\eN}\big( a_nE(Y|\tribF)+b_n \big)\leq E(g\circ Y|\tribF).
+	\end{equation}
+\end{proof}
+
+Si nous ne nous intéressons pas à \( E(Y|\tribF)\) mais seulement à \( E(Y)\), alors une démonstration plus simple est donnée sur Wikipédia\cite{YMmJevi}.

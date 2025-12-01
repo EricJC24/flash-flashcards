@@ -1,0 +1,683 @@
+% This is part of (almost) Everything I know in mathematics
+% Copyright (c) 2010-2017, 2019, 2021-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Manifolds, charts, atlas, etc.}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%-------------------------------------------------------
+\subsection{Topological manifold}
+%----------------------------------------------------
+
+
+We will often define the manifold structure by giving the charts. By doing so, we do not provide directly the topology, but we are referring to theorem \ref{THOooFIHIooLiSUxH}. The following definition is seldom directly checked.
+\begin{definition}[\cite{BIBooKCFIooSAYbJK}]				\label{DEFooJOMAooZscKwn}
+	A \defe{topological manifold}{topological manifold} of dimension \( n\) is a topological space \( M\) such that:
+	\begin{enumerate}
+		\item		\label{ITEMooZZXHooPICcjz}
+		      \( M\) is Hausdorff,
+		\item		\label{ITEMooKOSMooSawqbB}
+		      \( M\) is second-countable\footnote{Has a countable basis of topology.}
+		\item		\label{ITEMooJOPDooPiOadZ}
+		      For each \( m\in M\), there exists \( (E,U,\varphi,V)\) where
+		      \begin{enumerate}
+			      \item
+			            \( E\) is a normed vector space of dimension \( n\)
+			      \item
+			            \( U\) is open in \( E\),
+			      \item
+			            \( V\) is open in \( M\) and contains \( m\),
+			      \item
+			            the map \(\varphi \colon U\to V  \) is an homeomorphism\footnote{Definition \ref{DEFooYPGQooMAObTO}. This is an isomorphism of topological spaces. Bijective, continuous and continuous inverse.}.
+		      \end{enumerate}
+	\end{enumerate}
+\end{definition}
+
+\begin{normaltext}
+	Most of the sources only define manifolds with charts from \( \eR^n\). Here we allow the charts being from an arbitrary normed vector space. We will see that this does not change the existing manifolds (up to isomorphism). In some cases however the charts are easier to be defined from other vector spaces than \( \eR^n\). As an example, the charts for \( \GL(n,\eR)\) will be taken from \( \End(\eR^n)\), not from \( \eR^{n^2}\).
+
+	In the same way, tensor product of vector bundle take their maps from \( \eR^{k_1}\otimes \eR^{k_2}\) instead of \( \eR^{k_1k_2}\).
+\end{normaltext}
+
+\begin{normaltext}
+	Since there is no set containing all normed vector spaces, we cannot consider the set of all charts of a given manifold.
+\end{normaltext}
+
+
+%-------------------------------------------------------
+\subsection{Différentiable manifold}
+%----------------------------------------------------
+
+
+
+\begin{definition}		\label{DEFooVMWRooGQYJwl}
+	Let \( \mA\) be a class of functions as \(  C^{\infty}\), \( C^k\), or analytic. A topological manifold \( (M,\{ \varphi_{\alpha} \}_{\alpha\in\Lambda})\) is a \( \mA\)-manifold\index{differentiable manifold} if for every \( \alpha,\beta\in \Lambda\), the map
+	\begin{equation}
+		\dpt{  (\varphi_{\beta}^{-1}\circ\varphi_{\alpha})  }{   \varphi_{\alpha}^{-1}( \varphi_{\alpha}(\mU_{\alpha})\cap\varphi_{\beta}(\mU_{\beta})  )   }{\mU_{\beta}}
+	\end{equation}
+	is in the class \( \mA\) as map from \( E_{\alpha}\) to \( E_{\beta}\).
+
+	In most of the cases, we will use \(  C^{\infty}\) or analytic manifolds. The expression ``smooth manifold'' means \(  C^{\infty}\) manifold.
+
+	The maps \( (U_{\alpha}, \varphi_{\alpha})\) are said ``definition charts'', but the definition \ref{DEFooQLPIooPGagtz} and the proposition \ref{PROPooUDVFooEJeluM} will show that they are not really special.
+\end{definition}
+
+\begin{definition}[Chart]		\label{DEFooKUJWooXHoCFI}
+	Let \( (M,\{ \varphi_{\alpha} \}_{\alpha\in \Lambda})\) be a \( \mA\)-manifold. A \defe{chart}{chart} of \( M\) is a couple \( (U,\phi)\) where \( U\) is an open part of a normed vector space and \(\phi \colon U\to M  \) is an injective map such that for every \( \alpha\in \Lambda\),
+	\begin{equation}
+		\varphi_{\alpha}^{-1} \circ \phi\colon U \to U_{\alpha}
+	\end{equation}
+	and
+	\begin{equation}
+		\phi^{-1}\circ\varphi_{\alpha} \colon U_{\alpha}\to U
+	\end{equation}
+	are in the class \( \mA\).
+\end{definition}
+
+\begin{definition}[Atlas\cite{MonCerveau}]	\label{DEFooKKDSooYjgZqa}
+	An \defe{atlas}{atlas} of \( M\) is a set of charts\footnote{Définition \ref{DEFooKUJWooXHoCFI}.} \( \{ \phi_i \}_{i\in I}\) such that \( M=\bigcup_{i\in I}\phi_i(U_i)\).
+\end{definition}
+
+
+%-------------------------------------------------------
+\subsection{Isomorphisms}
+%----------------------------------------------------
+
+\begin{definition}[\cite{MonCerveau}]	\label{DEFooZPUEooPcSxNs}
+	Let \( (M,\{ \varphi_{\alpha} \}_{\alpha\in \Lambda})\) and \( (N,\{ \phi_i \}_{i\in I})\) be \( \mA\)-manifolds. An \defe{isomorphism}{isomorphism of manifolds} is a bijection \(f \colon M\to N  \) such that the maps
+	\begin{equation}		\label{EQooTGDUooWRDSrE}
+		\phi_i^{-1}\circ f\circ \varphi_{\alpha} \colon U_{\alpha}\to U_i
+	\end{equation}
+	and
+	\begin{equation}		\label{EQooCUARooRvbuPZ}
+		\varphi_{\alpha}^{-1}\circ f^{-1}\circ\phi_i \colon \phi_i\to U_{\alpha}
+	\end{equation}
+	are in the class \( \mA\) for every \( \alpha\in\Lambda\) and \( i\in I\).
+\end{definition}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooCSDZooFGxRnh}
+	Let \( (M,\{ \varphi_{\alpha} \}_{\alpha\in \Lambda})\) be a \( \mA\)-manifold. If \( \{ \phi_i \}_{i\in I}\) is an atlas\footnote{Definition \ref{DEFooKKDSooYjgZqa}}, then
+	\begin{enumerate}
+		\item	\label{ITEMooRITLooZhpCWe}
+		      \( (M,\{ \phi_i \}_{i\in I})\) is a topological manifold\footnote{Definition \ref{DEFooJOMAooZscKwn}.}.
+		\item		\label{ITEMooHOSKooSPWPil}
+		      \( (M,\{ \phi_i \}_{i\in I})\) is a \( \mA\)-manifold\footnote{Definition \ref{DEFooVMWRooGQYJwl}.}.
+		\item		\label{ITEMooMFLSooEDiIsa}
+		      The identity \( M\to M\) is a \( \mA\)-manifold isomorphism\footnote{Definition \ref{DEFooZPUEooPcSxNs}.} between \( (M,\{ \varphi_{\alpha} \}_{\alpha\in \Lambda})\) and \( (M,\{ \phi_i \}_{i\in I})\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Several parts.
+	\begin{subproof}
+		\spitem[For \ref{ITEMooRITLooZhpCWe}]
+		%-----------------------------------------------------------
+		The set \( M\) with its topology is Hausdorff and second countable by hypothesis. The main point to be checked is that the maps \(\phi_i \colon U_i\to \phi_i(U_i)  \) are bijective, continuous with continuous inverse. They are bijective because they are injective (this is part of the definition of a chart).
+
+		\begin{subproof}
+			\spitem[\( \phi_i\) is continuous]
+			%-----------------------------------------------------------
+			Let \( A\) be open in \( m\). We prove that \( \phi_i^{-1}(A)\) is open in \( U_i\). Let \( x\in U_i\) and let \( m=\phi_i(x)\). We consider a (definition) chart \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) around \( m\) and we let \( A_{\alpha}=\varphi_{\alpha}(U_{\alpha})\cap A\). The part \( A_{\alpha}\) is open in \( M\) as intersection of open parts. Thus the part \( B_{\alpha}=\varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap A \big)\) is open in \( U_{\alpha}\). Since \( \phi_i^{-1}\circ\varphi_{\alpha}\) is homeomorphic, the part \( (\phi_i^{-1}\circ\varphi_{\alpha})(B_{a}) \) is open. But
+			\begin{equation}
+				(\phi_i^{-1}\circ\varphi_{\alpha})(B_{\alpha})=(\phi_i^{-1}\circ\varphi_{\alpha}\circ\varphi_{\alpha}^{-1})\big( \varphi_{\alpha}(U_{\alpha}\cap A) \big)=\phi_i^{-1}(A_{\alpha}).
+			\end{equation}
+			The part \( \phi_i^{-1}(A_{\alpha}) \) is an open part of \( U_i\) satisfying \( x\in \phi_i^{-1}(A_{\alpha})\subset\phi_i^{-1}(A)\). Thus \( \phi_i^{-1}(A)\) contains a neighbourhood of each of its element.
+
+			\spitem[\( \phi_i^{-1}\) is continuous]
+			%-----------------------------------------------------------
+			Let \( A\) be open in \( U_i\). We have to prove that \( \phi_i(A)\) is open in \( M\). Since \(\phi_i^{-1}\circ\varphi_{\alpha} \colon U_{\alpha}\to U_i  \) is continuous, the part \( A_{\alpha}=(\varphi_{\alpha}^{-1}\circ\phi_i)(A)\) is open in \( U_{\alpha}\). Then the part
+			\begin{equation}
+				\varphi_{\alpha}(a)=(\varphi_{\alpha}\circ\varphi_{\alpha}^{-1}\circ\phi_i)(A)=\phi_i(A)
+			\end{equation}
+			is open.
+		\end{subproof}
+		We finished to prove that \( (M,\{ \phi_i \}_{i\in I})\) is a topological manifold.
+
+		\spitem[For \ref{ITEMooHOSKooSPWPil}]
+		%-----------------------------------------------------------
+		For every \( i,j\in I\) the map
+		\begin{equation}
+			\phi_i^{-1}\circ\phi_i=(\phi_i^{-1}\circ\varphi_{\alpha})\circ(\varphi_{\alpha}^{-1}\circ \phi_j)
+		\end{equation}
+		is the composition of \( 2\) maps in \( \mA\).
+		\spitem[Isomorphism]
+		%-----------------------------------------------------------
+		If \(f \colon M\to M  \) is the identity then the maps \eqref{EQooTGDUooWRDSrE} and \eqref{EQooCUARooRvbuPZ} are in the class \( \mA\) because \( \phi_i\) are charts.
+	\end{subproof}
+\end{proof}
+
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooNOZNooZFYOwK}
+	Let \(f \colon M\to N  \) be a topological manifold isomorphism. For every charts \(\varphi \colon U\to M  \) and \(\phi \colon V\to N  \), we consider \( M'=\varphi(U)\cap \phi(V)\). Then the map
+	\begin{equation}
+		\phi^{-1}\circ f\circ\varphi \colon \varphi^{-1}(M')\to (\phi^{-1}\circ f)(M')
+	\end{equation}
+	is a topological spaces isomorphism.
+	%TODOooXCURooJLiDMM. Prouver ça
+\end{proposition}
+
+Now we prove that every manifold is isomorphic to a manifold with maps from \( \eR^n\).
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooNVVSooAVVLOM}
+	If \( \big( M,\{ \varphi_{\alpha} \}_{\alpha\in \Lambda} \big)\) is a \( n\)-dimensional topological manifold, there exists maps \( \{\phi_{\alpha} \colon V_{\alpha}\to M   \}_{\alpha\in\Lambda}\) such that \( V_{\alpha}\) is open in \( \eR^n\) and such that \( \big( M,\{ \phi_{\alpha} \}_{\alpha\in \Lambda} \big)\) is isomorphic to \( \big( M,\{ \varphi_{\alpha} \}_{\alpha\in\Lambda} \big)\).
+\end{proposition}
+
+\begin{proof}
+	Let \( \alpha\in \Lambda\). There is a normed vector space \( E_{\alpha} \) (dimension \( n\)), an open part \( U_{\alpha}\) an injective chart \(\varphi_{\alpha} \colon U_{\alpha}\to M  \). By proposition \ref{PROPooILSOooPdUyFu}, we have an open part \( V_{\alpha}\subset \eR^n\) and a bijective isometry \(g_{\alpha} \colon V_{\alpha}\to U_{\alpha}  \). We consider the map
+	\begin{equation}
+		\begin{aligned}
+			\phi_{\alpha}\colon V_{\alpha} & \to M                                          \\
+			x                              & \mapsto (\varphi_{\alpha}\circ g_{\alpha})(x).
+		\end{aligned}
+	\end{equation}
+	The map \(\phi_{\alpha} \colon V_{\alpha}\to \phi_{\alpha}(V_{\alpha})   \) is homeomorphic as composition of homeomorphic maps. We still have to prove that we have an isomorphism of manifolds. More specifically we prove that \(\id \colon M\to M  \) is an isomorphism of manifolds.
+
+	Let \( \alpha,\beta\in \Lambda\) and consider \( M_{\alpha\beta}=\varphi_{\alpha}(U_{\alpha})\cap \phi_{\alpha}(V_{\alpha})\). We have to prove that
+	\begin{equation}
+		\phi_{\beta}^{-1}\circ \id\circ \varphi_{\alpha} \colon M_{\alpha\beta}\to  	(\phi_{\beta}^{-1}\circ\id)(M_{\alpha\beta})
+	\end{equation}
+	is homeomorphic. Since \( \phi_{\beta}^{-1}\circ\varphi_{\alpha}=g_{\alpha}^{-1}\circ\varphi_{\alpha}^{-1}\circ\varphi_{\alpha}=g_{\alpha}^{-1}\), this is an homomorphism.
+\end{proof}
+
+There are at least three occasions in which we consider charts that are not from \( \eR^n\).
+\begin{enumerate}
+	\item
+	      The charts for \( \GL(n,\eR)\) will be defined on \( \End(\eR^n)\).
+	\item
+	      The charts of a tensor product of vector bundle will be defined from \( (U_{\alpha}\times \eR^{k_1}\otimes \eR^{k_2})\) instead of \( U_{\alpha}\times \eR^{k_1k_2}\).
+	\item
+	      In some case, the charts for Lie subgroups will be defined from the Lie algebra.
+\end{enumerate}
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooPYLIooFpCPcu}
+	Let \( M\) be a topological manifold with charts \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) where \( U_{\alpha}\) is open in \( (V_{\alpha}, N_\alpha)\) is a normed vector space\footnote{\( N_{\alpha}\) is the norm.}.
+
+	For each \( \alpha\) we consider an other norm \( N'_{\alpha}\). Then the manifold with the maps
+	\begin{equation}
+		\phi_{\alpha} \colon (U_{\alpha}, N'_{\alpha})\to M
+	\end{equation}
+	is isomorphic to \( M\).
+	%TODOooOCYQooTUFEil. Prouver ça.
+\end{proposition}
+
+
+%-------------------------------------------------------
+\subsection{Manifold from maps}
+%----------------------------------------------------
+
+\begin{theorem}[\cite{BIBooAQKHooVyiyN,MonCerveau}]		\label{THOooFIHIooLiSUxH}
+	Let \( X\) be a set. We consider maps \( \{ (U_\alpha,\varphi_{\alpha}) \}_{\alpha\in\Lambda}\) such that
+	\begin{enumerate}
+		\item		\label{ITEMooDWSWooWdcDdI}
+		      \( U_{\alpha}\) is open in a normed vector space \( E_{\alpha}\).
+		\item		\label{ITEMooPEXDooNuJBKH}
+		      \( \bigcup_{\alpha\in\Lambda}\varphi_{\alpha}(U_{\alpha})=X\),
+		\item		\label{ITEMooSRPQooNUPzlj}
+		      For each \( \alpha\in \Lambda\), the map \( \varphi_{\alpha}\) is injective,
+		\item		\label{ITEMooWFAWooAqQfzZ}
+		      For every \( \alpha,\beta\in\Lambda\), the part
+		      \begin{equation}
+			      \varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta}) \big)
+		      \end{equation}
+		      is open in \( E_{\alpha}\).
+		\item	\label{ITEMooZHLXooBpWSXr}
+		      For every \( \alpha,\beta\in\Lambda\), the map
+		      \begin{equation}
+			      \varphi_{\beta}^{-1}\circ\varphi_{\alpha} \colon \varphi_{\alpha}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap\varphi_{\beta}(U_{\beta}) \big)\to \varphi_{\beta}^{-1}\big( \varphi_{\alpha}(U_{\alpha})\cap\varphi_{\beta}(U_{\nu}) \big)
+		      \end{equation}
+		      is continuous.
+	\end{enumerate}
+
+	For each \( \alpha\in\Lambda\) we define
+	\begin{equation}
+		\tau_{\alpha}=\{ \varphi_{\alpha}(A)\tq \text{\( A\) is open in \( U_{\alpha}\)} \}
+	\end{equation}
+	and
+	\begin{equation}		\label{EQooHMWQooUdceMk}
+		\tau_{0}=\bigcup_{\alpha\in\Lambda}\tau_{\alpha}.
+	\end{equation}
+	Then we define \( \tau_X\) as the topology generated by \( \tau_0\).
+
+	Then:
+	\begin{enumerate}
+		\item		\label{ITEMooLNAPooIZVFVZ}
+		      \( \tau_0\) is a basis of topology for \( \tau_X\).
+		\item		\label{ITEMooRSZOooFfNrCQ}
+		      If \( m\in\varphi_{\alpha}(U_{\alpha})\), then \( \tau_{\alpha}\) is a basis of topology around \( m\).
+		      \item\label{ITEMooXGDRooRWiVnF}
+		      The maps \(\varphi_{\alpha} \colon U_{\alpha}\to X  \) are continuous.
+		\item \label{ITEMooPPZIooViYPck}
+		      If we set \( M_{\alpha}=\varphi_{\alpha}(U_{\alpha})\), the maps \(\varphi_{\alpha} \colon U_{\alpha}\to M_{\alpha} \) are homeomorphic.
+		\item		\label{ITEMooCMUKooBvlXbs}
+		      \( \tau_X\) is the unique topology on \( X\) such that the maps \(\varphi_{\alpha} \colon U_{\alpha} \to X  \) are homeomorphic.
+		\item	\label{ITEMooAZHPooWzAjlS}
+		      If this topology is Hausdorff and second countable, then \( X\) is a topological manifold, and \( \{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in\Lambda}\) is an atlas.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Several steps.
+	\begin{subproof}
+		\spitem[Finite intersections]
+		%-----------------------------------------------------------
+
+		Let \( S_{\alpha}\in \tau_{\alpha}\) and \( S_{\beta}\in \tau_{\beta}\) be such that \( S_{\alpha}\cap S_{\beta}\neq \emptyset\). We prove that there exists \( S\in\tau_0\) such that \( S\subset S_{\alpha}\cap S_{\beta}\). There exists open parts \( A_{\alpha}\subset U_{\alpha}\) and \( A_{\beta}\subset U_{\beta}\) such that \( S_{\alpha}=\varphi_{\alpha}(A_{\alpha})\) and \( S_{\beta}=\varphi_{\beta}(A_{\beta})\).
+
+		By hypothesis, the part \( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(A_{\beta})\) is open in \( U_{\alpha}\). The intersection
+		\begin{equation}
+			A=(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(A_{\beta})\cap A_{\alpha}
+		\end{equation}
+		is open and non empty. Setting \( S=\varphi_{\alpha}(A)\) we have \( S\in\tau_{\alpha}\subset\tau_0\) and
+		\begin{subequations}
+			\begin{align}
+				S=\varphi_{\alpha}(A) & = \varphi_{\alpha}\big( (\varphi_{\alpha}^{-1}\circ \varphi_{\beta})(A_{\beta})\cap A_{\alpha} \big)                  \\
+				                      & = \varphi_{\alpha}\big( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(A_{\beta}) \big)\cap \varphi_{\alpha}(A_{\alpha}) \\
+				                      & = \varphi_{\beta}(A_{\beta})\cap\varphi_{\alpha}(A_{\alpha})                                                          \\
+				                      & = S_{\alpha}\cap S_{\beta}.
+			\end{align}
+		\end{subequations}
+
+		If, for each \( i\in\{ 1,\ldots,n \}\) we have \( S_{\alpha_i}\in \tau_{\alpha_i}\), using what we just did, we have a \( S_{2}\in \tau_{\alpha_1}\) such that \( S_2\subset S_{\alpha_1}\cap S_{\alpha_2}\). Then we have \( S_3\in\tau_{\alpha_1}\) with \( S_3\subset S_2\cap S_{\alpha_3}\), and so on.
+
+		\spitem[Proof of \ref{ITEMooLNAPooIZVFVZ} : \( \tau_0\) is a basis of topology]
+		%-----------------------------------------------------------
+		Let \( \mO\in \tau_X\). There exists a finite part \( \Lambda_0\subset \Lambda\) such that
+		\begin{equation}
+			\bigcap_{\alpha\in\Lambda_0}\mO_{\alpha}\subset\mO
+		\end{equation}
+		with \( \mO_{\alpha}\in\tau_{\alpha}\) and the intersection being non empty\footnote{The set \( \mO\) is a union of such intersections, see proposition \ref{DefTopologieEngendree}.}. By the finite intersection part, there exists \( S\in \tau_0\) such that
+		\begin{equation}
+			S\subset\bigcap_{\alpha\in\Lambda_0}\mO_{\alpha}\subset\mO.
+		\end{equation}
+		Thus \( \tau_0\) is a basis of topology for \( \tau_X\).
+
+		\spitem[Proof of \ref{ITEMooRSZOooFfNrCQ}]
+		%-----------------------------------------------------------
+
+		Let \( m\in \varphi_{\alpha}(U_{\alpha})\) and let \( \mO\in\tau_X\) containing \( m\). Since \( \tau_0\) is a basis of topology of \( \tau_X\), there exists \( \beta\in\Lambda\) and an open part \( A_{\beta}\subset U_{\beta}\) such that \( m\in\varphi_{\beta}(A_{\beta})\subset\mO\). Let \( y=\varphi_{\beta}^{-1}(m)\). We have
+		\begin{equation}
+			\varphi_{\alpha}\big( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(y) \big)=m,
+		\end{equation}
+		and then \( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(y)=x\). Setting \( A_{\alpha}=(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(A_{\beta})\), the part \( A_{\alpha}\) is open in \( U_{\alpha}\) and we have
+		\begin{equation}
+			m\in\varphi_{\alpha}(A_{\alpha})\subset\varphi_{\beta}(A_{\beta})\subset\mO.
+		\end{equation}
+
+		\spitem[Proof of \ref{ITEMooXGDRooRWiVnF}]
+		%-----------------------------------------------------------
+
+		Let \( \mO\) be open in \( X\). We prove that \( \varphi_{\alpha}^{-1}(\mO)\) is open in \( U_{\alpha}\) by proving that it contains a neighbourhood of each of its points. Let \( x\in\varphi_{\alpha}^{-1}(\mO)\) and \( m=\varphi_{\alpha}(x)\). Since \( \tau_{\alpha}\) is a basis of topology around \( m\), there exists an open part \( A_{\alpha}\subset U_{\alpha}\) such that \( m\in\varphi_{\alpha}(A_{\alpha})\subset\mO\). This means that
+		\begin{equation}
+			x\in A_{\alpha}\subset\varphi_{\alpha}^{-1}(\mO),
+		\end{equation}
+		and \( \varphi_{\alpha}^{-1}(\mO)\) contains a neighbourhood of \( x\).
+
+		\spitem[Proof of \ref{ITEMooPPZIooViYPck}]
+		%-----------------------------------------------------------
+		The maps \( \varphi_{\alpha}\) are injective by hypothesis, and surjective on their image. We know from point \ref{ITEMooXGDRooRWiVnF} that \( \varphi_{\alpha}\) is continuous. The map \( \varphi^{-1}\) is continuous too since \( \varphi_{\alpha}(A_{\alpha})\) is open when \( A_{\alpha}\subset U_{\alpha}\) is open.
+
+		\spitem[Proof of \ref{ITEMooCMUKooBvlXbs}]
+		%-----------------------------------------------------------
+		Let \( \tau'_X\) be a topology on \( X\) such that the maps \( \varphi_{\alpha}\) are homeomorphic. We prove that \( \tau_X=\tau'_X\).
+		\begin{subproof}
+			\spitem[\( \tau_X\subset\tau'_X\)]
+			%-----------------------------------------------------------
+			If \( A_{\alpha}\subset U_{\alpha}\) is open, then \( \varphi_{\alpha}(A_{\alpha})\in\tau'_X\) because \( \varphi_{\alpha}^{-1}\) is continuous on \( (X,\tau'_X)\). Thus \( \tau_{\alpha}\subset\tau'_X\). We deduce that \( \tau_0\subset\tau'_X\), and since \( \tau_X\) is the topology generated by \( \tau_0\) it is contained in all the topologies containing \( \tau_0\). Thus \( \tau_X\subset\tau'_X\).
+			\spitem[\( \tau'_X\subset\tau_X\)]
+			%-----------------------------------------------------------
+
+			Let \( \mO\in\tau'_X\). For each \( \alpha\in\lambda\), the part \( \varphi_{\alpha}(\mO)\) is open in \( U_{\alpha}\). We write \( A_{\alpha}=\varphi_{\alpha}(\mO)\). We have \( \varphi_{\alpha}(A_{\alpha})\in\tau_X\) and
+			\begin{equation}
+				\mO=\bigcup_{\alpha\in\Lambda}\varphi_{\alpha}(A_{\alpha})\in\tau_X.
+			\end{equation}
+		\end{subproof}
+
+		\spitem[Proof of \ref{ITEMooAZHPooWzAjlS}]
+		%-----------------------------------------------------------
+
+		Definition \ref{DEFooJOMAooZscKwn} of a topological manifold.
+
+	\end{subproof}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Topology}
+%----------------------------------------------------
+
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooDEVUooCATTZI}
+	Let \( M\) be a topological manifold. We denote by \( \Lambda\) the set of all the charts on \( M\) and
+	\begin{equation}
+		\tau_{\Lambda}=\{ S\subset M\tq \forall \alpha\in\Lambda,\varphi_{\alpha}^{-1}(S\cap M_{\alpha})\in\tau_n \}.
+	\end{equation}
+	Then \( \tau_{\Lambda}\) is the topology of \( M\).
+\end{proposition}
+
+\begin{proof}
+	We denote by \( \tau_M\) the topology on \( M\).
+	\begin{subproof}
+		\spitem[\( \tau_{\Lambda}\subset \tau_M\)]
+		%-----------------------------------------------------------
+		Let \( A\in \tau_{\Lambda}\). In order to prove that \( A\) is open, we prove that each \( a\in A\) is contained in an open part contained in \( A\) (theorem \ref{ThoPartieOUvpartouv}).
+
+		Let \( a\in A\). We consider a chart \(\varphi_a \colon U_a\to M  \) such that \( a\in\varphi_a(U_a)\). By definition, the part \( \varphi_a^{-1}(A\cap M_a)\) is open in \( E_{\alpha}\). Since \( \varphi_{\alpha}\) is homeomorphic, the image of an open by \( \varphi_{\alpha}\) is open. Namely,
+		\begin{equation}
+			\varphi_{\alpha}\Big( \varphi_{\alpha}^{-1}(A\cap M_a) \Big)=A\cap M_a
+		\end{equation}
+		is open in \( M\). Thus the par \( A\cap M_a\) satisfy \( a\in A\cap M_a\subset\). This proves that \( A\) is open.
+
+		\spitem[\( \tau_M\subset \tau_{\Lambda}\)]
+		%-----------------------------------------------------------
+		Let \( A\in \tau_M\). Let \( \alpha\in\Lambda\); we have to check that \( \varphi_{\alpha}^{-1}(A\cap M_{\alpha})\) is open. The part \( M_{\alpha}\) is open (because it is the image of the open \( U_{\alpha}\) by the homeomorphism \( \varphi_{\alpha}\)). Thus the intersection \( A\cap M_{\alpha}\) is open and finally the part \( \varphi_{\alpha}^{-1}(A\cap M_{\alpha})\) is open.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]			\label{PROPooGAZZooWIPVuf}
+	Let \( M\) be a topological manifold. Let \( m\in M\) and \(\varphi \colon U\to M  \) be a chart such that \( m=\varphi(0)\). The set
+	\begin{equation}
+		\{ \varphi\big( B(0,\epsilon) \big) \}_{\epsilon>0}
+	\end{equation}
+	is a basis of neighbourhood of \( m\) in \( M\).
+\end{proposition}
+
+
+%-------------------------------------------------------
+\subsection{Covering with compact closure}
+%----------------------------------------------------
+
+\begin{lemma}[\cite{BIBooAQKHooVyiyN,BIBooKCFIooSAYbJK,MonCerveau}]		\label{LEMooDHIHooQtAWUJ}
+	Let \( M\) be a topological manifold. There exists a countable collection of open parts \( \{ X_i \}_{i\in \eN}\) such that
+	\begin{enumerate}
+		\item
+		      \( \bar X_i\) is compact,
+		\item
+		      \( \bar X_i\subset X_{i+1}\)
+		\item
+		      \( M=\bigcup_{i\in \eN}X_i\).
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	We suppose that \( M\) is connected and we prove the result in several steps.
+	\begin{subproof}
+		\spitem[Countable basis]
+		%-----------------------------------------------------------
+		Since \( M\) is second countable, we consider a countable basis of topology \( \{ \mO_j \}_{j\in J}\). We pick among them the ones with compact closure and we denote them by \( \{ Y_i \}_{i\in \eN}\).
+
+		\spitem[\( Y_i\) covers \( M\)]
+		%-----------------------------------------------------------
+		We prove that \( \bigcup_{i\in \eN}Y_i=M\). Let \( p\in M\) and a chart \(\varphi \colon U\to M  \) around \( p\). We write \( x=\varphi^{-1}(p)\). Let \( S\) be a bounded open neighbourhood of \( x\) in \( U\). The part \( \varphi(S)\) is open, and since \( \{ \mO_j \}_{j\in J}\) is a basis of topology, there exists \( j\in J\) such that \( \mO_j\subset\varphi(S)\). Using lemma \ref{LEMooNMPGooRlgppQ},
+		\begin{equation}
+			\bar\mO_j\subset\overline{\varphi(S)}=\varphi(\bar S).
+		\end{equation}
+		Since \( \bar S\) is closed and bounded, it is compact (Borel-Lebesgue \ref{ThoXTEooxFmdI}). Nous the part \( \bar\mO_j\) is closed in a compact so that it is compact by lemma \ref{LemnAeACf}\ref{ITEMooNKAKooQoNddr}.
+
+		The set \( \mO_j\) has compact closure and is then one of the \( \{ Y_i \}_{i\in \eN}\).
+		\spitem[The function \( m\)]
+		%-----------------------------------------------------------
+		We consider \( R\), the set of parts of \( M\) whose closure is compact. Then we define
+		\begin{equation}
+			\begin{aligned}
+				m\colon R & \to \eN                                                         \\
+				X         & \mapsto \min\{ n\in \eN\tq \bar X\subset \bigcup_{i=1}^nY_i \}.
+			\end{aligned}
+		\end{equation}
+		Now we argue that the minimum exists. The set \( \bar X\) is compact and covered by the \( \{ Y_i \}_{i\in \eN}\). Thus there exists a finite subset \( I_X\subset \eN\) such that \( \bar X\subset\bigcup_{i\in I_X}Y_i\). The finite integer \( \max(I_X)\) belongs to the set \( \{ n\in \eN\tq \bar X\subset\bigcup_{i=0}^nY_i \}\). Thus this set has a minimum.
+		\spitem[Union and compacity]		\label{SPITEMooJGIXooJPVzjP}
+		%-----------------------------------------------------------
+		The part \( \bigcup_{i=1}^n\bar Y_i\) is compact as finite union of compacts; it is thus closed and we have
+		\begin{equation}
+			\overline{\bigcup_{i=1}^nY_i}\subset\overline{  \bigcup_{i=1}^n\bar Y_i  }=\bigcup_{i=1}^n\bar Y_i.
+		\end{equation}
+		The part \( \overline{    \bigcup_{i=1}^nY_i   }\) is compact as a closed subset of a compact set.
+
+		\spitem[The function \( g\)]
+		%-----------------------------------------------------------
+		We define
+		\begin{equation}
+			\begin{aligned}
+				g\colon R & \to R                            \\
+				X         & \mapsto \bigcup_{i=0}^{m(X)}Y_i.
+			\end{aligned}
+		\end{equation}
+		The function \( g\) takes its values in \( R\) from point \ref{SPITEMooJGIXooJPVzjP}.
+		\spitem[A recursion]
+		%-----------------------------------------------------------
+		We define the \( X_i\) by the following recursion:
+		\begin{subequations}
+			\begin{numcases}{}
+				X_1=Y_1\\
+				X_{i+1}=g(X_i)
+			\end{numcases}
+		\end{subequations}
+		and the theorem \ref{THOooEJPYooZFVnez}. Now we have to prove that these \( X_i\) satisfy the properties.
+		\spitem[\( X_i\) is open]
+		%-----------------------------------------------------------
+		The part \( X_i\) is the union of open sets \( Y_k\).
+		\spitem[\( \bar X_i\) is compact]
+		%-----------------------------------------------------------
+		This is by construction because the image of \( g\) is in \( R\).
+		\spitem[\( \bar X_i\subset X_{i+1}\)]
+		%-----------------------------------------------------------
+		This is by construction of \( m\).
+		\spitem[\( M=\bigcup_{i=1}^nY_i\)]
+		%-----------------------------------------------------------
+		At this point, I remember you that we are dealing with the hypothesis that \( M\) is connected. There are two possibilities: either there exists \( k\) such that \( X_{k+1}=X_k\), or it does not.
+		\begin{subproof}
+			\spitem[If there is \( k\) such that \( X_{k+1}=X_k\)]
+			%-----------------------------------------------------------
+			For such a \( k\) we have \( \bar X_k\subset X_{k+1}=X_k\subset \bar X_k\), so that \( \bar X_k=X_k \) and \( X_k\) is closed. Since \( X_k\) is also open, it is equal to \( M\) by proposition \ref{PropHSjJcIr}\ref{ITEMooNIPZooIDPmEf}.
+			\spitem[If not]
+			%-----------------------------------------------------------
+			We have \( m(X_{i+1})>m(X_i)\). Since \( m\) is a \( \eN\)-valued function, this means that \( m(X_i)\to \infty\). In other words, every \( Y_i\) belong to some \( X_i\). Since \( \{ Y_i \}_{i\in \eN}\) is a covering of \( M\), we also have that \( \{ X_i \}_{i\in \eN}\) is a covering of \( M\).
+		\end{subproof}
+	\end{subproof}
+	What if \( M\) is not connected ? There are at most countably many connected components. For each component, we make the whole construction and we get the covering \( \{ X^{(k)}_{i\in \eN} \}\) for the \( k\)-th connected component. The we set
+	\begin{equation}
+		X_i=\bigcup_{k\leq i}X_i^{(k)}.
+	\end{equation}
+	\begin{subproof}
+		\spitem[\( \bar X_i\) is compact]
+		%-----------------------------------------------------------
+		We have
+		\begin{equation}
+			\bar X_i=\overline{\bigcup_{k\leq i}X_i^{(k)}}=\bigcup_{k\leq i}\overline{   X_i^{(k)} },
+		\end{equation}
+		which is compact as finite union of compacts.
+		\spitem[\( \bar X_i\subset X_{i+1}\)]
+		%-----------------------------------------------------------
+		We have
+		\begin{subequations}
+			\begin{align}
+				\bar X_i & =\overline{    \bigcup_{k\leq i}X_i^{(k)}   }              \\
+				         & =\bigcup_{k\leq i}\overline{X_i^{(k)}}                     \\
+				         & \subset \bigcup_{k\leq i}X_{i+1}^{(k)}                     \\
+				         & \subset \bigcup_{k\leq i}X_{i+1}^{(k)}\cup X_{i+1}^{(i+1)} \\
+				         & =X_{i+1}.
+			\end{align}
+		\end{subequations}
+		\spitem[\( M=\bigcup_{i\in \eN}X_i\)]
+		%-----------------------------------------------------------
+		Let \( p\in M\). Since \( \{ X_i^{(k)} \}_{i\in \eN}\) is a covering of the \( k\)-th connected component, there exists \( k,i\in \eN\) such that \( p\in X_i^{(k)}\). In this case, \( p\in X_i\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{definition}[\cite{BIBooAQKHooVyiyN}]		\label{DEFooBDJJooAxszUA}
+	Let \( \mW=\{ W_{\alpha} \}_{\alpha\in A}\) be a covering of a set \( E\). A covering \( \mY=\{ Y_i \}_{i\in I}\) is a \defe{refinement}{refinement of \( \mW\) } if for every \( i\in I\), there exits a \( \alpha\in A\) such that \( Y_i\subset W_{\alpha}\).
+\end{definition}
+
+\begin{proposition}[\cite{BIBooAQKHooVyiyN}]			\label{PROPooKAXIooNhNkNB}
+	Let \( M\) be a topological manifold. We consider a basis \( \mB=\{ B_s \}_{s\in S}\) of the topology of \( M\) and an open covering \( \mW=\{ W_{\alpha} \}_{\alpha\in A}\).
+
+	There exists a countable part \( I\) of \( S\) such that \( \{ B_i \}_{i\in I}\) is
+	\begin{enumerate}
+		\item
+		      a refinement\footnote{Definition \ref{DEFooBDJJooAxszUA}.} of \( \mW\),
+		\item
+		      locally finite.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	We consider a covering \( \{ X_i \}_{i\in \eN}\) as in lemma \ref{LEMooDHIHooQtAWUJ}.
+	\begin{subproof}
+		\spitem[\( \bar X_{i+1}\setminus X_i\) is compact]
+		%-----------------------------------------------------------
+		For each \( i\), the part \( \bar X_{i+1}\setminus X_i\) is closed (lemma \ref{LEMooSFMZooBguLdf}\ref{ITEMooFPGVooUZHzkA}) in the compact \( \bar X_{i+1}\), and then compact (lemma \ref{LemnAeACf}).
+		\spitem[\( \bar X_{i+1}\setminus X_i\subset X_{i+2}\setminus \bar X_{i-1}\)]
+		%-----------------------------------------------------------
+		Because \( \bar X_{i+1}\subset X_{i+1}\) and \( \bar X_{i-1}\subset X_i\).
+		\spitem[\( X_{i+2}\setminus \bar X_{i-1}\) is open]
+		%-----------------------------------------------------------
+		By lemma \ref{ITEMooULNTooKQyrJb}\ref{ITEMooULNTooKQyrJb}.
+		\spitem[The open covering \( \mO\)]
+		%-----------------------------------------------------------
+		We show that the set
+		\begin{equation}
+			\mO=\{ X_4,X_{i+2}\setminus \bar X_{i-1} \}_{i=3,4,\ldots}
+		\end{equation}
+		is an open covering of \( M\). Let \( p\in M\). From the construction (\ref{LEMooDHIHooQtAWUJ}) of the \( X_i\), the point \( p\) belongs to one of the \( X_i\). If \( p\) belongs to \( X_1\), \( X_2\), \( X_3\) or \( X_4\), it is in \( X_4\).
+
+		Suppose that \( p\in X_i\) with \( i>4\). Let \( m=\min\{ i\tq p\in X_i \}\). We have \( p\in X_m\setminus \bar X_{m-1}\subset X_m\setminus \bar X_{m-3}\in \mO\).
+		\spitem[The basis \( \mB'\)]
+		%-----------------------------------------------------------
+		We consider the set
+		\begin{equation}
+			\mB'=\{ B\in\mB\tq\begin{cases}
+				\exists \alpha\in A & \text{tq } B\subset W_{\alpha} \\
+				\exists i\in \eN    & \text{tq } B\subset \mO_i
+			\end{cases}\}
+		\end{equation}
+		where we denoted
+		\begin{equation}
+			\mO_i=\begin{cases}
+				X_4                          & \text{if } i=2     \\
+				X_{i+2}\setminus\bar X_{i-1} & \text{otherwise. }
+			\end{cases}
+		\end{equation}
+		We prove now that \( \mB'\) is a basis of the topology on \( M\). Let \( x\in M\) and \( D\) be an open set containing \( x\). Since \( \mW\) and \( \mO\) are coverings of \( M\),we consider \( \alpha\in A\) and \( i\in\eN\) such that \( x\in W_{\alpha}\cap \mO_i\). Now \( W_{\alpha}\cap \mO_i\cap D\) is an open set containing \( x\). Since \( \mB\) is a basis, there exists \( B\in \mB\) such that \( B\subset W_{\alpha}\cap \mO_i\cap D\). This set belongs to \( \mB'\).
+		\spitem[Next steps]
+		%-----------------------------------------------------------
+		For each part \( \mO_i\) we are going to build a finite subset \( S_i\subset S\) such that \( \mO_i\subset\bigcup_{s\in S_i}B_s\). The whole will be a countable subset of \( S\) covering \( M\) as we wish.
+
+		\spitem[\( S_3\)]
+		%-----------------------------------------------------------
+		Since \( X_4\) is open and \( \mB'\) is a basis of topology, the set
+		\begin{equation}
+			\{ B\in \mB'\tq B\subset X_4 \}
+		\end{equation}
+		is an open covering of \( X_4\), and then an open covering of the compact \( \bar X_3\). We extract a finite covering; in other words we consider a finite subset \( S_3\subset S\) such that
+		\begin{enumerate}
+			\item
+			      \( B_s\in\mB'\) for every \( s\in S_3\),
+			\item
+			      \( B_s\subset X_4\) for every \( s\in S_3\),
+			\item
+			      \( \bar X_3\subset\bigcup_{s\in S_3}B_s\).
+		\end{enumerate}
+		\spitem[\( S_i\) with \( i\geq 4\)]
+		%-----------------------------------------------------------
+		The part \( X_{i+2}\setminus \bar X_{i-1}\) is open, thus the set
+		\begin{equation}
+			\{ B\in \mB'\tq B\subset X_{i+2}\setminus \bar X_{i-1} \}
+		\end{equation}
+		is an open covering of \( X_{i+2}\setminus \bar X_{i-1}\). Then it is also an open covering of the compact part \( \bar X_{i+1}\setminus X_i\subset X_{i+2}\setminus X_{i+2}\setminus \bar X_{i_1}\). We extract a finite subcovering, that is a finite subset \( S_i\subset S\) such that
+		\begin{enumerate}
+			\item
+			      \( B_s\in \mB'\) for every \( s\in S_i\),
+			\item
+			      \( B_s\subset X_{i+2}\setminus\bar X_{i-1}\) for every \( s\in S_i\),
+			\item
+			      \( \bar X_{i+1}\setminus X_i\subset \bigcup_{s\in S_i}B_s\).
+		\end{enumerate}
+		\spitem[The answer]
+		%-----------------------------------------------------------
+		We set \( I=\bigcup_{i=3}^{\infty}S_i\). This is a countable subset of \( S\) such that \( B_i\in \mB'\) for every \( i\in I\). Our work now is to prove that \( I\) satisfies the requested conditions.
+
+		\spitem[Covering]
+		%-----------------------------------------------------------
+		We prove that \( \mI=\bigcup_{i\in I}B_i\) is a covering of \( M\). In this purpose, we see that the elements of \( \mO\) are covered by \( \mI\).
+		\begin{subproof}
+			\spitem[\( X_4\subset\mI\)]
+			%-----------------------------------------------------------
+			We know that \( \bar X_3\subset\bigcup_{s\in S_3}B_s\). It remains to prove that \( X_4\setminus \bar X_3\subset \mI\). We have
+			\begin{equation}
+				\bar X_4\setminus X_3\subset X_5\setminus \bar X_2\subset \bigcup_{s\in B_4}B_s\subset\mI.
+			\end{equation}
+			\spitem[The others]
+			%-----------------------------------------------------------
+			We have \( X_{i+2}\setminus\bar X_{i-1}\subset\mI\) by construction.
+		\end{subproof}
+		\spitem[Locally finite]
+		%-----------------------------------------------------------
+		We prove that \( \{ B_i \}_{i\in I}\) is locally finite\footnote{Definition \ref{DEFooERRQooNOpCXD}.}. Let \( x\in M\). The exists a \( i\in I \) such that \( x\in B_i\).
+		\begin{subproof}
+			\spitem[If \( x\in B_s\) with \( s\in S_3\)]
+			%-----------------------------------------------------------
+			If \( i\geq 5\), we have \( B_s\cap X_{i+2}\setminus \bar X_{i_1}=\emptyset\). Thus an element of \( B_s\) is covered by (at most) the sets \( B_t\) with \( t\in S_3\cup S_4\). Since \( S_3\) and \( S_4\) are finite, there are only finitely many elements of \( \mI\) containing \( x\).
+			\spitem[If \( x\in S_i\) with \( i\geq 4\)]
+			%-----------------------------------------------------------
+			We have \( B_s\subset X_{i+2}\setminus\bar X_{i-1}\), and then
+			\begin{equation}
+				B_s\cap\big( X_{i+5}\setminus \bar X_{i+2} \big)=\emptyset.
+			\end{equation}
+			Thus \( B_s\cap B_t=\emptyset\) for every \( t\geq i+3\). This shows that \( x\in B_s\) is contained at most in the sets \( B_t\) with \( t\in S_2\cup\ldots\cup S_{i+3}\) which is finite.
+		\end{subproof}
+		\spitem[Refinement]
+		%-----------------------------------------------------------
+		It remains to be shown that
+		\begin{equation}
+			\mB'=\{ B_i\tq i\in I \}'
+		\end{equation}
+		is a refinement of \( \mW\). We have
+		\begin{equation}
+			\mB''\subset\mB'=\{ B\in\mB\tq\begin{cases}
+				\exists \alpha\in A & \text{tq } B\subset W_{\alpha} \\
+				\exists i\in \eN    & \text{tq } B\subset \mO_i.
+			\end{cases}\}
+		\end{equation}
+		Thus every element of \( \mB''\) is contained in some \( W_{\alpha}\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}[Countable locally finite atlas\cite{MonCerveau}]		\label{PROPooYJKOooRwbOXF}
+	Let \( M\) be a topological manifold and let \( \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be an atlas. There exists an atlas \( \{ (V_{\beta}, \phi_{\beta}) \}_{\beta\in\Sigma}\) such that
+	\begin{enumerate}
+		\item
+		      \( \Sigma\) is countable.
+		\item
+		      \( \{ \phi_{\beta}(V_{\beta}) \}\) is a locally finite covering.
+		\item
+		      There exists a map \(f \colon \Sigma\to \Lambda  \) such that
+		      \begin{enumerate}
+			      \item
+			            \( V_{\beta}\subset U_{f(\beta)}\)
+			      \item
+			            \( \phi_{\beta}(x)=\varphi_{f(\beta)}(x)\).
+		      \end{enumerate}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Let \( \{ B_s \}_{s\in S}\) be a basis of topology of \( M\). The set \( \{ \varphi_{\alpha}(U_{\alpha}) \}\) is an open covering of \( M\). Proposition \ref{PROPooKAXIooNhNkNB} says that there exists a countable subset \( \Sigma\subset S\) such that \( \{ B_{\beta} \}_{\beta\in \Sigma}\) is a refinement of \( \{ \varphi_{\alpha}(U_{\alpha}) \}_{\alpha\in \Lambda}\). In other words, there exists a map \(f \colon \Sigma\to \Lambda  \) such that
+	\begin{equation}
+		B_{\beta}\subset \varphi_{f(\beta)}(U_{f(\beta)}).
+	\end{equation}
+	We define
+	\begin{equation}
+		V_{\beta}=\varphi_{f(\beta)}^{-1}(B_{\beta})\subset U_{f(\beta)}.
+	\end{equation}
+	and
+	\begin{equation}
+		\begin{aligned}
+			\phi_{\beta}\colon V_{\beta} & \to M                          \\
+			x                            & \mapsto \varphi_{f(\beta)}(x).
+		\end{aligned}
+	\end{equation}
+\end{proof}

@@ -1,0 +1,1694 @@
+% This is part of (almost) Everything I know in mathematics
+% Copyright (c) 2013-2014, 2020, 2023-2024
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+\section{Vector bundle}
+%++++++++++++++++++++++
+
+\begin{definition}[\cite{MonCerveau,BIBooZBHSooLbtepQ}]		\label{DEFooFRPLooTxMUzg}
+	Let \( M\) be a smooth manifold with charts \( \{ \varphi_{\alpha} \colon I_{\alpha}\to M   \}_{\alpha\in \tau}\). A \( k\)-dimensional \defe{vector bundle}{vector bundle} on \( M\) is the given of
+	\begin{enumerate}
+		\item		\label{ITEMooIVKKooNEfxVi}
+		      A vector space \( V_x\) for each \( x\in M\).
+
+		      Formally, we suppose that the vector space \( V_x\) has the form \( V_x=\{ (x,v)\tq v\in W_x \}\) for some vector space \( W_x\). The reason is that we want the union \( E=\bigcup_{x\in M}V_x\) to be disjoint.
+		\item
+		      For each chart \(\varphi_{\alpha} \colon U_{\alpha}\to M  \), a map
+		      \begin{equation}
+			      \sigma_{\alpha} \colon U_{\alpha}\times \eR^k\to \bigcup_{x\in \varphi_{\alpha}(U_{\alpha})}V_x.
+		      \end{equation}
+	\end{enumerate}
+
+	With the following conditions.
+	\begin{enumerate}[label=(\alph*)]
+		\item	\label{ITEMooVIYBooMXFaKb}
+		      The maps \( \sigma_{\alpha}\) give a manifold structure on \( E\).
+		\item	\label{ITEMooXHOBooERubro}
+		      The projection
+		      \begin{equation}
+			      \begin{aligned}
+				      \pi\colon E & \to M     \\
+				      (x,v)       & \mapsto x
+			      \end{aligned}
+		      \end{equation}
+		      is smooth for the differential structure of \( E\) given by the atlas \( \{ \sigma_{\alpha} \}_{\alpha\in\tau}\).
+		\item		\label{ITEMooXJIVooVJTorK}
+		      For every \( s\in U_{\alpha}\) and \( v\in \eR^k\) we have \( \sigma_{\alpha}(s,v)\in V_{\varphi_{\alpha}(s)}\).
+		\item \label{ITEMooOBCMooOCqoQo}
+		      For each \( s\in U_{\alpha}\), the map
+		      \begin{equation}
+			      \begin{aligned}
+				      \tau_{\alpha,s}\colon \eR^k & \to V_{\varphi_{\alpha}(s)}  \\
+				      v                           & \mapsto \sigma_{\alpha}(s,v)
+			      \end{aligned}
+		      \end{equation}
+		      is a vector space isomorphism (linear bijection).
+		\item		\label{ITEMooPNLXooLQWGqc}
+		      The map \(g_{\alpha\beta} \colon U_{\alpha}\cap U_{\beta}\to \Fun(\eR^k,\eR^k)  \) defined by
+		      \begin{equation}
+			      (\sigma_{\alpha}^{-1}\circ \sigma_{\beta})(s,v)=\big( s,g_{\alpha\beta}(s)v \big)
+		      \end{equation}
+		      belongs to \( C^{\infty}\big( U_{\alpha}\cap U_{\beta},\GL(\eR,k) \big)\).
+	\end{enumerate}
+	Most of the time, we will denote the whole vector bundle only by the couple \( (E,\pi)\).
+
+	The maps \( g_{\alpha\beta}\) are the \defe{transition functions}{transition function}.
+\end{definition}
+
+\begin{definition}		\label{DEFooDSKKooEFgmPU}
+	Let \( E_1\), \( E_2\) be two vector bundles over the same manifold \( M\). A map \(f \colon E_1\to E_2  \) is a \defe{vector bundle isomorphism}{vector bundle isomorphism} if
+	\begin{enumerate}
+		\item
+		      \( f\) is a manifold smooth diffeomorphism.
+		\item
+		      \( \pi_1\circ f=\pi_2\)
+		\item
+		      \( f\big( \pi_1^{-1}(x) \big)=\pi_2^{-1}(x)\) for every \( x\in M\).
+		\item
+		      The restriction \(f \colon \pi_1^{-1}(x)\to \pi_2^{-1}(x)   \) is a vector space isomorphism.
+	\end{enumerate}
+\end{definition}
+
+
+\begin{proposition}		\label{PROPooJZLEooYFgjnY}
+	Let \( V\) be a \( k\)-dimensional vector space. Let \(f \colon \eR^k\to V  \) be an isomorphism and \( M\), a manifold. We define
+	\begin{equation}
+		V_x=\{ (x,v)\tq v\in V \}
+	\end{equation}
+	and
+	\begin{equation}
+		\begin{aligned}
+			\sigma_{\alpha}\colon U_{\alpha}\times \eR^k & \to \bigcup_{x\in \varphi_{\alpha}(U_{\alpha})} \\
+			(s,v)                                        & \mapsto \big( \varphi_{\alpha}(s),f(v) \big).
+		\end{aligned}
+	\end{equation}
+	We have:
+	\begin{enumerate}
+		\item		\label{ITEMooYHUVooXUSryK}
+		      This is a vector bundle structure.
+		\item		\label{ITEMooCZLRooIJjQUn}
+		      If \( f\) and \( g\) are two isomorphisms between \( \eR^k\) and \( V\), the corresponding vector bundle are isomorphic\footnote{Definition \ref{DEFooDSKKooEFgmPU}}.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	For \ref{ITEMooYHUVooXUSryK}, this is a long verification\quext{Make it, write it and send me your proof, so that I can add it here.}.
+	%TODOooNKRPooHQgEtj
+
+	We prove \ref{ITEMooCZLRooIJjQUn}. We name \( E_1\) the vector bundle created by \( f\) and \( E_2\) the one created by \( g\). We define
+	\begin{equation}
+		\begin{aligned}
+			h\colon E_1 & \to E_2                                   \\
+			(x,v)       & \mapsto \big( x,(f\circ g^{-1})(v) \big).
+		\end{aligned}
+	\end{equation}
+	It satisfies \( \pi_1\circ h=\pi_2\) because \( \pi_i(x,v)=x\) for every \( v\). The map \( h\) is a bijection because \( f\) and \( g\) are bijections. Since \( f\) and \( g\) are linear, the restriction map \(h \colon V_x\to V_x  \) is a vector space isomorphism.
+
+	We prove that \( h\) is a manifold isomorphism: \( h\) and \( h^{-1}\) have to be smooth.
+	\begin{subproof}
+		\spitem[\( h\) is smooth]
+		%-----------------------------------------------------------
+		In order to say that \(h \colon E_1\to E_2  \) is smooth, we have to check that
+		\begin{equation}
+			\sigma_{f,\alpha}^{-1}\circ h\circ \sigma_{g,\beta} \colon  U_{\alpha}\cap U_{\beta}\times \eR^k  \to U_{\alpha}\cap U_{\beta}\times \eR^k
+		\end{equation}
+		is smooth. We have
+		\begin{subequations}
+			\begin{align}
+				\sigma_{f,\alpha}^{-1}\circ h\circ\sigma_{g,\beta}(s,v) & = (\sigma_{f,\alpha}\circ h)\big( \varphi_{\beta}(s),g(v) \big)                       \\
+				                                                        & =\sigma_{f,\alpha}^{-1}\Big( \varphi_{\beta}(s),(f\circ g^{-1})\big( g(v) \big) \Big) \\
+				                                                        & =\sigma_{f,\alpha}^{-1}\big( \varphi_{\beta}(s),f(v) \big)                            \\
+				                                                        & = \big( (\varphi_{\alpha}^{-1}\circ \varphi_{\beta})(s),v \big).
+			\end{align}
+		\end{subequations}
+		The last expression is smooth with respect to \( (s,v)\).
+		\spitem[\( h^{-1}\) is smooth]
+		%-----------------------------------------------------------
+		The verification is the same for \( \sigma_{g,\alpha}^{-1}\circ h^{-1}\circ\sigma_{g,\beta}\).
+	\end{subproof}
+\end{proof}
+
+\subsection{Transition functions}
+%--------------------------------
+
+\begin{proposition}
+	Let \( (E,\pi)\) be a vector bundle. The transition functions satisfy
+	\begin{equation}\label{eq:g_compat}
+		g_{\alpha\beta}\circ g_{\alpha\gamma}\circ g_{\gamma\alpha}=\mtu.
+	\end{equation}
+\end{proposition}
+
+\subsection{Inverse construction}\label{subsec:inv_g}
+%-------------------------------------------
+
+Let us consider a manifold $M$, an open covering $\{\mU_{\alpha}:\alpha\in I\}$ and some functions $\dpt{g\bab}{\mU\bab}{GL(r,\eK)}$ which fulfill relations \eqref{eq:g_compat}. We will build a vector bundle $E\stackrel{p}{\longrightarrow}M$ whose transition functions are the $g_{\alpha\beta}$'s. Let $\tilde{E}$ be the disjoint union
+\[
+	\tilde{E}=\bigsqcup_{\alpha\in I}\mU_{\alpha}\times\eK^r,
+\]
+i.e. triples of the form $(x,v,\alpha)\in M\times\eK^r\times I$ with the condition that $x\in\mU_{\alpha}$. We define an equivalence relation on $\tilde{E}$ by $(x,v,\alpha)\sim(y,w,\beta)$ if and only if $x=y$ and $w=g\bab(x)v$. Next, we define $E=\tilde{E}/\sim$ and $\dpt{\omega}{\tilde{E}}{E}$, the canonical projection. The projection $\dpt{p}{E}{M}$ is naturally defined by $p([x,v,\alpha])=x$. The chart diffeomorphism is $\dpt{\varphi_{\alpha}}{\mU_{\alpha}\times\eK^r}{p^{-1}(\mU_{\alpha})}$,
+\[
+	\varphi_{\alpha}(x,v)=\omega(x,v,\alpha).
+\]
+Now we have to prove that $E$ endowed with the $\varphi_{\alpha}$'s is a vector bundle.
+
+First we prove that $\varphi_{\alpha}$ is surjective. For this we remark that a general element in $p^{-1}(\mU_{\alpha})$ can be written under the form $\omega(x,v,\alpha)$ with $x\in\mU\bab$. But
+\begin{equation}
+	\begin{split}
+		\varphi_{\alpha}(x,g\bab(x)w) & =\omega(x,g\bab(x)w,\alpha)                  \\
+		                              & =\omega(x,g_{\alpha\beta}(x)g\bab(x)w,\beta) \\
+		                              & =\omega(x,w\beta),
+	\end{split}
+\end{equation}
+then $\varphi_{\alpha}$ is surjective. Now we suppose $\varphi_{\alpha}(x,v)=\varphi_{\alpha}(y,w)$. Then $\omega(x,v,\alpha)=\omega(y,w,\alpha)$ and $x=y$, $w=g_{\alpha\alpha}v$ which immediately gives $v=w$. Then $\varphi_{\alpha}$ is injective.
+
+Finally, we have
+\begin{equation}
+	(\varphi\alpha\circ\varphi_{\beta}^{-1})(\omega(x,v,\alpha))=\varphi_{\alpha}(x,g_{\alpha\beta}(x)v)
+	=\omega(x,g_{\alpha\beta}(x)v,\alpha),
+\end{equation}
+which proves that the maps $g$ are the transition functions of the vector bundle $E$.
+
+\subsection{Equivalence of vector bundle}
+%----------------------------------------
+
+Let $E\stackrel{p}{\longrightarrow}M$ and $F\stackrel{p'}{\longrightarrow}M$ be two vector bundles on $M$. They are \defe{equivalent}{equivalence!of vector bundle} if there exists a smooth diffeomorphism $\dpt{f}{E}{F}$ such that
+
+\begin{itemize}
+	\item $p'\circ f=p$,
+	\item $\dpt{f|_{E_x}}{E_x}{F_x}$ is a vector space isomorphism.
+\end{itemize}
+
+Let $E$ and $F$ be two equivalent vector bundles, $\{\mU_{\alpha}\tq \alpha\in I\}$, an open covering which trivialize $E$ and $F$ in the same time and $\phi^E_{\alpha}$, $\phi^F_{\alpha}$ the corresponding trivializations. A map $\dpt{f}{E}{F}$ reads ``in the trivialization''\ as $\dpt{\phi^F_{\alpha}\circ f|_{p^{-1}(\mu_{\alpha})}\circ\phi^E{}^{-1}_{\alpha}}{\mU_{\alpha}\times\eK^r}{\mU_{\alpha}\times\eK^r}$ and defines a map $\dpt{\lambda_{\alpha}}{\mU_{\alpha}}{GL(r,\eK)}$ by
+\begin{equation}
+	(\phi^F_{\alpha}\circ f|_{p^{-1}(\mu_{\alpha})}\circ\phi^E{}^{-1}_{\alpha})(x,v)=(x,\lambda_{\alpha}(x)v).
+\end{equation}
+If we denote by $g^E$ the transition functions for $E$ (and $g^F$ for $F$),
+\[
+	\phi^F_{\alpha}\circ\phi^F_{\beta}{}^{-1}= (\phi^F_{\alpha}\circ f\circ\phi_{\alpha}^E{}^{-1})\circ
+	(\phi^E_{\alpha}\circ\phi^E_{\beta}{}^{-1})\circ
+	(\phi^E_{\beta}\circ f^{-1}\circ\phi_{\beta}^E{}^{-1}),
+\]
+so that
+\begin{equation}\label{eq:g_l_g_l}
+	g\bab^F(x)=\lambda_{\alpha}(x) g^E\bab(x)\lambda(x)^{-1}.
+\end{equation}
+
+Once again we have an inverse construction. We consider a vector bundle $E$ on $M$ with transition functions $g^E$ and some maps $\dpt{\lambda_{\alpha}}{\mU_{\alpha}}{GL(r,\eK)}$; then we define $g^F\bab(x)$ by equation \eqref{eq:g_l_g_l}.
+
+From subsection~\ref{subsec:inv_g}, one can construct a vector bundle $F$ on $M$ whose transition functions are these $g^F$. With the trivializations $\phi^F$ of $F$, one can define $\dpt{f}{E}{F}$ by
+\[
+	(\phi^F_{\alpha}\circ f\circ\phi^E_{\alpha}{}^{-1})(x,v)=(x,\lambda_{\alpha}(x)v).
+\]
+
+When a basis space $B$ is given, we denote by $\Vect(B)$ the set of isomorphism classes of vector bundles over $B$. In the complex case, we denote it by $\Vect_{\eC}(B)$.
+
+\begin{proposition}
+	Any vector bundle over $\eR^n$ is trivial.
+\end{proposition}
+
+\begin{proof}
+	Let $\dpt{p}{F}{M}$ be a vector bundle on $M=\eR^n$ and $\{\mU_{\alpha}\}$ be covering of $\eR^n$ by local trivializations. Now consider a partition of unity\index{partition of unity} related to the covering $\mU_{\alpha}$: a set of functions $\dpt{f_{\alpha}}{M}{\eR}$ such that
+	\begin{itemize}
+		\item $f_{\alpha}>0$,
+		\item $\forall x\in M$, one can find a neighbourhood of $x$ in which only a \emph{finite} number of $f_{\alpha}$ is non zero,
+		\item $\forall x\in M$, $\sum_{\alpha} f_{\alpha}(x)=1$.
+		\item $f_{\alpha}=0$ outside of $\mU_{\alpha}$.
+	\end{itemize}
+	Using that partition of unity, we build the trivialization function $\dpt{f}{F}{\eR^n\times V}$ by $f(l)=(x,\sum_{\alpha} f_{\alpha}(x)\phi_{\alpha x}(l))$.
+\end{proof}
+
+The following two propositions have some importance in K-theory.
+\begin{proposition}		\label{PropEoplusEprimetriv}
+	Let $\pi\colon E\to B$ be a complex vector bundle over a basis compact, Hausdorff, connected basis $B$. Then there exists a vector bundle $E'$ such that $E\oplus E'$ is trivial.
+\end{proposition}
+
+\begin{proposition}		\label{PropmapfEEsun}
+	Let $f\colon A\to B$ be a map between the topological spaces $A$ and $B$, and consider a vector bundle $\pi\colon E\to B$. Then there exists one and only one vector bundle $\pi'\colon E'\to A$ and a map $f'\colon E'\to E$ such that $f'|_{E'_x}\colon E'_x\to E_{f(x)}$ is an isomorphism. The vector bundle $E'$ is unique up to isomorphism.
+\end{proposition}
+Proofs can be found in \cite{VB_and_K}. Let us denote by $f^*(E)$ the function given by proposition~\ref{PropmapfEEsun}. It satisfies the following properties
+\begin{equation}		\label{EqPropfstarEVect}
+	\begin{split}
+		(fg)^*(E)           & =g^*\big( f^*(E) \big)     \\
+		\id^*(E)            & =E                         \\
+		f^*(E_1\oplus E_2)  & =f^*(E_1)\oplus f^*(E_2)   \\
+		f^*(E_1\otimes E_2) & =f^*(E_1)\otimes f^*(E_2).
+	\end{split}
+\end{equation}
+
+
+
+\subsection{Sections of vector bundle}
+%-------------------------------------
+
+\begin{definition}		\label{DEFooULPGooZeVheH}
+	A \defe{section}{section!of vector bundle} of the vector bundle $p\colon E\to M$ is a smooth map $\dpt{s}{M}{E}$ such that $p\circ s=\id|_M$. The set of all the sections is denoted by $\Gamma^{\infty}(M)$ or simply $\Gamma(E)$.\nomenclature{$\Gamma(E)$}{Space of sections of the vector bundle $E$}
+\end{definition}
+
+\begin{proposition}		\label{PROPooMCJWooNAqmIQ}
+	Let \( E= \big(  \{ V_x \}_{x\in M},  \{ \sigma_{\alpha} \}  \big)\) be a vector bundle. We consider a set of sections \(e_i \colon M\to E  \) such that for each \( x\in M\), the set \( \{ e_i(x) \}\) is a basis of \( V_x\).
+
+	For every \( v\in \Gamma^{\infty}(E)\), there exist smooth functions \( v_i\in C^{\infty}(M)\) such that
+	\begin{equation}
+		v(x)=\sum_iv_i(x)e_i(x)
+	\end{equation}
+	for every \( x\in M\).
+\end{proposition}
+
+If $(\mU_{\alpha},\phi_{\alpha})$ is a local trivialization, one can describe the section $s$ by a function $\dpt{s_{\alpha}}{\mU_{\alpha}}{V}$ defined by $\phi_{\alpha}(s(x))=(x,s_{\alpha}(x))$, or equivalently by
+\[
+	s(x)=\phi_{\alpha}^{-1}(x,s_{\alpha}(x)).
+\]
+As usual when we define such a local quantity, we have to ask ourself how are related $s_{\alpha}$ and $s_{\beta}$ on $\mU_{\alpha}\cap\mU_{\beta}$. The best is $s_{\alpha}=s_{\beta}$, but most of the time it is not. Here, we compute
+\[
+	\phi_{\beta}\circ\phi_{\alpha}^{-1}\circ\phi_{\alpha}(s(s))=(x,g_{\alpha\beta}(x)s_{\alpha}(x)),
+\]
+which is obviously also equal to $(x,s_{\beta}(x))$. Then
+\begin{equation}\label{eq:tr_sec}
+	s_{\beta}(x)=g_{\alpha\beta}(x)s_{\alpha}(x)
+\end{equation}
+without summation.
+
+%-------------------------------------------------------
+\subsection{Tensor product}
+%----------------------------------------------------
+
+\begin{propositionDef}[\cite{MonCerveau,BIBooPQXJooItBJGZ}]		\label{DEFooCSDZooJuzGuE}
+	Let \( M \) be a smooth manifold with charts \( \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in\Lambda}\). We consider two vector bundles\footnote{Definition \ref{DEFooFRPLooTxMUzg}.} \( V_x^{(i)}\), \( \sigma_{\alpha}^{(i)}  \colon U_{\alpha}\times \eR^{k_i}\to \bigcup_{x\in M}V_x^{(i)} \) with transition functions \(g_{\alpha\beta}^{(i)} \colon U_{\alpha}\cap U_{\beta}\to \GL(\eR,k)  \).
+
+	Let \(r \colon \eR^{k_1}\otimes \eR^{k_2}\to \eR^{k_1k_2}  \) be a vector space isomorphism\footnote{For the dimension, see the proposition \ref{PROPooTHDPooWgjUwk}.}.
+
+	We consider the following :
+	\begin{enumerate}
+		\item
+		      \( V_x=V_x^{(1)}\otimes V_x^{(2)}\),
+		\item
+		      \( T=\bigcup_{x\in M}V_x\)
+		\item For each \( \alpha\in \Lambda\) we define
+		      \begin{equation}		\label{EQooXHURooBpOMlU}
+			      \begin{aligned}
+				      \sigma_{\alpha}\colon U_{\alpha}\times \eR^{k_1k_2} & \to T                                                                                   \\
+				      \big( s, r(\sum_{ij}a_{ij} v_i\otimes w_j) \big)    & \mapsto \sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j)
+			      \end{aligned}
+		      \end{equation}
+		      for every \( s\in U_{\alpha}\), \( v_i\in \eR^{k_1}\) and \( w_j\in \eR^{k_2}\).
+	\end{enumerate}
+
+	We have:
+	\begin{enumerate}
+		\item \label{ITEMooDTGOooSCsElj}
+		      There exists a unique topology \( \tau_T\) on \( T\) such that the maps \( \sigma_{\alpha}\) are homeomorphic.
+		\item		\label{ITEMooRALUooFvLQaV}
+		      The topological space \( (T,\tau_T)\) is a topological manifold\footnote{Definition \ref{DEFooJOMAooZscKwn}.}
+		\item
+		      The set \( \{ \sigma_{\alpha} \}_{\alpha\in\Lambda}\) is an atlas of \( T\).
+		\item
+		      The topological manifold \( T\) with the atlas \( \{ \sigma_{\alpha} \}_{\alpha\in \Lambda}\) is a smooth vector bundle of dimension \( k_1k_2\) over \( M\).
+		\item
+		      The vector bundle does not depend on the choice of the isomorphism \( r\) in the sense that two vector bundles build from two different isomorphisms \( r_1\) and \( r_2\) are equivalent.
+		      %TODOooTXYEooCxyiwi Je dois définir la notion d'équivalence, et le prouver.
+		      % C'est la définition DEFooDSKKooEFgmPU
+	\end{enumerate}
+\end{propositionDef}
+
+\begin{proof}
+	There are numerous points to be checked.
+
+	\begin{proofpart}
+		Some properties of \( \sigma_{\alpha}\).
+	\end{proofpart}
+	Before to begin with all the verifications, we check few properties of \( \sigma_{\alpha}\).
+
+	We introduce the maps
+	\begin{equation}		\label{EQooYICAooRDhYnz}
+		\begin{aligned}
+			\tau_{\alpha,s}\colon \eR^{k_1k_2} & \to V_{\varphi_{\alpha}(s)}     \\
+			\xi                                & \mapsto \sigma_{\alpha}(s,\xi).
+		\end{aligned}
+	\end{equation}
+	And we prove that \( \tau_{\alpha,s}\) is a linear bijection. If \( \xi=r\big( \sum_{ij}a_{ij}v_i\otimes w_j \big)\),
+	\begin{equation}
+		\tau_{\alpha,s}(\xi)=\sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j).
+	\end{equation}
+	\begin{subproof}
+		\spitem[\( \tau_{\alpha, s}\) is linear]		\label{ITEMooCMQEooReGOdu}
+		%-----------------------------------------------------------
+		For the linearity, for \( \lambda\in \eR\) we have
+		\begin{subequations}
+			\begin{align}
+				\tau_{\alpha,s}(\lambda\xi) & =\tau_{\alpha,s}\Big( r\big( \sum_{ij}a_{ij}(\lambda v_i)\otimes w_j \big) \Big)         \\
+				                            & =\sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,\lambda v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j) \\
+				                            & =\lambda\sum_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j)        \\
+				                            & =\lambda\tau_{\alpha,s}(\xi)
+			\end{align}
+		\end{subequations}
+		because \( \sigma_{\alpha}^{(1)}(s,\lambda v_i)=\lambda\sigma_{\alpha}^{(1)}(s,v_i)\). The same kind of computations hold to prove that \( \tau_{\alpha,s}(\xi_1+\xi_2)=\tau_{\sigma,s}(\xi_1)+\tau_{\alpha,s}(\xi_2)\).
+		\spitem[\( \tau_{\alpha,s}\) is injective]
+		%-----------------------------------------------------------
+		Suppose \( \tau_{\alpha,s}(\xi)=0\). Let \( \{e_i\}\) be a basis of \( V\) and \( \{e'_j\}\) be a basis of \( W\). By proposition \ref{PROPooTHDPooWgjUwk}\ref{ITEMooQCILooUncdGl}, the set \( \{e_i\otimes e'_j\}\) is a basis of \( V\otimes W\). We write \( \xi=r\big( \sum_{ij}a_{ij}e_i\otimes e'_j \big)\), so that
+		\begin{equation}		\label{EQooVGWPooTRDuJW}
+			\sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,e_i)\otimes \sigma_{\alpha}^{(2)}(s,e'_j)=0.
+		\end{equation}
+		Since \( v\mapsto \sigma_{\alpha}^{(i)}(s,v)\) is a linear bijection, the set \( \{ \sigma_{\alpha}^{(i)}(s,v) \}\) is a basis of \( V_{\varphi_{\alpha}(s)}^{(i)}\). We conclude that the set
+		\begin{equation}
+			\{ \sigma_{\alpha}^{(1)}(s,e_i)\otimes \sigma_{\alpha}^{(2)}(s,e'_j) \}
+		\end{equation}
+		is a basis of \( V_{\varphi_{\alpha}(s)}=V_{\varphi_{\alpha}(s)}^{(1)}\otimes V_{\varphi_{\alpha}(s)}^{(2)}\). Thus equation \eqref{EQooVGWPooTRDuJW} implies that \( a_{ij}=0\) for every \( i,j\). We conclude that \( \xi=0\) and that \( \tau_{\alpha,s}\) is injective.
+
+		\spitem[\( \tau_{\alpha,s}\) is surjective]
+		%-----------------------------------------------------------
+		The set \(			\{ \sigma_{\alpha}^{(1)}(s,e_i)\otimes \sigma_{\alpha}^{(2)}(s,e'_j) \}  \) is a basis and is in the image of \( \tau_{\alpha,s}\) which is linear. Thus \( \tau_{\alpha,s}\) is surjective.
+
+		\spitem[\( \sigma_{\alpha}\) is injective]		\label{ITEMooXSPDooKMXlBN}
+		%-----------------------------------------------------------
+		Let \( \sigma_{\alpha}(s_1,t_1)=\sigma_{\alpha}(s_2,t_2)\). In particular we have
+		\begin{equation}
+			\phi\big( \sigma_{\alpha}(s_1,t_1) \big)=
+		\end{equation}
+	\end{subproof}
+
+	Now we introduce the projection map
+	\begin{equation}
+		\begin{aligned}
+			\pi\colon T & \to M                                  \\
+			\xi         & \mapsto x & \text{if \( \xi\in V_x\)}.
+		\end{aligned}
+	\end{equation}
+	Let \( s\in U_{\alpha}\) and \( t\in \eR^{k_1k_2}\). For some \( v_i\) and \( w_j\) we have
+	\begin{equation}
+		\sigma_{\alpha}(s,t)=\sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes\sigma_{\alpha}^{(2)}(s,w_j)\in V_{\varphi_{\alpha}(s)}^{(1)}\otimes V_{\varphi_{\alpha}(s)}^{(2)}.
+	\end{equation}
+	Thus we have
+	\begin{equation}		\label{EQooRSRJooWNtWIA}
+		(\pi\circ\sigma_{\alpha})(s,t)=\varphi_{\alpha}(s).
+	\end{equation}
+
+	\begin{proofpart}
+		Proof of \ref{ITEMooDTGOooSCsElj}: topology
+	\end{proofpart}
+
+	We prove that the set \( T\) with the maps \( \sigma_{\alpha}\) satisfy the theorem \ref{THOooFIHIooLiSUxH}.
+	\begin{subproof}
+		\spitem[Theorem \ref{THOooFIHIooLiSUxH}, hypothesis \ref{ITEMooDWSWooWdcDdI}]
+		%-----------------------------------------------------------
+		The domain of \( \sigma_{\alpha}\) is \( U_{\alpha}\times \eR^{k_1k_2}\) which is open in \( \eR^{n+k_1k_2}\).
+
+		\spitem[Theorem \ref{THOooFIHIooLiSUxH}, hypothesis \ref{ITEMooPEXDooNuJBKH}]
+		%-----------------------------------------------------------
+		A generic element of \( T\) has the form
+		\begin{equation}
+			\xi=\sum_{ij}a_{ij} v_i\otimes w_j=\sum_{ij} (a_{ij}v_i)\otimes w_j
+		\end{equation}
+		with \( v_i\in V_x^{(1)}\) and \( w_j\in V_x^{(2)}\) for some \( x\in M\). There exists a \( \alpha\) such that \( x\in \varphi_{\alpha}(U_{\alpha})\). Let \( s\in U_{\alpha}\) such that \( x=\varphi_{\alpha}(s)\). There exist vectors \( v'_{ij}\in \eR^{k_1}\) such that
+		\begin{equation}
+			a_{ij}v_i=\sigma_{\alpha}^{1}(s,v'_{ij}),
+		\end{equation}
+		and \( w'_j\in \eR^{k_2}\) such that \( w_j=\sigma_{\alpha}^{2}(s,w'_j)\). Now we have
+		\begin{subequations}
+			\begin{align}
+				\sigma_{\alpha}\big( s,r(\sum_{ij}v'_{ij}\otimes w'_j) \big) & =\sum_{ij}\sigma_{\alpha}^{(1)}(s,v'_{ij})\otimes \sigma_{\alpha}^{(2)}(s,w'_j) \\
+				                                                             & = \sum_{ij}a_{ij}v_i\otimes w_j                                                 \\
+				                                                             & =\xi.
+			\end{align}
+		\end{subequations}
+		This proves that \( \xi\) belongs to \( \sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2})\).
+
+		\spitem[Theorem \ref{THOooFIHIooLiSUxH}, hypothesis \ref{ITEMooSRPQooNUPzlj}]
+		%-----------------------------------------------------------
+		The fact that \( \sigma_{\alpha}\) is injective is already proved.
+
+		\spitem[Theorem \ref{THOooFIHIooLiSUxH}, hypothesis \ref{ITEMooWFAWooAqQfzZ}]
+		%-----------------------------------------------------------
+		We have to prove that, for every \( \alpha,\beta\in \Lambda\),
+		\begin{equation}
+			\sigma_{\alpha}^{-1}\Big( \sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2})\cap \sigma_{\beta}(U_{\beta}\times \eR^{k_1k_2}) \Big)
+		\end{equation}
+		is open in \( U_{\alpha}\times \eR^{k_1k_2}\).
+
+		First we prove that
+		\begin{equation}		\label{EQooNWFCooWcxQxa}
+			\sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2})\cap \sigma_{\beta}(U_{\beta}\times \eR^{k_1k_2})=\bigcup_{x\in \varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})}V_x^{(1)}\otimes V_x^{(2)}.
+		\end{equation}
+		\begin{subproof}
+			\spitem[First inclusion]
+			%-----------------------------------------------------------
+			Let \( \xi\in \sigma_{\alpha}(S_{\alpha}\times X_{\alpha})\cap \sigma_{\beta}(S_{\beta}\times X_{\beta})\). There exists \( s\in S_{\alpha}\) and \( v\in X_{\alpha}\) such that, using the condition \ref{DEFooFRPLooTxMUzg}\ref{ITEMooXJIVooVJTorK},
+			\begin{equation}
+				\xi=\sigma_{\alpha}(s,v)\in V_{\varphi_{\alpha}(s)}=V_{\varphi_{\alpha}(s)}^{(1)}\otimes V_{\varphi_{\alpha}(s)}^{(2)}.
+			\end{equation}
+			In the same way, there exists \( t\in U_{\beta}\) and \( w\in \eR^{k_1k_2}\) such that
+			\begin{equation}
+				\xi=\sigma_{\beta}(t,w)\in V_{\varphi_{\beta}(t)}=V_{\varphi_{\beta}(t)}^{(1)}\otimes V_{\varphi_{\beta}(t)}^{(2)}.
+			\end{equation}
+			We deduce that \( \varphi_{\alpha}(s)=\varphi_{\beta}(t)\), which is, by the way, \( \pi(\xi)\). Thus, setting \( x=\varphi_{\alpha}(s)\) we have
+			\begin{equation}
+				\xi\in V_x^{(1)}\otimes V_{x}^{(2)}.
+			\end{equation}
+			\spitem[Second inclusion]
+			%-----------------------------------------------------------
+			Let \( \xi\in V_x^{(1)}\otimes V_x^{(2)}\) with \( x\in \varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})\). We can write \( \xi=\sum_{ij}a_{ij}v_i\otimes w_j\) with \( v_i\in V_x^{(1)}\) and \( w_j\in V_x^{(2)}\). Since the map \(\sigma_{\alpha}^{(1)} \colon U_{\alpha}\times \eR^{k_1}\to \bigcup_{x\in M}V_x^{(1)}  \) is a chart, there exist \( v'_i\in \eR^{k_1}\) such that
+			\begin{equation}
+				v_i=\sigma_{\alpha}^{(1)}\big( \varphi_{\alpha}^{-1}(x),v'_i \big).
+			\end{equation}
+			In the same way, there exists \( w'_{ij}\in \eR^{k_2}\) such that
+			\begin{equation}
+				a_{ij}w_j=\sigma_{\alpha}^{(2)}\big( \varphi_{\alpha}^{-1}(x),w'_{ij} \big).
+			\end{equation}
+			Few computations:
+			\begin{subequations}
+				\begin{align}
+					\xi & =\sum_{ij}a_{ij}v_i\otimes w_j                                                                                                                     \\
+					    & =\sum_{ij}v_i\otimes (a_{ij}w_j)                                                                                                                   \\
+					    & =\sum_{ij}\sigma_{\alpha}^{(1)}\big( \varphi_{\alpha}^{-1}(x),v'_i \big)\otimes \sigma_{\alpha}^{(2)}\big( \varphi_{\alpha}^{-1}(x), w'_{ij} \big) \\
+					    & =\sigma_{\alpha}\Big( \varphi_{\alpha}^{-1}(x),r\big( \sum_{ij}v'_i\otimes w'_{ij} \big) \Big)                                                     \\
+					    & \in \sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2}).
+				\end{align}
+			\end{subequations}
+			In the same way we see that \( \xi\in \sigma_{\beta}(U_{\beta}\times \eR^{k_1k_2})\). Equation \eqref{EQooNWFCooWcxQxa} is proven.
+		\end{subproof}
+		Now let \( A\) be a part of \( U_{\alpha}\). We prove that
+		\begin{equation}		\label{EQooJCUAooYxMMvC}
+			\sigma_{\alpha}^{-1}\big( \bigcup_{x\in \varphi_{\alpha}(A)}V_x^{(1)}\otimes V_x^{(2)} \big)=A\times \eR^{k_1k_2}.
+		\end{equation}
+		\begin{subproof}
+			\spitem[First inclusion]
+			%-----------------------------------------------------------
+			Let \( \xi\in V_x^{(1)}\otimes V_x^{(2)}\) and let \( s\in U_{\alpha}\) be such that \( x=\varphi_{\alpha}(s)\). We have \( \xi=\sum_{ij}a_{ij} v_i\otimes w_j\) with \( v_i= \sigma_{\alpha}^{(1)}(s,v'_i)\) and \( a_{ij}w_j=\sigma_{\alpha}^{(2)}(s,w'_{ij})\). Now we have
+			\begin{subequations}
+				\begin{align}
+					\xi & =\sum_{ij}\sigma_{\alpha}^{(1)}(s,v'_i)\otimes \sigma_{\alpha}^{(2)}(s,w_{ij}') \\
+					    & =\sigma_{\alpha}\big( s,r(\sum_{ij}v'_i\otimes w'_{ij}) \big)                   \\
+					    & \in \sigma_{\alpha}\big( \varphi_{\alpha}^{-1}(x),\eR^{k_1k_2} \big).
+				\end{align}
+			\end{subequations}
+			\spitem[Second inclusion]
+			%-----------------------------------------------------------
+			Let \( (s,\omega)\in A\times \eR^{k_1k_2}\). We have to prove that \( \sigma_{\alpha}(s,\omega)\in \bigcup_{x\in \varphi_{\alpha}(A)}V_x^{(1)}\otimes V_x^{(2)}\). For that, notice that \( \omega\in \eR^{k_1k_2}\) can be written as \( \omega=r\big( \sum_{ij}a_{ij}v_i\otimes w_j \big)\) for some \( v_i\in \eR^{k_1}\) and \( w_j\in \eR^{k_2}\). Now compute
+			\begin{equation}
+				\sigma_{\alpha}(s,\omega)=\sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2))}(s,w_j).
+			\end{equation}
+			Since \( \sigma_{\alpha}^{(1)}(s,v_i)\in V_{\varphi_{\alpha}(s)}\) and \( \sigma_{\alpha}^{(2)}(s,w_j)\in V_{\varphi_{\alpha}(s)}^{(2)}\) we found that
+			\begin{equation}
+				\sigma_{\alpha}(s,\omega)\in V_{\varphi_{\alpha}(s)}^{(1)}\otimes V_{\varphi_{\alpha}(s)}^{(2)}
+			\end{equation}
+			The equality \eqref{EQooJCUAooYxMMvC} is proved.
+		\end{subproof}
+
+		Recall what we have in equations \eqref{EQooNWFCooWcxQxa} and \eqref{EQooJCUAooYxMMvC} :
+		\begin{subequations}
+			\begin{align}
+				\sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2}) & \cap \sigma_{\beta}(U_{\beta}\times \eR^{k_1k_2})                                                                                                                                                    \\
+				                                               & =\bigcup_{x\in \varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})}V_x^{(1)}\otimes V_x^{(2)}                                                                                                \\
+				                                               & = \Big( \bigcup_{x\in \varphi_{\alpha}(U_{\alpha})}V_x^{(1)}\otimes V_x^{(2)} \Big)\cap\Big( \bigcup_{x\in \varphi_{\beta}(U_{\beta})}V_x^{(1)}\otimes V_x^{(2)}  \Big)		\label{SUBEQooPFDVooPuzjYl}
+			\end{align}
+		\end{subequations}
+		and
+		\begin{equation}		\label{EQooSYTEooEfyxPi}
+			\sigma_{\alpha}^{-1}\big( \bigcup_{x\in \varphi_{\alpha}(A)}V_x^{(1)}\otimes V_x^{(2)} \big)    =A\times \eR^{k_1k_2}.
+		\end{equation}
+		The map \( \sigma_{\alpha}^{-1}\) is injective, so that we can use proposition \ref{PROPooBXVSooZXmwKC}. Now we make the final computation, writing \( M_{\alpha}=\varphi_{\alpha}(U_{\alpha})\):
+		\begin{subequations}
+			\begin{align}
+				 & \sigma_{\alpha}^{-1}\big( \sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2}) \cap \sigma_{\beta}(U_{\beta}\times \eR^{k_1k_2})  \big)                                                                                                                               \\
+				%
+				%
+				%
+				 & = \sigma_{\alpha}^{-1}\Big(  \bigcup_{x\in \varphi_{\alpha}(U_{\alpha})}V_x^{(1)}\otimes V_x^{(2)}  \Big) \cap   \sigma_{\alpha}^{-1}\Big(  \bigcup_{x\in \varphi_{\beta}(U_{\beta})}V_x^{(1)}\otimes V_x^{(2)}  \Big) & \text{eq. \eqref{SUBEQooPFDVooPuzjYl}} \\
+				%
+				%
+				%
+				 & = \big( U_{\alpha}\cap \eR^{k_1k_2} \big) \cap   \sigma_{\alpha}^{-1}\Big(  \bigcup_{x\in  \varphi_{\alpha}\big( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(U_{\beta}) \big)   }V_x^{(1)}\otimes V_x^{(2)}  \Big)     & \text{eq. \eqref{EQooSYTEooEfyxPi}}    \\
+				%
+				%
+				%
+				 & = \big( U_{\alpha}\times \eR^{k_1k_2} \big) \cap \big(   (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(U_{\beta})   \times \eR^{k_1k_2} \big)                                                                            & \text{eq. \eqref{EQooSYTEooEfyxPi}}    \\
+				%
+				%
+				%
+			\end{align}
+		\end{subequations}
+		We know that \( (\varphi_{\alpha}^{-1}\circ\varphi_{\beta})(U_\beta)\) is open in \( U_{\alpha}\) since \( \varphi_{\alpha}\) and \( \varphi_{\beta}\) are charts of \( M\).
+
+		\spitem[Theorem \ref{THOooFIHIooLiSUxH}, hypothesis \ref{ITEMooZHLXooBpWSXr}]
+		%-----------------------------------------------------------
+
+		We have to prove that
+		\begin{equation}	\label{EQooVKUBooKuLAnX}
+			\sigma_{\beta}^{-1}\circ\sigma_{\alpha}  \colon  \sigma_{\alpha}^{-1}\Big( \sigma_{\alpha}(U_{\alpha}\times \eR^{k_1k_2})\cap \sigma_{\beta}(U_{\beta}\times \eR^{k_1k_2}) \Big)      \to  U_{\beta}\times \eR^{k_1k_2}
+		\end{equation}
+		is continuous. In fact, we will prove that this map is even smooth. It is the same price and we will need it later.
+
+		\begin{subproof}
+			\spitem[First step]
+			%-----------------------------------------------------------
+
+			We have :
+			\begin{equation}		\label{EQooNROCooARFfPa}
+				(\sigma_{\beta}^{-1}\circ \sigma_{\alpha})\Big( s,r\big( \sum_{ij}a_{ij}v_i\otimes w_j \big)\Big)
+				=\sigma_{\beta}^{-1}\Big( \sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j) \Big).
+			\end{equation}
+
+			\spitem[Notation \( A_1\) and \( A_2\)]
+			%-----------------------------------------------------------
+			Small point about the notations. When we have a map \(A \colon U_{\alpha}\times \eR^{k_1}\to U_{\beta}\times \eR^{k_2}  \), we write \( A_1(s,v)\) the \( U_{\beta}\) component of \( A(s,v)\) and \( A_2(s,v)\) the component in \( \eR^{k_2}\).
+
+			With that notation we have
+			\begin{equation}		\label{EQooSBLDooRxPKQR}
+				(\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(1)})_1(s,v)=(\varphi_{\beta}^{-1}\circ \varphi_{\alpha})(s).
+			\end{equation}
+			Indeed, by definition \ref{DEFooFRPLooTxMUzg}\ref{ITEMooOBCMooOCqoQo}, we have \( \sigma_{\alpha}^{(1)}(s,v)\in V_{\varphi_{\alpha}(s)}^{(1)}\), and by the same point,
+			\begin{equation}
+				\sigma_{\beta}^{(1)-1}\big( V_{\varphi_{\alpha}(s)} \big)=\big( (\varphi_{\beta}^{-1}\circ\varphi_{\alpha})(s), \eR^{k_1} \big).
+			\end{equation}
+			The first component is \( (\varphi_{\beta}^{-1}\circ \varphi_{\alpha})(s)\) as expected.
+
+			\spitem[Next step]
+			%-----------------------------------------------------------
+			We continue \eqref{EQooNROCooARFfPa} by proving
+			\begin{equation}		\label{EQooGVGEooRbGZUd}
+				\begin{aligned}[]
+					 & \sigma_{\beta}^{-1}\Big( \sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j) \Big)                                  \\
+					 & \quad = \Big( (\varphi_{\beta}^{-1}\circ\varphi_{\alpha})(s),r\big( \sum_{ij}a_{ij}(\sigma_{\beta}^{(1)-1}\circ \sigma_{\alpha}^{(1)})_2(s,v_i)
+					\otimes
+					(\sigma_{\beta}^{(2)-1}\circ\sigma_{\alpha}^{(2)})_2(s,w_j)
+					\big) \Big).
+				\end{aligned}
+			\end{equation}
+
+			Notice that, setting \( x=(\varphi_{\beta}^{-1}\circ\varphi_{\alpha})(s)\), the equation \eqref{EQooSBLDooRxPKQR} says that \(   (\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(1)})_1(s,v_i)  =x   \), so that
+			\begin{equation}		\label{EQooZEBYooXtCaUP}
+				\big( x,  (\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(1)})_2(s,v_i) \big) = (\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(1)})(s,v_i).
+			\end{equation}
+
+			Now we prove \eqref{EQooGVGEooRbGZUd} by applying \( \sigma_{\beta}\) to the right hand side :
+			\begin{subequations}
+				\begin{align}
+					                                                                                            & \sigma_{\beta}  \Big( x,r\big( \sum_{ij}a_{ij}(\sigma_{\beta}^{(1)-1}\circ \sigma_{\alpha}^{(1)})_2(s,v_i)
+					\otimes
+					(\sigma_{\beta}^{(2)-1}\circ\sigma_{\alpha}^{(2)})_2(s,w_j)
+					\big) \Big)                                                                                                                                                                                              \\
+					                                                                                            & \quad  = \sum_{ij}a_{ij}
+					\sigma_{\beta}^{(1)}\big( x,  (\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(1)})_2(s,v_i) \big)
+					\otimes
+					\sigma_{\beta}^{(2)}\big( x,  (\sigma_{\beta}^{(2)-1}\circ\sigma_{\alpha}^{(2)})_2(s,w_i) \big)                                                                                                          \\
+					                                                                                            & \quad  = \sum_{ij}a_{ij}
+					\sigma_{\beta}^{(1)}\big(   (\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(1)})(s,v_i) \big)
+					\otimes
+					\sigma_{\beta}^{(2)}\big(   (\sigma_{\beta}^{(2)-1}\circ\sigma_{\alpha}^{(2)})(s,w_i) \big) & \text{eq. \eqref{EQooZEBYooXtCaUP}}                                                                        \\
+					                                                                                            & \quad = \sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j).
+				\end{align}
+			\end{subequations}
+			\spitem[Conclusion]
+			%-----------------------------------------------------------
+			We have
+			\begin{subequations}		\label{SUBEQSooRYKSooBkBmaF}
+				\begin{align}
+					 & (\sigma_{\beta}^{-1}\circ\sigma_{\alpha})\Big( s,r\big( \sum_{ij}a_{ij}v_i\otimes w_j \big) \Big)                                                                                                                               \\
+					 & \quad =\sigma_{\beta}^{-1}\Big( \sum_{ij}a_{ij}   \sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j)  \Big)                                                                                                       \\
+					 & \quad = \Big( (\varphi_{\beta}^{-1}\circ\varphi_{\alpha})(s),r\big[  \sum_{ij}a_{ij}(\sigma_{\beta}^{(2)-1}\circ\sigma_{\alpha}^{(1)})_2(s,v_i)\otimes (\sigma_{\beta}^{(1)-1}\circ\sigma_{\alpha}^{(2)})_2(s,w_j) \big] \Big).
+				\end{align}
+			\end{subequations}
+			Since the maps \( \varphi_{\alpha}\), \( \varphi_{\beta}\) are charts of \( M\), the composition \( \varphi_{\beta}^{-1}\circ\varphi_{\alpha}\) is smooth. The same way, the maps \( \sigma_{\alpha}^{(i)}\) and \( \sigma_{\beta}^{(i)} \) are charts of \( \bigcup_{x\in M}V_x^{(i)}\), the composition \( \sigma_{\beta}^{(i)-1}\circ \sigma_{\alpha}^(i)\) is smooth.
+		\end{subproof}
+	\end{subproof}
+
+	At this point, the theorem \ref{THOooFIHIooLiSUxH}\ref{ITEMooCMUKooBvlXbs} gives us a unique topology on \( T\) such that the maps \( \sigma_{\alpha}\) are homeomorphic. In order to turn \( T\) into a topological manifold, we have to show that this topology is Hausdorff and second countable.
+
+	\begin{subproof}
+
+		\spitem[Hausdorff]
+		%-----------------------------------------------------------
+		Let \( \xi_1,\xi_2\in T\). There are two possibilities: either \( \pi(\xi_1)=\pi(\xi_2)\) or not.
+
+		If \( \pi(\xi_1)=\pi(\xi_2)\), then by writing \( \pi(\xi_1)=\pi(\xi_2)=\varphi_{\alpha}(s)\), we have \( \xi_1=\sigma_{\alpha}(s,t_1)\) and \( \xi_2=\sigma_{\alpha}(s,t_2)\). Let \( V\) be an open neighbourhood of \( s\). Since \( \eR^{k_1k_2}\) is Hausdorff, we can consider open parts \( A\) and \( B\) such that \( t_1\in A\), \( t_2\in B\) and \( A\cap B=\emptyset\). Then the open parts \( \sigma_{\alpha}(V,A)\) and \( \sigma_{\alpha}(V,B)\) are open sets separating \( \xi_1\) and \( \xi_2\).
+
+		If \( \pi(\xi_1)\neq \pi(\xi_2)\), we use the fact that \( M\) is Hausdorff. Let \( A\) be an open neighbourhood of \( \pi(\xi_1)\) and \( B\) be an open neighbourhood of \( \pi(\xi_2)\) with \( A\cap B=\emptyset\). Then the open parts \( \sigma_{\alpha}(A,\eR^{k_1k_2})\) and \( \sigma_{\alpha}(B,\eR^{k_1k_2})\) are separating \( \xi_1\) and \( \xi_2\) because \(\sigma_{\alpha}   \) is injective, see point \ref{ITEMooXSPDooKMXlBN}.
+		\spitem[Second countable]
+		%-----------------------------------------------------------
+
+		\begin{subproof}
+			\spitem[The set \( \mB\)]
+			%-----------------------------------------------------------
+			By proposition \ref{PROPooYJKOooRwbOXF}, the manifold \( M\) has a countable atlas \( \{ (W_{s},\phi_{s}) \}_{s\in \Sigma}\) with a map \(f \colon \Sigma\to \Lambda  \) such that \( W_{s}\subset U_{f(s)}\) and \( \phi_{s}=\varphi_{f(s)}\). When \( s\in \Sigma\), we write \( \sigma_{s}=\sigma_{f(s)}\).
+
+			Let \( \{ B_i \}_{i\in \eN}\) be a countable basis of topology of \( \eR^{k_1k_2}\). Each \( W_{s}\) being part of \( \eR^n\), we consider countable basis of topology \( \{ W_{s,i} \}_{i\in \eN}\) of \( W_{s}\). Then we consider
+			\begin{equation}
+				\mA=\{ \sigma_{s}(W_{s,i}\times B_j) \}_{\substack{ s\in\Sigma \\ i,j\in \eN }  }.
+			\end{equation}
+			The set \( \mA\) is countable as product of countable sets by the proposition \ref{PROPooDMZHooXouDrQ}\ref{ITEMooWNBGooZjoIjZ}. Finally we define \( \mB\) as the set of finite intersections of elements of \( \mA\). The set \( \mB\) is countable as union of finites parts of a countable set (lemma \ref{LEMooKFBAooHxgOsg}).
+
+			\spitem[Elements of \( \tau_0\)]
+			%-----------------------------------------------------------
+
+			We show that every element of \( \tau_0\) contains an element of \(\mB\). Let \( \mO\in \tau_0\). There exists an open \( A\subset U_{\alpha}\times \eR^{k_1k2}\). Then we can choose \( s\in \Sigma\), \( i,j\in \eN\) such that
+			\begin{equation}
+				W_{s,i}\times B_j\subset A.
+			\end{equation}
+			Notice that \( f(s)=\alpha\). Then the element \( \sigma_{\alpha}(W_{s,i}\times B_j)\) is contained in \( \mO\).
+
+			\spitem[Finite intersection]
+			%-----------------------------------------------------------
+
+			Let \( \mO_1=\sigma_{\alpha}(A_1)\) and \( \mO_2=\sigma_{\beta}(A_2)\) be two elements of \( \tau_0\). Here \( A_1\) is open in \( U_{\alpha}\times \eR^{k_1k_2}\) and \( A_2\) is open in \( U_{\beta}\times \eR^{k_1k_2}\). There exist \( s,t\in \Sigma\), \( i,j,k,l\in \eN\) such that
+			\begin{equation}
+				\begin{aligned}[]
+					W_{s,i}\times B_k\subset A_1 \\
+					W_{t,j}\times B_l\subset A_2.
+				\end{aligned}
+			\end{equation}
+			So the part
+			\begin{equation}
+				\sigma_{\alpha}(W_{s,i}\times B_k)\cap\sigma_{\beta}(W_{t,j}\times B_l)\subset\mO_1\cap\mO_2.
+			\end{equation}
+
+			\spitem[Union]
+			%-----------------------------------------------------------
+
+			If the sets \( \{ \mO_i \}_{i\in I}\) are (each) intersections of elements of \( \tau_0\), then, in particular \( \mO_1\subset \bigcup_{i\in I}\mO_i\) and we can find an element in \( \mB\) included in \( \mO_1\).
+
+		\end{subproof}
+	\end{subproof}
+
+	Since the spaces \( V^{(i)}_x\) are distinct, the spaces \( V_x=V_x^{(1)}\otimes V_x^{(2)}\) are distinct. We have to check the conditions of the definition \ref{DEFooFRPLooTxMUzg} of a vector bundle. The set \( T\) is a topological manifold and the maps \( \sigma_{\alpha}\) are smooth (see equation \eqref{EQooVKUBooKuLAnX} and bellow). Thus this is a smooth manifold.
+
+	\begin{subproof}
+
+		\spitem[Condition \ref{ITEMooVIYBooMXFaKb}]
+		%-----------------------------------------------------------
+
+		Already done, mainly by the theorem \ref{THOooFIHIooLiSUxH}.
+
+		\spitem[Condition \ref{ITEMooXHOBooERubro}]
+		%-----------------------------------------------------------
+
+
+		We have to prove that\footnote{Here we use the fact that the spaces \( V_x^{(i)}\) have the form \( \{ (x,v)\tq v\in W_x^{(i)} \}\), so that when we write \( v_i\otimes w_j\), we could have written \( (x,v_i)\otimes (x,w_j)\). Just keep in mind that the base point \( x\) is contained in the vector \( v_i\) in the following formula.}
+		\begin{equation}
+			\begin{aligned}
+				\pi\colon \bigcup_{x\in M}V_x^{(1)}\otimes V_x^{(2)} & \to M     \\
+				\sum_{ij}a_{ij}v_i\otimes w_j                        & \mapsto x
+			\end{aligned}
+		\end{equation}
+		is smooth. In other words, for each \( \alpha\) and \( \beta\), the map
+		\begin{equation}
+			\varphi_{\beta}^{-1}\circ \pi\circ \sigma_{\alpha} \colon U_{\alpha}\to U_{\beta}
+		\end{equation}
+		must be smooth. We have
+		\begin{subequations}
+			\begin{align}
+				(\varphi_{\beta}^{-1}\circ\pi\circ\sigma_{\alpha}) & \big( s,r(\sum_{ij}a_{ij}v_i\otimes w_j) \big)                                                                                                                        \\
+				                                                   & =(\varphi_{\beta}^{-1}\circ\pi)\Big( \underbrace{\sum_{ij}a_{ij}\sigma_{\alpha}^{(1)}(s,v_i)\otimes \sigma_{\alpha}^{(2)}(s,w_j)}_{\in V_{\varphi_{\alpha}(s)}} \Big) \\
+				                                                   & =(\varphi_{\beta}^{-1}\circ\varphi_{\alpha})(s).
+			\end{align}
+		\end{subequations}
+		So we have
+		\begin{equation}
+			(\varphi_{\beta}^{-1}\circ\pi\circ\sigma_{\alpha})(s,\xi)=(\varphi_{\beta}^{-1}\circ\varphi_{\alpha})(s),
+		\end{equation}
+		which leads us to \( \varphi_{\beta}^{-1}\circ\pi\circ\sigma_{\alpha}=\varphi_{\beta}^{-1}\circ\varphi_{\alpha}\circ\pr\) where \(\pr \colon \eR^n\times \eR^{k_1k_2}\to \eR^n  \) is the projection. Since \( \pr\) is smooth and \( \varphi_{\beta}^{-1}\circ\varphi_{\alpha}\) is smooth, we conclude that \( \varphi_{\beta}^{-1}\circ\pi\circ\sigma_{\alpha}\) is smooth.
+
+		\spitem[Condition \ref{ITEMooXJIVooVJTorK}]
+		%-----------------------------------------------------------
+		Since \( \sigma_{\alpha}^{(i)}\) is a chart for the vector bundle \( \bigcup_{x\in M}V_x^{(i)}\) we have \( \sigma_{\alpha}^{i}(s,v)\in V_{\varphi_{\alpha}(s)}\). Thus for right hand side of \eqref{EQooXHURooBpOMlU} is an element of \( V_{\varphi_{\alpha}(s)}^{(1)}\otimes V_{\varphi_{\alpha}(s)}^{(2)}=V_{\varphi_{\alpha}(s)}\).
+		\spitem[Condition \ref{ITEMooOBCMooOCqoQo}]
+		%-----------------------------------------------------------
+		We fix \( s\in U_{\alpha}\). We have to prove that the map \( \tau_{\alpha,s}\) is a linear bijection. This is already done after the definition \eqref{ITEMooCMQEooReGOdu}, with the items \ref{ITEMooCMQEooReGOdu} and the following ones.
+
+		\spitem[Condition \ref{ITEMooPNLXooLQWGqc}]
+		%-----------------------------------------------------------
+		Two points to be proven.
+		\begin{subproof}
+			\spitem[\( g_{\alpha\beta}(s)\in \GL(\eR,k_1k_2)\)]
+			%-----------------------------------------------------------
+			The condition
+			\begin{equation}
+				(\sigma_{\alpha}^{-1}\circ\sigma_{\beta})(s,v)=\big( s,g_{\alpha\beta}(s)v \big)
+			\end{equation}
+			for every \( v\in \eR^{k_1k_2}\) says
+			\begin{equation}
+				g_{\alpha\beta}(s)v=(\tau_{\alpha,s}^{-1}\circ\tau_{\alpha,s})(v).
+			\end{equation}
+			Thus \( g_{\alpha\beta}(s)\) is linear and invertible. This means that for every \( s\), the map \( g_{\alpha\beta}(s)\) belongs to \(\GL(\eR, k_1k_2)\).
+			\spitem[\( g_{\alpha\beta}\) is smooth]
+			%-----------------------------------------------------------
+			We are going to prove that
+			\begin{equation}\label{EQooAUMXooCoqPTO}
+				g_{\alpha\beta}(s)=r\circ\big( g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big)\circ r^{-1}.
+			\end{equation}
+			Let \( \{ e_i \}_{i\in I}\) be a basis of \( \eR^k_1\) and \( \{ e'_j \}_{j\in J}\) be a basis of \( \eR^{k_2}\). We consider \( v=r(e_i\otimes e'_j)\) and we compute
+			\begin{subequations}		\label{EQSooUIMFooMBbBvp}
+				\begin{align}
+					\sigma_{\alpha}\Big( s,  r\circ\big( g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big)\circ r^{-1}v \Big)
+					 & =\sigma_{\alpha}\Big(  s, r\circ\big( g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big)(e_i\otimes e'_j)   \Big)                                                          \\
+					 & =\sigma_{\alpha}\Big( s,r\big( g_{\alpha\beta}^{(1)}(s)e_i\otimes g_{\alpha\beta}^{(2)}(s)e'_j \big) \Big)                                                                             \\
+					 & = \sigma_{\alpha}^{(1)}\big( s,g_{\alpha\beta}^{(1)}(s)e_i \big)\otimes \sigma_{\alpha}^{(2)}\big( s,g_{\alpha\beta}^{(2)}e'_j \big)                                                   \\
+					 & = \sigma_{\beta}^{(1)}(s,e_i)\otimes \sigma_{\beta}^{(2)}(s,e'_j)                                                                    & \text{cf. justif.}  \label{SUBEQooSZDEooLQBGoQ} \\
+					 & =\sigma_{\beta}\big( s,r(e_i\otimes e'_j) \big)                                                                                                                                        \\
+					 & =\sigma_{\beta}\big( s,r(v) \big).
+				\end{align}
+			\end{subequations}
+			Justifications.
+			\begin{itemize}
+				\item
+				      For \eqref{SUBEQooSZDEooLQBGoQ}. We have \( \big( s,g_{\alpha\beta}^{(1)}(s)e_i \big)=\big( \sigma_{\alpha}^{(1)-1}\circ \sigma_{\beta} \big)(s,e_i)\), and similar for \( e'_j\).
+			\end{itemize}
+			Putting \( \sigma_{\alpha}\) on the right hand side the equalities \eqref{EQSooUIMFooMBbBvp} show that
+			\begin{equation}
+				(\sigma_{\alpha}^{-1}\circ \sigma_{\beta})\big( s,r(v) \big)=\Big( s,r\circ\big( g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big)r^{-1}v \Big).
+			\end{equation}
+			The left hand side can be expressed in terms og \( g_{\alpha\beta}(s)\). We have
+			\begin{equation}
+				\big( g_{\alpha\beta}(s)\circ r \big)(e_i\otimes e'_j)=r\circ \big( g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big)(e_i\otimes e'_j).
+			\end{equation}
+			Since the operators \( g_{\alpha\beta}(s)\circ r\) and \( r\circ\big(   g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big)\) are linear and since the elements \( e_i\otimes e'_j\) form a basis we have the operator equality
+			\begin{equation}
+				g_{\alpha\beta}(s)\circ r=r\circ \big( g_{\alpha\beta}^{(1)}(s)\otimes g_{\alpha\beta}^{(2)}(s) \big),
+			\end{equation}
+			which is the announced equality \eqref{EQooAUMXooCoqPTO}.
+			\spitem[Conclusion]
+			%-----------------------------------------------------------
+			The maps \( g_{\alpha\beta}^{(1)}\) and \( g_{\alpha\beta}^{(2)}\) are smooths by hypothesis. By proposition \ref{PROPooLANVooKPiLuu}, the tensor product is smooth. The maps \( r\) and \( r^{-1}\) are linear on finite dimensional vector spaces; they are smooth too.
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooEYSWooOeQNyX}
+	The tensor product\footnote{Definition \ref{DEFooCSDZooJuzGuE}.} of vector bundles is associative : if \( E_1\), \( E_2\) and \( E_3\) are vector bundles, then
+	\begin{equation}
+		(E_1\otimes E_2)\otimes E_3=E_1\otimes (E_2\otimes E_3).
+	\end{equation}
+	%TODOooTXYEooCxyiwi Je dois définir la notion d'équivalence, et le prouver.
+\end{proposition}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Tensor bundle}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}
+	Let \( (k,l)\) be integers. The \defe{\( k,l\)-tensor bundle}{tensor bundle} is
+	\begin{equation}
+		\bigotimes^{k,l}(TM)=(TM)^{\otimes k}\otimes (T^*M)^{\otimes l}.
+	\end{equation}
+	A \defe{\( (k,l)\)-tensor field}{tensor field} is a smooth section of \( \bigotimes^{k,l}(TM)\).
+\end{definition}
+
+We know from theorem \ref{THOooTSQXooLvJMQb} that \( TM\) is a manifold. Here we prove that this is a vector bundle.
+\begin{proposition}		\label{PROPooIMOJooKzEDXA}
+	The set \( TM\) becomes a vector bundle with the charts
+	\begin{equation}
+		\begin{aligned}
+			\sigma_{\alpha}\colon U_{\alpha}\times \eR^n & \to TM                                                              \\
+			(s,v)                                        & \mapsto  \frac{d}{dt} \left[ \varphi_{\alpha}(s+tv)  \right]_{t=0}.
+		\end{aligned}
+	\end{equation}
+	%TODOooBXPGooLnIGzm. Prouver ça.
+\end{proposition}
+
+\noproof
+
+%-------------------------------------------------------
+\subsection{Dual basis}
+%----------------------------------------------------
+
+
+The proposition \ref{PROPooAAAXooKAMsfK} says that the vectors
+\begin{equation}
+	\partial_i=\frac{d}{dt} \left[ \varphi_{\alpha}(s_0+te_i)  \right]_{t=0}
+\end{equation}
+form a basis of \( T_pM\) where \( p=\varphi_{\alpha}(s_0)\). We denote by \( \{ \partial_{i}^* \}\) the dual basis.
+
+\begin{normaltext}
+	When \( I=(i_1,\ldots,i_k)\) is a multiindex, we write
+	\begin{equation}
+		\partial^*_{\wedge I}=\partial_{i_1}\wedge\ldots\wedge\partial_{i_k}.
+	\end{equation}
+\end{normaltext}
+
+\begin{normaltext}
+	The object \( \partial^*_{\wedge I}\) is build from the elements of the basis \( \partial_i^*\) which is the dual of the basis
+	\begin{equation}
+		\partial_i=\frac{d}{dt} \left[ \varphi_{\alpha}(s+te_i)  \right]_{t=0}.
+	\end{equation}
+	Thus \( \partial^*_{\wedge I}\) is a function of \( s\).
+\end{normaltext}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooKCBSooPjEwEl}
+	Let \( (U,\varphi)\) be a chart of a smooth manifold. We have the local expression
+	\begin{equation}
+		\partial^*_i=df_i
+	\end{equation}
+	where \( f_i\) is the function
+	\begin{equation}
+		\begin{aligned}
+			f_i\colon M & \to \eR                    \\
+			q           & \mapsto \varphi^{-1}(q)_i.
+		\end{aligned}
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Let \( q=\varphi(x)\in M\). At \( q\) we have \( \partial_j=\frac{d}{dt} \left[ \varphi(x+te_j)  \right]_{t=0}\) and, using the definition \( f_i=\proj_i\circ\varphi^{-1}\), we have
+	\begin{subequations}
+		\begin{align}
+			df_i(\partial_j) & =\frac{d}{dt} \left[ f_i\big( \varphi(x+te_j) \big)  \right]_{t=0}                 \\
+			                 & =\frac{d}{dt} \left[ (\proj_i\circ\varphi^{-1}\circ\varphi)(x+te_j)  \right]_{t=0} \\
+			                 & =\frac{d}{dt} \left[ \proj_i(x+te_j)  \right]_{t=0}                                \\
+			                 & =\frac{d}{dt} \left[ x_i+t\delta_{ij}  \right]_{t=0}                               \\
+			                 & =\delta_{ij},
+		\end{align}
+	\end{subequations}
+	which proves that \( df_i=\partial^*_i\).
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]  \label{LEMooGEFSooVlPLOs}
+	Let \( f\) be a smooth function over the manifold \( M\). We consider a chart \( (U,\varphi)\). The differential of \( f\) is
+	\begin{equation}
+		df=\sum_i(\partial_if)\partial^*_i.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Let \( X\) be the vector \( X=\sum_i\partial_i\). Since \( \{ \partial^*_i \}\) is the dual basis, we express the components of \( X\) under the form \( X_i=\partial_i^*(X)\). Now, by definition,
+	\begin{equation}
+		df(X)=X(f)=\sum_iX_i\partial_if=\sum_i(\partial_if)\partial_i^*(X).
+	\end{equation}
+	Since it is valid for every vector \( X\), we have the equality.
+\end{proof}
+
+\begin{lemma}		\label{LEMooIAASooDnnhRA}
+	The map
+	\begin{equation}
+		\partial^*_{\wedge I}\colon U_{\alpha} \to \Wedge^k(T^*M)
+	\end{equation}
+	is smooth and satisfy
+	\begin{equation}
+		\partial_{\wedge I}^*(s)\in\Wedge^k\big( T^*_{\varphi_{\alpha}(s)}M \big).
+	\end{equation}
+\end{lemma}
+
+\begin{normaltext}		\label{NORMooDQEZooHaJPoa}
+	Let \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) be a chart. We introduce two maps to make the link between the real world and the manifold world. One for the forms :
+	\begin{equation}
+		\begin{aligned}
+			\tau_{\alpha,s}\colon \Wedge^k(\eR^n)^* & \to \Wedge^kT^*_{\varphi_{\alpha}(s)}M                \\
+			\sum_{I\in C_k}\omega_Ie^*_{\wedge I}   & \mapsto \sum_{I\in C_k}\omega_I\partial^*_{\wedge I}.
+		\end{aligned}
+	\end{equation}
+	An one for the vectors:
+	\begin{equation}
+		\begin{aligned}
+			\tau_{\alpha,s}\colon \eR^n & \to T_{\varphi_{\alpha}(s)}M \\
+			v                           & \mapsto \sum_iv_i\partial_i.
+		\end{aligned}
+	\end{equation}
+	These two maps have the same name «\( \tau_{\alpha,s}\)», but their arguments are different enough not to cause confusion.
+\end{normaltext}
+
+
+\begin{propositionDef}[Exterior bundle]		\label{DEFooZELVooFfosEn}
+	Let \( M\) be a \( n\)-dimensional manifold. We write\footnote{This provides a basis of \( \Wedge^kT^*m\), see proposition \ref{PROPooUGLOooTULnDK}.}
+	\begin{equation}
+		C_k=\{ (i_1,\ldots,i_k)\tq 1\leq i_1<\ldots <i_k\leq n \}.
+	\end{equation}
+	The set \( \Wedge^kT^*M\) is a vector bundle with the charts
+	\begin{equation}		\label{EQooOMWMooKKWhqf}
+		\begin{aligned}
+			\sigma_{\alpha}\colon U_{\alpha}\times \Wedge^k(\eR^n)^* & \to \Wedge^kT^*M                                                                       \\
+			(s,\sum_{I\in C_k}\omega_Ie^*_{\wedge I})                & \mapsto \Big( \varphi_{\alpha}(s),  \sum_{I\in C_k}\omega_I\partial^*_{\wedge I}\Big).
+		\end{aligned}
+	\end{equation}
+	In other words,
+	\begin{equation}
+		\sigma_{\alpha}(s,\omega')=\big( \varphi_{\alpha}(s),\tau_{\alpha,s}(\omega') \big).
+	\end{equation}
+	Two notes.
+	\begin{enumerate}
+		\item
+		      There is an hidden choice of isomorphism between \( \eR^m\) and \( \Wedge^k\eR^n\) with \( m=\binom{ n }{ k }\).
+		\item
+		      The vector space \( V_{\varphi_{\alpha}(s)}\) is the set of elements of the form \( \big( \varphi_{\alpha}(s),\omega \big)\) with \( \omega\in \Wedge^kT^*_{\varphi_{\alpha}(s)}M\). The purpose of that is to make explicit the fact that all the vector spaces \( V_x\) are distinct. See the point \ref{ITEMooIVKKooNEfxVi} of the definition \ref{DEFooFRPLooTxMUzg} of a vector bundle.
+	\end{enumerate}
+\end{propositionDef}
+
+\noproof
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Differential form}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}		\label{DEFooBRSSooWOgoov}
+	A \defe{\( k\)-differential-form}{differential form} is a section of \( \Wedge^kT^*M\). We denote by \( \Omega^k(M)\) the set of \( k\)-differential forms.
+
+	When the context is clear, we could simply say "\( k\)-form" instead of \( k\)-differential form.
+\end{definition}
+
+\begin{normaltext}
+	Formally, a \( k\)-differential form \( \omega\) is a smooth map
+	\begin{equation}
+		\omega \colon M\to M\times \Wedge^kT^*M
+	\end{equation}
+	where the \( M\)-component of \( \omega\) is the identity.
+
+	We will, however, often make the abuse of notation and drop that \( M\)-component.
+\end{normaltext}
+
+\begin{propositionDef}		\label{PROPooQOUXooZfFHNb}
+	If \( \omega\in \Omega^k(M)\) and \( \eta\in \Omega^l(M)\) we define \( \omega\wedge \eta\) pointwise by
+	\begin{equation}
+		(\omega\wedge \eta)_p=\omega_p\wedge \eta_p
+	\end{equation}
+	where the exterior product is defined by \ref{DEFooCTSPooZRIufr}.
+
+	We have \( \omega\wedge\eta\in\Omega^{k+l}(M)\).
+\end{propositionDef}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooUVRQooVZDKir}
+	If \( f\) is a function and \( \omega\) is a \( k\)-differential form we have
+	\begin{equation}		\label{EQooYHCKooNLgJWG}
+		f\wedge \omega=f\omega.
+	\end{equation}
+	where, on the left hand side, \( f\) is seen as a \( 0\)-differential form while, on the right hand side this is the pointwise product.
+\end{lemma}
+
+\begin{proof}
+	We compute the left-hand side of \eqref{EQooYHCKooNLgJWG} at \( x\in M\). From definition \ref{PROPooQOUXooZfFHNb},
+	\begin{equation}
+		(f\wedge \omega)_x=f(x)\wedge \omega_x.
+	\end{equation}
+	Now we are reduced to check \( (\lambda\otimes \omega)=\lambda\omega\) for \( \lambda\in \eR\) and \( \omega\in \Wedge^k(V^*)\) for some vector space \( V\). Using the definitions \ref{DEFooCTSPooZRIufr} and \ref{DEFooHAKAooIfbsEy},
+	\begin{subequations}
+		\begin{align}
+			\lambda\wedge \omega & =\frac{ (0+k)! }{ 0!k! }\Alt(\lambda\otimes \omega)                    \\
+			                     & =\Alt(\lambda\otimes \omega)                                           \\
+			                     & =\frac{1}{ k!}\sum_{\pi\in S_k}(-1)^{\pi}(\lambda\otimes\omega)^{\pi}.
+		\end{align}
+	\end{subequations}
+	Each term in the sum is subject to the relation \( (\lambda\otimes \omega)(v_1,\ldots,v_k)=\lambda\omega(v_1,\ldots,v_k)\).
+\end{proof}
+
+
+The following proposition works for a manifold without boundary. If you have a manifold with boundary, see proposition \ref{PROPooTSAQooWwDHlf}.
+
+\begin{proposition}		\label{PROPooNOGKooQedJba}
+	Let \( \omega\in \Omega^k(M)\) and \( \{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be an atlas of \( M\). For each \( \alpha\in \Lambda\), the exist functions \( \omega_{\alpha,I}\in C^{\infty}(M)\) for each
+	\begin{equation}
+		I\in C_k=\{ (i_1,\ldots,i_k)\tq 1\leq i_1<\ldots <i_k\leq n \}
+	\end{equation}
+	such that
+	\begin{equation}
+		\omega_x=\sum_{I\in C_k}\omega_{\alpha, I}(x)\partial^*_{\alpha,\wedge I}.
+	\end{equation}
+	for every \( x\in \varphi_{\alpha}(U_{\alpha})\).
+	Notes:
+	\begin{itemize}
+		\item
+		      When \( I=(i_1,\ldots,i_k)\), the notation \( a_{\wedge I}\) means \( a_{i_1}\wedge \ldots\wedge a_{i_k}\).
+		\item
+		      Even if it not written explicitly, \( \partial^*_i\) is a vector field, and then a function of \( x\).
+	\end{itemize}
+\end{proposition}
+
+\noproof
+
+
+\begin{proposition}			\label{PROPooHTKMooVzYQdW}
+	We consider a \( k\)-form \( \omega\in \Omega^k(M)\) and smooth vector fields \( X_1,\ldots,X_k\). The map
+	\begin{equation}
+		\begin{aligned}
+			\omega(X_1,\ldots,X_k)\colon M & \to \eR                                            \\
+			x                              & \mapsto \omega_x\big( (X_1)_x,\ldots,(X_k)_x \big)
+		\end{aligned}
+	\end{equation}
+	is smooth.
+\end{proposition}
+
+\begin{proof}
+
+	We have to prove that \( \omega(X_1,\ldots,X_k)\circ \varphi_{\alpha}\) is smooth as function from \( U_{\alpha}\) to \( \eR\). Using proposition \ref{PROPooNOGKooQedJba}, we have smooth functions \( \omega_I\in C^{\infty(M,\eR)}\) such that
+	\begin{equation}
+		\omega_x=\sum_{i\in C_k}\omega_I(x)\partial^*_{\wedge I}.
+	\end{equation}
+
+	From proposition \ref{PROPooXURIooYPytwa}, there exist smooth functions \( X_{ij}\in C^{\infty(M)}\) such that
+	\begin{equation}
+		X_i(x)=\sum_jX_{ij}(x)\partial_j.
+	\end{equation}
+
+
+	We have
+	\begin{subequations}
+		\begin{align}
+			\omega(X_1,\ldots,X_k)\varphi_{\alpha}(s) & =\sum_{I\in C_k}(\omega_I\circ\varphi_{\alpha})(s)\partial_{\wedge I}^*\Big( (X_1\circ\varphi_{\alpha})(s),\ldots,(X_k\circ \varphi_{\alpha})(s) \Big)                                                 \\
+			                                          & =\sum_I(\omega_I\circ\varphi_{\alpha})(s)(\partial^*_{i_1}\wedge\ldots\partial_{i_k}^*)  \Big( (X_1\circ\varphi_{\alpha})(s),\ldots,(X_k\circ \varphi_{\alpha})(s) \Big).		\label{SUBEQooKPRLooFzreMJ}
+		\end{align}
+	\end{subequations}
+	The function \( \omega_I\circ\varphi_{\alpha}\) is smooth. The rest of \eqref{SUBEQooKPRLooFzreMJ} are sum of products of elements of the form\footnote{We write the dependence of \( \partial_i^*\) in \( x=\varphi_{\alpha}(s)\).}
+	\begin{subequations}
+		\begin{align}
+			\partial_{i_m}^*(x)\Big( (X_l\circ\varphi_{\alpha})(s) \Big) & = \partial^*_{i_m}(x)\sum_{j=1}^n(X_{lj\circ\varphi_{\alpha}})(s)\partial_j(x) \\
+			                                                             & = \sum_j (X_{lj}\circ \varphi_{\alpha})(s)\delta_{j,i_m}                       \\
+			                                                             & = (X_{l,i_m}\circ\varphi_{\alpha})(s).
+		\end{align}
+	\end{subequations}
+	The last line is a smooth function of \( s\) since \( X_{ij}\) are smooth. The proposition \ref{PROPooCWPAooKDnwHR} about sum and product of smooth functions makes \( \omega(X_1,\ldots,X_k)\) smooth.
+\end{proof}
+
+
+\begin{lemma}		\label{LEMooMEZCooGXpOOa}
+	Let \( v\in \eR^n\). The maps of \ref{NORMooDQEZooHaJPoa} satisfy
+	\begin{enumerate}
+		\item		\label{ITEMooZSFDooAuUnPd}
+		      \begin{equation}
+			      \tau_s(e^*_i)\big( \tau_s(v) \big)=e_i^*(v)=v_i.
+		      \end{equation}
+		\item		\label{ITEMooSVEFooBKhHnc}
+		      For every miltiindex \( I=(i_1,\ldots,i_k)\) and \( X_j\in T_{\varphi_{\alpha}(s)}M\), we have
+		      \begin{equation}
+			      \tau_{\alpha,s}(e^*_{\wedge I})(X_1,\ldots,X_k)=e^*_{\wedge I}\big( \tau_{\alpha,s}^{-1}(X_1),\ldots,\tau_{\alpha,s}^{-1}(X_k) \big).
+		      \end{equation}
+		\item\label{ITEMooQUZCooGcJrLe}
+		      For every \( \omega'\in \Wedge^k(\eR^n)^*\) and \( X_i\in T_{\varphi_{\alpha}(s)M}\) we have
+		      \begin{equation}
+			      \tau_{\alpha,s}(\omega')(X_1,\ldots,X_k)=\omega'\big( \tau_{\alpha,s}^{-1}(X_1),\ldots,\tau_{\alpha,s}^{-1}(X_k) \big).
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Each point is a generalisation of the previous one.
+	\begin{subproof}
+		\spitem[For \ref{ITEMooZSFDooAuUnPd}]
+		%-----------------------------------------------------------
+		We have \( e^*_i\in \Wedge^k\eR^n\) with \( k=1\); we can apply \( \tau_s\) to it. We have
+		\begin{equation}
+			\tau_s(e^*_i)\big( \tau_s(v) \big)=\partial_i^*\big( \sum_jv_j\partial_j \big)=\sum_jv_j\delta_{ij}=v_i=e^*_i(v).
+		\end{equation}
+		\spitem[For \ref{ITEMooSVEFooBKhHnc}]
+		%-----------------------------------------------------------
+		Let \( X_j\in T_{\varphi_{\alpha}(s)}M\). Thanks to proposition \ref{PROPooAAAXooKAMsfK}, we write \( X_j=\sum_lX_{jl}\partial_l\). Applying \( \partial^*_m\) we have
+		\begin{equation}		\label{EQooBGWWooXQqAdc}
+			\partial_m^*(X_j)=\sum_lX_{jl}\delta_{ml}=X_{jm}.
+		\end{equation}
+		Now we can compute. On the one hand,
+		\begin{subequations}
+			\begin{align}
+				\tau_{\alpha,s}(e^*_{\wedge I})(X_1,\ldots,X_k) & = \partial^*_{\wedge I}(X_1,\ldots,X_k)                                                                                                              \\
+				                                                & =(\partial_{i_1}^*\wedge \ldots \wedge \partial_{i_k}^*)(X_1,\ldots,X_k)                                                                             \\
+				                                                & =k!\Alt(\partial^*_{i_1}\otimes \ldots\otimes \partial_{i_k}^*)(X_1,\ldots,X_k)                               & \text{lem. \ref{LEMooZJJLooFGuguy}.} \\
+				                                                & = \sum_{\pi\in S_k}(-1)^{\pi}(\partial_{i_1}^*\otimes \ldots \partial_{i_k}^*)(X_{\pi(1)},\ldots, X_{\pi(k)}) & \text{def. \ref{DEFooHAKAooIfbsEy}}  \\
+				                                                & = \sum_{\pi\in S_k}(-1)^{\pi} \partial_{i_1}^*(X_{\pi(1)})\ldots \partial_{i_k}(X_{\pi(k)})                                                          \\
+				                                                & = \sum_{\pi\in S_k}(-1)^{\pi}X_{i_1\pi(1)}\ldots X_{i_k\pi(k)}                                                & \text{by \eqref{EQooBGWWooXQqAdc}.}
+			\end{align}
+		\end{subequations}
+		On the other hand we can make the same calculation\quext{I did not. Check and send me a message saying if it works or not.} for \( e^*_{\wedge I}\big( \tau^{-1}_{\alpha,s}(X_1),\ldots,\tau_{\alpha,s}^{-1}(X_k) \big)\) using the fact that
+		\begin{equation}
+			e^*_i\big( \tau_{\alpha,s}(X_j) \big)=e^*_i\big( \sum_lX_{jl}e_l \big)=X_{ji}.
+		\end{equation}
+		\spitem[For \ref{ITEMooQUZCooGcJrLe}]
+		%-----------------------------------------------------------
+		Using the linearity of \( \tau_{\alpha,s}\) and point \ref{ITEMooSVEFooBKhHnc}.
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}		\label{LEMooOLSHooZNRoZs}
+	Let \( \omega\in \Omega^k(M)\). There exists a smooth \(\omega' \colon U_{\alpha}\to \Wedge^k(\eR^n)^*  \) such that
+	\begin{equation}
+		\omega_{\varphi_{\alpha}(s)}=\Big( \varphi_{\alpha}(s),\tau_{\alpha,s}\big( \omega'(s) \big) \Big).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Saying that the map \(\omega \colon M\to M\times \Wedge^kT^*M  \) is smooth means that the map \( f=\sigma_{\beta}^{-1}\circ \omega\circ\varphi_{\alpha}\) is smooth as map from \( U_{\alpha}\) to \( U_{\beta}\). In particular with \( \beta=\alpha\) we are looking at \( f(s)=(\sigma_{\alpha}^{-1}\circ \omega\circ \varphi_{\alpha})(s)\):
+	\begin{subequations}
+		\begin{align}
+			f(s) & = \sigma_{\alpha}^{-1}\big( (\omega\circ \varphi_{\alpha})(s) \big) \\
+			     & = \sigma_{\alpha}^{-1}\big( \varphi_{\alpha}(s),\xi(s) \big)        \\
+			     & = \big( s,\omega'(s) \big)
+		\end{align}
+	\end{subequations}
+	for some \( \xi(s)\in \Wedge^k(T^*_{\varphi_{\alpha}(s)})\) and \( \omega'(s)\in \Wedge^k(\eR^n)^*\). Since \( f\) is smooth, the map
+	\begin{equation}
+		\omega' \colon U_{\alpha}\to \Wedge^k(\eR^n)^*
+	\end{equation}
+	is smooth. From the definition of \( f\),
+	\begin{equation}
+		(\omega\circ \varphi_{\alpha})(s)=(\sigma_{\alpha}\circ f)(s)=\sigma_{\alpha}\big( s,\omega'(s) \big)=\Big( \varphi_{\alpha}(s),\tau_{\alpha,s}\big( \omega'(s) \big) \Big).
+	\end{equation}
+	We proved that
+	\begin{equation}		\label{EQooMAINooBKsaex}
+		(\omega\circ \varphi_{\alpha})(s)=\Big( \varphi_{\alpha}(s),\tau_{\alpha,s}\big( \omega'(s) \big) \Big).
+	\end{equation}
+\end{proof}
+
+\begin{proposition}		\label{PROPooFWEQooIqTFSa}
+	If \(\omega \colon U_{\alpha}\to \Wedge^k(\eR^n)^*  \) is smooth, then the map
+	\begin{equation}
+		\begin{aligned}
+			f\colon U_{\alpha} & \to \Wedge^k\big( T^*_{\varphi_{\alpha}(s)}M \big) \\
+			s                  & \mapsto \tau_{\alpha,s}\big( \omega(s) \big)
+		\end{aligned}
+	\end{equation}
+	is smooth.
+\end{proposition}
+
+\begin{proof}
+	Proposition \ref{PROPooDXTOooKYDOiI} says that there exist smooth functions \(\omega_I \colon U_{\alpha}\to \eR  \) such that
+	\begin{equation}
+		\omega(s)=\sum_{I\in C_k}\omega_I(s)e^*_{\lambda I}.
+	\end{equation}
+	Thus
+	\begin{equation}
+		\tau_{\alpha,s}\big( \omega(s) \big)=\sum_{I\in C_k}\omega_I(s)\partial^*_{\wedge I}.
+	\end{equation}
+	The functions \( \omega_I\) are smooth as well as \( \partial_{\wedge I}^*\) (lemma \ref{LEMooIAASooDnnhRA}).
+\end{proof}
+
+The following definition is in the same spirit of definition \ref{DEFooFWIHooJiTnwM}.
+\begin{definition}		\label{DEFooZMQNooRNhWXk}
+	Let \( \omega'\in \Wedge^k(\eR^n)^*\), \( p=\varphi_{\alpha}(s)\in M\) and \( X\in T_pM\). We define \( i_X(\omega)\) by
+	\begin{equation}
+		i_X(\omega)(X_1,\ldots,X_{k-1})=\omega(X,X_1,\ldots,X_{k-1}).
+	\end{equation}
+
+	Let \( X\) be a smooth vector field and \( \omega\) a smooth \( k\)-differential form. We defin \( i_X(\omega)\) for each \( p\in M\) by
+	\begin{equation}
+		i_X(\omega)_p=i_{X_p}(\omega_p).
+	\end{equation}
+\end{definition}
+
+\begin{proposition}		\label{PROPooLCFAooLrbqeh}
+	Let \( \omega'\in \Wedge^k(\eR^n)^*\), \( v\in \eR^n\) and \( p=\varphi_{\alpha}(s)\in M\). We have
+	\begin{equation}
+		\tau_{\alpha,s}\big( i_{v}(\omega') \big)=i_{\tau_{\alpha,s}(v)}\big( \tau_{\alpha,s}(\omega') \big).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Using lemma \ref{LEMooMEZCooGXpOOa}\ref{ITEMooQUZCooGcJrLe} twice (once in each direction) we have
+	\begin{subequations}
+		\begin{align}
+			i_v(\omega')(X_1,\ldots,X_{k-1}) & =i_v(\omega')\big( \tau_{\alpha,s}^{-1}(X_1),\ldots,\tau_{\alpha,s}^{-1}(X_{k_1}) \big)                                   \\
+			                                 & =\omega'\big( v,\tau_{\alpha,s}^{-1}(X_1),\ldots,\tau_{\alpha,s}^{-1}(X_{k-1}) \big)                                      \\
+			                                 & =\omega'\big( \tau_{\alpha,s}^{-1}\tau_{\alpha,s}(v),\tau_{\alpha,s}^{-1}(X_1),\ldots,\tau_{\alpha,s}^{-1}(X_{k-1}) \big) \\
+			                                 & =(\tau_{\alpha,s}\omega')\big( \tau_{\alpha,s}(v),X_1,\ldots,X_{k-1} \big)                                                \\
+			                                 & =i_{\tau_{\alpha,s}(v)}\big( \tau_{\alpha,s}(\omega') \big)(X_1,\ldots,X_{k-1}).
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooEKYDooKkgZJB}
+	Let \(v \colon U_{\alpha}\to \eR^n  \) and \(\omega \colon U_{\alpha}\to \Wedge^k(\eR^n)^*  \) be smooth. Then the map
+	\begin{equation}
+		\begin{aligned}
+			r\colon U_{\alpha} & \to \Wedge^{k-1}(\eR^n)^* \\
+			s                  & \mapsto i_{v(s)}\omega(s)
+		\end{aligned}
+	\end{equation}
+	is smooth.
+\end{lemma}
+
+\begin{proof}
+	Notice that \( \Wedge^{k-1}(\eR^n)^*\) is a part of \( \End\Big( (\eR^n)^{k-1},\eR \Big)\), thus we can consider
+	\begin{equation}
+		r \colon U_{\alpha}\to \End\big( (\eR^n)^{k-1},\eR \big).
+	\end{equation}
+	If \( \omega(s)=\sum_{I=(i_1,\ldots,i_k)}(s)e^*_{\otimes I}\), proposition \ref{LEMooOBUVooBHpDZX} gives
+	\begin{equation}
+		r(s)=\sum_{J=(j_1,\ldots,j_{k-1})}\omega'_J(s)e^*_{\otimes J}
+	\end{equation}
+	with
+	\begin{equation}
+		\omega'_J=\sum_i\omega_{iJ}(s)v(s)_i.
+	\end{equation}
+	Thus we write
+	\begin{equation}		\label{EQooQKQHooGXUzHY}
+		r(s)=\sum_J\sum_i\omega_{iJ}(s)v(s)_ie^*_{\otimes J}.
+	\end{equation}
+	The map \( s\mapsto \omega_{iJ(s)}\) is smooth as well as \( s\mapsto v(s)_i\). The whole expression \eqref{EQooQKQHooGXUzHY} is smooth.
+\end{proof}
+
+\begin{propositionDef}[\cite{MonCerveau}]		\label{PROPooTBFLooVCqycE}
+	Let \( X\) be a smooth vector field and \( \omega\) a smooth \( k\)-differential form. Then the map
+	\begin{equation}
+		i_X(\omega) \colon M\to \Wedge^k(T^*M)
+	\end{equation}
+	is smooth and is then a \( k\)-differential form.
+\end{propositionDef}
+
+\begin{proof}
+	Let \( p=\varphi_{\alpha}(s)\in M\). We have, for some \( \omega'(s)\in \Wedge^k(\eR^n)^*\),
+	\begin{subequations}
+		\begin{align}
+			\big( i_X(\omega) \big)_p & = i_{X_p}(\omega_p)                                                                                       \\
+			                          & =i_{X_p} \tau_{\alpha,s}\big( \omega'(s) \big)                                                            \\
+			                          & =\tau_{\alpha,s}\Big( i_{\tau_{\alpha,s}^{-1}}(X_p)\omega' \Big) & \text{prop. \ref{PROPooLCFAooLrbqeh}.}
+		\end{align}
+	\end{subequations}
+	Since \( \tau_{\alpha,s}\) is smooth by proposition \ref{PROPooFWEQooIqTFSa}, it remains to prove that the map
+	\begin{equation}
+		\begin{aligned}
+			r\colon U_{\alpha} & \to \Wedge^{k-1}(\eR^n)^*                                           \\
+			s                  & \mapsto i_{\tau_{\alpha,s}^{-1}(X_{\varphi_{\alpha}(s)})}\omega'(s)
+		\end{aligned}
+	\end{equation}
+	is smooth. Since \( X\) is a smooth vector field, proposition \ref{PROPooXURIooYPytwa} says that we can write
+	\begin{equation}
+		X_{\varphi_{\alpha}(s)}=\sum_{i=1}^nX_i\big( \varphi_{\alpha}(s) \big)\partial_i
+	\end{equation}
+	for some smooth functions \(X_i \colon M\to \eR  \). With these notations we have
+	\begin{equation}
+		\tau_{\alpha,s}^{-1}(X_{\varphi_{\alpha}(s)})=\sum_i(X_i\circ \varphi_{\alpha,s})(s)e_i.
+	\end{equation}
+	The latter is smooth with respect to \( s\).
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Interior product}
+%----------------------------------------------------
+
+In the algebraic setting (without regularity and manifolds), the interior product we introduced in definition \ref{DEFooFWIHooJiTnwM}, and we already had the Leibniz rule in proposition \ref{PROPooYCRXooSOsqCb}. Recall: the we denote by \( \Omega^k(M)\) the space of \( k\)-differential forms on the smooth manifold \( M\). These are the sections of \( \Wedge^k(T^*M)\), see definition \ref{DEFooBRSSooWOgoov}.
+
+\begin{proposition}[\cite{BIBooJMRFooTAhhcg}]		\label{PROPooIQIUooTDNJdB}
+	Let \( X\) be a smooth vector field. Let \( \omega\in \Omega^k(M)\) and \( \eta\in \Omega^l(M)\) be \( k\) and \( l\) differential forms.
+
+	Then we have
+	\begin{equation}
+		i_X(\omega\wedge \eta)=i_X(\omega)\wedge \eta+(-1)^k\omega\wedge i_X(\eta).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	For each \( p\in M\) we have
+	\begin{subequations}
+		\begin{align}
+			\Big( i_X(\omega\wedge \eta) \Big)_p & = i_{X_p}(\omega_p\wedge \eta_p)                                                                                         \\
+			                                     & = i_{X_p}(\omega_p)\wedge\eta_p+(-1)^k\omega_p\wedge(i_{X_p}\eta)                & \text{prop. \ref{PROPooYCRXooSOsqCb}} \\
+			                                     & = \Big( i_X(\omega)\wedge \eta \Big)_p+(-1)^k\Big( \omega\wedge i_X\eta \Big)_p.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Exterior derivative}
+%----------------------------------------------------
+
+\begin{proposition}[exterior derivative\cite{MonCerveau,BIBooANSPooJQsBvY}]		\label{PROPooTXFRooMtaVrU}
+	There exists a unique set of maps \(d \colon \Omega^k(M)\to \Omega^{k+1}(M)  \) (\( k\in \eN\)) such that
+	\begin{enumerate}
+		\item		\label{ITEMooPQYCooHMjgIR}
+		      \( d\) is \( \eR\)-linear :  \( d(\lambda \omega)=\lambda d\omega\) and \( d(\omega+\eta)=d\omega+d\eta\) for every \( \lambda\in \eR\) and \( \omega,\eta\in \Omega^k(M)\).
+		\item		\label{ITEMooRKJRooWwHUiS}
+		      If \( f\in\Omega^0(M)=C^{\infty}(M)\), then \( df\) is the usual differential of \( f\).
+		\item	\label{ITEMooBBFLooWpZJuT}
+		      Leibniz rule : if \( \omega\in \Omega^k(M)\), we have \( d(\omega\wedge \eta)=(d\omega)\wedge\eta=(-1)^k\omega\wedge d\eta\)
+		\item		\label{ITEMooJXMFooHFTFYi}
+		      \( d(d\omega)=0\).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	First unicity, then existence.
+	\begin{proofpart}
+		Unicity
+	\end{proofpart}
+	We initiate by proving the unicity by showing that \( d\) has a fixed form in a chart. Let \( (U,\varphi)\) be a chart. From \ref{PROPooNOGKooQedJba} a generic differential form reads \( \omega_x=\sum_I\omega_I(x)\partial^*_{\wedge I}\).
+
+	\begin{subproof}
+		\spitem[\( d(\partial^*_{\wedge I})=0\)]
+		%-----------------------------------------------------------
+		Let \( I=(i_1,\ldots,i_k)\) and compute \( d(\partial^*_{\wedge I})\). We denote \( \omega=\partial^*_{i_1}\wedge\ldots\wedge\partial^*_{i_{k-1}}\) :
+		\begin{subequations}
+			\begin{align}
+				d(\partial^*_{\wedge I}) & = d\big( \omega\wedge \partial^*_{i_{k}} \big)                                                                                    \\
+				                         & = (d\omega)\wedge\partial^*_{i_{k}}+(-1)^{k-1}\omega\wedge d(\partial^*_{i_{k}}) & \text{by item \ref{ITEMooBBFLooWpZJuT}.}       \\
+				                         & = d(\partial^*_{i_1}\wedge \ldots\partial^*_{i_{k-1}})\wedge\partial^*_{i_k}     & \text{see bellow}. \label{SUBEQooOWTHooIZcNWw}
+			\end{align}
+		\end{subequations}
+		Justification for \eqref{SUBEQooOWTHooIZcNWw}. From lemma \ref{LEMooKCBSooPjEwEl}, \( \partial^*_{i_{k}}=df_{i_k}\), so that item \ref{ITEMooJXMFooHFTFYi} gives \( d(\partial^*_{i_{k+1}})=d(df_i)=0\).
+
+		By recursion we have \( d(\partial^*_{\wedge I})=0\).
+		\spitem[Computation of \( d(f\partial^*_{\wedge I})\)]
+		%-----------------------------------------------------------
+		From lemma \ref{LEMooUVRQooVZDKir} we use the wedge product \(  f\partial^*_{\wedge I}=f\wedge \partial^*_{\wedge I} \) and we can use the Leibniz formula of item \ref{ITEMooBBFLooWpZJuT} :
+		\begin{equation}
+			d(f\partial^*_{\wedge I})=d(f\wedge\partial^*_{\wedge I})=df\wedge \partial^*_{\wedge I}+f\wedge \underbrace{d(\partial^*_{\wedge I})}_{=0}=df\wedge\partial^*_{\wedge I}.
+		\end{equation}
+		\spitem[The general case]
+		%-----------------------------------------------------------
+		A general differential \( k\)-form \( \omega\) is given by proposition \ref{PROPooNOGKooQedJba} which is a real linear combination of elements of the form \( f\partial^*_{\wedge I}\).
+		\begin{equation}		\label{EQooMGAVooCndFmv}
+			d\omega=d\big( \sum_Ia_I\partial^*_{\wedge I} \big)=\sum_Ida_I\wedge \partial^*_{\wedge I}.
+		\end{equation}
+		\spitem[Unicity]
+		%-----------------------------------------------------------
+		If a map \( d\) satisfying all the conditions exists, it has to be of the form
+		\begin{equation}
+			d\big( \sum_Ia_I\partial^*_{\wedge I} \big)=\sum_Ida_I\wedge \partial^*_{\wedge I}
+		\end{equation}
+		on each coordinate patch. This proves the unicity.
+	\end{subproof}
+	\begin{proofpart}
+		Local existence
+	\end{proofpart}
+	For each chart \( (U_{\alpha}, \varphi_{\alpha})\) we define the operators
+	\begin{equation}
+		\begin{aligned}
+			d_{\alpha} \colon \Omega^k\big( \varphi_{\alpha}(U_{\alpha}) \big) & \to \Omega^{k+1}\big( \varphi_{\alpha}(U_{\alpha}) \big) \\
+			\sum_Ia_I\partial^*_{\wedge I}                                     & \mapsto \sum_Ida_I\wedge\partial^*_{\wedge I},
+		\end{aligned}
+	\end{equation}
+	and we prove that they satisfy the conditions.
+	\begin{subproof}
+		\spitem[Property \ref{ITEMooPQYCooHMjgIR}]
+		%-----------------------------------------------------------
+		We have
+		\begin{equation}
+			d(\lambda \omega)  =\big( \sum_I(\lambda a_I)\partial^*_{\wedge I} \big)
+			=\sum_Id(\lambda a_I)\wedge\partial^*_{\wedge I}
+			=\lambda\sum_Ida_I\wedge \partial^*_{\wedge I}.
+		\end{equation}
+		Same kind of computations for \( d(\omega+\eta)=d\omega+d\eta\).
+		\spitem[Property \ref{ITEMooRKJRooWwHUiS}]
+		%-----------------------------------------------------------
+		If \( \omega\) is a \( 0\)-form, the expression \eqref{EQooMGAVooCndFmv} has no sum over \( I\) and reduces to \( \omega=f\).
+		\spitem[Property \ref{ITEMooBBFLooWpZJuT}]
+		%-----------------------------------------------------------
+		Let \( \omega=\sum_{I\in C_k}a_I\partial^*_{\wedge I}\) and \( \eta=\sum_{J\in C_l}b_J\partial^*_{\wedge J}\). Since the wedge product is linear we can group the sums:
+		\begin{equation}
+			\omega\wedge \eta=\sum_I\sum_Ja_Ib_J\partial^*_{\wedge I}\wedge \partial^*_{\wedge J}.
+		\end{equation}
+		Using the product rule for usual differential, we have
+		\begin{subequations}
+			\begin{align}
+				d_{\alpha}(\omega\wedge\eta) & =\sum_{I,J}d(a_Ib_J)\wedge(\partial^*_{\wedge I}\wedge \partial^*_{\wedge J})                                                                                                                                 \\
+				                             & =\sum_{I,J}b_J(da_I)\wedge(\partial^*_{\wedge I}\wedge \partial^*_{\wedge J})+\sum_{I,J}(a_Idb_J)\wedge(\partial^*_{\wedge I}\wedge \partial^*_{\wedge J})                                                    \\
+				                             & =\sum_{I,J}(da_I\wedge \partial^*_{\wedge I})\wedge(b_J\partial^*_{\wedge J})+\sum_{I,J}a_I(-1)^k\partial^*_{\wedge I}\wedge db_J\wedge\partial^*_{\wedge J} & \text{cf. bellow}		\label{SUBEQooFXOAooCziZnU} \\
+				                             & = d\omega\wedge\eta+(-1)^k\omega\wedge d\eta.
+			\end{align}
+		\end{subequations}
+		For \eqref{SUBEQooFXOAooCziZnU}. In the first sum, the function \( b_J\) commutes with the operation \( \wedge\). In the second sum, the differential form \( db_J\) commutes with the wedge products giving a minus sign. This explains the \( (-1)^k\).
+		\spitem[\( d(df)=0\)]
+		%-----------------------------------------------------------
+		Let \(f \colon M\to \eR  \) be a smooth function. Using lemma \ref{LEMooGEFSooVlPLOs}, we compute \( d_{\alpha}(df)\) :
+		\begin{equation}
+			d_{\alpha}(df)=\sum_i\sum_j(\partial_j\partial_if)\partial^*_j\wedge\partial^*_i.
+		\end{equation}
+		Since \( \partial_i\partial_if\) is symmetric with respect to \( i,j\) and \( \partial^*_j\wedge\partial^*_i\) is anti-symmetric with respect to \( i,j\), the sum is zero.
+		\spitem[Property \ref{ITEMooJXMFooHFTFYi}]
+		%-----------------------------------------------------------
+		Let \( \omega=\sum_Ia_I\partial^*_{\wedge I}\). First we have
+		\begin{equation}
+			d_{\alpha}\omega=\sum_Ida_I\wedge\partial^*_{\wedge I}.
+		\end{equation}
+		Then
+		\begin{equation}
+			d_{\alpha}(d_{\alpha\omega})=\sum_I\underbrace{d(da_I)}_{=0}\wedge\partial^*_{\wedge I}-\sum_Ida_I\wedge \underbrace{d(\partial^*_{\wedge I})}_{=0}.
+		\end{equation}
+	\end{subproof}
+	\begin{proofpart}
+		Global existence
+	\end{proofpart}
+	By the unicity part, we have \( d_{\alpha}=d_{\beta}\) on the part \( \varphi_{\alpha}(U_{\alpha})\cap\varphi_{\beta}(U_{\beta})\). Thus the local formula
+	\begin{equation}
+		d\big( \sum_Ia_I\partial^*_{\wedge I} \big)  =\sum_Ida_I\wedge\partial^*_{\wedge I}
+	\end{equation}
+	globally defines \( d\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau,BIBooEJXFooVcandW,BIBooFZPAooVLUjdi,BIBooTJJBooWeUZEO}]		\label{PROPooUOQRooAdvYqx}
+	Let \( \omega\) be a \( k\)-differential form and \( X_1,\ldots,X_{k+1}\) be vector fields. We have
+	\begin{equation}
+		\begin{aligned}[]
+			(d\omega)(X_1,\ldots,X_{k+1}) & =\sum_i(-1)^{i+1}X_i\big( \omega(X_1,\ldots,\hat X_i,\ldots, X_{k+1}) \big)                             \\
+			                              & \quad+\sum_{i<j}(-1)^{i+j}\omega\big( [X_i,X_j],X_1,\ldots\hat X_i,\ldots,\hat X_j,\ldots,X_{k+1} \big)
+		\end{aligned}
+	\end{equation}
+	where \( d\omega\) is the exterior derivative defined by proposition \ref{PROPooTXFRooMtaVrU}.
+\end{proposition}
+
+\begin{proof}
+	We defined \(s \colon \Omega^k(M)\to \Omega^{k+1}(M)  \) by
+	\begin{equation}		\label{EQooZPNOooAXitUC}
+		\begin{aligned}[]
+			(s\omega)(X_1,\ldots,X_{k+1}) & =\sum_i(-1)^{i+1}X_i\big( \omega(X_1,\ldots,\hat X_i,\ldots, X_{k+1}) \big)                              \\
+			                              & \quad+\sum_{i<j}(-1)^{i+j}\omega\big( [X_i,X_j],X_1,\ldots,\hat X_i,\ldots,\hat X_j,\ldots,X_{k+1} \big)
+		\end{aligned}
+	\end{equation}
+	and we will show that \( s\) has the same local form as \( d\):
+	\begin{equation}
+		s(f\partial^*_{\wedge I})=df\wedge\partial^*_{\wedge I}.
+	\end{equation}
+	Then, as we seen in proposition \ref{PROPooTXFRooMtaVrU}, it makes \( s\) satisfy the defining properties of the exterior derivative and the unicity part will conclude that \( s=d\).
+
+
+	\begin{proofpart}
+		\( s(\omega)\) is \( C^{\infty}(M)\)-linear
+	\end{proofpart}
+	In this part, we prove that \( s(\omega)(fX_1,X_2,\ldots,X_{k+1})=fs(\omega)(X_1,\ldots,X_{k+1})\) for every smooth function \(f \colon M\to \eR  \).
+
+	\begin{subproof}
+		\spitem[Splitting the sums]
+		%-----------------------------------------------------------
+
+		We split the sums in \eqref{EQooZPNOooAXitUC}. We separate the terms \( i=1\) in the sums in equation \eqref{EQooZPNOooAXitUC}:
+		\begin{equation}
+			\begin{aligned}[]
+				s(\omega)(fX_1,X_2,\ldots,X_{k+1}) & =fX_1\big( \omega(X_2,\ldots,X_{k+1}) \big)                                                   \\
+				                                   & \quad +\sum_{i>1}(-1)^{i+1}X_i\big( \omega(fX_1,X_2,\ldots,\hat X_i,\ldots,x_{k+1})\big)      \\
+				                                   & \quad + \sum_{j>1}(-1)^{1+j}\omega\big( [fX_1,X_j],X_2,\ldots,\hat X_j,\ldots,X_{k+1} \big)   \\
+				                                   & \quad +\sum_{1<i<j}(-1)^{i+j}\omega\big( [X_i,X_j],fX_1,\ldots,\hat X_j,\ldots,X_{k+1} \big).
+			\end{aligned}
+		\end{equation}
+		Since \( \omega\) is \( C^{\infty}(M)\)-linear, we can move \( f\) outside \( \omega\) when it is a simple coefficient:
+		\begin{equation}
+			\begin{aligned}[]
+				s(\omega)(fX_1,X_2,\ldots,X_{k+1}) & =fX_1\big( \omega(X_2,\ldots,X_{k+1}) \big)                                                   \\
+				                                   & \quad +\sum_{i>1}(-1)^{i+1}X_i\big(f \omega(X_1,X_2,\ldots,\hat X_i,\ldots,x_{k+1})\big)      \\
+				                                   & \quad + \sum_{j>1}(-1)^{1+j}\omega\big( [fX_1,X_j],X_2,\ldots,\hat X_j,\ldots,X_{k+1} \big)   \\
+				                                   & \quad +\sum_{1<i<j}(-1)^{i+j}f\omega\big( [X_i,X_j],X_1,\ldots,\hat X_j,\ldots,X_{k+1} \big).
+			\end{aligned}
+		\end{equation}
+		\spitem[Apply \( X_i\)]
+		%-----------------------------------------------------------
+		Using the product rule,
+		\begin{equation}
+			\begin{aligned}[]
+				X_i\big( f\omega(X_1,\ldots,\hat X_i,\ldots , X_{k+1}) \big) & =(X_if)\omega(X_1,\ldots,\hat X_i,\ldots,X_{k+1})                \\
+				                                                             & \quad+fX_i\big( \omega(X_1,\ldots,\hat X_i,\ldots,X_{k+1}) \big)
+			\end{aligned}
+		\end{equation}
+		\spitem[The commutator]
+		%-----------------------------------------------------------
+		If \( v\) is a vector we have
+		\begin{subequations}
+			\begin{align}
+				[fX_1,X_j](v) & =(fX_1)(X_jv)-X_j\big( X_j(X_1v) \big) \\
+				              & =(fX_1X_j)(v)-X_j(f)X_1(v)-fX_jX_1v    \\
+				              & =f[X_1,X_j](v)-X_j(f)X_1(v).
+			\end{align}
+		\end{subequations}
+		So we have \( [fX_1,X_k]=f[X_1,X_j]-X_j(f)X_1\). Beware: the expression \( f(X_1v)\) means the function \( x\mapsto f(x)(X_1)_xv\), not the function \( f\) applied to \( X_1v\) (which makes no sense).
+
+		Notice that \(  X_j(f)\) is a function and can get out of \( \omega\).
+		\spitem[Last computation]
+		%-----------------------------------------------------------
+		Using the small computations we've just made,
+		\begin{subequations}
+			\begin{align}
+				s(\omega)(fX_1,\ldots,X_{k+1}) & =fX_1\big( \omega(X_2,\ldots,X_{k+1}) \big)                                                                                                                             \\
+				                               & \quad + \sum_{i>1}(-1)^{i+1}(X_if)\omega(X_1,\ldots,\hat X_i,\ldots,X_{k+1})                                                                                            \\
+				                               & \quad + \sum_{i>1}(-1)^{i+1}fX_1\big( \omega(X_1,\ldots,\hat X_i,\ldots,X_{k+1}) \big)                           \label{SUBEQooXSVIooWhHJNA}                            \\
+				                               & \quad +\sum_{j>1}(-1)^{1+j}f\omega\big( [X_1,X_j], X_2,\ldots, \hat X_j,\ldots,X_{k+1} \big)                                                                            \\
+				                               & \quad - \sum_{j>1}(-1)^{1+j}X_j(f)\omega(X_1,\ldots,\hat X_j,\ldots,X_{k+1})                                                               \label{SUBEQooIBWYOooXfVAWt} \\
+				                               & \quad + \sum_{1<i<j}(-1)^{i+j}f\omega\big( [X_i,X_j],X_1,\ldots,\hat X_i,\ldots,\hat X_j,\ldots,X_{k+1} \big).
+			\end{align}
+		\end{subequations}
+		The terms \eqref{SUBEQooXSVIooWhHJNA} and \eqref{SUBEQooIBWYOooXfVAWt} simplify. The other can be grouped to get
+		\begin{subequations}
+			\begin{align}
+				s(\omega)(fX_1,\ldots,X_{k+1}) & = \sum_i(-1)^{i+1}fX_i\big( \omega(X_1,\ldots,\hat X_i,\ldots,X_{k+1}) \big)                                       \\
+				                               & \quad\nonumber+\sum_{i<j}(-1)^{i+j}f\omega\big( [X_i,X_j],X_1,\ldots,\hat X_j,\ldots,\hat X_j,\ldots,X_{k+1} \big) \\
+				                               & =fs(\omega)(X_1,\ldots,X_{k+1}).
+			\end{align}
+		\end{subequations}
+		Do you believe that one can make the same work with \( X_l\) instead of \( X_1\) ? Okay we are done for the first part: \( s(\omega)\) is \( C^{\infty}(M)\)-linear.
+	\end{subproof}
+
+	\begin{proofpart}
+		Local expression
+	\end{proofpart}
+
+	Several steps.
+
+	\begin{subproof}
+		\spitem[Setting]
+		%-----------------------------------------------------------
+
+
+		Since \( s(\omega)\) is \( C^{\infty}(M)\)-linear, it is sufficient to compute its local expression when acting on the coordinate vectors \(  (\partial_{i_1},\ldots,\partial_{i_{k+1}})   \). So consider a multiindex \( J=(j_1,\ldots,j_{k+1})\), let\footnote{We use compact notations like \( \partial_I=(\partial_{i_1},\ldots,\partial_{i_k})\) and \( \partial_{\wedge I}=\partial_{i_1}\wedge \ldots\wedge \partial_{i_k}\).}
+		\begin{equation}
+			\omega=\sum_{I\in C_k}a_I(\partial_{\wedge I}^*)
+		\end{equation}
+		and let's compute \( s(\omega)(\partial_J)\).
+
+		\spitem[Commutators]
+		%-----------------------------------------------------------
+
+
+		Since \( [\partial_i,\partial_i]=0\) for every \( i\) and \( j\), the term containing the commutator in \( s(\omega)\) vanishes when applied to \( \partial_J\). We are left with
+		\begin{equation}
+			s(\omega)(\partial_J)=\sum_l(-1)^{l+1}\sum_I\partial_{j_l}\big( a_I\partial^*_{\wedge I}(\partial_{j_1},\ldots,\hat\partial_{j_l},\ldots,\partial_{j_{k+1}}) \big).
+		\end{equation}
+		Notice that the numbers \( i_1<i_{2}<\ldots<i_k\) because the sum is over \( I\in C_k\), see proposition \ref{PROPooNOGKooQedJba}.
+		\spitem[Intermediate result]
+		%-----------------------------------------------------------
+		If \( I\) is a multiindex, if \( \eta\) is a \( 1\)-form and if \( k\) is not part of \( I\), let us prove that
+		\begin{equation}	\label{EQooLMTCooYAEiOy}
+			(\eta\otimes \partial^*_{\wedge I})(\partial_k,\partial_I)=(\eta\wedge\partial^*_{\wedge I})(\partial_k,\partial_I).
+		\end{equation}
+		The wedge product \( \eta\wedge\partial^*_{\wedge I}\) contains terms with \( \eta\otimes\wedge^*_{\wedge I}\)  and with \( \partial^*_{\wedge I}\wedge \eta\). The second term is zero because \( \partial_k\) is part of the arguments of \( \partial^*_{\wedge I}\) while \( k\) is not part of \( I\).
+
+
+		\spitem[If \( J\) is sorted]
+		%-----------------------------------------------------------
+		Let us suppose that \( j_1<\ldots <j_{k+1}\). We have:
+		\begin{equation}
+			s(\omega)(\partial_J)=\sum_l(-1)^{l+1}\sum_I\partial_{j_l}\big( a_I\partial^*_{\wedge I}(\partial_{J_{\hat l}}) \big)
+		\end{equation}
+		where \( J_{\hat l}=(j_1,\ldots,\hat j_l,\ldots,j_{k+1})\). The only terms in the sum over \( I\) which do not vanish are the ones with
+		\begin{equation}		\label{EQooLOAXooIJERyY}
+			\{ i_1,\ldots,i_k \}=\{ j_1,\ldots,j_{k+1} \}\setminus\{ j_l \}.
+		\end{equation}
+		Since the multiindices \( I\) and \( J\) are supposed to be sorted, the set equality \eqref{EQooLOAXooIJERyY} says that only one term is non zero: the term \( (i_1,\ldots,i_k)=(j_1,\ldots,\hat j_l,\ldots,j_{k+1})=J_{\hat l}\). We have:
+		\begin{equation}
+			s(\omega)(\partial_J)=\sum_l(-1)^{l+1}\partial_{j_l}\big( a_{J_{\hat l}}\partial^*_{\wedge J_{\hat l}}(\partial_{J_{\hat l}}) \big).
+		\end{equation}
+		In this expression, the factor \( \partial^*_{\wedge J_{\hat l}}(\partial_{J_{\hat l}})\) is a constant. The derivative \( \partial_{i_l}\) does not act on it. We continue the computation:
+		\begin{subequations}
+			\begin{align}
+				s(\omega)(\partial_J) & =\sum_l(-1)^{l+1}\partial_{j_l}\big( a_{J_{\hat l}}\partial^*_{\wedge J_{\hat l}}(\partial_{J_{\hat l}}) \big)                                                                                             \\
+				                      & =\sum_l(-1)^{l+1}\underbrace{\partial_{j_l}(a_{J_{\hat l}})}_{=(da_{J_{\hat l}})(\partial_{j_l})}\partial^*_{\wedge J_{\hat l}}(\partial_{J_{\hat l}})                                                     \\
+				                      & = \sum_l(-1)^{l+1}(da_{J_{\hat l}})(\partial_{j_l})(\partial^*_{j_1}\wedge\ldots\hat\partial^*_{j_l}\ldots\wedge \partial^*_{j_{k+1}})(\partial_{j_1},\ldots,\hat\partial_{j_l},\ldots,\partial_{j_{k+1}}) \\
+				                      & =\sum_l(-1)^{l+1}\big[   (da_{I_{\hat l}}\otimes \partial_{\wedge J_{\hat l}})   \big](\partial_{j_l}, \partial_{J_{\hat l}})
+			\end{align}
+		\end{subequations}
+		We use the intermediate result \eqref{EQooLMTCooYAEiOy} :
+		\begin{subequations}
+			\begin{align}
+				s(\omega)(\partial_J) & =\sum_{l}(-1)^{l+1}(da_{J_{\hat l}}\wedge \partial^*_{\wedge J_{\hat l}})(\partial_{j_l},\partial_{J_{\hat l}})                        \\
+				                      & =\sum_l(da_{J_{\hat l}}\wedge \partial^*_{\wedge J_{\hat l}})(\partial_{j_1},\ldots, \partial_{j_{k+1}}).		\label{SUBEQooBADJooNmVtew}
+			\end{align}
+		\end{subequations}
+		The second equality correspond to move the argument \( \partial_{j_l} \) to the \( l\)\ieme\ position: it requires \( l-1\) transpositions, each of them adding an extra minus sign.
+
+		\spitem[Conclusion (\( J\) sorted)]
+		%-----------------------------------------------------------
+		We are still with \( J\) sorted. We have to compare \eqref{SUBEQooBADJooNmVtew} with the known expression of \( d\omega\). We have
+		\begin{subequations}
+			\begin{align}
+				(d\omega)(\partial_J) & =\sum_I(da_I\wedge\partial^*_{\wedge I})(\partial_J)                                                                                                                  \\
+				                      & =\sum_I\sum_l(\partial_la_I)(\partial^*_l\wedge\partial^*_{\wedge I})(\partial_J)                     & \text{lem. \ref{LEMooGEFSooVlPLOs}}                           \\
+				                      & =\sum_l\sum_I(\partial_la_I)(\partial^*_l\wedge\partial^*_{\wedge I})(\partial_J)                                                                                     \\
+				                      & = \sum_l(\partial_la_{J_{\hat l}})\partial_l\wedge\partial^*_{\wedge J_{\hat l}}(\partial_J)          & \text{see bellow}                 \label{SUBEQooIKQUooVSVbCm} \\
+				                      & = \sum_lda_{J_{\hat l}}\wedge\partial^*_{\wedge J_{\hat l}}(\partial_J).		\label{SUBEQooTVDQooSAfZYQ}
+			\end{align}
+		\end{subequations}
+		Explanation for \eqref{SUBEQooIKQUooVSVbCm}. The only non vanishing term in the sum over \( I\) is the one with \( \{ l,i_1,\ldots,i_k \}=\{ j_1,\ldots,j_{k+1} \}\), which is \( I=J_{\hat l}\).
+
+		Now we see that the expression \eqref{SUBEQooBADJooNmVtew} and \eqref{SUBEQooTVDQooSAfZYQ} are the same, so that
+		\begin{equation}
+			(d\omega)(\partial_J)=(s\omega)(\partial_J).
+		\end{equation}
+		\spitem[\( J\) is not sorted]
+		%-----------------------------------------------------------
+		We suppose now that \( J\) is not sorted. Let \( \pi\) be a permutation such that \( \pi(J)\) is sorted. Using the fact that \( s(\omega) \) and \( d\omega\) are anti-symmetric, we have:
+		\begin{subequations}
+			\begin{align}
+				s(\omega)(\partial_J) & =(-1)^{\pi}s(\omega)(\partial_{\pi(J)}) \\
+				                      & =(-1)^{\pi}(d\omega)(\partial_{\pi(J)}) \\
+				                      & =(d\omega)(\partial_J).
+			\end{align}
+		\end{subequations}
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooJCXRooMQxauV}
+	Let \( M\) be a smooth manifold. We consider a chart \(\varphi \colon U\to M  \) and the maps
+	\begin{equation}
+		\begin{aligned}
+			x_i\colon M & \to \eR                              \\
+			p           & \mapsto (\pr_i\circ\varphi^{-1})(p).
+		\end{aligned}
+	\end{equation}
+	We have \( \partial_i^*=dx_i\).
+\end{lemma}
+
+\begin{proof}
+	We prove that \( dx_i(\partial_j)=\delta_{ij}\):
+	\begin{subequations}
+		\begin{align}
+			dx_i(\partial_j) & =\frac{d}{dt} \left[ x_i\big( \varphi(s+te_j) \big)  \right]_{t=0} \\
+			                 & =\frac{d}{dt} \left[ \pr_i(s+te_j)  \right]_{t=0}                  \\
+			                 & = \frac{d}{dt} \left[ s_i+t\delta_{ij}  \right]_{t=0}              \\
+			                 & =\delta_{ij}.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{lemma}		\label{LEMooQWTXooOkSZmV}
+	Let \( f_1,\ldots,f_k\) be smooth functions we have
+	\begin{equation}
+		d(df_1\wedge\ldots\wedge df_k)=0.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Proof by induction over \( k\). If \( k=1\), we have \( d(df_1)=0\) by definition \ref{PROPooTXFRooMtaVrU}\ref{ITEMooJXMFooHFTFYi}. If not we set \( \omega=df_2\wedge\ldots \wedge df_k\) and we use the Leibniz rule \ref{PROPooTXFRooMtaVrU}\ref{ITEMooBBFLooWpZJuT} :
+	\begin{equation}
+		d(df_1\wedge\ldots\wedge df_k)=(ddf_1)\wedge\omega-df_1\wedge d\omega.
+	\end{equation}
+	In the first term, \( ddf_1=0\) and \( d\omega=0\) by the induction hypothesis.
+\end{proof}
+
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooAONJooDgEJjA}
+	Let \( a\) and \( f_1,\ldots,f_k\) be smooth functions. If \( \omega=df_1\wedge\ldots\wedge df_k\), then
+	\begin{equation}
+		d(a\omega)=da\wedge \omega.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Point \ref{ITEMooBBFLooWpZJuT} of definition \ref{PROPooTXFRooMtaVrU} says \( d(a\omega)=da\wedge \omega+a\wedge d\omega\). Lemma \ref{LEMooQWTXooOkSZmV} implies that the second term is zero.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooINQYooXZcfou}
+	Let \( M\) and \( N\) be smooth manifolds. Let \(f \colon M\to N  \) and \(g_i \colon N\to \eR  \) be smooth functions. Let \( X_i\) be smooth vector fields on \( M\). We have
+	\begin{equation}
+		(dg_1\wedge\ldots\wedge dg_k)(df_xX_1,\ldots,df_xX_k)=d(g_1\circ f)_x\wedge\ldots \wedge d(g_k\circ f)_x(X_1,\ldots,X_k).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	First take a look at the formulas of corollary \ref{CORooDQSNooZtMuOJ}. Then we prove by induction over \( k\). We set \( \omega=dg_2\wedge\ldots \wedge dg_k\) and we compute :
+	\begin{subequations}
+		\begin{align}
+			(dg_1\wedge \omega)(X_1,\ldots,X_k) & =\frac{1}{ (k-1)!}\sum_{\pi\in S_k}(-1)^{\pi}(dg_1\otimes \omega)(X_{\pi(1)}, \ldots,X_{\pi(k)})                                   \\
+			                                    & =\frac{1}{ (k-1)!}\sum_{\pi\in S_k}(-1)^{\pi}dg_1\big( df_x X_{\pi(1)} \big)\omega\big( df_xX_{\pi(2)},\ldots,df_xX_{\pi(k)} \big)
+		\end{align}
+	\end{subequations}
+	Here we transform
+	\begin{equation}
+		dg_1(df_x v)=d(g_1\circ f)_xv
+	\end{equation}
+	and, using the induction hypothesis,
+	\begin{equation}
+		\omega\big( df_xX_{\pi(2)},\ldots,df_xX_{\pi(k)} \big)=d(g_2\circ f)_x\wedge\ldots\wedge d(g_k\circ f)_x\big( X_{\pi(2)},\ldots,X_{\pi(k)} \big),
+	\end{equation}
+	and we make the computation backward from \eqref{SUBEQooSNOTooZzxesM}.
+\end{proof}

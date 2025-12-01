@@ -1,0 +1,1179 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2008-2025
+%   Laurent Claessens, Carlotta Donadello
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Espaces vectoriels topologiques}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}\label{DefEVTopologique}
+	Un espace vectoriel \( V\) sur le corps valué\footnote{Définition \ref{DEFooBWXXooAkBBRS}.} \( \eK\) muni d'une topologie est un \defe{espace vectoriel topologique}{espace vectoriel!topologique} si
+	\begin{enumerate}
+		\item
+		      la somme de deux vecteurs est une application continue \( V\times V\to V \); et
+		\item
+		      la multiplication par un scalaire est une application continue \( \eK\times V\to V\).
+	\end{enumerate}
+	Ici, sur \( V\times V\) et sur \( \eK\times V\) nous avons la topologie produit.
+
+	Dans toute la suite, nous supposons que \( \eK\) est un corps avec une topologie métrique.
+\end{definition}
+On le redit quand même: le corps\footnote{Définition~\ref{DefTMNooKXHUd}} lui-même doit avoir sa topologie. Dans la grande majorité des cas, ce corps est \( \eR\) ou \( \eC\) muni de la topologie usuelle.
+
+Mine de rien, le fait que les deux opérations usuelles soient continues a de belles conséquences sur la topologie de l'espace\dots
+
+\begin{proposition}[\cite{ooMKWJooLSkGfh}]      \label{PROPooDXLFooFghbWk}
+	Soit un espace vectoriel topologique \( V\). Pour \(x \in V \) et \(\lambda \in \eK, \ \lambda \neq 0 \) fixés, les fonctions \( T_x \) et \( M_\lambda \) définies par:
+	\begin{align}
+		T_x: & V \to V       &  & \text{et} & M_\lambda:          & V \to V \\
+		     & y \mapsto x+y &  &           & y \mapsto \lambda y
+	\end{align}
+	sont des automorphismes\footnote{Définition \ref{DEFooYPGQooMAObTO}.} de l'espace topologique \(V \).
+\end{proposition}
+
+\begin{proof}
+	Ce sont des bijections continues, dont les inverses sont respectivement \( T_{-x} \) et \( M_{1/\lambda} \).
+\end{proof}
+
+
+\begin{proposition}		\label{PROPooJYLVooPpLWFX}
+	Soit un espace vectoriel topologique \( X\). Si \( \mO\) est un ouvert dans \( X\), alors pour tout \( x\in X\) et pour tout \( \lambda\in \eK\), les parties \( \mO+x\) et \( \lambda \mO\) sont des ouverts.
+	%TODOooFQPWooEEvujI. Prouver ça.
+\end{proposition}
+
+
+\begin{lemma}[\cite{MonCerveau}]            \label{LEMooEZIYooBBxdJj}
+	Soit un espace vectoriel topologique \( V\) sur le corps \( \eK\). Si \( \mO\) est un ouvert autour de \( 0\) dans \( V\) et si \( \lambda\neq 0\in \eK\), il existe un ouvert \( U\) autour de \( 0\) tel que \( \lambda U\subset \mO\).
+\end{lemma}
+
+\begin{proof}
+	La réponse est \( U=\lambda^{-1}\mO\). En effet par définition d'un espace vectoriel topologique, la fonction donnée par \( f(x)=\lambda x  \) est continue; donc \( U=f^{-1}(\mO)\) est un ouvert. De plus \( \lambda U=\mO\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooHKGZooDaNaHU}
+	Une application linéaire entre espaces vectoriels topologiques est continue si et seulement si elle est continue en \( 0\).
+\end{proposition}
+
+\begin{proof}
+	Soient deux espaces vectoriels topologiques. Soit une application linéaire \(f \colon E\to F  \). Nous supposons qu'elle est continue en \( 0\) (définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr}), et nous montrons qu'elle est alors continue en \( a\in E\).
+
+	Soit un voisinage \( W\) de \( f(a)\) dans \( F\). Alors la proposition \ref{PROPooJYLVooPpLWFX} dit que \( W-f(a)\) est un voisinage de \( 0=f(0)\) dans \( F\). Vu que \( f\) est continue en \( 0\), il existe un voisinage \( V\) de \( 0\) dans \( E\) tel que \( f(V)\subset W-f(a)\). Alors
+	\begin{equation}
+		f(V+a)=f(V)+f(a)\subset W,
+	\end{equation}
+	et le voisinage \( V+a\) de \( a\) dans \( E\) fait l'affaire.
+
+	Nous avons prouvé que \( f\) est continue en chaque point de \( E\). La proposition \ref{PROPooOVKEooCkJmmO} dit que \( f\) est alors continue sur \( E\).
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{De complexe à réel}
+%----------------------------------------------------
+
+Si \( E\) est un espace topologique sur \( \eC\), nous aurons besoin de le voir comme espace topologique sur \( \eR\).
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooAIMVooYtZVJV}
+	Soit un espace topologique complexe \( (X,\tau,m_X,s_X)\) où \( \tau\) est la topologie sur \( X\), \(m_X \colon \eC\times X\to X  \) est la multiplication et \(s_X \colon X\times X\to X  \) est la somme.
+
+	Alors en posant \( E=X\) (comme ensembles) ainsi que
+	\begin{equation}
+		\begin{aligned}
+			s_E\colon E\times E & \to E             \\
+			(x,y)               & \mapsto s_X(x,y),
+		\end{aligned}
+	\end{equation}
+	et
+	\begin{equation}
+		\begin{aligned}
+			m_E\colon \eR\times E & \to E                   \\
+			(\lambda,x)           & \mapsto m_X(\lambda,x),
+		\end{aligned}
+	\end{equation}
+	la quadruplet \( (E,\tau,m_E,s_E)\) est un espace topologique.
+	%TODOooWBWYooJxaLdC. Prouver ça.
+\end{proposition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQMGXooBnJblx}
+	Soit \( X\) un espace vectoriel topologique sur \( \eC\). Si \(f \colon X\to \eR  \) est \( \eR\)-linéaire, nous posons
+	\begin{equation}
+		\phi(x)=f(x)-if(ix).
+	\end{equation}
+	Alors
+	\begin{enumerate}
+		\item
+		      L'application \( \phi\) est \( \eC\)-linéaire.
+		\item
+		      Nous avons \( \| \phi \|=\| f \|\).
+		\item
+		      Si \( f\) est continue, alors \( \phi\) est continue.
+	\end{enumerate}
+	%TODOooWUGHooPbSEkr. Prouver ça.
+\end{proposition}
+
+
+%-------------------------------------------------------
+\subsection{Base de topologie}
+%----------------------------------------------------
+
+Toute base de voisinage de \( 0 \) se transporte en tout point de l'espace vectoriel topologique.
+\begin{corollary}[Invariance de la topologie\cite{ooMKWJooLSkGfh}]\label{PropInvarianceTopologie}
+	Soit un espace vectoriel topologique \( (X,\tau)\). Si \( \mB_0\) est une base de topologie en \( 0\), alors \( \mB_0+a\) est une base de topologie en \( a\).
+\end{corollary}
+
+\begin{proof}
+	Soit un ouvert \( U\) contenant \( a\). Alors \( U-a\) est un ouvert contenant \( 0\) (proposition \ref{PROPooJYLVooPpLWFX}). Il existe donc \( B\in\mB_0\) tel que \( 0\in B\subset U-a\). Nous avons alors \( a\in B+a\subset U\).
+\end{proof}
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Somme directe topologique}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+\begin{propositionDef}[\cite{BIBooSGHOooYSASxY,BIBooTEWSooKeZcGc,MonCerveau}]     \label{PropKZDqTR}
+	Soit \( V\) un espace vectoriel topologique et une décomposition en somme directe\footnote{Définition \ref{DEFooIJDNooRUDUYF}.} \( V=V_1\oplus V_2\). Alors les trois conditions suivantes sont équivalentes.
+	\begin{enumerate}
+		\item       \label{ITEMooMUELooWdJQeW}
+		      La bijection
+		      \begin{equation}
+			      \begin{aligned}
+				      \psi\colon V_1\times V_2 & \to V           \\
+				      (x_1,x_2)                & \mapsto x_1+x_2
+			      \end{aligned}
+		      \end{equation}
+		      est un homéomorphisme\footnote{C'est-à-dire isomorphisme d'espaces vectoriels : bijection continue de réciproque continue. En ce qui concerne la topologie sur \( V_1\times V_2\), elle est donné par la définition \ref{DefIINHooAAjTdY}.}.
+		\item       \label{ITEMooDKOYooUpEfOR}
+		      Les parties \( V_1\) et \( V_2\) sont fermées dans \( V\) et la projection \( s\colon V_2\to V/V_1\) est un homéomorphisme.
+		\item       \label{ITEMooFSSMooCQzTIc}
+		      Les parties \( V_1\) et \( V_2\) sont fermées dans \( V\) et la projection \( \pi_2\colon V \to V_2 \) est continue.
+	\end{enumerate}
+	Lorsqu'une décomposition en somme directe vérifie ces conditions, nous disons que la décomposition est \defe{topologique}{somme directe topologique}.
+\end{propositionDef}
+
+\begin{proof}
+	Avant de commencer, nous rappelons les topologies.
+	\begin{itemize}
+		\item Sur \( V_1\) et \( V_2\) nous avons la topologie induite, définition \ref{DefVLrgWDB}.
+		\item La topologie produit sur \( V_1\times V_2\) est la définition \ref{DefIINHooAAjTdY}.
+		\item La topologie quotient sur \( V/V_1\) est la définition \ref{DEFooHWSYooZZLXQU}.
+	\end{itemize}
+
+	Voici quelques points qui ne dépendent pas des hypothèses \ref{ITEMooMUELooWdJQeW}, \ref{ITEMooDKOYooUpEfOR} ou \ref{ITEMooFSSMooCQzTIc}.
+	\begin{subproof}
+		\spitem[La projection \( p\colon V\to V/V_1\) est continue]
+		% -------------------------------------------------------------------------------------------- 
+		La projection est toujours continue pour la topologie quotient; c'est la définition même, voir \ref{DEFooHWSYooZZLXQU}.
+		\spitem[\( \psi\) est une bijection continue]
+		% -------------------------------------------------------------------------------------------- 
+		Le fait que \( \psi\) soit continue fait partie de la définition \ref{DefEVTopologique} d'un espace vectoriel topologique. Pour que ce soit une bijection, c'est le lemme \ref{LEMooHWRVooLedAmF}.
+		% -------------------------------------------------------------------------------------------- 
+		\spitem[\( s\) est injective]
+		% -------------------------------------------------------------------------------------------- 
+		Soient \( v,w\in V_2\) tels que \( s(v)=s(w)\). Alors \( \{ v+x_1 \}_{x_1\in V_1}=\{ w+y_1 \}_{y_1\in V_1}\). En particulier \( v\in \{ w+y_1 \}_{y_1\in V_1}\). Il existe donc \( y_1\in V_1\) tel que \( v=w+y_1\). Donc \( v-w\in V_1\). Mais comme \( V_2\) est un espace vectoriel, nous avons aussi \( v-w\in V_2\). Donc \( v-w\in V_1\cap V_2=\{ 0 \}\).
+		\spitem[\( s\) est surjective]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( x\in V\). Nous devons trouver \( v\in V_2\) tel que \( s(v)=[x]\). Nous savons qu'il existe \( x_1\in V_1\) et \( x_2\in V_2\) tels que \( x=x_1+x_2\). Nous avons alors \( [x]=s(x_2)\).
+		\spitem[\( s\) est continue]
+		% -------------------------------------------------------------------------------------------- 
+		Soit un ouvert \( \mO\) de \( V/V_1\). La partie \( p^{-1}(\mO)\) est ouverte dans \( V\) (proposition \ref{PROPooDRPLooONCwYs}), et donc
+		\begin{equation}
+			s^{-1}(\mO)=p^{-1}(\mO)\cap V_2
+		\end{equation}
+		est ouvert dans \( V_2\) parce que la topologie sur \( V_2\) est celle induite\footnote{Topologie induite, définition \ref{DefVLrgWDB}.} de la topologie de \( V\).
+	\end{subproof}
+
+	Et maintenant on prouve les équivalences.
+	\begin{subproof}
+		\spitem[Si \ref{ITEMooMUELooWdJQeW} alors \( V_1\) est fermé]
+		% -------------------------------------------------------------------------------------------- 
+		La partie \( V_1\times \{ 0 \}\) est fermée dans \( V_1\times V_2\). Vu que \( \psi^{-1}\) est continue, nous en déduisons que \( \psi\big( V_1\times\{ 0 \} \big)\) est fermée dans \( V\) par le lemme \ref{LEMooMJSHooOszteq}. Mais comme \( \psi\big( V_1\times \{ 0 \} \big)=V_1\), nous avons que \( V_1\) est fermé dans \( V\).
+
+		\spitem[\ref{ITEMooMUELooWdJQeW} \( \Rightarrow\) \ref{ITEMooFSSMooCQzTIc}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous supposons que \( \psi\colon V_1\times V_2\to V\) est un homéomorphisme. Nous considérons l'application
+		\begin{equation}
+			\begin{aligned}
+				\sigma\colon V_1\times V_2 & \to V_1\times V_2 \\
+				(x,y)                      & \mapsto (0,y).
+			\end{aligned}
+		\end{equation}
+		Cette application est continue et permet d'écrire \( \pi_2\) sous la forme \( \pi_2=\psi\circ \sigma\). En tant que composée d'applications continues, l'application \( \pi_2\) est continue.
+
+		\spitem[\ref{ITEMooFSSMooCQzTIc} \( \Rightarrow\) \ref{ITEMooDKOYooUpEfOR}]
+		% -------------------------------------------------------------------------------------------- 
+		L'application \( \pi\colon V\to V_2\) est constante sur les classes (modulo \( V_1\)). Donc elle descend aux classes\footnote{Voir la définition \ref{DEFooBXGJooOBQaNw}.} en l'application
+		\begin{equation}
+			\begin{aligned}
+				\tilde \pi\colon V/V_1 & \to V_2         \\
+				[x]                    & \mapsto \pi(x).
+			\end{aligned}
+		\end{equation}
+		Cette application est continue parce que \( \pi\) l'est et parce que le lemme \ref{LEMooKTINooKDjNeX} le dit. Le point à remarquer est que \( s^{-1}=\tilde \pi\) parce que pour tout \( x\in V_2\) nous avons
+		\begin{equation}
+			s\Big( \tilde \pi\big( [x] \big) \Big)=s\big( \pi(x) \big)=s(x)=[x]
+		\end{equation}
+		parce que \( \pi(x)=x\) du fait que \( x\in V_2\). Vu que \( \tilde \pi\) est continue, l'application \( s^{-1}\) est également continue.
+		\spitem[\ref{ITEMooDKOYooUpEfOR} \( \Rightarrow\) \ref{ITEMooMUELooWdJQeW}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous pouvons écrire la projection \( \pi_2\colon V\to V_2\) comme composée \( \pi_2=s^{-1}\circ p\). En effet pour \( v_1\in V_1\) et \( v_2\in V_2\) nous avons \( (s^{-1}\circ p)(v_1+v_2)=s^{-1}\big( [v_2] \big)=v_2=\pi_2(v_1+v_2)\).
+
+		Nous savons que \( p\) est continue (construction de la topologie et tout ça), et que \( s^{-1}\) est également continue par hypothèse. Donc \( \pi_2\) est continue. Étant donné que \( \pi_1+\pi_2=\id\) et que l'identité est continue, nous déduisons que \( \pi_1\) est également continue.
+	\end{subproof}
+\end{proof}
+
+
+\begin{normaltext}[\cite{BIBooQLAKooGLbfZf}]
+	Si \( V\) est normé, il existe une façon plus directe (mais pas spécialement plus simple) de prouver l'implication \ref{ITEMooMUELooWdJQeW} \( \Rightarrow\) \ref{ITEMooDKOYooUpEfOR}, et en particulier la continuité de \( s^{-1}\). Voyez \ref{NORMooUDZOooKxAPit}.
+
+	Si \( V\) est de Banach, la continuité de \( s^{-1}\) peut venir du théorème d'isomorphisme de Banach \ref{ThofQShsw} parce que \( s\) est une bijection continue entre espaces de Banach. Attention toutefois à vérifier que \( V/V_1\) est de Banach\quext{Je ne l'ai pas fait, et au doigt mouillé je dirais que ça m'étonnerais que ce soit vrai pour tout choix de sous-espace vectoriel \( V_1\). À vos risques et périls. Écrivez-moi si vous avez une idée.}.
+\end{normaltext}
+
+
+\begin{corollary}[\cite{MonCerveau}]	\label{CORooJHSGooUkGepQ}
+	Tout sous-espace vectoriel d'un espace vectoriel topologique de dimension finie est fermé.
+	%TODOooBLPAooYRcKhm. Prouver ça.
+\end{corollary}
+
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Limite dans un espace vectoriel topologique}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+\begin{lemma}[Changement de variables]      \label{LEMooAHIGooJhpPvo}
+	Soient un espace vectoriel topologique\footnote{Définition \ref{DefEVTopologique}.} \( X\) ainsi qu'un espace séparé \( Y\) et une application \( f\colon X\to Y\). Nous supposons que \( \lim_{x\to a}f(x)=\ell\). Alors \( \lim_{x\to b} f(x+a-b)\) existe et vaut \( \ell\).
+\end{lemma}
+
+\begin{proof}
+	Soit un voisinage \( V\) de \( \ell\) dans \( Y\). Il existe un voisinage \( U\) de \( a\) tel que \( f(U)\subset V\). Nous posons \( U'=U-a+b\). C'est un voisinage de \( b\). En posant \( g(x)=f(x+a-b)\) nous avons
+	\begin{equation}
+		g(U')=f(U-a+b+a-b)=f(U)\subset V.
+	\end{equation}
+	Donc \( \lim_{x\to b}g(x)=\ell\). C'est cette égalité qui signifie \( \lim_{x\to b}f(x+a-b)\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooXWNDooGHDXTa}
+	Soient un espace vectoriel topologique \( X\), un espace topologique \( Y\) et une application \(f \colon X\to Y  \). Si
+	\begin{equation}		\label{EQooMUQJooLClnMP}
+		\lim_{x\to b}f(a+x)=l,
+	\end{equation}
+	alors \( \lim_{x\to a+b}f(x)\) existe et vaut \( l\).
+\end{proposition}
+
+\begin{proof}
+	Soit un voisinage \( V\) de \( l\). Nous devons prouver qu'il existe un voisinage \( U\) de \( a+b\) tel que \( f(U)\subset V\). Par \eqref{EQooMUQJooLClnMP}, il existe un voisinage \( U'\) de \( b\) tel que \( f(a+u)\in V\) pour tout \( u\in U'\). La partie \( U=U'+a\) est un voisinage de \( a+b\) (parce que c'est un ouvert et qu'il contient \( a+b\)). Et si \( x\in U\), alors \( x=a+u\) pour un certain \( u\in U'\). Nous avons \( f(x)=f(a+u)\in V\).
+
+	Cela prouve que \( f(U)\subset V\) comme nous le voulions.
+\end{proof}
+
+
+\begin{proposition}[Limite de fonction composée\cite{BIBooVGIJooVIPUHC}]        \label{PROPooFGWXooFjvTYj}
+	Soient des fonctions \( f,g\colon \eR\to \eR\) telles que
+	\begin{subequations}
+		\begin{align}
+			\lim_{y\to l} f(y)=z \\
+			\lim_{x\to a} g(x)=l.
+		\end{align}
+	\end{subequations}
+	Nous supposons qu'il existe un intervalle ouvert \( I\) contenant \( l\) tel que \( g(x)\neq l\) sur \( I\setminus\{ a \}\).
+
+	Alors
+	\begin{equation}
+		\lim_{x\to a} (f\circ g)(x)=\lim_{y\to l} f(y)=z.
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Limite de fonction composée\cite{BIBooVGIJooVIPUHC}]       \label{PROPooKNVHooXlQyVA}
+	Soient des fonctions \( f,g\colon \eR\to \eR\) telles que
+	\begin{subequations}
+		\begin{align}
+			\lim_{y\to l} f(y)=z \\
+			\lim_{x\to a} g(x)=l.
+		\end{align}
+	\end{subequations}
+	Nous supposons que \( f\) est continue en \( l\).
+
+	Alors
+	\begin{equation}
+		\lim_{x\to a} (f\circ g)(x)=\lim_{y\to l} f(y)=z.
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}     \label{PROPooBEHTooBrLWuh}
+	Toute application linéaire entre espaces vectoriels topologiques de dimension finie est continue.
+	% non, sérieux ce résulat n'est pas démontré ailleurs ?
+\end{proposition}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Corps topologique}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[Anneau topologique\cite{BIBooIAZDooByMAjy}]      \label{DEFooWKLOooPdsxQl}
+	Un \defe{anneau topologique}{anneau topologique} est un anneau\footnote{Définition \ref{DefHXJUooKoovob}.} muni d'une topologie dans laquelle l'addition et la multiplication sont continues\footnote{Définition \ref{DefOLNtrxB}\ref{ITEMooEHGWooDdITRV}.}.
+\end{definition}
+
+\begin{propositionDef}      \label{PROPooAWAKooKRmbGT}
+	Si \( (\eK, | . |)\) est un corps totalement ordonné avec sa valeur absolue usuelle\footnote{Définition \ref{DEFooJXKVooErANPh}.}, alors l'application
+	\begin{equation}
+		\begin{aligned}
+			d\colon \eK\times \eK & \to \eR^+       \\
+			(x,y)                 & \mapsto | x-y |
+		\end{aligned}
+	\end{equation}
+	est une distance\footnote{Distance, définition \ref{DefMVNVFsX}.}.
+
+	Un corps valué muni de sa topologie métrique\footnote{Définition \ref{ThoORdLYUu}.} est un corps topologique\footnote{Définition \ref{DEFooWKLOooPdsxQl}.}.
+\end{propositionDef}
+
+\begin{proof}
+	Il s'agit des différentes propriétés du lemme \ref{LemooANTJooYxQZDw}.
+\end{proof}
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Voisinage symétrique et équilibré}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}[Partie symétrique\cite{ooMKWJooLSkGfh}]		\label{DEFooKBMAooAhYQAm}
+	Une partie \( U\) d'un espace vectoriel topologique est \defe{symétrique}{partie symétrique} si \( x\in U\) implique \( -x\in U\).
+\end{definition}
+
+\begin{definition}[Partie équilibrée\cite{ooMKWJooLSkGfh}]		\label{DEFooPNRIooEFAlii}
+	Une partie \( U\) d'un espace vectoriel topologique \( V\) est \defe{équilibrée}{partie équilibrée} si pour tout \( | \alpha |\leq 1\) dans \( \eK\), \( \alpha U\subset U\).
+\end{definition}
+
+\begin{definition}[Partie absorbante\cite{BIBooTDEOooFNoMUV}]		\label{DEFooMNZJooSIAVGZ}
+	Soit un espace vectoriel \( X\). Une partie \( U\) est \defe{absorbante}{partie absorbante} si pour tout \( x\in X\), il existe \( \rho_x>0\) tel que \( \lambda x\in U\) pour tout \( | \lambda |\leq \rho_x\).
+\end{definition}
+
+\begin{definition}[Partie absolument convexe] \label{DEFooYSWJooPkcrJe}
+	Une partie est \defe{absolument convexe}{partie absolument convexe} si elle est convexe et équilibrée.
+\end{definition}
+
+\begin{lemma}		\label{LEMooXKOTooLWDXhp}
+	Si \( A\) est équilibré ou absorbant, alors \( 0\in A\).
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Si \( A\) est équilibré]
+		%-----------------------------------------------------------
+		Pour tout \( | \alpha |<1\), nous avons \( \alpha A\subset A\). En particulier pour \( \alpha=0\) nous voyons que \( 0\in A\).
+		\spitem[Si \( A\) est absorbant]
+		%-----------------------------------------------------------
+		Si \( x\in X\), alors il existe \( \rho\) tel que \( \lambda x\in A\) pour tout \( | \lambda |<\rho\). En particulier avec \( \lambda=0\) nous avons encore \( 0\in A\).
+	\end{subproof}
+\end{proof}
+
+
+
+\begin{lemma}[\cite{BIBooGMVHooKUfUMb}]		\label{LEMooEEKYooVCnBMq}
+	Dans un espace vectoriel topologique sur \( \eK=\eR\text{ ou }\eC\), tout ouvert contenant \( 0\) est absorbant\footnote{Définition \ref{DEFooMNZJooSIAVGZ}.}.
+\end{lemma}
+
+\begin{proof}
+	Soient un ouvert \( U\) contenant \( 0\) et \( x_0\in X\). Nous considérons l'application
+	\begin{equation}
+		\begin{aligned}
+			m\colon \eK\times X & \to X      \\
+			(t,x)               & \mapsto tx
+		\end{aligned}
+	\end{equation}
+	qui est continue par définition \ref{DefEVTopologique}. La partie \( m^{-1}(U)\subset \eK\times X\) est un ouvert contenant \( (0,x_0)\). Par définition \ref{DefIINHooAAjTdY} de la topologie produit, il existe un \( r>0\) et un ouvert \( B\) de \( X\) contenant \( x_0\) tels que
+	\begin{equation}
+		(0,x_0)\in B(0,r)\times B\subset m^{-1}(U).
+	\end{equation}
+
+	Si \( \lambda< r\), alors nous avons
+	\begin{equation}
+		\lambda x_0=m(\lambda, x_0)\in m\big( B(0,r),B \big)\subset U.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}		\label{LEMooKBRIooUAAPXV}
+	Si \( A\) est équilibré et si \( \xi\neq 0\) (dans \( \eR\) ou \( \eC\)), alors
+	\begin{equation}
+		\xi A=| \xi |A
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Vu que le corps \( \eK\) est \( \eR\) ou \( \eC\), il existe \( s\in \eK\) tel que \( | s |=1\) et \( \xi=s| \xi |\) (prendre \( s=\xi/| \xi |\)). Vu que \( | s |=1\) et que \( A\) est équilibré, \( sA\subset A\) et donc \( \xi A=s| \xi |A\subset | \xi |A\).
+
+	Pour l'inclusion dans l'autre sens, nous savons que \( | s^{-1} |=1\) et donc que \( | \xi |A=s^{-1}\xi A\subset \xi A\).
+\end{proof}
+
+\begin{lemma}[\cite{ooMKWJooLSkGfh,MonCerveau}]     \label{LEMooYSWXooNqAcOQ}
+	Soit un espace vectoriel topologique.
+	\begin{enumerate}
+		\item       \label{ITEMooSWWQooTreWIE}
+		      Soit un ouvert \( A\) autour de \( 0\) dans l'espace vectoriel topologique \( V\). Il existe \( \delta>0\) dans le corps \( \eK\) et un voisinage ouvert \(W\) de \( 0\) tel que \( \lambda W\subset A\) pour tout \( | \lambda |<\delta\).
+		\item       \label{ITEMooXZNHooGVplpu}
+		      Tout voisinage de \( 0\) contient un ouvert équilibré.
+		\item       \label{ITEMooRLVSooGihcLc}
+		      Tout voisinage de \( 0\) contient un ouvert équilibré et symétrique.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooSWWQooTreWIE}]
+		Nous savons que \( 0\cdot 0=0\) et que l'application
+		\begin{equation}
+			\begin{aligned}
+				f\colon \eK\times V & \to V             \\
+				\lambda,x           & \mapsto \lambda x
+			\end{aligned}
+		\end{equation}
+		est continue. La partie \( f^{-1}(A)\) contient \( (0,0)\). Il existe donc un voisinage ouvert \( S\) de \( 0\) dans \( \eK\) et un voisinage ouvert \( W\) de \( 0\) dans \( V\) tel que \( S\times W\subset f^{-1}(A)\).
+
+		Puisque \( \eK\) est un corps dont la topologie est métrique\footnote{Le corps \( \eK\) est un corps valué, et donc métrique par la définition \ref{PROPooAWAKooKRmbGT}.}, il existe une boule \( S'=B(0,\delta)\subset S\).
+
+		Donc nous avons \( f(S'\times W)\subset A \) et pour tout \( | \lambda |<\delta\), \( \lambda W\subset A\).
+		\spitem[Pour \ref{ITEMooXZNHooGVplpu}]
+		Soit un voisinage ouvert \( \mO\) de \( 0\) dans \( V\). Par le point \ref{ITEMooSWWQooTreWIE}, nous considérons un voisinage \( W\) de \( 0\) et un \( \delta>0\) tel que \( \lambda W\subset\mO\) pour tout \( | \lambda |<\delta\).
+
+		Nous posons
+		\begin{equation}
+			U=\{\lambda w<\tq | \lambda |<\delta, w\in W\}.
+		\end{equation}
+		Nous avons \( U\subset \mO\) par définition de \( W\). De plus \( U\) est équilibré parce que si \( | \mu |<1\), et si \( x\in U\), il existe \( | \lambda |<\delta\) et \( w\in W\) tels que \( x=\lambda w\). Alors \( \mu x=\mu\lambda w\). Nous avons \( | \mu\lambda |<\delta\) et donc \( \mu\lambda w\in U\).
+		\spitem[Pour \ref{ITEMooRLVSooGihcLc}]
+		Nous considérons \( U\) équilibré comme dans \ref{ITEMooXZNHooGVplpu}. Ensuite nous posons \( U'=U\cap (-U)\). La partie \( U'\) est symétrique, elle est ouverte (intersection d'ouverts). Et elle est équilibrée parce que si \( x\in U'\) et \( | \lambda |<1\) alors:
+		\begin{itemize}
+			\item \( x\in U\) et \( U\) est équilibré, donc \( \lambda x\in U\).
+			\item \( x\in -U\) et \( U\) est équilibré, donc il existe \( y\in U\) tel que \( x=-y\). Pour ce \( y\) nous avons \( \lambda y\in U\) et donc \( \lambda x=-\lambda y\in -U\). Donc \( \lambda x\in -U\).
+			\item Au final, \( \lambda x\in U\cap (-U)=U'\) et \( U'\) est équilibré.
+		\end{itemize}
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{BIBooSHPPooMkbgoC}]     \label{LEMooQEFRooHAxOys}
+	Soit un espace vectoriel topologique \( V\) ainsi qu'un voisinage ouvert \( \mO\) de \( 0\) dans \( V\). Il existe des voisinages ouverts \( U_1\) et \( U_2\) de \( 0\) dans \( V\) tels que
+	\begin{equation}
+		U_1+U_2\subset \mO.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Par définition d'un espace vectoriel topologique, l'application
+	\begin{equation}
+		\begin{aligned}
+			f\colon V\times V & \to V       \\
+			x,y               & \mapsto x+y
+		\end{aligned}
+	\end{equation}
+	est continue. Donc la partie \( f^{-1}(\mO)\) est un ouvert de \( V\times V\) (c'est la définition \ref{DefOLNtrxB}\ref{ITEMooEHGWooDdITRV} de la continuité). La définition \ref{DefIINHooAAjTdY} de la topologie produit, appliquée au point \( (0,0)\in V\times V\) implique qu'il existe des voisinages \( U_1\) et \( U_2\) de \( 0\) dans \( V\) tels que
+	\begin{equation}
+		U_1\times U_2\subset f^{-1}(\mO).
+	\end{equation}
+	Donc \( f(U_1\times U_2)\subset\mO\) et en particulier \( U_1+U_2\subset \mO\).
+\end{proof}
+
+\begin{proposition}[\cite{ooMKWJooLSkGfh,MonCerveau}]\label{PROPSommeTopologique}
+	Soit \( V \) un espace vectoriel topologique, et \( \mO \) un voisinage ouvert de \( 0 \). Il existe un voisinage ouvert \( U\) de \( 0 \) tel que
+	\begin{enumerate}
+		\item
+		      \( U\) est symétrique\footnote{Définition \ref{DEFooKBMAooAhYQAm}.},
+		\item
+		      \( U\) est équilibré\footnote{Définition \ref{DEFooPNRIooEFAlii}.}
+		\item
+		      \( U\) vérifie \( U + U \subset \mO \).
+		\item
+		      \( U\) vérifie \( U + U + U + U \subset \mO \).
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs petits pas.
+	\begin{subproof}
+		\spitem[Le point de départ]
+		Le lemme \ref{LEMooQEFRooHAxOys} donne des voisinages ouverts \( U_1\) et \( U_2\) de \( 0\) dans \( V\) tels que \( U_1+U_2\subset \mO\).
+		\spitem[Symétrique]
+		En posant \( U' = U_1 \cap U_2 \cap (-U_1) \cap (-U_2) \), on a un sous-ensemble symétrique de \( U_1\) et \(U_2\) qui vérifie \( U' + U'\subset U_1+U_2\subset \mO \). De plus \( U'\) est encore un voisinage ouvert de \( 0\) dans \( V\).
+		\spitem[équilibré]
+		C'est le moment d'utiliser le lemme \ref{LEMooYSWXooNqAcOQ}. La partie \( U'\) contient un voisinage ouvert \( U''\) de \( 0\) qui est symétrique et équilibré. Ce \( U''\) vérifie encore \( U''+U''\subset \mO\).
+		\spitem[En \( 4\) parties]
+		Maintenant nous ré-appliquons tout ce que nous venons de faire à \( U''\) pour obtenir un voisinage symétrique et équilibré de \( 0\) tel que \( U+U\subset U'\). Nous avons alors \( U+U+U+U\subset \mO\).
+
+		Notons que ce \( U\) vérifie à fortiori \( U+U\subset \mO\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{BIBooTDEOooFNoMUV,BIBooBYFGooEPpIwD}]	\label{LEMooKLOKooEfKhgN}
+	Soit une partie \( B\) d'un espace vectoriel topologique.
+	\begin{enumerate}
+		\item
+		      Si \( B\) est équilibré, alors la fermeture \( \bar B\) est équilibrée.
+		\item		\label{ITEMooLZZEooAqoQVO}
+		      Si \( B\) est équilibré et si \( 0\in\Int(B)\), alors \( \Int(B)\) est équilibré.
+	\end{enumerate}
+\end{lemma}
+
+\ssdem
+
+
+%-------------------------------------------------------
+\subsection{Espace topologique localement convexe}
+%----------------------------------------------------
+
+\begin{definition}[\cite{BIBooTDEOooFNoMUV}]  \label{DefPJokvAa}
+	Un espace topologique est \defe{localement convexe}{convexité!locale} il admet une base de voisinages de l'origine dont les éléments sont des parties convexes.
+\end{definition}
+
+
+\begin{proposition}[\cite{BIBooPUYAooCCJXtk}]   \label{PROPooCZJGooRlyEOV}
+	Soit un espace topologique \( X\). Nous avons équivalence entre les points suivants :
+	\begin{enumerate}
+		\item
+		      \( X\) est localement convexe\footnote{Définition \ref{DefPJokvAa}.}.
+		\item
+		      Pour tout ouvert \( U\) de \( X\), les composantes connexes de \( U\) sont des ouverts de \( X\).
+		\item
+		      Les ouverts connexes forment une base des ouverts de \( E\).
+	\end{enumerate}
+	%TODOooVDAKooUfostD. Prouver ça.
+\end{proposition}
+
+\begin{lemma}[\cite{BIBooQOTDooVryyud}]     \label{LEMooWGOCooHSoCzb}
+	Soit un espace topologique localement connexe \( X\). Soient un fermé \( F\) de \( X\), et \( D\), une composante connexe de \( X\setminus F\). Alors la frontière de \( D\) est dans \( F\) :
+	\begin{equation}
+		\partial D\subset F.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[\( \partial D\) est fermé]
+		% -------------------------------------------------------------------------------------------- 
+		Par définition, \( \partial D=\bar D\setminus D\). Utilisant \ref{LemPropsComplement}\ref{ITEMooNHDUooWtURqQ} nous écrivons
+		\begin{equation}
+			X\setminus \partial D=(X\setminus \bar D)\cap D.
+		\end{equation}
+		Vu que \( \bar D\) est fermé, \( X\setminus \bar D\) est ouvert. De plus \( D\) est ouvert par la proposition \ref{PROPooCZJGooRlyEOV}. Donc \( X\setminus\partial D\) est ouvert.
+		\spitem[Par l'absurde]
+		% -------------------------------------------------------------------------------------------- 
+		Supposons qu'il existe \( p\in\partial D\setminus F\). Vu que \( F\) est fermé, il existe \( r>0\) tel que \( B(p,r)\cap F=\emptyset\). Étant donné que \( p\in\partial D\), tout voisinage de \( p\) contient un point de \( D\) : il existe \( x\in B(p,r)\cap D\).
+
+		Donc \( B(p,r)\) et \( D\) sont des ouverts connexes qui ont une intersection non vide. La proposition \ref{PropIWIDzzH} nous indique que \( D\cup B(p,r)\) est un ouvert connexe strictement plus grand que \( D\).
+
+		Cela contredit la maximalité de \( D\) en tant que composante connexe.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooTDEOooFNoMUV}]		\label{PROPooOAXHooOGhRbu}
+	Un espace vectoriel topologie localement convexe a une base de voisinage constituée d'éléments qui sont :
+	\begin{enumerate}
+		\item
+		      ouverts
+		\item
+		      absorbants
+		\item
+		      convexes
+		\item
+		      équilibrés
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Soit un voisinage \( N\) de \( 0\) dans l'espace vectoriel topologique \( X\). Vu que \( X\) est localement convexe, il existe un voisinage convexe \( W\) de \( 0\) contenu dans \( N\). Par le lemme \ref{LEMooYSWXooNqAcOQ}, \( W\) contient un ouvert équilibré \( U\). Nous considérons enfin l'enveloppe convexe \( S=\Conv(U)\) de \( U\), et nous montrons que l'intérieur \( \Int(S)\) vérifie tout ce qu'il faut.
+
+	\begin{description}
+		\item[ouvert] Parce que c'est un intérieur.
+		\item[convexe] L'intérieur d'un convexe est convexe par le lemme \ref{LEMooEFCCooOuStrb}.
+		\item[absorbant] Tout ouvert contenant \( 0\) est absorbant par le lemme \ref{LEMooEEKYooVCnBMq}
+		\item[contient \( 0\)] La partie \( U\) contient \( 0\) parce qu'elle est équilibrée et le lemme \ref{LEMooXKOTooLWDXhp}. Vu que \( U\) est ouvert, il contient un voisinage de tout ses points. Donc \( 0\) est dans l'intérieur de \( U\). Il est donc également dans l'intérieur de son enveloppe convexe.
+		\item[équilibré] Par le lemme \ref{LEMooKLOKooEfKhgN}\ref{ITEMooLZZEooAqoQVO} parce que c'est un ouvert contenant \( 0\).
+		\item[contenu dans \( N\)] Nous avons les inclusions \( U\subset W\subset N\). Étant donné que \( W\) est convexe, nous avons aussi \( \Conv(U)\subset W\), et donc
+		      \begin{equation}
+			      \Int(S)\subset S=\Conv(U)\subset W\subset N.
+		      \end{equation}
+	\end{description}
+\end{proof}
+
+\begin{theorem}[\cite{BIBooTDEOooFNoMUV}]		\label{THOooPTLOooJLaHGE}
+	Soit un espace vectoriel topologique localement convexe\footnote{Définition \ref{DefPJokvAa}.}. Il existe une base de voisinages \( \mB\) de \( 0\) tels que :
+	\begin{enumerate}
+		\item
+		      les éléments sont absorbants et absolument convexes\footnote{Absolument convexe : convexe et équilibrée.}.
+		\item
+		      pour tout \( A,B\in \mB\), il existe \( W\in \mB\) tel que \( W\subset A\cap B\),
+		\item
+		      pour tout \( A\in \mB\), et pour tout \( \rho>0\), il existe \( W\in \mB\) tel que \( W\subset \rho A\).
+	\end{enumerate}
+\end{theorem}
+% À mon avis il ne faut pas démontrer ceci, parce qu'il n'est utilisé nulle part.
+% À virer
+
+\ssdem
+
+Voici une réciproque du théorème \ref{THOooPTLOooJLaHGE}.
+
+\begin{theorem}[\cite{BIBooTDEOooFNoMUV}]		\label{THOooKNXGooEebnxI}
+	Soit en espace vectoriel \( X\) et une collection \( \mB\) de parties de \( X\) vérifiant
+	\begin{enumerate}
+		\item
+		      les éléments sont absorbants et absolument convexes.
+		\item
+		      pour tout \( A,B\in \mB\), il existe \( W\in \mB\) tel que \( W\subset A\cap B\),
+		\item
+		      pour tout \( A\in \mB\), et pour tout \( \rho>0\), il existe \( W\in \mB\) tel que \( W\subset \rho A\).
+	\end{enumerate}
+	Alors il existe une unique topologie \( \tau\) sur \( X\) telle que
+	\begin{enumerate}
+		\item
+		      \( \tau\) est compatible avec la structure vectorielle de \( X\),
+		\item
+		      \( (X,\tau)\) est localement convexe
+		\item
+		      la collection \( \mB\) est une base de voisinages de \( 0\)
+	\end{enumerate}
+	%TODOooDAKLooJCHiBM. Prouver ça.
+	% À mon avis il ne faut pas démontrer ceci, parce qu'il n'est utilisé nulle part.
+	% À virer
+\end{theorem}
+
+
+
+
+\begin{proposition}     \label{PROPooUQLUooDQfYLT}
+	Soit un espace vectoriel normé\footnote{Définition \ref{DefNorme}.} \( (V,\| . \|)\). Pour tout \( a\in V\) et \( r>0\), la boule \( B(a,r)\) est convexe\footnote{Définition \ref{DEFooQQEOooAFKbcQ}.}. La boule fermée \( \overline{ B(a,r) }\) également.
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[La boule centrée en zéro]
+		Soient \( x,y\in B(0,r)\) et \( \lambda\in\mathopen] 0 , 1 \mathclose[\). Alors
+		\begin{equation}
+			\| \lambda x+(1-\lambda)y \|\leq | \lambda |\| x \|+| 1-\lambda |\| y \|< (| \lambda | +| 1-\lambda |)r\leq r
+		\end{equation}
+		où nous avons utilisé le fait que \( | \lambda |=\lambda\) et \( | 1-\lambda |=1-\lambda\).
+
+		Cela prouve que \( \lambda x+(1-\lambda)y\in B(0,r)\). Notez l'inégalité stricte due au fait que \( \| x \|<r\) et \( \| y \|<r\). Dans le cas de la boule fermée, nous avons une inégalité large.
+
+		\spitem[La boule centrée autre part]
+
+		Soient \( x,y\in B(a,r)\). Alors \( x-a\) et \( y-a\) sont dans \( B(0,r)\), de telle sorte que
+		\begin{equation}
+			\lambda(x-a)+(1-\lambda)(y-a)\in B(0,r)
+		\end{equation}
+		par la première partie. En développant et simplifiant,
+		\begin{equation}
+			\lambda x+(1-\lambda)y-a\in B(0,r),
+		\end{equation}
+		ce qui signifie que \( \lambda x+(1-\lambda)y\in B(a,r)\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}		\label{PROPooBVWIooZocheH}
+	Tout espace métrique est localement convexe\footnote{Définition \ref{DefPJokvAa}.}.
+\end{proposition}
+
+\begin{proof}
+	Les boules ouvertes forment une base de topologie par \ref{PROPooZXTXooEMLgMn}. La proposition \ref{PROPooUQLUooDQfYLT} dit que ces boules sont convexes.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Limite de suites}
+%----------------------------------------------------
+
+
+\begin{normaltext}
+	Si \( (x_n)\) est une suite dans un espace vectoriel topologique, rien ne garantit qu'elle ait une limite, ni qu'elle soit unique. Donc lorsque nous écrivons
+	\begin{equation}
+		x_n\stackrel{V}{\longrightarrow}x,
+	\end{equation}
+	nous sous-entendons seulement que \( x\) est une limite.
+
+	De même, dans la proposition \ref{PROPooZRCBooKiJhDg}, nous montrerons que \( x_n+y_n\stackrel{V}{\longrightarrow}x+y\) et \( \lambda x_n\stackrel{ V}{\longrightarrow}\lambda x\). Cela signifie que si \( x\) et \( y\) sont des limites de \( (x_n)\) et \( (y_n)\), alors \( x+y\) est une limite de \( (x_n+y_n)\) et que \( \lambda x\) est une limite de \( (\lambda x_n)\).
+
+	Si \( V\) est un espace vectoriel topologique dans lequel il n'y a pas unicité de la limite\footnote{La proposition \ref{PropUniciteLimitePourSuites} dit qu'il y a unicité de la limite dans les espaces topologiques séparés.}, nous ne pouvons pas exactement dire que le processus de limite est une opération linéaire sur l'ensemble des suites convergentes.
+\end{normaltext}
+
+
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooTJQPooMHtOAv}
+	Soit une suite \( (x_k)\) dans l'espace vectoriel topologique \( X\). L'élément \( x\) est une limite de \( (x_k)\) si et seulement si \( 0\) est une limite de \( (x-x_k)\).
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Supposons que \( x\) est une limite de \( (x_k)\). Soit un ouvert \( \mO\) autour de \( 0\). La partie \( \mO+x\) est un ouvert autour de \( x\) (proposition \ref{PROPooTJQPooMHtOAv}). Donc il existe \( N\) tel que si \( n\geq N\), alors \( x_n\in\mO+x\). Pour ces valeurs de \( n\) nous avons \( x_n-x\in\mO\).
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Soit un ouvert \( \mO\) autour de \( x\). La partie \( \mO-x\) est un ouvert autour de \( 0\). À partir de là la preuve fonctionne comme dans l'autre sens.
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooQIQSooHbNkIy}
+	Soient deux suites \( (x_k)\) et \( (y_k)\) dans l'espace vectoriel topologique \( X\). Si \( x\) est une limite\footnote{Limite de suite, définition \ref{DefXSnbhZX}.} de \( (x_k)\) et si \( y\) est une limite de \( (y_k)\), alors \( x+y\) est une limite de \( (x_k+y_k)\).
+\end{proposition}
+
+\begin{proof}
+	En deux parties
+	\begin{subproof}
+		\spitem[Le cas \( x=y=0\)]
+		%-----------------------------------------------------------
+		Nous commençons avec \( x=y=0\). Soit un ouvert \( A\) autour de \( 0\). La proposition \ref{PROPSommeTopologique} nous permet de considérer un voisinage \( U\) de \( 0\) tel que \( U\subset A\) et \( U+U\subset A\).
+
+		Vu que \( 0\) est une limite de \( (x_k)\), il existe \( N\) tel que \( x_n\in U\) pour tout \( b\geq N\). Quitte à prendre le maximum, nous supposons aussi que \( y_n\in U\) pour \( n\geq N\). Avec ça, \( x_n+y_n\in U+U\subset A\). Cela montre que \( 0\) est une limite de \( (x_k+y_k)\).
+		\spitem[Le cas général]
+		%-----------------------------------------------------------
+		Nous supposons que \( x\) est une limite de \( (x_k)\) et que \( y\) est une limite de \( (y_k)\). La proposition \ref{PROPooTJQPooMHtOAv} nous dit que \( 0\) est une limite de \( x-x_k\) et de \( y-y_k\). La première partie dit alors que \( 0\) est une limite de
+		\begin{equation}
+			k\mapsto x-x_k+y-y_k=x_k+y_k-(x+y).
+		\end{equation}
+		La proposition \ref{PROPooTJQPooMHtOAv}, prise dans l'autre sens nous dit alors que \( x+y\) est une limite de \( k\mapsto x_k+y_k\).
+	\end{subproof}
+\end{proof}
+
+
+
+
+\begin{lemma}       \label{LEMooJDJVooHUKdSe}
+	Soient un espace vectoriel topologique \( V\) ainsi qu'une suite \( (x_n)\) dans \( V\). Nous avons
+	\begin{equation}
+		x_n\stackrel{V}{\longrightarrow}x
+	\end{equation}
+	si et seulement si
+	\begin{equation}
+		x_n-x\stackrel{V}{\longrightarrow}0.
+	\end{equation}
+	%TODOooIHMAooQswLAX. Prouver ça.
+\end{lemma}
+
+Dans la proposition \ref{PROPooZRCBooKiJhDg}, nous considérons un espace vectoriel topologique. Il n'y a pas de produit. Pour la convergence
+\begin{equation}
+	x_ky_k\stackrel{ xy}{\longrightarrow},
+\end{equation}
+voir la proposition \ref{PROPooIQOAooJPMoDD}.
+
+\begin{proposition}[\cite{MonCerveau}]        \label{PROPooZRCBooKiJhDg}
+	Soit \( V\), un espace vectoriel topologique. Soient deux suites convergentes \( x_n\stackrel{V}{\longrightarrow}x\) et \( y_n\stackrel{V}{\longrightarrow}y\) ainsi que \( \lambda\in \eK\). Alors
+	\begin{enumerate}
+		\item       \label{ITEMooSHPAooQyEkgT}
+		      \begin{equation}
+			      x_n+y_n\stackrel{V}{\longrightarrow}x+y.
+		      \end{equation}
+		\item   \label{ITEMooYHHYooYATzWE}
+		      \begin{equation}
+			      \lambda x_n\stackrel{V}{\longrightarrow}\lambda x.
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\ref{ITEMooSHPAooQyEkgT}]
+		Nous allons montrer que \( x_n+y_n-(x+y)\stackrel{V}{\longrightarrow}0\); ce sera suffisant par le lemme \ref{LEMooJDJVooHUKdSe}.
+
+		Soit un ouvert \( \mO\) autour de \( 0\). Soient des ouverts \( U_1\) et \( U_2\) autour de \( 0\) tels que \( U_1+U_2\subset \mO\) (lemme \ref{LEMooQEFRooHAxOys}).
+
+		Vues les convergences de \( (x_n)\) et de \( (y_n)\), il existe un \( N\) tel que \( n\geq N\) implique \( x_n-x\in U_1\) et \( y_n-y\in U_2\). Dans ce cas, \( x_n+y_n-(x+y)\in U_1+U_2\subset \mO\).
+
+		Donc pour \( n\geq N\) nous avons bien \( x_n-y_n-(x+y)\in \mO\), ce qui signifie que \( x_n+y_n\stackrel{V}{\longrightarrow}x+y\).
+		\spitem[\ref{ITEMooYHHYooYATzWE}]
+		En plusieurs étapes.
+		\begin{subproof}
+			\spitem[\( x_n-x\stackrel{V}{\longrightarrow}0\)]
+			% -------------------------------------------------------------------------------------------- 
+			C'est le lemme \ref{LEMooJDJVooHUKdSe}.
+
+			\spitem[\( \lambda x_n-\lambda x\stackrel{V}{\longrightarrow}0\)]
+			% -------------------------------------------------------------------------------------------- 
+			Soit un ouvert \( \mO\) autour de \( 0\). Par le lemme \ref{LEMooEZIYooBBxdJj}, il existe un ouvert \( U\) autour de \( 0\) tel que \( \lambda U\subset \mO\). Comme \( x_n-x\stackrel{V}{\longrightarrow}0\), il existe \( N\) tel que \( n\geq N\) implique \( x_n-x\in U\).
+
+			Pour ces \( N\) et \( n\) nous avons aussi \( \lambda (x_n-x)\in \lambda U\subset \mO\). Nous avons donc démontré que \( \lambda x_n-\lambda x\stackrel{V}{\longrightarrow}0\).
+			\spitem[Conclusion]
+			Encore le lemme \ref{LEMooJDJVooHUKdSe} nous permet de déduire que \( \lambda x_n\stackrel{V}{\longrightarrow}\lambda x\).
+		\end{subproof}
+	\end{subproof}
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Applications continues}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Continuité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La définition de la continuité d'une fonction est donnée en \ref{DefOLNtrxB}.
+
+\begin{normaltext}
+	Lorsque nous écrivons \( f\colon X\to Y\), nous entendons que \( f\) est définie sur tout \( X\), mais pas qu'elle soit surjective sur \( Y\). En particulier, pour que \( f\) soit continue en \( a\), il faut que \( a\) soit dans le domaine de définition de \( f\).
+
+	Dans le cas de fonctions \( \eR\to \eR\), l'espace \( X\) sera la partie de \( \eR\) sur laquelle \( f\) sera définie, et la topologie sera la topologie induite de \( \eR\).
+\end{normaltext}
+
+\begin{proposition}[\cite{BIBooDMSUooCZKkdj}]       \label{PROPooOXBCooIzLaPe}
+	Soient deux espaces topologiques \( X\) et \( Y\). Une application \( f\colon X\to Y\) est continue\footnote{Définition \ref{DefOLNtrxB}.} si et seulement si pour tout \( x\in X\) et pour tout voisinage\footnote{Définition \ref{DEFVoisinageooGHZCooLRcpXY}} \( V\) de \( f(x)\), la partie \( f^{-1}(V)\) est un voisinage de \( x\) dans~\( X\).
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		Soient \( x\in X\) et un voisinage \( V\) de \( f(x)\) dans \( Y\). Il existe alors un ouvert \( \mO\) de \( Y\) tel que \( f(x)\in \mO\subset V\).
+
+		La partie \( f^{-1}(\mO)\) vérifie :
+		\begin{itemize}
+			\item \( f^{-1}(\mO)\) est un ouvert de \( X\) parce que \( f\) est continue.
+			\item \( x\in f^{-1}(\mO)\)
+			\item \( f^{-1}(\mO)\subset f^{-1}(V)\).
+		\end{itemize}
+		Donc \( f^{-1}(V)\) contient un ouvert contenant \( x\). Donc \( f^{-1}(V)\) est un voisinage de \( x\) dans \( X\).
+		\spitem[\( \Leftarrow\)]
+		Soit un ouvert \( \mO\) de \( Y\). Nous devons prouver que \( f^{-1}(\mO)\) est un ouvert de \( X\). Pour cela nous prouvons que \( f^{-1}(\mO)\) contient un ouvert autour de chacun de ses éléments et utilisons le théorème \ref{ThoPartieOUvpartouv}.
+
+		Soit donc \( x\in f^{-1}(\mO)\). La partie \( \mO\) est un voisinage de \( f(x)\). Donc \( f^{-1}(\mO)\) est un voisinage de \( x\). Il existe donc un ouvert \( V\) de \( X\) tel que
+		\begin{equation}
+			x\in V\subset f^{-1}(\mO).
+		\end{equation}
+		Nous en déduisons que \( f^{-1}(\mO)\) contient bien un ouvert autour de chacun de ses points.
+	\end{subproof}
+\end{proof}
+
+La proposition~\ref{PropQZRNpMn} donnera des détails sur ce qu'il se passe lorsque l'espace est métrique.
+
+\begin{theorem} \label{ThoESCaraB}
+	Une fonction \( f\colon X\to Y\) est une fonction continue si et seulement si elle est continue en chacun des points de \( X\).
+\end{theorem}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		Nous supposons que \( f\) est une fonction continue. Soient \( a\in X\) et \( W\) un voisinage de \( f(a)\). Nous considérons \( \mO\), un voisinage ouvert de \( f(a)\) contenu dans \( W\); l'ensemble \( f^{-1}(\mO)\) est alors un ouvert contenant \( a\), et l'image de \( f^{-1}(\mO)\) par \( f\) est bien entendu contenue dans \( W\).
+
+		\spitem[\( \Leftarrow\)]
+		Soit \( \mO\) un ouvert de \( Y\). Pour prouver que \( f^{-1}(\mO)\) est un ouvert de \( X\), nous allons considérer un élément \( a\in f^{-1}(\mO)\) et montrer qu'il existe un voisinage ouvert de \( a\) contenu dans \( f^{-1}(\mO)\); le théorème~\ref{ThoPartieOUvpartouv} nous assurera alors que \( f^{-1}(\mO)\) est ouvert.
+
+		L'ensemble \( \mO\) est un voisinage ouvert de \( f(a)\) parce que \( a\) a été choisi dans \( f^{-1}(\mO)\). Donc la continuité de \( f\) en \( a\) nous assure qu'il existe un voisinage \( W\) de \( a\) tel que \( f(W)\subset\mO\). En prenant un ouvert contenant \( a\) à l'intérieur de \( W\) nous avons un voisinage ouvert de \( a\) contenu dans \( f^{-1}(\mO)\).
+	\end{subproof}
+\end{proof}
+
+\begin{remark}
+	À cause de l'éventuelle non unicité de la limite, deux fonctions continues et égales sur un sous-ensemble dense ne sont pas spécialement égales. Ce sera vrai sur les espaces métriques et plus généralement pour les espaces séparés. Voir l'exemple~\ref{EXooSHKAooZQEVLB} et la proposition~\ref{PropFObayrf}.
+\end{remark}
+
+\begin{lemma}[\cite{MonCerveau}]  \label{LEMooCQQWooVSAWiy}
+	Soient une fonction \( f\colon X\to Y\), et un point d'accumulation \( a\in X\)\footnote{Un point d'accumulation de \( X\) n'est pas spécialement dans \( X\), si \( X\) est un sous-espace d'un autre. Par exemple \( 0\) est un point d'accumulation de \( \mathopen] 0 , 1 \mathclose[\) dans \( \eR\). Ici nous supposons que \( a\in X\), sinon il n'y a de toute façon pas de continuité en \( a\).}. La fonction \( f\) est continue en \( a\) si et seulement si \( f(a)\) est une limite de \( f\) en \( a\).
+\end{lemma}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		Nous supposons que \( f\) est continue en \( a\in X\). Soit un ouvert \( V\) de \( Y\) contenant \( f(a)\). Par continuité de \( f\) au point\footnote{Continuité en un point, définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr}.} \( a\), il existe un voisinage \( U\) de \( a\) tel que \( f(U)\subset V\). À fortiori, \( f\big( U\setminus{{a}} \big)\subset W\) comme le demande la définition de la limite.
+		\spitem[\( \Leftarrow\)]
+		Nous supposons que \( f(a)\) est une limite de \( f(x)\) lorsque \( x\) tend vers \( a\). Si \( W\) est un ouvert de \( Y\) contenant \( f(a)\), il existe un voisinage \( V\) de \( a\) dans \( X\) tel que \( f\big( V\setminus{{a}} \big)\subset W\). Mais puisque \( f(a)\in W\), nous avons \( f(V)\subset W\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooQFISooYWkzPR}
+	Soient des espaces topologiques \( X\) et \( Y\) ainsi qu'une application continue \(f \colon X\to Y  \). Soient
+	\begin{enumerate}
+		\item
+		      \( a\in X\) et \( b=f(a)\in Y\).
+		\item
+		      Un voisinage ouvert \( V\) de \( b\) dans \( Y\).
+	\end{enumerate}
+
+	Alors il existe un voisinage ouvert \( U\) de \( a\) tel que \( f(U)\subset V\).
+	%TODOooLLZOooWgZAKe. Prouver ça.
+\end{lemma}
+
+
+%-----------------------------------
+\subsubsection{Composition}
+
+
+\begin{proposition}[Composée d'application continues\cite{MonCerveau}]	\label{PROPooCNTBooTkOJuK}
+	Soient des espaces topologiques \( X,Y,Z\) ainsi que des applications continues \(f \colon X\to Y  \) et \(g \colon Y\to Z  \). Alors l'application \(g\circ f \colon X\to Z  \) est continue.
+\end{proposition}
+
+
+\begin{proof}
+	Soit un ouvert \( \mO\) de \( Z\). Nous avons
+	\begin{equation}
+		(g\circ f)^{-1}(\mO)=(f^{-1}\circ g^{-1})(\mO)=f^{-1}\big( g^{-1}(\mO) \big).
+	\end{equation}
+	Vu que \( f\) est continue, la partie \( g^{-1}(\mO)\) est ouverte dans \( Y\). Et comme \( f\) est continue, \( f^{-1}\Big( g^{-1}(\mO) \Big)\) est ouvert dans \( X\).
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Continuité et topologie induite}
+%---------------------------------------------------------------------------------------------------------------------------
+\begin{proposition}[\cite{MonCerveau}]     \label{PROPooNPLBooPfmmym}
+	Soit une fonction \( f\colon X\to Y\), continue sur l'ouvert \( A\) de \( X\) au sens où elle est continue en chaque point de \( A\). Alors la fonction restriction \( \tilde f\colon A\to Y\) est également continue pour la topologie sur \( A\), induite\footnote{Définition \ref{DefVLrgWDB}.} de \( X\).
+\end{proposition}
+
+\begin{proof}
+	Soit \( a\in A\), et montrons que \( \tilde f\) est continue en \( a\), c'est-à-dire que \( \tilde f(a)=f(a)\) soit une limite de \( \tilde f\) en \( a\). Soit un voisinage \( V\) de \( \tilde f(a)\) dans \( Y\). Par la continuité de \( f\), nous avons un ouvert \( W\) de \( X\) tel que
+	\begin{equation}
+		f\big( W\setminus\{ a \} \big)\subset V.
+	\end{equation}
+	La partie \( W\cap A\) est un voisinage de \( a\) pour la topologie de \( A\), et vérifie
+	\begin{equation}
+		f\big( W\cap A\setminus\{ a \} \big)\subset V.
+	\end{equation}
+	donc \( f(a)\) est une limite de \( \tilde f\) pour \( x\to a\). La fonction \( \tilde f\colon A\to Y\) est continue en chaque point de \( A\).
+\end{proof}
+
+Au niveau de la notion de continuité, il n'y a pas trop de changements en passant de \( \eR\) à \( \eQ\) muni de la topologie induite.
+
+\begin{example}     \label{EXooHWIIooYYbfGE}
+	Que signifie d'être continue pour une fonction \( f\colon \eQ\to \eR\) ? D'après le théorème~\ref{ThoESCaraB}, il s'agit d'être continue en chaque point de \( \eQ\). Il s'agit donc, par la définition~\ref{DefOLNtrxB} que pour tout \( q\in \eQ\), le nombre \( f(q)\) soit une limite de \( f\) pour \( x\to q\).
+
+	L'espace d'arrivée étant \( \eR\), un voisinage de \( f(q)\) est pris comme une boule de taille \( \epsilon\). La continuité de \( f\) exige qu'il y ait un voisinage \( W\) de \( q\) dans \( \eQ\) tel que pour tout \( q'\in W\) (différent de \( q\)), \( | f(q)-f(q') |<\epsilon\).
+
+	Qu'est-ce qu'un ouvert dans \( \eQ\) ? D'après la définition~\ref{DefVLrgWDB} de la topologie induite, ce sont les ensembles \( \eQ\cap\mO\) avec \( \mO\) ouvert dans \( \eR\). Tout cela pour dire que pour tout \( \epsilon>0\), il doit exister \( \delta>0\) tel que pour tout \( q'\in \eQ\) tel que \( 0<| q-q' |<\delta\), nous ayons \( | f(q)-f(q') |<\epsilon\).
+
+	Bref, c'est exactement le mécanisme usuel de la continuité sur \( \eR\), sauf qu'il ne faut considérer que les rationnels.
+\end{example}
+
+\begin{lemma}[Application partielle\cite{MonCerveau}]       \label{LEMooHAODooYSPmvH}
+	Soient trois espaces topologiques \( X_1\), \( X_2\) et \( Y\). Nous considérons une fonction continue \( f\colon X_1\times X_2\to Y\) ainsi que \( x_1\in X_1\). Alors l'application
+	\begin{equation}
+		\begin{aligned}
+			g\colon X_2 & \to Y              \\
+			x_2         & \mapsto f(x_1,x_2)
+		\end{aligned}
+	\end{equation}
+	est continue.
+\end{lemma}
+
+\begin{proof}
+	Soit un ouvert \( \mO\) de \( Y\); par hypothèse sur \( f\), la partie \( f^{-1}(\mO)\) est ouverte dans \( X_1\times X_2\). Notre but est de prouver que \( g^{-1}(\mO)\) est un ouvert de \( X_2\). Nous avons :
+	\begin{equation}
+		g^{-1}(\mO)=\{ x_2\in X_2\tq (x_1,x_2)\in f^{-1}(\mO) \}.
+	\end{equation}
+	Nous considérons \( x_2\in g^{-1}(\mO)\) et nous prouvons qu'il existe dans \( X_2\) un voisinage de \( x_2\) entièrement contenu dans \( g^{-1}(\mO)\).
+
+	Étant donné que \( (x_1,x_2)\) est dans \( f^{-1}(\mO)\) qui est ouvert, la définition~\ref{DefIINHooAAjTdY} de la topologie sur \( X_1\times X_2\) nous donne des ouverts \( A_1\) dans \( X_1\) et \( A_2\) dans \( X_2\) tels que
+	\begin{equation}
+		(x_1,x_2)\in A_1\times A_2\subset f^{-1}(\mO).
+	\end{equation}
+
+	Nous montrons à présent que \( A_2\subset g^{-1}(\mO)\). Soit \( y_2\in A_2\). Par construction \( (x_1,y_2)\in A_1\times A_2\subset f^{-1}(\mO)\), donc
+	\begin{equation}
+		g(y_2)=f(x_1,y_2)\in \mO.
+	\end{equation}
+	Cela termine la démonstration.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Continuité et connexité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition} \label{PropConnexiteViaFonction}
+	Un espace topologique \( X \) est connexe si et seulement si toute application continue\footnote{La topologie sur \( \eZ\) est celle de l'ensemble des parties. C'est également la topologie induite de \( \eR\), mais ça n'a aucune importance pour l'instant.} \( X\to \eZ\) est constante.
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Soit une fonction continue \(f \colon X\to \eZ  \). Supposons qu'elle ne soit pas constante. Nous allons en déduire que \( X\) n'est pas connexe. En effet supposons que \( f(a)=u\) et \( f(b)=v\) avec \( u\neq v\). Nous posons
+		\begin{equation}
+			\begin{aligned}[]
+				A & =f^{-1}(u)     \\
+				B & =X\setminus A.
+			\end{aligned}
+		\end{equation}
+		La partie \( A\) est ouverte parce que \( \{ u \}\) est ouvert dans \( \eZ\). La partie \( B\) est également ouverte parce que c'est une union d'ouverts :  \( B=\bigcup_{n\neq u}f^{-1}(n)\). La parie \( A\) contient \( a\), et \( B\) contient \( b\).
+
+		Voilà. Ce sont deux parties ouvertes non vides, disjointes qui recouvrent \( X\). Donc \( X\) n'est pas connexe.
+
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Encore par l'absurde nous supposons que \( X\) n'est pas connexe. Soient deux ouverts \( A\) et \( B\) qui font ce qu'il faut. Alors en définissant
+		\begin{equation}
+			\begin{aligned}
+				f\colon X & \to \eZ                       \\
+				x         & \mapsto \begin{cases}
+					                    0 & \text{si } x\in A \\
+					                    1 & \text{si }x\in B,
+				                    \end{cases}
+			\end{aligned}
+		\end{equation}
+		nous avons une fonction continue non constante sur \( X\) à valeurs dans \( \eZ\).
+	\end{subproof}
+\end{proof}
+
+\begin{normaltext}      \label{NORMooSCAWooPFnrVj}
+	Pour mettre les idées au clair, dire qu'une partie \( A\) n'est pas connexe\footnote{Connexe, définition \ref{DefIRKNooJJlmiD}.} signifie qu'il existe des ouverts \( \mO_1\) et \( \mO_2\) vérifiant
+	\begin{enumerate}
+		\item   \label{ITEMooRACDooKLaVXP}
+		      \( \mO_i\cap A\neq\emptyset\)
+		\item       \label{ITEMooNCQVooNjAYCT}
+		      \( \mO_1\cap\mO_2=\emptyset\)
+		\item       \label{ITEMooPIHJooNJYpQo}
+		      \( A\subset  \mO_1\cup\mO_2  \).
+	\end{enumerate}
+\end{normaltext}
+
+\begin{lemma}   \label{LemConncontconn}
+	L'image d'un connexe par une application continue est connexe.
+\end{lemma}
+
+\begin{proof}
+	Soit une application continue \(f \colon X\to Y  \) entre deux espaces topologiques.
+
+	Nous allons prouver la contraposée. Soit \( A\) une partie de \( Y\) telle que \( f(A)\) ne soit pas connexe. Nous allons prouver que \( A\) elle-même n'est pas connexe. Vu que \( f(A)\) n'est pas connexe, il existe des ouverts disjoints \( \mO_1\) et \( \mO_2\) recouvrant \( f(A)\) et intersecant tous deux \( A\). Nous prouvons que \( A\) n'est pas connexe en considérant les parties  \( A_1=f^{-1}(\mO_1)\) et \( A_2=f^{-1}(\mO_2)\), et en vérifiant les propriétés de \ref{NORMooSCAWooPFnrVj}.
+
+	\begin{subproof}
+		\spitem[\( A_i\) est ouvert]
+		% -------------------------------------------------------------------------------------------- 
+		Les parties \( A_i\) sont ouvertes parce qu'elles sont images inverses d'ouverts par une fonction continue (définition \ref{DefOLNtrxB}\ref{ITEMooEHGWooDdITRV}).
+
+		\spitem[Pour \ref{ITEMooRACDooKLaVXP}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous devons prouver que \( A_i\cap A\neq \emptyset\), c'est-à-dire qu'il existe un \( x\in f^{-1}(\mO_i)\cap A\).
+
+		Nous commençons par considérer \( y\in \mO_i\cap f(A)\). Nous avons d'une part \( f^{-1}(y)\subset f^{-1}(\mO_i)=A_i\). D'autre part, vu que \( y\in f(A)\), nous avons \( f^{-1}(y)\cap A\neq \emptyset\). Nous prenons donc \( x\in f^{-1}(y)\cap A\).
+
+		Ce \( x\) vérifie \( x\in f^{-1}(y)\cap A\subset A_i\cap A\).
+
+		\spitem[Pour \ref{ITEMooNCQVooNjAYCT}]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( x\in f^{-1}(\mO_1)\cap f^{-1}(\mO_2)\), alors \( f(x)\in \mO_1\cap\mO_2\), ce qui contredirait le fait que \( \mO_1\) et \( \mO_2\) sont disjoints. Il n'y a donc pas d'éléments dans l'intersection de \( f^{-1}(\mO_1)\) et de \( f^{-1}(\mO_2)\).
+
+		\spitem[Pour \ref{ITEMooPIHJooNJYpQo}]
+		% -------------------------------------------------------------------------------------------- 
+		Si \( f^{-1}(\mO_1)\) et \( f^{-1}(\mO_2)\) ne recouvrent pas \( A\), il existe un \( x\) dans \( A\) qui n'est dans aucun des deux. Dans ce cas, \( f(x)\) est dans \( f(A)\), mais n'est ni dans \( \mO_1\), ni dans \( \mO_2\), ce qui contredirait le fait que ces deux derniers recouvrent \( f(A)\).
+	\end{subproof}
+	Nous déduisons que \( A\) n'est pas connexe. Et donc le lemme.
+\end{proof}
+Une application de ce lemme sera le théorème des valeurs intermédiaires~\ref{ThoValInter}.
+
+\begin{example}
+	Les espaces topologiques \( \eR\) et \( \eR^2\) ne sont pas homéomorphes.
+\end{example}
+
+\begin{proof}
+	Supposons par l'absurde que \( f\colon \eR\to \eR^2\) soit un  homéomorphisme. Nous posons \( E=f\big( \eR\setminus\{ 0 \} \big)\) et \( z_0=f(0)\). Puisque \( f\) est bijective nous avons
+	\begin{equation}
+		E=\eR^2\setminus\{ z_0 \},
+	\end{equation}
+	qui est connexe.
+
+	Comme \( E\) est connexe et que \( f^{-1}\) est continue, le lemme \ref{LemConncontconn} nous dit que \( f^{-1}(E)\) est connexe. Mais par définition, \( f^{-1}(E)=\eR\setminus\{ 0 \}\) qui n'est pas connexe.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Continuité et compacité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La proposition \ref{PropContinueCompactBorne} dira que l'image d'un compact par une application continue est compacte. Nous démontrons ici en général.
+
+\begin{theorem}     \label{ThoImCompCotComp}
+	L'image d'un compact\footnote{Définition~\ref{DefJJVsEqs}.} par une fonction continue est un compact.
+\end{theorem}
+
+\begin{proof}
+	Soit \( K\subset X\), un ensemble compact, et étudions \( f(K)\); en particulier, nous considérons \( \Omega\), un recouvrement de \( f(K)\) par des ouverts. Nous avons
+	\begin{equation}
+		f(K)\subseteq\bigcup_{\mO\in\Omega}\mO.
+	\end{equation}
+	Par construction, nous avons aussi
+	\begin{equation}
+		K\subseteq\bigcup_{\mO\in\Omega}f^{-1}(\mO),
+	\end{equation}
+	en effet, si \( x\in K\), alors \( f(x)\) est dans un des ouverts de \( \Omega\), disons \( f(x)\in \mO\), et évidemment, \( x\in f^{-1}(\mO)\).  Les \( f^{-1}(\mO)\) recouvrent le compact \( K\), et donc on peut en choisir un sous-recouvrement fini, c'est-à-dire un choix de \( \{ f^{-1}(\mO_1),\ldots,f^{-1}(\mO_n) \}\) tels que
+	\begin{equation}
+		K\subseteq \bigcup_{i=1}^nf^{-1}(\mO_i).
+	\end{equation}
+	Dans ce cas, nous avons
+	\begin{equation}
+		f(K)\subseteq\bigcup_{i=1}^n\mO_i,
+	\end{equation}
+	ce qui prouve la compacité de \( f(K)\).
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Distance uniforme}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{BIBooPEIZooQUlfHx}]	\label{PROPooNSCCooJuqOQe}
+	Soient un compact \( K\) et un espace métrique\footnote{Définition \ref{DefMVNVFsX}.} \( (E,d)\). Nous notons \( C(K,X)\) l'ensemble des applications continues\footnote{Pour la topologie métrique \ref{ThoORdLYUu}.} de \( K\) vers \( X\). Alors l'application
+	\begin{equation}
+		\begin{aligned}
+			d_{\infty}\colon C(K,E)\times C(K,E) & \to \eR                                     \\
+			(f,g)                                & \mapsto \sup_{x\in K}d\big( f(x),g(x) \big)
+		\end{aligned}
+	\end{equation}
+	est une distance.
+\end{proposition}
+
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Continuité de la réciproque sur un compact}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}       \label{LEMooNEEVooSeHYzx}
+	Soit un espace compact \( K\) et un espace topologique séparé \( X\). Si \( f\colon K\to X\) est une bijection continue, alors \( f\) est un isomorphisme d'espaces topologiques.
+\end{lemma}
+% Pour la preuve c'est LEMooPLGTooATIGov
+
+\begin{lemma}[\cite{BIBooXCATooQEETws}]     \label{LEMooPLGTooATIGov}
+	Soit une application continue et bijective \( f\colon K\to X \) où \( K\) est compact et \( X\) est métrique. Alors la réciproque \(f^{-1}\colon X\to K\) est continue.
+\end{lemma}
+
+\begin{proof}
+	Nous allons montrer que si \( F\) est fermé dans \( K\), alors \( (f^{-1})^{-1}(F)\) est fermé dans \( X\). Le lemme \ref{LEMooATLRooEKnlro} conclura. Si \( F\) est fermé dans \( K\), alors \( F\) est compact (lemma \ref{LemnAeACf}\ref{ITEMooNKAKooQoNddr}). Le théorème \ref{ThoImCompCotComp} dit que l'image d'un compact par une application continue est compacte. Donc \( f(F)\) est compact dans \( X\). Mais comme \( X\) est métrique, tout compact est fermé (lemme \ref{LemnAeACf}\ref{ITEMooAZWVooLyPDeY}). Bref, \( f(F)\) est fermé.
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]        \label{LEMooKSDKooDbKKeB}
+	Soit un espace vectoriel normé \( V\) ainsi qu'une application continue \( f\colon \mathopen[ a , b \mathclose]\to V\). Nous supposons que \( f\colon \mathopen[ a , b \mathclose[\to V\) est injective.
+
+	Alors en posant \( S=f\big( \mathopen[ a , b \mathclose[ \big)\), l'application réciproque
+	\begin{equation}
+		f^{-1}\colon S\to \mathopen[ a , b \mathclose[
+	\end{equation}
+	est continue.
+\end{lemma}
+
+\begin{proof}
+	Pour tout \( x\in \mathopen[ a , b \mathclose]\) nous notons \( V_x=f\big( \mathopen[ a , x \mathclose] \big)\).
+
+	Par hypothèse d'injectivité, l'existence de \( f^{-1}\) sur \( V_b\) est assurée. En ce qui concerne sa continuité, pour chaque \( x\in\mathopen] a , b \mathclose[\), l'application \( f\colon \mathopen[ a , x \mathclose]\to V_x\) vérifie le lemme \ref{LEMooPLGTooATIGov}. Donc l'application réciproque \( f^{-1}\colon V_x\to \mathopen[ a , x \mathclose]\) est continue.
+
+	Le théorème \ref{ThoESCaraB} dit alors que l'application \( f^{-1}\) est donc continue en chaque point de \( V_x \) pour tout \( a<x<b\). Elle est donc continue en chaque point de \( f\big( \mathopen[ a , b \mathclose[ \big)\) parce que chacun de ces points est dans un \( V_x\). Le théorème \ref{ThoESCaraB}  (dans l'autre sens) montre alors que \( ^{-1}\colon S\to \mathopen[ a , b \mathclose[\) est continue.
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Espace vectoriel topologique}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooHUWQooPWYBUu}
+	Soient un espace vectoriel topologique \( E\) et une application linéaire \( f\in\aL(E,V)\) où \( V\) est un espace vectoriel normé. Si \( f\) est bornée sur un voisinage de \( 0\), alors \( f\) est continue.
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[\( f\) est continue en \( 0\)]
+		%-----------------------------------------------------------
+		Nous vérifions la définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr} d'une fonction continue en un point. Soit un ouvert \( \mO\) de \( V\) contenant \( f(0)=0\). Vu que \( V\) est normé, il existe \( r>0\) tel que \( B(0,r)\subset\mO\). Comme \( f\) est bornée sur un voisinage de \( 0\), nous pouvons considérer un voisinage \( U\) de \( 0\) dans \( E\) tel que \( f(U)\subset B(0,m)\). Si nous prenons \(\delta<r/m\), alors
+		\begin{equation}
+			f\big( \delta U \big)=\delta f(U)\subset \delta B(0,m)=B(0,\delta m)=B(0,r)\subset \mO.
+		\end{equation}
+		Donc le voisinage \( \delta U\)\footnote{C'est un voisinage par la proposition \ref{PROPooJYLVooPpLWFX}.} de \( 0\) fait fonctionner la définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr}.
+		\spitem[Continue partout]
+		%-----------------------------------------------------------
+		C'est la proposition \ref{PROPooHKGZooDaNaHU}.
+	\end{subproof}
+\end{proof}

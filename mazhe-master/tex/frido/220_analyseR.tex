@@ -1,0 +1,1259 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2008-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Des exemples}
+%---------------------------------------------------------------------------------------------------------------------------
+
+
+\begin{example}
+	Nous étudions l'exemple suivant :
+	\begin{equation}
+		A_1 = \{ (x, y ) \in \eR^2 \; | \; 2y^2+4y+2<x\leq \sqrt{4- y^2},\, y\in [-1.5, 0.5[ \}.
+	\end{equation}
+
+	On commence par tracer la parabole \( x=2y^2+4y+2\), la circonférence \( x^2+y^2=4\) et les droites \( y=-1.5\) et \( y=1/2\). On voit tout de suite que l'aire délimitée par les quatre courbes est donnée par l'union de deux parties. Dans la première \( \sqrt{4- y^2}\leq x\leq 2y^2+4y+2\), \( y\in [0,0.5]\) et dans l'autre \( 2y^2+4y+2\leq x\leq \sqrt{4- y^2}\), \( y\in [-1.5, 0]\). L'ensemble \( A_1\) est contenu dans la deuxième, \ref{LabelFigLAfWmaN}. L'intérieur de \( A_1\) est donné par \( \Int(A_1) = \{ (x, y ) \in \eR^2 \; | \; 2y^2+4y+2<x< \sqrt{4- y^2},\, y\in ]-1.5, 0[ \}\), et sa frontière est l'union de 3 morceaux de courbe \( \ell_1\), \( \ell_2\), \( \ell_3\):
+	\begin{equation}
+		\begin{aligned}
+			 & \ell_1=\{(x,y)\, |\, x=2y^2+4y+2,\, y\in [-1.5, 0] \}    \\
+			 & \ell_2=\{(x,y)\, |\, x=\sqrt{4-y^2},\, y\in [-1.5, 0] \} \\
+			 & \ell_3=\{(x,y)\, |\, x\in [0.5, \sqrt{7/4}]\, y=-1.5 \}.
+		\end{aligned}
+	\end{equation}
+
+	%The result is on figure \ref{LabelFigLAfWmaN}. % From file LAfWmaN
+	\newcommand{\CaptionFigLAfWmaN}{}
+	\input{auto/pictures_tex/Fig_LAfWmaN.pstricks}
+\end{example}
+
+\begin{example}     \label{EXooEJWBooDjBfKV}
+	Nous étudions
+	\begin{equation}
+		A_3 = \eN \times \eQ = \{ (x, y ) \in \eR^2 \; | \; x \in \eN , y \in \eQ \}.
+	\end{equation}
+	L'ensemble \( A_3\) n'est pas ouvert, ni fermé, ni borné dans la topologie de \( \eR^2\). Le lemme \ref{LEMooIGQCooOrroHT} dit que \( \eQ\) a un intérieur vide et sa fermeture est \( \eR\). L'ensemble \( \eN\), par contre est fermé et non borné. On peut remarquer que tous les points de \( \eN\) sont points isolés. La fermeture de \( A_3\) est alors \( \eN\times \eR\) et son intérieur est vide. On peut dessiner la fermeture de cet ensemble comme une famille de droites verticales \( x=n\), pour tout \( n\) dans \( \eN\).
+\end{example}
+
+
+\begin{example}
+	Nous étudions l'ensemble
+	\begin{equation}
+		A_3 = \{ ( t , 2t ) \in \eR^2 \; | \; t \in [0, 1] \; \}.
+	\end{equation}
+
+	L'ensemble \( A_3\) est un petit segment de droite. Son intérieur est vide parce que toute boule centrée en un point de la droite intersecte l'extérieur de la droite. Son adhérence et sa frontière sont \( A_3\) lui-même parce que nous considérons les valeurs de \( t\) dans \( \mathopen[ 0 , 1 \mathclose]\) qui est un intervalle fermé. Si l'intervalle avait été ouvert, l'adhérence et la frontière auraient été trouvés en fermant :
+	\begin{equation}
+		\overline{ \{ (t,2t)\tqs t\in\mathopen[ 0 , 1 [\, \}}=\{ (t,2t)\tqs t\in\mathopen[ 0 , 1 ] \}
+	\end{equation}
+	Étant donné que son adhérence est égal à lui-même, cet ensemble est fermé (et donc pas ouvert). Il est également borné parce qu'il est contenu dans une boule de rayon \( 3\).
+\end{example}
+
+\begin{example}
+	Nous étudions l'ensemble
+	\begin{equation}
+		A_4 = \eQ \times \eQ = \{ (x, y ) \in \eR^2 \; | \; x \in \eQ , y \in \eQ \}.
+	\end{equation}
+	Dans \( \eR\) nous savons que \( \bar\eQ=\eR\), \( \Int(\eQ)=\emptyset\) et \( \partial\eQ=\eR\) parce que toute boule centrée en un rationnel contient un irrationnel, et inversement, toute boule centrée en un irrationnel contient un rationnel. Dans \( \eR^2\) nous avons le même phénomène parce dans la boule \( B\big( (p,q),r \big)\) avec \( (p,q)\in\eQ\times\eQ\), se trouvent en particulier les points de la forme \( (p,x)\) avec \( x\in B(q,r)\subset\eR\). Évidemment, certains de ces \( x\) ne sont pas dans \( \eQ\) et par conséquent, la boule \( B\big( (p,q),r \big)\) contient les points \( (p,x)\notin\eQ\times\eQ\).
+
+	De la même manière, si \( (x,y)\) est un point de \( \eR^2\), dans toute boule centrée en \( (x,y)\), il y aura un élément de \( \eQ^2\).
+
+	Par conséquent, \( \Int(\eQ\times\eQ)=\emptyset\), \( \overline{ \eQ\times\eQ }=\eR\times\eR\) et \( \partial(\eQ\times\eQ)=\eR^2\).
+
+	Il n'est ni ouvert ni fermé (parce qu'il n'est égal ni à son intérieur ni à sa fermeture). Il n'est pas borné non plus parce qu'il existe des nombres rationnels arbitrairement grands.
+\end{example}
+
+
+\begin{example}
+	Nous étudions l'ensemble
+	\begin{equation}
+		A_5 = \{ (x, y ) \in \eR^2 \; | \; x \in ]0, 1[, \sin \frac 1x < y < 3 \}.
+	\end{equation}
+
+	La fonction \( x\mapsto\sin(\frac{1}{ x })\) est une des fonctions dont le graphe doit être connu. La figure \ref{LabelFigAdhIntFrTrois} montre la situation. Comme d'habitude, il est fortement recommandé de refaire le dessin soi-même.
+	\newcommand{\CaptionFigAdhIntFrTrois}{Les points qui sont sur l'axe vertical entre \( 0\) et \( 3\) sont sur la frontière, mais pas dans l'ensemble \( A_5\).}
+	\input{auto/pictures_tex/Fig_AdhIntFrTrois.pstricks}
+
+	L'ensemble \( A_5\) est ouvert parce que les conditions \( x\in\mathopen] 0 , 1 \mathclose[\) et \( \sin\frac{1}{ x }<y<3\) sont des conditions «ouvertes» au sens où si un point les vérifient, alors on peut trouver une boule dans lequel ces conditions restent vérifiées. Cela prouve que \( \Int(A_5)=A_5\).
+
+	La fermeture de \( A_5\) contient en outre les points tels que \( \sin\frac{1}{ x }=y\) entre \( x=0\) et \( x=1\) (les bornes étant incluses) ainsi que les points des trois segments de droites suivants:
+	\begin{equation}
+		\begin{aligned}[]
+			\{ (0,y)\tqs y\in\mathopen[ -1 , 3 \mathclose] \} \\
+			\{ (x,3)\tqs x\in\mathopen[ 0 , 1 \mathclose] \}  \\
+			\{ (1,y)\tqs y\in\mathopen[ \sin(1) , 3 \mathclose] \}.
+		\end{aligned}
+	\end{equation}
+
+	La frontière est composée de ces trois segments et du graphe de la fonction \( \sin\frac{1}{ x }\) entre \( 0\) et \( 1\).
+
+	L'ensemble \( A_5\) est borné parce qu'il est contenu par exemple dans la boule centrée en \( (0,0)\) et de rayon \( 10\). Il est ouvert et donc pas fermé.
+\end{example}
+
+
+\begin{example}\label{ItemexoEspVectoNorme0003iv}
+	Nous étudions l'ensemble
+	\begin{equation}
+		A_6 = \bigcup _{ n \in \eN_0} \{ ( \frac 1n, y ) \; | \; y \in [0,1] \; \}.
+	\end{equation}
+
+	L'ensemble \( A_6\) est une union infinie de segments de droites verticaux, voir figure \ref{LabelFigAdhIntFrSix}
+	\newcommand{\CaptionFigAdhIntFrSix}{Le segment sur l'axe vertical entre \( y=0\) et \( y=1\) fait partie de l'adhérence et de la frontière, mais pas de l'ensemble \( A_6\) lui-même.}
+	\input{auto/pictures_tex/Fig_AdhIntFrSix.pstricks}
+	L'intérieur est vide parce qu'autour de tout réel de la forme \( \frac{1}{ n }\), il y a un réel qui n'est pas de cette forme. En ce qui concerne la frontière et l'adhérence, il s'agit de l'union de tous ces segments plus le segment en \( x=0\).
+
+	En effet, la boule de rayon \( r\) autour du point \( (0,y)\) contient le point \( (\frac{1}{ n },y)\) avec \( n\) assez grand pour que \( \frac{1}{ n }<r\).
+\end{example}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Quelques mots à propos de la droite réelle achevée}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}
+	La \defe{droite réelle achevée}{droite réelle achevée} est l'ensemble \( \eR\cup\{ \pm \infty \}\) où \( \pm\infty\) sont deux nouveaux éléments. Nous la notons \( \overline{ \eR }\) pour des raisons que nous verrons à peine plus bas.
+\end{definition}
+
+Cette définition ne servirait à rien si nous n'y mettions pas une topologie pour positionner les éléments \( \pm\infty\) par rapport à ceux qui existaient déjà dans \( \eR\).
+
+\begin{definition}[Topologie sur \( \bar\eR\)]
+	La topologie sur \(\bar \eR\) est celle sur \( \eR\) à laquelle nous ajoutons les voisinages de \( \pm\infty\) de la façon suivante. Une partie \( V\) de \( \bar \eR\) est un voisinage de \( +\infty\) si il existe \( m>0\) tel que \( \mathopen] m , +\infty \mathclose]\subset V\).
+\end{definition}
+
+Le lemme suivant justifie la notation \( \overline{ \eR }\) pour la droite réelle achevée\footnote{Notez que l'espace métrique \( \eR\) est déjà complet. Il ne s'agit donc pas d'une completion.}.
+\begin{lemma}       \label{LEMooPZXHooEEXsTC}
+	L'adhérence\footnote{Définition \ref{DEFooSVWMooLpAVZR}.} de \( \eR\) dans \( \overline{ \eR }\) est \( \overline{ \eR }\).
+\end{lemma}
+
+\begin{proof}
+	Il suffit de prouver que \( +\infty\) et \( -\infty\) sont dans l'adhérence de \( \eR\). Nous le faisons pour \( +\infty\). Ce n'est pas très compliqué : si \( A\) est un ouvert contenant \( +\infty\), il contient une partie de la forme \( \mathopen] a , +\infty \mathclose]\), et donc contient des éléments de \( \eR\).
+\end{proof}
+
+Pour la suite nous utilisons la notation (pratique en probabilité)
+\begin{equation}
+	\{ f<a \}=\{ x\in S\tq f(x)<a \}.
+\end{equation}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Continuité}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+La définition de fonction continue est la définition~\ref{DefOLNtrxB}.
+
+\begin{enumerate}
+	\item
+	      Dans le cas d'une fonction \( f\colon \eR\to \eR\), la définition de la continuité devient la proposition \ref{PROPooVNGEooPwbxXP}.
+	\item
+	      Une application continue vers un espace normé est localement bornée, proposition \ref{PROPooNOHQooTqBQLk}.
+\end{enumerate}
+
+\begin{proposition}      \label{PROPooVNGEooPwbxXP}
+	Soient \( A\subset \eR\) et \( a\in A\). La fonction \( f\colon A\to \eR\) est continue\footnote{Définition \ref{DefOLNtrxB}\ref{ITEMooXARPooNzsWLr}.} en \( a\) si et seulement si pour tout \( \epsilon>0\), il existe un \( \delta>0\) tel que si \( x\in B(a,\delta)\cap A\) alors \( | f(x)-f(a) |\leq \epsilon\).
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Si \( f\) est continue]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( \epsilon>0\). L'ouvert \( W=B\big( f(a),\epsilon \big)\) contient \( f(a)\). La définition de la continuité en \( a\) dit qu'il existe un ouvert \( V\) de \( A\) contenant \( a\) et tel que \( f(V)\subset B\big( f(a),\epsilon \big)\).
+
+		Vu que \( V\) est un ouvert de \( A\)\footnote{Topologie induite et tout ça.}, il contient une partie de la forme \( B(a,\delta)\cap A\) pour un certain \( \delta>0\). Pour ce \( \delta\), nous avons bien  que \(f(x)\in B\big( f(a), \epsilon \big) \) dès que \( x\in B(a,\sigma)\cap A\).
+		\spitem[Si \( f\) dans l'autre sens]
+		% -------------------------------------------------------------------------------------------- 
+		Soit un ouvert \( W\) de \( \eR\) contenant \( f(a)\). Nous avons un \( \epsilon>0\) tel que \( B\big( f(a),\epsilon \big)\subset W\). Il existe donc un \( \delta>0\) tel que
+		\begin{equation}
+			f\big( B(a,\delta)\cap A \big)\subset B\big( f(a),\epsilon \big)\subset W.
+		\end{equation}
+		La partie \( B(a,\delta)\cap A\) est un voisinage de \( a\) dans \( A\).
+	\end{subproof}
+\end{proof}
+
+Nous allons maintenant étudier quelques conséquences de la continuité sur \( \eR\).
+
+\begin{enumerate}
+	\item D'abord on voit que la continuité n'a été définie qu'en un point. On peut dire que la fonction \( f\) est continue \emph{en tel point donné}, mais nous n'avons pas dit ce qu'est une fonction continue \emph{dans son ensemble}.
+
+	\item
+	      Le théorème \ref{ThoESCaraB} nous précise que si \( I\) est un intervalle de \( \eR\), la fonction \( f\) est continue sur \( I\) si et seulement si elle est continue en chaque point de \( I\).
+
+	\item Comme la définition de \( f\) continue en \( a\) fait intervenir \( f(x)\) pour tous les \( x\) pas trop loin de \( a\), il faut au moins déjà que \( f\) soit définie sur ces \( x\). En d'autres termes, dire que \( f\) est continue en \( a\) demande que \( f\) existe sur un intervalle autour de \( a\).
+
+	      Ceci couplé à la définition précédente laisse penser qu'il est surtout intéressant d'étudier les fonctions qui sont continues sur un intervalle.
+
+	\item L'intuition qu'une fonction continue doit pouvoir être tracée sans lever la main correspond aux fonctions continues sur des intervalles. Au moins sur l'intervalle où elle est continue, elle devrait être traçable en un coup. Cette intuition est complètement fausse (comme pratiquement toutes les intuitions), comme le montre l'exemple \ref{EXooJBGSooBOGSse}.
+\end{enumerate}
+
+
+\begin{example}     \label{EXooJBGSooBOGSse}
+	Il est très possible d'être continue en un seul point. Par exemple la fonction
+	\begin{equation}
+		f(x)=x(1-\mtu_{\eQ}(x))
+	\end{equation}
+	où \( \mtu_{\eQ}\) est la fonction indicatrice de \( \eQ\) dans \( \eR\).
+\end{example}
+
+\begin{proposition}     \label{PROPooUBUAooNIxjfg}
+	Si \( f\colon \eR\to \eR\) est continue au point \( a\in \eR\) et si \( f(a)\neq 0\), alors il existe un voisinage de \( a\) sur lequel \( f\) ne s'annule pas.
+\end{proposition}
+
+\begin{proof}
+	Si \( f \) s'annulait sur tout voisinage de \( a\) (mais pas en \( a\) lui-même), nous aurions, pour tout \( n\) un réel
+	\begin{equation}
+		x_n\in B\big( a,\frac{1}{ n } \big)\setminus\{ a \}
+	\end{equation}
+	tel que \( f(x_n)=0\). Cela donnerait une suite \( x_n\to a\) avec \( f(x_n)\to 0\), ce qui contredit la continuité de \( f\) en \( a\) en vertu de la proposition \ref{PROPooBHRBooJMZYSg} sur la continuité séquentielle en un point.
+\end{proof}
+
+Notons que ce résultat se généralise : si \( f\) est continue et pas égale à \( r\) en \( a\), alors il existe un voisinage de \( a\) sur lequel elle ne prend pas la valeur \( r\).
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Opération sur la continuité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous allons démontrer maintenant une série de petits résultats qui permettent de simplifier la démonstration de la continuité de fonctions.
+\begin{theorem}
+	Si la fonction \( f\) est continue au point \( a\), alors la fonction \( \lambda f\) est également continue en \( a\).
+\end{theorem}
+
+\begin{proof}
+	Commençons par exprimer la continuité de \( f\) en \( a\). Soit \( \epsilon_1>0\). Il existe \( \delta_1>0\) tel que
+	\[
+		(| x-a |\leq \delta_1)\Rightarrow | f(x)-f(a) |\leq \epsilon_1.
+	\]
+	En travaillant avec \( \lambda f\) au lieu de \( f\),
+	\begin{equation}
+		(| x-a |\leq\delta_1)\Rightarrow  | (\lambda f)(x)- (\lambda f)(a)|\leq | \lambda |\epsilon_1.
+	\end{equation}
+
+	Passons à la continuité de \( \lambda f\). Soit \( \epsilon>0\). Nous posons \( \epsilon_1=\epsilon/| \lambda |\) et nous considérons le \( \delta_1\) correspondant :
+	\[
+		(| x-a |\leq\delta_1)\Rightarrow  | (\lambda f)(x)- (\lambda f)(a)|\leq | \lambda |\epsilon_1=\epsilon.
+	\]
+	Ce \( \delta_1\) est celui que l'on cherchait.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooBUJCooBHmKEG}
+	Si \(f \colon \eR\to \eR  \) est une fonction continue ne s'annulant pas, alors \( x\mapsto 1/f(x)  \) est une fonction continue.
+	%TODOooWUBNooWSxocX. Prouver ça.
+\end{proposition}
+
+
+\begin{theorem}		\label{THOooWRXOooUvKgkQ}
+	Si \( f\) et \( g\) sont deux fonctions continues en \( a\), alors
+	\begin{enumerate}
+		\item
+		      La fonction \( f+g\) est continue en \( a\).
+		\item		\label{ITEMooSHMVooZPNtCv}
+		      La fonction \( fg\) est continue en \( a\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Deux continuités à prouver en utilisant la caractérisation \ref{PROPooVNGEooPwbxXP} de la continuité.
+	\begin{subproof}
+		\spitem[La somme]
+		%-----------------------------------------------------------
+
+		La continuité des fonctions \( f\) et \( g\) au point \( a\) fait en sorte que pour tout choix de \( \epsilon_1\) et \( \epsilon_2\), il existe \( \delta_1\) et \( \delta_2\) tels que
+		\[
+			(| x-a |\leq \delta_1)\Rightarrow | f(x)-f(a) |\leq \epsilon_1.
+		\]
+		et
+		\[
+			(| x-a |\leq \delta_2)\Rightarrow | g(x)-g(a) |\leq \epsilon_2.
+		\]
+		La quantité que nous souhaitons analyser est \( | f(x)+g(x)-f(a)-g(a) |\). Tout le jeu de la démonstration de la continuité est de triturer cette expression pour en tirer quelque chose en termes de \( \epsilon_1\) et \( \epsilon_2\). Si nous supposons avoir pris \( | x-a |\) plus petit en même temps que \( \delta_1\) et que \( \delta_2\), nous avons
+		\[
+			| f(x)+g(x)-f(a)-g(a) |\leq| f(x)-g(x) |+| g(x)-g(a) |\leq\epsilon_1+\epsilon_2
+		\]
+		en utilisant la formule générale \( | a+b |\leq | a |+| b |\). Maintenant, si on choisit \( \epsilon_1\) et \( \epsilon_2\) tels que \( \epsilon_1+\epsilon_2<\epsilon\), et les \( \delta_1\), \( \delta_2\) correspondants, on a
+		\[
+			| f(x)+g(x)-f(a)-g(a) |\leq\epsilon,
+		\]
+		pourvu que \( | x-a |\) soit plus petit que \( \delta_1\) et \( \delta_2\). Le bon \( \delta\) à prendre est donc le minimum de \( \delta_1\) et \( \delta_2\) qui eux-mêmes sont donnés par un choix de \( \epsilon_1\) et \( \epsilon_2\) tels que \( \epsilon_1+\epsilon_2\leq\epsilon\).
+
+		\spitem[Le produit]
+		%-----------------------------------------------------------
+		Soit \( \epsilon'>0\). Nous considérons \( \delta>0\) tel que \( | f(x)-f(a) |<\epsilon'\) et \( | g(x)-g(a) |<\epsilon'\) pour tout \( x\in B(a,\delta)\). Nous avons alors
+		\begin{subequations}
+			\begin{align}
+				| (fg)(x)-(fg)(a) | & =| f(x)g(x)-f(a)g(a) |                                                  \\
+				                    & \leq | f(x)g(x)-f(x)g(a) |+| f(x)g(a)-f(a)g(x) |                        \\
+				                    & =| f(x) || g(x)-g(a) |+| g(a) |\underbrace{| f(x)-f(a) |}_{< \epsilon'} \\
+				                    & \leq \epsilon'\big( | f(x) |+| g(a) | \big).
+			\end{align}
+		\end{subequations}
+		Notons que \( x\in B(a,\delta)\), donc \( |f(x)- f(a) |<\epsilon'\) et donc \( | f(x) |\leq | f(a) |+\epsilon'\). Nous avons prouvé que pour tout \( \epsilon'>0\), il existe un \( \delta>0\) tel que si \( x\in B(a,\delta)\), alors
+		\begin{equation}		\label{EQooSMPXooIhJmnJ}
+			| (fg)(x)-(fg)(a) |<\epsilon'\big( M+\epsilon' \big)
+		\end{equation}
+		où \( M=| f(a) |+| g(a) |\).
+
+		Soit maintenant \( \epsilon>0\). En posant \( \epsilon'<\min\{ 1,\epsilon/(M+1) \}\) nous avons bien \( \epsilon'(M+\epsilon')<\epsilon\), et donc l'inégalité \eqref{EQooSMPXooIhJmnJ} donne la continuité de \( fg\).
+	\end{subproof}
+\end{proof}
+
+Pour résumer ces deux théorèmes, on dit que si \( f\) et \( g\) sont continues en \( a\), alors la fonction \( \alpha f+\beta g\) est également continue en \( a\) pour tout \( \alpha\), \( \beta\in\eR\).
+
+\begin{proposition}     \label{PROPooVNKVooJvxarf}
+	Soient des parties \( \Omega_f\) et \( \Omega_g\) dans \( \eR\). Soient \( f\colon \Omega_f\to \eR\) ainsi que \( g\colon \Omega_g\to \eR\) telles que
+	\begin{enumerate}
+		\item
+		      \( g\) est continue en \( a\) et vaut \( g(a)=\ell\).
+		\item
+		      \( f\) est continue en \( \ell\) et vaut \( f(\ell)=b\).
+		\item
+		      \( g(\Omega_g)\subset \Omega_f\).
+	\end{enumerate}
+	Alors \( f\circ g\) est continue en \( a\).
+\end{proposition}
+
+\begin{proof}
+	Soit \( \epsilon>0\). La continuité de \( f\) dit que il existe \( \eta>0\) tel que
+	\begin{equation}
+		y\in B(\ell,\eta)\cap\Omega_f\Rightarrow\,| f(y)-f(\ell) |<\epsilon.
+	\end{equation}
+	La continuité de \( g\) donne \( \delta>0\) tel que
+	\begin{equation}
+		x\in B(a,\delta)\cap\Omega_g\Rightarrow\,| g(x)-g(a) |<\eta.
+	\end{equation}
+
+	Si \( x\in B(a,\delta)\cap\Omega_g\), alors \( g(x)\in B(\ell,\eta)\cap\Omega_f\). Donc
+	\begin{equation}
+		| (f\circ g)(x)-f(\ell) |<\epsilon.
+	\end{equation}
+	Mais \( f(\ell)=(f\circ g)(a)\). Tout cela est la continuité de \( f\circ g\) en \( a\).
+\end{proof}
+
+
+Parmi les propriétés immédiates de la continuité d'une fonction, nous avons ceci qui est souvent bien utile.
+
+\begin{corollary}   \label{CorNNPYooMbaYZg}
+	Si la fonction \( f\) est continue en \( a\) et si \( f(a)>0\), alors \( f\) est positive sur un intervalle autour de \( a\).
+\end{corollary}
+
+\begin{proof}
+	Prenons \( \epsilon<f(a)\) et voyons\footnote{ici, nous insistons sur le fait que nous prenons \( \epsilon\) \emph{strictement} plus petit que \( f(a)\).} ce que la continuité de \( f\) en \( a\) nous offre : il existe un \( \delta\) tel que
+	\[
+		(| x-a |\leq \delta)\Rightarrow | f(x)-f(a) |\leq\epsilon < f(a).
+	\]
+	Nous en retenons que sur un intervalle (de largeur \( \delta\)), nous avons \( | f(x)-f(a) |\leq f(a)\). Par hypothèse, \( f(a)>0\), donc si \( f(x)<0\), alors la différence \( f(x)-f(a)\) donne un nombre encore plus négatif que \( -f(a)\), c'est-à-dire que \( | f(x)-f(a) |>f(a)\), ce qui est contraire à ce que nous venons de démontrer. D'où la conclusion que \( f(x)>0\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{La fonction la moins continue du monde}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Parmi les exemples un peu sales de fonctions non continues, il y a celle-ci :
+\[
+	\chi_{\eQ}(x)=
+	\begin{cases}
+		1 \text{ si }x\in\eQ \\
+		0 \text{ sinon.}
+	\end{cases}
+\]
+Par exemple, \( \chi_{\eQ}(0)=1\), et\footnote{Pour prouver que \( \sqrt{2}\) n'est pas rationnel, c'est pas trop compliqué, mais pour prouver que \( \pi\) ne l'est pas non plus, il faudra encore manger de la soupe.} \( \chi_{\eQ}(\pi)=\chi_{\eQ}(\sqrt{2})=0\). Bien que \( \chi_{\eQ}(0)=1\), il n'existe \emph{aucun} voisinage de \( 1\) sur lequel la fonction reste proche de \( 1\), parce que tout voisinage va contenir au moins un irrationnel. À chaque millimètre, cette fonction fait une infinité de bonds !
+
+Cette fonction n'est donc continue nulle part.
+
+À partir de là, nous pouvons construire la fonction suivante qui n'est continue qu'en un point :
+\[
+	f(x)=x\chi_{\eQ}(x)=
+	\begin{cases}
+		x\text{ si }x\in\eQ \\
+		0\text{ sinon.}
+	\end{cases}
+\]
+Cette fonction est continue en zéro. En effet, prenons \( \delta>0\); il nous faut un \( \epsilon\) tel que \( | x |\leq\epsilon\) implique \( f(x)\leq \delta\) parce que \( f(0)=0\). Bon ben prendre simplement \( \epsilon=\delta\) nous contente. Cette fonction est donc très facilement continue en zéro.
+
+Et pourtant, dès que l'on s'écarte un tant soit peu de zéro, elle fait des bonds une infinité de fois par millionième de millimètre ! Cette fonction est donc la plus discontinue du monde en tous les points, sauf un (zéro), où c'est une fonction continue !
+
+\begin{normaltext}
+	J'ai longtemps cru que cette fonction \( \chi_{\eQ}\) était la plus discontinue du monde. Je me trompais lourdement. Celle-ci est encore plus incroyable :
+	\begin{center}
+		Numberphile : Conway's Base 13 Function\\
+		\url{https://www.youtube.com/watch?v=zsBaApyf_Ns}
+	\end{center}
+	Divulgâchis : avec cette fonction, chaque ouvert de \( \eR\) est surjectif sur \( \eR\). Elle fait donc une infinité non dénombrable de sauts sur chaque intervalle.
+\end{normaltext}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Approche topologique}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous avons vu que sur tout ensemble métrique, nous pouvons définir ce qu'est un ouvert : c'est un ensemble qui contient une boule ouverte autour de chacun de ses points. Quand on est dans un ensemble ouvert, on peut toujours un peu se déplacer sans sortir de l'ensemble.
+
+Le théorème suivant est une très importante caractérisation des fonctions continues (de \( \eR\) dans \( \eR\)) en termes de topologie, c'est-à-dire en termes d'ouverts.
+
+\begin{probleme}
+	Le théorème suivant n'a aucun sens parce que c'est pratiquement la définition de la continuité d'une fonction, définition \ref{DefOLNtrxB}. Peut-être que ce qu'on a en tête est la proposition \ref{PROPooOVKEooCkJmmO} qui donne l'équivalence entre application continue et continu en chaque point.
+\end{probleme}
+
+\begin{theorem}     \label{ThoContInvOuvert}
+	Si \( I\) est un intervalle ouvert contenu dans \( \dom f\), alors \( f\) est continue sur \( I\) si et seulement si pour tout ouvert \( \mO\) dans \( \eR\), l'image inverse \( f|_I^{^{-1}}(\mO)\) est ouvert.
+\end{theorem}
+
+\begin{proof}
+
+	Dans un premier temps, nous allons transformer le critère de continuité en termes de boules ouvertes, et ensuite, nous passerons à la démonstration proprement dite. Le critère de continuité de \( f\) au point \( x\) dit que
+	\begin{equation}        \label{EqDEfCOntAn}
+		\forall \delta>0, \exists\,\epsilon>0\text{ tel que }\big( | x-a |< \epsilon \big)\Rightarrow| f(x)-f(a) |<\delta.
+	\end{equation}
+	Cette condition peut être exprimée sous la forme suivante :
+	\[
+		\forall \delta>0, \exists\epsilon\text{ tel que } a\in B(x,\epsilon)\Rightarrow f(a)\in B\big( f(x),\delta \big),
+	\]
+	ou encore
+	\begin{equation}        \label{EqRedefContBoules}
+		\forall \delta>0,\exists\epsilon\text{ tel que } f\big( B(x,\epsilon) \big)\subset B\big( f(x),\delta \big).
+	\end{equation}
+	Jusque ici, nous n'avons fait que du jeu de notations. Nous avons exprimé en termes de topologie des inégalités analytiques. La condition \eqref{EqRedefContBoules} est le plus souvent utilisée comme définition de la continuité d'une fonction en \( x\), lorsque le contexte ne demande pas de définitions plus générales. Si tel est le choix, il faut pouvoir retrouver \eqref{EqDEfCOntAn} à partir de \eqref{EqRedefContBoules}.
+
+	Passons maintenant à la démonstration proprement dite du théorème.
+
+	D'abord, supposons que \( f\) est continue sur \( I\), et prenons \( \mO\), un ouvert quelconque. Le but est de prouver que \( f|_I^{-1}(\mO)\) est ouvert. Pour cela, nous prenons un point \( x_0\in f|_I^{-1}(\mO)\) et nous allons trouver un ouvert autour de ce point, contenu dans \( f|_I^{-1}(\mO)\). Nous écrivons \( y_0=f(x_0)\). Évidemment, \( y_0\in\mO\), donc on a une boule autour de \( y_0\) qui est contenue dans \( \mO\), soit donc \( \delta>0\) tel que
+	\[
+		B(y_0,\delta)\subset\mO.
+	\]
+	Par hypothèse, \( f\) est continue en \( x_0\), et nous pouvons donc y appliquer le critère \eqref{EqRedefContBoules}. Il existe donc \( \epsilon>0\) tel que
+	\[
+		f\big( B(x_0,\epsilon) \big)\subset B\big( f(x_0),\delta \big)\subset\mO.
+	\]
+	Cela prouve que \( B(x_0,\epsilon)\subset f|_I^{-1}(\mO)\).
+
+	Dans l'autre sens, maintenant. Nous prenons \( x_0\in I\) et nous voulons prouver que \( f\) est continue en \( x_0\), c'est-à-dire que pour tout \( \delta\), nous cherchons un \( \epsilon\) tel que \( f\big( B(x_0,\epsilon) \big)\subset B\big( f(x_0),\delta \big)\). Oui, mais \( B\big( f(x_0),\delta \big)\) est ouverte, donc par hypothèse, \( f|_I^{-1}\Big( B\big( f(x_0),\delta \big) \Big)\) est ouvert, inclus dans \( I\) et contient \( x_0\). Donc il existe un \( \epsilon\) tel que
+	\[
+		B(x_0,\epsilon)\subset f|_I^{-1}\Big( B\big( f(x_0),\delta \big) \Big),
+	\]
+	et donc tel que
+	\[
+		f\big( B(x_0,\epsilon) \big)\subset B\big( f(x_0),\delta \big),
+	\]
+	ce qu'il fallait prouver.
+\end{proof}
+
+\begin{theorem}[Théorème des valeurs intermédiaires]        \label{ThoValInter}
+	Soit \( f\), une fonction continue sur \( [a,b]\), et supposons que \( f(a)<f(b)\). Alors pour tout \( y\) tel que \( f(a)\leq y\leq f(b)\), il existe un \( x\in\mathopen[ a , b \mathclose]\) tel que \( f(x)=y\).
+\end{theorem}
+\index{connexité!théorème des valeurs intermédiaires}
+\index{théorème!valeurs intermédiaires}
+
+\begin{proof}
+	Nous savons que \( [a,b]\) est connexe parce que c'est un intervalle (proposition~\ref{PropInterssiConn}). Donc \( f\big( [a,b] \big)\) est connexe (lemme~\ref{LemConncontconn}) et donc est un intervalle (à nouveau la proposition~\ref{PropInterssiConn}). Étant donné que \( f\big( [a,b] \big)\) est un intervalle, il contient toutes les valeurs intermédiaires entre n'importe quels deux de ses éléments. En particulier toutes les valeurs intermédiaires entre \( f(a)\) et \( f(b)\).
+\end{proof}
+
+
+\begin{proposition}	\label{PROPooIJZWooCAFPRn}
+	Si \( f\colon \mathopen[ 0 , \infty \mathclose[\to \mathopen[ 0 , \infty \mathclose[\) est continue et vérifie \( f(0)=0\) et \( \lim_{x\to \infty} f(x)=\infty\), alors \( f\) est surjective.
+\end{proposition}
+
+\begin{proof}
+	Soit \( y\in \mathopen[ 0 , \infty \mathclose[\). Vu que \( \lim_{x\to\infty}f(x)=\infty\), il existe \( a\in\mathopen[ 0 , \infty \mathclose[\) tel que \( f(a)>y\). Le théorème de valeurs intermédiaires \ref{ThoValInter} dit qu'il existe \( x\in \mathopen[ 0 , a \mathclose]\) tel que \( f(x)=y\).
+\end{proof}
+
+
+\begin{corollary}       \label{CorImInterInter}
+	L'image d'un intervalle par une fonction continue est un intervalle.
+\end{corollary}
+
+\begin{proof}
+	Soient \( I\) un intervalle, \( \alpha<\beta\in f(I)\) et \( \gamma\in\mathopen] \alpha , \beta \mathclose[\). Nous considérons \(a,b\in I\) tels que \( \alpha=f(a)\) et \( \beta=f(b)\). Par le théorème des valeurs intermédiaires \ref{ThoValInter}, il existe \( t\in\mathopen] a , b \mathclose[\) tel que \( f(t)=\gamma\). Par conséquent \( \gamma\in f(I)\).
+\end{proof}
+
+\begin{corollary}[\cite{MonCerveau}]	\label{CORooQXHDooWjSiKm}
+	Soit une application continue \(f \colon \eR\to \eR  \) vérifiant \( f(a)>0\) et \( f(x)\neq 0\) pour tout \( x\in \mathopen[ a,b\mathclose]\). Alors \( f(b)>0\).
+\end{corollary}
+
+\begin{proof}
+	Supposons que \( f(b)<0\). Alors le théorème des valeurs intermédiaires \ref{ThoValInter} nous indique que pour tout \( y\) tel que \( f(b)<y<f(a)\), il existe \( x\in \mathopen[ a,b\mathclose]\) tel que \( f(x)=y\). En prenant \( y=0\) nous avons une contradiction.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Limite sur des chemins}
+%----------------------------------------------------
+
+\begin{proposition}		\label{PROPooREUUooUNDFRi}
+	Soit une application \(f \colon X\to Y  \) entre espaces topologiques. Nous supposons que \( \lim_{x\to a}f(x)=b\). Alors pour toute application continue \(\gamma \colon \eR\to X  \) telle que \( \gamma(0)=a\), nous avons
+	\begin{equation}
+		\lim_{t\to 0}(f\circ\gamma)(t)=b.
+	\end{equation}
+\end{proposition}
+
+%-------------------------------------------------------
+\subsection{Racine carrée}
+%----------------------------------------------------
+
+
+\begin{corollaryDef}[Existence de la racine carrée]     \label{DEFooGQTYooORuvQb}
+	Si \( x\geq 0\) dans \( \eR\) alors il existe un unique réel \( y\geq 0\) tel que \( y^2=x\). Ce nombre est noté \( \sqrt{x}\) et est nommé \defe{racine carrée}{racine carrée} de \( x\).
+\end{corollaryDef}
+
+\begin{proof}
+	La fonction \( f\colon t\mapsto t^2\) est continue et strictement croissante. Nous avons \( f(0)=0\) et\footnote{Faites deux cas suivant \( x\geq 1\) ou non si vous le voulez, moi je prends \( x+1\).} \( f(x+1)>x\). Donc le théorème des valeurs intermédiaires~\ref{ThoValInter} nous assure qu'il existe un unique \( y\in\mathopen[ 0 , x+1 \mathclose]\) tel que \( f(y)=x\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooWSVNooKsymDy}
+	Quelques formules.
+	\begin{enumerate}
+		\item
+		      $\sqrt{ xy }=\sqrt{ x }\sqrt{ y }$ si \( x,y\geq 0\).
+		\item       \label{ITEMooEPHBooCEeJOD}
+		      \( \sqrt{ \lambda^2 x }=| \lambda |\sqrt{ x }\) si \( x\geq 0\).
+	\end{enumerate}
+	%TODOooAOBZooLZouGN. Prouver ça.
+\end{lemma}
+
+\begin{lemma}       \label{LEMooSBOAooOOIotR}
+	La fonction racine carrée est strictement croissante.
+\end{lemma}
+
+\begin{proof}
+	Supposons que \( x<y\). Si \( \sqrt{ x }>\sqrt{ y }\), alors la croissance de la fonction carré donne \( x>y\) qui est contraire à l'hypothèse.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Module sur les nombres complexes}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemmaDef}        \label{LEMooVHDAooJyoakR}
+	Si \( z\in \eC\), alors \( z\bar z\) est un réel positif.
+
+	Nous définissons le \defe{module}{module d'un nombre complexe} sur \( \eC\) par\footnote{Définition de la racine carrée : \ref{DEFooGQTYooORuvQb}.}
+	\begin{equation}
+		| z |=\sqrt{ z\bar z }.
+	\end{equation}
+\end{lemmaDef}
+
+\begin{proof}
+	Prouvons que \( z\bar z\) est un réel positif. En effet si \( z=a+bi\) alors
+	\begin{equation}
+		z\bar z=(a+bi)(a-bi)=a^2-abi+abi+b^2=a^2+b^2\geq 0.
+	\end{equation}
+\end{proof}
+
+
+\begin{proposition} \label{PROPooXLARooYSDCsF}
+	Si \( z_1\) et \( z_2\) sont des nombres complexes, alors
+	\begin{equation}
+		| z_1z_2 |=| z_1 | |z_2 |.
+	\end{equation}
+	Nous avons aussi, pour tout \( n\in \eN\),
+	\begin{equation}       \label{EQooATTQooRpJeCo}
+		| z^n |=| z |^n.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	D'abord \( (a+bi)(c+di)=ac-db+(ad+bc)i\), de telle sorte que
+	\begin{equation}
+		| (a+bi)(c+di) |^2=(ac-bd)^2+(ad+bc)^2.
+	\end{equation}
+	Mais en calculant d'autre part \( | a+bi |^2| c+di |^2\), nous tombons sur la même valeur.
+
+	Une simple récurrence permet de conclure que \( | z^n |=| z |^n\).
+\end{proof}
+Voilà. Vous êtes déjà content d'apprendre que l'on peut démontrer \( | z^n |=| z |^n\) sans faire appel à la forme trigonométrique des nombres complexes.
+
+
+\begin{proposition}[\cite{BIBooRRXPooQhgCsS}]     \label{PROPooUMVGooIrhZZg}
+	Pour tout nombres complexes \( z = a+bi\) et \( z^\prime=a'+ib'\), nous avons
+	\begin{enumerate}
+		\item       \label{ITEMooYBJVooGXiDSd}
+		      \( z \bar z =\bar z z = a^2 + b^2\);
+		\item	\label{ITEMooKIDXooYANMUz}
+		      \( | z |^2=z\bar z\).
+		\item       \label{ITEMooCGLSooKHbzkn}
+		      \( \bar{\bar{z}} = z\)
+		\item		\label{ITEMooYXVXooObkeTM}
+		      \( \overline{z_1+z_2}=\bar z_1+\bar z_2\).
+		\item		\label{ITEMooGVWGooPQBUHC}
+		      \( z+\bar z=2\real(z)\)
+		\item       \label{ITEMooDKWDooUjEuZA}
+		      \( \module z = \module {\bar z}\);
+		\item       \label{ITEMooFXKYooUOXbwH}
+		      \( \module{zz^\prime} = \module z \module{z^\prime}\);
+		\item     \label{ITEMooUJHPooUFdvqB}
+		      \( | z+z' |=\sqrt{ | z |^2+| z' |^2+2\real(z\bar z') }\).
+
+
+	\end{enumerate}
+\end{proposition}
+
+
+\begin{proof}
+	En plusieurs points.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooYBJVooGXiDSd}]
+		Calcul direct :
+		\begin{equation}
+			z\bar z=(a+bi)(a-bi)=a^2-abi+abi+b^2=a^2+b^2.
+		\end{equation}
+		Pour être honnête, vous devriez aussi faire le calcul pour \( \bar zz\).
+
+		\spitem[Pour \ref{ITEMooKIDXooYANMUz}]
+		%-----------------------------------------------------------
+		C'est juste une réexpression de \ref{ITEMooYBJVooGXiDSd}
+
+		\spitem[Pour \ref{ITEMooCGLSooKHbzkn}]
+		On a : \( \bar{\bar z}=\overline{ (a-bi) }=a+bi\).
+
+		\spitem[Pour \ref{ITEMooYXVXooObkeTM}]
+		%-----------------------------------------------------------
+		Calcul direct en partant et
+		\begin{equation}
+			\overline{(a+bi)+(a'+b'i)}=\overline{(a+a')+i(b+b')}=(a+a')-i(b+b').
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooGVWGooPQBUHC}]
+		%-----------------------------------------------------------
+		Soit \( z=a+bi\) avec \( a,b\in \eR\). Nous avons
+		\begin{equation}
+			z+\bar z=a+bi+a-bi=2a=2\real(z).
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooDKWDooUjEuZA}]
+		Même calcul que pour \ref{ITEMooYBJVooGXiDSd}.
+		\spitem[Pour \ref{ITEMooFXKYooUOXbwH}]
+		Puisque les deux membres de l'égalité à prouver sont positifs, il est suffisant de prouver l'égalité des carrés (lemme \ref{LEMooSBOAooOOIotR}). Nous avons
+		\begin{equation}
+			zz'=(a+bi)(a'+b'i)=aa'-bb'+i(ab'+ba'),
+		\end{equation}
+		donc
+		\begin{subequations}
+			\begin{align}
+				| zz' |^2 & =(aa'-bb')^2+(ab'+ba')^2                         \\
+				          & =(aa')^2+(bb')^2-2aa'bb'+(ab')^2+(ba')^2+2ab'ba' \\
+				          & =a^2(a'^2+b'^2)+b^2(b'^2+a'^2)                   \\
+				          & =(a^2+b^2)(a'^2+b'^2).
+			\end{align}
+		\end{subequations}
+		D'autre part,
+		\begin{equation}        \label{EQooRSGGooGfWTrS}
+			\big( | z | |z' | \big)^2=| z |^2| z' |^2=(a^2+b^2)(a'^2+b'^2).
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooUJHPooUFdvqB}]
+		En utilisant \ref{ITEMooGVWGooPQBUHC} pour \( z'\bar z\), nous avons :
+		\begin{equation}
+			| z+z' |^2=(z+z')(\bar z+\bar z')=z\bar z+z\bar z'+z'\bar z+z'\bar z'=| z |^2+| z' |^2+2\real(z\bar z').
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}	\label{PROPooPAXZooDijojx}
+	Pour tout \( z\in \eC\) nous avons :
+	\begin{equation}
+		| \real(z) |\leq | z |
+	\end{equation}
+	et nous avons l'égalité si et seulement si \( z\in \eR\).
+\end{proposition}
+
+\begin{proof}
+	En plusieurs points.
+	\begin{subproof}
+		\spitem[L'inégalité]
+		Par croissance de la fonction racine carrée nous avons, en posant \( z=a+bi\) :
+		\begin{equation}        \label{EQooBFANooKcSsWi}
+			| \real(z) |=| a |=\sqrt{ | a |^2 }\leq \sqrt{ | a |^2+| b |^2 }=| z |.
+		\end{equation}
+		\spitem[Égalité dans un sens]
+		Si \( | \real(z) |=| z |\), alors toutes les inégalités dans \eqref{EQooBFANooKcSsWi} sont des égalités. En particulier
+		\begin{equation}
+			\sqrt{ | a |^2 }=\sqrt{ | a |^2+| b |^2 }.
+		\end{equation}
+		Par stricte croissance de la fonction racine carré, nous déduisons que \( | b |^2=0\) et donc que \( b=0\).
+		\spitem[Égalité dans l'autre sens]
+		Si \( z\in \eR\), alors \( \real(z)=z\), et nous avons l'égalité.
+	\end{subproof}
+\end{proof}
+
+
+\begin{propositionDef}[\cite{MonCerveau,BIBooRRXPooQhgCsS}]	\label{PROPooYLVPooCVnpFw}
+	Soient deux nombres complexes \( a,b\in \eC\). Nous avons
+	\begin{equation}
+		a\bar b\in \eR^+
+	\end{equation}
+	si et seulement si \( a=0\) ou \( \exists\lambda\geq 0\) tel que \( b=\lambda a\).
+
+	Dans ce cas nous disons que \( a\) et \( b\) sont \defe{positivement liés}{positivement liés}
+\end{propositionDef}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Nous supposons que \( a\bar b\in \eR^+\). En posant \(a=a_1+ia_2 \) et \( b=b_1+ib_2\) nous avons
+		\begin{equation}
+			a\bar b=(a_1+ia_2)(b_1-ib_2)=a_1b_1+a_2b_2+i(a_2b_1-a_1b_2).
+		\end{equation}
+		Pour avoir \( a\bar b\in \eR^+\), il faut :
+		\begin{subequations}
+			\begin{numcases}{}
+				a_2b_1-a_1b_2=0\\
+				a_1b_1+a_2b_2\geq 0.
+			\end{numcases}
+		\end{subequations}
+		Supposons que \( a\neq 0\). Vu que \( a\neq 0\), il existe \( \lambda\in \eR\) tel que \( b_1=\lambda a_1\). En substituant dans la première condition, nous trouvons \( \lambda a_2a_1-a_1b_2=0\), et en simplifiant par \( a_1\), il reste \( b_2=\lambda a_2\). Nous avons prouvé que \( b=\lambda a\).
+
+		En substituant dans la seconde condition, \( \lambda a_1^2+\lambda a_2^2\geq0\) et donc \( \lambda\geq 0\).
+
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Si \( a=0\), alors \( a\bar b=0\in \eR^+\). Si \( b=\lambda a\) alors \( a\bar b=\lambda| a |^2\in \eR^+\).
+	\end{subproof}
+\end{proof}
+
+
+%TODOooBLSRooJFiYAc. Rien à voir, mais il faut avancer ici : 
+% https://math.stackexchange.com/questions/3318978/hermitian-representations-of-su2
+
+\begin{proposition}[Inégalité triangulaire dans \( \eC\)\cite{BIBooRRXPooQhgCsS}]     \label{PROPooEEFGooACcCll}
+	Soient deux nombres complexes \( a\) et \( b\). Nous avons :
+	\begin{enumerate}
+		\item       \label{ITEMooDVMDooFDmOur}
+		      \( | a+b |\leq | a |+| b |\)
+		\item		\label{ITEMooSZOEooZuiEVg}
+		      \( \big|  | a |-| b |  \big|\leq | a+b |\)
+		\item		\label{ITEMooWGAQooTvMOaG}
+		      \( \big| | a |-| b | \big|\leq | a-b |\)
+	\end{enumerate}
+	Dans tous les cas, il y a égalité si et seulement si \( a\) et \( b\) sont positivement liés\footnote{Voir proposition \ref{PROPooYLVPooCVnpFw} pour des conditions équivalentes.} : \( a\bar b\in \eR^+\).
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+
+
+		\spitem[Pour \ref{ITEMooDVMDooFDmOur}]
+		%-----------------------------------------------------------
+
+		Nous comparons les carrés :
+		\begin{subequations}		\label{SUBEQSooZRPBooOXRRDm}
+			\begin{align}
+				| a+b |^2 & =(a+b)\overline{(a+b)}                                                                            \\
+				          & =a\bar a+a\bar b+b\bar a+b\bar b                                                                  \\
+				          & =| a |^2+| b |^2+2\real(a\bar b)  & \text{prop. \ref{PROPooUMVGooIrhZZg}\ref{ITEMooGVWGooPQBUHC}} \\
+				          & \leq | a |^2+| b |^2+2| a\bar b | & \text{prop. \ref{PROPooPAXZooDijojx} }                        \\
+				          & =| a |^2+| b |^2+2| a || b |      & \text{prop. \ref{PROPooUMVGooIrhZZg}\ref{ITEMooDKWDooUjEuZA}} \\
+				          & = \big( | a |+| b | \big)^2.
+			\end{align}
+		\end{subequations}
+		Vu que la fonction \( t\mapsto t^2\) est croissante sur les réels positifs, l'inégalité \eqref{SUBEQSooZRPBooOXRRDm} sur les carrés implique l'inégalité sur les non-carrés : \( | a+b |\leq | a |+| b |\).
+
+		\spitem[Pour \ref{ITEMooSZOEooZuiEVg}]
+		%-----------------------------------------------------------
+
+		Nous utilisons deux fois le point \ref{ITEMooDVMDooFDmOur} :
+		\begin{subequations}
+			\begin{numcases}{}
+				| a |=| a+b-b |\leq | a+b |+| b |\\
+				| b |=| a+b-a |\leq | a+b |+| a |.
+			\end{numcases}
+		\end{subequations}
+		En isolant \( | a+b |\) dans chacune des deux inégalités,
+		\begin{subequations}
+			\begin{numcases}{}
+				| a |-| b |\leq | a+b |\\
+				| b |-| a |\leq | a+b |.
+			\end{numcases}
+		\end{subequations}
+		C'est le moment d'utiliser la proposition \ref{PROPooRJOWooGbieCA} :
+		\begin{equation}
+			\big| | a |-| b | \big|=\max\big( | a |-| b |,| b |-| a | \big)\leq | a+b |.
+		\end{equation}
+
+		\spitem[Pour \ref{ITEMooWGAQooTvMOaG}]
+		%-----------------------------------------------------------
+		C'est juste \ref{ITEMooSZOEooZuiEVg} avec \( -b\) au lieu de \( b\).
+
+
+		\spitem[Égalité pour \ref{ITEMooDVMDooFDmOur}]
+		%-----------------------------------------------------------
+		Vu que \( | a+b |\) et \( | a |+| b |\) sont positifs, ils sont égaux si et seulement si leurs carrés sont égaux. Nous avons donc
+		\begin{subequations}
+			\begin{align}
+				| a+b |=| a |+| b | & \Leftrightarrow | a+b |^2=\big( | a |+| b | \big)^1                                                                                                                                              \\
+				                    & \Leftrightarrow | a |^2+| b |^2+2\real(a\bar b)=| a |^2+| b |^2+2| a || b |                                                      & \text{prop. \ref{PROPooUMVGooIrhZZg}\ref{ITEMooGVWGooPQBUHC}} \\
+				                    & \Leftrightarrow \real(a\bar b)=| a || b |                                                                                                                                                        \\
+				                    & \Leftrightarrow \real(a\bar b)=| a\bar b |	\text{prop. \ref{PROPooUMVGooIrhZZg}\ref{ITEMooFXKYooUOXbwH}\ref{ITEMooDKWDooUjEuZA}}                                                                 \\
+				                    & \Leftrightarrow a\bar b\in \eR^+
+			\end{align}
+		\end{subequations}
+
+		\spitem[Égalité pour \ref{ITEMooWGAQooTvMOaG}]
+		%-----------------------------------------------------------
+
+		En développant \( \big| | a |-| b | \big|^2=| a-b |^2\), nous trouvons
+		\begin{equation}
+			| a |^2+| b |^2-2\real(a\bar b)=| a |^2+| b |^2-2| a || b |.
+		\end{equation}
+		Il s'agit de la même relation que dans \ref{ITEMooDVMDooFDmOur}, et donc la conclusion est la même.
+
+	\end{subproof}
+\end{proof}
+
+
+\begin{proposition}     \label{PROPooZJAXooYwSSvo}
+	La paire \( (\eC, | . |)\) est un espace vectoriel normé\footnote{Définition d'une norme : \ref{DefNorme}.}.
+\end{proposition}
+
+\begin{proof}
+	Nous devons prouver les différents points de la définition \ref{DefNorme}.
+	\begin{enumerate}
+		\item
+		      \( | z |\geq 0\) parce que la racine carrée prend ses valeurs dans \( \eR^+\).
+		\item
+		      Si \( | z |=0\), alors, en notant \( z=a+bi\) nous avons \( a^2+b^2=0\). Cela implique \( a=b=0\) (vous pouvez soit invoquer le lemme \ref{LEMooNHMTooEdtBnQ}, soit ne rien dire et faire comme si c'était évident).
+		\item
+		      Si \( \lambda\in \eR\), alors \( (\lambda z)(\overline{ \lambda z })=\lambda^2z\bar z\) et nous avons
+		      \begin{equation}
+			      | \lambda z |=\sqrt{ \lambda^2z\bar z }=| \lambda |\sqrt{ z\bar z }=| \lambda | |z |.
+		      \end{equation}
+		\item
+		      L'inégalité \( | x+y |\leq | x |+| y |\) est la proposition \ref{PROPooEEFGooACcCll}\ref{ITEMooDVMDooFDmOur}.
+	\end{enumerate}
+\end{proof}
+
+
+
+\begin{lemma}       \label{LEMooNIXZooDxfpNM}
+	Soient des réels strictement positifs \( a_{ij}\) et des complexes \( z_i\in \eC\) tels que pour tout \( j=1,\ldots, n\) nous ayons
+	\begin{equation}
+		\sum_{i=1}^na_{ij}| z_i |=| \sum_ia_{ij}z_i |.
+	\end{equation}
+	Alors les \( z_i\) sont colinéaires au sens où il existe des nombres réels positifs \( s_i\) et un \( z_0\in \eC\) tels que \( z_i=s_iz_0\).
+	%TODOooYYQRooQuxBZZ. Prouver ça.
+\end{lemma}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Théorème de Perron-Frobenius}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}
+	Pour une matrice carrée \( T\), nous notons \( T\geq 0\) si \( T_{ij}\geq 0\) pour tout \( i\) et \( j\). Dans ce cas nous disons que \( T\) est \defe{positive}{matrice positive}.
+
+	Une matrice carré positive est \defe{primitive}{matrice primitive} si il existe un entier \( k>0\) tel que \( T^k>0\).
+\end{definition}
+
+\begin{definition}      \label{DEFooRFQCooQrLPVw}
+	Si \( T\) est une matrice \( n\times n\) et si \( x\in \eR^n\), nous notons
+	\begin{equation}
+		xT=\sum_{ij}x_iT_{ij}e_j.
+	\end{equation}
+	Et nous disons que \( x\in \eR^n\) est un \defe{vecteur propre à gauche}{vecteur propre à gauche} pour la valeur propre à gauche \( \lambda\in \eC\) si \( xT=\lambda x\).
+\end{definition}
+
+\begin{theorem}[Perron-Frobenius\cite{BIBooKTXZooEXpuZY}]       \label{THOooRSPJooMCFeeP}
+	Soit une matrice positive et primitive \( T\). Il existe une valeur propre \( \rho\) telle que
+	\begin{enumerate}
+		\item
+		      \( \rho>0\),
+		\item
+		      La matrice \( T\) a des vecteurs propres strictement positifs à gauche et à droite pour la valeur propre \( \rho\).
+		\item
+		      Pour toute valeur propre \( \lambda\neq \rho\) nous avons \( \rho>| \lambda |\)
+		\item
+		      Les espaces propres à gauche et à droite de \( T\) pour la valeur propre \( \rho\) sont de dimension \( 1\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	Nous divisons la preuve en trois parties. La première va tout démontrer pour les vecteurs propres à gauche, la seconde fera la même chose pour les vecteurs propre à droite, et la troisième fera la synthèse.
+	\begin{center}
+		-- À gauche --
+	\end{center}
+	Soit \( D=\{ x\in \eR^n\tq x\neq 0, x\geq 0 \}\). Nous considérons l'application
+	\begin{equation}
+		\begin{aligned}
+			r\colon D & \to \eR                              \\
+			x         & \mapsto \min_j\frac{ (xT)_j }{ x_j }
+		\end{aligned}
+	\end{equation}
+	où la fraction vaut \( \infty\) si \( x_j=0\).
+
+	\begin{subproof}
+		\spitem[\( r\) est majorée supérieurement]
+		% -------------------------------------------------------------------------------------------- 
+		Pour chaque \( j\) (y compris ceux pour qui \( x_j=0\)) nous avons l'inégalité suivante dans \( \eR\) :
+		\begin{equation}
+			x_j r(x)\leq (xT)_j.
+		\end{equation}
+		En multipliant par \( e_j\) et en faisant la somme, \( r(x)x\leq xT\). Nous posons \( u=\sum_ie_i\) et nous prenons le produit scalaire :
+		\begin{equation}        \label{EQooBRRSooUtIPXc}
+			r(x)x\cdot u\leq xT\cdot u=x\cdot Tu.
+		\end{equation}
+		En posant \( K=\max_j\sum_{i}T_{ij}\) nous avons \( Tu\leq Ku\) parce que
+		\begin{equation}
+			(Tu)_k=\sum_{l}T_{kl}\underbrace{u_l}_{=1}=\sum_lT_{kl}\leq K= (Ku)_k.
+		\end{equation}
+		Pour tout \( x\in D\) nous avons \( r(x)\leq K\). Nous utilisons ça pour continuer \eqref{EQooBRRSooUtIPXc} :
+		\begin{equation}
+			r(x)x\cdot u\leq xT\cdot u=x\cdot Tu\leq Kx\cdot u.
+		\end{equation}
+		Vu que \( x\geq 0\) et \( u\geq 0\), nous avons \( x\cdot u\geq 0\) nous nous pouvons simplifier : \( r(x)\leq K\) pour tout \( x\in D\).
+
+		\spitem[Une minoration]
+		% -------------------------------------------------------------------------------------------- 
+		Nous savons que \( T\) est une matrice positive et même primitive, de telle sorte que \( T\) n'ait aucune colonne nulle. Donc
+		\begin{equation}
+			r(u)=\min_j\frac{ \sum_iu_iT_{ij} }{ u_j }=\min_j\sum_iT_{ij}>0.
+		\end{equation}
+		Nous avons donc
+		\begin{equation}
+			r(u)>0.
+		\end{equation}
+		\spitem[Définition de \( \rho\)]
+		% -------------------------------------------------------------------------------------------- 
+		Nous posons
+		\begin{equation}
+			\rho=\sup_{x\in D}r(x).
+		\end{equation}
+		Vu que que nous avons déjà prouvé nous avons \( 0<\rho\leq K\).
+
+		Notons que si \(\lambda\in \eR\), nous avons \( r(x)=r(\lambda x)\), de telle sorte que
+		\begin{equation}
+			\rho=\sup_{\substack{x\in D\\\| x \|\leq 1}}r(x).
+		\end{equation}
+		\spitem[Un compact]
+		% -------------------------------------------------------------------------------------------- 
+		En posant
+		\begin{equation}
+			D'=\big( D\cap \overline{ B(0,1) } \big)\setminus B(0,\epsilon)
+		\end{equation}
+		avec \( \epsilon<1\), nous avons \( r(D')=r(D)\) parce que \( r(x)=r(\lambda x)\). La partie \( D'\) est évidemment bornée.
+
+		Vu que \( D\) et \( \overline{ B(0,1) }\) sont fermés, l'intersection est fermée (lemme \ref{LemQYUJwPC}\ref{ITEMooBHIGooMvkUtX}). La différence entre un fermé et un ouvert est fermée (lemme \ref{LEMooSFMZooBguLdf}). Donc \( D'\) est fermé. Le théorème de Borel-Lebesgue \ref{ThoXTEooxFmdI} nous dit alors que \( D'\) est compact.
+
+		\spitem[\( r\) est continue]
+		% -------------------------------------------------------------------------------------------- 
+		Sur \( D'\), chacune des applications \( x\mapsto (xT)_j/x_j\) est continue. Donc le minimum est continu et \( r\colon D'\to \eR\) est une application continue sur un compact.
+
+		\spitem[\( v\) et \( \rho\)]
+		% -------------------------------------------------------------------------------------------- 
+		Le théorème de Weierstrass \ref{ThoWeirstrassRn} nous indique que \( r\) est bornée et atteint ses bornes sur \( D'\). Il existe \( v\in D'\) tel que \( r(v)\geq r(x)\) pour tout \( x\in D'\). Vu que par définition
+		\begin{equation}
+			\rho=\sup_{\substack{x\in D\\\| x \|\leq 1}}r(x)=\sup_{x\in D'}r(x),
+		\end{equation}
+		nous avons en fait \( r(v)=\rho\).
+
+		\spitem[Un mini sous-résultat]      \label{SPITEMooBKGPooQDQWdK}
+		% -------------------------------------------------------------------------------------------- 
+		Nous démontrons un sous-résultat qui sera utilisé quelques fois dans la suite. Si \( x\in \eR^n\) vérifie \( x\geq 0\) et \( (xT)_j\geq \rho x_j\) pour tout \( j\), alors
+		\begin{enumerate}
+			\item
+			      \( xT=\rho x\), c'est-à-dire que \( x\) est un vecteur propre à gauche de \( T\).
+			\item
+			      \( x>0\).
+		\end{enumerate}
+		Par hypothèse du théorème, il existe \( k>0\) tel que \( T^k>0\). Nous posons \( y=xT^k\). Alors, si \( xT-\rho x\neq 0\) nous avons
+		\begin{equation}
+			yT-\rho y=(xT-\rho x)T^k>0.
+		\end{equation}
+		La dernière inégalité est parce que  \( xT-\rho x\geq 0\) et \( T^k>0\). En développant, cette inégalité signifie que pour tout \( j\),
+		\begin{equation}
+			\sum_iy_iT_{ij}>\rho y_j,
+		\end{equation}
+		ou encore que $\rho<\frac{ \sum_iy_iT_{ij} }{ y_j }$ pour tout \( j\). En particulier pour le \( j\) qui réalise le minimum, \( \rho<r(y)\), ce qui contredit ma maximalité de \( \rho\). Nous en déduisons que \( xT-\rho x=0\).
+
+		À partir de là, nous déduisons que \( x>0\). En effet, en appliquant \( k\) fois l'égalité \( xT=\rho x\), nous avons \( xT^k=\rho^k x\). Comme \( x\geq 0\) et \( T^k>0\), nous avons \( xT^k>0\). Vu que \( \rho\neq 0\) nous en déduisons que \( x>0\).
+
+		\spitem[\( v\) et \( \rho\), suite]
+		% -------------------------------------------------------------------------------------------- 
+		Nous avons \( r(v)=\rho\). En particulier pour tout \( j\) nous avons \( \rho v_j \leq \sum_iv_iT_{ij}\). Et comme \( v\in D'\) nous avons aussi \( v\geq 0\). En vertu de notre sous-résultat, nous déduisons que \( v\) est un vecteur propre à gauche de \( T\) : \( vT=\rho v\), et que \( v>0\).
+
+		Cela prouve que \( T\) a un vecteur propre à gauche strictement positif.
+
+		\spitem[Le plus grand]
+		% -------------------------------------------------------------------------------------------- 
+		Nous prouvons que pour toute valeur propre \( \lambda\in \eC\), nous avons \( \rho>| \lambda |\). Soit une valeur propre \( \lambda\in \eC\). Vu que le spectre «à gauche»  et le spectre «à droite» sont identiques\footnote{Lemme \ref{LEMooWHWUooFFXlzT}.}, \( T\) possède un vecteur propre à gauche : \( xT=\lambda x\). Pour chaque \( j\) nous avons
+		\begin{equation}
+			\sum_ix_iT_{ij}=\lambda x_j,
+		\end{equation}
+		et en passant au module, \( | \lambda x_j |\leq | x_i |T_{ij}\). En posant \( y=\sum_i| x_i |e_i\) nous avons \( y\geq 0\) et
+		\begin{equation}
+			| \lambda |y_j\leq \sum_iy_iT_{ij},
+		\end{equation}
+		et donc
+		\begin{equation}
+			| \lambda |\leq \sum_i\frac{ y_iT_{ij} }{ y_j }
+		\end{equation}
+		En passant au minimum sur \( j\), cela donne \( | \lambda |\leq r(y)\leq \rho\).
+
+		Nous avons montré que \( | \lambda |\leq \rho\). Nous prouvons à présent que \( | \lambda |\neq \rho\) en supposant que \( | \lambda |=\rho\). Toujours en posant \( y_i=| x_i |\), nous avons
+		\begin{equation}
+			\rho y_j\leq \sum_iy_iT_{ij}=(yT)_j.
+		\end{equation}
+		Le sous-résultat \ref{SPITEMooBKGPooQDQWdK} nous indique qu'alors \( y\) est un vecteur propre à gauche de \( T\) pour la valeur propre \( \rho\): \( yT=\rho u\). En itérant et en déballant, pour chaque \( j\) nous avons
+		\begin{equation}        \label{EQooNELKooQtqfZN}
+			\sum_i| x_i |T_{ij}^k=\rho^k| x_j |.
+		\end{equation}
+		En faisant de même à partir de \( xT^k=\lambda^kx\), nous trouvons
+		\begin{equation}        \label{EQooHGOFooPwsHAb}
+			| \sum_ix_iT_{ij}^k |=| \lambda |^k| x_j |.
+		\end{equation}
+		Vu que \( | \lambda |=\rho\), nous pouvons égaliser les membres de droite de \eqref{EQooNELKooQtqfZN} et \eqref{EQooHGOFooPwsHAb} :
+		\begin{equation}
+			\sum_i| x_i |T_{ij}^k=| \sum_ix_iT_{ij}^k |.
+		\end{equation}
+		Le lemme \ref{LEMooNIXZooDxfpNM} nous indique que les \( x_i\) sont colinéaires (dans \( \eC\)), c'est-à-dire qu'il existe des réels \( s_i\geq 0\) et \( z_0\in \eC\) tels que \( x_i=s_iz_0\) pour tout \( i\).
+
+		En utilisant ce fait dans l'équation \( xT=\lambda x\), nous trouvons \( \sum_ix_iT_{ij}=\lambda x_j\) et
+		\begin{equation}        \label{EQooUHDZooUDoEyj}
+			\sum_is_iT_{ij}=\lambda s_j.
+		\end{equation}
+		Cela prouve que \( \lambda\) est réel et positif parce que l'équation \eqref{EQooUHDZooUDoEyj} est valable pour tout \( j\) et qu'il y en a bien un pour lequel \( s_j\neq 0\). Le nombre réel positif \( \lambda\) vérifiant \( | \lambda |=\rho\), nous déduisons que \( \lambda=\rho\).
+
+		\spitem[Espace propre de dimension \( 1\)]
+		% -------------------------------------------------------------------------------------------- 
+		Nous avons déjà la vecteur propre \( v\) : \( vT=\rho v\). Considérons un second vecteur propre à gauche \( y\neq 0\) : \( yT=\rho y\). Supposons que \( y\) et \( v\) ne sont pas colinéaires et voyons les fonctions
+		\begin{equation}
+			\begin{aligned}
+				\eta_i\colon \eR & \to \eR            \\
+				c                & \mapsto  (v-cy)_i.
+			\end{aligned}
+		\end{equation}
+		Pour tout \( i\) nous avons \( \eta_i(0)=v_i>0\). Supposons pour fixer les idées qu'au moins un des \( y_i\) est positif. Alors pour chaque \( i\), il existe un \( c_i>0\) tel que \( v_i-cy_i=0\). Nous prenons pour valeur de \( c\) le plus petit de ceux-là. Nous avons donc
+		\begin{equation}
+			\eta=v-cy\geq 0,
+		\end{equation}
+		alors qu'au moins une des composantes de \( \eta\) est nulle. Et en plus \( \eta T=\rho\eta\). Notre sous-résultat préféré nous dit qu'alors \( \eta>0\). Ah tiens, ça c'est une contradiction. Nous en déduisons que \( v\) et \( y\) sont colinéaires dans \( \eR^n\).
+	\end{subproof}
+	Nous avons terminé de prouver tout ce que nous devions faire «à gauche».
+	\begin{center}
+		À droite
+	\end{center}
+	En reprenant exactement les mêmes étapes\quext{Je n'ai pas vérifié; écrivez-moi si cela pose problème.}, nous prouvons qu'il existe une valeur propre à droite \( \rho'\) telle que
+	\begin{enumerate}
+		\item
+		      \( \rho'>0\)
+		\item
+		      \( \rho'\) a des vecteurs propres strictement positifs à droite.
+		\item
+		      \( \rho'>| \lambda |\) pour toute valeur propre \( \lambda\neq \rho'\).
+		\item
+		      L'espace propre à droite pour la valeur propre \( \rho'\) est de dimension \( 1\).
+	\end{enumerate}
+	\begin{center}
+		Conclusion
+	\end{center}
+	Les nombres réels strictement positifs \( \rho\) et \( \rho'\) sont des valeurs propres. Si \( \rho\neq \rho'\), alors les propriétés de \( \rho\) disent que \( \rho>\rho'\). De même les propriétés de \( \rho'\) disent que \( \rho'>\rho\). Bref \( \rho=\rho'\).
+
+	Le nombre \( \rho\) vérifie toutes les propriétés du théorème.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Limite à gauche et à droite}
+%----------------------------------------------------
+
+
+\begin{definition}[\cite{MonCerveau}]		\label{DEFooIBBQooFEwyMc}
+	Soient un espace topologique \( X\) et une application \(\gamma \colon I\to X  \) où \( I\) est un voisinage ouvert de \( a\in \eR\).
+
+	L'élément \( b\in E\) est une \defe{limite à gauche}{limite à gauche} de \( \gamma\) quand \( t\to a\) lorsque \( b\) est une limite de  la restriction de \( \gamma\) à \( \mathopen] -\infty,a\mathclose[\). Dans ce cas nous parlons de limite lorsque \( t\) tend vers \( a^-\).
+
+		L'élément \( b\in E\) est une \defe{limite à droite}{limite à droite} de \( \gamma\) quand \( t\to a\) lorsque \( b\) est une limite de  la restriction de \( \gamma\) à \( \mathopen] a,\infty\mathclose[\). Dans ce cas nous parlons de limite lorsque \( t\) tend vers \( a^+\).
+
+	Lorsqu'il y a unicité de la limite, nous notons les limites à gauche et à droite par
+	\begin{equation}
+		\begin{aligned}[]
+			\lim_{t\to a^-}\gamma(t) &  & \text{et} &  & \lim_{t\to a^+}\gamma(t)
+		\end{aligned}
+	\end{equation}
+\end{definition}
+
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooGUNLooSQrJKg}
+	Soient un espace topologique \( X\) et une application \(\gamma \colon I\to X  \) où \( I\) est un voisinage ouvert de \( a\in \eR\). L'élément \( b\in E\) est une limite à gauche\footnote{Définition \ref{DEFooIBBQooFEwyMc}.} et à droite de \( \gamma\) quand \( t\to a\) si et seulement si il est une limite.
+
+	Dans le cas où la limite est unique\footnote{Par exemple lorsque \( X\) est séparé, voir la proposition \ref{PropFObayrf}.}, nous pouvons dire que
+	\begin{subequations}
+		\begin{numcases}{}
+			\lim_{t\to a^+}\gamma(t)=b\\
+			\lim_{t\to a^-}\gamma(t)=b
+		\end{numcases}
+	\end{subequations}
+	si et seulement si\footnote{Cet énoncé doit être un tout petit peu modifié si vous utilisez la limite pointée au lieu de la limite épointée.}
+	\begin{equation}
+		\lim_{t\to a}\gamma(t)=b.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous nommons \( I^+=I\cap \mathopen] a,\infty\mathclose[\) et \( I^-=I\cap \mathopen] -\infty,a\mathclose[\). Nous supposons que \( \gamma\) admet \( b\) comme limite à gauche et à droite. Soit un voisinage \( U\) de \( b\) dans \( X\). La limite à gauche donne l'existence de \( \delta_1>0\) tel que
+	\begin{equation}		\label{EQooEGOHooHauKRX}
+		\gamma\big( B(a,\delta_1)\cap I^- \big)\subset U,
+	\end{equation}
+	et la limite à droite donne un \( \delta_2>0\) tel que
+	\begin{equation}		\label{EQooXTMBooYBGxci}
+		\gamma\big( B(a,\delta_2)\cap I^+ \big)\subset U.
+	\end{equation}
+	Notez que nous avons choisi \( \delta_1\) et \( \delta_2\) de telle sorte à ce que \( B(a,\delta_1)\) et \( B(a,\delta_2)\) soient contenus dans \( I\).
+
+	Nous considérons \( \delta<\min\{ \delta_1,\delta_2 \}\), et nous prenons \( x\in B(a,\delta)\setminus\{ a \}\). Il y a deux possibilités : \( x>a\) et \( x<a\). Si \( x>a\), alors nous avons \( x\in  B(a,\delta)\cap I^+\subset B(a,\delta_1)\cap I^+\), de telle sorte que \( \gamma(x)\in U\) par \eqref{EQooXTMBooYBGxci}. Si \( x<a\), alors nous avons également \( \gamma(x)\in U\), en utilisant \eqref{EQooEGOHooHauKRX}.
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Continuité de la racine carrée, invitation à la topologie induite}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Pourquoi nous intéresser particulièrement à la fonction racine carrée ? Parce qu'elle a une sale condition d'existence : son domaine de définition n'est pas ouvert. Or dans tous les théorèmes de continuité d'approche topologique que nous avons vus, nous avons donné des conditions \emph{pour tout ouvert}. Nous nous attendons donc à avoir des difficultés avec la continuité de \( \sqrt{x}\) en zéro.
+
+Prenons \( I\), n'importe quel intervalle ouvert dans \( \eR^+\), et voyons que la fonction\footnote{La racine carrée est définie en \ref{DEFooGQTYooORuvQb}.}
+\begin{equation}
+	\begin{aligned}
+		f\colon \eR^+ & \to \eR^+        \\
+		x             & \mapsto \sqrt{x}
+	\end{aligned}
+\end{equation}
+est continue sur \( I\). Remarquons déjà que si \( I\) est un ouvert dans \( \eR^+\), il ne peut pas contenir zéro. Avant de nous lancer dans notre propos, nous prouvons un lemme qui fera tout le travail\footnote{C'est toujours ingrat d'être un lemme : on fait tout le travail et c'est toujours le théorème qui est nommé.}.
+
+\begin{lemma}
+	Soit \( \mO\), un ouvert dans \( \eR^+\). Alors \( \mO^2=\{ x^2\tq x\in\mO \}\) est également ouvert.
+\end{lemma}
+
+\begin{proof}
+	Un élément de \( \mO^2\) s'écrit sous la forme \( x^2\) pour un certain \( x\in\mO\). Le but est de trouver un ouvert autour de \( x^2\) qui soit contenu dans \( \mO^2\). Étant donné que \( \mO\) est ouvert, on a une boule centrée en \( x\) contenue dans \( \mO\). Nous appelons \( \delta\) le rayon de cette boule :
+	\[
+		B(x,\delta)\subset\mO.
+	\]
+	Étant donné que cet ensemble est connexe, nous savons par le lemme~\ref{LemConncontconn} que \( B(x,\delta)^2\) est également connexe (parce que la fonction \( x\mapsto x^2\) est continue). Son plus grand élément est \( (x+\delta)^2=x^2+\delta^2+2x\delta>x^2+\delta^2\), et son plus petit élément est \( (x-\delta)^2=x^2+\delta^2-2x\delta\).
+
+	Ce qui serait pas mal, c'est que ces deux bornes entourent \( x^2\); de cette façon elles définiraient un ouvert autour de \( x^2\) qui soit dans \( \mO^2\). Hélas, c'est pas gagné que \( x^2+\delta^2-2x\delta\) soit plus petit que \( x^2\).
+
+	Heureusement, en fait c'est vrai, parce que d'une part, comme \( \mO\subset\eR^+\), on a \( x>0\), et d'autre part, pour que \( \mO\) soit positif, il faut que \( \delta<x\). Donc on a évidemment \( \delta<2x\), et donc
+	\[
+		x^2+\delta^2-2x\delta=x^2+\delta\underbrace{(\delta-2x)}_{<0}<x^2.
+	\]
+	Et nous en avons fini : l'ensemble
+	\[
+		B(x,\delta)^2=]x^2+\delta^2-2x\delta,x^2+\delta^2+2x\delta[\subset\mO^2
+	\]
+	est un intervalle qui contient \( x^2\), et donc qui contient une boule ouverte centrée en~\( x^2\).
+\end{proof}
+
+Maintenant nous pouvons nous attaquer à la continuité de la racine carrée sur tout ouvert positif en utilisant le théorème~\ref{ThoContInvOuvert}.
+
+\begin{proposition}
+	L'application
+	\begin{equation}
+		\begin{aligned}
+			f\colon \mathopen[ 0,\infty\mathclose[ & \to \eR            \\
+			x                                      & \mapsto \sqrt{ x }
+		\end{aligned}
+	\end{equation}
+	est continue.
+\end{proposition}
+
+\begin{proof}
+	Soit un ouvert \( \mO\) de \( \eR\). Il existe un \( r>0\) tel que \( B(y,r)\subset \mO\). Nous allons restreindre plus fortement \( r\) plus tard. Soit \( x\in f^{-1}(\mO)\); nous allons prouver que \( B(x,\epsilon)\cap\mathopen[ 0,\infty\mathclose[\subset f^{-1}(\mO)\) pour un \( \epsilon\) assez petit. Le théorème \ref{ThoPartieOUvpartouv} dira alors que \( f^{-1}(\mO)\) est ouvert.
+
+	Nous notons \( y=f(x)\). Par croissance de la fonction racine carrée, nous avons
+	\begin{equation}
+		f\Big( B(x,\epsilon) \Big)=\mathopen] \sqrt{ x-\epsilon },\sqrt{ x+\epsilon }\mathclose[.
+	\end{equation}
+	Pour avoir \( f\Big( B(x,\epsilon) \Big)\subset \mO\), nous devons avoir
+	\begin{subequations}
+		\begin{numcases}{}
+			\sqrt{ x-\epsilon }>y-r\\
+			\sqrt{ x+\epsilon }<y+r.
+		\end{numcases}
+	\end{subequations}
+	La première condition donne \( x-\epsilon>(y-r)^2\). En développant le carré et en tenant compte de \( y^2=x\) nous demandons
+	\begin{equation}
+		\epsilon<2ry-r^2.
+	\end{equation}
+	Nos choix sont donc de demander \( 0<r<2y\), et ensuite \( 0<\epsilon<2ry-r^2 \). Le premier est fait pour avoir \( 2ry-r^2>0\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Second degré}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous résolvons à présent le polynôme du second degré.
+\begin{proposition}[\cite{BIBooYVBZooOrTJTr}]       \label{PROPooEZIKooKjJroH}
+	Soit la fonction
+	\begin{equation}
+		\begin{aligned}
+			f\colon \eR & \to \eR           \\
+			x           & \mapsto ax^2+bx+c
+		\end{aligned}
+	\end{equation}
+	avec \( a\neq 0\). Nous notons \( \Delta=b^2-4ac\).
+
+	\begin{enumerate}
+		\item       \label{ITEMooMKUSooWwNTba}
+		      Nous avons la formule
+		      \begin{equation}        \label{EQooFKPOooAbIhCx}
+			      f(x)=a\big( x+\frac{ b }{ 2a } \big)^2+c-\frac{ b^2 }{ 4a }.
+		      \end{equation}
+		\item       \label{ITEMooHQTBooZuaPAs}
+		      Si \( a>0\), alors \( f\) a un minimum global en \( x_m=-b/2a\).
+		\item       \label{ITEMooQMXVooWsqiXz}
+		      Si \( a<0\), alors \( f\) a un maximum global en \( x_M=-b/2a\).
+		\item       \label{ITEMooMAMHooNWZVQI}
+		      Si \( \Delta<0\) alors \( f\) ne possède pas de racine réelle.
+		\item       \label{ITEMooKUUJooTsIHhI}
+		      Si \( \Delta=0\), alors \( f\) possède une unique racine \( x_0=-b/2a\).
+		\item       \label{ITEMooQZGFooEGhMkX}
+		      Si \( \Delta>0\) alors \( f\) possède exactement deux racines distinctes données par
+		      \begin{equation}        \label{EQooGHDPooVkqINr}
+			      \begin{aligned}[]
+				      x_1 & =\frac{ -b+\sqrt{ \Delta } }{ 2a } & x_2 & =\frac{ -b-\sqrt{ \Delta } }{ 2a }.
+			      \end{aligned}
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooMKUSooWwNTba}]
+		C'est un calcul immédiat.
+		\spitem[Pour \ref{ITEMooHQTBooZuaPAs}]
+		Nous partons de la formule du point \ref{ITEMooMKUSooWwNTba}. Puisque \( c-\frac{ b^2 }{ 4a }\) est constant, minimiser \( f\) revient à minimiser \( x\mapsto \big( x+\frac{ b }{ 2a } \big)^2\). Comme cette dernière fonction est toujours positive, elle a un minimum global là où elle est nulle, c'est-à-dire en \( x_m=-b/2a\).
+		\spitem[Pour \ref{ITEMooQMXVooWsqiXz}]
+		Idem que pour \ref{ITEMooHQTBooZuaPAs}.
+	\end{subproof}
+	Pour la suite nous effectuons quelques manipulations à partir de \eqref{EQooFKPOooAbIhCx}. Nous avons \( f(x)=0\) lorsque
+	\begin{equation}        \label{EQooRHNGooVsKRNt}
+		(x+\frac{ b }{ 2a })^2=\frac{ b^2-4ac }{ 4a^2 }.
+	\end{equation}
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooMAMHooNWZVQI}]
+		À gauche de \eqref{EQooRHNGooVsKRNt} nous avons un nombre toujours positif ou nul. À droite, \( 4a^2>0\). Donc si \( b^2-4ac<0\), l'égalité est impossible et il n'y a pas de \( x\) vérifiant \( f(x)=0\).
+		\spitem[Pour \ref{ITEMooKUUJooTsIHhI}]
+		Si \( b^2-4ac=0\), alors la condition \eqref{EQooRHNGooVsKRNt} devient
+		\begin{equation}
+			\left( x+\frac{ b }{ 2a } \right)^2=0,
+		\end{equation}
+		et donc \( x=-b/2a\) est l'unique solution.
+		\spitem[Pour \ref{ITEMooQZGFooEGhMkX}]
+		Si \( b^2-4ac>0\), nous pouvons prendre la racine carré\footnote{Définition \ref{DEFooGQTYooORuvQb}.} des deux côtés de \eqref{EQooRHNGooVsKRNt}, et la condition devient
+		\begin{equation}
+			x+\frac{ b }{ 2a }=\pm\sqrt{ \frac{ b^2-4ac }{ 4a^2 } },
+		\end{equation}
+		ce qui donne
+		\begin{equation}
+			x=\frac{ -b\pm\sqrt{ b^2-4ac } }{ 2a }.
+		\end{equation}
+		Ce sont là les deux seuls candidats pour vérifier \( f(x)=0\).
+
+		Un calcul direct montre que
+		\begin{equation}
+			f\left( \frac{ -b+\sqrt{ b^2-4ac } }{ 2a } \right)=0
+		\end{equation}
+		et que
+		\begin{equation}
+			f\left( \frac{ -b-\sqrt{ b^2-4ac } }{ 2a } \right)=0.
+		\end{equation}
+		Donc ce sont bien des racines de \( f\) et ce sont les seules. Notez aussi qu'elles sont distinctes parce que \( \Delta\neq 0\).
+	\end{subproof}
+\end{proof}

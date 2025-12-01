@@ -1,0 +1,2517 @@
+% This is part of Le Frido
+% Copyright (c) 2006-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Applications multilinéaires}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Voir la définition \ref{DEFooYWOBooUGJojy} des applications multilinéaires.
+\begin{lemmaDef}  \label{DefKPBYeyG}
+	Pour \( T\in \aL_k(E_1,\ldots,E_k,F)\) nous posons
+	\begin{equation}
+		\| T \|=\sup_{\| v_i \|=1}\| T(v_1,\ldots,v_k) \|_W.
+	\end{equation}
+
+	Cela définit une norme.
+	%TODOooKIUOooUCrggs. Prouver ça.
+	% À mon avis c'est un duplicat de DEFooTAUWooNDJJEO.
+\end{lemmaDef}
+Voir aussi \ref{DEFooTAUWooNDJJEO}.
+
+
+\begin{proposition} \label{PropUADlSMg}
+	Soient des espaces vectoriels normés \( E_i\) et \( F\). Une application \( n\)-linéaire\footnote{Définition \ref{DefFRHooKnPCT}.}
+	\begin{equation}
+		T\colon E_1\times\ldots\times E_n\to F
+	\end{equation}
+	est est continue si et seulement si il existe un réel \( L\geq 0\) tel que
+	\begin{equation}\label{limitatezza}
+		\|T(x_1, \ldots,x_n)\|_F\leq L \|x_1\|_{E_1}\cdots\|x_n\|_{E_n}, \qquad \forall x_i\in E_i.
+	\end{equation}
+\end{proposition}
+%TODOooWTJOooTveYow le faire pour les autres n. (plus grand que 2)
+
+\begin{proof}
+	Pour simplifier l'exposition nous nous limitons au cas \( n=2\) et nous notons \( T(x,y)=x*y\)
+
+	Supposons que l'inégalité \eqref{limitatezza} soit satisfaite.
+	\begin{equation}\label{LimImplCont}
+		\begin{aligned}
+			\|x*y-x_0*y_0\| & =\|(x-x_0)*y-x_0*(y-y_0)\|                \\
+			                & \leq \|(x-x_0)*y\|+\|x_0*(y-y_0)\|        \\
+			                & \leq L\|x-x_0\|\|y\| + L\|x_0\|\|y-y_0\|.
+		\end{aligned}
+	\end{equation}
+	Si \( x\to x_0\) et \( y\to y_0\)  on voit que \( T\) est continue en passant à la limite aux deux côtés de l'inégalité \eqref{LimImplCont}.
+
+	Soit \( T\) continue en \( (0,0)\). Évidemment\footnote{Dans la formule suivante, les trois zéros sont les zéros de trois espaces différents.} \( 0*0=0\), donc il existe \( \delta>0\) tel que si \( x\in B_{E_1}(0,\delta)\) et \( y\in B_{E_2}(0,\delta)\) alors \( \|x*y\|\leq 1\). En particulier si \( (x,y)\in B_{E_1\times E_2}(0,\delta)\) nous sommes dans ce cas. Soient maintenant  \( x\in E_1\setminus\{ 0 \}\)  et \( y\in E_2\setminus\{ 0\}\)
+	\begin{equation}
+		x*y =\left(\frac{\|x\|}{\delta}\frac{\delta x}{\|x\|}\right)*\left(\frac{\|y\|}{\delta}\frac{\delta y}{\|y\|}\right)
+		=\frac{\|x\|\|y\|}{\delta^2} \left(\frac{\delta x}{\|x\|}\right)*\left(\frac{\delta y}{\|y\|}\right).
+	\end{equation}
+	On remarque que \( \delta x/\|x\|_m\) est dans la boule de rayon \( \delta\) centrée en \( 0_m\) et que \( \delta y/\|y\|_n\) est dans la boule de rayon \( \delta\) centrée en \( 0_n\). On conclut
+	\[
+		x*y\leq \frac{\|x\|_m\|y\|_n}{\delta^2}.
+	\]
+	Il faut prendre \( L=1/\delta^2\).
+\end{proof}
+
+\begin{proposition}		\label{PROPooOPCVooEWeWha}
+	Si \( T\) est une application \( 2\)-linéaire, nous avons
+	\begin{equation}    \label{EqYLnbRbC}
+		\| T(u,v) \|\leq \| T \|\| u \|\| v \|.
+	\end{equation}
+\end{proposition}
+
+Et nous notons que cette norme est uniquement définie pour les applications linéaires continues. Ce n'est pas très grave parce qu'alors nous définissons \( \| T \|=\infty\) si \( T\) n'est pas continue. Cela pour retrouver le principe selon lequel on est continue si et seulement si on est borné.
+
+\begin{proposition}\label{isom_isom}
+	On définit les fonctions
+	\begin{equation}
+		\begin{array}{rccc}
+			\omega_g: & \mathcal{L}(\eR^{m}\times\eR^{n}, \eR^p) & \to & \mathcal{L}(\eR^{m}, \mathcal{L}(\eR^{n}, \eR^p)), \\
+			\omega_d: & \mathcal{L}(\eR^{m}\times\eR^{n}, \eR^p) & \to & \mathcal{L}(\eR^{n}, \mathcal{L}(\eR^{m}, \eR^p)),
+		\end{array}
+	\end{equation}
+	par
+	\[
+		\omega_g(T)(x)=T(x,\cdot), \qquad \forall x\in\eR^m,
+	\]
+	et
+	\[
+		\omega_d(T)(y)=T(\cdot, y), \qquad \forall y\in\eR^n.
+	\]
+	Les fonctions \( \omega_g\) et \( \omega_d\) sont des isomorphismes qui préservent les normes.
+\end{proposition}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Séries}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SECooYCQBooSZNXhd}
+
+La notion de somme sur un ensemble infini est donnée en \ref{DefIkoheE}, voir aussi le thème \ref{THEMEooMKLBooLGFCdx} pour plus de notions de sommes finies et infinies.
+\begin{definition}      \label{DefGFHAaOL}
+	Soit \( (a_k)\) une suite dans un espace vectoriel normé \( (V,\| . \| )\). La suite des \defe{sommes partielles}{somme!partielle} associée est la suite \( (s_k)\) définie par
+	\begin{equation}
+		s_k=\sum_{i=0}^ka_i
+	\end{equation}
+
+
+	La \defe{série}{série!dans un espace vectoriel normé} associée est la limite des sommes partielles
+	\begin{equation}
+		\sum_{k=0}^{\infty}a_k=\lim_{n\to \infty} \sum_{k=0}^na_k
+	\end{equation}
+	si elle existe.
+
+	Si une telle limite existe nous disons que \( \sum_{k=0}^{\infty}a_k\) \defe{converge}{série convergente} dans \( V\). Si la limite de la suite des sommes partielles n'existe pas nous disons que la série \defe{diverge}{série divergente}.
+\end{definition}
+
+\begin{remark}
+	Si la limite de la suite des sommes partielles n'existe pas dans \( V\), alors elle peut parfois exister dans des extensions de \( V\). Par exemple une série de rationnels convergeant vers \( \sqrt{2}\) dans \( \eR\) ne converge pas dans \( \eQ\). Autre exemple : avec une bonne topologie sur \( \bar \eR\), une série peut ne pas converger dans \( \eR\) mais converger vers \( \pm\infty\) dans \( \bar \eR\).
+\end{remark}
+
+\begin{normaltext}
+	Il y a d'autres moyens de sommer. Celle de la définition \ref{DefGFHAaOL} tronque la somme de façon très violente en \( N\) et fait \( N\to 0\). Des façons plus douces ici : \url{https://youtu.be/beakj767uG4}.
+\end{normaltext}
+
+\begin{definition}[Norme uniforme]	\label{DEFooEYYDooQvZGEx}
+	Soit un ensemble \( X\) et un espace normé \( (E,\| . \|)\). L'application
+	\begin{equation}
+		\begin{aligned}
+			N\colon \Fun(X,E) & \to \eR                         \\
+			f                 & \mapsto \sup_{x\in X}\| f(x) \|
+		\end{aligned}
+	\end{equation}
+	est une norme sur \( \Fun(X,E)\).
+	%TODOooZNXMooGLAYQD. Prouver ça.
+\end{definition}
+
+
+\begin{lemma}       \label{LEMooHUZEooSyPipb}
+	Soit une suite \( (a_k)\) dans un espace métrique complet\footnote{Définition \ref{DEFooHBAVooKmqerL}.} dont la série converge.
+
+	\begin{enumerate}
+		\item       \label{ITEMooPFSQooDhKFGL}
+		      Pour tout \( N\) nous avons
+		      \begin{equation}
+			      \sum_{k=0}^{\infty}a_k=\sum_{k=0}^Na_k+\sum_{k=N+1}^{\infty}a_k.
+		      \end{equation}
+		\item       \label{ITEMooQNHMooUPjupB}
+		      La suite des queues de série converge vers \( 0\), c'est-à-dire que
+		      \begin{equation}
+			      \lim_{N\to \infty} \sum_{k=N}^{\infty}a_k=0.
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Voici un petit calcul :
+	\begin{subequations}
+		\begin{align}
+			\lim_{n\to \infty} \sum_{k=0}^na_k & =\lim_{n\to \infty} \big( \sum_{k=0}^Na_k+\sum_{k=N+1}^{n}a_k \big)      \label{SUBEQooZRSHooSjismK}           \\
+			                                   & =\lim_{n\to \infty} \sum_{k=0}^{N}a_k+\lim_{n\to \infty} \sum_{k=N+1}^{n}a_k       \label{SUBEQooTLVKooQfYXam} \\
+			                                   & =\sum_{k=0}^Na_k+\sum_{k=N+1}^{\infty}a_k.
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooZRSHooSjismK}. Pour chaque \( n\), la somme est finie et nous pouvons la décomposer. Si vous voulez vraiment couper les cheveux en quatre, vous devez fixer un \( \epsilon\), et un \( n\) de telle sorte à avoir \( n>N\), parce que \( N\) est fixé dans l'énoncé du lemme.
+		\item Pour \eqref{SUBEQooTLVKooQfYXam}. Nous sommes dans un cas \( \lim_{n\to \infty}(u_n+v_n) \) où \( (u_n)\) est constante et où \( (u_n+v_n)\) converge. Nous pouvons donc permuter limite et somme\footnote{Pour rappel, la proposition \ref{PROPooICZMooGfLdPc} demande la convergence des deux suites pour fonctionner.}.
+	\end{itemize}
+	Voilà que \ref{ITEMooPFSQooDhKFGL} est prouvé.
+
+	Nous écrivons \( s_n=\sum_{k=0}^na_k\); l'hypothèse est que la suite \( (s_n)\) est une suite convergente dans un espace métrique. Elle est donc de Cauchy par la proposition \ref{PROPooZZNWooHghltd}.
+
+	Soit \( \epsilon>0\). Il existe \( N\in \eN\) tel que pour tout \( p,q>N\), nous ayons \( \| s_p-s_q \|\leq \epsilon\). Soit \( p>N\). Pour tout \( n\geq 0\) nous avons
+	\begin{equation}
+		\epsilon>\| s_{p+n}-s_{p+1} \|=\| \sum_{k=p}^{p+n}a_k \|.
+	\end{equation}
+	En prenant la limite \( n\to \infty\) nous avons
+	\begin{equation}
+		\| \sum_{k=p}^{\infty}a_k \|\leq \epsilon.
+	\end{equation}
+	Nous avons donc démontré qu'il existe \( N\) tel que si \( p>N\), alors \( \| \sum_{k=p}^{\infty}a_k \|\leq \epsilon\). Cela signifie exactement que \( \lim_{n\to \infty} \sum_{k=n}^{\infty}a_k=0\).
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Sommes de familles infinies}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{SECooHHDXooUgLhHR}
+
+%-------------------------------------------------------
+\subsection{Suites}
+%----------------------------------------------------
+
+
+Ne pas confondre la norme supremum avec la norme \( L^{\infty}\) (définition \ref{DEFooIQOOooLpJBqi}), bien que les deux peuvent être écrites \( \| f \|_{\infty}\).
+
+\begin{definition}[norme supremum\cite{TrenchRealAnalisys}]		\label{DEFooSFNFooBygeXX}
+	Soient un ensemble \( \Omega\), une partie \( A\) de \( \Omega\) et un espace normé \( V\). Lorsque \( g\) est une fonction \( g\colon \Omega\to V\), nous notons
+	\begin{equation}
+		\| g \|_A=\sup_{x\in A}\| g(x) \|
+	\end{equation}
+	C'est la \defe{norme supremum}{norme supremum} limitée à la partie \( A\).
+\end{definition}
+
+\begin{definition}[Convergence uniforme de suites]		\label{DEFooOHRYooWUsYTi}
+	Nous disons qu'une suite de fonctions \( (f_n)_{n\in \eN}\) définies sur un ensemble \( A\) \defe{converge uniformément sur \( A\)}{convergence!uniforme} vers la fonction \( f\) si
+	\begin{equation}	\label{EQooGPPEooNKOtlx}
+		\lim_{n\to \infty} \| f_n-f \|_A=0
+	\end{equation}
+	où \( \| . \|_A\) est la norme supremum \ref{DEFooSFNFooBygeXX}.
+\end{definition}
+
+
+
+%-------------------------------------------------------
+\subsection{Séries}
+%----------------------------------------------------
+
+
+Trois notions de convergence à ne pas confondre :
+\begin{enumerate}
+	\item
+	      La convergence absolue,
+	\item
+	      la convergence normale. C'est la même que la convergence absolue, mais dans le cas particulier d'un espace de fonctions muni de la norme uniforme.
+	\item
+	      la convergence uniforme.
+\end{enumerate}
+Voici les définitions.
+
+\begin{definition}[Convergence absolue] \label{DefVFUIXwU}
+	Nous disons que la suite \( (a_n)_{n\in \eN}\) dans l'espace vectoriel normé \( V\) \defe{absolument sommable}{convergence absolue} si la série \( \sum_{n=0}^{\infty}\| a_n \|\) converge dans \( \eR\).
+
+	Pour une suite indexée par \( \eZ\), nous disons que \( (a_n)_{n\in \eZ}\) est absolument sommable si \( \sum_{n=-\infty}^{\infty}\| a_n \|\) converge. Ici la somme est \( \lim_{N\to \infty}\sum_{n=-N}^N\| a_n \|\).
+\end{definition}
+
+Attention : il n'est pas dit qu'une suite absolument sommable soit sommable dans le sens de la définition \ref{DefIkoheE}. Comme le dit régulièrement David Madore, un foobar bleuté n'est pas spécialement un foobar. Et pas toujours bleuté non plus d'ailleurs.
+
+Pour cette raison, il n'est pas très prudent à priori de dire «la série \( \sum_{n=0}^{\infty}a_n\) converge absolument». Parce qu'on ne sait pas si la limite \( \lim_{N\to \infty}\sum_{n=0}^Na_n\) existe. Nous allons cependant parler comme ça parce que la proposition \ref{PropAKCusNM} dira que, au moins dans le cas d'applications à valeurs dans un Banach, si une suite est absolument sommable, alors elle a une série qui converge.
+
+\begin{definition}[Convergence normale] \label{DefVBrJUxo}
+	Soit un espace topologique \( X\) et un espace vectoriel normé \( V\). Une suite d'application \( (u_n \colon X\to V)_{n\in \eZ}  \) est \defe{normalement sommable}{convergence normale} si la série
+	\begin{equation}
+		\sum_{n=-\infty}^{\infty}\| u_n \|_{\infty}=\lim_{N\to \infty}\sum_{n=-N}^N\| u_n \|_{\infty}
+	\end{equation}
+	converge, c'est-à-dire que \( (u_n)_{n\in \eZ}\) est absolument sommable dans \( \big( \Fun(X,V), \| . \|_{\infty} \big)\).
+\end{definition}
+
+\begin{definition}[Convergence uniforme]        \label{DEFooPABSooPMXMOV}
+	Soit un espace topologique \( X\) et un espace vectoriel normé \( V\). Une suite d'application \( (f_n \colon X\to V)_{n\in \eZ}  \) est \defe{uniformément sommable}{convergence normale} de somme \( F\) si la suite des sommes partielles converge uniformément, c'est-à-dire si
+	\begin{equation}        \label{EqLNCJooVCTiIw}
+		\lim_{N\to \infty} \| \sum_{n=-N}^Nf_n-F \|_{\infty}=0.
+	\end{equation}
+\end{definition}
+
+%-------------------------------------------------------
+\subsection{Terme général}
+%----------------------------------------------------
+
+\begin{proposition}  \label{PROPooYDFUooTGnYQg}
+	Si une série converge dans un espace complet, la norme de son terme général converge vers \( 0\) : si \( \sum_{n=0}^{\infty}a_n\) converge, alors
+	\begin{equation}
+		\| a_n \|\to 0.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Soit une suite \( (a_n)\) dont la série converge vers \( s\). Soit \( \epsilon>0\). La suite des sommes partielles \( (s_n)\) est de Cauchy et converge vers \( s\) : \( s_n\to s\). En particulier il existe un \( N\) tel que si \( n>N\), nous avons \( \| s_n-s_{n-1} \|<\epsilon\). Pour de telles valeurs de \( n\) nous avons :
+	\begin{equation}
+		\| a_n \|=\| s_n-s_{n-1} \|\leq \epsilon.
+	\end{equation}
+	Cela prouve que \( a_n\to 0\).
+\end{proof}
+
+Dans le même ordre d'idée nous avons la convergence des queues de suites.
+
+\begin{lemma}[\cite{MonCerveau}]       \label{LEMooFUCOooCOqLRj}
+	Soit une suite \( a\colon \eN\to V\) où \( V\) est un espace vectoriel normé. Si \( \sum_{k=0}^{\infty}a_k\) converge, alors
+	\begin{equation}
+		\lim_{n\to \infty} \sum_{k=n}^{\infty}a_k=0.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Ne nous en voulez pas si on décale l'énoncé de \( 1\) : nous allons prouver que \( \sum_{k=n+1}^{\infty}a_k\to 0\). Nous nommons \( (s_n)\) la suite des sommes partielles de \( a\) : \( s_n=\sum_{k=0}^na_k\). Soit \( n\) fixé dans \( \eN\); pour tout \( N>n\) nous avons
+	\begin{equation}
+		\sum_{k=0}^Na_k=s_n+\sum_{k=n+1}^Na_k
+	\end{equation}
+	En prenant la limite \( N\to \infty\) nous trouvons
+	\begin{equation}
+		\sum_{k=0}^{\infty}a_k=s_n+\lim_{N\to \infty} \sum_{k=n+1}^Na_k=s_n+\sum_{k=n+1}^{\infty}a_k.
+	\end{equation}
+	Cela étant valable pour tout \( n\), nous prenons la limite \( n\to\infty\). Par définition \( s_n\to\sum_{k=0}^{\infty}a_k\); pour le reste
+	\begin{equation}
+		\sum_{k=0}^{\infty}a_k=\sum_{k=0}^{\infty}a_k+\lim_{n\to \infty} \sum_{k=n+1}^{\infty}a_k.
+	\end{equation}
+	La dernière somme est donc nulle et nous avons prouvé le lemme.
+\end{proof}
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Convergence commutative}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{definition}      \label{DEFooORAGooZslkyS}
+	Soit \( x_k\) une suite dans un espace vectoriel normé \( E\). Nous disons que la suite \defe{converge commutativement}{convergence!commutative} vers \( x\in E\) si \( \lim_{n\to \infty}\| x_n-x \| =0\) et si pour toute bijection \( \tau\colon \eN\to \eN\) nous avons aussi
+	\begin{equation}
+		\lim_{n\to \infty} \| x_{\tau(n)}-x \|=0.
+	\end{equation}
+\end{definition}
+
+La notion de convergence commutative est surtout intéressante pour les séries.
+
+\begin{definition}\label{DEFooYMOHooMKzTSJ}
+	La somme
+	\begin{equation}
+		\sum_{k=0}^{\infty}x_k
+	\end{equation}
+	converge commutativement vers \( x\) si \( \lim_{N\to \infty} \| x-\sum_{k=0}^Nx_k \|=0\) et si pour toute bijection \( \tau\colon \eN\to \eN\) nous avons
+	\begin{equation}
+		\lim_{N\to \infty} \| x-\sum_{k=0}^Nx_{\tau(k)} \|=0.
+	\end{equation}
+
+	Dans ce cas nous disons que la suite \( (x_k)_{k\in \eN}\) est \defe{commutativement sommable}{commutativement sommable}.
+\end{definition}
+
+\begin{proposition} 	\label{PROPooOGOEooBkZoEJ}
+	Soit \( (a_i)_{i\in \eN}\) une suite absolument sommable\footnote{Définition \ref{DefVFUIXwU}.} dans \( \eC\). Alors elle est commutativement sommable\footnote{Définition \ref{DEFooYMOHooMKzTSJ}.}.
+\end{proposition}
+
+\begin{proof}
+	Soit \( \epsilon>0\). Nous posons \( \sum_{i=0}^\infty a_i=a\) et nous considérons \( N\) tel que
+	\begin{equation}
+		| \sum_{i=0}^Na_i-a |<\epsilon.
+	\end{equation}
+	Étant donné que la série des \( | a_i |\) converge, il existe \( N_1\) tel que pour tout \( p,q>N_1\) nous ayons \( \sum_{i=p}^q| a_i |<\epsilon\). Nous considérons maintenant une bijection \( \tau\colon \eN\to \eN \). Prouvons que la série \( \sum_{i=0}^{\infty}| a_{\tau(i)} |\) converge. Nous choisissons \( M\) de telle sorte que pour tout \( n>M\), \( \tau(n)>N_1\). Si \( s_k\) est la somme partielle de la suite \( ( a_{\tau(i)} )_{i\in \eN}\) et si \( M<p<q \) nous avons
+	\begin{equation}
+		| s_q-s_p |= | \sum_{i=p}^q a_{\tau(i)} | \leq \sum_{i=p}^q| a_{\tau(i)} |<\epsilon.
+	\end{equation}
+	Cela montre que \( (s_k)\) est une suite de Cauchy. Elle est alors convergente et nous en déduisons que la série
+	\begin{equation}
+		\sum_{i=0}^{\infty}a_{\tau(i)}
+	\end{equation}
+	converge. Nous devons montrer à présent qu'elle converge vers la même limite que la somme «usuelle» \( \lim_{N\to \infty} \sum_{i=0}^Na_i\).
+
+	Soit \( n>\max\{ M,N \}\). Alors
+	\begin{equation}
+		\sum_{k=0}^na_{\tau(k)}-\sum_{k=0}^na_k=\sum_{k=0}^Ma_{\tau(k)}-\sum_{k=0}^Na_k+\underbrace{\sum_{M+1}^na_{\tau(k)}}_{<\epsilon}-\underbrace{\sum_{k=N+1}^na_k}_{<\epsilon}.
+	\end{equation}
+	Par construction les deux derniers termes sont plus petits que \( \epsilon\) parce que \( M\) et \( N\) sont les constantes de Cauchy pour les séries \( \sum a_{\tau(i)}\) et \( \sum a_i\). Afin de traiter les deux premiers termes, quitte à redéfinir \( M\), nous supposons que \( \{ 1,\ldots, N \}\subset \tau\{ 1,\ldots, M \}\); par conséquent tous les \( a_i\) avec \( i<N\) sont atteints par les \( a_{\tau(i)}\) avec \( i<M\). Dans ce cas, les termes qui restent dans la différence
+	\begin{equation}
+		\sum_{k=0}a_{\tau(k)}-\sum_{k=0}^Na_k
+	\end{equation}
+	sont des \( a_k\) avec \( k>N\). Cette différence est donc en valeur absolue plus petite que \( \epsilon\), et nous avons en fin de compte que
+	\begin{equation}
+		\left| \sum_{k=0}^na_{\tau(k)}-\sum_{k=0}^na_k \right| <\epsilon.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooVVHKooZjXQiP}
+	Si \( (a_k)\) est une suite réelle avec \( a_k\geq 0\) et si \( \sum_{k=0}^{\infty}a_k=\infty\), alors \( \sum_{k=0}^{\infty}a_{\tau(k)}=\infty\) pour toute permutation \( \tau\) de \( \eN\).
+\end{proposition}
+
+\begin{proof}
+	Soient \( m>0\). Il existe \( N>0\) tel que si \( n\geq N\), alors \( \sum_{k=0}^na_k>m\). Vu que \( \tau\) est une permutation, il existe \( N_1\) tel que \( \tau\{ 0,\ldots,N_1 \} \) contient \( \{ 0,\ldots,N \}\).
+
+	Alors pour tout \( n\geq N_1\) nous avons
+	\begin{equation}
+		\sum_{k=0}^na_{\tau(k)}\geq \sum_{k=0}^Na_k>m.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[Théorème de réarrangement de Riemann\cite{BIBooAMLZooLamOJO,BIBooGZUDooNAfRAI,BIBooPGGQooAuNEtP,MonCerveau}]     \label{PropyFJXpr}
+	Soit \( \sum_{k=0}^{\infty}a_k\) une série réelle qui converge mais qui ne converge pas absolument. Alors pour tout \( b\in \eR\), il existe une bijection \( \tau\colon \eN\to \eN\) telle que \( \sum_{i=0}^{\infty}a_{\tau(i)}=b\).
+\end{proposition}
+
+\begin{proof}
+	Nous posons
+	\begin{subequations}
+		\begin{align}
+			N^+ & =\{ n\in \eN\tq a_n\geq 0 \} \\
+			N^- & =\{ n\in \eN\tq a_n< 0 \}
+		\end{align}
+	\end{subequations}
+	\begin{subproof}
+		\spitem[\( N^+\) ou \( N^-\) est infini]
+		%-----------------------------------------------------------
+
+		Vu que \( N^+\cup N^-=\eN\), au moins un des deux est infini (lemme \ref{LEMooVFPNooVmdUXY}\ref{LEMooVFPNooVmdUXY}), ce qui n'est pas possible.
+
+		\spitem[\( N^-\) est infini]
+		%-----------------------------------------------------------
+
+		Supposons que \( N^-\) est fini. Posons \( n_0=\max(N^-)\). Pour tout \( k>n_0\) nous avons \( a_k\geq 0\). Soit \( N>n_0\). Nous avons
+		\begin{subequations}
+			\begin{align}
+				\sum_{k=0}^Na_k & =\sum_{k=0}^{n_0}a_k+\sum_{n_0+1}^Na_k                                                         \\
+				                & =\sum_{k=0}^{n_0}a_k-\sum_{k=0}^{n_0}| a_k |+\sum_{k=0}^{n_0}| a_k |+\sum_{k=n_0+1}^{N}| a_k | \\
+				                & =\sum_{k=0}^{n_0}\big( a_k-| a_k | \big)+\sum_{k=0}^N| a_k |.
+			\end{align}
+		\end{subequations}
+		En prenant la limite \( N\to\infty\), à gauche nous avons \( \infty\) par hypothèse, alors que nous avons un nombre fini à droite (aussi par hypothèse). Contradiction, nous en concluons que \( N^-\) est infini.
+		\spitem[\( N^+\) est infini]
+		%-----------------------------------------------------------
+		Même type de raisonnement\quext{Je n'ai pas vérifié. Alors soyez \randomGender{prudent}{prudente}.}.
+
+		\spitem[Construction de \(\tau \colon \eN\to \eN  \)]		\label{ITEMooKATRooVrnUBv}
+		%-----------------------------------------------------------
+
+		Nous allons construire par récurrence. D'abord
+		\begin{subequations}
+			\begin{align}
+				T_0 & = \{ l\in \eN\tq a_l\geq 0 \}=N^+ \\
+				S_0 & = \{ l\in \eN\tq a_l<0 \}=N^-.
+			\end{align}
+		\end{subequations}
+		Si \( \sum_{k=0}^na_{\tau(k)}\leq b\), alors nous posons
+		\begin{itemize}
+			\item
+			      \( \tau(n+1)=\min(T_n)\in N^+\)
+			\item
+			      \( T_{n+1}=T_n\setminus \tau(n+1)\)
+			\item
+			      \( S_{n+1}=S_n\)
+		\end{itemize}
+
+		Si \( \sum_{k=0}^na_{\tau(k)}>b\), alors nous posons
+		\begin{itemize}
+			\item
+			      \( \tau(n+1)=\min(S_n)\in N^-\)
+			\item
+			      \( S_{n+1}=S_n\setminus\tau(n+1)\)
+			\item
+			      \( T_{n+1}=T_n\).
+		\end{itemize}
+		Les parties \( T_n\) et \( S_n\) sont les parties de \( \eN\) qui restent à attribuer lorsque \( \tau(n)\) est fixé.
+
+		Nous prouvons maintenant quelques propriétés qui disent que \( \tau\) prends les éléments de \( N^+\) et \( N^-\) dans l'ordre sans en oublier.
+
+		\spitem[\( T_n=T_0\setminus\tau\{ 0,\ldots,n \}\)]		\label{ITEMooLBLUooYypSZd}
+		%-----------------------------------------------------------
+
+		Cela se prouve par récurrence. Si \( T_n=T_0\setminus \{ \tau(1),\ldots,\tau(n) \}\), il y a deux possibilités pour \( T_{n+1}\). Soit \( \tau(n+1)\in N^+\), soit \( \tau(n+1)\in N^-\). Dans le premier cas, \( T_{n+1}\) est défini comme étant \( T_n\setminus\{ \tau(n+1) \}\). Dans le second cas, \( \tau(n+1)\not\in T_n\), et donc \( T_{n+1}=T_n=T_n\setminus\tau(n+1)\).
+
+		\spitem[\( S_n=S_0\setminus\tau\{ 0,\ldots,n \}\)]
+		%-----------------------------------------------------------
+
+		Même raisonnement.
+
+		\spitem[\( k_1<k_2\in N^+\) avec \( k_2\in\tau(\eN)\) alors \(  k_1\in \tau(\eN)\)]
+		%-----------------------------------------------------------
+
+		Soient \( k_1<k_2\) dans \( N^+\). Nous supposons que \( k_2=\tau(n+1 )\) pour un certain \( n\). Donc \( k_2=\min(T_n)\), ce qui signifie que \( k_1\) n'est pas dans \( T_n\). Or \( T_n=T_0\setminus\{ \tau(0),\ldots,\tau(n) \}\). Nous en déduisons que \( k_1\in \{ \tau(0),\ldots,\tau(n) \}\).
+
+		\spitem[\( k_1<k_2\in N^-\) avec \( k_2\in\tau(\eN)\) alors \(  k_1\in \tau(\eN)\)]
+		%-----------------------------------------------------------
+
+		Même raisonnement.
+
+		\spitem[\( \tau \) est injective]
+		%-----------------------------------------------------------
+		Supposons que \( \tau(k)=\tau(l)\) avec \( k<l\). Vu que \( S_n\subset S_0\) et \( T_n\subset T_0\) et \( S_0\cap T_0=\emptyset\), nous devons avoir tous les deux dans \( T_0\) ou tous les deux \( S_0\).
+
+		Supposons pour fixer les idées que \( \tau(k) \) et \( \tau(l)\) sont tous les deux dans \( T_0\). Nous avons \( \tau(k)\in T_{k-1}\), mais, par construction \( \tau(k)\not\in T_k \). Vu que \( T_l\subset T_k\), il est impossible d'avoir \( \tau(k)=\tau(l)\in T_l\).
+
+		La même chose tient si \( \tau(k)\) et \( (\tau(l)) \) sont dans \( S_0\).
+
+		\spitem[\( \tau \) est surjective]
+		%-----------------------------------------------------------
+
+		Nous supposons que \( \tau\) n'est pas surjective. Supposons que \( n_0\) n'est pas dans l'image de \( \tau\), et supposons que \( n_0\in T_0\). Alors aucun élément de \( N^+\) plus grand que \( n_0\) n'est dans \( \tau(\eN)\) par le point \ref{ITEMooLBLUooYypSZd}.
+
+		Soit \( N=\max\{ k\in \eN\tq \tau(k)\in N^+ \}\). Ça existe et c'est fini parce que \( \tau(\eN)\) ne prend aucun élément de \( N^+\) au-delà de \( n_0\). Donc pour tout \( k\geq N+1\) nous avons \( a_{\tau(k)}<0\). Donc
+		\begin{subequations}
+			\begin{align}
+				\sum_{k=0}^{\infty}a_{\tau(k)} & =\sum_{k=0}^Na_{\tau(k)}+\sum_{k=N+1}^{\infty}a_{\tau(k)}                                                             \\
+				                               & =\sum_{k=0}^Na_{\tau(k)}+\sum_{k=0}^N| a_{\tau(k)} |-\sum_{k=0}^N| a_{\tau(k)} |-\sum_{k=N+1}^{\infty}| a_{\tau(k)} | \\
+				                               & =\sum_{k=0}^N\Big( a_{\tau(k)}+| a_{\tau(k)} | \Big)-\sum_{k=0}^{\infty}| a_{\tau(k)} |.
+			\end{align}
+		\end{subequations}
+		Par la proposition \ref{PROPooVVHKooZjXQiP}, la dernière somme diverge parce que \( \sum_{k=0}^{\infty}| a_{\tau(k)} |=\infty\). Nous venons de prouver que \( \sum_{k=0}^{\infty}a_{\tau(k)}=-\infty\).
+
+		Prenons \( K>N\). Nous devons avoir
+		\begin{equation}
+			\sum_{k=0}^Ka_{\tau(k)}\geq b
+		\end{equation}
+		parce que sinon on aurait \( \tau(K+1)\in N^+\). Vu qu'à partir de \( K\) les sommes partielles sont décroissantes et bornées vers le bas, nous en déduisons la convergence de \( \sum_{k=0}^{\infty}a_{\tau(k)}\). Contradiction.
+
+		\spitem[La somme converge vers \( b\)]
+		%-----------------------------------------------------------
+
+		\begin{subproof}
+			\spitem[Trouver un \( N\) assez grand]
+			%-----------------------------------------------------------
+
+			Il est temps de montrer que \( \sum_{k=0}^{\infty}a_{\tau(k)}=b\). Soit \( \epsilon>0\). Vu que \( \sum_{k=0}^{\infty}a_k\) converge, il existe \( n_1\in \eN\) tel que \( | a_n |<\epsilon\) pour tout \( n\geq n_1\) (proposition \ref{PROPooYDFUooTGnYQg}).
+
+			Vu que \( \tau\) est bijective, la partie \( \{ n\in \eN\tq \tau(n)\leq n_1 \}\) est finie, et même de cardinal \( n_1+1\) parce qu'elle est en bijection avec \( \{ 0,\ldots,n_1 \}\). Nous posons
+			\begin{equation}
+				n_0=\max\{ k\in \eN\tq \tau(k)\leq n_1 \}.
+			\end{equation}
+			Si \( n>n_0\), alors \( \tau(n)>n_1\) et alors \( | a_{\tau(n)} |<\epsilon\). En posant
+			\begin{subequations}
+				\begin{align}
+					N_0=\min\{ k>n_0\tq \tau(k)\in N^+ \} \\
+					N=\min\{ k>N_0\tq \tau(k)\in N^- \}-1,
+				\end{align}
+			\end{subequations}
+			nous avons un \( N>n_0\) tel que
+			\begin{subequations}
+				\begin{numcases}{}
+					\tau(N)\in N^+\\
+					\tau(N+1)\in N^-\\
+					| a_{\tau(n)} |<\epsilon,\,\forall n\geq N.
+				\end{numcases}
+			\end{subequations}
+
+			\spitem[Travail sur les sommes partielles]
+			%-----------------------------------------------------------
+
+			Nous posons\footnote{Je sais, la notation \( S_n\) est déjà prise plus haut. Mais nous n'en avons plus besoin.} \( S_n=\sum_{k=0}^na_{\tau(k)}\). Vu que \( \tau(N)\in N^+\), nous avons \( S_{N-1}\leq b\). Vu que \( \tau(N+1)\in N^-\), nous avons \( S_N>b\). Or
+			\begin{equation}
+				\left|  S_n-S_{n-1}    \right|=| a_{\tau(N)}<\epsilon |.
+			\end{equation}
+			Nous avons donc les inégalités suivantes :
+			\begin{subequations}
+				\begin{numcases}{}
+					| S_N-S_{N-1} |<\epsilon\\
+					S_{N-1}\leq b\\
+					S_N>b.
+				\end{numcases}
+			\end{subequations}
+
+			\spitem[Si \( S_n>b+\epsilon\), alors contradiction]
+			%-----------------------------------------------------------
+			Soit \( n>N\), et supposons que \( S_n>b+\epsilon\). Vu que \( | S_n-S_{n-1} |<\epsilon\), nous avons encore \( S_{n-1}>b\), et donc, par construction de \( \tau\) (point \ref{ITEMooKATRooVrnUBv}), nous avons \( S_n<S_{n-1}\). Au final,
+			\begin{equation}
+				b+\epsilon<S_n<S_{n-1}<S_{N-1}.
+			\end{equation}
+			Et là, il y a une contradiction parce que \( S_{N-1}\leq b\).
+
+			Nous en déduisons que nous avons toujours \( S_n\leq b+\epsilon\).
+
+			\spitem[Idem : \( S_n\geq b-\epsilon\)]
+			%-----------------------------------------------------------
+
+			Cela se prouve de la même façon.
+
+		\end{subproof}
+		Au final nous avons prouvé que pour tout \( n>N\), \( | S_n-b |\leq \epsilon\), ce qui montre bien que \( S_n\to b\).
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Famille sommable}
+%----------------------------------------------------
+
+Pour une revue des définitions de sommes dans le cas de \( \{ 0,\ldots, n \}\), des ensembles finis quelconques, voir le thème \ref{THEMEooMKLBooLGFCdx}. Maintenant nous donnons la définition pour une somme sur un ensemble infini.
+\begin{propositionDef}[Famille sommable]  \label{DefIkoheE}
+	Si \( \{ v_i \}_{i\in I}\) est une famille de vecteurs dans un espace vectoriel normé indexée par un ensemble quelconque \( I\). Nous disons que cette famille est \defe{sommable}{famille!sommable} de somme \( v\) si pour tout \( \epsilon>0\), il existe un \( J_0\) fini dans \( I\) tel que pour tout ensemble fini \( K\) tel que \( J_0\subset K\) nous avons\footnote{La somme sur la partie finie \( K\) est la définition \ref{DEFooLNEXooYMQjRo}.}
+	\begin{equation}
+		\| \sum_{j\in K}v_j-v \|<\epsilon.
+	\end{equation}
+	Si tel est le cas, alors un tel \( v\) est unique\quext{Attention : je n'ai pas vérifié. Écrivez-moi si vous avez une preuve.}.
+
+	Nous notons
+	\begin{equation}
+		\sum_{i\in I}v_i=v.
+	\end{equation}
+	%TODOooSSDPooRIzoVx. Prouver ça. C'est à dire l'unicité dans le cas où il y a existence.
+\end{propositionDef}
+Dans cette définition, il faut comprendre que \( J_0\) est l'ensemble minimum de termes qu'il faut prendre pour être \( \epsilon\)-proche de \( v\). Ensuite, \( K\) est là pour dire qu'en prenant plus de termes, on ne s'éloignera pas tellement.
+
+
+\begin{lemma}   \label{LEMooHFNXooFHfwzf}
+	Soit une famille sommable \( (v_i)_{i\in I}\) dans un espace vectoriel normé sur \( \eC\). Pour tout \( \lambda\in \eC\), la famille \( (\lambda v_i)_{i\in I}\) est sommable et
+	\begin{equation}
+		\sum_{i\in I}\lambda v_i=\lambda\sum_{i\in I}v_i.
+	\end{equation}
+	%TODOooCAXHooBFsJfP. Prouver ça.
+\end{lemma}
+
+\begin{lemma}   \label{LEMooSBYEooNXzqJU}
+	Soit une famille sommable \( (a_i)_{i\in I}\). Si \( J\subset I\), alors la famille \( (a_j)_{j\in J}\) est sommable
+	%TODOooFCFJooBqgnbM. Prouver ça.
+\end{lemma}
+
+\begin{lemma}   \label{LEMooAYFUooLMBBDn}
+	Soit une famille sommable \( (a_i)_{i\in I}\) de réels positifs. Si \( J\subset I\), alors la famille \( (a_j)_{j\in J}\) est sommable et
+	\begin{equation}
+		\sum_{j\in J}a_j\leq \sum_{i\in I} a_i.
+	\end{equation}
+	%TODOooBAEXooUHIEcm. Prouver ça.
+\end{lemma}
+
+Dans le cas de familles de nombres réels positifs, nous avons une caractérisation plus commode.
+\begin{proposition}[Somme de réels positifs\cite{MonCerveau}]  \label{PROPooOYNRooQFpBly}
+	Soit \( (a_i)_{i\in I}\) une famille de nombres réels positifs indexés par un ensemble quelconque \( I\).
+	\begin{enumerate}
+		\item       \label{ITEMooAYKKooVxXp}
+		      La famille \( (a_i)_{i\in I}\) est sommable\footnote{Définition \ref{DefIkoheE}.} si et seulement si
+		      \begin{equation}
+			      \sup_{ J\text{ fini dans } I}\sum_{j\in J}a_j<\infty.
+		      \end{equation}
+		\item       \label{ITEMooSDCYooNsbHez}
+		      Si la famille est sommable, alors
+		      \begin{equation}
+			      \sum_{i\in I}a_i=\sup_{ J\text{ fini dans } I}\sum_{j\in J}a_j.
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooAYKKooVxXp}, \( \Rightarrow\)]
+		% -------------------------------------------------------------------------------------------- 
+		Soit \( v\) comme dans la définition. Soit \( \epsilon>0\). Nous considérons une partie finie \( J_0\subset I\) comme il faut. Vu que tous les termes sont positifs,
+		\begin{equation}
+			\sup_{\text{\( J\) fini dans \( I\)}}\sum_{j\in J}a_j=\sup_{_{\substack{\text{\( J\) fini dans \( I\)}\\J_0\subset J}}}\sum_{j\in J}a_j.
+		\end{equation}
+		Pour chaque \( J\) fini contenant \( J_0\) dans \( I\) nous avons \( \| \sum_{j\in J}a_j-v \|\leq\epsilon\) et donc
+		\begin{equation}
+			\| \sum_{j\in J}a_j \|\leq \| v \|+\epsilon.
+		\end{equation}
+		Donc le supremum sur les \( J\) est majoré par \( \| v \|+\epsilon\).
+
+		Vu que cela est valable pour tout \( \epsilon\), c'est aussi majoré par \( \| v \|\) lui-même, mais ce n'est pas utile pour notre propos.
+		\spitem[Pour \ref{ITEMooAYKKooVxXp}, \( \Leftarrow\)]
+		% -------------------------------------------------------------------------------------------- 
+		Nous supposons maintenant que $\sup_{ J\text{ fini dans } I}\sum_{j\in J}a_j<\infty$. Soit \( v<\infty\) ce supremum. Il existe un \( J_0\) fini dans \( I\) tel que
+		\begin{equation}
+			\| \sum_{j\in J_0}a_j-v \|\leq \epsilon.
+		\end{equation}
+		Étant donné que tous les termes sont positifs, nous pouvons même dire que
+		\begin{equation}
+			\sum_{j\in J_0}a_j\in\mathopen[ v-\epsilon , v \mathclose].
+		\end{equation}
+		Pour tout \( K\) contenant \( J_0\) nous avons la même majoration et donc
+		\begin{equation}
+			v-\epsilon\leq \sum_{j\in J_0}a_j\leq \sum_{k\in K}a_k\leq v.
+		\end{equation}
+		\spitem[Pour \ref{ITEMooSDCYooNsbHez}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous nommons \( v= \sup_{\text{\( J\) fini dans \( I\)}}\sum_{j\in J}a_j \). Soit \( \epsilon>0\); il existe \( J_0\) fini dans \(I\) tel que
+		\begin{equation}
+			v-\epsilon\leq \sum_{j\in J_0}a_j\leq v.
+		\end{equation}
+		Pour tout \( K\) fini contenant \( J_0\) nous avons aussi \( \sum_{j\in J_0}a_j\leq \sum_{k\in K}a_k\) et donc
+		\begin{equation}
+			\sum_{k\in K}a_k\in \mathopen[ v-\epsilon , v \mathclose].
+		\end{equation}
+		Au final nous avons bien prouvé que
+		\begin{equation}        \label{EQooTWURooBsVfOS}
+			\| \sum_{k\in K}a_k-v \|\leq \epsilon.
+		\end{equation}
+		Vu que pour tout \( \epsilon\), il existe un \( K\) qui réalise \eqref{EQooTWURooBsVfOS}, la définition \ref{DefIkoheE} nous dit que \( \sum_{i\in I}a_i=v\).
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooAJRYooMuDaJI}
+	Soit une famille \( (u_i)_{i\in I}\) de réels positifs. Nous considérons une partition \( (I_k)_{k\in \eN}\) de \( I\) telle que chacun des \( (u_i)_{i\in I_k}\) est sommable de somme \( S_k\). Si \( \sum_{k=0}^{\infty}S_k<\infty\) alors \( (u_i)_{i\in I}\) est sommable et
+	\begin{equation}
+		\sum_{i\in I}u_i=\sum_{k=0}^{\infty}S_k.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous posons \( S=\sum_{k=0}^{\infty}S_k\). Soit \( \epsilon>0\). Nous considérons \( N\in \eN\) tel que
+	\begin{enumerate}
+		\item
+		      Pour tout \( N'>N\) nous avons \( | \sum_{k=0}^{N'}S_k-S |<\epsilon\).
+		\item
+		      Pour tout \( p\geq N\) nous avons \( \sum_{k=p}^{\infty}S_k<\epsilon\).
+	\end{enumerate}
+	Nous posons \( I_0=\bigcup_{k=0}^NI_k\).
+
+	Soit \( K\) fini dans \( I\) tel que \(I_0\subset K\subset I \). Nous devons évaluer \( | \sum_{k\in K}u_k-S |\). Nous posons
+	\begin{equation}
+		M=\max\{ k\in \eN\tq I_k\cap K\neq \emptyset \},
+	\end{equation}
+	de telle sorte à avoir l'union disjointe
+	\begin{equation}
+		K=I_0\cup\bigcup_{k=N+1}^M(I_k\cap K).
+	\end{equation}
+	Nous pouvons maintenant calculer
+	\begin{subequations}
+		\begin{align}
+			\big| \sum_{j\in K}u_j-S \big| & =\big| \sum_{j\in I_0}+\sum_{k=N+1}^M\sum_{j\in I_k\cap K}u_j-S \big|                                                \\
+			                               & \leq\big| \sum_{j\in I_0}-S \big|+\big| \sum_{k=N+1}^M\sum_{j\in I_k\cap K}u_j \big|                                 \\
+			                               & \leq \epsilon  +\big| \sum_{k=N+1}^M\sum_{j\in I_k\cap K}u_j \big|                                                   \\
+			                               & \leq \epsilon  +\big| \sum_{k=N+1}^M\sum_{j\in I_k}u_j \big|                         & \text{ajoute termes positifs} \\
+			                               & =\epsilon+\big| \sum_{k=N+1}^MS_k \big|                                                                              \\
+			                               & \leq\epsilon+\big| \sum_{k=N+1}^{\infty}S_k \big|                                                                    \\
+			                               & \leq 2\epsilon.
+		\end{align}
+	\end{subequations}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooIJHFooXYOuiZ}
+	Soit \( n\in \eN\). Soit un réel \( 0<q<1\). Nous notons \( \Lambda=\eN^n\). Pour \( \alpha\in \Lambda\) nous notons \( | \alpha |=\sum_{i=1}^n\alpha_i\). Alors la famille
+	\begin{equation}
+		(q^{| \alpha |})_{\alpha\in \Lambda}
+	\end{equation}
+	est une famille sommable.
+\end{proposition}
+
+\begin{proof}
+	Les parties
+	\begin{equation}
+		\Lambda_k=\{ \alpha\in \eN^n\tq \sum_{i=1}^n\alpha_i=k \}
+	\end{equation}
+	forment une partition de \( \Lambda\). Vu que chacun des \( \Lambda_k\) est fini nous pouvons poser
+	\begin{equation}
+		S_k=\sum_{\alpha\in \Lambda_k}q^{| \alpha |}=\sum_{\alpha\in \Lambda_k}q^k=q^k\Card(\Lambda_k).
+	\end{equation}
+	La proposition \ref{PROPooRBMVooIGkctj} nous donne une valeur pour le cardinal de \( \Lambda_k\), et c'est
+	\begin{equation}
+		\Card(\Lambda_k)=\binom{ n+k-1 }{ n-1 }=\frac{ (n+k-1)! }{ (n-1)!k! }.
+	\end{equation}
+	Nous avons donc
+	\begin{equation}
+		S_k=q^k\frac{ (n+k-1)! }{ (n-1)!k! }=\frac{ q^k }{ (n-1)! }\prod_{j=1}^{n-1}(k+j)=q^kP(k)
+	\end{equation}
+	où \( P\) est un polynôme de degré \( n-1\).
+
+	La proposition \ref{PROPooIJHFooXYOuiZ} dit qu'alors \( \sum_{k=0}^{\infty}S_k<\infty\). Vu que chacun de \( S_k\) est positif, la proposition \ref{PROPooAJRYooMuDaJI} dit que \( (q^{| \alpha |})_{\alpha\in\Lambda}\) est sommable et que
+	\begin{equation}
+		\sum_{\alpha\in\Lambda}q^{| \alpha |}=\sum_{k=0}^{\infty}S_k.
+	\end{equation}
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooHCLZooLjQNDl}
+	Soit une suite \( (a_i)_{i\in \eN}\) dans un espace de Banach \( E\). Nous supposons que
+	\begin{enumerate}
+		\item
+		      La série est convergente : \( \sum_{i=1}^{\infty}a_i=v\),
+		\item
+		      La série est absolument convergente : \( \sum_{i=0}^{\infty}\| a_i \|<\infty\).
+	\end{enumerate}
+	Alors \( (a_i)_{i\in \eN}\) est une famille sommable.
+\end{proposition}
+
+\begin{proof}
+	Soit \( \epsilon>0\). Nous considérons un \( N\in \eN\) tel que pour tout \( n>N\),
+	\begin{equation}		\label{EQooXWOAooAYxFZI}
+		\begin{aligned}[]
+			\| \sum_{i=0}^na_i-v \|<\epsilon & \text{ et } & \sum_{i=n}^{\infty}\| a_i \|<\epsilon.
+		\end{aligned}
+	\end{equation}
+	Nous posons ensuite \( J_0=\{ 0,\ldots,N \}\). Soit une partie finie \( K\subset \eN\) telle que \( J_0\subset K\). Nous posons \( K_c=K\subset J_0\) et \( m=\min(K_c)\). Nous avons ce calcul :
+	\begin{subequations}
+		\begin{align}
+			\| \sum_{i\in K}a_i-v \| & =\| \sum_{i=0}^na_i+\sum_{i\in K_c}a_i-v \|           \\
+			                         & \leq \| \sum_{i=0}^Na_i-v \|+\| \sum_{i\in K_c}a_i \| \\
+			                         & \leq \epsilon+\sum_{i\in K_c}\| a_i \|                \\
+			                         & \leq \epsilon+\sum_{i=m}^{\infty}\| a_i \|            \\
+			                         & \leq 2\epsilon.
+		\end{align}
+	\end{subequations}
+	Si nous avions pris \( \epsilon/2\) dans \eqref{EQooXWOAooAYxFZI}, ça aurait été juste bon.
+\end{proof}
+
+Attention : dans le lemme suivant, nous supposons que \( (a_k)_{k\in \eN}\) est sommable. Sans cette hypothèse, il n'est pas vrai que \( \sum_{k=0}^{\infty}a_i=\sum_{k\in \eN}a_i\). Et il n'est même pas vrai que l'existence de la première implique la sommabilité de la seconde.
+
+\begin{lemma}[\cite{MonCerveau}]       \label{LEMooGXPGooZTJPoN}
+	Soient un espace vectoriel normé \( V\) ainsi qu'une suite sommable \( (a_k)_{k\in \eN}\) dans \( V\). Alors
+	\begin{equation}		\label{EQooXQWBooLympdN}
+		\sum_{k\in \eN}a_k=\lim_{N\to \infty} \sum_{k=0}^N a_k.
+	\end{equation}
+	La somme à gauche est celle de la définition \ref{DefIkoheE} et celle de droite est donnée par la définition \ref{DEFooNEVNooJlmJOC}.
+\end{lemma}
+
+\begin{proof}
+	Par hypothèse, le membre de gauche existe, et nous le nommons \( v\). Soit \( \epsilon>0\). Il existe \( J_0\) fini dans \( \eN\) tel que pour tout \( K\) fini dans \( \eN\) tel que \( J_0\subset K\), nous avons
+	\begin{equation}
+		\| \sum_{k\in K}a_k-v \|<\epsilon.
+	\end{equation}
+	Ici, la somme est celle de la définition \ref{DEFooLNEXooYMQjRo}. Nous nommons \( m_0=\max(J_0)\); pour tout \( m>m_0\) nous avons
+	\begin{equation}
+		J_0\subset \{ 0,\ldots,m_0 \}\subset\{ 0,\ldots,m \}
+	\end{equation}
+	et donc
+	\begin{equation}
+		\| \sum_{k\in \{ 0,\ldots,m \}}a_k-v \|<\epsilon.
+	\end{equation}
+	La bijection à prendre dans la définition \eqref{DEFooLNEXooYMQjRo} pour faire la somme sur \( \{ 0,\ldots,m \}\) peut être l'identité, de telle sorte que \( \sum_{k\in\{ 0,\ldots,m \}}a_k=\sum_{k=0}^ma_k\).
+
+	Nous notons \( s_i\) la somme partielle \( s_i=\sum_{k=0}^ia_k\). Ce que nous avons prouvé jusqu'ici est que pour tout \( \epsilon\), il existe \( m_0\) tel que si \( m\geq m_0\), alors \( \| s_i-v \|\leq \epsilon\). Cela signifie exactement que \( \lim_{m\to\infty}\sum_{k=0}^ma_k=v\), c'est-à-dire que le membre de droite de \eqref{EQooXQWBooLympdN} vaut \( v\), ce qu'il fallait.
+\end{proof}
+
+\begin{example}
+	La suite \( a_i=(-1)^i\) n'est pas sommable parce que quel que soit \( J_0\) fini dans \( \eN\), nous pouvons trouver \( J\) fini contenant \( J_0\) tel que \( \sum_{j\in J}(-1)^j>10\). Pour cela il suffit d'ajouter à \( J_0\) suffisamment de termes pairs. De la même façon en ajoutant des termes impairs, on peut obtenir \( \sum_{j\in J'}(-1)^i<-10\).
+\end{example}
+
+\begin{example}
+	De temps en temps, la somme peut sortir d'un espace. Si nous considérons l'espace des polynômes \( \mathopen[ 0 , 1 \mathclose]\to \eR\) muni de la norme uniforme, la somme de l'ensemble
+	\begin{equation}
+		\{ 1,-1,\pm\frac{ x^n }{ n! } \}_{n\in \eN}
+	\end{equation}
+	est zéro.
+
+	Par contre la somme de l'ensemble \( \{ 1,\frac{ x^n }{ n! } \}_{n\in \eN}\) est l'exponentielle qui n'est pas un polynôme.
+\end{example}
+
+\begin{proposition}[\cite{MonCerveau}]      \label{PROPooJLQAooAEbIvZ}
+	Soient un espace vectoriel normé \( V\), deux ensembles disjoints \( A\) et \( B\) ainsi que \( v\colon A\cup B\to V\). Si \( \sum_{k\in A}v_k\) et \( \sum_{k\in B}v_k\) sont sommables\footnote{Définition \ref{DefIkoheE}.}, alors \( (v_k)_{k\in A\cup B}\) est sommable et
+	\begin{equation}
+		\sum_{k\in A\cup B}v_k=\sum_{k\in A}v_k+\sum_{k\in B}v_k.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous nommons
+	\begin{equation}
+		\begin{aligned}[]
+			s & =\sum_{k\in A}v_k  \\
+			t & =\sum_{k\in B}v_k,
+		\end{aligned}
+	\end{equation}
+	et nous prouvons que \( s+t\) vérifie la propriété qu'il faut (définition \ref{DefIkoheE}) pour être \( \sum_{k\in A\cup B}v_k\). Soit \( \epsilon>0\). Il existe \( I_0\) fini dans \( A\) tel que \( \| \sum_{k\in I}v_k-s \|<\epsilon\) dès que \( I_0\subset I\subset A\). Il existe également \( J_0\) fini dans \( B\) tel que \( \| \sum_{k\in J}v_k-t \|<\epsilon\) dès que \( J_0\subset J\subset B\).
+
+	Nous posons \( S_0=I_0\cup J_0\). Si \( S\) est fini dans \( A\cup B\) et vérifie \( S_0\subset S\subset A\cup B\), nous notons \( S_a=S\cap A\) et \( S_b=S\cap B\). Étant donné que \( I_0\subset S_a\) et \( J_0\subset S_b\), nous avons
+	\begin{subequations}
+		\begin{align}
+			\| \sum_{k\in S}v_k-(s+t) \| & =\| \sum_{k\in S_a}v_k+\sum_{k\in S_b}v_k-(s+t) \|         & \text{cf. justif.} 	\label{SUBEQooPZSMooRNVSOt} \\
+			                             & \leq \| \sum_{k\in S_a}v_k-s \|+\| \sum_{k\in S_b}v_k-t \|                                                   \\
+			                             & \leq 2\epsilon.
+		\end{align}
+	\end{subequations}
+	Justifications.
+	\begin{itemize}
+		\item
+		      Pour \ref{SUBEQooPZSMooRNVSOt}. Vu que les sommes sont finies et que \( S_a\) et \( S_b\) sont disjoints d'union \( S\), nous pouvons couper la somme en utilisant le lemme \ref{LEMooNDBYooAGEkmw}.
+	\end{itemize}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Sommation associative}
+%----------------------------------------------------
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Somme non dénombrables}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous allons voir que les sommes non dénombrables ne sont pas intéressantes : si le nombre de valeurs non nulles parmi les \( (x_i)_{i\in I}\) est non dénombrable, alors la somme est infinie. La bonne généralisation de somme infinie dans le cas non dénombrable est l'intégrale qui viendra seulement avec la définition \ref{DefTVOooleEst} et la mesure de Lebesgue \ref{DefooYZSQooSOcyYN}.
+
+\begin{lemma}       \label{LEMooYJCVooHajEbg}
+	Si \( A\) est non dénombrable dans \( \eR\), alors il existe \( \delta>0\) tel que \( A\cap \{ | x |\geq \delta \}\) est non dénombrable.
+\end{lemma}
+
+\begin{proof}
+	Nous y allons par l'absurde, et nous supposons que \( A\) ne contient pas zéro (sinon il faut ajouter zéro aux \( A_n\) ci-dessous, et ça alourdit les notations). Nous supposons donc que les parties
+	\begin{equation}
+		A_n=A\cap\{ | x |\geq \frac{1}{ n } \}
+	\end{equation}
+	sont dénombrables. Mais
+	\begin{equation}
+		A\subset \bigcup_{n=1}^{\infty}A_n.
+	\end{equation}
+	Une union dénombrable d'ensembles dénombrables est dénombrable\footnote{Proposition \ref{PROPooENTPooSPpmhY}.}. Vu qu'un ensemble non dénombrable ne peut être inclus dans un ensemble dénombrable\footnote{Proposition \ref{PropQEPoozLqOQ}.}, nous avons une contradiction.
+\end{proof}
+
+\begin{lemma}       \label{LEMooQIMGooOUpZjk}
+	Soit un ensemble \( I\) et une «suite» \( (x_i)_{i\in I}\) avec \( x_i\geq 0\) pour tout \( i\). Si l'ensemble
+	\begin{equation}
+		F=\{ i\in I\tq x_i>0 \}
+	\end{equation}
+	est non dénombrable, alors
+	\begin{equation}
+		\sum_{i\in I}x_i=\infty.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous considérons l'ensemble des valeurs non nulles atteintes par \( x\) :
+	\begin{equation}
+		V=\{ x_i\tq i\in F \}.
+	\end{equation}
+	Il y a deux possibilités : soit \( V\) est dénombrable (ou fini), soit il est non dénombrable.
+
+	\begin{subproof}
+		\spitem[\( V\) est fini ou dénombrable]
+		Dans ce cas, l'application \( x\colon F\to \mathopen[ 0 , \infty \mathclose[\) est une application d'un ensemble indénombrable vers un ensemble dénombrable. Le lemme \ref{LEMooGTOTooFbpvzU} nous indique qu'il existe \( y\in \eR\) tel que \( x^{-1}(y)\) est indénombrable et en particulier infini. La somme \( \sum_{i\in x^{-1}(y)}x_i\) est une somme indénombrable de termes tous égaux et strictement positifs. Elle est infinie.
+
+		\spitem[\( V\) est indénombrable]
+		La partie \( V\) de \( \eR\) est non dénombrable; elle est donc sujette au lemme \ref{LEMooYJCVooHajEbg} : il existe \( \delta>0\) tel que \( W=V\cap\{ x\geq \delta \}\) est indénombrable. Vu que \( x_i\geq \delta\) pour tout \( i\) dans \( x^{-1}(W)\) nous avons
+		\begin{equation}
+			\sum_{i\in x^{-1}(W)}x_i=\infty.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%--------------------------------------------------------------------------------------------------------------------------- 
+\subsection{Sommes dénombrables}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La proposition suivante nous enseigne que les sommes infinies se comportent normalement au moins en ce qui concerne les majorations termes à termes.
+\begin{proposition}[\cite{MonCerveau}] \label{PropMpBStL}
+	Soit \( I\) un ensemble dénombrable.
+	\begin{enumerate}
+		\item       \label{ITEMooZSDSooFUqXDO}
+		      Soient \( (a_i)_{i\in I}\) et \( (b_i)_{i\in I}\), deux familles de réels positifs telles que \( a_i\leq b_i\) et telles que \( (b_i)\) est sommable\footnote{Définition \ref{DefIkoheE}.}. Alors \( (a_i)\) est sommable.
+		\item       \label{ITEMooREEYooOtklRb}
+		      Si \( (a_i)_{i\in I}\) est une famille de réels telle que \( (| a_i |)\) est sommable, alors \( (a_i)\) est sommable.
+		\item           \label{ITEMooFIGGooWADdLs}
+		      Si \( (z_i)_{i\in I}\) est une famille de complexes telle que \( (| z_i |)\) est sommable, alors \( (z_i)\) est sommable.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooZSDSooFUqXDO}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous pouvons utiliser la caractérisation \ref{PROPooOYNRooQFpBly}; dans un premier temps nous avons
+		\begin{equation}
+			\sum_{i\in I}b_i=\sup_{\text{\( J\) fini dans \( I\)}}b_i<\infty.
+		\end{equation}
+		Pour chaque \( J\) fini dans \( I\), le lemme \ref{LEMooKSVWooIFsfwm} nous assure que
+		\begin{equation}
+			\sum_{j\in J}a_j\leq \sum_{j\in J}b_j
+		\end{equation}
+		Donc le supremum existe et est plus petit pour \( (a_j)\) que pour \( (b_j)\). En utilisant à nouveau la caractérisation de la proposition \ref{PROPooOYNRooQFpBly}\ref{ITEMooAYKKooVxXp} (mais dans l'autre sens), nous concluons que \( (a_i)_{i\in I}\) est sommable.
+		\spitem[Pour \ref{ITEMooREEYooOtklRb}]
+		% -------------------------------------------------------------------------------------------- 
+		Nous posons \( I^+=\{ i\in I\tq a_i\geq 0 \}\) et \( I^-=\{ i\in I\tq a_i<0 \}\).
+
+		Vu que \( (| a_i |)_{i\in I}\) est sommable, la famille \( (a_i)_{i\in I^+}\) est sommable par le lemme \ref{LEMooSBYEooNXzqJU}. La famille \( (a_i)_{i\in I^-}\) est également sommable par le même lemme appliqué à \( (-a_i)_{i\in I^-}\) qui est sommable par le lemme \ref{LEMooHFNXooFHfwzf}. Nous posons
+		\begin{subequations}
+			\begin{align}
+				S^+ & =\sum_{i\in I^+}a_i  \\
+				S^- & =\sum_{i\in I^-}a_i,
+			\end{align}
+		\end{subequations}
+		et nous allons prouver que \( (a_i)_{i\in I}\) est sommable de somme \( S^++S^-\). Soit \( \epsilon>0\). Nous choisissons \( J_0^+\) et \( J_0^-\) tels que \( J_0^+\subset I^+\), \( J_0^-\subset I^-\) et
+		\begin{subequations}
+			\begin{align}
+				\| \sum_{k\in K^+}a_k- S^+ \|\leq \epsilon \\
+				\| \sum_{k\in K^-}a_k- S^- \|\leq \epsilon
+			\end{align}
+		\end{subequations}
+		pour tout \( K^+\) et \( K^-\) vérifiant \( J_0^+\subset K^+\subset I^+\) et \( J_0^-\subset K^-\subset I^-\).
+
+		Nous posons \( J_0=J_0^+\cup J_0^-\) (qui est une union disjointe). Pour tout \( K\) fini dans \( I\) contenant \( J_0\), nous avons
+		\begin{subequations}
+			\begin{align}
+				\| \sum_{k\in K}a_k-(S^++S^-) \| & =\| \sum_{k\in K\cap I^+}a_k+\sum_{k\in K\cap I^-}a_k-S^+-S^- \|          \\
+				                                 & \leq\| \sum_{k\in K\cap I^+}a_k-S^+ \|+\| \sum_{k\in K\cap I^-}a_k-S^- \| \\
+				                                 & \leq 2\epsilon
+			\end{align}
+		\end{subequations}
+		parce que \( J_0^+\subset K\cap I^+\) et \( J_0^-\subset K\cap I^-\).
+
+		\spitem[Pour \ref{ITEMooFIGGooWADdLs}]
+		% -------------------------------------------------------------------------------------------- 
+		Similaire à \ref{ITEMooREEYooOtklRb}, mais en coupant en $4$ morceaux au lieu de \( 2\) : les parties réelles et imaginaires en plus des parties positives et négatives.
+	\end{subproof}
+\end{proof}
+
+\begin{example}     \label{EXooULLXooTDFYqf}
+	Au sens de la définition~\ref{DefIkoheE} la famille
+	\begin{equation}
+		\frac{ (-1)^n }{ n }
+	\end{equation}
+	n'est pas sommable. En effet la somme des termes pairs est \( \infty\) alors que la somme des termes impairs est \( -\infty\). Quel que soit \( J_0\subset \eN\), nous pouvons concocter, en ajoutant des termes pairs, un \( J\) avec \( J_0\subset J\) tel que \( \sum_{j\in J}(-1)^j/j\) soit arbitrairement grand. En ajoutant des termes négatifs, nous pouvons également rendre \( \sum_{j\in J}(-1)^j/j\) arbitrairement petit.
+\end{example}
+
+\begin{proposition} \label{PropVQCooYiWTs}
+	Si \( (a_{ij})\) est une famille de nombres positifs indexés par \( \eN\times \eN\) alors
+	\begin{equation}
+		\sum_{(i,j)\in \eN^2}a_{ij}=\sum_{i=1}^{\infty}\Big( \sum_{j=1}^{\infty}a_{ij} \Big).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous allons utiliser la proposition \ref{PROPooOYNRooQFpBly} pour traiter la somme de gauche. Nous considérons \( J_{m,n}=\{ 0,\ldots, m \}\times \{ 0,\ldots, n \}\) et nous avons pour tout \( m\) et \( n\) :
+	\begin{equation}
+		\sum_{(i,j)\in \eN^2}a_{ij}\geq \sum_{(i,j)\in J_{m,n}}a_{ij}=\sum_{i=0}^m\Big( \sum_{j=0}^na_{ij} \Big).
+	\end{equation}
+	Si nous fixons \( m\) et que nous prenons la limite \( n\to \infty\) (qui commute avec la somme finie sur \( i\)) nous trouvons
+	\begin{equation}
+		\sum_{(i,j)\in \eN^2}a_{ij}\geq \sum_{i=0}^m\Big( \sum_{j=0}^{\infty}a_{ij} \Big).
+	\end{equation}
+	Cette inégalité étant valable pour tout \( m\), elle est encore valable à la limite \( m\to \infty\) et donc
+	\begin{equation}
+		\sum_{(i,j)\in \eN^2}a_{ij}\geq \sum_{i=0}^{\infty}\Big( \sum_{j=0}^{\infty}a_{ij} \Big).
+	\end{equation}
+
+	Pour l'inégalité inverse, il faut remarquer que si \( J\) est fini dans \( \eN^2\), il est forcément contenu dans \( J_{m,n}\) pour \( m\) et \( n\) assez grands. Alors
+	\begin{equation}
+		\sum_{(i,j)\in J}a_{ij}\leq \sum_{(i,j)\in J_{m,n}}a_{ij}=\sum_{i=0}^m\sum_{j=0}^na_{ij}\leq \sum_{i=0}^{\infty}\Big( \sum_{j=0}^{\infty}a_{ij} \Big).
+	\end{equation}
+	Cette inégalité étant valable pour tout ensemble fini \( J\subset \eN^2\), elle reste valable pour le supremum.
+\end{proof}
+
+La définition générale de la somme~\ref{DefIkoheE} est compatible avec la définition usuelle dans les cas où cette dernière s'applique.
+\begin{proposition}[commutative sommabilité]\label{PropoWHdjw}
+	Soit \( I\) un ensemble dénombrable et une bijection \( \tau\colon \eN\to I\). Soit \( (a_i)_{i\in I}\) une famille dans un espace vectoriel normé.  Si \( \sum_{i\in I}a_i\) existe, alors il est donné par
+	\begin{equation}
+		\sum_{i\in I}a_i=\lim_{N\to \infty} \sum_{k=0}^Na_{\tau(k)}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous posons \( a=\sum_{i\in I}a_i\). Soit \( \epsilon>0\) et \( J_0\) comme dans la définition. Nous choisissons
+	\begin{equation}
+		N>\max_{j\in J_0}\{ \tau^{-1}(j) \}.
+	\end{equation}
+	En tant que sommes sur des ensembles finis, nous avons l'égalité
+	\begin{equation}
+		\sum_{k=0}^Na_{\tau(k)}=\sum_{j\in J}a_j
+	\end{equation}
+	où \( J\) est un sous-ensemble de \( I\) contenant \( J_0\). Soit \( J\) fini dans \( I\) tel que \( J_0\subset J\). Nous avons alors
+	\begin{equation}
+		\| \sum_{k=0}^Na_{\tau(k)}-a \|=\| \sum_{j\in J}a_j-a \|<\epsilon.
+	\end{equation}
+	Nous avons prouvé que pour tout \( \epsilon\), il existe \( N\) tel que \( n>N\) implique \( \| \sum_{k=0}^na_{\tau(k)}-a\| <\epsilon\).
+\end{proof}
+
+La réciproque n'est pas vraie. Même en supposant que \( \lim_{N\to \infty} \sum_{n=0}^Na_n\) existe, il n'est pas forcé que \( \sum_{n\in\eN}a_n\) existe. Cela est une conséquence de l'exemple \ref{EXooULLXooTDFYqf}.
+
+
+\begin{proposition}[\cite{MonCerveau}]     \label{PROPooWLEDooJogXpQ}
+	Soit un espace vectoriel normé \( E\) et une famille sommable\footnote{Définition~\ref{DefIkoheE}.} \( \{ v_i \}_{i\in I}\) d'éléments de \( E\). Soit \( f\colon E\to \eC\) une application sur laquelle nous supposons
+	\begin{enumerate}
+		\item
+		      \( f\) est linéaire et continue;
+		\item
+		      la partie \( \{ f(v_i)_{i\in I} \} \) est sommable.
+	\end{enumerate}
+	Alors nous pouvons permuter la somme et \( f\) :
+	\begin{equation}        \label{EQooONHXooKqIEbY}
+		f\big( \sum_{i\in I}v_i \big)=\sum_{i\in I}f(v_i).
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Soit \( \epsilon>0\); vu que les familles \( \{ v_i \}_{i\in I}\) et \( \{ f(v_i) \}_{i\in I}\) sont sommables, nous pouvons considérer les parties finies \( J_1\) et \( J_2\) de \( I\) telles que
+	\begin{equation}
+		\big\| \sum_{j\in J_1}v_j-\sum_{i\in I}v_i \big\|\leq \epsilon
+	\end{equation}
+	et
+	\begin{equation}
+		\big\| \sum_{j\in J_2}f(v_j)-\sum_{i\in I}f(v_i) \big\|\leq \epsilon
+	\end{equation}
+	Ensuite nous posons \( J=J_1\cup J_2\). Avec cela nous calculons un peu avec les majorations usuelles :
+	\begin{equation}
+		\| f(\sum_{i\in I}v_i) -\sum_{i\in I}f(v_i) \|\leq \| f(\sum_{i\in I}v_i)- f(\sum_{j\in J}v_j) \|+  \| f(\sum_{j\in J}v_j)-\sum_{i\in I}f(v_i) \|.
+	\end{equation}
+	Le second terme est majoré par \( \epsilon\), tandis que le premier, en utilisant la linéarité de \( f\) possède la majoration
+	\begin{equation}
+		\| f(\sum_{i\in I}v_i)- f(\sum_{j\in J}v_j) \|=\| f(\sum_{i\in I}v_i-\sum_{j\in J}v_j) \|\leq \| f \| \| \sum_{i\in I}v_i- \sum_{j\in J}v_j\|\leq \epsilon\| f \|.
+	\end{equation}
+	Donc pour tout \( \epsilon>0\) nous avons
+	\begin{equation}
+		\| f(\sum_{i\in I}v_i) -\sum_{i\in I}f(v_i) \|\leq \epsilon(1+\| f \|).
+	\end{equation}
+	D'où l'égalité \eqref{EQooONHXooKqIEbY}.
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Liens entre différents types de sommabilité}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+Une grande partie du jeu est maintenant de trouver des liens entre \( \sum_{k\in \eN}a_k\) (définition \ref{DefIkoheE}), \( \lim_{N\to \infty}\sum_{k=0}^Na_k\) dans les cas où la suite \( (a_n)\) est sommable absolument sommable, normalement sommable ou uniformément sommable.
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooYLCRooOXsOkb}
+	Soit un espace topologique \( X\) et un espace vectoriel normé \( V\). Soit une suite de fonctions \( (f_n \colon X\to V )_{n\in \eZ}\).
+	\begin{enumerate}
+		\item		\label{ITEMooKBVSooPeUnSa}
+		      La suite \( (f_n)_{n\in \eZ}\) est uniformément sommable si et seulement si la suite des sommes partielles est uniformément convergente (définition \ref{DEFooOHRYooWUsYTi}).
+		\item		\label{ITEMooAASMooIRSIgr}
+		      Si la suite \( (f_n)_{n\in\eZ}\) est uniformément sommable vers \( F\), alors pour tout \( x\in X\), nous avons
+		      \begin{equation}
+			      \sum_{n=-\infty}^{\infty}f_n(x)=F(x),
+		      \end{equation}
+		      c'est-à-dire que nous avons convergence ponctuelle de la suite des sommes partielles.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Pour \ref{ITEMooKBVSooPeUnSa}, nous considérons la suite des sommes partielles \( s_n=\sum_{k=-n}^nf_n\). La condition d'uniforme sommabilité de la suite est \eqref{EqLNCJooVCTiIw} : \( \lim_{N\to \infty}\| s_n-F \|_{\infty}=0\). La condition d'uniforme convergence des sommes partielles vers \( F\) est \eqref{EQooGPPEooNKOtlx}; c'est la même.
+
+	Pour \ref{ITEMooAASMooIRSIgr}, nous supposons que \( (f_n)_{n\in \eZ}\) est uniformément sommable vers \( F\). En ce qui concerne la convergence ponctuelle, soit \( x\in X\). Nous avons
+	\begin{equation}
+		\lim_{N\to \infty}\| s_n(x)-F(x) \|\leq \lim_{N\to \infty}\| s_n-F \|_{\infty}=0.
+	\end{equation}
+\end{proof}
+
+
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+\subsubsection{Critère de Cauchy uniforme}
+%///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Grosso modo, cela dit que si qu'une suite de Cauchy pour la norme uniforme est une suite uniformément convergente. Le fait que la suite converge fait partie du résultat et n'est pas une hypothèse. Ce critère sera utilisé pour montrer que \( \big( C(K),\| . \|_{\infty} \big)\) est complet, proposition~\ref{PropSYMEZGU}.
+
+\begin{proposition}[Critère de Cauchy uniforme\cite{LCbyNWQ}]   \label{PropNTEynwq}
+	Soit \( X\) un espace topologique et \( (Y,d)\) un espace topologique complet. La suite de fonctions \( f_n\colon X\to Y\) converge uniformément sur \( A\) si et seulement si pour tout \( \epsilon>0\) il existe \( N\in \eN\) tel que si \( k,l>N\) alors
+	\begin{equation}
+		d\big( f_k(x),f_l(x) \big)\leq \epsilon
+	\end{equation}
+	pour tout \( x\in A\).
+\end{proposition}
+\index{Cauchy!critère!uniforme}
+\index{critère!Cauchy!uniforme}
+
+\begin{proof}
+	Si \( f_n\stackrel{unif}{\longrightarrow}f\) alors le critère est satisfait; c'est dans l'autre sens que la preuve est intéressante.
+
+	Soit donc une suite de fonctions satisfaisant au critère et montrons qu'elle converge uniformément. Pour tout \( x\in X\) la suite \( n\mapsto f_n(x)\) est de Cauchy dans l'espace complet \( Y\); nous avons donc convergence ponctuelle \( f_n\to f\). Nous devons prouver que cette convergence est uniforme. Soit \( \epsilon>0\) et \( N\in \eN\) tel que si \( k,l>N\) alors
+	\begin{equation}
+		d\big( f_k(x),f_l(x) \big)\leq \epsilon
+	\end{equation}
+	pour tout \( x\in X\). Si nous nous fixons un tel \( k\) et un \( x\in A\) nous considérons l'inégalité
+	\begin{equation}
+		d\big( f_k(x),f_l(x) \big)\leq \epsilon
+	\end{equation}
+	qui est vraie pour tout \( l\). En passant à la limite \( l\to\infty\) (limite qui commute avec la fonction distance par définition de la topologie) nous avons
+	\begin{equation}
+		d\big( f_k(x),f(x) \big)\leq \epsilon.
+	\end{equation}
+	Cette inégalité étant valable pour tout \( x\in X\), cela signifie que \( f_n\stackrel{unif}{\longrightarrow}f\).
+\end{proof}
+
+
+
+\begin{proposition}[Critère de Cauchy uniforme pour les séries\cite{BIBooPCEDooMHkbnu}]	\label{PROPooEBYWooOXUwry}
+	Soit un ensemble \( X\) et un espace vectoriel normé \( V\). Une suite \( (f_n)_{n\in \eN}\) d'applications \(f_n \colon X\to V  \) est uniformément sommable sur \( X\) si et seulement si pour tout \( \epsilon>0\), il existe un \( N\in \eN\) tel que si \( p>q\geq N\), alors pour tout \( x\in X\) nous avon
+	\begin{equation}
+		\big| \sum_{k=q+1}^pf_k(x) \big|<\epsilon.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous considérons les sommes partielles \( s_n=\sum_{k=0}^nf_k\). Nous avons équivalence entre :
+	\begin{enumerate}
+		\item
+		      La sa suite \( (f_n)_{n\in \eN}\) est uniformément sommable
+		\item
+		      la suite des sommes partielles converge uniformément sur \( X\)
+		\item
+		      la suite des sommes partielles vérifie le critère de Cauchy uniforme pour les suites (proposition \ref{PropNTEynwq})
+		\item
+		      pour tout \( \epsilon>0\), il existe \( N\in \eN\) tel que si \( p>q\geq N\), nous avons \( d\big( s_p(x),s_q(x) \big)<\epsilon\).
+	\end{enumerate}
+	Dans le cas d'un espace normé, la dernière condition signifie
+	\begin{equation}
+		d\big( s_p(x)-s_q(x) \big)=\| s_p(x)-s_q(x) \|=\| \sum_{k=q+1}^pf_k(x) \|.
+	\end{equation}
+\end{proof}
+
+
+\begin{lemma}       \label{LEMooJZTBooIopLok}
+	Soient un espace topologique \( X\), un espace vectoriel normé, et une suite de fonctions \( f_n\colon X\to V\). Si la suite \( (f_n)_{n\in \eN}\) est normalement sommable\footnote{Définition \ref{DefVBrJUxo}}, alors elle est uniformément sommable.
+\end{lemma}
+
+\begin{proof}
+	Nous allons montrer que la suite \( (f_n)_{n\in \eN}\) vérifie le critère de la proposition \ref{PROPooEBYWooOXUwry}. Soit \( \epsilon>0\). La normale sommabilité de \( (f_n)_{n\in \eN} \) dit que la suite des sommes partielles \( t_n=\sum_{k=0}^n\| f_k \|_{\infty}\) converge dans \( \eR\). Étant donné le théorème \ref{THOooNULFooYUqQYo}, nous savons que \( (\| f_n \|_{\infty})_{n\in \eN}\) est de Cauchy. Il existe donc \( N\in \eN\) tel que si \( p>q>N\), alors \( | t_p-t_q |<\epsilon\), c'est-à-dire
+	\begin{equation}
+		\sum_{k=q+1}^p\| f_k \|_{\infty}<\epsilon.
+	\end{equation}
+	Avec ces mêmes \( N,p,q\) nous avons
+	\begin{equation}
+		| \sum_{k=q+1}^pf_k(x) |\leq\sum_{k=q+1}^p| f_k(x) |\leq\sum_{k=q+1}^p\| f_k \|_{\infty}<\epsilon.
+	\end{equation}
+\end{proof}
+
+\begin{proposition} \label{PropAKCusNM}
+	Une série absolument convergente dans un espace de Banach\footnote{Un espace vectoriel normé complet. Typiquement \( \eR\).} y converge au sens usuel.
+\end{proposition}
+
+\begin{proof}
+	Soit \( (a_k)\) une suite dans un espace vectoriel normé complet dont la série converge absolument. Nous allons montrer que la suite des sommes partielles est de Cauchy. Cela suffira à montrer sa convergence par hypothèse de complétude.
+
+	Nous avons
+	\begin{equation}
+		\| s_p-s_l \|=\| \sum_{k=l+1}^{p}a_k\|  \leq\sum_{k=l+1}^p\| a_k \|=\bar s_p-\bar s_l
+	\end{equation}
+	où \( \bar s_n=\sum_{k=0}^n \| a_k \|\) est la suite des sommes partielles de la série des normes (qui converge). Vu que la suite \( (\bar s_n)\) converge dans \( \eR\), elle y est de Cauchy par la proposition~\ref{PROPooTFVOooFoSHPg}. Donc il existe un \( N\) tel que \( p,l>N\) implique
+	\begin{equation}
+		\| s_p-s_l \|=\bar s_p-\bar s_l\leq \epsilon.
+	\end{equation}
+	Cela signifie que \( (s_n)\) est une suite de Cauchy et donc convergente.
+\end{proof}
+
+\begin{example}[Si l'espace n'est pas complet\cite{MonCerveau}]
+	Dans un espace qui n'est pas complet, il est possible de construire un série qui converge absolument sans converger au sens usuel.
+
+	Nous allons trouver dans \( \eQ\) une série qui converge simplement vers \( \sqrt{ 2 }\) (et donc ne converge pas dans \( \eQ\)) mais absolument vers \( 4\).
+
+	La base est que si \( A,B\in \eQ\) avec \( A<B\) il est possible de résoudre
+	\begin{subequations}
+		\begin{numcases}{}
+			r_1+r_2=A\\
+			| r_1 |+| r_2 |=B
+		\end{numcases}
+	\end{subequations}
+	pour \( r_1,r_2\in \eQ\). Ce n'est pas très compliqué : la solution est \( r_1=(A+B)/2\) et \( r_2=(A-B)/2\).
+
+	Nous considérons l'espace \( \eQ\) qui n'est pas complet dans \( \eR\). Soit une série \( (a_k)\) dans \( \eQ\) qui converge vers \( \sqrt{ 2 }\) (convergence dans \( \eR\)) nous nommons \( (s_k)\) la suite des ses sommes partielles. Soit aussi la suite \( (b_k)\) qui converge vers \( 4\) (zéro serait encore plus facile mais bon, juste pour faire un peu de généralité).
+
+	Nous supposons que \( a_k<b_k\) pour tout \( k\) et que les deux suites sont constituées de rationnels positifs. Nous nommons \( (s_k)\) et \( (s'_k)\) les sommes partielles. En particulier \( s_n<s'_n\) et ce sont des suites croissantes.
+
+	Nous savons comment trouver \( r_1,r_2\in \eQ\) tels que \( r_1+r_2=s_1\) et \( | r_1 |+| r_2 |=s'_1\). Par récurrence, si nous savons \( r_1,\ldots, r_k\) tels que
+	\begin{subequations}
+		\begin{numcases}{}
+			r_1+\ldots +r_k=s_n\\
+			|r_1|+\ldots +|r_k|=s'_n
+		\end{numcases}
+	\end{subequations}
+	(avec, soit dit en passant \( k=2n\)), alors nous pouvons trouver des rationnels \( r_{k+1}\), \( r_{k+2}\) tels que
+	\begin{subequations}
+		\begin{numcases}{}
+			r_1+\ldots +r_k+r_{k+1}+r_{k+2}=s_{n+1}\\
+			|r_1|+\ldots +|r_k|+|r_{k+1}|+|r_{k+2}|=s'_{n+1},
+		\end{numcases}
+	\end{subequations}
+	en effet il s'agit de résoudre
+	\begin{subequations}
+		\begin{numcases}{}
+			r_{k+1}+r_{k+2}=s_{n+1}-r_1-\ldots-r_k=s_{n+1}-s_n>0\\
+			| r_{k+1} |+| r_{k+2} |=s'_{n+1}-| r_1 | -\ldots -| r_k |=s'_{n+1}-s'_n>0.
+		\end{numcases}
+	\end{subequations}
+	Cela se résout comme ci-dessus. Au final nous pouvons construire une suite \( (r_k)\) dans \( \eQ\) telle que
+	\begin{equation}
+		\sum_{k=0}^{2n}r_k=s_n
+	\end{equation}
+	et
+	\begin{equation}
+		\sum_{k=0}^{2n}| r_k |=s'_n.
+	\end{equation}
+\end{example}
+
+\begin{remark}
+	Nous savons que sur les espaces vectoriels de dimension finie toutes les normes sont équivalentes (théorème~\ref{DefEquivNorm}). La notion de convergence de série ne dépend alors pas du choix de la norme. Il n'en est pas de même sur les espaces de dimension infinie. Une série peut converger pour une norme mais pas pour une autre.
+\end{remark}
+
+\begin{lemma}[Critère de Cauchy\cite{MonCerveau}]	\label{LEMooTXMGooQyPwGi}
+	Soit une suite \( (a_n)_{n\in \eZ}\) avec \( a_n\geq 0\) pour tout \( n\). Si \( \sum_{n=-\infty}^{\infty}a_n\) converge, alors pour tout \( \epsilon>0\), il existe \( N\in \eN\) tels que si \( p>q>N\), alors
+	\begin{equation}
+		\sum_{p\leq | k |<q}a_k<\epsilon.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous posons \( S_n=\sum_{k=-n}^na_k\). L'hypothèse est que suite \( (S_n)_{n\in \eN}\) est convergente. Donc elle est de Cauchy par le théorème \ref{THOooNULFooYUqQYo}\ref{ITEMooUUFCooIVtGgz}. Il existe \( N\in \eN\) tel que si \( p>q>N\) alors \( | S_p-S_q |<\epsilon\). Donc notre cas, ça donne
+	\begin{equation}
+		| \sum_{p\leq | k |<q}a_k |<\epsilon,
+	\end{equation}
+	et comme les \( a_k\) sont positifs, nous pouvons supprimer la valeur absolue.
+\end{proof}
+
+
+
+\begin{proposition}[Test M de Weierstrass\cite{MonCerveau, BIBooHPNXooPDTWvW}]	\label{PROPooAMKFooFnjOwI}
+	Soit un ensemble \( X\) et un espace vectoriel normé \( V\). Nous considérons une suite de fonctions \(f_n \colon X\to V  \) indexée par \( n\in \eZ\). Nous supposons qu'il existe des \( M_n\in \eR\) tels que
+	\begin{enumerate}
+		\item		\label{ITEMooTKDBooXiCqaH}
+		      \( \| f_n(x) \|\leq M_n\) pour tout \( x\in X\),
+		\item		\label{ITEMooVQGCooIuznHD}
+		      La série \( \sum_{n=-\infty}^{\infty}M_n\) converge.
+		\item
+		      \( \lim_{n\to \infty}\sum_{k=-n}^nf_k(x)\) converge vers un nombre que nous notons \( F(x)\).
+	\end{enumerate}
+	Alors \( (f_n)_{n\in \eZ}\) est uniformément sommable vers \( F\) et absolument sommable.
+\end{proposition}
+
+\begin{proof}
+	Nous considérons les fonctions \( S_n=\sum_{k=-n}^nf_k\). Par hypothèse \( \lim_{n\to\infty}S_n(x)=F(x)\) pour tout \( x\in X\).
+	\begin{subproof}
+		\spitem[Uniformément sommable]
+		%-----------------------------------------------------------
+		Nous vérifions la définition \ref{DEFooPABSooPMXMOV} :
+		\begin{subequations}
+			\begin{align}
+				\lim_{n\to \infty}\| S_n-F \|_{\infty} & =\lim_{n\to \infty}\sup_{x\in X}\| S_n(x)-F(x) \|                                                        \\
+				                                       & =\lim_{n\to \infty}\sup_{x\in X}\| S_n(x)-\lim_{m\to \infty}S_m(x) \|                                    \\
+				                                       & =\lim_{n\to \infty}\sup_{x\in X}\lim_{m\to \infty}\| S_n(x)-S_m(x) \| & \text{\( \| . \|\) est continue} \\
+				                                       & \leq\lim_{n\to \infty}\sup_{x\in X}\lim_{m\to \infty}\epsilon                                            \\
+				                                       & =\epsilon.
+			\end{align}
+		\end{subequations}
+		\spitem[Absolument sommable]
+		%-----------------------------------------------------------
+		Nous posons \( g_n(x)=\| f_n(x) \|\) qui est une suite d'applications à valeurs dans \( \eR\). Cette suite vérifie manifestement les conditions pour que le point \ref{ITEMooTKDBooXiCqaH} soit valide. Donc \( (g_n)_{n\in \eZ}\) est uniformément sommable et nous notons \(G \colon X\to \eR  \) sa somme. En particulier
+		\begin{equation}
+			\sum_{n=-\infty}^{\infty}g_n(x)=G(x).
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+\begin{proposition}[Test M de Weierstrass\cite{MonCerveau, BIBooHPNXooPDTWvW}]	\label{PROPooGFBBooNpczQo}
+	Soit un ensemble \( X\) et un espace de Banach \( V\). Nous considérons une suite de fonctions \(f_n \colon X\to V  \) indexée par \( n\in \eZ\). Nous supposons qu'il existe des \( M_n\in \eR\) tels que
+	\begin{enumerate}
+		\item
+		      \( \| f_n(x) \|\leq M_n\) pour tout \( x\in X\),
+		\item
+		      La série \( \sum_{n=-\infty}^{\infty}M_n\) converge.
+	\end{enumerate}
+	Alors \( (f_n)_{n\in \eZ}\) est uniformément et absolument sommable.
+\end{proposition}
+
+\begin{proof}
+	Nous posons \( S_n(x)=\sum_{k=-n}^nf_k(x)\). Soit \( \epsilon>0\). La série \( \sum_{n=-\infty}^{\infty}M_n\) converge. Le critère de Cauchy \ref{LEMooTXMGooQyPwGi} nous dit qu'il existe \( N\in \eN\) tels que si \( p>q>N\) alors \( \sum_{p\leq | k |<q}M_k<\epsilon\). Pour de tels \( N,p,q\) nous avons
+	\begin{equation}
+		| S_p(x)-S_q(x) |=| \sum_{p\leq| k |<q}f_k(x) |\leq \sum_{p\leq | k |<q}| f_k(x) |\leq \sum_{p\leq | k |<q}M_k<\epsilon.
+	\end{equation}
+	Donc (pour chaque \( x\) séparément) la suite \( \big( S_k(x) \big)_{k\in \eN}\) est une suite de Cauchy dans \( V\). Étant donné que \( V\) est complet, nous avons une limite que nous nommons \( F(x)\).
+
+	Nous sommes maintenant dans les hypothèses de la proposition \ref{PROPooAMKFooFnjOwI}.
+\end{proof}
+
+
+\begin{proposition}[Sommabilité absolue et sommabilité\cite{MonCerveau}]	\label{PROPooZMLAooCUEqQK}
+	Soit \( (a_n)_{n\in \eZ}\) une suite dans un espace vectoriel normé \( V\). Nous supposons que
+	\begin{enumerate}
+		\item
+		      \( (a_n)_{n\in \eN}\) est absolument sommable,
+		\item
+		      nous avons la convergence simple\footnote{Si \( V\) est de Banach, cette condition est vérifiée par la proposition \ref{PropAKCusNM}.} \( \lim_{n\to\infty}\sum_{k=-n}^na_k=a\).
+	\end{enumerate}
+	Alors
+	\begin{equation}
+		\sum_{k=-\infty}^{\infty}a_k=\sum_{k\in \eZ}a_k=a
+	\end{equation}
+	où \( \sum_{k\in \eZ}\) est la somme de la définition \ref{DefIkoheE}.
+\end{proposition}
+
+\begin{proof}
+	Nous prouvons que \( \sum_{k\in \eZ}a_k=a\) en suivant la définition \ref{DefIkoheE}. Soit \( \epsilon>0\).
+
+	Soit \( N_1>0\) tel que si \( p<q<N_1\) nous avons \( \sum_{p\leq | k |<q}\| a_k \|<\epsilon\). Soit \( N_2>0\) tel que \( \| \sum_{k=-n}^{n}a_k-a \|<\epsilon\) pour tout \( n\geq N_2\). Nous considérons \( N>\max\{ N_1,N_2 \}\), et \( J_0=\{ -N,\ldots,N \}\).
+
+	Soit une partie finie \( K\) de \( \eZ\) telle que \( J_0\subset K\). Nous allons montrer que \( \| \sum_{j\in K}a_j-a \|<\epsilon\).
+
+	Pour cela, nous considérons la partie \( K_0=\{ -\max(| K |),\max(| K |) \}\), c'est-à-dire que \( K_0\) est symétrique et «rebouche les trous» laissés par \( K\) et nous calculons
+	\begin{equation}
+		\| \sum_{j\in K}a_j-a \|  \leq \| \sum_{j\in K}a_j-\sum_{j\in K_0}a_j \|+\| \sum_{j\in K_0}a_j-a \|.
+	\end{equation}
+	Pour le second terme, vu que \( M>N>N_2\) nous avons
+	\begin{equation}
+		\| \sum_{j\in K_0}a_j-a \|=\| \sum_{j=-M}^Ma_j-a \|<\epsilon.
+	\end{equation}
+	En ce qui concerne le premier terme
+	\begin{subequations}
+		\begin{align}
+			\| \sum_{j\in K}a_j-\sum_{j\in K_0}a_j \| & =\| \sum_{j\in K_0\setminus K}a_j \|               \\
+			                                          & \leq\sum_{j\in K_0\setminus K}\| a_j \|            \\
+			                                          & \leq \sum_{j=-M}^-N\| a_j \|+\sum_{j=N}^M\| a_j \| \\
+			                                          & =\sum_{N\leq | k |\leq M}\| a_j \|                 \\
+			                                          & <\epsilon.
+		\end{align}
+	\end{subequations}
+
+	Au final nous avons prouvé que si \( N\) est suffisamment grand, en posant \( J_0=\{ -N,\ldots,N \}\), et en prenant n'importe que \( K\) fini dans \( \eZ\) tel que \( J_0\subset K\), nous avons \( \| \sum_{j\in K}a_j-a \|<2\epsilon\).
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Séries entières}
+%----------------------------------------------------
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooKMCIooItDMRo}
+	Soit un groupe additif \( (G,+)\). Si \(a \colon \eN\times \eN\to G  \) alors
+	\begin{equation}
+		\sum_{n=0}^N\sum_{k=0}^na(n,k)=\sum_{k=0}^N\sum_{n=k}^Na(n,k)
+	\end{equation}
+	et
+	\begin{equation}
+		\sum_{n=0}^{\infty}\sum_{k=0}^na(n,k)=\sum_{k=0}^{\infty}\sum_{n=k}^{\infty}a(n,k)
+	\end{equation}
+	%TODOooVHGBooNPvvcb. Prouver ça.
+\end{lemma}
+
+
+\begin{proposition}[Somme de séries entières]     \label{PROPooUEBWooUQBQvP}
+	À propos de sommes de séries.
+	\begin{enumerate}
+		\item		\label{ITEMooDHVSooBkVWOP}
+		      Si les séries \( \sum_{k=0}^{\infty}a_k\) et \( \sum_{k=0}^{\infty}b_k\) convergent, alors \( \sum_{k=0}^{\infty}(a_k+b_k)\) converge et
+		      \begin{equation}
+			      \sum_k (a_k+b_k) = \sum_k a_k + \sum_k b_k.
+		      \end{equation}
+		\item	\label{ITEMooJUZTooUzSKxe}
+		      Si \( \sum_{k=0}^{\infty}z^k\) converge et \( \sum_{k=0}^{\infty}z^k\) diverge, alors \( \sum_{k}(a_k+b_k)z^k\) diverge.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Supposons que \( \sum_ka_k\) et \( \sum_kb_k\) convergent tous deux. Alors nous avons pour tout \( N\) :
+	\begin{equation}
+		\sum_{k=0}^N(a_k+b_k)=\sum_{k=0}^Na_k+\sum_{k=0}^Nb_k.
+	\end{equation}
+	Mais si deux limites existent alors la somme commute avec la limite. C'est le cas pour la limite \( N\to \infty\), donc
+	\begin{equation}
+		\lim_{N\to \infty} \sum_{k=1}^{N}(a_k+b_k)=\lim_{N\to \infty} \sum_{k=0}^{N}a_k+\lim_{N\to \infty} \sum_{k=0}^{N}b_k=\sum_{k=0}^{\infty}a_k+\sum_{k=0}^{\infty}b_k.
+	\end{equation}
+	Cela prouve le point \ref{ITEMooDHVSooBkVWOP}. En ce qui concerne le point \ref{ITEMooJUZTooUzSKxe}, si la série entière \( \sum_k(a_k+b_k)z^k\) convergeait, la somme \( \sum_ka_kz^k-\sum_k(a_k+b_k)z^k\) convergerait, et elle vaudrait \( -\sum_kb_kz^k\).
+\end{proof}
+
+\begin{probleme}
+	Je n'ai pas vérifié la proposition \ref{PROPooQCOBooAMnljj}. Écrivez-moi pour m'envoyer une preuve, ou pour me dire qu'elle n'est pas correcte. En tout cas ne la prenez pas comme vraie trop facilement.
+\end{probleme}
+
+\begin{proposition}		\label{PROPooQCOBooAMnljj}
+	Si \( a_n\geq 0\) et \( b_n\geq 0\) alors
+	\begin{equation}
+		\sum_{n=0}^{\infty}a_n+\sum_{n=0}^{\infty}b_n=\sum_{n=0}^{\infty}(a_n+b_n).
+	\end{equation}
+	Ici les sommes vallent éventuellement \( \infty\).
+	%TODOooLURSooWvaqxz. Prouver ça.
+\end{proposition}
+
+%-------------------------------------------------------
+\subsection{Somme téléscopique}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQLOUooTDWfFF}
+	Soit un espace vectoriel normé \( E\). Soit une série convergente \( \sum_{k=0}^{\infty}a_k\). Alors
+	\begin{equation}
+		\sum_{k=0}^{\infty}(a_k-a_{k+1})=a_0.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Pour chaque \( N\) nous avons \( \sum_{k=0}^N(a_k-a_{k+1})=a_0-a_{N+1}\). Donc
+	\begin{equation}
+		\sum_{k=0}^{\infty}(a_k-a_{k+1})=\lim_{N\to \infty}(a_0-a_{N+1}).
+	\end{equation}
+	Vu que le terme général tend vers zéro (proposition \ref{PROPooYDFUooTGnYQg}), nous avons le résultat annoncé.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Distributivité}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous allons parler d'exponentielle de matrice. Avant cela, quelques propriétés qui sont valables sur des algèbres normées. Le principal exemple que nous avons en tête est \( \eA=\eM(n,\eC)\).
+
+\begin{proposition}[Distributivité de la somme infinie\cite{MonCerveau}]      \label{PROPooMZZQooEhQsgQ}
+	Soit une algèbre normée \( \eA\). Soient une suite d'éléments \( A_k\in \eA\) et un élément \( B\).
+	\begin{enumerate}
+		\item		\label{ITEMooVWMQooLqerEc}
+		      Si la somme \( \sum_{k=0}^{\infty}A_k\) converge, alors
+		      \begin{equation}		\label{EQooPOFWooGNWIUF}
+			      B\sum_kA_k=\sum_k(BA_k).
+		      \end{equation}
+		\item		\label{ITEMooRLRYooQodIkq}
+		      Si la somme \( \sum_kA_k\) ne converge pas, alors la somme \( \sum_k(BA_k)\) ne converge pas non plus.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	Soit \( N\in \eN\). Nous avons:
+	\begin{subequations}
+		\begin{align}
+			\| \sum_{k=0}^NBA_k-B\sum_{k=0}^{\infty}A_k \| & =\| B\sum_{k=N+1}^{\infty}A_k \|            \label{SUBEQooDTNAooWpXOKP} \\
+			                                               & \leq \| B \|\| \sum_{k=N+1}^{\infty}A_k \|  \label{SUBEQooJPSJooAqXtOJ}
+		\end{align}
+	\end{subequations}
+	Justifications:
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooDTNAooWpXOKP}. Linéarité du produit matriciel.
+		\item Pour \eqref{SUBEQooJPSJooAqXtOJ}. La norme est une norme d'algèbre\footnote{Définition \ref{DefJWRWQue}. Pour rappel, la norme opérateur en est une par le lemme \ref{LEMooFITMooBBBWGI}.}.
+	\end{itemize}
+	À droite, la limite \( N\to \infty\) donne zéro car \( \| B \|\) est un simple nombre, et \( \| \sum_{k=N+1}^{\infty}A_k \|\) est une queue de suite convergente par hypothèse.
+
+	Nous avons donc bien convergence
+	\begin{equation}
+		\lim_{N\to \infty}\sum_{k=0}^{N}BA_k=B\sum_{k=0}^{\infty}A_k.
+	\end{equation}
+
+	En ce qui concerne le point \ref{ITEMooRLRYooQodIkq}, si la somme \( \sum_k(BA_k)\) convergeait, nous pourrions utiliser la partie \ref{ITEMooVWMQooLqerEc} avec \( 1/B\) au lieu de \( B\) et nous aurions la convergence de \( \sum_kA_k\).
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Produit de Cauchy}
+%----------------------------------------------------
+
+
+\begin{proposition}[Produit de Cauchy dans une algèbre normée\cite{MonCerveau}]      \label{PROPooFMEXooCNjdhS}
+	Soient une algèbre normée \( \eA\), un élément \( A\in \eA\), ainsi que des séries convergentes \( \sum_{k=0}^{\infty}a_kA^k\) et \( \sum_{l=0}^{\infty}b_lA^l\). Alors
+	\begin{equation}
+		\left( \sum_ka_kA^k \right)\left( \sum_lb_lA^l \right)=\sum_{n=0}^{\infty}\big( \sum_{m=0}^na_mb_{n-m} \big)A^n.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Un calcul :
+	\begin{subequations}
+		\begin{align}
+			\left( \sum_ka_kA^k \right)\left( \sum_lb_lA^l \right) & =\sum_k\big( \sum_lb_lA^l \big)a_kA^k       \label{SUBEQooFAECooWFCaNW}                                           \\
+			                                                       & = \sum_k\big( \sum_lb_la_kA^{l+k} \big)   \label{SUBEQooDZTHooMwmKxJ}                                             \\
+			                                                       & = \lim_{K\to\infty} \sum_{k=0}^K\big( \lim_{L\to \infty} \sum_{l=0}^Lb_la_kA^{k+l} \big)                          \\
+			                                                       & = \lim_{K\to \infty} \lim_{L\to \infty} \sum_{k=0}^K\sum_{l=0}^Lb_la_kA^{k+l}         \label{SUBEQooISSHooJsyMTv} \\
+			                                                       & = \lim_{K\to \infty} \lim_{L\to \infty} \sum_{n=0}^{K+L}\sum_{m=0}^na_mb_{n-m}A^n     \label{SUBEQooAWUQooZCHIXH} \\
+			                                                       & = \lim_{K\to \infty} \sum_{n=0}^{\infty}\sum_{m=0}^na_mb_{n-m}A^m                     \label{SUBEQooUVOBooSPGjrA} \\
+			                                                       & = \sum_{n=0}^{\infty}\sum_{m=0}^na_mb_{n-m}A^m                                        \label{SUBEQooCGRGooGIDCYv}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooFAECooWFCaNW}, la proposition \ref{PROPooMZZQooEhQsgQ} nous permet d'entrer l'élément \( \sum_lb_lA^l\in \eA\) dans la somme sur \( k\).
+		\item
+		      Pour \eqref{SUBEQooDZTHooMwmKxJ}, c'est la même chose.
+		\item
+		      Pour \eqref{SUBEQooISSHooJsyMTv}, la somme sur \( k\) étant finie (pour chaque \( K\)), elle commute avec la limite sur \( L\).
+		\item
+		      Pour \eqref{SUBEQooAWUQooZCHIXH}, c'est une manipulation de sommes finies. On regroupe les termes selon les puissances de \( A\).
+		\item
+		      Pour \eqref{SUBEQooUVOBooSPGjrA}, c'est effectuer la limite sur \( L\) pour \( K\) fixé.
+		\item
+		      Pour \eqref{SUBEQooCGRGooGIDCYv}, l'expression dans la limite sur \( K\) ne dépend pas de \( K\). Donc nous pouvons simplement supprimer la limite.
+	\end{itemize}
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Série réelle}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\label{secseries}
+
+La notion de série formalise le concept de somme infinie\footnote{La caractérisation qui nous intéresse est celle de la proposition \ref{PROPooOYNRooQFpBly}.}. L'absence de certaines propriétés de ces objets (problèmes de commutativité et même d'associativité) incite à la prudence et montre à quel point une définition précise est importante.
+
+
+\subsection{Critères de convergence absolue}
+
+Étant donné le terme général d'une série, il est souvent --dans les cas qui nous intéressent-- difficile de déterminer la somme de la série. L'exemple de la série géométrique est particulier\footnote{Voir la proposition \ref{PROPooWOWQooWbzukS}.}, puisqu'on connaît une formule pour chaque somme partielle, mais pour l'exemple des séries de Riemann il n'y a aucune formule simple pour un \( \alpha\) général. D'où l'intérêt d'avoir des critères de convergence ne nécessitant aucune connaissance de l'éventuelle limite de la série.
+
+\begin{lemma}[Critère de comparaison]   \label{LemgHWyfG}
+	Soient \( \sum_i a_i\) et \( \sum_j
+	b_j\) deux séries à termes positifs vérifiant
+	\begin{equation*}
+		0 \leq a_i \leq b_i
+	\end{equation*}
+	alors
+	\begin{enumerate}
+		\item si \( \sum_i a_i\) diverge, alors \( \sum_j b_j\) diverge,
+		\item \label{ITEMooBBWTooYDHnuH}
+		      si \( \sum_j b_j\) converge, alors \( \sum_i a_i\) converge
+		      (absolument).
+	\end{enumerate}
+	%TODOooSNRFooNBUCDC. Prouver ça.
+\end{lemma}
+
+\begin{proposition}[Critère d'équivalence\cite{TrenchRealAnalisys}]     \label{PROPooEEACooOYmtxd}
+	Soient \( \sum_i a_i\) et \( \sum_j b_j\) deux séries à termes positifs. Supposons l'existence de la limite (éventuellement infinie) suivante
+	\begin{equation}
+		\limite i \infty \frac{a_i}{b_i} = \alpha
+	\end{equation}
+	avec \( \alpha\in \eR\cup\{ +\infty \}\). Alors
+	\begin{enumerate}
+		\item si \( \alpha \neq 0\) et \( \alpha\neq \infty\), alors
+		      \begin{equation}
+			      \sum_i a_i \text{~converge} \ssi \sum_j b_j\text{~converge,}
+		      \end{equation}
+		\item si \( \alpha = 0\) et \( \sum_j b_j\) converge, alors \( \sum_i a_i\) converge (absolument),
+		\item si \( \alpha = +\infty\) et \( \sum_j b_j\) diverge, alors \( \sum_i a_i\) diverge.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item
+		      Le fait que la suite \( a_n/b_n\) converge vers \( \alpha\) signifie que tant sa limite supérieure que sa limite inférieure convergent vers \( \alpha\). En particulier la suite \( \frac{ a_n }{ b_n }\) est bornée vers le haut et vers le bas. À partir d'un certain rang \( N\), il existe \( M\) tel que
+		      \begin{equation}
+			      \frac{ a_n }{ b_n }<M
+		      \end{equation}
+		      et il existe \( m\) tel que
+		      \begin{equation}
+			      \frac{ a_n }{ b_n }>m.
+		      \end{equation}
+		      Nous avons donc \( a_n<Mb_n\) et \( a_n>mb_n\). La série de \( (a_n)\) converge donc si et seulement si la série de \( (b_n)\) converge.
+		\item
+		      Si \( \alpha=0\), cela signifie que pour tout \( \epsilon\), il existe un rang tel que \( \frac{ a_n }{ b_n }<\epsilon\), et donc tel que \( a_n<\epsilon b_k\). La série de \( (a_i)\) converge donc dès que la série de \( (b_i)\) converge.
+		\item
+		      Pour tout \( M\), il existe un rang dans la suite à partir duquel on a \( \frac{ a_i }{ b_i }>M\), et donc \( a_k>Mb_k\). Si la série de \( (b_k)\) diverge, la série de \( (a_k)\) doit également diverger.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[Critère du quotient\cite{KeislerElemCalculus}]     \label{PropOXKUooQmAaJX}
+	Soit \( \sum_i a_i\) une série. Supposons l'existence de la limite (éventuellement infinie) suivante
+	\begin{equation}
+		\limite i \infty \abs{\frac{a_{i+1}}{a_i}} = L
+	\end{equation}
+	avec \( L\in \eR\cup\{ +\infty \}\).  Alors
+	\begin{enumerate}
+		\item si \(L < 1\), la série converge absolument,
+		\item si \(L > 1\), la série diverge,
+		\item si \(L = 1\) le critère échoue : il existe des exemples de convergence et des exemples de divergence.
+	\end{enumerate}
+\end{proposition}
+\index{critère du quotient}
+
+\begin{proof}
+	\begin{enumerate}
+		\item
+		      Soit \( b\) tel que \( L<b<1\). À partir d'un certain rang \( K\), on a \( \left| \frac{ a_{i+1} }{ a_i } \right| <b\). En particulier,
+		      \begin{equation}
+			      | a_{K+1} |<b| a_K |,
+		      \end{equation}
+		      et pour \( a_{K+2}\) nous avons
+		      \begin{equation}
+			      | a_{K+2} |<b| a_{K+1} |<b^2| a_K |.
+		      \end{equation}
+		      Au final,
+		      \begin{equation}
+			      | a_{K+n} |<b^n| a_K |.
+		      \end{equation}
+		      Étant donné que la série \( \sum_{n\geq K}b^n\) converge (parce que \( b<1\)), la queue de suite \( \sum_{i\geq K}a_i\) converge, et par conséquent la suite au complet converge.
+		\item
+		      Si \( L>1\), on a
+		      \begin{equation}
+			      | a_K |<| a_{K+1} |<| a_{K+2} |<\ldots
+		      \end{equation}
+		      Il est donc impossible que la suite \( (a_i)\) converge vers zéro. La série ne peut donc pas converger.
+		\item
+		      Par exemple la suite harmonique \( a_n=\frac{1}{ n }\) vérifie \( L=1\), mais la série ne converge pas. Par contre, la suite \( a_n=\frac{ 1 }{ n^2 }\) vérifie aussi le critère avec \( L=1\) tandis que la série \( \sum_n\frac{1}{ n^2 }\) converge.
+	\end{enumerate}
+\end{proof}
+
+
+\begin{proposition}[Critère de la racine\cite{TrenchRealAnalisys}]
+	Soit \( \sum_i a_i\) une série, et considérons
+	\begin{equation*}
+		\limsup_{i \rightarrow \infty} \sqrt[i]{\abs{a_i}} = L
+	\end{equation*}
+	avec \( L\in \eR\cup\{ +\infty \}\). Alors
+	\begin{enumerate}
+		\item si \(L < 1\), la série converge absolument,
+		\item si \(L > 1\), la série diverge,
+		\item si \(L = 1\) le critère échoue.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	\begin{enumerate}
+		\item
+		      Si \( L<1\), il existe un \( r\in \mathopen] 0 , 1 \mathclose[\) tel que \( | a_n |^{1/n}<r\) pour les grands \( n\). Dans ce cas, \( | a_n |<r^{n}\), et la série converge absolument parce que la série \( \sum_nr^n\) converge du fait que \( r<1\).
+		\item
+		      Si \( L>1\), il existe un \( r>1\) tel que \( | a_n |^{1/n}>r>1\). Cela fait que \( | a_n |\) prend des valeurs plus grandes que \( n\) pour une infinité de termes. Le terme général \( a_n\) ne peut donc pas être une suite convergente. Par conséquent la suite diverge au sens où elle ne converge pas.
+
+	\end{enumerate}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Critères de convergence simple}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Les critères de comparaison, d'équivalence, du quotient et de la racine sont des critères de convergence absolue. Pour conclure à une convergence simple qui n'est pas une convergence absolue, le critère d'Abel sera notre outil principal.
+
+\subsubsection{Critère d'Abel}
+
+\begin{proposition}[Critère d'Abel]
+	Soit la série \( \sum_i c_iz_i\) avec
+	\begin{enumerate}
+		\item \( (c_i)\) est une suite réelle décroissante qui tend vers zéro,
+		\item \( (z_i)\) est une suite dans \( \eC\) dont la suite des sommes partielles est bornée dans \( \eC\), c'est-à-dire qu'il existe un \( M>0\) tel que pour tout \( n\),
+		      \begin{equation}
+			      \left| \sum_{i=1}^nz_i \right| \leq M.
+		      \end{equation}
+		      Alors la série \( \sum_ic_iz_i\) est convergente.
+	\end{enumerate}
+\end{proposition}
+Remarquons que ce critère ne donne pas de convergence absolue.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Quelques séries usuelles}
+%---------------------------------------------------------------------------------------------------------------------------
+\label{SUBSECooDTYHooZjXXJf}
+
+\begin{proposition}[Série harmonique]       \label{PROPooBAIWooKxMLvh}
+	La \defe{série harmonique}{série harmonique} converge vers l'infini\footnote{Vous pouvez aussi dire qu'elle diverge, mais si on met la bonne topologie sur \( \eR\), la convergence vers \( +\infty\) est plus précise que la non-convergence.} :
+	\begin{equation}
+		\sum_{k=1}^\infty \frac{1}{ k }=+\infty.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Considérons la sommes partielles \( H_n=\sum_{k=1}^n\frac{1}{ k }\). Considérons la différence
+	\begin{equation}
+		H_{2n}-H_n=\sum_{k=n+1}^{2n}\frac{1}{ k }.
+	\end{equation}
+	Cette somme contient \( n+1\) termes, tous plus grands que \( \frac{1}{ 2n }\), donc
+	\begin{equation}
+		H_{2n}-H_n > n\times\frac{1}{ 2n }=\frac{ 1 }{2}.
+	\end{equation}
+	Nous prouvons donc par récurrence que \( H_{2^n}\geq \frac{ n }{2}\). D'abord pour \( n=1\) nous avons
+	\begin{equation}
+		H_2=1+\frac{ 1 }{2}.
+	\end{equation}
+	Ensuite la récurrence :
+	\begin{equation}
+		H_{2^n}>H_{2^{n-1}}+\frac{ 1 }{2}\geq \frac{ n-1 }{ 2 }+\frac{ 1 }{2}=\frac{ n }{2}.
+	\end{equation}
+\end{proof}
+
+\begin{normaltext}
+	À quel point la série harmonique diverge-t-elle lentement ? Allez regarder\\ \url{https://www.youtube.com/watch?v=_AtkIpi6KP0}.
+\end{normaltext}
+
+\begin{propositionDef}[Série géométrique]      \label{PROPooWOWQooWbzukS}
+	La \defe{série géométrique}{série!géométrique} de raison \( q \in \eC\) est
+	\begin{equation}    \label{EqZQTGooIWEFxL}
+		\sum_{i=0}^\infty q^i.
+	\end{equation}
+	\begin{enumerate}
+		\item       \label{ITEMooAFAMooGuXqBm}
+		      Elle converge si et seulement si \( | q |<1\).
+		\item       \label{ITEMooBJHBooBMEmiG}
+		      Si \( | q |<1\) alors
+		      \begin{equation}    \label{EqRGkBhrX}
+			      \sum_{n=0}^{\infty}q^n=\frac{ 1 }{ 1-q }.
+		      \end{equation}
+		\item       \label{ITEMooVZHKooNGpDkx}
+		      Si la somme commence en \( n=1\) au lieu de \( n=0\) alors
+		      \begin{equation}        \label{EqPZOWooMdSRvY}
+			      \sum_{n=1}^{\infty}q^n=\frac{ q }{ 1-q }.
+		      \end{equation}
+	\end{enumerate}
+\end{propositionDef}
+
+\begin{proof}
+	Plusieurs points.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooAFAMooGuXqBm} et \ref{ITEMooBJHBooBMEmiG}]
+		%-----------------------------------------------------------
+		La somme partielle est déjà donnée dans le lemme \ref{LEMooAFSCooWEVlvp} :
+		\begin{equation}
+			S_N=\sum_{n=0}^Nq^n=\frac{ 1-q^{N+1} }{ 1-q }.
+		\end{equation}
+		En vertu de \eqref{EQooATTQooRpJeCo}, la limite \( \lim_{N\to \infty} S_N\) existe si et seulement si \( | q |\leq 1\) et dans ce cas nous avons le résultat parce que \( q^{N+1}\to 0\).
+
+		\spitem[Pour \ref{ITEMooVZHKooNGpDkx}]
+		%-----------------------------------------------------------
+		Il s'agit seulement du calcul
+		\begin{equation}
+			\sum_{n=1}^{\infty}q^n=\frac{1}{ 1-q }-1=\frac{ q }{ 1-q }.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+Un cas particulier de la formule \eqref{EqASYTiCK} est le calcul de \( \sum_{j=1}^{N}q^{-j}\) bien utile lorsque l'on joue avec des nombres binaires (voir l'exemple~\ref{EXEMooRHENooGwumoA}). Nous avons
+\begin{equation}        \label{EQooFMBAooEJkHWT}
+	\sum_{j=1}^Nq^{-j}=\sum_{j=0}^Nq^{-j}-1=\frac{ 1-q^{-N} }{ q-1 }.
+\end{equation}
+
+
+\begin{lemma}[Série exponentielle] \label{ExIJMHooOEUKfj}
+	La série
+	\begin{equation}
+		\exp(t)=\sum_{k=0}^{\infty}\frac{ t^k }{ k! }.
+	\end{equation}
+	converge pour tout \( t\in \eR\).
+
+	Elle est nommée \index{exponentielle!convergence}. Pour tout savoir de l'exponentielle et de ses variations, voir le thème~\ref{THEMEooKXSGooCsQNoY}.
+\end{lemma}
+
+\begin{proof}
+	Si \( a_k=t^k/k!\) alors \( \frac{ a_{k+1} }{ a_k }=\frac{ t }{ k }\) dont la limite \( k\to \infty\) est zéro (quel que soit \( t\)). En vertu du critère du quotient~\ref{PropOXKUooQmAaJX} la série exponentielle converge (absolument) pour tout \( t\in \eR\).
+\end{proof}
+
+\begin{lemma}[Série arithmético-géométrique\cite{QXuqdoo}]      \label{LEMooCVIQooUtuzgE}
+	Une \defe{suite arithmético-géométrique}{suite!arithmético-géométrique} est une suite vérifiant pour tout \( n\) la relation
+	\begin{equation}
+		u_{n+1}=au_n+b
+	\end{equation}
+	avec \( a\) et \( b\) non nuls. Nous nommons \( u_0\) le premier terme.
+
+	\begin{enumerate}
+		\item
+		      Si la suite possède une limite, alors elle est donnée par
+		      \begin{equation}    \label{EQooMZSSooOWpZUp}
+			      l=\frac{ b }{ 1-a }.
+		      \end{equation}
+		\item
+		      Pour tout \( n\) nous avons la formule
+		      \begin{equation}
+			      u_n=a^n(u_0-l)+l.
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}
+	Si la suite possède une limite, cette dernière doit résoudre \( l=al+b\), et donc être égale à \eqref{EQooMZSSooOWpZUp}.
+
+	Il n'est pas très compliqué de trouver le terme général de la suite en fonction de \( a\) et de \( b\). Il suffit de considérer la suite \( v_n=u_n-l\), et de remarquer que cette suite est géométrique :
+	\begin{equation}
+		v_{n+1}=av_n.
+	\end{equation}
+	Par conséquent \( v_n=a^nv_0\), ce qui donne pour la suite \( (u_n)\) la formule
+	\begin{equation}
+		u_n=a^n(u_0-l)+l.
+	\end{equation}
+\end{proof}
+
+\begin{lemma}[\cite{BIBooTIZHooGeFZri}]     \label{LEMooKDHPooPlFTIT}
+	Nous avons :
+	\begin{equation}
+		\sum_{k=1}^N\frac{1}{ k(k+1) }=\frac{ N }{ N+1 }.
+	\end{equation}
+	et
+	\begin{equation}
+		\sum_{k=1}^{\infty}\frac{1}{ k(k+1) }=1.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous posons
+	\begin{subequations}
+		\begin{align}
+			f(n) & =\sum_{k=1}^n\frac{1}{ k(k+1) } \\
+			g(n) & =\frac{ n }{ n+1 }
+		\end{align}
+	\end{subequations}
+	et nous montrons par récurrence que \( f(n)=g(n)\). Pour \( n=1\) nous avons \( f(1)=g(1)=\frac{ 1 }{2}\).
+
+	Nous supposons que \( f(n)=g(n)\) et nous prouvons que \( f(n+1)=g(n+1)\). Facile :
+	\begin{subequations}
+		\begin{align}
+			f(n+1) & =f(n)+\frac{1}{ (n+1)(n+2) }              \\
+			       & =\frac{ n }{ n+1 }+\frac{1}{ (n+1)(n+2) } \\
+			       & =\frac{ n(n+2)+1 }{ (n+1)(n+2) }          \\
+			       & =\frac{ n^2+2n+1 }{ (n+1)(n+2) }          \\
+			       & =\frac{ (n+1)^2 }{ (n+1)(n+2) }           \\
+			       & =\frac{ n+1 }{ n+2 }                      \\
+			       & =g(n+1).
+		\end{align}
+	\end{subequations}
+	En ce qui concerne la seconde formule, par définition\footnote{Définition d'une série, \ref{DefGFHAaOL}.}
+	\begin{equation}
+		\sum_{k=1}^{\infty}\frac{1}{ k(k+1) }=\lim_{n\to \infty} \sum_{k=1}^n\frac{1}{ k(k+1) }=\lim_{n\to \infty}\frac{ n }{ n+1 } =1.
+	\end{equation}
+\end{proof}
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Séries alternées}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{theorem}[Critère des séries alternées\cite{ooXFPIooCLUvzV}]      \label{THOooOHANooHYfkII}
+	Soit \( (a_n)_{n\in \eN}\) est une suite positive décroissante à limite nulle. Nous notons \( S_n\) la somme partielle de la série alternée : \( S_n=\sum_{k=0}^n(-1)^ka_k\). Alors
+	\begin{enumerate}
+		\item
+		      les sous-suites \( (S_{2n})\) et \( (S_{2n+1})\) sont adjacentes\footnote{Définition \ref{DEFooDMZLooDtNPmu}.}.
+		\item		\label{ITEMooWNCXooWAYRdm}
+		      La série \( \sum_n(-1)^na_n\) converge.
+		\item       \label{ITEMooWEPWooXhLMYL}
+		      Si nous considérons le reste
+		      \begin{equation}
+			      R_n=\sum_{k=n+1}^{\infty}(-1)^ka_k,
+		      \end{equation}
+		      nous avons
+		      \begin{subequations}
+			      \begin{align}
+				      \signe(R_n)=(-1)^{n+1} \\
+				      | R_n |\leq a_{n+1}.
+			      \end{align}
+		      \end{subequations}
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En termes de notations, nous allons écrire \( (S_n)\) la suite des sommes partielles de \( \sum_{k=0}^{\infty}(-1)^ka_k\). Nous notons \( (S_{2n})\) la suite des termes pairs de cette suite. C'est donc la suite \( n\mapsto S_{2n}\).
+	Nous divisons en plusieurs morceaux.
+	\begin{subproof}
+		\spitem[\( S_{2n}\) est croissante]
+		Nous avons simplement
+		\begin{equation}
+			S_{2n+2}-S_{2n}=a_{2n+2}-a_{2n+1}\leq 0.
+		\end{equation}
+		\spitem[\( (S_{2n+1})\) est décroissante]
+		Même calcul.
+		\spitem[Les suites \( (S_{2n})\) et \( S_{2n+1}\) sont adjacentes] Nous avons simplement
+		\begin{equation}
+			S_{2n+1}-S_{2n}=a_{2n+1}\to 0.
+		\end{equation}
+		Nous concluons par le théorème des suites adjacentes \ref{THOooZJWLooAtGMxD} que les sous-suites des termes pairs et impairs sont convergentes et convergent vers la même limite.
+	\end{subproof}
+	C'est le moment d'utiliser la proposition \ref{PROPooXOOCooGMqJNe} qui convaincra \randomGender{le lecteur}{la lectrice} que \( (S_n)\) converge vers la même limite, que nous notons \( S\). Le théorème des suites adjacentes nous dit encore que
+	\begin{equation}
+		S_{2n+1}\leq S\leq S_{2n}
+	\end{equation}
+	et donc que \( R_{2n}=S-S_{2n}\leq 0\). Cela donne la majoration
+	\begin{equation}
+		| R_{2n} |=| S-S_{2n} |=S_{2n}-S\leq S_{2n}-S_{2n+1}=a_{2n+1}.
+	\end{equation}
+	Nous faisons le même genre de majorations pour \( R_{2n+1}\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Moyenne de Cesàro}
+%---------------------------------------------------------------------------------------------------------------------------
+
+La moyenne de Cesàro est le premier pas dans la direction des supersommes\cite{BIBooUCSPooNKNWEK} qui permettent de sommer des choses de moins en moins convergentes, jusqu'à sommer la fameuse série \( 1+2+3+4+\ldots=-1/12\).
+
+\begin{definition}      \label{DEFooLVRLooTeowkn}
+	Si \( a\colon \eN\to V \) est une suite dans l'espace vectoriel \( V\), alors sa \defe{moyenne de Cesàro}{moyenne!de Cesàro}\index{Cesàro!moyenne} est la limite (si elle existe) de la suite
+	\begin{equation}
+		\sigma_n(a)=\frac{1}{ n }\sum_{k=1}^na_k.
+	\end{equation}
+	En un mot, c'est la limite des moyennes partielles.
+\end{definition}
+
+\begin{lemma}       \label{LemyGjMqM}
+	Si la suite \( (a_n)\) converge vers la limite \( \ell\) alors la suite admet une moyenne de Cesàro qui vaudra \( \ell\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( \epsilon>0\) et \( N\in \eN\) tel que \( | a_n-\ell |<\epsilon\) pour tout \( n>N\). En remarquant que
+	\begin{equation}
+		\frac{1}{ n }\sum_{k=1}^na_k-\ell=\frac{1}{ n }\sum_{k=1}^n(a_k-\ell),
+	\end{equation}
+	nous avons
+	\begin{subequations}
+		\begin{align}
+			| \frac{1}{ n }\sum_{k=1}^na_k-\ell | & \leq| \frac{1}{ n }\sum_{k=1}^N| a_k-\ell | |+\big| \frac{1}{ n }\sum_{k=N+1}^n\underbrace{| a_k-\ell |}_{\leq \epsilon} \big| \\
+			                                      & \leq \epsilon+\frac{ n-N-1 }{ n }\epsilon                                                                                      \\
+			                                      & \leq 2\epsilon.
+		\end{align}
+	\end{subequations}
+	Dans ce calcul nous avons redéfini \( N\) de telle sorte que le premier terme soit inférieur à \( \epsilon\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Écriture décimale d'un réel}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous avons déjà vu la fonction \eqref{EQooWWTUooHAnSEv} qui permet d'écrire des naturels dans une base \( b\geq 2\) donnée. Nous allons maintenant construire une fonction du même type, pour la partie décimale d'un réel.
+
+\begin{normaltext}      \label{NORMALooTZWYooPMgOIm}
+	Soit \( b\geq 2\) un entier qui sera la base dans laquelle nous allons écrire les nombres. Nous considérons l'ensemble \( \eD_b\)\nomenclature[Y]{\( \eD_b\)}{l'ensemble des écritures décimales en base \( b\)} des suites dans \( \{ 0,1,\ldots, b-1 \}\) qui n'ont pas une queue de suite uniquement formée de \( b-1\). Autrement dit une suite \( (c_n)\) est dans \( \eD_b\) lorsque pour tout \( N\), il existe \( k>N\) tel que \( c_k\neq b-1\). Associé à cet ensemble nous considérons la fonction
+	\begin{equation}    \label{EqXXXooOTsCK}
+		\begin{aligned}
+			\varphi_b\colon \eD_b & \to \mathopen[ 0 , 1 [                          \\
+			c                     & \mapsto \sum_{n=1}^{\infty}\frac{ c_n }{ b^n }.
+		\end{aligned}
+	\end{equation}
+\end{normaltext}
+
+\begin{lemma}
+	La fonction \( \varphi_b\) est bien définie au sens où elle converge et prend ses valeurs dans \( \mathopen[ 0 , 1 [\).
+\end{lemma}
+
+\begin{proof}
+	Tout se base sur la somme de la série géométrique \eqref{EqRGkBhrX} sous la forme
+	\begin{equation}    \label{EqWZGooXJgwl}
+		\sum_{k=0}^{\infty}\frac{1}{ b^k }=\frac{ b }{ b-1 }.
+	\end{equation}
+	La somme \eqref{EqXXXooOTsCK} est donc majorée par \( \sum_n\frac{ b-1 }{ b^n }\) qui converge.
+
+	Pour prouver que l'image de \( \varphi_b\) est bien \( \mathopen[ 0 , 1 [\), nous savons qu'au moins un des \( c_n\) (en fait une infinité) est plus petit que \( b-1\), donc nous avons la majoration stricte\footnote{Notez que la somme \eqref{EqXXXooOTsCK} commence à un tandis que la série géométrique \eqref{EqWZGooXJgwl} commence à zéro.}
+	\begin{equation}
+		\varphi_b(c)<\sum_{n=1}^{\infty}\frac{ b-1 }{ b^n }=(b-1)\left( \sum_{n=1}^{\infty}\frac{1}{ b^n }-1 \right)=1
+	\end{equation}
+\end{proof}
+
+Le fait d'introduire l'ensemble \( \eD\) au lieu de l'ensemble de toutes les suites est justifié par la proposition suivante. Elle explique pourquoi un nombre possède au maximum deux écritures décimales distinctes et que ces deux sont obligatoirement de la forme, par exemple en base \( 10\) :
+\begin{equation}
+	0.34599999999\ldots=0.34600000\ldots
+\end{equation}
+mais qu'un nombre commençant par \( 0.347\) ne peut pas être égal. C'est pour cela que dans la définition de \( \eD_b\) nous avons exclu les suites qui terminent par tout des \( b-1\).
+
+La proposition suivante complète ce qui est déjà dit dans le lemme \ref{LEMooIQBXooUEtdoy}.
+\begin{proposition} \label{PropSAOoofRlQR}
+	Soit la fonction
+	\begin{equation}
+		\begin{aligned}
+			\varphi\colon \{ 0,\ldots, b-1 \}^{\eN} & \to \mathopen[ 0 , 1 [                          \\
+			x                                       & \mapsto \sum_{n=1}^{\infty}\frac{ x_n }{ b^n }.
+		\end{aligned}
+	\end{equation}
+	Si \( \varphi(x)=\varphi(y)\) et si \( n_0\) est le plus petit entier tel que \( x_{n_0}\neq y_{n_0}\) alors soit
+	\begin{equation}
+		x_{n_0}-y_{n_0}=1
+	\end{equation}
+	et \( x_n=0\), \( y_n=b-1\) pour tout \( n>n_0\), soit le contraire : \( y_{n_0}-x_{n_0}=1\) avec \( y_n=0\) et \( x_n=b-1\) pour tout \( n>n_0\).
+\end{proposition}
+
+\begin{proof}
+	Nous nous basons sur la formule (facilement dérivable depuis \eqref{EqWZGooXJgwl}) suivante :
+	\begin{equation}
+		\sum_{k=n_0+1}^{\infty}\frac{1}{ b^k }=\frac{1}{ b^{n_0+1} }\frac{ b }{ b-1 }.
+	\end{equation}
+	Nous avons
+	\begin{equation}
+		0=\varphi(x)-\varphi(y)=\frac{ x_{n_0}-y_{n_0} }{ b^{n_0} }+\sum_{n=n_0+1}^{\infty}\frac{ x_n-y_n }{ b^n }\geq \frac{ x_{n_0}-y_{n_0} }{ b^{n_0} }-\sum_{n=n_0+1}^{\infty}\frac{ b-1 }{ b^n }=\frac{ x_{n_0}-y_{n_0}-1 }{ b^{n_0} }.
+	\end{equation}
+	Le dernier terme étant manifestement positif\footnote{C'est ici qu'intervient la subdivision entre le cas \( x_{n_0}-y_{n_0}=1\) ou le contraire. En effet si «ce dernier terme était manifestement \emph{négatif}», il aurait fallu majorer avec de \( 1-b\) au lieu de \( 1-b\).}, il est nul et nous avons \( x_{n_0}-y_{n_0}=1\).
+
+	Nous avons donc maintenant
+	\begin{equation}    \label{EqHWQoottPnb}
+		0=\varphi(x)-\varphi(y)=\frac{1}{ b^{n_0} }+\sum_{n=n_0+1}^{\infty}\frac{ x_n-y_n }{ b^n }.
+	\end{equation}
+	Nous majorons la dernière somme de la façon suivante, en supposant que \( | x_n-y_n |\neq b-1\) pour un certain \( n>n_0\) :
+	\begin{equation}
+		\left| \sum_{n=n_0+1}^{\infty}\frac{ x_n-y_n }{ b^n } \right| \leq\sum_{n=n_0+1}^{\infty}\frac{ | x_n-y_n | }{ b^n }<\sum_{n=n_0+1}^{\infty}\frac{ b-1 }{ b^n }=\frac{1}{ b^{n_0} }.
+	\end{equation}
+	Étant donné cette inégalité stricte, l'équation \eqref{EqHWQoottPnb} ne peut pas être correcte (valoir zéro). Nous avons donc \( | x_n-b_n |=b-1\) pour tout \( n>n_0\). Donc pour chaque \( n>n_0\) nous avons soit \( x_n=0\) et \( y_n=b-1\), soit \( a_n=b-1\) et \( b_n=0\). Pour conclure il faut encore prouver que le choix doit être le même pour tout \( n\).
+
+	Nous nous mettons dans le cas \( x_{n_0}-y_{n_0}=1\); dans ce cas nous avons bien l'égalité \eqref{EqHWQoottPnb} sans petites nuances de signes. Nous écrivons
+	\begin{equation}
+		\sum_{n=n_0+1}^{\infty}\frac{ x_n-y_n }{ b^n }=(b-1)\sum_{n=n_0+1}^{\infty}\frac{ (-1)^{s_n} }{ b^n }
+	\end{equation}
+	où \( s_n\) est pair ou impair suivant que \( x_n=0\), \( y_n=b-1\) ou le contraire. Si un des \( (-1)^{s_n}\) est pas \( -1\) alors nous avons l'inégalité stricte
+	\begin{equation}
+		(b-1)\sum_{n=n_0+1}^{\infty}\frac{ (-1)^{s_n} }{ b^n }>(b-1)\sum_{n=n_0+1}^{\infty}\frac{-1}{ b^n }=-\frac{1}{ b^{n_0} }.
+	\end{equation}
+	Dans ce cas il est impossible d'avoir \( \varphi(x)-\varphi(y)=0\). Nous en concluons que \( (-1)^{s_n}\) est toujours \( -1\), c'est-à-dire \( x_n-y_n=1-b\), ce qui laisse comme seule possibilité \( x_n=0\) et \( y_n=b-1\).
+\end{proof}
+
+\begin{theorem} \label{ThoRXBootpUpd}
+	L'application \( \varphi_b\colon \eD_b\to \mathopen[ 0 , 1 [\) est bijective.
+\end{theorem}
+
+\begin{proof}
+	En ce qui concerne l'injection, nous savons de la proposition~\ref{PropSAOoofRlQR} que si \( \varphi_b(x)=\varphi_b(y)\) pour \( x,y\in\{ 0,\ldots, b-1 \}^{\eN}\), alors soit \( x\) soit \( y\) a une queue de suite composée uniquement de \( b-1\), ce qui est exclu dans \( \eD_b\). Nous en déduisons que \( \varphi_b\) est bien injective en prenant \( \eD_b\) comme ensemble départ.
+
+	La partie lourde est la surjectivité. Nous prenons \( x\in \mathopen[ 0 , 1 [\) et nous allons construire par récurrence une suite \( a\in \eD_b\) telle que \( \varphi_b(a)=x\). Si il existe \( a_1\in\{ 0,\ldots, b-1 \}\) tel que \( x=a_1/b\) alors nous prenons la suite \( (a_1,0,\ldots, )\) et nous avons évidemment \( \varphi(a)=x\). Sinon il existe \( a_1\in\{ 0,\ldots, b-1 \}\) tel que
+	\begin{equation}
+		\frac{ a_1 }{ b }<x<\frac{ a_1+1 }{ b }
+	\end{equation}
+	parce que les autres possibilités pour \( x\) sont dans l'ensemble \( \mathopen[ 0 , 1 \mathclose[\setminus\{ \frac{ k }{ b } \}_{k=0,\ldots, b-1}\) que nous subdivisons en
+	\begin{equation}
+		\mathopen] 0 , \frac{1}{ b } \mathclose[\cup\mathopen] \frac{1}{ b } , \frac{ 2 }{ b } \mathclose[\cup\ldots\cup\mathopen] \frac{ b-1 }{ b } , 1 \mathclose[.
+	\end{equation}
+	Pour la récurrence nous supposons avoir trouvé \( a_1,\ldots, a_n\) tels que
+	\begin{equation}
+		\sum_{k=1}^n\frac{ a_k }{ b^k }< x<\sum_{k=1}^{n-1}\frac{ a_k }{ b^k }+\frac{ a_n+1 }{ b^n }.
+	\end{equation}
+	Encore une fois si il existe \( a_{n+1}\in\{ 0,\ldots, b-1 \}\) tel que \( \sum_{k=1}^{n+1}\frac{ a_k }{ b^k }=x\) alors nous prenons ce \( a_{n+1}\) et nous complétons la suite avec des zéros pour avoir \( \varphi(a)=x\). Sinon
+	%nous subdivisions l'intervalle \( \mathopen]  \frac{ a_n }{ b^n }, \frac{ a_n }{ b^n }+\frac{ a_n+1 }{ b^n } \mathclose[\) (auquel nous retranchons les \( b\) nombres déjà traités) en
+	%       \begin{equation}
+	%       \mathopen] \frac{ a_n }{ b^n } , \frac{ a_n }{ b^n }+\frac{1}{ b^{n+1} } \mathclose[ \cup \mathopen] \frac{ a_n }{ b^n }+\frac{1}{ b^{n+1} } , \frac{ a_n }{ b^n }+\frac{2}{ b^{n+1} } \mathclose[\cup\ldots\cup\mathopen] \frac{ a_n }{ b^n }+\frac{ b-1 }{ b^{n+1} } , \frac{ a_n }{ b^n }+\frac{ 1 }{ b^n } \mathclose[.
+	%       \end{equation}
+	, pour simplifier les notations nous notons \( x'=x-\sum_{k=1}^{n}\frac{ a_k }{ b^k }\) et nous avons
+	\begin{equation}
+		0<x'<\frac{ a_n+1 }{ b^n }.
+	\end{equation}
+	Le nombre \( x'\) est forcément dans un des intervalles
+	\begin{equation}
+		\mathopen] \frac{ s }{ b^{n+1} } , \frac{ s+1 }{ b^{n+1} } \mathclose[
+	\end{equation}
+	avec \( s\in\{ 0,\ldots, b-1 \}\). Nous prenons le \( s\) correspondant à \( x'\) comme \( a_{n+1}\). Dans ce cas nous avons
+	\begin{equation}
+		\sum_{k=1}^{n+1}\frac{ a_k }{ b^k }< x<\sum_{k=1}^{n+1}\frac{ a_k }{ b^k }+\frac{1}{ b^{n+1} }.
+	\end{equation}
+	Note : les deux inégalités sont strictes. La première parce que si il y avait égalité, nous nous serions déjà arrêté en complétant avec des zéros. La seconde parce que
+	\begin{equation}
+		\sum_{k=n+2}^{\infty}\frac{ a_k }{ b^k }\leq \sum_{k=n+2}^{\infty}\frac{ b-1 }{ b^k }=\frac{1}{ b^{n+1} }
+	\end{equation}
+	où l'égalité n'est possible que si \( a_k=b-1\) pour tout \( k\geq n+2\). Dans ce cas nous aurions eu
+	\begin{equation}
+		x=\sum_{k=1}^{n}\frac{ a_k }{ b^k }+\frac{ a_{n+1}+1 }{ b^{n+1} }
+	\end{equation}
+	et nous aurions choisi le nombre \( a_{n+1}\) autrement et complété la suite par des zéros à partir de là. Notons que cela prouve au passage que la suite que nous sommes en train de construire est bien dans \( \eD_b\) parce qu'elle ne contiendra pas de queue de suite composée de \( b-1\).
+
+	Ceci termine la construction par récurrence de la suite \( a\in \eD_b\). Par construction nous avons pour tout \( N\geq 1\),
+	\begin{equation}
+		\sum_{k=1}^N\frac{ a_k }{ b^k }\leq x\leq \sum_{k=1}^N\frac{ a_k }{ b^k }+\frac{1}{ b^{N+1} },
+	\end{equation}
+	autrement dit : \( \varphi_b(a_1,\ldots, a_N)\in B(x,\frac{1}{ b^{N+1} })\). Nous avons donc bien convergence
+	\begin{equation}
+		\lim_{N\to \infty} \varphi_b(a_1,\ldots, a_N)=x
+	\end{equation}
+	et l'application \( \varphi_b\) est surjective.
+\end{proof}
+
+L'application \( \varphi_b^{-1}\colon \mathopen[ 0 , 1 [\to \eD_b\) est la \defe{décomposition décimale}{décomposition décimale} en base \( b\) des nombres de \( \mathopen[ 0 , 1 [\).
+
+Tout cela nous permet de montrer entre autres que \( \eR\) n'est pas dénombrable. Vu qu'il y a une bijection entre \( \mathopen[ 0 , 1 [\) et \( \eD_b\), il suffit de prouver que \( \eD_b\) est non dénombrable. De plus il suffit de démontrer que \( \eD_b\) est non dénombrable pour un entier \( b\geq 2\) donné.
+
+\begin{proposition}[\cite{KZIoofzFLV}]  \label{PropNNHooYTVFw}
+	Il n'existe pas de surjection \( \eN\to \eD_b\). Autrement dit \( \eD_b\) est non dénombrable.
+\end{proposition}
+
+\begin{proof}
+	Nous prenons \( b\neq 2\) pour des raisons qui seront claires plus tard. Soit \( f\colon \eN\to \eD_b\). Pour \( i\in \eN\) nous notons
+	\begin{equation}
+		f(n)=(c_i^{(n)})_{i\geq 1},
+	\end{equation}
+	et nous définissons la suite
+	\begin{equation}
+		c_k=\begin{cases}
+			0 & \text{si } c_k^{(k)}\neq 0 \\
+			1 & \text{si } c_k^{(k)}=0.
+		\end{cases}
+	\end{equation}
+	C'est une suite dans \( \eD_b\) parce que \( b\neq 2\) et que la suite ne contient que des \( 0\) et des \( 1\). Mais nous n'avons \( f(n)=c\) pour aucun \( n\in \eN\) parce que nous avons \( c_n\neq f(n)_n\).
+
+	Si \( b=2\) alors nous savons que \( \eD_2\sim\mathopen[ 0 , 1 [\sim \eD_3\). Donc \( \eD_2\sim \eD_3\) et \( \eD_2\) ne peut pas plus être mis en bijection avec \( \eN\) que \( \eD_3\).
+\end{proof}
+
+\begin{remark}
+	Le cas de la base \( b=2\) doit être fait à part parce que rien n'empêche d'avoir une queue de \( 1\). Il y a alors toutefois moyen de se débrouiller en construisant la suite \( c\) de façon plus subtile. Si \( b=2\) et \( n\in \eN\) alors \( f(n)\) est une suite de \( 0\) et \( 1\) contenant une infinité de \( 0\) (parce qu'il n'y a pas de queue de suite ne contenant que des \( 1\)). Nous construisons alors \( c\) de la façon suivante : d'abord nous recopions \( f(0)\) jusqu'à son \emph{deuxième} zéro que nous changeons en \( 1\); nommons \( n_0\) le rang de ce deuxième zéro. Ensuite nous recopions les éléments de \( f(1) \) à partir du rang \( n_0+1\) jusqu'au second zéro que nous changeons en \( 1\), etc.
+
+	Le fait de prendre le deuxième zéro nous garantit que la suite \( c\) n'aura pas de queue de suite ne contenant que des \( 1\).
+
+	Notons que cette construction s'adapte à tout \( b\); il suffit de prendre le second terme qui n'est pas \( b-1\) et le remplacer par \( b-1\).
+\end{remark}
+
+\begin{corollary}
+	L'ensemble \( \mathopen[ 0 , 1 [\) n'est pas dénombrable.
+\end{corollary}
+
+\begin{proof}
+	L'ensemble \( \mathopen[ 0 , 1 [\) est en bijection avec \( \eD_b\) que nous venons de prouver n'être pas dénombrable.
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Théorème de Banach-Steinhaus}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{lemma}[\cite{BIBooZUTUooNMvrdQ}]     \label{LEMooPIPLooMppGSO}
+	Soient des espaces vectoriels normés \( X\) et \( Y\) ainsi qu'une application linéaire bornée \( T\colon X\to Y\). Pour tout \( a\in X\) et pour tout \( r>0\) nous avons
+	\begin{equation}
+		\sup_{x\in B(a,r)}\| Tx \|\geq r\| T \|
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous commençons avec \( a=0\). En utilisant la définition \ref{DefNFYUooBZCPTr} de la norme opérateur,
+	\begin{equation}
+		\| T \|=\sup_{x\in X}\frac{ \| Tx \| }{ \| x \| }=\sup_{x\in B(0,r)}\frac{ \| Tx \| }{ \| x \| }\leq \frac{1}{ r }\sup_{x\in B(0,r)}\| Tx \|.
+	\end{equation}
+	Donc
+	\begin{equation}
+		\sup_{x\in B(0,r)}\| Tx \|\geq r\| T \|.
+	\end{equation}
+
+	Il y a maintenant une astuce. Nous considérons un maximum :
+	\begin{subequations}
+		\begin{align}
+			\max\{ \| T(a+x),\| T(a-x) \|  \} & \geq \frac{ 1 }{2}\big( \| T(a+x) \|+\| T(a-x) \| \big) \label{SUBEQooPJPMooDkqRHs} \\
+			                                  & \geq \frac{ 1 }{2}\big( \| T(a+x)-T(a+x) \| \big)      \label{SUBEQooEZUUooVlKtfn}  \\
+			                                  & =\frac{ 1 }{2}\| T(2x) \|                                                           \\
+			                                  & =\| Tx \|.
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooPJPMooDkqRHs}, la moyenne est plus petite que le maximum.
+		\item Pour \eqref{SUBEQooEZUUooVlKtfn}, inégalité triangulaire : \( \| \alpha-\beta \|\leq \| \alpha \|+\| \beta \|\).
+	\end{itemize}
+	Si maintenant \( y\in B(a,r)\), nous avons \( y=a+x\) pour un certain \( x\in B(0,r)\), donc
+	\begin{subequations}
+		\begin{align}
+			\sup_{y\in B(a,r)}\| Ty \| & =\sup_{x\in B(0,r)}\| T(a+x) \|                                                            \\
+			                           & =\sup_{x\in B(0,r)}\max\{ \| T(a+x) \|, \| T(a-x) \| \}        \label{SUBEQooACJSooTHCAWs} \\
+			                           & \geq \sup_{x\in B(0,r)}\| Tx \|                                                            \\
+			                           & \geq r\| T \|.
+		\end{align}
+	\end{subequations}
+	Pour \eqref{SUBEQooACJSooTHCAWs}, l'ensemble sur lequel nous prenons le supremum n'est pas modifié fondamentalement si nous regroupons les éléments deux à deux en prenant le maximum : les éléments exclus sont majorés.
+\end{proof}
+
+Une version avec des seminormes sera le théorème \ref{ThoNBrmGIg}.
+\begin{theorem}[Théorème de Banach-Steinhaus\cite{BIBooZUTUooNMvrdQ}]       \label{THOooJHVNooIDDxyT}
+	Soient un espace de Banach\footnote{Définition \ref{DefVKuyYpQ}.} \( X\) et un espace vectoriel normé \( Y\). Soit une famille \( \mF\) d'opérateurs linéaire bornés. Si pour tout \( x\in  X\),
+	\begin{equation}
+		\sup_{T\in\mF}\| Tx \|<\infty,
+	\end{equation}
+	alors
+	\begin{equation}
+		\sup_{T\in \mF}\| T \|<\infty.
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Nous supposons que \( \sup_{T\in\mF}\| T \|=\infty\), de telle sorte que nous pouvons choisir une suite \( (T_n)\) dans \( \mF\) telle que \( \| T_n \|\to \infty\). Cette suite peut diverger arbitrairement vite, et nous fixerons exactement cela plus tard.
+
+	Soit par ailleurs une suite \( \alpha_n>0\) d'éléments petits et tels que \( \alpha_n\to 0\). Nous supposons que \( \sum_{n=0}^{\infty}\alpha_n<\infty\).
+
+	Si \( a\in X\), le lemme \ref{LEMooPIPLooMppGSO} dit que
+	\begin{equation}
+		\sup_{x\in B(a,\alpha_n)}\| T_nx \|\geq \| T_n \|\alpha_n.
+	\end{equation}
+	En posant \( x_0=0\), nous construisons une suite \( (x_n)\) par récurrence en imposant
+	\begin{enumerate}
+		\item
+		      \( x_n\in B(x_{n-1}, \alpha_n)\)
+		\item
+		      \( \| T_nx_n \|\geq \| T_n \|\alpha_n\).
+	\end{enumerate}
+	En utilisant une série télescopique et l'inégalité triangulaire \( \| x_k-x_{k+1} \|\leq \alpha_n\) à chaque étage,
+	\begin{equation}
+		\| x_p-x_q \|\leq \sum_{k=p}^q\alpha_k\leq \sum_{k=p}^{\infty}\alpha_k.
+	\end{equation}
+	Mais puisque la somme des \( \alpha_n\) converge, la suite des queues de somme converge vers zéro\footnote{Lemme \ref{LEMooHUZEooSyPipb}\ref{ITEMooQNHMooUPjupB}.} : \( \lim_{p\to \infty}\sum_{k=p}^{\infty}\alpha_n=0\). Cela implique que \( (x_n)\) est une suite de Cauchy\footnote{Proposition \ref{PROPooZZNWooHghltd}.}. Vu que \( X\) est de Banach, la suite \( (x_n)\) a une limite dans \( X\). Soit \( x\) cette limite.
+
+	Nous avons \( \beta_n=\| x_n-x \|\to 0\). Il y aurait moyen de calculer \( \beta_n\) en fonction de \( \alpha_n\) (surtout si nous avions donné une forme explicite à \( \alpha_n\)), mais c'est sans importance ici. L'important est que c'est une suite qui tend vers zéro.
+
+	Nous avons
+	\begin{equation}
+		x\in B(x_n,\beta_n),
+	\end{equation}
+	et donc il existe \( a_n\in B(0,\beta_n)\) tel que \( x=x_n+a_n\). Avec cela, pour chaque \( n\) nous avons :
+	\begin{subequations}
+		\begin{align}
+			\| T_nx \| & =\| T_n(x_n+a_n) \|                                                   \\
+			           & \geq\| T_nx_n \|-\| T_na_n \|                                         \\
+			           & \geq \| T_nx_n \|-\| T_n \|\beta_n    \label{SUBEQooPLVQooChVCLU}     \\
+			           & \geq \| T_n \|\alpha_n-\| T_n \|\beta_n =\| T_n \|(\alpha_n-\beta_n).
+		\end{align}
+	\end{subequations}
+	Pour \ref{SUBEQooPLVQooChVCLU}, nous avons utilisé \( \| T_na_n \|\leq \| T_n \|\beta_n\). En résumé,
+	\begin{equation}
+		\| T_nx \|\geq \| T_n \|(\alpha_n-\beta_n).
+	\end{equation}
+	Il suffit de choisir \( \| T_n \|\) suffisamment rapidement croissant pour que\footnote{Le point important ici est que \( \alpha_n\) (et donc \( \beta_n\)) est choisi sans référence à \( \| T_n \|\).}
+	\begin{equation}
+		\| T_n \|(\alpha_n-\beta_n)\to \infty,
+	\end{equation}
+	et nous avons \( \| T_nx \|\to \infty\), qui est contraire aux hypothèses.
+\end{proof}
+
+\begin{theorem}[Théorème de Banach-Steinhaus\cite{KXjFWKA,VPvwAaQ}] \label{ThoPFBMHBN}
+	Soit \( E\) un espace de Banach\footnote{Définition~\ref{DefVKuyYpQ}.} et \( F\) un espace vectoriel normé. Nous considérons une partie \( H\subset \aL^0(E,F)\) (espace des applications linéaires continues). Alors \( H\) est uniformément borné si et seulement si il est simplement borné.
+\end{theorem}
+\index{théorème!Banach-Steinhaus}
+\index{application!linéaire!théorème de Banach-Steinhaus}
+
+\begin{proof}
+	Si \( H\) est uniformément borné, il est borné; pas besoin de rester longtemps sur ce sens de l'équivalence. Supposons donc que \( H\) soit borné. Pour chaque \( k\in \eN^*\) nous considérons l'ensemble
+	\begin{equation}
+		\Omega_k=\{ x\in E\tq \sup_{f\in H}\| f(x) \|>k \}.
+	\end{equation}
+
+	\begin{subproof}
+		\spitem[Les \( \Omega_k\) sont ouverts]
+		Soit \( x_0\in \Omega_k\); nous avons alors une fonction \( f\in H\) telle que \(  \| f(x_0) \|>k \), et par continuité de \( f\) il existe \( \rho>0\) tel que \( \| f(x) \|>k\) pour tout \( x\in B(x_0,\rho)\). Par conséquent \( B(x_0,\rho)\subset \Omega_k\) et \( \Omega_k\) est ouvert par le théorème~\ref{ThoPartieOUvpartouv}.
+
+		\spitem[Les \( \Omega_k\) ne sont pas tous denses dans \( E\)]
+		Nous supposons que les ensembles \( \Omega_k\) soient tous dense dans \( E\). Le théorème de Baire~\ref{ThoBBIljNM} nous indique que \( E\) est un espace de Baire (parce que de Banach) et donc que
+		\begin{equation}
+			\overline{ \bigcap_{k\in \eN}\Omega_k }=E.
+		\end{equation}
+		En particulier l'intersection des \( \Omega_k\) n'est pas vide. Soit \( x_0\in \bigcap_{k\in \eN}\Omega_k\). Nous avons alors
+		\begin{equation}
+			\sup_{f\in H}\| f(x) \|=\infty,
+		\end{equation}
+		ce qui est contraire à l'hypothèse. Donc les ouverts \( \Omega_k\) ne sont pas tous denses dans \(E\).
+
+		\spitem[La majoration]
+		Il existe \( k\geq 0\) tel que \( \Omega_k\) ne soit pas dense dans \( E\), et nous voulons prouver que \( \{ \| f \|\tq f\in H \}\) est un ensemble borné. Soit donc \( k\geq 0\) tel que \( \Omega_k\) ne soit pas dense dans \( E\); il existe un \( x_0\in E\) et \( \rho>0\) tels que
+		\begin{equation}
+			B(x_0,\rho)\cap \Omega_k=\emptyset.
+		\end{equation}
+		Si \( x\in B(x_0,\rho)\) alors \( x\) n'est pas dans \( \Omega_k\) et donc
+		\begin{equation}
+			\sup_{f\in H}\| f(x) \|\leq k.
+		\end{equation}
+		Afin d'évaluer \( \| f \|\) nous devons savoir ce qu'il se passe avec les vecteurs sur une boule autour de \( 0\). Pour tout \( x\in B(0,\rho)\) et pour tout \( f\in H\), la linéarité de \( f\) donne
+		\begin{equation}
+			\| f(x) \|=\| f(x+x_0)-f(x_0) \|\leq \| f(x+x_0)+f(x_0) \|\leq 2k.
+		\end{equation}
+		Par continuité nous avons alors \( \| f(x) \|\leq 2k\) pour tout \( x\in \overline{ B(0,\rho) }\). Si maintenant \( x\in F\) vérifie \( \| x \|=1\) nous avons
+		\begin{equation}
+			\| f(x) \|=\frac{1}{ \rho }\| f(\rho x) \|\leq \frac{ 2k }{ \rho },
+		\end{equation}
+		et donc \( \| f \|\leq \frac{ 2k }{ \rho }\), ce qui montre que \( 2k/\rho\) est un majorant de l'ensemble \( \{ \| f \|\tq f\in H \}\).
+	\end{subproof}
+
+\end{proof}
+Une application du théorème de Banach-Steinhaus est l'existence de fonctions continues et périodiques dont la série de Fourier ne converge pas. Ce sera l'objet de la proposition~\ref{PropREkHdol}.
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Convergence forte}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Lorsque nous avons une suite d'opérateurs linéaires, nous pouvons considérer la convergence d'une suite pour la norme opérateur : \( A_k\to A\) lorsque \( \| A_k-A \|\to 0\).
+
+\begin{definition}[\cite{ooAGRZooTyUUVy}]       \label{DEFooNREQooElLvec}
+	Soient un espace vectoriel \( E\) et un espace vectoriel normé \( V\). Nous disons que la suite d'opérateur \( T_k\colon E\to V\) \defe{converge fortement}{convergence forte} vers l'opérateur \( T\) si pour tout \( x\in E\) nous avons
+	\begin{equation}
+		\| T_kx-Tx \|\to 0.
+	\end{equation}
+\end{definition}
+
+Cette notion s'appelle \emph{forte} par opposition à la convergence \emph{faible} dont nous ne parlerons pas. Elle est cependant moins forte que la convergence en norme dont nous avons déjà parlé.
+
+\begin{proposition}     \label{PROPooRFBLooUjSirP}
+	Soient des espaces vectoriels normés \( E\) et \( F\) et une suite d'opérateurs \( T_k\colon E\to F\) convergeant vers \( T\)\footnote{Sans précisions, ce sera toujours la convergence en norme.}. Alors cette suite converge également fortement.
+\end{proposition}
+
+\begin{proof}
+	Soit \( x\in E\) que nous supposons non nul. Soit \( \lambda\in \eC\) tel que \( x=\lambda y\) avec \( \| y \|=1\). Nous avons
+	\begin{equation}
+		\| T_kx-Tx \|=| \lambda |\| T_ky-Ty \|\leq | \lambda |\sup_{\| z \|=1}\| T_kz-Tz \|=| \lambda |\| T_k-T \|\to 0.
+	\end{equation}
+	La dernière étape est la convergence en norme \( T_k\to T\).
+\end{proof}
+
+\begin{proposition}     \label{PROPooESZVooJNCidk}
+	Soient \( E\) et \( F\), des espaces vectoriels normés de dimension finie. Soit une suite \( (A_n)\) d'applications linéaires \( E\to F\). Si elle converge fortement vers \( A\), alors elle converge en norme vers \( A\).
+\end{proposition}
+
+\begin{proof}
+	En plusieurs coups.
+	\begin{subproof}
+		\spitem[Si une sous-suite converge]
+		Commençons par montrer que si \( (B_n)\) est une sous-suite de \( (A_n)\) qui converge vers \( B\), alors \( B=A\). Autrement dit, \( A\) est le seul candidat limite pour \( A_n\).
+
+		Soit \( \| x \|=1\). Nous avons
+		\begin{equation}
+			\| B_nx-Bx \|\leq \| B_n-B \|\| x \|=\| B_n-B \|,
+		\end{equation}
+		mais pour la sous-suite \( (B_n)\) nous avons supposé \( \| B_n-B \|\to 0\). Donc \( \| B_nx-Bx \|\to 0\), ce qui signifie que \( B_nx\to Bx\). Mais par hypothèse, \( B_nx\to Ax\). Par unicité de la limite, \( Bx=Ax\) pour tout \( x\) de norme \( 1\). Pour les autres \( x\), c'est la linéarité qui conclut.
+
+		\spitem[Utilisation de deux gros résultats]
+		Par l'hypothèse de convergence, pour chaque \( x\) nous avons \( \sup_n\| A_nx \|<\infty\). Le théorème de Banach-Steinhaus \ref{THOooJHVNooIDDxyT} nous indique alors que l'ensemble \( \mF=\{ A_n \}_{n\in \eN}\) est borné. Il existe donc \( M > 0\) tel que \( \| A_n \|< M\) pour tout \( n\).
+
+		Nous utilisons à présent l'hypothèse de dimension finie en disant que l'espace des applications linéaires \( E\to F\) est de dimension finie, de telle sorte que ses boules fermées soient compactes.
+
+		Donc la suite \( (A_n)\) est contenue dans un compact.
+
+		\spitem[Les sous-suite convergentes]
+		La suite \( (A_n)\) est contenue dans un compact. Toutes ses sous-suites sont dans ce compact et possèdent donc une sous-suite convergente (théorème \ref{ThoBWFTXAZNH}). Toutes ces sous-sous-suites convergent nécessairement vers \( A\) par ce que nous avons dit dans la première étape de la preuve. Le lemme \ref{LEMooSJKMooKSiEGq} nous dit alors que \( A_n\to A\).
+	\end{subproof}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Application ouverte}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}[application ouverte]
+	Soient deux espaces topologiques \( X\) et \( Y\). Une application \( f\colon X\to Y\) est \defe{ouverte}{application ouverte} si l'image de tout ouvert de \( X\) par \( f\) est un ouvert de \( Y\).
+
+	Nous disons que \( f\) est ouverte en \( a\in X\) si l'image de tout ouvert contenant \( a\) est ouverte.
+\end{definition}
+
+\begin{proposition}     \label{PROPooXGEGooHoMsne}
+	Une application bijective est ouverte si et seulement si son inverse est continue.
+\end{proposition}
+
+\begin{proof}
+	Ce n'est seulement que la définition, mais pour le sport nous démontrons le sens direct.
+
+	Soit donc une application \( f\colon X\to Y\) bijective et ouverte entre les espaces topologiques \( X\) et \( Y\). Prouvons que \( f^{-1}\colon Y\to X\) est continue. Pour cela nous considérons un ouvert \( \mO\) dans \( X\), et nous prouvons que \( (f^{-1})^{-1}(\mO)\) est ouvert dans \( Y\). Par définition de l'inverse, \( (f^{-1})^{-1}(\mO)=f(\mO)\) et vu que \( f\) est ouverte, \( f(\mO)\) est ouvert.
+\end{proof}
+
+\begin{lemma}       \label{LEMooHHIPooEpGfCg}
+	Une application \( f\colon X\to Y\) est ouverte si et seulement si pour tout \( x\in X\) et pour tout voisinage \( U\) de \( x\), la partie \( f(U)\) est un voisinage de \( f(x)\).
+\end{lemma}
+
+\begin{proof}
+	La preuve suit celle de la proposition \ref{PROPooOXBCooIzLaPe}. Le sens direct est un à fortiori.
+
+	Dans l'autre sens. Soit un ouvert \( \mO\) de \( X\). Pour prouver que \( f(\mO)\) est ouvert, nous considérons \( y\in f(\mO)\), ainsi que \( x\in\mO\) tel que \( f(x)=y\). Vu que \( \mO\) est un voisinage de \( x\), la partie \( f(\mO)\) est un voisinage de \( y=f(x)\).
+
+	Il existe donc un ouvert \( V\) de \( Y\) tel que \( y=f(x)\in V\subset f(\mO)\). Donc la partie \( f(\mO)\) contient un ouvert autour de chacun de ses points, et elle est ouverte par le théorème \ref{ThoPartieOUvpartouv}.
+\end{proof}
+
+
+\begin{lemma}[\cite{BIBooNJJUooDaGnPZ}]
+	Une application linéaire entre espaces vectoriels topologiques est ouverte si et seulement si elle est ouverte en \( 0\).
+\end{lemma}
+
+\begin{proof}
+	Le sens direct est un à fortiori.
+
+	Soit un ouvert \( \mO\) et \( a\in \mO\). La partie \( \mO-a\) est ouverte et contient \( 0\). Donc \( f(\mO-a)\) est un ouvert parce que \( f\) est ouverte en \( 0\). Nous en déduisons, par linéarité, que \( f(\mO)-f(a)\) est ouvert et donc que \( f(\mO)\) est ouverte.
+\end{proof}
+
+\begin{lemma}[\cite{BIBooNJJUooDaGnPZ}]
+	Soient des espaces vectoriels normés \( E\) et \( F\). Une application linéaire ouverte \( f\colon E\to F\) est surjective.
+\end{lemma}
+
+\begin{proof}
+	Soit un ouvert \( B(0,r)\) dans \( E\). Puisque \( f\) est ouverte, la partie \( f\big( B(0,r) \big)\) est ouverte dans \( F\), et contient donc une boule \( B_F(0,r')\) pour un certain \( r'>0\).
+
+	Soit \( v\in F\). Nous considérons
+	\begin{equation}
+		v'=r'\frac{ v }{ 2\| v \| }.
+	\end{equation}
+	Nous avons \( \| v' \|=r'/2\), et donc \( v'\in B_F(0,r')\). Il existe donc \( x\in E\) (et même dans \( B_E(0,r)\)) tel que \( f(x)=v'\). Nous avons alors
+	\begin{equation}
+		f\big( \frac{ 2\| v \| }{ r' }x \big)=v,
+	\end{equation}
+	ce qui prouve que \( v\) est dans l'image de \( f\), et donc que \( f\) est surjective.
+\end{proof}
+
+\begin{theorem}[théorème de l'application ouverte\cite{BIBooNJJUooDaGnPZ, BIBooYJXXooTvzpDW,BIBooMKAVooDLCzUX}]     \label{THOooATZKooXHWCRD}
+	Soient des espaces de Banach\footnote{Espace de Banach : vectoriel, normé, complet. Définition \ref{DefVKuyYpQ}.} \( E\) et \( F\). Si l'application \( f\colon E\to F\) est linéaire, surjective et continue, alors elle est ouverte.
+\end{theorem}
+
+\begin{proof}
+	En plusieurs étapes.
+	\begin{subproof}
+		\spitem[Une union de fermés]
+		Soit \( y\in F\). Comme \( f\) est surjective, il existe \( x\in E\) tel que \( y=f(x)\). Soit \( n\in \eN\) tel que \( x\in B(0,n)\). Nous avons alors
+		\begin{equation}
+			y\in f\big( B(0,n) \big)\subset \overline{ f\big( B(0,n) \big) }
+		\end{equation}
+		En notant
+		\begin{equation}
+			F_n=\overline{ f\big( B_E(0,n) \big) },
+		\end{equation}
+		nous avons
+		\begin{equation}
+			F=\bigcup_{n=0}^{\infty}F_n.
+		\end{equation}
+		\spitem[Théorème de Baire]
+		Le théorème \ref{ThoBBIljNM} nous indique que \( F\) est un espace de Baire. La définition \ref{DEFooYEMNooLSXLYa} nous dit alors qu'il existe un \( n\) tel que \( F_n\) soit d'intérieur non vide. Mettons \( F_N\) d'intérieur non vide.
+		\spitem[Boule unité]
+		Puisque \( F_N\) est d'intérieur non vide, il existe \( y\in F_N\) et \( \eta>0\) tels que \( B_F(y,\eta)\subset F_N\). Nous avons aussi
+		\begin{equation}
+			B_F(0,\eta)=B_F(y,\eta)-y,
+		\end{equation}
+		et comme \( y\in F_N\) nous avons \( B_F(0,\eta)\subset F_N-F_N\), et vu qu'en plus \( -F_N=F_N\), nous avons
+		\begin{equation}
+			B_F(0,\eta)\subset 2F_N=\overline{ f\big( B_E(0,2N) \big) }.
+		\end{equation}
+		Nous avons ensuite
+		\begin{equation}
+			B_F(0,1)=\frac{1}{ \eta }B_F(0,\eta)\subset\frac{1}{ \eta }\overline{ f\big( B_E(0,2N) \big) }=\overline{ f\big( B_E(0,2N/\eta) \big) }.
+		\end{equation}
+		Ceci pour dire qu'il existe un \( M\in \eR\) tel que
+		\begin{equation}
+			B_F(0,1)\subset \overline{ f\big( B_E(0,M) \big) }.
+		\end{equation}
+		Nous avons de même que
+		\begin{equation}        \label{EQooCMSPooYtzAuC}
+			B_F\big( 0,\frac{1}{ 2^n } \big)\subset \overline{ f\big( B_E(0,M/2^n) \big) }.
+		\end{equation}
+		Nous voudrions maintenant avoir la même inclusion sans la fermeture.
+
+		\spitem[Une suite par récurrence]
+		Soit \( z\in B_F(0,1)\). Nous allons définir par récurrence une suite \( (x_n)\) dans \( E\) telle que
+		\begin{subequations}        \label{SUBEQSooLJEMooOaFncH}
+			\begin{numcases}{}
+				x_n\in B_E\big( 0,\frac{ M }{ 2^{n-1} } \big)\\
+				\| z-f(x_1+\ldots +x_n) \|<\frac{1}{ 2^n }.
+			\end{numcases}
+		\end{subequations}
+		\begin{subproof}
+			\spitem[Le premier élément]
+			Puisque \( z\in B_F(0,1)\subset\overline{ f\big( B_E(0,M) \big) }\), nous avons
+			\begin{equation}
+				B(z,\frac{ 1 }{2})\cap f\big( B_E(0,M) \big)\neq \emptyset.
+			\end{equation}
+			Nous pouvons donc considérer \( x_1\in B_E(0,M)\) tel que \( f(x_1)\in B(z,\frac{ 1 }{2})\).
+
+			Ce \( x_1\) vérifie les conditions \eqref{SUBEQSooLJEMooOaFncH}.
+			\spitem[La récurrence]
+			En utilisant l'hypothèse de récurrence et \eqref{EQooCMSPooYtzAuC},
+			\begin{equation}
+				z-f(x_1+\ldots +x_n)\in B_F\big( 0,\frac{1}{ 2^n } \big)\subset\overline{ f\big( B_E(0,M/2^n) \big) },
+			\end{equation}
+			de telle sorte que
+			\begin{equation}
+				B_F\big( z-f(x_1,\ldots, x_n),\frac{1}{ 2^{n+1} } \big)\cap f\big( B_E(0,M/2^n) \big)\neq \emptyset.
+			\end{equation}
+			Nous pouvons donc considérer \( x_{n+1}\in B_E(0,M/2^n)\) tel que
+			\begin{equation}
+				f(x_{n+1})\in B_F\big( z-f(x_1+\ldots +x_n),\frac{1}{ 2^{n+1} } \big).
+			\end{equation}
+			Donc
+			\begin{equation}
+				z-f(x_1+\ldots +x_n)-f(x_{n+1})\in B_F\big( 0,\frac{1}{ 2^{n+1} } \big).
+			\end{equation}
+			Nous avons donc bien
+			\begin{equation}
+				\| z-f(x_1+\ldots +x_{n+1}) \|<\frac{1}{ 2^{n+1} }.
+			\end{equation}
+		\end{subproof}
+		\spitem[Convergence]
+		Nous avons, pour tout \( n\), \( \| x_n \|<\frac{ M }{ 2^{n-1} }\). Donc la série
+		\begin{equation}
+			\sum_{n=1}^{\infty}\| x_n \|\leq \sum_{n=1}^{\infty}\frac{ M }{ 2^{n-1} }
+		\end{equation}
+		converge. Autrement dit, la série des \( x_n\) converge absolument\footnote{Définition \ref{DefVFUIXwU}.}. Puisque \( E\) est un espace de Banach, la proposition \ref{PropAKCusNM} nous dit que \( \sum_{n=1}^{\infty}x_n\) converge dans \( E\). Nous posons
+		\begin{equation}
+			x=\sum_{n=1}^{\infty}x_n.
+		\end{equation}
+		En utilisant la série géométrique de la proposition \ref{PROPooWOWQooWbzukS}\ref{ITEMooBJHBooBMEmiG}, nous trouvons
+		\begin{equation}
+			\| x \|\leq \sum_{k=1}^{\infty}\| x_k \|\leq M\sum_{k=1}^{\infty}\frac{1}{ 2^{k+1} }=M\sum_{k=0}^{\infty}\frac{1}{ 2^k }=2M.
+		\end{equation}
+		\spitem[Passage à la limite]
+		Nous avons \( x\in B_E(0,2M)\), et
+		\begin{equation}
+			\lim_{n\to \infty} \| z-f(x_1+\ldots +x_n) \|=0.
+		\end{equation}
+		Puisque les applications \( \| . \|\), \( t\mapsto z-t\) et \( f\) sont continues\footnote{Oui, la continuité de \( f\) est une hypothèse en plus de sa linéarité parce que nous n'avons pas d'hypothèses sur la dimension de \( E\) et \( F\).}, nous pouvons rentrer la limite de partout et écrire
+		\begin{equation}
+			\| z-f(x) \|=0,
+		\end{equation}
+		ce qui signifie que \( z=f(x)\). Comme \( z\) est un élément arbitraire de \( B_F(0,1)\) nous avons prouvé que
+		\begin{equation}
+			B_F(0,1)\subset f\big( B_E(0,2M) \big).
+		\end{equation}
+		Nous avons donc aussi que pour tout \( r>0\), il existe \( r'\) tel que
+		\begin{equation}
+			B_F\big( 0, r \big)\subset f\big( B_E(0,r') \big).
+		\end{equation}
+		En l'occurrence, \( r'=r/2M\).
+		\spitem[Passage aux voisinages]
+		Nous montrons que l'image de tout voisinage de \( x\in E\) contient un voisinage de \( f(x)\) dans \( F\). Soit \( x\in E\) ainsi qu'un voisinage \( V\) de \( x\). Il existe \( r>0\) tel que \( B(x,r)\subset V\). Vu que \( f\) est linéaire,
+		\begin{equation}
+			f\big( B(x,r) \big)=f(x)+f\big( B(0,r) \big),
+		\end{equation}
+		et il existe un \( r'\) tel que \( B_F(0,r')\subset f\big( B_E(0,r) \big)\). Cela pour dire que
+		\begin{equation}
+			f(x)+B_F(0,r')\subset f\big( B(x,r) \big)\subset f(V).
+		\end{equation}
+		Vu que \( f(x)+B_F(0,r')\) est un ouvert autour de \( f(x)\), nous avons prouvé que \( f(V)\) contient un ouvert autour de \( f(x)\), c'est-à-dire que \( f(V)\) est un voisinage de \( f(x)\).
+		\spitem[Conclusion]
+		Le lemme \ref{LEMooHHIPooEpGfCg} conclut que \( f\) est ouverte.
+	\end{subproof}
+
+\end{proof}

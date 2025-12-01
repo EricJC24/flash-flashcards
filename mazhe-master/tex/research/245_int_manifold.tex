@@ -1,0 +1,752 @@
+% This is part of Giulietta
+% Copyright (c) 2010-2017, 2019, 2021-2022, 2024
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Orientation and volume forme}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%-------------------------------------------------------
+\subsection{Orientation}
+%----------------------------------------------------
+
+
+\begin{propositionDef}[\cite{BIBooTGSMooYDnTxb}]		\label{PROPooIDYRooSXTBtw}		\label{DEFooGMOQooVzqFxy}
+	Let \( M\) be  a smooth manifold. Let two charts \(\varphi_{\alpha} \colon  U_{\alpha}\to M  \) and \(\varphi_{\beta} \colon U_{\beta}\to M  \). We say that \( (U_{\alpha}, \varphi_{\alpha})\sim (U_{\beta}, \varphi_{\beta})\) if
+	\begin{equation}
+		\det\big( d(\varphi_{\alpha}^{-1}\circ \varphi_{\beta})_x \big)>0
+	\end{equation}
+	for every \( x\in U_{\alpha}\cap U_{\beta}\).
+
+	This is an equivalence relation\footnote{Definition \ref{DefHoJzMp}}.
+\end{propositionDef}
+
+\begin{definition}[\cite{BIBooTGSMooYDnTxb}]		\label{DEFooAQPOooJeSRAt}	\label{DEFooQZJPooOwMbim}
+	An \defe{orientation}{orientation on manifold} on a smooth manifold is an atlas in which all the charts are equivalent\footnote{Equivalence in the sense of definition \ref{PROPooIDYRooSXTBtw}.}.
+
+	If such an atlas exists, we say that the manifold \( M\) is \defe{orientable}{orientable}.
+\end{definition}
+
+
+\begin{propositionDef}[\cite{BIBooTGSMooYDnTxb}]		\label{PROPooMKHKooUTiUjF}
+	We say that two orientations \( \mA\) and \( \mB\) are \defe{equivalent}{equivalence of orientation} if \( \mA\cup\mB\) is an orientation.
+
+	This is an equivalence relation.
+\end{propositionDef}
+
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooYMIYooUDOhyR}
+	Let \( \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be charts of the smooth manifold \( M\). For \( \alpha,\beta\in\Lambda\), we write \( M_{\alpha\beta}=\varphi_{\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})\), and we define the map
+	\begin{equation}
+		\begin{aligned}
+			f_{\alpha\beta}\colon M_{\alpha\beta} & \to \eR                                                                                          \\
+			x                                     & \mapsto \det\Big( d(\varphi_{\alpha}^{-1}\circ \varphi_{\beta})_{\varphi_{\beta}^{-1}(x)} \Big).
+		\end{aligned}
+	\end{equation}
+
+	\begin{enumerate}
+		\item		\label{ITEMooLHBBooFxUTHJ}
+		      If \( \alpha,\beta,\sigma\in \Lambda\) and \( x\in M_{\alpha\beta}\cap M_{\alpha\sigma}\cap M_{\sigma\beta}\), we have
+		      \begin{equation}
+			      f_{\alpha\beta}(x)=f_{\alpha\sigma}(x)f_{\sigma\beta}(x)
+		      \end{equation}
+		\item		\label{ITEMooURXTooRWnYsV}
+		      For every \( x\in M_{\alpha\beta}\), we have
+		      \begin{equation}
+			      f_{\alpha\beta}(x)\neq 0.
+		      \end{equation}
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	Several points.
+	\begin{subproof}
+		\spitem[For \ref{ITEMooLHBBooFxUTHJ}]
+		%-----------------------------------------------------------
+
+		Using the fact that the differential and the determinant are multiplicative (lemma \ref{LEMooGRRAooXxDMuw} and proposition \ref{PropYQNMooZjlYlA}\ref{ItemUPLNooYZMRJy}), we have
+		\begin{subequations}
+			\begin{align}
+				f_{\alpha\beta}(x) & =\det\Big( d(\varphi_{\alpha}^{-1}\circ \varphi_{\beta})_{\varphi_{\beta}^{-1}(x)} \Big)                                                                                                                                           \\
+				                   & =\det\Big(  d(\varphi_{\alpha}^{-1}\circ  \varphi_{\sigma}\circ\varphi_{\sigma}^{-1}\circ  \varphi_{\beta})_{\varphi_{\beta}^{-1}(x)}  \Big)                                                                                       \\
+				                   & =\det\Big(  d(\varphi_{\alpha}^{-1}\circ  \varphi_{\sigma})_{      \varphi_{\sigma}^{-1}\circ\varphi_{\beta}\circ\varphi_{\beta}^{-1}(x)    }\circ d(\varphi_{\sigma}^{-1}\circ  \varphi_{\beta})_{\varphi_{\beta}^{-1}(x)}  \Big) \\
+				                   & =\det\Big(  d(\varphi_{\alpha}^{-1}\circ  \varphi_{\sigma})_{      \varphi_{\sigma}^{-1}   }\circ d(\varphi_{\sigma}^{-1}\circ  \varphi_{\beta})_{\varphi_{\beta}^{-1}(x)}  \Big)                                                  \\
+				                   & = f_{\alpha\sigma}(x)f_{\sigma\beta}(x).
+			\end{align}
+		\end{subequations}
+		\spitem[For \ref{ITEMooURXTooRWnYsV}]
+		%-----------------------------------------------------------
+		The trick is to compute \( f_{\alpha\alpha}\) using the point \ref{ITEMooLHBBooFxUTHJ}. We have
+		\begin{equation}
+			f_{\alpha\alpha}(x)=f_{\alpha s}(x)f_{s\alpha}(x).
+		\end{equation}
+		On the other hand, \( f_{\alpha\alpha}(x)=\det(\id)\neq 0\). A product is non vanishing only when the two factors are non vanishing. Thus \( f_{\alpha s}(x)\neq 0\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooXMIJooCRspfz}
+	Let \( M\) be an orientable smooth manifold. Let \( \{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in \Lambda}\) and \( \{ (U_s,\phi_s) \}_{s\in S}\) be orientations on \( M\). For every \( \alpha,\beta\in \Lambda\) and \( s,t\in S\) we have
+	\begin{equation}
+		f_{\beta t}(x)f_{\alpha s}(x)>0.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Using both points of lemma \ref{LEMooYMIYooUDOhyR}, we have
+	\begin{equation}
+		f_{\beta t}(x)=f_{\beta \alpha}(x)f_{\alpha s}(x).
+	\end{equation}
+	Since \( \Lambda\) is an orientation, \( f_{\beta\alpha}(x)>0\) and by lemma \ref{LEMooYMIYooUDOhyR}\ref{ITEMooURXTooRWnYsV}, we deduce hat \( f_{\beta t}(x)\) and \( f_{\alpha s}(x)\) have the same sign.
+\end{proof}
+
+
+\begin{normaltext}		\label{NORMooPXHIooHTFJoa}
+	When we have two charts \( (U_{\alpha},\varphi_{\alpha})\) and \( (U_{\beta},\varphi_{\beta})\), we can write the corresponding «basis» vector fields
+	\begin{equation}
+		(\partial_{\alpha, i})(x)=\frac{d}{dt} \left[ \varphi_{\alpha}\big( \varphi_{\alpha}^{-1}(x)+te_i \big)  \right]_{t=0},
+	\end{equation}
+	and
+	\begin{equation}
+		(\partial_{\beta, i})(x)=\frac{d}{dt} \left[ \varphi_{\beta}\big( \varphi_{\beta}^{-1}(x)+te_i \big)  \right]_{t=0}.
+	\end{equation}
+\end{normaltext}
+
+%-------------------------------------------------------
+\subsection{Connected atlas}
+%----------------------------------------------------
+
+\begin{definition}[\cite{MonCerveau}]		\label{DEFooIQUXooOdVpLS}
+	Let \( M\) be a smooth manifold with an atlas \( \{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in \Lambda}\). For \( \alpha\in \Lambda\) we write \( M_{\alpha}=\varphi_{\alpha}(U_{\alpha})\). Let \( x\in M\). We write
+	\begin{equation}
+		S_x=\{ y\in M \tq \exists \alpha_1,\ldots,\alpha_n\in\Lambda\tq
+		\begin{cases}
+			x\in M_{\alpha_1} \\
+			y\in M_{\alpha_n} \\
+			M_{\alpha_i}\cap M_{\alpha_{i+1}}\neq \emptyset.
+		\end{cases}
+		\}
+	\end{equation}
+\end{definition}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooIFABooVGFYfI}
+	Let \( M\) be a smooth manifold and \( x,y\in M\).
+	\begin{enumerate}
+		\item	\label{ITEMooCMDVooBobapJ}
+		      If \( y\in S_x\), then \( x\in S_y\).
+		\item		\label{ITEMooIIBSooNNXIFj}
+		      If \( y\in S_x\), then \( S_y=S_x\).
+		\item		\label{ITEMooNGSEooIZuiMU}
+		      If \( S_x\cap S_y\neq\emptyset\) then \( S_x=S_y\).
+	\end{enumerate}
+	The relation \( x\sim y\) if \( x\in S_y\) is an equivalence relation.
+\end{lemma}
+
+\begin{proof}
+	Two parts.
+	\begin{subproof}
+		\spitem[For \ref{ITEMooCMDVooBobapJ}]
+		%-----------------------------------------------------------
+		Since \( y\in S_x\), we have a chain \( (\alpha_1,\ldots,\alpha_n)\) such that \( x\in M_{\alpha_1}\) and \( y\in S_{\alpha_n}\) with \( M_{\alpha_i}\cap S_{\alpha_{i+1}}\neq \emptyset\). The chain \( (\alpha_n,\ldots,\alpha_1)\) shows that \( x\in S_y\).
+		\spitem[For \ref{ITEMooIIBSooNNXIFj}]
+		%-----------------------------------------------------------
+		Let \( y\in S_x\).
+		\begin{subproof}
+			\spitem[\( S_y\subset S_x\)]
+			%-----------------------------------------------------------
+			Let \( a\in S_y\). We have a chain \( \alpha_1,\ldots,\alpha_n\) with \( y\in M_{\alpha_1}\) and \( a\in M_{\alpha_n}\). Since \( y\in S_x\) we also have a chain \( \beta_1,\ldots,\beta_m\) such that \( x\in M_{\beta_1}\) and \( y\in M_{\beta_m}\). Since \( M_{\beta_m}\cap M_{\alpha_1}\neq \emptyset\) we have the chain \( (\beta_1,\ldots,\beta_m,\alpha_1,\ldots,\alpha_n)\) such that \( x\in M_{\beta_1}\) and \( a\in M_{\alpha_n}\). Thus \( a\in S_x\).
+			\spitem[\( S_x\subset S_y\)]
+			%-----------------------------------------------------------
+			We know that \( y\in S_x\). By \ref{ITEMooCMDVooBobapJ} we also have \( x\in S_y\). The inclusion we just proved reads now \( S_x\subset S_y\).
+		\end{subproof}
+		\spitem[For \ref{ITEMooNGSEooIZuiMU}]
+		%-----------------------------------------------------------
+		Let \( a\in S_x\cap S_y\). Since \( a\in S_x\) we have \( S_a=S_y\), and from \( a\in S_y\) we deduce \( S_a=S_y\).
+	\end{subproof}
+
+	The fact that \( x\sim y\) is an equivalence relation is now an immediate check.
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooFTFCooYTKaPF}
+	Let \( M\) be a connected smooth manifold. For every \( a\in M\) we have \( M=S_a\).
+\end{proposition}
+
+\begin{proof}
+	The set \( \{ S_x \}_{x\in M}\) is a covering of \( M\) by open parts. Let \( A=S_a\) and \( B=\bigcup_{\substack{ x\in M \\ a\not\in S_x }  }S_x \).
+	\begin{subproof}
+		\spitem[\( M=A\cup B\)]
+		%-----------------------------------------------------------
+		We prove that \( M=A\cup B\). Let \( x\in M\). There are two possibilities: \( x\in S_a\) or not. If \( x\in S_a\), then \( x\in A\). Suppose that \( x\not\in S_a\). Then \( a\not\in S_x\) (lemma \ref{LEMooIFABooVGFYfI}\ref{ITEMooCMDVooBobapJ}) and then \( x\in B\).
+		\spitem[\( B=\emptyset\)]
+		%-----------------------------------------------------------
+		Suppose that \( A\) and \( B\) are both non empty. From connectedness of \( M\), we have \( A\cap B\neq\emptyset\). Let \( y\in A\cap B\). We have \( y\in S_a\) and there exists \( x\in M\) such that \( a\neq S_x\) and \( y\in S_x\). We have
+		\begin{subequations}
+			\begin{align}
+				y\in S_a & \Rightarrow a\in S_y  \\
+				y\in S_x & \Rightarrow x\in S_y.
+			\end{align}
+		\end{subequations}
+		Using lemma \ref{LEMooIFABooVGFYfI}\ref{ITEMooIIBSooNNXIFj} we deduce \( S_a=S_x=S_y\). In particular \( a\in S_x\) which is a contradiction.
+
+		Thus \( A\) and \( B\) are not both non empty. The part \( A\) contains \( a\) and is then non empty. We conclude that \( B\) is empty.
+
+		\spitem[Conclusion]
+		%-----------------------------------------------------------
+		We have \( M=A\cup B=A=S_a\).
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooSDQUooWEagbY}
+	Let \( \mA= \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be an atlas. For each \( \alpha\in \Lambda\) we consider the set \( \{ U_{\alpha,i} \}_{i\in I_{\alpha}}\) of its connected components.
+
+	Then the set
+	\begin{equation}
+		\mA_c=\{ (U_{\alpha,i},\varphi_{\alpha,i}) \}_{\alpha\in\Lambda, i\in I_{\alpha}}
+	\end{equation}
+	where \(\varphi_{\alpha,i} \colon U_{\alpha,i}\to M  \) is the restriction of \( \varphi_{\alpha}\) is an atlas.
+\end{lemma}
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooHQSSooDCjlIX}
+	Let \( \mA\) be an orientation. Then the atlas \( \mA_c\) is an orientation and is the same orientation as \( \mA\).
+\end{proposition}
+
+\begin{proof}
+	We consider two charts \( \varphi_{\alpha,i}\) and \( \varphi_{\beta,j}\) of \( \mA_c\) (\( i\in I_{\alpha}\) and \( j\in I_{\beta}\)). Let \( x\in M_{\alpha,i}\cap M_{\beta,j}\). Since the connected components are open, \( x\) has a neighbourhood in \( M_{\alpha,i}\cap M_{\beta,j}\) and we have
+	\begin{equation}
+		d(\varphi_{\alpha,i}^{-1}\circ\varphi_{\beta,j})_x=d(\varphi_{\alpha}^{-1}\circ \varphi_{\beta}).
+	\end{equation}
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Volume form}
+%----------------------------------------------------
+
+\begin{proposition}[\cite{MonCerveau}]		\label{PROPooBIVHooXOycnS}
+	Let \( M\) be a smooth manifold. There exists an orientation \( \{ (U_{\alpha},\varphi_{\alpha})_{\alpha\in \Lambda} \}\) and a partition of unity \( \{ \phi_i \}_{i\in I}\) such that
+	\begin{enumerate}
+		\item
+		      The orientation \( \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in \Lambda}\) is countable and locally finite.
+		\item
+		      The partition of unity \( \{ \phi \}_{i\in I}\)  is countable and subordinate to \( \mW=\{ \varphi_{\alpha}(U_{\alpha}) \}_{\alpha\in \Lambda}\).
+		\item
+		      The supports \( \supp(\phi_i)\) are compacts.
+	\end{enumerate}
+\end{proposition}
+
+\begin{definition}[\cite{BIBooTGSMooYDnTxb}]			\label{DEFooOBZEooMZauZF}
+	A \defe{volume form}{volume form} on a smooth \(n \)-dimensional manifold is a smooth nowhere vanishing \( n\)-differential form.
+\end{definition}
+
+\begin{lemma}[\cite{MonCerveau}]		\label{LEMooQGVMooSHXUmD}
+	Let \( \omega\) be a \( n\)-differential form on \( M\). Let \(\varphi_{\alpha} \colon U_{\alpha} \to M  \) be a chart. There exists a unique smooth function \(f_{\alpha} \colon M_{\alpha}\to \eR   \) such that
+	\begin{equation}
+		\omega_x=f_{\alpha}(x)\partial^*_{\alpha, 1}\wedge\ldots\wedge\partial^*_{\alpha, n}
+	\end{equation}
+	for every \( x\in M_{\alpha}\).
+\end{lemma}
+
+This lemma is a combination of proposition \ref{PROPooUGLOooTULnDK} for the existence of \( f\) and definition \ref{DEFooZELVooFfosEn} for the smoothness.
+
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooKJRCooCklXie}
+	If \( \omega\) is a volume form, then
+	\begin{equation}
+		\omega_x(\partial_{\alpha, 1},\ldots,\partial_{\alpha,n})\neq 0
+	\end{equation}
+	for every \( \alpha\in \Lambda\) and \( x\in M_{\alpha}\).
+\end{lemma}
+
+\begin{proof}
+	From lemma \ref{LEMooQGVMooSHXUmD}, we have \( a\in \eR\) such that \( \omega_x=a\partial^*_{\alpha,1}\wedge\ldots\wedge\partial^*_{\alpha,n}\). Notice that \( a\neq 0\) because \( \omega_x\neq 0\). Proposition \ref{PROPooRRSZooJXOApq} shows that
+	\begin{equation}		\label{EQooRRHNooBVgAnF}
+		(\partial^*_{\alpha,1}\wedge\ldots\wedge\partial^*_{\alpha,n})(\partial_{\alpha,1},\ldots,\partial_{\alpha,n})=\det\big( \partial_{\alpha,i}^*(\partial_{\alpha,j}) \big)=\det(\delta_{ij})=1.
+	\end{equation}
+	Thus \( \omega_x(\partial_{\alpha,1},\ldots,\partial_{\alpha,n})=a\neq 0\).
+\end{proof}
+
+\begin{lemmaDef}		\label{LEMooELOHooYtXSEH}
+	Let \( \omega\) be a volume form on the connected manifold \( M\). Let \( \mA=\{ (U_{\alpha},\varphi_{\alpha})\}_{\alpha\in\Lambda}\) be an orientation on \( M\). If there exists \( x\in M\) and \( \alpha\in \Lambda\) such that
+	\begin{equation}
+		\omega_x(\partial_{\alpha,1},\ldots,\partial_{\alpha,n})>0,
+	\end{equation}
+	then
+	\begin{equation}
+		\omega_y(\partial_{\beta,1},\ldots,\partial_{\beta,n})>0
+	\end{equation}
+	for every \( \beta\in\Lambda \) and \( y\in M_{\beta}=\varphi_{\beta}(U_{\beta})\).
+
+	In that case we say that \( \omega\) is \defe{oriented}{orientation of a volume form} \( \mA\)-positively.
+\end{lemmaDef}
+
+\begin{proof}
+
+	Two parts. In the first part we show that, keeping the same point, we can change the chart, and in the second part we will show how we can change the point.
+
+	\begin{subproof}
+		\spitem[Changing chart]
+		%-----------------------------------------------------------
+
+
+		Let \( x\in M_{\alpha}\cap M_{\beta}\). From lemma \ref{LEMooQGVMooSHXUmD}, there exists \(a \eR  \) such that
+		\begin{equation}
+			\omega_x=a\partial^*_{\beta,1}\wedge\ldots\wedge\partial^*_{\beta,n}.
+		\end{equation}
+		Using lemma \ref{LEMooSZTOooBIzMCc},
+		\begin{equation}
+			\omega_x(\partial_{\alpha,1},\ldots,\partial_{\alpha,n})=a(\partial^*_{\beta,1}\wedge\ldots\wedge\partial^*_{\beta,n})(\partial_{\alpha,1},\ldots,\partial_{\alpha,n})=a\det\big( d(\varphi_{\beta}^{-1}\circ\varphi_{\alpha})_x \big).
+		\end{equation}
+		Since \( \mA\) is an orientation, the determinant is strictly positive. By hypothesis, the left hand side is strictly positive. We deduce that \( a>0\). Using the same computation as in \eqref{EQooRRHNooBVgAnF}, we find
+		\begin{equation}
+			\omega_x(\partial_{\beta,1},\ldots,\partial_{\beta,n})=a\det(\id)=a>0.
+		\end{equation}
+
+		\spitem[Changing the point]
+		%-----------------------------------------------------------
+		Let \( x,y\in M\) We consider the connected orientation \( \mA_c=\{ (U_i,\varphi_i) \}_{i\in I}\) associated with \( \mA\) (proposition \ref{PROPooHQSSooDCjlIX}). Since \( M\) is connected, \( S_x=M\) (proposition \ref{PROPooFTFCooYTKaPF}) and there exists a chain \( i_0,\ldots,i_n\in I\)  and points \( a_k\in \varphi_{i_k}(U_k)\cap\varphi_{i_{k+1}}(U_{k+1})\) such that \( x\in M_{i_0}\) and \( y\in M_{i_n}\).
+
+
+		The map
+		\begin{equation}
+			\begin{aligned}
+				f\colon \varphi_{i_0}(U_{i_0}) & \to \eR                                                    \\
+				s                              & \mapsto \omega_s(\partial_{i_0,1},\ldots,\partial_{i_0,n})
+			\end{aligned}
+		\end{equation}
+		satisfy:
+		\begin{enumerate}
+			\item
+			      It is continuous
+			\item
+			      It's domain is connected,
+			\item
+			      It does not vanish (lemma \ref{LEMooKJRCooCklXie}).
+			\item
+			      Let \( \beta\in\Lambda\) such that \( U_{i_0}\) is one of the connected components of \( U_{\beta}\). We have
+			      \begin{equation}
+				      f(x)=\omega_x(\partial_{i_0,1},\ldots,\partial_{i_0,n})=\omega_x(\partial_{\beta,1},\ldots,\partial_{\beta,n})>0.
+			      \end{equation}
+			      The last inequality is the first part of this lemma "Changing charts".
+		\end{enumerate}
+		Thus \( f(s)>0\) for every \( s\in \varphi_{i_0}(U_{i_0})\) (intermediate value theorem \ref{PROPooGURQooAwKNUJ}). In particular \( f(a_0)>0\). Now we change of chat at \( a_0\) to use the chart \( (U_{i_1},\varphi_{i_1})\) and we continue\footnote{The reader is assumed to be able to write a correct recursion.}.
+	\end{subproof}
+\end{proof}
+
+
+\begin{theorem}[\cite{BIBooJMRFooTAhhcg}]	\label{THOooQEFUooQTtPDD}
+	A smooth manifold is orientable if and only if it accepts a volume form\footnote{Volume form, definition \ref{DEFooOBZEooMZauZF}.}.
+\end{theorem}
+
+\begin{proof}
+	Two parts.
+	\begin{subproof}
+		\spitem[\( \Leftarrow\)]
+		%-----------------------------------------------------------
+		Let \( \omega\in\Omega^n(M)\) be such that \( \omega_x\neq 0\) for every \( x\in M\). Let \( \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be an atlas of \( M\). We will build an atlas \( \{ (V_x,\phi_x) \}_{x\in M}\) of \( M\) indexed by the elements of \( M\).
+
+		Let \( x\in M\). There exists \( \alpha\in \Lambda\) such that \( x\in \varphi_{\alpha}(U_{\alpha})\). With that chart we have (lemma \ref{LEMooQGVMooSHXUmD})
+		\begin{equation}
+			\omega_y=f(y)\partial^*_{\alpha, 1}\wedge\ldots \wedge\partial^*_{\alpha,n}
+		\end{equation}
+		for every \( y\in M_{\alpha}\). Since \( \omega\) is non vanishing, \( f(x)\neq 0\). If \( f(x)>0\), we consider \( (V_x,\phi_x)=(U_{\alpha}, \varphi_{\alpha})\). If \( f(x)<0\) we have to twist a little bit. We consider the linear map \(\tau \colon \eR^n\to \eR^n  \) which permutes \( e_1\) and \( e_2\), that is:
+		\begin{equation}
+			\begin{aligned}
+				\tau\colon \eR^n & \to \eR^n                        \\
+				e_i              & \mapsto \begin{cases}
+					                           e_2 & \text{if } i=1     \\
+					                           e_1 & \text{if }i=2      \\
+					                           e_i & \text{otherwise. }
+				                           \end{cases}
+			\end{aligned}
+		\end{equation}
+		Notice that \( \tau^{-1}=\tau\). We set \( V_x=\tau(U_{\alpha})\) and \( \phi_x=\varphi_{\alpha}\circ\tau\). Following the notations of \ref{NORMooPXHIooHTFJoa}, we have
+		\begin{subequations}
+			\begin{align}
+				(\partial_{x,1})(y) & =\frac{d}{dt} \left[ \phi_x\big( \phi_x^{-1}(y)+te_1 \big)  \right]_{t=0}                                            \\
+				                    & =\frac{d}{dt} \left[ (\varphi_{\alpha}\circ \tau)\big( (\tau\circ\varphi_{\alpha}^{-1})(y)+te_1 \big)  \right]_{t=0} \\
+				                    & =\frac{d}{dt} \left[ \varphi_{\alpha}\big( \varphi_{\alpha}^{-1}(y)+te_2 \big)  \right]_{t=0}                        \\
+				                    & =(\partial_{\alpha}, 2)(y).
+			\end{align}
+		\end{subequations}
+		In the same way we have \( \partial_{x,1}=\partial_{\alpha,1}\) and \( \partial_{x,i}=\partial_{\alpha,i}\) for \( i>2\). Thus we have
+		\begin{equation}
+			\omega_x=f(x)\partial^*_{\alpha,1}\wedge\partial^*_{\alpha,2}\wedge\ldots \wedge\partial^*_{\alpha,n}=f(x)\partial^*_{x,2}\wedge\partial^*_{x,1}\wedge\ldots\wedge\partial^*_{x,n}=-f(x)\partial^*_{x,1}\wedge\ldots\wedge\partial^*_{x,n}.
+		\end{equation}
+		Thus using the atlas \( \{ (V_x,\phi_x) \}_{x\in M}\), for each \( y\in M\), we have a chart \( (V_y,\phi_y)\) and a smooth map \(g_y \colon M_y\to \eR  \) such that
+		\begin{equation}
+			\omega_x=g_y(x)\partial^*_{x,1}\wedge\ldots\wedge\partial^*_{x,n}
+		\end{equation}
+		with \( g_y(x)>0\) for every \( x\in M_y\).
+
+		Now we prove that \( \{ (V_x,\phi_x) \}\) is an orientation of \( M\). Let \( z\in M_{xy}=\phi_(V_x)\cap \phi_y(V_y)\). We have
+		\begin{equation}
+			\omega_z=g_x(z)\partial_{x,1}^*\wedge\ldots\partial^*_{x,n}=g_y(z)\partial_{y,1}^*\wedge\ldots\wedge\partial_{y,n}^*.
+		\end{equation}
+		Applying to \( (\partial_{x,1},\ldots,\partial_{x,n})\) we have
+		\begin{equation}
+			\omega_z(\partial_{x,1},\ldots,\partial_{x,n})=g_x(z)=g_y(z)(\partial_{y,1}^*\wedge\ldots\wedge\partial_{y,n}^*)(\partial_{x,1},\ldots,\partial_{x,n}).
+		\end{equation}
+		Using proposition \ref{PROPooRRSZooJXOApq} and lemma \ref{LEMooSZTOooBIzMCc} on the right hand side, we get
+		\begin{equation}
+			g_x(z)=g_y(z)\det\Big( \partial_{y,i}^*(\partial_{x,j}) \Big)=g_y(z)\det\big( d(\varphi_y^{-1}\circ\varphi_x)_z \big).
+		\end{equation}
+		The charts \( \varphi_x\) and \( \varphi_y\) were chosen in such a way that \( g_x(z)>0\) and \( g_y(z)>0\). Thus
+		\begin{equation}
+			\det\big( d(\varphi_y^{-1}\circ\varphi_x)_z \big)>0.
+		\end{equation}
+		Thus the maps \( \{ \varphi_x \}_{x\in M}\) are an atlas and an orientation.
+		\spitem[\( \Rightarrow\)]
+		%-----------------------------------------------------------
+		Let \( \mA=\{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be an orientation on \( M\). For each \( \alpha\in \Lambda\) we consider the differential form
+		\begin{equation}
+			\omega_{\alpha}=\partial_{\alpha,1}^*\wedge\ldots \wedge\partial_{\alpha,n}^*.
+		\end{equation}
+		We consider a partition of unity as in proposition \ref{PROPooOVQHooMNRQDH}, and we set \( \omega=\sum_{\alpha\in \Lambda}\rho_{\alpha}\omega_{\alpha}\). We show that this is nowhere vanishing. Let \( m\in M\). Since \( \{ \supp(\rho_{\alpha}) \}_{\alpha\in \Lambda}\) is locally finite, the set \( \Lambda'=\{ \alpha\in \Lambda\tq \rho_{\alpha}(m)\neq 0 \}\) is finite. We have
+		\begin{equation}
+			\omega(m)=\sum_{\alpha\in\Lambda'}\rho_{\alpha}(m)\omega_{\alpha}(m).
+		\end{equation}
+		Let \( \beta\in \Lambda'\). We have
+		\begin{subequations}
+			\begin{align}
+				\omega_m(\partial_{\beta,1},\ldots,\partial_{\beta,n}) & = \sum_{\alpha\in\Lambda'}\rho_{\alpha}(m) \omega_{\alpha}(\partial_{\beta,1},\ldots,\partial_{\beta,n}) \\
+				                                                       & =\sum_{\alpha\in\Lambda'}\rho{\alpha}(m)\det\big( d(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})_m \big).
+			\end{align}
+		\end{subequations}
+		Since \( \{ \varphi_{\alpha} \}_{\alpha\in\Lambda}\) is an orientation, we have \( \det\big( d(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})_m \big)>0\) for every \( \alpha\in \Lambda'\), and since we have only a finite number of them, we consider the minimum:
+		\begin{equation}
+			s=\min_{\alpha\in \Lambda'}\det\big( d(\varphi^{-1}_{\alpha}\circ\varphi_{\beta})_m \big).
+		\end{equation}
+		Now we have
+		\begin{subequations}
+			\begin{align}
+				\sum_{\alpha\in\Lambda}\rho_{\alpha}(m)\omega_{\alpha}(m)(\partial_{\beta,1},\ldots,\partial_{\beta,n}) & = \sum_{\alpha\in\Lambda'}\rho_{\alpha}(m)\det\big( d(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})_m \big) \\
+				                                                                                                        & \geq s\sum_{\alpha\in \Lambda'}\rho_{\alpha}(m)                                                          \\
+				                                                                                                        & =s\sum_{\alpha\in\Lambda}\rho_{\alpha}(m)                                                                \\
+				                                                                                                        & =s >0.
+			\end{align}
+		\end{subequations}
+	\end{subproof}
+\end{proof}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooHLYAooAeEnZb}
+	Let \( \mA\) and \( \mA'\) be orientations on a connected manifold. Let \( \omega\) be a \( \mA\)-oriented volume form. The volume form \( \omega\) is \( \mA'\)-oriented if and only if \( \mA\) and \( \mA'\)  are equivalent orientations.
+\end{lemma}
+
+\begin{proof}
+	Let \( (\varphi_{\alpha}, U_{\alpha})\in\mA\) and \( (U_{\beta},\varphi_{\beta})\in\mA'\). We can write \( \omega_x=f(x)\partial^*_{\alpha,1}\wedge\ldots\partial_{\alpha,n}^*\) with \( f(x)>0\), and
+	\begin{subequations}
+		\begin{align}
+			\omega_x(\partial_{\beta,1},\ldots,\partial_{\beta,n}) & =f(x)(\partial^*_{\alpha,1}\wedge\ldots\partial_{\alpha,n})(\partial_{\beta,1},\ldots,\partial_{\beta,n})                                       \\
+			                                                       & =f(x)\det\big( d(\varphi_{\alpha}^{-1}\circ \varphi_{\beta})_x \big).                                     & \text{lem. \ref{LEMooSZTOooBIzMCc}}
+		\end{align}
+	\end{subequations}
+	Thus we have equivalence between :
+	\begin{enumerate}
+		\item
+		      \( \omega\) is \( \mA'\)-oriented,
+		\item
+		      \( \omega_x(\partial_{\beta,1},\ldots,\partial_{\beta,n})>0\)
+		\item
+		      $\det\big( d(\varphi_{\alpha}^{-1}\circ\varphi_{\beta}) \big)>0$,
+		\item
+		      the orientations \( \mA\) and \( \mA'\) are equivalent.
+	\end{enumerate}
+\end{proof}
+
+\begin{proposition}[\cite{BIBooTGSMooYDnTxb,BIBooXNMMooNOLQEL,MonCerveau}]		\label{PROPooNCNJooHFngBW}
+	If a connected manifold accepts one orientation, then it accepts exactly two classes of orientation.
+\end{proposition}
+
+\begin{proof}
+	Let \( \mA\) and \( \mA'\) be two different orientations. Let \( \omega\) be a \( \mA\)-oriented volume form, and \( \mB\) a third orientation. Since \( \omega\) is \( \mA\)-oriented and since \( \mA'\) is not equivalent to \( \mA\), the volume form \( \omega\) is \( \mA'\)-negative.
+
+
+	If \( \omega\) is \( \mB\)-oriented, then \( \mB\sim\mA\) (lemma \ref{LEMooHLYAooAeEnZb}). If \( \omega\) is \( \mB\)-negative, then \( \mB\) is equivalent to \( \mA'\).
+
+	We have shown that the orientation \( \mB\) is equivalent to \( \mA\) or \( \mA'\).
+\end{proof}
+
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Integral of differential forms}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{proposition}[\cite{BIBooTGSMooYDnTxb}]	\label{PROPooGVQDooNwnGXs}
+	Let \( M\) be a smooth orientable manifold. Let \( \mA= \{ (U_{\alpha},\varphi_{\alpha}) \}_{\alpha\in \Lambda}\) be an orientation on \( M\). We consider a differential form \( \omega\) supported on \( S\subset M\). Let \( \alpha,\beta\in\Lambda\) such that \( S\subset\varphi_{\alpha}(U_{\alpha})\cap\varphi_{\beta}(U_{\beta})\). We define the maps \(f \colon M_{\alpha}\to \eR  \) and \(g \colon M_{\beta}\to \eR  \) such that
+	\begin{subequations}
+		\begin{align}
+			\omega_x=f(x)\partial_{\alpha,1}^*\wedge\ldots\wedge\partial_{\alpha,n}^* \\
+			\omega_x=g(x)\partial_{\beta,1}^*\wedge\ldots\wedge\partial_{\beta,n}^*.
+		\end{align}
+	\end{subequations}
+	Then we have
+	\begin{equation}
+		\int_{U_{\alpha}}(f\circ \varphi_{\alpha})=\int_{U_{\beta}}g\circ\varphi_{\beta}.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	This is a change of variable in the integral: theorem \ref{THOooUMIWooZUtUSg}\ref{ITEMooAJGDooGHKnvj}. First we have
+	\begin{equation}
+		\int_{U_{\alpha}}f\circ \varphi_{\alpha}=\int_{\varphi_{\alpha}^{-1}(S)}f\circ \varphi_{\alpha},
+	\end{equation}
+	and since
+	\begin{equation}
+		\varphi_{\alpha}^{-1}(S)=(\varphi_{\alpha}^{-1}\circ\varphi_{\beta})\big( \varphi_{\beta}^{-1}(S) \big),
+	\end{equation}
+	we try the change of variable with
+	\begin{equation}
+		\begin{aligned}
+			\phi\colon \varphi_{\beta}^{-1}(S) & \to \varphi_{\alpha}(S)                      \\
+			\phi                               & =\varphi_{\alpha}^{-1}\circ \varphi_{\beta}.
+		\end{aligned}
+	\end{equation}
+	As far as the domain are concerned,
+	\begin{equation}
+		\phi^{-1}\big( \varphi_{\alpha}^{-1}(S) \big)=\varphi_{\beta}^{-1}\big( (\varphi_{\alpha}\circ\varphi_{\alpha}^{-1})(S) \big)=\varphi_{\beta}^{-1}(S).
+	\end{equation}
+	For the integral we have
+	\begin{equation}
+		\int_{\varphi_{\alpha}^{-1}(S)}s\circ\varphi_{\alpha}=\int_{\varphi_{\beta}^{-1}(S)}(f\circ\varphi_{\beta})J_{\phi}
+	\end{equation}
+	where \( J_{\phi}\) is the function
+	\begin{equation}
+		J_{\phi}(u)=\det\big( d\phi_u \big).
+	\end{equation}
+	Now we work out the link between \( f\) and \( g\) with lemma \ref{LEMooSZTOooBIzMCc}:
+	\begin{equation}
+		g(x)=\omega_x(\partial_{\beta,1},\ldots,\partial_{\beta,n})=f(x)\det\big( d\phi_{\varphi_{\beta}^{-1}(x)} \big).
+	\end{equation}
+	Thus we have
+	\begin{equation}
+		(g\circ\varphi_{\beta})(u)=(f\circ\varphi_{\beta})(u)\det\big( d\phi_u \big)=(f\circ\varphi_{\beta})(u)J_{\phi}(u),
+	\end{equation}
+	and we have the result.
+\end{proof}
+
+%-------------------------------------------------------
+\subsection{Integration over a chart}
+%----------------------------------------------------
+
+\begin{definition}[Integral over a chart\cite{BIBooZBZTooYmHemH}]	\label{DEFooIKFYooKxKidt}
+	Let \( M \) be a smooth oriented manifold and \( \omega\), a \( n\)-form on \( M\). Let \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) be a positively oriented chart. We consider the map \(f_{\alpha} \colon \varphi_{\alpha}(U_{\alpha})\to \eR  \) of lemma \ref{LEMooQGVMooSHXUmD} and We define
+	\begin{equation}
+		\int_{\alpha}\omega = \int_{U_{\alpha}}f\circ\varphi_{\alpha}.
+	\end{equation}
+	If \( \varphi_{\alpha}\) belong to the other orientation, we define
+	\begin{equation}
+		\int_{\alpha}\omega = -\int_{U_{\alpha}}f\circ\varphi_{\alpha}.
+	\end{equation}
+\end{definition}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooXTVAooVvEiTh}
+	Let \(\varphi_{\alpha} \colon U_{\alpha}\to M  \) and \(\varphi_{\beta} \colon U_{\beta}\to M  \) be two charts. Let \( \omega\in\Omega(M)\). If the support of \( \omega\) is compact inside \( \varphi_{_\alpha}(U_{\alpha})\cap \varphi_{\beta}(U_{\beta})\), then
+	\begin{equation}
+		\int_{\alpha}\omega=\int_{\beta}\omega.
+	\end{equation}
+\end{proposition}
+
+\begin{proposition}[Linearity of the integral\cite{MonCerveau}]	\label{PROPooDJPYooEnXUAc}
+	Let \( \omega_1\) and \( \omega_2\) be two smooth forms on \( M\). Let \( \lambda\in \eR\). We have
+	\begin{equation}
+		\int_{\varphi}(\omega_1+\omega_2)=\int_{\varphi}\omega_1+\int_{\varphi}\omega_2
+	\end{equation}
+	and
+	\begin{equation}
+		\int_{\varphi}\lambda\omega_1=\lambda\int_{\varphi}\omega_1.
+	\end{equation}
+\end{proposition}
+
+
+%-------------------------------------------------------
+\subsection{Integration over a compact part}
+%----------------------------------------------------
+
+Let \( M\) be an oriented manifold. We denote by \( \Omega^n_c(K)\) the set of smooth \( n\)-forms on \( M\) with compact support \( K\subset M\).
+
+\begin{proposition}[\cite{BIBooVZZGooUdJyxc}]	\label{PROPooOSOCooUkalzR}
+	There exists one and only one linear form\footnote{A linear form is not intended to be continuous.} \(I \colon \Omega_c^n(M)\to \eR  \) such that for every oriented chart \( (U,\varphi)\) and every \( \omega\) with compact support in \( \varphi(U)\),
+	\begin{equation}
+		I(\omega)=\int_{\varphi}\omega
+	\end{equation}
+	where the integral is the one of definition \ref{DEFooIKFYooKxKidt}.
+\end{proposition}
+
+\begin{proof}
+	Two parts.
+	\begin{subproof}
+		\spitem[Unicity]
+		%-----------------------------------------------------------
+		Let \( I\) be such linear form and \( \{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in\Lambda} \) be an oriented atlas. We consider a partition of unity \( \{ \rho_{\alpha} \}_{\alpha\in\Lambda}\) subordinated to \( \{ U_{\alpha} \}_{\alpha\in \Lambda}\).
+
+		Let \( \omega\in\Omega_c^n(M)\). For each \( m\in\supp(\omega)\), we have a open neighbourhood \( \mO_m\) of \( m\) such that \( \Lambda_m=\{ \alpha\in\Lambda\tq \supp(\rho_{\alpha})\cap \mO_m\neq \emptyset \}\) is finite. These parts \( \mO_m\) make an open covering of \( \supp(\omega)\) which is compact. We extract a finite covering \( \{ \mO_m \}_{m=m_1,\ldots, m_l}\). Then if \( m\in \supp(\omega)\) we have \( \rho_{\alpha}(m)\neq 0\) only if \( \alpha\in \Lambda_{\omega}= \Lambda_{m_1}\cup\ldots \Lambda_{m_l}\) which is finite.
+
+		For every \( m\in M\) we have
+		\begin{equation}		\label{EQooZXHEooZfiSrw}
+			\omega_m=\sum_{\alpha\in\Lambda}\rho_{\alpha}(m)\omega_m=\sum_{\alpha\in\Lambda_{\omega}}\rho_{\alpha}(m)\omega_m.
+		\end{equation}
+		Notice that \( \rho_{\alpha}\omega\) has its support in \( \varphi_{\alpha}(U_{\alpha})\), so that
+		\begin{equation}
+			I(\rho_{\alpha}\omega)=\int_{U_{\alpha}} \rho_{\alpha}\big( \varphi_{\alpha}(x) \big)(f_{\alpha}\circ\varphi_{\alpha})(x)dx
+		\end{equation}
+		if \( \omega_m=f_{\alpha}(m)\partial^*_{\alpha,1}\wedge\ldots\wedge\partial^*_{\alpha,n}\). Since \( I\) is linear and the sum \eqref{EQooZXHEooZfiSrw} is finite we have
+		\begin{equation}		\label{EQooYOBWooAyciMY}
+			I(\omega)=\sum_{\alpha\in\Lambda_{\omega}}I(f_{\alpha}\omega).
+		\end{equation}
+		This shows the unicity of \( I\) because its value is fixed by the formula \eqref{EQooYOBWooAyciMY}.
+
+		\spitem[Existence]
+		%-----------------------------------------------------------
+		Let \( \{ (U_{\alpha}, \varphi_{\alpha}) \}_{\alpha\in\Lambda}\) be an oriented atlas. We show that the map
+		\begin{equation}
+			\begin{aligned}
+				I\colon \Omega^n_c(M) & \to \eR                                                         \\
+				\omega                & \mapsto \sum_{\alpha\in\Lambda}\int_{\alpha}\rho_{\alpha}\omega
+			\end{aligned}
+		\end{equation}
+		satisfy the required properties.
+
+		Let \(\varphi \colon U\to M  \) be a chart and \( \omega\) be compactly supported in \( \varphi(U)\). Since \( \supp(\omega)\) is compact, there is a finite part \( \Lambda_0\subset \Lambda\) such that \( \omega=\sum_{\alpha\in\Lambda_0}\rho_{\alpha}\omega\). We have
+		\begin{subequations}
+			\begin{align}
+				\int_{\varphi}\omega & =\int_{\varphi}\sum_{\alpha\in \Lambda_0}\rho_{\alpha}\omega                                         \\
+				                     & =\sum_{\alpha\in\Lambda_0}\int_{\varphi}\rho_{\alpha}\omega  & \text{prop. \ref{PROPooDJPYooEnXUAc}} \\
+				                     & = \sum_{\alpha\in\Lambda_0}\int_{\alpha}\rho_{\alpha}\omega  & \text{prop. \ref{PROPooXTVAooVvEiTh}} \\
+				                     & = I(\omega).
+			\end{align}
+		\end{subequations}
+
+		The map \( I\) is linear because the integral is (proposition \ref{PROPooDJPYooEnXUAc}) and the sum over \( \Lambda\) can always be reduced to a finite sum in the case of a compactly supported form.
+	\end{subproof}
+\end{proof}
+
+
+%-------------------------------------------------------
+\subsection{Non compact}
+%----------------------------------------------------
+
+The following definition is inspired from the one of infinite sums, definition \ref{DefIkoheE}.
+\begin{propositionDef}[\cite{MonCerveau}]	\label{PROPooLCYGooLUxEYS}
+	Let \( \omega\in\Omega(M)\). There exists at most one \( v\in \eR\) such that for every \( \epsilon>0\) there exists a compact \( L\) such that
+	\begin{equation}
+		\big| I(\omega_{|_K})-v \big|<\epsilon
+	\end{equation}
+	for every compact \( K\) such that \( L\subset K\).
+
+	If such a \( v\) exists, we define
+	\begin{equation}
+		\int_M\omega
+	\end{equation}
+	as being this number.
+\end{propositionDef}
+
+
+\begin{proof}
+	Let \( v,w\in \eR\) with the given property. Let \( \epsilon>0\). There exists compacts \( L_1\) and \( L_2\) in \( M\) such that
+	\begin{subequations}
+		\begin{align}
+			\forall\, \text{compact } K\tq L_1\subset K,\,\big|   I(\omega_{|_K}-v) \big|<\epsilon \\
+			\forall\, \text{compact } K\tq L_2\subset K,\,\big|   I(\omega_{|_K}-w) \big|<\epsilon
+		\end{align}
+	\end{subequations}
+	We consider the compact \( L=L_1\cup L_2\). Since \( L_1\subset L\) we have \( \big|  I(\omega_{|_L})-v  \big|<\epsilon\). Since \( L_2\subset L\) we have \( \big|  I(\omega_{|_L})-w  \big|<\epsilon\). Thus we have
+	\begin{equation}
+		| v-w |  \leq \big|  v-I(\omega_{|_L}) \big| +\big|  w-I(\omega_{|_L}) \big| <2\epsilon.
+	\end{equation}
+	This proves that \( v=w\).
+\end{proof}
+
+\begin{proposition}[\cite{MonCerveau}]	\label{PROPooQTBTooKXJDhx}
+	Let \( M\) be a smooth manifold and \( \mA=\{ (U_{\alpha}, \varphi_{\alpha})\}_{\alpha\in \Lambda} \) be an orientation over \( M\). We consider a partition of the unity \( \{ \rho_{\alpha} \}_{\alpha\in \Lambda}\) subordinated to the open covering \( \{ \varphi_{\alpha}(U_{\alpha}) \}\).
+
+	\begin{enumerate}
+		\item
+		      If the sum \( \sum_{\alpha\in\Lambda}\int_{\alpha}\rho_{\alpha}\omega\) converges, then
+		      \begin{equation}
+			      \int_M\omega=\sum_{\alpha\in\Lambda}\int_{\alpha}\rho_{\alpha}\omega.
+		      \end{equation}
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	We have to prove that the sum \( \sum_{\alpha\in\Lambda}\int_{\alpha}\rho_{\alpha}\omega\) satisfy the properties of the definition \ref{PROPooLCYGooLUxEYS}.
+
+	\begin{subproof}
+		\spitem[Some definitions]
+		%-----------------------------------------------------------
+
+		Let \( \epsilon>0\). On the one hand, there exists a compact \( L\) such that for every compact \( K\) containing \( L\),
+		\begin{equation}
+			| \int_M\omega-I(\omega_{|_K}) |<\epsilon.
+		\end{equation}
+		One the other hand, there exists a finite part \( \Lambda'\subset \Lambda\) such that
+		\begin{equation}
+			| \sum_{\alpha\in\Lambda''}\int_M\rho_{\alpha}\omega-\sum_{\alpha\in \Lambda}\int_M\rho_{\alpha}\omega |<\epsilon
+		\end{equation}
+		for every \( \Lambda''\) containing \( \Lambda'\).
+
+		Let \( \Lambda_1\subset \Lambda\) be such that
+		\begin{equation}
+			L\subset \supp\big( \sum_{\alpha\in\Lambda_1}\rho_{\alpha}\omega \big).
+		\end{equation}
+		We set
+		\begin{equation}
+			\Lambda_2=\Lambda_1\cup \Lambda'
+		\end{equation}
+		and
+		\begin{equation}
+			K=\bigcup_{\alpha\in \Lambda_2}\supp(\rho_{\alpha}).
+		\end{equation}
+		The part \( K\subset M \) is compact as finite union of compact parts.
+
+		\spitem[\( L\subset K\)]
+		%-----------------------------------------------------------
+		The definition of \( \Lambda_1\) makes \( L\subset \supp\big( \sum_{\alpha\in\Lambda_1}\rho_{\alpha}\omega \big)\). Let \( m\in M\) be such that
+		\begin{equation}
+			\sum_{\alpha\in\Lambda_1}\rho_{\alpha}(m\phi_m)\neq 0.
+		\end{equation}
+		There exists \( \alpha_0\in \Lambda_1\subset\Lambda_2\) such that \( \rho_{\alpha_0}(m)\neq 0\). Then we have \( m\in \supp(\rho_{\alpha_0})\subset K\). In other words,
+		\begin{equation}
+			\{ m\in M\tq \sum_{\alpha\in\Lambda_1}\rho_{\alpha}(m)\omega_m\neq 0 \}\subset K.
+		\end{equation}
+		Taking the closure on both sides,
+		\begin{equation}
+			\supp\big( \sum_{\alpha\in \Lambda_1}\rho_{\alpha}\omega \big)\subset\bar K=K.
+		\end{equation}
+
+		\spitem[Definition of\( \Lambda_3\)]
+		%-----------------------------------------------------------
+		Let
+		\begin{equation}
+			\Lambda_3=\{ \alpha\in \Lambda\tq \supp(\rho_{\alpha})\cap K\neq \emptyset \}.
+		\end{equation}
+		This is finite because \( K\) is compact and \( \{ \rho_{\alpha} \}\) is locally finite. We have
+		\begin{equation}
+			\omega_{|_K}=\sum_{\alpha\in \Lambda_3}\rho_{\alpha}\omega.
+		\end{equation}
+
+		\spitem[\( \Lambda'\subset \Lambda_3\)]
+		%-----------------------------------------------------------
+		We prove more: we prove that \( \Lambda_2\subset \Lambda_3\). If \( \alpha\in\Lambda_2\), we have \( \supp(\rho_{\alpha})\subset K\) and then \( \alpha\in \Lambda_3\).
+
+		\spitem[The computation]
+		%-----------------------------------------------------------
+		We have
+		\begin{equation}
+			\Big| \int_M\omega-\sum_{\alpha\in\Lambda}\int_M\rho_{\alpha}\omega \Big|\leq \Big|   \int_M\omega-I(\omega_{|_K})  \Big|+\Big|  I(\omega_{|_K})-\sum_{\alpha\in\Lambda}\int_M\rho_{\alpha}\omega  \Big|.
+		\end{equation}
+		Since \( L\subset K\), the first term is lesser than \( \epsilon\). For the second term,
+		\begin{equation}
+			\Big|  I(\omega_{|_K})-\sum_{\alpha\in\Lambda}\int_M\rho_{\alpha}\omega   \Big|= \Big| \sum_{\alpha\in\Lambda_3}I(\rho_{\alpha}\omega)-\sum_{\alpha\in \Lambda}\int_M\rho_{\alpha}\omega \Big|\leq \epsilon
+		\end{equation}
+		because \( \Lambda'\subset \Lambda_2\subset \Lambda_3\) and \( I(\rho_{\alpha}\omega)=\int_M\rho_{\alpha}\omega\). Finally we have
+		\begin{equation}
+			\Big| \int_M\omega-\sum_{\alpha\in\Lambda}\int_M\rho_{\alpha}\omega \Big|\leq \Big|   \int_M\omega-I(\omega_{|_K})  \Big|+\Big|  I(\omega_{|_K})-\sum_{\alpha\in\Lambda}\int_M\rho_{\alpha}\omega  \Big|\leq 2\epsilon.
+		\end{equation}
+		This proves that
+		\begin{equation}
+			\int_M\omega=\sum_{\alpha\in\Lambda}\int_M\rho_{\alpha}\omega.
+		\end{equation}
+	\end{subproof}
+\end{proof}

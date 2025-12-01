@@ -1,0 +1,1141 @@
+% This is part of Mes notes de mathématique
+% Copyright (c) 2012-2013,2016-2019, 2021-2025
+%   Laurent Claessens
+% See the file fdl-1.3.txt for copying conditions.
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Singularités, pôles et méromorphe}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{definition}      \label{DEFooKWDUooVPvtpy}
+	Si \( f\) est holomorphe\footnote{Définition \ref{DefMMpjJZ}.} sur un ouvert \( \Omega\), alors une \defe{singularité}{singularité} de \( f\) est un point isolé du bord de \( \Omega\).
+
+	\begin{enumerate}
+		\item
+		      La singularité est \defe{effaçable}{singularité effaçable} si la fonction \( f\) s'y prolonge en une fonction holomorphe.
+		\item
+		      La singularité \( a\) est \defe{isolée}{singularité isolée} si \( f\) est holomorphe sur \( B(a,r)\setminus\{ a \}\).
+	\end{enumerate}
+\end{definition}
+
+
+\begin{definition}[pôle d'une fonction\cite{MonCerveau,frwiki155205828}]    \label{DEFooUIJTooUJPiDG}
+	Soient un ouvert \( \Omega\) de \( \eC\) ainsi que \( a\in \Omega\). La fonction \( f\colon \Omega\setminus\{ a \}\to \eC\) a un \defe{pôle d'ordre \( n\)}{pôle} en \( a\) si il existe \( r>0\) et une fonction holomorphe \( g\colon B(a,r)\to \eC\) telle que
+	\begin{enumerate}
+		\item
+		      \( g(a)\neq 0\)
+		\item
+		      pour tout \( z\in B(a,r)\setminus\{ a \}\) nous avons
+		      \begin{equation}
+			      f(z)=\frac{ g(z) }{ (z-a)^n }.
+		      \end{equation}
+	\end{enumerate}
+\end{definition}
+
+\begin{lemma}
+	Soit \( n\in \eN\). Nous notons \( \gU_n\) l'ensemble des racines \( n\)\ieme\ de l'unité\footnote{Voir la définition \ref{DEFooDUWPooZaAByH} et le lemme \ref{LEMooSXFBooYJmRTK}.} dans \( \eC\). La fonction
+	\begin{equation}
+		\begin{aligned}
+			f\colon \eC\setminus\gU_n & \to \eC                   \\
+			z                         & \mapsto \frac{1}{ z^n-1 }
+		\end{aligned}
+	\end{equation}
+	est holomorphe et possède un pôle d'ordre \( 1\) en chaque point de \( \gU_n\).
+\end{lemma}
+
+\begin{proof}
+	Le fait que \( f\) soit holomorphe est simplement le fait que sur le domaine, le dénominateur est un bête polynôme qui ne s'annule pas.
+
+	Nous énumérons \( \gU_n = \{ \xi_i \}_{i=1,\ldots, n}\). Prouvons que \( \xi_k\) est un pôle d'ordre \( 1\) de \( f\). La première égalité du lemme \ref{LemKYGBooAwpOHD} donne \( z^n-1=\prod_i(z-\xi_i)\). D'abord nous considérons \( r>0\) tel que \( B(\xi_k,r)\cap \gU_n=\{ \xi_k \}\).
+
+	Nous posons
+	\begin{equation}
+		\begin{aligned}
+			g_k\colon B(\xi_k,r)\setminus\{ \xi_k \} & \to \eC                                       \\
+			z                                        & \mapsto \frac{1}{ \prod_{i\neq k}(z-\xi_i) }.
+		\end{aligned}
+	\end{equation}
+	Cela est bien une fonction holomorphe et nous avons
+	\begin{equation}
+		f(z)=\frac{ g_k(z) }{ (z-\xi_k) }.
+	\end{equation}
+\end{proof}
+
+\begin{probleme}
+	Je ne suis pas certain que la proposition suivante soit vraie. Écrivez-moi si vous avez un avis.
+\end{probleme}
+
+\begin{proposition}		\label{PROPooKXXSooGzbmeo}
+	La fonction
+	\begin{equation}
+		z\mapsto \begin{cases}
+			\frac{ \sin(z) }{ z } & \text{si } z\neq 0 \\
+			1                     & \text{si } z=0
+		\end{cases}
+	\end{equation}
+	est continue sur un voisinage de zéro dans \( \eC\).
+\end{proposition}
+
+\begin{proposition}		\label{PROPooQJDCooYwmkRS}
+	Une singularité de \( f\) est un pôle si et seulement si
+	\begin{equation}
+		\lim_{z\to Z}f(z)=\infty.
+	\end{equation}
+\end{proposition}
+
+Le théorème suivant complète la proposition~\ref{PropDRnYkKP}.
+\begin{theorem}[Prolongement de Riemann\cite{BIBooZMRPooRygeHT}]    \label{ThoTLQOEwW}
+	Soient un ouvert \( \Omega\subset \eC\), un point \( a\in \Omega \) et une fonction holomorphe \( f\colon \Omega\setminus\{ a \}\to \eC\). Nous supposons que \( a\) est une singularité\footnote{Singularité et singularité effaçable : définition \ref{DEFooKWDUooVPvtpy}.} de \( f\). Les points suivants sont équivalents.
+	\begin{enumerate}
+		\item       \label{ITEMooMLXJooMfuifN}
+		      la singularité \( a\) est effaçable\footnote{Définition \ref{DEFooKWDUooVPvtpy}.};
+		\item       \label{ITEMooBWPEooEltHAa}
+		      \( f\) possède un prolongement continu en \( a\);
+		\item       \label{ITEMooEAUOooIWcxHS}
+		      il existe un voisinage épointé de \( a\) sur lequel \( f\) est bornée;
+		\item       \label{ITEMooETRWooDTTpxs}
+		      \( \lim_{z\to a}(z-a)f(z)=0\).
+	\end{enumerate}
+\end{theorem}
+\index{théorème!prolongement de Riemann}
+
+\begin{proof}
+	En plusieurs implications.
+	\begin{subproof}
+		\spitem[\ref{ITEMooMLXJooMfuifN} implique \ref{ITEMooBWPEooEltHAa}]
+		%---------------------------------------------------------------------------------------------------------
+		La fonction \( f\) admet même un prolongement holomorphe.
+
+		\spitem[\ref{ITEMooBWPEooEltHAa} implique \ref{ITEMooEAUOooIWcxHS}]
+		%---------------------------------------------------------------------------------------------------------
+		Soit un prolongement continu \( \tilde f\colon B(a,r)\to \eC\) de \( f\). La restriction \( \tilde f\colon \overline{ B(a,r/2) }\to \eC\) est continue sur un compact et donc bornée\footnote{Théorème \ref{ThoWeirstrassRn}.} tout en étant égale à \( f\) sur \( B(a,r/2)\setminus\{ a \}\).
+
+		\spitem[\ref{ITEMooEAUOooIWcxHS} implique \ref{ITEMooETRWooDTTpxs}]
+		%---------------------------------------------------------------------------------------------------------
+		Nous supposons que \( f\colon B(a,r)\setminus\{ a \}\to \eC\) est bornée. Disons \( | f(z) |<A\). Alors pour tout \( z\in B(a,r)\setminus\{ a \}\) nous avons
+		\begin{equation}
+			| (z-a)f(z) |\leq A| z-a |
+		\end{equation}
+		Or \( \lim_{z\to a}A(z-a)\) existe et vaut zéro. Donc \( \lim_{z\to a}| (z-a)f(z) |\) existe et vaut également zéro.
+
+		\spitem[\ref{ITEMooETRWooDTTpxs} implique \ref{ITEMooMLXJooMfuifN} si \( a=0\)]
+		%---------------------------------------------------------------------------------------------------------
+
+		Nous commençons par supposer que \( a=0\), et nous posons \( D=B(0,r)\setminus\{ 0 \}\). La fonction \( f\colon D\to \eC\) est holomorphe et vérifie \( \lim_{z\to 0}zf(z)=0\).
+
+		Nous considérons la fonction suivante :
+		\begin{equation}
+			\begin{aligned}
+				g\colon B(0,r) & \to \eC                          \\
+				z              & \mapsto \begin{cases}
+					                         0       & \text{si } z=0 \\
+					                         z^2f(z) & \text{sinon. }
+				                         \end{cases}
+			\end{aligned}
+		\end{equation}
+		La fonction \( g\) est holomorphe sur \( D\) parce que \( f\) l'est. Voyons que \( g\) est dérivable en zéro. Pour tout \( z\) sur un voisinage,
+		\begin{equation}
+			\frac{ g(z)-g(0) }{ z }=\frac{ z^2f(z) }{ z }=zf(z).
+		\end{equation}
+		Or par hypothèse \( \lim_{z\to 0}zf(z)=0\) donc \( g'(0)=0\), et \( g\) est holomorphe en \( 0\) (c'est la définition \ref{DefMMpjJZ} d'une fonction holomorphe). Bref, \( g\) est holomorphe sur \( B(0,r)\).
+
+		Nous pouvons donc développer \( g\) en série entière\footnote{Théorème \ref{ThomcPOdd}.} dans un voisinage \( B(0,r)\) :
+		\begin{equation}
+			g(z)=\sum_{n=0}^{\infty}a_nz^n.
+		\end{equation}
+		En utilisant le \ref{CORooJISDooFgwOPh}, \( a_0=g(0)=0\) et \( a_1=g'(0)=0\). Donc en réalité
+		\begin{equation}
+			g(z)=\sum_{n=2}^{\infty}a_nz^n.
+		\end{equation}
+
+		Considérons la série entière
+		\begin{equation}
+			\sum_{n=0}^{\infty}b_nz^n
+		\end{equation}
+		avec \( b_n=a_{n+2}\). Le lemme \ref{LEMooVCTNooCQHkzs} dit que son rayon de convergence est le même que celui de \( g\). Donc la fonction
+		\begin{equation}
+			\begin{aligned}
+				h\colon B(0,r) & \to \eC                               \\
+				z              & \mapsto \sum_{n=2}^{\infty}a_nz^{n-2}
+			\end{aligned}
+		\end{equation}
+		est holomorphe.
+
+		Par ailleurs, sur la partie \( D\) (qui ne contient pas \( z=0\)) nous pouvons écrire
+		\begin{equation}
+			f(z)=\frac{ g(z) }{ z^2 }
+		\end{equation}
+		et donc
+		\begin{equation}
+			f(z)=\sum_{n=2}^{\infty}a_nz^{n-2}.
+		\end{equation}
+		Autrement dit \( f=h\) sur \( D\), et \( h\) en est un prolongement holomorphe.
+
+		\spitem[\ref{ITEMooEAUOooIWcxHS} implique \ref{ITEMooETRWooDTTpxs}]
+		%---------------------------------------------------------------------------------------------------------
+
+		Nous posons \( g(z)=f(z+a)\). Nous avons
+		\begin{equation}
+			\lim_{z\to 0}zg(z)=\lim_{z\to 0}zf(z+a)=\lim_{z\to a}(z-a)f(z)=0.
+		\end{equation}
+		Le changement de variable dans la limite est le lemme \ref{LEMooAHIGooJhpPvo}. Donc le premier cas s'applique à \( g\) et nous avons un prolongement holomorphe \( \tilde g\colon B(0,r)\to \eC\) de \( g\). La fonction donnée par \( \tilde f(z)=\tilde g(z-a)\) prolonge \( f\).
+	\end{subproof}
+\end{proof}
+
+\begin{definition}[Fonction méromorphe\cite{ooBBIEooFYzkzz}]		\label{DEFooRMLGooGzRfgn}
+	Soient \( \mU\) un ouvert de \( \eC\) et \( \{ p_i \}\) une suite de points dans \( \mU\) sans points d'accumulation (éventuellement il y a un nombre fini de \( p_i\)). Si la fonction \( f\) est holomorphe sur \( \mU\setminus\{ p_i \}\) et si chaque \( p_i\) est un point régulier ou un pôle de \( f\), alors nous disons que \( f\) est \defe{méromorphe}{méromorphe} sur \( \mU\).
+\end{definition}
+
+\begin{lemma}       \label{LEMooCSAFooTYasYM}
+	Soient \( 0<a<b<\infty\). Nous considérons l'équation différentielle
+	\begin{subequations}
+		\begin{numcases}{}
+			y'(t)=\frac{ n }{ t }y(t)\\
+			y(a)=y_a
+		\end{numcases}
+	\end{subequations}
+	pour la fonction \( y\colon \mathopen] a , b \mathclose[\to \eR\).
+
+	L'unique solution est
+	\begin{equation}    \label{EQooKPYIooMHPIBP}
+		y(t)=\frac{ y_a }{ a^n }t^n.
+	\end{equation}
+	Note : \( a\neq 0\) de toutes façons, donc pas de problèmes.
+\end{lemma}
+
+\begin{proof}
+	En termes du théorème de Cauchy-Lipschitz \ref{ThokUUlgU}, nous avons \( y'(t)=f\big( t,y(t) \big)\) avec
+	\begin{equation}
+		\begin{aligned}
+			f\colon \mathopen] a , b \mathclose[\times \eR & \to \eR                   \\
+			(t,y)                                          & \mapsto \frac{ n }{ t }y.
+		\end{aligned}
+	\end{equation}
+	Cette fonction \( f\) est lipschitzienne et tout ce qu'on veut parce que \( t=0\) est hors de son domaine; la régularité de \( f\) peut être étudiée sur le compact \( \mathopen[ a/2 , b \mathclose]\).
+
+	Un calcul direct vérifie que la solution proposée \eqref{EQooKPYIooMHPIBP} est bien une solution. Le théorème de Cauchy-Lipschitz dit qu'elle est unique.
+\end{proof}
+
+\begin{normaltext}
+	Vous voulez savoir comment on trouve la solution \( y(t)=Kt^n\) ? Allez, on vous la fait un peu détendue, sans trop regarder les détails. D'abord,
+	\begin{equation}
+		\frac{ y'(t) }{ y(t) }=\frac{ n }{ t }.
+	\end{equation}
+	Nous intégrons des deux côtés :
+	\begin{equation}        \label{EQooWCQRooKqifVj}
+		\int_a^x\frac{ y'(t) }{ y(t) }dt=n[\ln(t)]_a^x.
+	\end{equation}
+	À gauche nous posons \( u(t)=\ln\big( y(t) \big)\) et nous avons
+	\begin{equation}
+		\int_a^x\frac{ y'(t) }{ y(t) }dt=\int_a^xu'(t)dt=[u(t)]_a^x=\ln\big( y(x) \big)-\ln\big( y(a) \big).
+	\end{equation}
+	Nous mettons ça à la place du membre de gauche de \eqref{EQooWCQRooKqifVj}, nous mettons toutes les constantes dans un \( L\) (en ne nous posant aucune question sur le fait que ce soit positif, nul, que ça peut rentrer dans un logarithme ou non) et :
+	\begin{equation}
+		\ln\big( y(x) \big)=n\ln(x)+L=\ln\big( Kx^n \big).
+	\end{equation}
+	où \( K= e^{L}\). Et voila.
+\end{normaltext}
+
+\begin{lemma}[\cite{MonCerveau}]	\label{LEMooCESMooJRqFvG}
+	Soit un ouvert \( \Omega\) de \( \eC\). Si \(f \colon \Omega\to \eC  \) est méromorphe sur tout compact de \( \Omega\), alors \( f\) est méromorphe sur \( \Omega\).
+\end{lemma}
+
+\begin{proof}
+	Soit \( z_0\in \Omega\). En prenant une suite exhaustive\footnote{Lemme \ref{LemGDeZlOo}.} de compacts pour \( \eC\) et en prenant les intersections avec \( \Omega\), il existe un compact \( K\) tel que \( z_0\in \Int(K)\subset  \Omega\). Vu que \( f\) est méromorphe sur \( K\), le point \( z_0\) n'est pas un point d'accumulation des pôles de \( f\). Cela étant valable pour tout \( z_0\in \Omega\), nous en déduisons que \( f\) n'a pas de points d'accumulation de pôles. Donc \( f\) est méromorphe.
+\end{proof}
+
+\begin{proposition}[\cite{BIBooARJKooLuqoxW}] \label{PropPUZTQKl}
+	Soient \( \Omega\) un ouvert de \( \eC\) et \( f_n\colon \Omega\to \eC\) une suite de fonctions méromorphes telles que pour tout compact \( K\) de \( \Omega\) il existe \( N_K\geq 0\) tel que
+	\begin{enumerate}
+		\item
+		      \( f_n\) n'a pas de pôle\footnote{Définition \ref{DEFooUIJTooUJPiDG}.} dans \( K\) dès que \( n\geq N_K\);
+		\item
+		      la série \( \sum_{n\geq N_K}f_n\) converge uniformément sur \( K\).
+	\end{enumerate}
+	Alors
+	\begin{enumerate}
+		\item		\label{ITEMooZKACooLKHmaj}
+		      La fonction
+		      \begin{equation}
+			      f(z)=\sum_{n=0}^{\infty}f_n(z)
+		      \end{equation}
+		      est méromorphe\footnote{Définition \ref{DEFooRMLGooGzRfgn}.} sur \( \Omega\) et ses pôles sont dans l'union de ceux des \( f_n\).
+		\item		\label{ITEMooRRCWooHXgpoc}
+		      Nous pouvons permuter la somme et la dérivée :
+		      \begin{equation}
+			      f'(z)=\sum_{n=0}^{\infty}f'_n(z)
+		      \end{equation}
+		      pour tout \( z\) en dehors des pôles.
+	\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+	En deux parties.
+	\begin{subproof}
+		\spitem[Pour \ref{ITEMooZKACooLKHmaj}]
+		%-----------------------------------------------------------
+		Soit un compact \( K\) dans \( \Omega\). Les applications \( (f_n)_{n\geq N_K}\) sont holomorphes sur \( K\). Donc l'application
+		\begin{equation}
+			g_K(z)=\sum_{n\geq N_K}f_n(z)
+		\end{equation}
+		est holomorphe comme limite uniforme de fonctions holomorphes (proposition \ref{PROPooMIDPooUgSXRp}).
+
+		La somme finie
+		\begin{equation}
+			h_K(z)=\sum_{n=0}^{N_K-1}f_n(z)
+		\end{equation}
+		est méromorphe. Donc la somme
+		\begin{equation}
+			f(z)=h_K(z)+g_K(z)
+		\end{equation}
+		est méromorphe sur \( K\) et ses pôles sont parmi les pôles des \( (f_n)_{n\leq N_K}\). Elle est donc méromorphe sur \( \Omega\) par le lemme \ref{LEMooCESMooJRqFvG}.
+		\spitem[Pour \ref{ITEMooRRCWooHXgpoc}]
+		%-----------------------------------------------------------
+		Nous notons \( P\) l'ensemble de tous les pôles des \( f_n\). C'est un ensemble sans point d'accumulation. Donc \( \Omega\setminus P\) est encore un ouvert. Soit un compact \( K\) dans \( \Omega\setminus P\). La fonction
+		\begin{equation}
+			\begin{aligned}
+				g\colon K & \to \eC                        \\
+				z         & \mapsto \sum_{n\geq N_K}f_n(z)
+			\end{aligned}
+		\end{equation}
+		est holomorphe comme précédemment. Par la proposition \ref{PROPooMIDPooUgSXRp}, elle vérifie
+		\begin{equation}
+			g'(z)=\sum_{n\geq N_K}f_n'(z).
+		\end{equation}
+		En tant que somme finie, la fonction \( h(z)=\sum_{n=0}^{N_K-1}f_n\) est également holomorphe sur \( K\). Au final la série complète \( f(z)=g(z)+h(z)\) est holomorphe sur \( K\) et peut être dérivée terme à terme :
+		\begin{equation}		\label{EQooFYIBooSzXGVi}
+			f'(z)=g'(z)+h'(z)=\sum_{n=0}^{\infty}f_n'(z).
+		\end{equation}
+
+		Le tout étant valable pour tout compact dans l'ouvert \( \Omega\setminus P\), la fonction \( f\) est holomorphe sur \( \Omega\setminus P\) et la formule \eqref{EQooFYIBooSzXGVi} est valable sur \( \Omega\setminus P\).
+	\end{subproof}
+\end{proof}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Dénombrement des solutions d'une équation diophantienne}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Le théorème \ref{THOooQDYWooCOiUMb} peut être vu soit comme un dénombrement de solutions d'une certaine équation diophantienne, soit comme partition d'un entier en parts fixées. Avant de nous lancer dans sa démonstration, nous prouvons un certain nombre de lemmes qui vont traiter des aspects combinatoires de la preuve.
+
+Soit \( n,N\in \eN\). Soit \( a\in \eN^N\). Nous considérons les ensembles suivants :
+\begin{subequations}
+	\begin{align}
+		V_n(N)   & =\{ x\in \eN^N\tq \sum_{i=1}^Nx_i=n \},                       \\
+		W_n(a,N) & =\{ y\in \eN^N\tq y\cdot a=n \},                              \\
+		V_n(N)_a & =\{ x\in V_n(N)\tq a_i\divides x_i\,\forall i=1,\ldots, N \}.
+	\end{align}
+\end{subequations}
+L'ensemble \( V_n(N)\) avait déjà été rencontré en \eqref{EQooJCBSooMSbaCd}.
+
+\begin{lemma}       \label{LEMooLKCAooCeDnSj}
+	L'application
+	\begin{equation}
+		\begin{aligned}
+			\psi\colon W_n(a,N) & \to V_n(N)_a                    \\
+			(y_1,\ldots, y_N)   & \mapsto (y_1a_1,\ldots, y_Na_N)
+		\end{aligned}
+	\end{equation}
+	\begin{enumerate}
+		\item
+		      est bien définie, c'est-à-dire qu'elle prend effectivement ses valeurs dans \( V_n(N)_a\),
+		\item
+		      est une bijection.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	En plusieurs parties.
+	\begin{subproof}
+		\spitem[Bien définie]
+		Soit \( y\in W_n(a,N)\). Nous avons \( \psi(y)_i=a_iy_i\). Le nombre \( a_i\) divise donc bien \( \psi(y)_i\) et \( \sum_{i=1}^N\psi(y)_i=n\).
+		\spitem[Injective]
+		Si \( \psi(y)=\psi(y')\), alors pour tout \( i\) nous avons \( y_ia_i=y'_ia_i\), et donc \( y_i=y'_i\). La fonction \( \psi\) est donc bien injective.
+		\spitem[Surjective]
+		Soit \( x\in V_n(N)_a\). Vu que \( a_i\divides x_i\), il existe \( y_i\in \eN\) tel que \( x_i=a_iy_i\). On vérifie que \( y\in W_n(a,N)\) et que \( \psi(y)=x\).
+	\end{subproof}
+\end{proof}
+
+
+\begin{lemma}       \label{LEMooOPXHooHzoHrm}
+	Pour \( i=1,\ldots, N\), nous posons
+	\begin{equation}
+		\begin{aligned}
+			b_i\colon \eN^N & \to \{ 0,1 \}                          \\
+			x               & \mapsto \begin{cases}
+				                          1 & \text{si } a_i\divides x_i \\
+				                          0 & \text{sinon. }
+			                          \end{cases}
+		\end{aligned}
+	\end{equation}
+	Nous avons
+	\begin{equation}
+		\sum_{x\in V_n(N)}\prod_{i=1}^Nb_i(x)=\Card\big( W_n(a,N) \big).
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Nous décomposons la somme en \( V_n(N)_a\) et son complémentaire dans \( V_n(N)\) :
+	\begin{subequations}
+		\begin{align}
+			\sum_{x\in V_n(N)}\prod_{i=1}^Nb_i(x) & =\sum_{x\in V_n(N)_a}\prod_{i=1}^Nb_i(x)+\sum_{x\in V_n(N)\setminus V_n(N)_a}\prod_{i=1}^Nb_i(x) \\
+			                                      & =\sum_{x\in V_n(N)_a}1+\sum_{x\in V_n(N)\setminus V_n(N)_a}0       \label{SUBEQooLMBGooIfxjgy}   \\
+			                                      & =\Card\big( V_n(N)_a \big)                                                                       \\
+			                                      & =\Card\big( W_n(N,a) \big)     \label{SUBEQooBBOIooBHDgYF}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooLMBGooIfxjgy}.
+		      Si \( x\in V_n(N)_a\), alors \( a_i\divides x_i\) pour tout \( i\), et donc \( b_i(x)=1\) pour tout \( i\). Si au contraire \( x\in V_n(N)\setminus V_n(N)_a\), il existe un \( i\) tel que \( a_i\) ne divise pas \( x_i\) et donc tel que \( b_i(x)=0\).
+		\item Pour \eqref{SUBEQooBBOIooBHDgYF}. Les deux ensembles sont en bijection par le lemme \ref{LEMooLKCAooCeDnSj}.
+	\end{itemize}
+\end{proof}
+
+\begin{lemma}       \label{LEMooRJOKooPJGVTr}
+	Soit \( s\geq 1\). La série entière
+	\begin{equation}
+		\sum_{n=0}^{\infty}z^{ns}
+	\end{equation}
+	a un rayon de convergence égal à \( 1\). Pour \(z\in B(0,1)\) nous avons
+	\begin{equation}        \label{EQooIRAZooKQoZnp}
+		\sum_{n=0}^{\infty}z^{ns}=\frac{1}{ 1-z^s }.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Pour un \( z\in \eC\) fixé, nous avons \( z^{ns}=(z^s)^n\)\footnote{Vu qu'ici \( n\) et \( s\) sont entiers, c'est pas profond ça. Il ne faut pas invoquer la proposition générale \ref{PROPooDWZKooNwXsdV}.}. Nous appelons donc la proposition \ref{PROPooWOWQooWbzukS} avec \( q=z^s\).
+
+	Si \( | z |<1\), alors \( | z^s |<1\) et la proposition \ref{PROPooWOWQooWbzukS} nous dit que la série converge. Si au contraire \( | z |>1\), alors \( | z^s |>1\) et la série diverge.
+
+	Le corolaire \ref{CORooCUDSooTfMvAB} conclut que le rayon de convergence est bien \( 1\).
+
+	La valeur \eqref{EQooIRAZooKQoZnp} est également une partie de la proposition \ref{PROPooWOWQooWbzukS}.
+\end{proof}
+
+
+\begin{lemma}       \label{LEMooVMLEooCzPuKy}
+	Si \( a,b\in \eC\), si \( N\in \eN\) et si \( p\in \eN\) avec \( p<N\), nous posons
+	\begin{equation}
+		a_n=a\frac{ (n+N-1)! }{ n! }
+	\end{equation}
+	et
+	\begin{equation}
+		b_n=b\frac{ (n+p-1)! }{ n! }.
+	\end{equation}
+	Nous avons \( a_n\sim a_n+b_n\).
+\end{lemma}
+
+\begin{proof}
+	Nous posons \( \alpha(n)=(a_n+b_n)/a_n\) et nous prouvons que \( \lim_{n\to \infty} \alpha(n)=1\). Pour ce faire,
+	\begin{subequations}
+		\begin{align}
+			\frac{ b_n }{ a_n } & =\frac{ b }{ a }\frac{ (n+p-1)! }{ n! }\frac{ n! }{ (n+N-1)! }      \\
+			                    & =\frac{ b }{ a }\frac{ (n+p-1)! }{ (n+N-1)! }                       \\
+			                    & =\frac{ b }{ a }\frac{ (n+p-1)! }{ (n+p-1)!\prod_{k=n+p}^{n+N-1}k } \\
+			                    & =\frac{ b }{ a }\prod_{k=n+p}^{n+N-1}\frac{1}{ k }                  \\
+			                    & \leq \frac{ b }{ a }\frac{1}{ n+p },
+		\end{align}
+	\end{subequations}
+	et nous avons
+	\begin{equation}
+		\lim_{n\to \infty} \frac{ b_n }{ a_n }=0,
+	\end{equation}
+	de telle sorte que \( \lim_{n\to \infty} \alpha(n)=1\).
+\end{proof}
+
+\begin{lemma}       \label{LEMooTGHHooZHZsgE}
+	Si \( N\in \eN\), nous avons équivalence des suites
+	\begin{equation}
+		\frac{ (n+N-1)! }{ n! }\sim n^{N-1}.
+	\end{equation}
+\end{lemma}
+
+\begin{proof}
+	Sachez que dans \( \prod_{i=a}^b\), il y a \( b-a+1\) facteurs, et non \( b-a\) comme on pourrait naïvement le croire. Cela dit, nous avons le calcul
+	\begin{subequations}
+		\begin{align}
+			\frac{ (n+N-1)! }{ n!n^{N-1} } & =\left( \prod_{k=n+1}^{n+N-1}k \right)\frac{1}{ n^{N-1} } \\
+			                               & =\prod_{k=n+1}^{n+N-1}\frac{ k }{ n }                     \\
+			                               & =\prod_{k=1}^{N-1}\frac{ n+k }{ n }.
+		\end{align}
+	\end{subequations}
+	Donc la limite
+	\begin{equation}
+		\lim_{n\to \infty} \frac{ (n+N-1)! }{ n!n^{N-1} }=1.
+	\end{equation}
+\end{proof}
+
+\begin{theorem}[\cite{MonCerveau,fJhCTE,NHXUsTa,BIBooLIDJooYWosFk,KXjFWKA}] \label{THOooQDYWooCOiUMb}
+	Soient \( N\in \eN\) et \( a\in \eN^N\) tel que \( \pgcd(a_1,\ldots, a_{N})=1\). Nous posons
+	\begin{equation}
+		W_n(a,N)=\{ y\in \eN^N\tq y\cdot a=n \}.
+	\end{equation}
+	Nous avons alors\footnote{Équivalence de suites, définition \ref{DEFooEWRTooKgShmT}.}
+	\begin{equation}
+		\Card\big( W_n(a,N) \big)\sim\frac{1}{ \prod_{k=1}^Na_k }\frac{ n^{N-1} }{ (N-1)! }.
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Pour chaque \( i=1,\ldots, N\), nous considérons la série entière
+	\begin{equation}
+		s_i(z)=\sum_{k=0}^{\infty}z^{ka_i}.
+	\end{equation}
+	dont le rayon de convergence vaut \( 1\) par le lemme \ref{LEMooRJOKooPJGVTr}. Nous nous apprêtons à faire le produit de Cauchy multiple de la proposition \ref{PROPooJPVVooLqSdSn}; nous posons donc
+	\begin{equation}
+		b_{ik}=\begin{cases}
+			1 & \text{si } a_i|k \\
+			0 & \text{sinon },
+		\end{cases}
+	\end{equation}
+	et nous écrivons toutes les séries \( s_i\) sous la forme
+	\begin{equation}
+		s_i(z)=\sum_{k=0}^{\infty}b_{ik}z^k.
+	\end{equation}
+	La proposition \ref{PROPooJPVVooLqSdSn} nous assure que si \( | z |<1\), le produit \( \prod_{i=1}^Ns_i(z)\) peut être écrit sous la forme de la série entière
+	\begin{subequations}        \label{SUBEQooYESHooChEKGm}
+		\begin{align}
+			\prod_{i=1}^Ns_i(z) & =\sum_{s=0}^{\infty}\left( \sum_{x\in V_s(N)}\prod_{i=1}^Nb_{ix_i} \right)z^s                                  \\
+			                    & =\sum_{s=0}^{\infty}\left( \sum_{x\in V_s(N)}\prod_{i=1}^Nb_i(x) \right)z^s        \label{SUBEQooEEHKooPSrpiT} \\
+			                    & =\sum_{s=0}^{\infty}\Card\big( W_s(a,N) \big)z^s       \label{SUBEQooULBCooSTuHvy}
+		\end{align}
+	\end{subequations}
+	Justifications :
+	\begin{itemize}
+		\item Pour \eqref{SUBEQooEEHKooPSrpiT}. Notation \( b_i\) du lemme \ref{LEMooOPXHooHzoHrm}.
+		\item Pour \eqref{SUBEQooULBCooSTuHvy}. Utilisation du lemme \ref{LEMooOPXHooHzoHrm}
+	\end{itemize}
+
+	D'autre part, le lemme \ref{LEMooRJOKooPJGVTr} nous permet d'écrire
+	\begin{equation}
+		f(z)=\prod_{i=1}^Ns_i(z)=\prod_{i=1}^N\frac{1}{ 1-z^{a_i} }.
+	\end{equation}
+	Notre but sera d'écrire ce produit sous forme de série entière est d'identifier les coefficients avec ceux que l'on trouve dans \eqref{SUBEQooULBCooSTuHvy}.
+
+	\begin{subproof}
+		\spitem[\( m_{\omega}=N\) si et seulement si \( \omega^{a_i}=1\)]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Nous montrons à présent que \( \omega\) est un pôle d'ordre \( N\) de \( f\) si et seulement si \( \omega^{a_1}=\ldots=\omega^{a_N}=1\).
+		\begin{subproof}
+			\spitem[Un polynôme]
+			%------------------------------------------------------------------------------------------------------------------------------------
+			Nous considérons le polynôme
+			\begin{equation}		\label{EQooFNSMooVDHVnI}
+				P(X)=\prod_{i=1}^N(1-X^{a_i})=(-1)^{N}\prod_{i=1}^N\prod_{\omega\in \gU_{a_i}}(X-\omega)
+			\end{equation}
+			où, pour la seconde égalité, nous avons utilisé le lemme \ref{LemKYGBooAwpOHD}. En posant \( \gU=\bigcup_{i=1}^N\gU_{a_i}\) nous écrivons encore
+			\begin{equation}
+				P(X)=(-1)^N\prod_{\omega\in \gU}(X-\omega)^{m_{\omega}}
+			\end{equation}
+			où \( m_{\omega}=\Card\{ i\tq \omega\in \gU_{a_i} \}\). Cela pour dire que, pour \( | z |<1\),
+			\begin{equation}
+				f(z)=\frac{1}{ P(z) }=\frac{(-1)^N}{ \prod_{\omega\in \gU} (z-\omega)^{m_{\omega}}}.
+			\end{equation}
+
+			\spitem[Sens \( \Rightarrow\)]
+			%------------------------------------------------------------------------------------------------------------------------------------
+			Si \( \omega\) est un pôle d'ordre \( N\), alors \( N=m_{\omega}=\{ i\tq \omega\in \gU_{a_i} \}\). Donc \( \omega\in \gU_{a_i}\) pour tout \( i\), c'est-à-dire que \( \omega^{a_i}=1\) pour tout \( i\).
+			\spitem[Sens \( \Leftarrow\)]
+			%------------------------------------------------------------------------------------------------------------------------------------
+			Dans l'autre sens, si \( \omega^{a_i}=1\) pour tout \( i\), alors \( m_{\omega}=N\) et \( \omega\) est un pôle d'ordre \( N\).
+		\end{subproof}
+
+		Nous pouvons continuer.
+		\spitem[\( m_{\omega}=N\) si et seulement si \( \omega=1\)]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Nous savons que \( \omega=1\) est un pôle d'ordre \( N\) parce que \( 1\in \gU_{a_i}\) pour tout \( i\). Dans l'autre sens, si \( \omega\) est d'ordre \( N\), alors nous venons de voir que \( \omega^{a_i}=1\) pour tout \( i\).
+
+		Vu que les \( a_i\) sont premiers entre eux, le théorème de Bézout \ref{PROPooXQKMooWJlEFq} nous donne des entiers \( u_i\) tels que \( \sum_{i=1}^Nu_ia_i=1\). Nous avons alors
+		\begin{equation}
+			\omega=\omega^{u\cdot a}=\prod_{i=1}^N(\omega^{a_i})^{u_i}=1.
+		\end{equation}
+		Donc les pôles de \( f\) différents de \( 1\) sont d'ordre strictement inférieur à \( N\).
+
+		\spitem[Décomposition en éléments simples]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Décomposons un peu l'expression de \( f(z)\) en repartant de \eqref{EQooFNSMooVDHVnI} :
+		\begin{subequations}
+			\begin{align}
+				f(z) & =\prod_{i=1}^N\frac{1}{ 1-z^{a_i} }                                                                                 \\
+				     & =\prod_{i=1}^N\frac{1}{ -\prod_{\omega\in \gU_{a_i}}(z-\omega) }     \label{SUBEQooDFKPooBsxXxt}                    \\
+				     & =(-1)^N\prod_{i=1}^{N}\prod_{\omega\in \gU_{a_i}}\frac{1}{ z-\omega }                                               \\
+				     & =(-1)^N\prod_{i=1}^N\sum_{\omega\in \gU_{a_i}}\frac{ \lambda_{\omega,i} }{ z-\omega }   \label{SUBEQooBVBNooZGsWSE}
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooDFKPooBsxXxt}. Lemme \ref{LemKYGBooAwpOHD}; vous noterez le signe de différence.
+			\item Pour \eqref{SUBEQooBVBNooZGsWSE}. Lemme \ref{LEMooABJMooJTUpgV} pour la décomposition en éléments simples.
+		\end{itemize}
+
+		\spitem[Isoler le terme \( \omega=1\)]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Nous notons \( \gU=\bigcup_{i=1}^N\gU_{a_i}\). Chaque \( \gU_{a_i}\) contient \( \omega=1\). L'expression \eqref{SUBEQooBVBNooZGsWSE} contient donc un terme en \( \frac{1}{ (z-1)^N }\). Tous les autres \( \omega\) de \( \gU\) ne sont présents que dans au maximum \( N-1\) des \( \gU_{a_i}\). Nous avons donc
+		\begin{equation}        \label{EQooUUEPooQrVASA}
+			f(z)=\frac{ A }{ (z-1)^N }+\sum_{p=1}^{N-1}\sum_{\omega\in \gU}\frac{ B_{p,\omega} }{ (z-\omega)^p }
+		\end{equation}
+		avec \( B_{p,\omega}\in \eC\).
+
+		\spitem[Une belle lampée de factorielles]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Le lemme \ref{LemPQFDooGUPBvF}\ref{ITEMooHFVHooPCgzZV} permet d'écrire \( f\) avec des séries entières :
+		\begin{equation}        \label{EQooNHYXooACBOcJ}
+			\begin{aligned}[]
+				f(z) & =  \frac{A}{ (N-1)! }\sum_{s=0}^{\infty}\frac{ (s+N-1)! }{ s! }z^s                                                                                    \\
+				     & \quad+\sum_{p=1}^{N-1}\sum_{\omega\in \gU}\frac{(-1)^pB_{p,\omega}}{ (p-1)! }\sum_{s=0}^{\infty}\frac{ (s+p-1)! }{ s! }\frac{ z^s }{ \omega^{s+p+1} }
+			\end{aligned}
+		\end{equation}
+		qui est valable pour \( z\in B(0,1)\).
+
+		\spitem[Ce qu'on en fait]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Pour rappel, l'équation \eqref{SUBEQooYESHooChEKGm} nous dit que
+		\begin{equation}
+			f(z)=\sum_{s=0}^{\infty}\Card\big( W_s(a,N) \big)z^s.
+		\end{equation}
+		Nous allons donc identifier le coefficient de \( z^n\) dans \eqref{EQooNHYXooACBOcJ} avec \( \Card\big( W_n(a,N) \big)\) :
+		\begin{equation}
+			\begin{aligned}[]
+				\Card\big( W_n(a,N) \big) & =\frac{ A }{ (N-1)! }\frac{ (n+N-1)! }{ n! }                                                                                        \\
+				                          & \quad+\sum_{p=1}^{N-1}\sum_{\omega\in \gU}\frac{ (-1)^{p}B_{p,\omega} }{ (p-1)! }\frac{ (n+p-1)! }{ n! }\frac{1}{ \omega^{n+p+1} }.
+			\end{aligned}
+		\end{equation}
+		Voici une belle suite (par rapport à \( n\)) dont nous devons étudier le comportement asymptotique.
+
+		\spitem[Des équivalences]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Le lemme \ref{LEMooVMLEooCzPuKy} nous permet de supprimer tous les termes autres que celui qui contient \( A\) :
+		\begin{equation}
+			\Card\big( W_n(a,N) \big)\sim\frac{ A }{ (N-1)! }\frac{ (n+N-1)! }{ n! }.
+		\end{equation}
+		Notez que, à gauche, nous avons une suite dans \( \eN\) et à droite, une suite dans \( \eC\) (il n'y a pas de raisons à priori que \( A\) soit entier ou réel). Cela n'a pas d'importance; ça n'empêche pas les suites d'être équivalentes.
+
+		Le lemme \ref{LEMooTGHHooZHZsgE} donne maintenant
+		\begin{equation}        \label{EQooTPXCooGHSzoP}
+			\Card\big( W_n(a,N) \big)\sim \frac{ A }{ (N-1)! }n^{N-1}.
+		\end{equation}
+		Cela est déjà très bien parce que ça donne la vitesse de croissance en fonction de \( N\) et \( n\). Mais puisque nous sommes perfectionistes, nous allons encore déterminer la valeur de \( A\).
+
+		\spitem[La valeur de \( A\)]
+		%------------------------------------------------------------------------------------------------------------------------------------
+		Pour déterminer la valeur de \( A\), l'astuce est de considérer la fonction \( z\mapsto f(z)(1-z)^N\) :
+		\begin{subequations}
+			\begin{align}
+				f(z)(1-z)^N & =(1-z)^N\prod_{i=1}^N\frac{1}{ 1-z^{a_i} }                                      \\
+				            & =\prod_{i=1}^N\frac{ 1-z }{ 1-z^{a_i} }                                         \\
+				            & =\prod_{i=1}^N\frac{1}{ 1+\ldots +z^{a_i-1} }.      \label{SUBEQooUZTCooYgHaES}
+			\end{align}
+		\end{subequations}
+		Justifications :
+		\begin{itemize}
+			\item Pour \eqref{SUBEQooUZTCooYgHaES}. C'est le lemme \ref{LemISPooHIKJBU}\ref{ItemLTBooAcyMtNii}.
+		\end{itemize}
+		La dernière expression montre qu'il n'y a pas de mal à prendre la limite \( z\to 1\); elle vaut
+		\begin{equation}
+			\lim_{z\to 1} f(z)(1-z)^N=\prod_{i=1}^N\frac{1}{ a_i }.
+		\end{equation}
+		Mais en partant d'autre part de \eqref{EQooUUEPooQrVASA}, nous avons
+		\begin{equation}
+			f(z)(1-z)^N=A+\sum_{p=1}^{N-1}\sum_{\omega\in \gU}\frac{ B_{p,\omega}(1-z)^N }{ (z-\omega)^p }.
+		\end{equation}
+		Vu que \( N>p\), la limite \( z\to 0\) existe et vaut zéro dans tous les éléments de la somme, y compris les éléments avec \( \omega=1\). Donc
+		\begin{equation}
+			\lim_{z\to 1}f(z)(1-z)^N=A.
+		\end{equation}
+		Nous savons donc que
+		\begin{equation}        \label{EQooJMALooUrXJZc}
+			A=\prod_{i=1}^N\frac{1}{ a_i }.
+		\end{equation}
+	\end{subproof}
+	En remettant la valeur \eqref{EQooJMALooUrXJZc} dans l'équivalence \eqref{EQooTPXCooGHSzoP}, nous trouvons le résultat demandé.
+\end{proof}
+
+\begin{example}
+	Pour \( p=1\), l'équation est \( \alpha x=n\), qui possède au maximum une solution, quel que soit \( n\). Et de plus pour avoir une solution il faut et suffit que \( \alpha\) divise \( n\), c'est-à-dire que \( n\) soit un multiple de \( \alpha\). Il n'y a que un nombre sur \( \alpha\) à être multiple de \( \alpha\). D'où le comportement en \( \frac{1}{ \alpha }\).
+
+	Pour \( p=2\), c'est l'équation \eqref{EqTOVSooJbxlIq} déjà étudiée. Il y a une famille à un paramètre de solutions dont seulement un certain nombre sont positives. À priori, le nombre de solutions positives croît linéairement en \( n\).
+\end{example}
+
+
+\begin{normaltext}
+	Si vous aimez les séries génératrices. Si vous aimez l'idée de mettre toute l'information d'un problème dans les coefficients d'une série puis de trouver des réponses en les manipulant, vous pouvez regarder \emph{introduction à la théorie analytique des nombres}\cite{BIBooOSKTooBuVtBB}.
+
+	Cette vidéo explique comment payer \( n\) euros avec des pièces et des billets de valeur données. On pourrait croire que cela est exactement le résultat du théorème \ref{THOooQDYWooCOiUMb}. Il n'en est rien parce que l'hypothèse de pgcd du théorème n'est pas du tout réalisée par les pièces et billets actuellement en circulation.
+
+	Du coup, je ne sais pas si ce théorème est intéressant au sens de la définition \ref{DEFooDABVooKdDyBw}.
+\end{normaltext}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Fonctions d'Euler}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{theorem}[Prolongement méromorphe de la fonction \( \Gamma\) d'Euler\cite{KXjFWKA}]   \label{ThoZJYooWKfbVz}
+	Nous considérons la formule
+	\begin{equation}
+		\Gamma(z)=\int_0^{\infty} e^{-t}t^{z-1}dt.
+	\end{equation}
+	Alors
+	\begin{enumerate}
+		\item
+		      Cette formule définit une fonction holomorphe sur
+		      \begin{equation}
+			      \mP=\{ z\in \eC\tq \Re(z)>0 \}.
+		      \end{equation}
+		\item
+		      La fonction \( \Gamma\colon \mP\to \eC\) admet un unique prolongement méromorphe sur \( \eC\), lequel a des pôles sur les entiers négatifs.
+	\end{enumerate}
+\end{theorem}
+\index{fonction!\( \Gamma\) d'Euler}
+\index{prolongement!méromorphe de la fonction \( \Gamma\)}
+\index{fonction!définie par une intégrale!\( \Gamma\) d'Euler}
+\index{fonction!méromorphe!\( \Gamma\) d'Euler}
+
+\begin{proof}
+	\begin{subproof}
+		\spitem[Holomorphie sous l'intégrale]
+
+		Pour étudier l'holomorphie de la fonction \( \Gamma\) sur \( \mP\) nous utilisons le théorème~\ref{ThopCLOVN}.
+
+		Nous considérons la fonction
+		\begin{equation}
+			\begin{aligned}
+				g\colon \mP\times \eR^+ & \to \eC                \\
+				(z,t)                   & \mapsto  e^{-t}t^{z-1}
+			\end{aligned}
+		\end{equation}
+		et nous commençons par montrer que c'est holomorphe en \( z\) pour chaque \( t>0\) fixé. Nous le vérifions par le critère de \( \partial_{\bar z}f=0\)\footnote{Théorème~\ref{PropkwIQwg}.} et en nous souvenant que \( t^i= e^{\ln(t^i)}= e^{i\ln(t)}\). Nous obtenons rapidement que
+		\begin{equation}
+			\frac{ \partial g }{ \partial \bar z }=0.
+		\end{equation}
+
+		Le fait que la fonction \( t\mapsto g(z,t)\) soit mesurable pour tout \( z\) est d'accord.
+
+		Et enfin soit \( K\) compact dans \( \mP\). Il faut trouver une fonction \( g_K(t)\) intégrable sur \( \mathopen[ 0 , \infty [\) telle que pour tout \( z\in K\) et \( t\in\mathopen[ 0 , \infty [\) nous ayons \( | g(z,t)\leq g_K(t) |\). Pour cela nous majorons séparément les parties \( t\in\mathopen] 0 , 1 \mathclose[\) et \( t\geq 1\).
+
+			Soit donc \( K\) compact dans \( \mP\); nous posons \( M=\max_{z\in K}\Re(z)\) et \( \epsilon=\min_{z\in K}\Re(z)\).
+
+			Si \( t\in \mathopen] 0 , 1 \mathclose[\) alors nous avons
+			\begin{equation}
+				e^{-t}t^{z-1}= e^{-t} e^{(z-1)\ln(t)},
+			\end{equation}
+			de telle façon à que que
+			\begin{subequations}
+				\begin{align}
+					|  e^{-t}t^{z-1} | & \leq|  e^{(x-1+iy)\ln(t)} |  \\
+					                   & =|   e^{(\Re(z)-1)\ln(t)} |  \\
+					                   & =| t^{\Re(z)-1} |            \\
+					                   & \leq | t^{\epsilon-1} |      \\
+					                   & =\frac{1}{ t^{1-\epsilon} }.
+				\end{align}
+			\end{subequations}
+			Cette dernière fonction est intégrable sur \( \mathopen] 0 , 1 \mathclose[\).
+
+			Nous considérons maintenant \( t\geq 1\). Dans ce cas nous avons
+			\begin{equation}
+				|  e^{-t}t^{z-1} |= e^{-t}t^{\Re(z)-1}\leq  e^{-t}t^{M-1}.
+			\end{equation}
+			Cette dernière fonction est un produit d'une exponentielle décroissante avec un polynôme. C'est donc intégrable entre \( 1\) et l'infini.
+
+			La fonction \( g_K\) que nous considérons est donc
+			\begin{equation}
+				g_K(t)=\begin{cases}
+					\frac{1}{ t^{1-\epsilon} } & \text{si } t<1           \\
+					\text{borné}               & \text{si } 1\leq t\leq b \\
+					e^{-t}t^{M-1}              & \text{si } t>b.
+				\end{cases}
+			\end{equation}
+			Cela est une fonction intégrable sur \( \mathopen] 0,    \infty \mathclose[\) et qui majore \( g\) uniformément en \( z\) sur le compact \( K\) de \( \mP\). Le théorème~\ref{ThopCLOVN} nous permet donc de conclure que
+		\begin{equation}
+			\Gamma(z)=\int_0^{\infty}g(z,t)dt
+		\end{equation}
+		est holomorphe en \( z\) sur \( \mP\) et que
+		\begin{equation}
+			\Gamma'(z)=\int_0^{\infty}\frac{ \partial g }{ \partial z }(z,t)dt.
+		\end{equation}
+
+		\spitem[En deux morceaux] Nous passons maintenant à la seconde partie du théorème. Pour \( z\in \mP\) nous coupons l'intégrale en deux :
+		\begin{equation}
+			\Gamma(z)=\int_0^1 e^{-t}t^{z-1}dt+\int_1^{\infty} e^{-t}t^{z-1}dt
+		\end{equation}
+
+		\spitem[Première partie] Nous commençons par parler de la première partie : \( \int_0^1 e^{-t}t^{z-1}dt\) dans laquelle nous voulons utiliser le développement en série de l'exponentielle \(  e^{-t}\). Nous devons donc traiter
+		\begin{equation}
+			\int_0^1\sum_{n=0}^{\infty}\frac{ (-1)^n }{ n! }t^{n+z-1}dt.
+		\end{equation}
+		Nous allons permuter la somme avec l'intégrale à l'aide du théorème de Fubini~\ref{ThoFubinioYLtPI} en posant la fonction
+		\begin{equation}
+			g(n,t)=\frac{ (-1)^n }{ n! }t^{n+z-1}
+		\end{equation}
+		et en considérant le produit entre la mesure de Lebesgue sur \( \eC\) et la mesure de comptage sur \( \eN\), c'est-à-dire que nous étudions
+		\begin{equation}
+			\int_0^1\int_{\eN}g(n,t)dndt.
+		\end{equation}
+		Pour permuter il suffit de prouver que \( | g |\) est intégrable pour la mesure produit, c'est-à-dire que
+		\begin{equation}
+			\int_0^1\int_{\eN}\left| \frac{ (-1)^n }{ n! }t^{n+z-1} \right| <\infty.
+		\end{equation}
+		Nous avons \( | t^z|=t^{\Re(z)}\), donc
+		\begin{equation}
+			\sum_{n=0}^{\infty}\left| \frac{ t^{n+z-1} }{ n! } \right| =t^{\Re(z)-1}\sum_{n=0}^{\infty}\frac{ t^n }{ n! }=t^{\Re(z)-1} e^{t}.
+		\end{equation}
+		Étant donné que nous avons fixé \( z\in\mP\), nous avons \( \Re(z)-1>-1\) et donc \( t^{\Re(z)-1}\) est intégrable entre \( 0\) et \( 1\) (proposition \ref{PropBKNooPDIPUc}).
+		La partie \(  e^{t}\) se majore sur \( \mathopen[ 0 , 1 \mathclose]\) par une constante quelconque. Nous avons donc payé le droit d'inverser la somme et l'intégrale :
+		\begin{equation}
+			\int_0^1 e^{-t}t^{z-1}dt=\sum_{n=0}^{\infty}\int_0^1\frac{ (-1)^n }{ n! }t^{n+z-1}dt=\sum_{n=0}^{\infty}\frac{ (-1)^n }{ n! }[t^{n+z}]_0^1=\sum_{n=0}^{\infty}\frac{ (-1)^n }{ n!(n+z) }.
+		\end{equation}
+		Nous avons donc l'intéressante formule suivante, valable pour tout \( z\in\mP\) :
+		\begin{equation}
+			\Gamma(z)=\sum_{n=0}^{\infty}\frac{ (-1)^n }{ n!(n+z) }+\int_1^{\infty} e^{-t}t^{z-1}dt.
+		\end{equation}
+
+		\spitem[Prolongation de la première partie] Nous voudrions montrer maintenant que la fonction
+		\begin{equation}
+			\sum_{n=0}^{\infty}\frac{ (-1)^n }{ n!(n-z) }
+		\end{equation}
+		est méromorphe sur \( \eC\) avec des pôles en les entiers négatifs. Pour cela nous considérons la suite de fonctions
+		\begin{equation}
+			f_n(z)=\frac{ (-1)^n }{ n!(z+n) }
+		\end{equation}
+		et nous allons utiliser la proposition~\ref{PropPUZTQKl}. Si \( n\geq 0\), la fonction \( f_n\) est méromorphe sur \( \eC\) avec un pôle simple en \( z=-n\). Soit \( K\) compact de \( \eC\) et \( N_K\) tel que \( K\subset\overline{ B(0,N_K) }\). Pour \( n\geq N_K+1\), la fonction \( f_n\) n'a pas de pôle dans \( K\) et de plus pour tout \( z\in K\) nous avons
+		\begin{equation}
+			| z+n |=| z-(-n) |\geq\big| n-| z | \big|\geq n-| z |\geq n-N_K,
+		\end{equation}
+		et par conséquent
+		\begin{equation}
+			| f_n(z) |\leq \frac{1}{ n!(n-N) },
+		\end{equation}
+		ou pour le dire de façon plus snob :
+		\begin{equation}
+			\| f_n \|_{\infty,K}\leq \frac{1}{ n!(n-N) },
+		\end{equation}
+		dont la série converge. Cela signifie que la série \( \sum_{n\geq N}f_n\) converge normalement\footnote{Définition~\ref{DefVBrJUxo}.} sur \( K\), donc la fonction
+		\begin{equation}
+			f(z)=\sum_{n=0}^{\infty}f_n(z)
+		\end{equation}
+		est une fonction méromorphe dont les pôles sont ceux des \( f_n\), c'est-à-dire les entiers négatifs (proposition~\ref{PropPUZTQKl}).
+
+		\spitem[La seconde partie]
+
+		Nous allons à présent prouver que la fonction
+		\begin{equation}
+			h(z)=\int_1^{\infty} e^{-t}t^{z-1}dt
+		\end{equation}
+		est holomorphe sur \( \eC\). Pour cela nous considérons la fonction de deux variables \( f(z,t)= e^{-t}t^{z-1}\) et nous utilisons le théorème d'holomorphie sous l'intégrale~\ref{ThopCLOVN}. D'abord pour \( z_0\) fixé dans \( \eC\) nous avons
+		\begin{equation}
+			\int_1^{\infty}|  e^{-t}t^{z_0-1} |\leq \int_1^{\infty} e^{-t}t^{\Re(z_0)-1}dt,
+		\end{equation}
+		donc l'intégrale converge parce que c'est polynôme contre exponentielle. Par ailleurs pour chaque \( t_0\) fixé sur \( \mathopen[ 0 , \infty [\), la fonction \( z\mapsto  e^{-t_0}t_0^{z-1}\) est holomorphe sur \( \eC\) comme en témoigne le calcul suivant :
+		\begin{equation}
+			\frac{ 1 }{2}\left( \frac{ \partial  }{ \partial x }+i\frac{ \partial  }{ \partial y } \right)t_0^{x+iy-1}=0.
+		\end{equation}
+		Et enfin si \( K\) est compact dans \( \eC\) nous avons
+		\begin{equation}
+			| f(z,t) |=|  e^{-t}t^{z-1} |= e^{-t}| t^{\Re(z)-1} |\leq  e^{-t}t^{M-1}
+		\end{equation}
+		où \( M=\max_{z\in K}\Re(z)\). Nous en déduisons que la fonction
+		\begin{equation}
+			z\mapsto\int_1^{\infty} e^{-t}t^{z-1}dt
+		\end{equation}
+		est une fonction holomorphe sur \( \eC\).
+
+		\spitem[Conclusion]
+
+		Au final nous avons prouvé que la fonction \( \Gamma\) d'Euler admet le prolongement méromorphe sur \( \eC\) donné par
+		\begin{equation}
+			\Gamma(z)=\sum_{n=0}^{\infty}\frac{ (-1)^n }{ n!(z+n) }+\int_1^{\infty} e^{-t}t^{z-1}dt.
+		\end{equation}
+	\end{subproof}
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Euler et factorielle}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}
+	Nous avons la formule \( \Gamma(n)=(n-1)!\) pour tout \( n\in \eN\).
+\end{proposition}
+
+\begin{proof}
+	Nous partons de la formule
+	\begin{equation}
+		\Gamma(n)=\int_0^{\infty} e^{-t}t^{n-1}dt
+	\end{equation}
+	que nous intégrons par partie en posant
+	\begin{equation}
+		\begin{aligned}[]
+			u & =t^{n-1} & u' & =(n-1)t^{n-2} \\
+			v & = e^{-t} & v' & =- e^{-t}.
+		\end{aligned}
+	\end{equation}
+	Les termes au bord s'annulent (ici il y a un passage à la limite qui n'est pas écrit) et nous trouvons
+	\begin{equation}
+		\Gamma(n)=\int_0^{\infty}(n-1) e^{-t}t^{n-2}dt=(n-1)\Gamma(n-1).
+	\end{equation}
+
+	Pour conclure il suffit de remarquer que
+	\begin{equation}
+		\Gamma(1)=\int_0^{\infty}e^{-t}=-[ e^{-t}]_0^{\infty}=1.
+	\end{equation}
+\end{proof}
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Exponentielle et logarithme complexe}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Propriétés de l'exponentielle}
+%---------------------------------------------------------------------------------------------------------------------------
+
+\begin{proposition}
+	Soit \( z\in\eC\) fixé. La fonction
+	\begin{equation}
+		\begin{aligned}
+			E\colon \eR & \to \eC         \\
+			t           & \mapsto  e^{tz}
+		\end{aligned}
+	\end{equation}
+	est  \(  C^{\infty}\), sa dérivée est
+	\begin{equation}
+		E'(t)=z e^{tz}.
+	\end{equation}
+	La fonction \( E\) est développable en série entière (voir définition~\ref{DefwmRzKh}) sur \( \eR\) en \( t=0\) et
+	\begin{equation}
+		e^{tz}=\sum_{n=0}^{\infty}\frac{ z^n }{ n! }t^n.
+	\end{equation}
+\end{proposition}
+
+\begin{proof}
+	Nous fixons \( z\in \eC\). Par définition~\ref{DefJilXoM}, la série suivante est \(  e^{tz}\) :
+	\begin{equation}
+		f(t)=\sum_{n=0}^{\infty}\frac{ z^n }{ n! }t^n.
+	\end{equation}
+	Cette série a un rayon de convergence infini et la fonction \( f\) est donc \(  C^{\infty}\) sur \( \eR\). Nous pouvons la dériver terme à terme :
+	\begin{equation}
+		f'(t)=\sum_{n=1}^{\infty}\frac{ z^n }{ n! }nt^{n-1}
+		=z\sum_{n=1}^{\infty}\frac{ z^{n-1} }{ (n-1)! }t^{n-1}
+		=z e^{tz}.
+	\end{equation}
+\end{proof}
+
+\begin{theorem}     \label{THOooNGOIooEECfAv}
+	La fonction exponentielle vérifie les propriétés suivantes.
+	\begin{enumerate}
+		\item
+		      \( \exp\) est holomorphe\footnote{Définition \ref{DefMMpjJZ}.}.
+		\item
+		      \( (e^z)'=e^z\).
+		\item
+		      L'exponentielle est développable en série entière,
+		      \begin{equation}
+			      e^z=\sum_{n=0}^{\infty}\frac{ z^n }{ n! }
+		      \end{equation}
+		      et la série converge normalement sur tout compact de \( \eC\).
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	En tant que application \( E\colon \eR^2\to \eC\), la fonction
+	\begin{equation}
+		E(x,y)=e^x(\cos y+i\sin y)
+	\end{equation}
+	est \( C^{\infty}\). De plus nous avons
+	\begin{subequations}
+		\begin{align}
+			\frac{ \partial E }{ \partial x }(x,y)= e^{x+iy}=E(x,y) \\
+			\frac{ \partial E }{ \partial y }(x,y)=iE(x,y),
+		\end{align}
+	\end{subequations}
+	et par conséquent la fonction \( E\) vérifie les équations de Cauchy-Riemann.
+
+	Si \( r\) est fixé, par le critère d'Abel appliqué à la suite \(r^n/n!\) nous savons que la série \( \sum z^n/n!\) converge normalement sur le compact \( B(0,r)\).
+\end{proof}
+
+%---------------------------------------------------------------------------------------------------------------------------
+\subsection{Intégrale de Fresnel}
+%---------------------------------------------------------------------------------------------------------------------------
+
+Nous allons calculer l'\defe{intégrale de Fresnel}{intégrale!Fresnel}\index{Fresnel!intégrale}
+\begin{equation}
+	\int_0^{\infty} e^{-ix^2}dx=\frac{ \sqrt{\pi} }{ 2 } e^{-i\pi/4}
+\end{equation}
+en suivant la démarche présentée par Wikipédia\cite{ooOXWGooGhLJvX}. Nous commençons par prouver que l'intégrale est convergente en nous contentant de justifier la convergence de
+\begin{equation}
+	\int_0^{\infty}\sin(x^2)dx.
+\end{equation}
+Pour chaque \( a>0\) fixé, l'intégrale \( \int_0^a\sin(x^2)dx\) ne pose pas de problèmes. Le lemme \ref{LemTHBSEs} nous permet de passer à la limite; nous devons donc seulement calculer
+\begin{equation}
+	\lim_{b\to \infty}\int_a^b\sin(x^2)dx
+\end{equation}
+où \( a\) est une constante strictement positive. Nous effectuons une intégration par partie en posant
+\begin{subequations}
+	\begin{align}
+		u  & =\frac{1}{ x } & u' & =-\frac{1}{ x^2 }         \\
+		v' & =x\sin(x^2)    & v  & =\frac{ 1-\cos(x^2) }{2}.
+	\end{align}
+\end{subequations}
+Notons que la primitive \( v\) a été choisie pour avoir \( v(0)=0\). Nous avons
+\begin{equation}    \label{EqOdeKye}
+	\int_a^b\sin(x^2)dx=\left[ \frac{ 1-\cos(x^2) }{ 2x } \right]_a^b-\int_a^b\frac{ \cos(x^2)-1 }{ 2x^2 }dx
+\end{equation}
+Pour le premier terme nous avons
+\begin{equation}
+	\lim_{b\to \infty}\left[ \frac{ 1-\cos(x^2) }{ 2x } \right]_a^b=\lim_{b\to \infty}\frac{ 1-\cos(b^2) }{ 2b }-\frac{ 1-\cos(a^2) }{ 2a }=-\frac{ 1-\cos(a^2) }{ 2a }.
+\end{equation}
+C'est borné. Pour le second terme de \eqref{EqOdeKye}, la fonction
+\begin{equation}
+	\frac{ \cos(x^2)-1 }{ 2x^2 }
+\end{equation}
+est majorée par la fonction \( 1/x^2\) qui est intégrable entre \( a\) et \( \infty\).
+
+
+Nous allons calculer l'intégrale demandée en passant par la fonction
+\begin{equation}
+	f(x)= e^{-x^2}
+\end{equation}
+définie sur le plan complexe. Nous l'intégrons sur le chemin \( \gamma=\gamma_1+\gamma_2-\gamma_3\) indiqué à la figure~\ref{LabelFigCheminFresnel}.
+\newcommand{\CaptionFigCheminFresnel}{Chemin d'intégration pour l'intégrale de Fresnel}
+\input{auto/pictures_tex/Fig_CheminFresnel.pstricks}
+Ces chemins sont donnés par
+\begin{equation}
+	\begin{aligned}
+		\gamma_1\colon \mathopen[ 0 , R \mathclose] & \to \eC    \\
+		t                                           & \mapsto t,
+	\end{aligned}
+\end{equation}
+\begin{equation}
+	\begin{aligned}
+		\gamma_2\colon \mathopen[ 0 , \frac{ \pi }{ 4 } \mathclose] & \to \eC           \\
+		t                                                           & \mapsto R e^{it},
+	\end{aligned}
+\end{equation}
+\begin{equation}
+	\begin{aligned}
+		\gamma_3\colon \mathopen[ 0 , R \mathclose] & \to \eC               \\
+		t                                           & \mapsto t e^{i\pi/4}.
+	\end{aligned}
+\end{equation}
+Tout d'abord la fonction \( f\) est bien holomorphe par le critère du théorème~\ref{PropkwIQwg}. Le calcul de \( \frac{ \partial f }{ \partial \bar z }\) se fait simplement en posant \( f(x,y)= e^{-(x+iy)^2}\). Le calcul est usuel :
+\begin{verbatim}
+----------------------------------------------------------------------
+| Sage Version 4.8, Release Date: 2012-01-20                         |
+| Type notebook() for the GUI, and license() for information.        |
+----------------------------------------------------------------------
+sage: f(x,y)=exp(-(x+I*y)**2)
+sage: A=f.diff(x)+I*f.diff(y)
+sage: A.simplify_full()
+(x, y) |--> 0
+\end{verbatim}
+Nous avons donc
+\begin{equation}    \label{EqfaoRgU}
+	0=\int_{\gamma}f=\underbrace{\int_0^R e^{-t^2}dt}_{I_1(R)}+\underbrace{\int_0^{\pi/4} e^{-R^2 e^{2it}}Ri e^{it}dt}_{I_2(R)}+\underbrace{\int_0^R e^{-t^2 e^{i\pi/2}} e^{i\pi/4}dt}_{I_3(R)}.
+\end{equation}
+L'intégrale est nulle pour tout \( R\) en vertu de la proposition~\ref{PrpopwQSbJg}. L'intégrale \( I_1\) est une gaussienne et nous avons
+\begin{equation}
+	\lim_{R\to\infty}I_1(R)=\frac{ \sqrt{\pi} }{ 2 }
+\end{equation}
+par l'exemple~\ref{EXooLUFAooGcxFUW}. Nous montrons maintenant que \( \lim_{R\to\infty}| I_2(R) |=0\)\footnote{Il y a moyen de démontrer cela via le lemme de Jordan\cite{FresnelDavidS}. Nous donnons ici une démonstration moins technologique.}. D'abord nous majorons en prenant la norme puis nous effectuons le changement de variables \( u=2t\) :
+\begin{subequations}
+	\begin{align}
+		| I_2(R) | & \leq \int_{0}^{\pi/4}R e^{-R^2\cos(2t)}dt         \\
+		           & =\frac{ R }{ 2 }\int_0^{\pi/2} e^{-R^2\cos(u)}du.
+	\end{align}
+\end{subequations}
+Nous savons que le graphe du cosinus est concave : il reste au dessus de la droite que joint \( (0,1)\) à \( (\frac{ \pi }{2},0)\). Du coup \( \cos(u)\geq 1-\frac{ 2 }{ \pi }u\) et par conséquent
+\begin{equation}
+	e^{-R^2\cos(u)}\leq  e^{-R^2(1-\frac{ 2 }{ \pi }u)}= e^{R^2(\frac{ 2 }{ \pi }u-1)}.
+\end{equation}
+Nous effectuons l'intégrale
+\begin{subequations}
+	\begin{align}
+		| I_2(R) | & \leq \frac{ R }{2}\int_0^{\pi/2} e^{-R^2} e^{\frac{ 2R^2 }{ \pi }u}du               \\
+		           & =\frac{ R }{2} e^{-R^2}\left[ \frac{ \pi }{ 2R^2 } e^{2R^2 u/\pi} \right]_0^{\pi/2} \\
+		           & =\frac{ \pi }{ 4R }-\frac{ \pi e^{-R^2} }{ 4R },
+	\end{align}
+\end{subequations}
+et nous avons bien \( \lim_{R\to\infty}| I_2(R) |=0\). Nous passons à la troisième intégrale. En tenant compte que \(  e^{i\pi/2}=i\), nous avons
+\begin{subequations}
+	\begin{align}
+		I_3(R) & =-\int_0^R e^{-\gamma_3(t)^2} e^{i\pi/4}dt              \\
+		       & =-\frac{ 1+i }{ \sqrt{2} }\int_0^R e^{-t^2} e^{2i\pi/4} \\
+		       & =-\frac{ 1+i }{ \sqrt{2} }\int_0^R e^{-it^2}.
+	\end{align}
+\end{subequations}
+En passant à la limite \( R\to 0 \), de l'équation \eqref{EqfaoRgU} il ne reste que
+\begin{equation}
+	0=\frac{ \sqrt{2} }{2}-\frac{ 1+i }{ \sqrt{2} }\int_0^{\infty} e^{-it^2}dt,
+\end{equation}
+ce qui signifie que
+\begin{equation}
+	\int_0^{\infty} e^{-it^2}dt=\frac{ \sqrt{2\pi} }{ 2(1+i) }=\frac{ \sqrt{\pi} }{2} e^{-i\pi/4}.
+\end{equation}
+
+
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Théorème de Weierstrass}
+%+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+\begin{theorem}[Théorème de Weierstrass\cite{uTyBDj}]       \label{ThoArYtQO}
+	Soit \( (f_n)\) une suite de fonctions holomorphes sur un ouvert \( \Omega\) de \( \eC\) que nous supposons converger uniformément sur tout compact vers \( f\). Alors \( f\) est holomorphe sur \( \Omega\) et pour tout \( k\) nous avons
+	\begin{equation}
+		f^{(k)}_n\to f^{(k)}
+	\end{equation}
+	uniformément sur tout compact.
+
+	Dit en peu de mots, la limite uniforme d'une suite de fonctions holomorphes est holomorphe, et on peut permuter la limite avec la dérivation.
+\end{theorem}
+\index{compacité}
+\index{suite!de fonctions intégrables}
+\index{fonction!définie par une intégrale}
+\index{fonction!holomorphe}
+\index{limite!inversion}
+\index{limite!de fonctions holomorphes}
+
+\begin{proof}
+	Chacune des fonctions \( f_n\) étant holomorphes, si \( a\in \Omega\) et \( r\) est tel que \( B(a,r)\subset \Omega\), nous avons par la formule de Cauchy~\ref{ThoUHztQe} :
+	\begin{equation}
+		f_n(z)=\frac{1}{ 2\pi i }\int_{\partial B(a,r)}\frac{ f_n(\xi) }{ \xi-z }d\xi
+	\end{equation}
+	pour tout \( z\) dans un boule \( B(a,\rho)\) incluse dans \( B(a,r)\). Étant donné que le cercle \( \partial B\) est compact, elle y est majorée par une constante \( M\). Montrons que de plus nous pouvons choisir \( M\) de telle façon à avoir \( | f_n(\xi) |\leq M\) pour tout \( n\) et tout \( \xi\) en même temps. D'abord nous utilisons la continuité de la limite \( f\) sur le compact \( \partial B \) pour poser \( A=\max_{z\in\partial B}| f(z) |\). Ensuite nous considérons un \( \epsilon>0\) et \( N\) tel que \( \| f_n-f \|_{\partial B}\leq \epsilon\) pour tout \( n\geq N\). Nous savons maintenant que
+	\begin{equation}
+		\{ | f_n(\xi) |\tq n \geq N,\xi\in\partial B \}
+	\end{equation}
+	est majoré par \( A+\epsilon\). Nous posons enfin
+	\begin{equation}
+		B=\max_{n\leq N}\max_{\xi\in\partial B}| f_n(z) |,
+	\end{equation}
+	et alors le nombre \( M=\max\{ A+\epsilon,B \}\) majore \( | f_n(\xi) |\) pour tout \( n\) et tout \( \xi\in\partial B\).
+
+	De plus pour tout \( \xi\in\partial B\) et pour tout \( z\) dans la petite boule, nous avons \( | \xi-z |>r-\rho\), donc  la fonction dans l'intégrale est majorée par une constante ne dépendant ni de \( n\) ni de \( \xi\). Nous pouvons donc permuter l'intégrale et la limite sur \( n\) :
+	\begin{equation}
+		f(z)=\frac{1}{ 2i\pi }\int_{\partial B}\frac{ f(\xi) }{ \xi-z }.
+	\end{equation}
+	Cela implique que la fonction \( f\) est holomorphe par le corolaire~\ref{CorwfHtJu}.
+
+	Nous voudrions maintenant parler des dérivées des \( f_n\) et de \( f\). Pour cela nous voulons permuter l'intégrale et les dérivées, ce qui est fait au corolaire~\ref{CorNxTjEj} :
+	\begin{equation}
+		f_n^{(k)}=\frac{1}{ 2\pi i }\int_{\partial B(z_0,r)}\frac{ f(\omega) }{ (\omega-z)^{k+1} }d\omega.
+	\end{equation}
+	Nous voulons la convergence sur tout compact contenu dans l'ouvert \( \Omega\). Pour ce faire, nous allons considérer un compact \( K\subset \Omega\) et prouver la convergence uniforme dans toute boule de la forme \( B(z_0,r)\) avec \( z_0\in K\) et \( B(z_0,r)\subset \Omega\). Pour chaque tel couple \( (z_0,r)\), nous aurons un \( N_{(z_0,r)}\in \eN\) tel que si \( n\geq N_{(z_0,r)}\),
+	\begin{equation}
+		\| f_n^{(k)}-f^{(k)} \|_{B(z_0,r)}\leq \epsilon.
+	\end{equation}
+	Vu que ces boules \( B(z_0,r)\) forment un recouvrement de \( K\) par des ouverts, nous pouvons en retirer un sous-recouvrement fini et prendre, comme \( N\), le maximum des \( N_{(z_0,r)}\) correspondants. Pour ce \( N\) nous aurons
+	\begin{equation}
+		\| f_n^{(k)}-f^{(k)} \|_K\leq \epsilon.
+	\end{equation}
+	Au travail !
+
+	Pour \( z\in B(z_0,r)\) nous considérons \( r'>r\) tel que \( B(z_0,r')\subset \Omega\) et nous avons
+	\begin{subequations}
+		\begin{align}
+			| f^{(k)}_n(z)-f^{(k)}(z) | & =\left| \frac{1}{ 2\pi i }\int_{\partial B(z_0,r')}\frac{ f_n(\xi)-f(\xi) }{ (\xi-z)^{k+1} }d\xi \right| \\
+			                            & \leq\frac{1}{ 2\pi }\int_{\partial B(z_0,r')}\frac{ | f_n(\xi)-f(\xi) | }{ | r-r' |^{k+1} }d\xi.
+		\end{align}
+	\end{subequations}
+	Nous avons pris ce \( r'\) de telle manière que \( | \xi-z |\) soit borné par le bas par \( | r-r' |\); sinon la majoration que nous venons de faire ne marche pas. Étant donné que \( f_n\to f\) uniformément, nous pouvons considérer \( n\) assez grand pour que le numérateur soit plus petit que \( \epsilon\) indépendamment de \( \xi\) et de \( z\). Donc pour un \( n\) assez grand,
+	\begin{equation}
+		| f^{(k)}_n(z)-f^{(k)}(z) |\leq \frac{ \epsilon }{ 2\pi }\frac{ 2\pi r' }{ | r-r' |^{k+1} }
+	\end{equation}
+	pour tout \( z\in B(z_0,r)\). Donc nous avons convergence uniforme \( f_n^{(k)}\to f^{(k)}\) sur cette boule. Par l'argument de compacité donné plus haut, nous avons la convergence uniforme sur tout compact.
+\end{proof}
